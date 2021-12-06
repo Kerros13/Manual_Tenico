@@ -1,0 +1,192 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head><title>Python: module codeop</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+</head><body bgcolor="#f0f0f8">
+
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="heading">
+<tr bgcolor="#7799ee">
+<td valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong>codeop</strong></big></big></font></td
+><td align=right valign=bottom
+><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:c%3A%5Cpython38%5Clib%5Ccodeop.py">c:\python38\lib\codeop.py</a><br><a href="https://docs.python.org/3.8/library/codeop">Module Reference</a></font></td></tr></table>
+    <p><tt>Utilities&nbsp;to&nbsp;compile&nbsp;possibly&nbsp;incomplete&nbsp;Python&nbsp;source&nbsp;code.<br>
+&nbsp;<br>
+This&nbsp;module&nbsp;provides&nbsp;two&nbsp;interfaces,&nbsp;broadly&nbsp;similar&nbsp;to&nbsp;the&nbsp;builtin<br>
+function&nbsp;compile(),&nbsp;which&nbsp;take&nbsp;program&nbsp;text,&nbsp;a&nbsp;filename&nbsp;and&nbsp;a&nbsp;'mode'<br>
+and:<br>
+&nbsp;<br>
+-&nbsp;Return&nbsp;code&nbsp;<a href="builtins.html#object">object</a>&nbsp;if&nbsp;the&nbsp;command&nbsp;is&nbsp;complete&nbsp;and&nbsp;valid<br>
+-&nbsp;Return&nbsp;None&nbsp;if&nbsp;the&nbsp;command&nbsp;is&nbsp;incomplete<br>
+-&nbsp;Raise&nbsp;SyntaxError,&nbsp;ValueError&nbsp;or&nbsp;OverflowError&nbsp;if&nbsp;the&nbsp;command&nbsp;is&nbsp;a<br>
+&nbsp;&nbsp;syntax&nbsp;error&nbsp;(OverflowError&nbsp;and&nbsp;ValueError&nbsp;can&nbsp;be&nbsp;produced&nbsp;by<br>
+&nbsp;&nbsp;malformed&nbsp;literals).<br>
+&nbsp;<br>
+Approach:<br>
+&nbsp;<br>
+First,&nbsp;check&nbsp;if&nbsp;the&nbsp;source&nbsp;consists&nbsp;entirely&nbsp;of&nbsp;blank&nbsp;lines&nbsp;and<br>
+comments;&nbsp;if&nbsp;so,&nbsp;replace&nbsp;it&nbsp;with&nbsp;'pass',&nbsp;because&nbsp;the&nbsp;built-in<br>
+parser&nbsp;doesn't&nbsp;always&nbsp;do&nbsp;the&nbsp;right&nbsp;thing&nbsp;for&nbsp;these.<br>
+&nbsp;<br>
+<a href="#Compile">Compile</a>&nbsp;three&nbsp;times:&nbsp;as&nbsp;is,&nbsp;with&nbsp;\n,&nbsp;and&nbsp;with&nbsp;\n\n&nbsp;appended.&nbsp;&nbsp;If&nbsp;it<br>
+compiles&nbsp;as&nbsp;is,&nbsp;it's&nbsp;complete.&nbsp;&nbsp;If&nbsp;it&nbsp;compiles&nbsp;with&nbsp;one&nbsp;\n&nbsp;appended,<br>
+we&nbsp;expect&nbsp;more.&nbsp;&nbsp;If&nbsp;it&nbsp;doesn't&nbsp;compile&nbsp;either&nbsp;way,&nbsp;we&nbsp;compare&nbsp;the<br>
+error&nbsp;we&nbsp;get&nbsp;when&nbsp;compiling&nbsp;with&nbsp;\n&nbsp;or&nbsp;\n\n&nbsp;appended.&nbsp;&nbsp;If&nbsp;the&nbsp;errors<br>
+are&nbsp;the&nbsp;same,&nbsp;the&nbsp;code&nbsp;is&nbsp;broken.&nbsp;&nbsp;But&nbsp;if&nbsp;the&nbsp;errors&nbsp;are&nbsp;different,&nbsp;we<br>
+expect&nbsp;more.&nbsp;&nbsp;Not&nbsp;intuitive;&nbsp;not&nbsp;even&nbsp;guaranteed&nbsp;to&nbsp;hold&nbsp;in&nbsp;future<br>
+releases;&nbsp;but&nbsp;this&nbsp;matches&nbsp;the&nbsp;compiler's&nbsp;behavior&nbsp;from&nbsp;Python&nbsp;1.4<br>
+through&nbsp;2.2,&nbsp;at&nbsp;least.<br>
+&nbsp;<br>
+Caveat:<br>
+&nbsp;<br>
+It&nbsp;is&nbsp;possible&nbsp;(but&nbsp;not&nbsp;likely)&nbsp;that&nbsp;the&nbsp;parser&nbsp;stops&nbsp;parsing&nbsp;with&nbsp;a<br>
+successful&nbsp;outcome&nbsp;before&nbsp;reaching&nbsp;the&nbsp;end&nbsp;of&nbsp;the&nbsp;source;&nbsp;in&nbsp;this<br>
+case,&nbsp;trailing&nbsp;symbols&nbsp;may&nbsp;be&nbsp;ignored&nbsp;instead&nbsp;of&nbsp;causing&nbsp;an&nbsp;error.<br>
+For&nbsp;example,&nbsp;a&nbsp;backslash&nbsp;followed&nbsp;by&nbsp;two&nbsp;newlines&nbsp;may&nbsp;be&nbsp;followed&nbsp;by<br>
+arbitrary&nbsp;garbage.&nbsp;&nbsp;This&nbsp;will&nbsp;be&nbsp;fixed&nbsp;once&nbsp;the&nbsp;API&nbsp;for&nbsp;the&nbsp;parser&nbsp;is<br>
+better.<br>
+&nbsp;<br>
+The&nbsp;two&nbsp;interfaces&nbsp;are:<br>
+&nbsp;<br>
+<a href="#-compile_command">compile_command</a>(source,&nbsp;filename,&nbsp;symbol):<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Compiles&nbsp;a&nbsp;single&nbsp;command&nbsp;in&nbsp;the&nbsp;manner&nbsp;described&nbsp;above.<br>
+&nbsp;<br>
+<a href="#CommandCompiler">CommandCompiler</a>():<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Instances&nbsp;of&nbsp;this&nbsp;class&nbsp;have&nbsp;__call__&nbsp;methods&nbsp;identical&nbsp;in<br>
+&nbsp;&nbsp;&nbsp;&nbsp;signature&nbsp;to&nbsp;compile_command;&nbsp;the&nbsp;difference&nbsp;is&nbsp;that&nbsp;if&nbsp;the<br>
+&nbsp;&nbsp;&nbsp;&nbsp;instance&nbsp;compiles&nbsp;program&nbsp;text&nbsp;containing&nbsp;a&nbsp;__future__&nbsp;statement,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;the&nbsp;instance&nbsp;'remembers'&nbsp;and&nbsp;compiles&nbsp;all&nbsp;subsequent&nbsp;program&nbsp;texts<br>
+&nbsp;&nbsp;&nbsp;&nbsp;with&nbsp;the&nbsp;statement&nbsp;in&nbsp;force.<br>
+&nbsp;<br>
+The&nbsp;module&nbsp;also&nbsp;provides&nbsp;another&nbsp;class:<br>
+&nbsp;<br>
+<a href="#Compile">Compile</a>():<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Instances&nbsp;of&nbsp;this&nbsp;class&nbsp;act&nbsp;like&nbsp;the&nbsp;built-in&nbsp;function&nbsp;compile,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;but&nbsp;with&nbsp;'memory'&nbsp;in&nbsp;the&nbsp;sense&nbsp;described&nbsp;above.</tt></p>
+<p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#aa55cc">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Modules</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#aa55cc"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><table width="100%" summary="list"><tr><td width="25%" valign=top><a href="__future__.html">__future__</a><br>
+</td><td width="25%" valign=top><a href="warnings.html">warnings</a><br>
+</td><td width="25%" valign=top></td><td width="25%" valign=top></td></tr></table></td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ee77aa">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Classes</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#ee77aa"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl>
+<dt><font face="helvetica, arial"><a href="builtins.html#object">builtins.object</a>
+</font></dt><dd>
+<dl>
+<dt><font face="helvetica, arial"><a href="codeop.html#CommandCompiler">CommandCompiler</a>
+</font></dt><dt><font face="helvetica, arial"><a href="codeop.html#Compile">Compile</a>
+</font></dt></dl>
+</dd>
+</dl>
+ <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="CommandCompiler">class <strong>CommandCompiler</strong></a>(<a href="builtins.html#object">builtins.object</a>)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt>Instances&nbsp;of&nbsp;this&nbsp;class&nbsp;have&nbsp;__call__&nbsp;methods&nbsp;identical&nbsp;in<br>
+signature&nbsp;to&nbsp;compile_command;&nbsp;the&nbsp;difference&nbsp;is&nbsp;that&nbsp;if&nbsp;the<br>
+instance&nbsp;compiles&nbsp;program&nbsp;text&nbsp;containing&nbsp;a&nbsp;__future__&nbsp;statement,<br>
+the&nbsp;instance&nbsp;'remembers'&nbsp;and&nbsp;compiles&nbsp;all&nbsp;subsequent&nbsp;program&nbsp;texts<br>
+with&nbsp;the&nbsp;statement&nbsp;in&nbsp;force.<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%">Methods defined here:<br>
+<dl><dt><a name="CommandCompiler-__call__"><strong>__call__</strong></a>(self, source, filename='&lt;input&gt;', symbol='single')</dt><dd><tt><a href="#Compile">Compile</a>&nbsp;a&nbsp;command&nbsp;and&nbsp;determine&nbsp;whether&nbsp;it&nbsp;is&nbsp;incomplete.<br>
+&nbsp;<br>
+Arguments:<br>
+&nbsp;<br>
+source&nbsp;--&nbsp;the&nbsp;source&nbsp;string;&nbsp;may&nbsp;contain&nbsp;\n&nbsp;characters<br>
+filename&nbsp;--&nbsp;optional&nbsp;filename&nbsp;from&nbsp;which&nbsp;source&nbsp;was&nbsp;read;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;default&nbsp;"&lt;input&gt;"<br>
+symbol&nbsp;--&nbsp;optional&nbsp;grammar&nbsp;start&nbsp;symbol;&nbsp;"single"&nbsp;(default)&nbsp;or<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"eval"<br>
+&nbsp;<br>
+Return&nbsp;value&nbsp;/&nbsp;exceptions&nbsp;raised:<br>
+&nbsp;<br>
+-&nbsp;Return&nbsp;a&nbsp;code&nbsp;<a href="builtins.html#object">object</a>&nbsp;if&nbsp;the&nbsp;command&nbsp;is&nbsp;complete&nbsp;and&nbsp;valid<br>
+-&nbsp;Return&nbsp;None&nbsp;if&nbsp;the&nbsp;command&nbsp;is&nbsp;incomplete<br>
+-&nbsp;Raise&nbsp;SyntaxError,&nbsp;ValueError&nbsp;or&nbsp;OverflowError&nbsp;if&nbsp;the&nbsp;command&nbsp;is&nbsp;a<br>
+&nbsp;&nbsp;syntax&nbsp;error&nbsp;(OverflowError&nbsp;and&nbsp;ValueError&nbsp;can&nbsp;be&nbsp;produced&nbsp;by<br>
+&nbsp;&nbsp;malformed&nbsp;literals).</tt></dd></dl>
+
+<dl><dt><a name="CommandCompiler-__init__"><strong>__init__</strong></a>(self)</dt><dd><tt>Initialize&nbsp;self.&nbsp;&nbsp;See&nbsp;help(type(self))&nbsp;for&nbsp;accurate&nbsp;signature.</tt></dd></dl>
+
+<hr>
+Data descriptors defined here:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><tt>dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="Compile">class <strong>Compile</strong></a>(<a href="builtins.html#object">builtins.object</a>)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt>Instances&nbsp;of&nbsp;this&nbsp;class&nbsp;behave&nbsp;much&nbsp;like&nbsp;the&nbsp;built-in&nbsp;compile<br>
+function,&nbsp;but&nbsp;if&nbsp;one&nbsp;is&nbsp;used&nbsp;to&nbsp;compile&nbsp;text&nbsp;containing&nbsp;a&nbsp;future<br>
+statement,&nbsp;it&nbsp;"remembers"&nbsp;and&nbsp;compiles&nbsp;all&nbsp;subsequent&nbsp;program&nbsp;texts<br>
+with&nbsp;the&nbsp;statement&nbsp;in&nbsp;force.<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%">Methods defined here:<br>
+<dl><dt><a name="Compile-__call__"><strong>__call__</strong></a>(self, source, filename, symbol)</dt><dd><tt>Call&nbsp;self&nbsp;as&nbsp;a&nbsp;function.</tt></dd></dl>
+
+<dl><dt><a name="Compile-__init__"><strong>__init__</strong></a>(self)</dt><dd><tt>Initialize&nbsp;self.&nbsp;&nbsp;See&nbsp;help(type(self))&nbsp;for&nbsp;accurate&nbsp;signature.</tt></dd></dl>
+
+<hr>
+Data descriptors defined here:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><tt>dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+</td></tr></table></td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#eeaa77">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Functions</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#eeaa77"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl><dt><a name="-compile_command"><strong>compile_command</strong></a>(source, filename='&lt;input&gt;', symbol='single')</dt><dd><tt><a href="#Compile">Compile</a>&nbsp;a&nbsp;command&nbsp;and&nbsp;determine&nbsp;whether&nbsp;it&nbsp;is&nbsp;incomplete.<br>
+&nbsp;<br>
+Arguments:<br>
+&nbsp;<br>
+source&nbsp;--&nbsp;the&nbsp;source&nbsp;string;&nbsp;may&nbsp;contain&nbsp;\n&nbsp;characters<br>
+filename&nbsp;--&nbsp;optional&nbsp;filename&nbsp;from&nbsp;which&nbsp;source&nbsp;was&nbsp;read;&nbsp;default<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"&lt;input&gt;"<br>
+symbol&nbsp;--&nbsp;optional&nbsp;grammar&nbsp;start&nbsp;symbol;&nbsp;"single"&nbsp;(default),&nbsp;"exec"<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;or&nbsp;"eval"<br>
+&nbsp;<br>
+Return&nbsp;value&nbsp;/&nbsp;exceptions&nbsp;raised:<br>
+&nbsp;<br>
+-&nbsp;Return&nbsp;a&nbsp;code&nbsp;<a href="builtins.html#object">object</a>&nbsp;if&nbsp;the&nbsp;command&nbsp;is&nbsp;complete&nbsp;and&nbsp;valid<br>
+-&nbsp;Return&nbsp;None&nbsp;if&nbsp;the&nbsp;command&nbsp;is&nbsp;incomplete<br>
+-&nbsp;Raise&nbsp;SyntaxError,&nbsp;ValueError&nbsp;or&nbsp;OverflowError&nbsp;if&nbsp;the&nbsp;command&nbsp;is&nbsp;a<br>
+&nbsp;&nbsp;syntax&nbsp;error&nbsp;(OverflowError&nbsp;and&nbsp;ValueError&nbsp;can&nbsp;be&nbsp;produced&nbsp;by<br>
+&nbsp;&nbsp;malformed&nbsp;literals).</tt></dd></dl>
+</td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#55aa55">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Data</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#55aa55"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><strong>__all__</strong> = ['compile_command', 'Compile', 'CommandCompiler']</td></tr></table>
+</body></html>

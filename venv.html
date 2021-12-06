@@ -1,0 +1,150 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head><title>Python: package venv</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+</head><body bgcolor="#f0f0f8">
+
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="heading">
+<tr bgcolor="#7799ee">
+<td valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong>venv</strong></big></big></font></td
+><td align=right valign=bottom
+><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:c%3A%5Cpython38%5Clib%5Cvenv%5C__init__.py">c:\python38\lib\venv\__init__.py</a><br><a href="https://docs.python.org/3.8/library/venv">Module Reference</a></font></td></tr></table>
+    <p><tt>Virtual&nbsp;environment&nbsp;(venv)&nbsp;package&nbsp;for&nbsp;Python.&nbsp;Based&nbsp;on&nbsp;<a href="http://www.python.org/dev/peps/pep-0405/">PEP&nbsp;405</a>.<br>
+&nbsp;<br>
+Copyright&nbsp;(C)&nbsp;2011-2014&nbsp;Vinay&nbsp;Sajip.<br>
+Licensed&nbsp;to&nbsp;the&nbsp;PSF&nbsp;under&nbsp;a&nbsp;contributor&nbsp;agreement.</tt></p>
+<p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ee77aa">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Classes</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#ee77aa"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl>
+<dt><font face="helvetica, arial"><a href="builtins.html#object">builtins.object</a>
+</font></dt><dd>
+<dl>
+<dt><font face="helvetica, arial"><a href="venv.html#EnvBuilder">EnvBuilder</a>
+</font></dt></dl>
+</dd>
+</dl>
+ <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="EnvBuilder">class <strong>EnvBuilder</strong></a>(<a href="builtins.html#object">builtins.object</a>)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt><a href="#EnvBuilder">EnvBuilder</a>(system_site_packages=False,&nbsp;clear=False,&nbsp;symlinks=False,&nbsp;upgrade=False,&nbsp;with_pip=False,&nbsp;prompt=None)<br>
+&nbsp;<br>
+This&nbsp;class&nbsp;exists&nbsp;to&nbsp;allow&nbsp;virtual&nbsp;environment&nbsp;creation&nbsp;to&nbsp;be<br>
+customized.&nbsp;The&nbsp;constructor&nbsp;parameters&nbsp;determine&nbsp;the&nbsp;builder's<br>
+behaviour&nbsp;when&nbsp;called&nbsp;upon&nbsp;to&nbsp;create&nbsp;a&nbsp;virtual&nbsp;environment.<br>
+&nbsp;<br>
+By&nbsp;default,&nbsp;the&nbsp;builder&nbsp;makes&nbsp;the&nbsp;system&nbsp;(global)&nbsp;site-packages&nbsp;dir<br>
+*un*available&nbsp;to&nbsp;the&nbsp;created&nbsp;environment.<br>
+&nbsp;<br>
+If&nbsp;invoked&nbsp;using&nbsp;the&nbsp;Python&nbsp;-m&nbsp;option,&nbsp;the&nbsp;default&nbsp;is&nbsp;to&nbsp;use&nbsp;copying<br>
+on&nbsp;Windows&nbsp;platforms&nbsp;but&nbsp;symlinks&nbsp;elsewhere.&nbsp;If&nbsp;instantiated&nbsp;some<br>
+other&nbsp;way,&nbsp;the&nbsp;default&nbsp;is&nbsp;to&nbsp;*not*&nbsp;use&nbsp;symlinks.<br>
+&nbsp;<br>
+:param&nbsp;system_site_packages:&nbsp;If&nbsp;True,&nbsp;the&nbsp;system&nbsp;(global)&nbsp;site-packages<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;dir&nbsp;is&nbsp;available&nbsp;to&nbsp;created&nbsp;environments.<br>
+:param&nbsp;clear:&nbsp;If&nbsp;True,&nbsp;delete&nbsp;the&nbsp;contents&nbsp;of&nbsp;the&nbsp;environment&nbsp;directory&nbsp;if<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;it&nbsp;already&nbsp;exists,&nbsp;before&nbsp;environment&nbsp;creation.<br>
+:param&nbsp;symlinks:&nbsp;If&nbsp;True,&nbsp;attempt&nbsp;to&nbsp;symlink&nbsp;rather&nbsp;than&nbsp;copy&nbsp;files&nbsp;into<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;virtual&nbsp;environment.<br>
+:param&nbsp;upgrade:&nbsp;If&nbsp;True,&nbsp;upgrade&nbsp;an&nbsp;existing&nbsp;virtual&nbsp;environment.<br>
+:param&nbsp;with_pip:&nbsp;If&nbsp;True,&nbsp;ensure&nbsp;pip&nbsp;is&nbsp;installed&nbsp;in&nbsp;the&nbsp;virtual<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;environment<br>
+:param&nbsp;prompt:&nbsp;Alternative&nbsp;terminal&nbsp;prefix&nbsp;for&nbsp;the&nbsp;environment.<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%">Methods defined here:<br>
+<dl><dt><a name="EnvBuilder-__init__"><strong>__init__</strong></a>(self, system_site_packages=False, clear=False, symlinks=False, upgrade=False, with_pip=False, prompt=None)</dt><dd><tt>Initialize&nbsp;self.&nbsp;&nbsp;See&nbsp;help(type(self))&nbsp;for&nbsp;accurate&nbsp;signature.</tt></dd></dl>
+
+<dl><dt><a name="EnvBuilder-clear_directory"><strong>clear_directory</strong></a>(self, path)</dt></dl>
+
+<dl><dt><a name="EnvBuilder-create"><strong>create</strong></a>(self, env_dir)</dt><dd><tt>Create&nbsp;a&nbsp;virtual&nbsp;environment&nbsp;in&nbsp;a&nbsp;directory.<br>
+&nbsp;<br>
+:param&nbsp;env_dir:&nbsp;The&nbsp;target&nbsp;directory&nbsp;to&nbsp;create&nbsp;an&nbsp;environment&nbsp;in.</tt></dd></dl>
+
+<dl><dt><a name="EnvBuilder-create_configuration"><strong>create_configuration</strong></a>(self, context)</dt><dd><tt>Create&nbsp;a&nbsp;configuration&nbsp;file&nbsp;indicating&nbsp;where&nbsp;the&nbsp;environment's&nbsp;Python<br>
+was&nbsp;copied&nbsp;from,&nbsp;and&nbsp;whether&nbsp;the&nbsp;system&nbsp;site-packages&nbsp;should&nbsp;be&nbsp;made<br>
+available&nbsp;in&nbsp;the&nbsp;environment.<br>
+&nbsp;<br>
+:param&nbsp;context:&nbsp;The&nbsp;information&nbsp;for&nbsp;the&nbsp;environment&nbsp;creation&nbsp;request<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;being&nbsp;processed.</tt></dd></dl>
+
+<dl><dt><a name="EnvBuilder-ensure_directories"><strong>ensure_directories</strong></a>(self, env_dir)</dt><dd><tt>Create&nbsp;the&nbsp;directories&nbsp;for&nbsp;the&nbsp;environment.<br>
+&nbsp;<br>
+Returns&nbsp;a&nbsp;context&nbsp;<a href="builtins.html#object">object</a>&nbsp;which&nbsp;holds&nbsp;paths&nbsp;in&nbsp;the&nbsp;environment,<br>
+for&nbsp;use&nbsp;by&nbsp;subsequent&nbsp;logic.</tt></dd></dl>
+
+<dl><dt><a name="EnvBuilder-install_scripts"><strong>install_scripts</strong></a>(self, context, path)</dt><dd><tt>Install&nbsp;scripts&nbsp;into&nbsp;the&nbsp;created&nbsp;environment&nbsp;from&nbsp;a&nbsp;directory.<br>
+&nbsp;<br>
+:param&nbsp;context:&nbsp;The&nbsp;information&nbsp;for&nbsp;the&nbsp;environment&nbsp;creation&nbsp;request<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;being&nbsp;processed.<br>
+:param&nbsp;path:&nbsp;&nbsp;&nbsp;&nbsp;Absolute&nbsp;pathname&nbsp;of&nbsp;a&nbsp;directory&nbsp;containing&nbsp;script.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Scripts&nbsp;in&nbsp;the&nbsp;'common'&nbsp;subdirectory&nbsp;of&nbsp;this&nbsp;directory,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;and&nbsp;those&nbsp;in&nbsp;the&nbsp;directory&nbsp;named&nbsp;for&nbsp;the&nbsp;platform<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;being&nbsp;run&nbsp;on,&nbsp;are&nbsp;installed&nbsp;in&nbsp;the&nbsp;created&nbsp;environment.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Placeholder&nbsp;variables&nbsp;are&nbsp;replaced&nbsp;with&nbsp;environment-<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;specific&nbsp;values.</tt></dd></dl>
+
+<dl><dt><a name="EnvBuilder-post_setup"><strong>post_setup</strong></a>(self, context)</dt><dd><tt>Hook&nbsp;for&nbsp;post-setup&nbsp;modification&nbsp;of&nbsp;the&nbsp;venv.&nbsp;Subclasses&nbsp;may&nbsp;install<br>
+additional&nbsp;packages&nbsp;or&nbsp;scripts&nbsp;here,&nbsp;add&nbsp;activation&nbsp;shell&nbsp;scripts,&nbsp;etc.<br>
+&nbsp;<br>
+:param&nbsp;context:&nbsp;The&nbsp;information&nbsp;for&nbsp;the&nbsp;environment&nbsp;creation&nbsp;request<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;being&nbsp;processed.</tt></dd></dl>
+
+<dl><dt><a name="EnvBuilder-replace_variables"><strong>replace_variables</strong></a>(self, text, context)</dt><dd><tt>Replace&nbsp;variable&nbsp;placeholders&nbsp;in&nbsp;script&nbsp;text&nbsp;with&nbsp;context-specific<br>
+variables.<br>
+&nbsp;<br>
+Return&nbsp;the&nbsp;text&nbsp;passed&nbsp;in&nbsp;,&nbsp;but&nbsp;with&nbsp;variables&nbsp;replaced.<br>
+&nbsp;<br>
+:param&nbsp;text:&nbsp;The&nbsp;text&nbsp;in&nbsp;which&nbsp;to&nbsp;replace&nbsp;placeholder&nbsp;variables.<br>
+:param&nbsp;context:&nbsp;The&nbsp;information&nbsp;for&nbsp;the&nbsp;environment&nbsp;creation&nbsp;request<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;being&nbsp;processed.</tt></dd></dl>
+
+<dl><dt><a name="EnvBuilder-setup_python"><strong>setup_python</strong></a>(self, context)</dt><dd><tt>Set&nbsp;up&nbsp;a&nbsp;Python&nbsp;executable&nbsp;in&nbsp;the&nbsp;environment.<br>
+&nbsp;<br>
+:param&nbsp;context:&nbsp;The&nbsp;information&nbsp;for&nbsp;the&nbsp;environment&nbsp;creation&nbsp;request<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;being&nbsp;processed.</tt></dd></dl>
+
+<dl><dt><a name="EnvBuilder-setup_scripts"><strong>setup_scripts</strong></a>(self, context)</dt><dd><tt>Set&nbsp;up&nbsp;scripts&nbsp;into&nbsp;the&nbsp;created&nbsp;environment&nbsp;from&nbsp;a&nbsp;directory.<br>
+&nbsp;<br>
+This&nbsp;method&nbsp;installs&nbsp;the&nbsp;default&nbsp;scripts&nbsp;into&nbsp;the&nbsp;environment<br>
+being&nbsp;created.&nbsp;You&nbsp;can&nbsp;prevent&nbsp;the&nbsp;default&nbsp;installation&nbsp;by&nbsp;overriding<br>
+this&nbsp;method&nbsp;if&nbsp;you&nbsp;really&nbsp;need&nbsp;to,&nbsp;or&nbsp;if&nbsp;you&nbsp;need&nbsp;to&nbsp;specify<br>
+a&nbsp;different&nbsp;location&nbsp;for&nbsp;the&nbsp;scripts&nbsp;to&nbsp;install.&nbsp;By&nbsp;default,&nbsp;the<br>
+'scripts'&nbsp;directory&nbsp;in&nbsp;the&nbsp;venv&nbsp;package&nbsp;is&nbsp;used&nbsp;as&nbsp;the&nbsp;source&nbsp;of<br>
+scripts&nbsp;to&nbsp;install.</tt></dd></dl>
+
+<dl><dt><a name="EnvBuilder-symlink_or_copy"><strong>symlink_or_copy</strong></a>(self, src, dst, relative_symlinks_ok=False)</dt><dd><tt>Try&nbsp;symlinking&nbsp;a&nbsp;file,&nbsp;and&nbsp;if&nbsp;that&nbsp;fails,&nbsp;fall&nbsp;back&nbsp;to&nbsp;copying.</tt></dd></dl>
+
+<hr>
+Data descriptors defined here:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><tt>dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+</td></tr></table></td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#eeaa77">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Functions</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#eeaa77"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl><dt><a name="-create"><strong>create</strong></a>(env_dir, system_site_packages=False, clear=False, symlinks=False, with_pip=False, prompt=None)</dt><dd><tt>Create&nbsp;a&nbsp;virtual&nbsp;environment&nbsp;in&nbsp;a&nbsp;directory.</tt></dd></dl>
+ <dl><dt><a name="-main"><strong>main</strong></a>(args=None)</dt></dl>
+</td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#55aa55">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Data</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#55aa55"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><strong>logger</strong> = &lt;Logger venv (WARNING)&gt;</td></tr></table>
+</body></html>

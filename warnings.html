@@ -1,0 +1,116 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head><title>Python: module warnings</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+</head><body bgcolor="#f0f0f8">
+
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="heading">
+<tr bgcolor="#7799ee">
+<td valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong>warnings</strong></big></big></font></td
+><td align=right valign=bottom
+><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:c%3A%5Cpython38%5Clib%5Cwarnings.py">c:\python38\lib\warnings.py</a><br><a href="https://docs.python.org/3.8/library/warnings">Module Reference</a></font></td></tr></table>
+    <p><tt>Python&nbsp;part&nbsp;of&nbsp;the&nbsp;warnings&nbsp;subsystem.</tt></p>
+<p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#aa55cc">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Modules</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#aa55cc"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><table width="100%" summary="list"><tr><td width="25%" valign=top><a href="sys.html">sys</a><br>
+</td><td width="25%" valign=top></td><td width="25%" valign=top></td><td width="25%" valign=top></td></tr></table></td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ee77aa">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Classes</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#ee77aa"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl>
+<dt><font face="helvetica, arial"><a href="builtins.html#object">builtins.object</a>
+</font></dt><dd>
+<dl>
+<dt><font face="helvetica, arial"><a href="warnings.html#catch_warnings">catch_warnings</a>
+</font></dt></dl>
+</dd>
+</dl>
+ <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="catch_warnings">class <strong>catch_warnings</strong></a>(<a href="builtins.html#object">builtins.object</a>)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt><a href="#catch_warnings">catch_warnings</a>(*,&nbsp;record=False,&nbsp;module=None)<br>
+&nbsp;<br>
+A&nbsp;context&nbsp;manager&nbsp;that&nbsp;copies&nbsp;and&nbsp;restores&nbsp;the&nbsp;warnings&nbsp;filter&nbsp;upon<br>
+exiting&nbsp;the&nbsp;context.<br>
+&nbsp;<br>
+The&nbsp;'record'&nbsp;argument&nbsp;specifies&nbsp;whether&nbsp;warnings&nbsp;should&nbsp;be&nbsp;captured&nbsp;by&nbsp;a<br>
+custom&nbsp;implementation&nbsp;of&nbsp;warnings.<a href="#-showwarning">showwarning</a>()&nbsp;and&nbsp;be&nbsp;appended&nbsp;to&nbsp;a&nbsp;list<br>
+returned&nbsp;by&nbsp;the&nbsp;context&nbsp;manager.&nbsp;Otherwise&nbsp;None&nbsp;is&nbsp;returned&nbsp;by&nbsp;the&nbsp;context<br>
+manager.&nbsp;The&nbsp;objects&nbsp;appended&nbsp;to&nbsp;the&nbsp;list&nbsp;are&nbsp;arguments&nbsp;whose&nbsp;attributes<br>
+mirror&nbsp;the&nbsp;arguments&nbsp;to&nbsp;<a href="#-showwarning">showwarning</a>().<br>
+&nbsp;<br>
+The&nbsp;'module'&nbsp;argument&nbsp;is&nbsp;to&nbsp;specify&nbsp;an&nbsp;alternative&nbsp;module&nbsp;to&nbsp;the&nbsp;module<br>
+named&nbsp;'warnings'&nbsp;and&nbsp;imported&nbsp;under&nbsp;that&nbsp;name.&nbsp;This&nbsp;argument&nbsp;is&nbsp;only&nbsp;useful<br>
+when&nbsp;testing&nbsp;the&nbsp;warnings&nbsp;module&nbsp;itself.<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%">Methods defined here:<br>
+<dl><dt><a name="catch_warnings-__enter__"><strong>__enter__</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="catch_warnings-__exit__"><strong>__exit__</strong></a>(self, *exc_info)</dt></dl>
+
+<dl><dt><a name="catch_warnings-__init__"><strong>__init__</strong></a>(self, *, record=False, module=None)</dt><dd><tt>Specify&nbsp;whether&nbsp;to&nbsp;record&nbsp;warnings&nbsp;and&nbsp;if&nbsp;an&nbsp;alternative&nbsp;module<br>
+should&nbsp;be&nbsp;used&nbsp;other&nbsp;than&nbsp;sys.modules['warnings'].<br>
+&nbsp;<br>
+For&nbsp;compatibility&nbsp;with&nbsp;Python&nbsp;3.0,&nbsp;please&nbsp;consider&nbsp;all&nbsp;arguments&nbsp;to&nbsp;be<br>
+keyword-only.</tt></dd></dl>
+
+<dl><dt><a name="catch_warnings-__repr__"><strong>__repr__</strong></a>(self)</dt><dd><tt>Return&nbsp;repr(self).</tt></dd></dl>
+
+<hr>
+Data descriptors defined here:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><tt>dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+</td></tr></table></td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#eeaa77">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Functions</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#eeaa77"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl><dt><a name="-filterwarnings"><strong>filterwarnings</strong></a>(action, message='', category=&lt;class 'Warning'&gt;, module='', lineno=0, append=False)</dt><dd><tt>Insert&nbsp;an&nbsp;entry&nbsp;into&nbsp;the&nbsp;list&nbsp;of&nbsp;warnings&nbsp;filters&nbsp;(at&nbsp;the&nbsp;front).<br>
+&nbsp;<br>
+'action'&nbsp;--&nbsp;one&nbsp;of&nbsp;"error",&nbsp;"ignore",&nbsp;"always",&nbsp;"default",&nbsp;"module",<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;or&nbsp;"once"<br>
+'message'&nbsp;--&nbsp;a&nbsp;regex&nbsp;that&nbsp;the&nbsp;warning&nbsp;message&nbsp;must&nbsp;match<br>
+'category'&nbsp;--&nbsp;a&nbsp;class&nbsp;that&nbsp;the&nbsp;warning&nbsp;must&nbsp;be&nbsp;a&nbsp;subclass&nbsp;of<br>
+'module'&nbsp;--&nbsp;a&nbsp;regex&nbsp;that&nbsp;the&nbsp;module&nbsp;name&nbsp;must&nbsp;match<br>
+'lineno'&nbsp;--&nbsp;an&nbsp;integer&nbsp;line&nbsp;number,&nbsp;0&nbsp;matches&nbsp;all&nbsp;warnings<br>
+'append'&nbsp;--&nbsp;if&nbsp;true,&nbsp;append&nbsp;to&nbsp;the&nbsp;list&nbsp;of&nbsp;filters</tt></dd></dl>
+ <dl><dt><a name="-formatwarning"><strong>formatwarning</strong></a>(message, category, filename, lineno, line=None)</dt><dd><tt>Function&nbsp;to&nbsp;format&nbsp;a&nbsp;warning&nbsp;the&nbsp;standard&nbsp;way.</tt></dd></dl>
+ <dl><dt><a name="-resetwarnings"><strong>resetwarnings</strong></a>()</dt><dd><tt>Clear&nbsp;the&nbsp;list&nbsp;of&nbsp;warning&nbsp;filters,&nbsp;so&nbsp;that&nbsp;no&nbsp;filters&nbsp;are&nbsp;active.</tt></dd></dl>
+ <dl><dt><a name="-showwarning"><strong>showwarning</strong></a>(message, category, filename, lineno, file=None, line=None)</dt><dd><tt>Hook&nbsp;to&nbsp;write&nbsp;a&nbsp;warning&nbsp;to&nbsp;a&nbsp;file;&nbsp;replace&nbsp;if&nbsp;you&nbsp;like.</tt></dd></dl>
+ <dl><dt><a name="-simplefilter"><strong>simplefilter</strong></a>(action, category=&lt;class 'Warning'&gt;, lineno=0, append=False)</dt><dd><tt>Insert&nbsp;a&nbsp;simple&nbsp;entry&nbsp;into&nbsp;the&nbsp;list&nbsp;of&nbsp;warnings&nbsp;filters&nbsp;(at&nbsp;the&nbsp;front).<br>
+&nbsp;<br>
+A&nbsp;simple&nbsp;filter&nbsp;matches&nbsp;all&nbsp;modules&nbsp;and&nbsp;messages.<br>
+'action'&nbsp;--&nbsp;one&nbsp;of&nbsp;"error",&nbsp;"ignore",&nbsp;"always",&nbsp;"default",&nbsp;"module",<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;or&nbsp;"once"<br>
+'category'&nbsp;--&nbsp;a&nbsp;class&nbsp;that&nbsp;the&nbsp;warning&nbsp;must&nbsp;be&nbsp;a&nbsp;subclass&nbsp;of<br>
+'lineno'&nbsp;--&nbsp;an&nbsp;integer&nbsp;line&nbsp;number,&nbsp;0&nbsp;matches&nbsp;all&nbsp;warnings<br>
+'append'&nbsp;--&nbsp;if&nbsp;true,&nbsp;append&nbsp;to&nbsp;the&nbsp;list&nbsp;of&nbsp;filters</tt></dd></dl>
+ <dl><dt><a name="-warn"><strong>warn</strong></a>(message, category=None, stacklevel=1, source=None)</dt><dd><tt>Issue&nbsp;a&nbsp;warning,&nbsp;or&nbsp;maybe&nbsp;ignore&nbsp;it&nbsp;or&nbsp;raise&nbsp;an&nbsp;exception.</tt></dd></dl>
+ <dl><dt><a name="-warn_explicit"><strong>warn_explicit</strong></a>(...)</dt><dd><tt>Low-level&nbsp;interface&nbsp;to&nbsp;warnings&nbsp;functionality.</tt></dd></dl>
+</td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#55aa55">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Data</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#55aa55"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><strong>__all__</strong> = ['warn', 'warn_explicit', 'showwarning', 'formatwarning', 'filterwarnings', 'simplefilter', 'resetwarnings', 'catch_warnings']</td></tr></table>
+</body></html>

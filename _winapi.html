@@ -1,0 +1,216 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head><title>Python: built-in module _winapi</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+</head><body bgcolor="#f0f0f8">
+
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="heading">
+<tr bgcolor="#7799ee">
+<td valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong>_winapi</strong></big></big></font></td
+><td align=right valign=bottom
+><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br>(built-in)</font></td></tr></table>
+    <p></p>
+<p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ee77aa">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Classes</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#ee77aa"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl>
+<dt><font face="helvetica, arial"><a href="builtins.html#object">builtins.object</a>
+</font></dt><dd>
+<dl>
+<dt><font face="helvetica, arial"><a href="_winapi.html#Overlapped">Overlapped</a>
+</font></dt></dl>
+</dd>
+</dl>
+ <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="Overlapped">class <strong>Overlapped</strong></a>(<a href="builtins.html#object">builtins.object</a>)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt>OVERLAPPED&nbsp;structure&nbsp;wrapper<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%">Methods defined here:<br>
+<dl><dt><a name="Overlapped-GetOverlappedResult"><strong>GetOverlappedResult</strong></a>(self, wait, /)</dt></dl>
+
+<dl><dt><a name="Overlapped-cancel"><strong>cancel</strong></a>(self, /)</dt></dl>
+
+<dl><dt><a name="Overlapped-getbuffer"><strong>getbuffer</strong></a>(self, /)</dt></dl>
+
+<hr>
+Data descriptors defined here:<br>
+<dl><dt><strong>event</strong></dt>
+<dd><tt>overlapped&nbsp;event&nbsp;handle</tt></dd>
+</dl>
+</td></tr></table></td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#eeaa77">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Functions</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#eeaa77"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl><dt><a name="-CloseHandle"><strong>CloseHandle</strong></a>(handle, /)</dt><dd><tt>Close&nbsp;handle.</tt></dd></dl>
+ <dl><dt><a name="-ConnectNamedPipe"><strong>ConnectNamedPipe</strong></a>(handle, overlapped=False)</dt></dl>
+ <dl><dt><a name="-CreateFile"><strong>CreateFile</strong></a>(file_name, desired_access, share_mode, security_attributes, creation_disposition, flags_and_attributes, template_file, /)</dt></dl>
+ <dl><dt><a name="-CreateFileMapping"><strong>CreateFileMapping</strong></a>(file_handle, security_attributes, protect, max_size_high, max_size_low, name, /)</dt></dl>
+ <dl><dt><a name="-CreateJunction"><strong>CreateJunction</strong></a>(src_path, dst_path, /)</dt></dl>
+ <dl><dt><a name="-CreateNamedPipe"><strong>CreateNamedPipe</strong></a>(name, open_mode, pipe_mode, max_instances, out_buffer_size, in_buffer_size, default_timeout, security_attributes, /)</dt></dl>
+ <dl><dt><a name="-CreatePipe"><strong>CreatePipe</strong></a>(pipe_attrs, size, /)</dt><dd><tt>Create&nbsp;an&nbsp;anonymous&nbsp;pipe.<br>
+&nbsp;<br>
+&nbsp;&nbsp;pipe_attrs<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Ignored&nbsp;internally,&nbsp;can&nbsp;be&nbsp;None.<br>
+&nbsp;<br>
+Returns&nbsp;a&nbsp;2-tuple&nbsp;of&nbsp;handles,&nbsp;to&nbsp;the&nbsp;read&nbsp;and&nbsp;write&nbsp;ends&nbsp;of&nbsp;the&nbsp;pipe.</tt></dd></dl>
+ <dl><dt><a name="-CreateProcess"><strong>CreateProcess</strong></a>(application_name, command_line, proc_attrs, thread_attrs, inherit_handles, creation_flags, env_mapping, current_directory, startup_info, /)</dt><dd><tt>Create&nbsp;a&nbsp;new&nbsp;process&nbsp;and&nbsp;its&nbsp;primary&nbsp;thread.<br>
+&nbsp;<br>
+&nbsp;&nbsp;command_line<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Can&nbsp;be&nbsp;str&nbsp;or&nbsp;None<br>
+&nbsp;&nbsp;proc_attrs<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Ignored&nbsp;internally,&nbsp;can&nbsp;be&nbsp;None.<br>
+&nbsp;&nbsp;thread_attrs<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Ignored&nbsp;internally,&nbsp;can&nbsp;be&nbsp;None.<br>
+&nbsp;<br>
+The&nbsp;return&nbsp;value&nbsp;is&nbsp;a&nbsp;tuple&nbsp;of&nbsp;the&nbsp;process&nbsp;handle,&nbsp;thread&nbsp;handle,<br>
+process&nbsp;ID,&nbsp;and&nbsp;thread&nbsp;ID.</tt></dd></dl>
+ <dl><dt><a name="-DuplicateHandle"><strong>DuplicateHandle</strong></a>(source_process_handle, source_handle, target_process_handle, desired_access, inherit_handle, options=0, /)</dt><dd><tt>Return&nbsp;a&nbsp;duplicate&nbsp;handle&nbsp;<a href="builtins.html#object">object</a>.<br>
+&nbsp;<br>
+The&nbsp;duplicate&nbsp;handle&nbsp;refers&nbsp;to&nbsp;the&nbsp;same&nbsp;<a href="builtins.html#object">object</a>&nbsp;as&nbsp;the&nbsp;original<br>
+handle.&nbsp;Therefore,&nbsp;any&nbsp;changes&nbsp;to&nbsp;the&nbsp;<a href="builtins.html#object">object</a>&nbsp;are&nbsp;reflected<br>
+through&nbsp;both&nbsp;handles.</tt></dd></dl>
+ <dl><dt><a name="-ExitProcess"><strong>ExitProcess</strong></a>(ExitCode, /)</dt></dl>
+ <dl><dt><a name="-GetACP"><strong>GetACP</strong></a>()</dt><dd><tt>Get&nbsp;the&nbsp;current&nbsp;Windows&nbsp;ANSI&nbsp;code&nbsp;page&nbsp;identifier.</tt></dd></dl>
+ <dl><dt><a name="-GetCurrentProcess"><strong>GetCurrentProcess</strong></a>()</dt><dd><tt>Return&nbsp;a&nbsp;handle&nbsp;<a href="builtins.html#object">object</a>&nbsp;for&nbsp;the&nbsp;current&nbsp;process.</tt></dd></dl>
+ <dl><dt><a name="-GetExitCodeProcess"><strong>GetExitCodeProcess</strong></a>(process, /)</dt><dd><tt>Return&nbsp;the&nbsp;termination&nbsp;status&nbsp;of&nbsp;the&nbsp;specified&nbsp;process.</tt></dd></dl>
+ <dl><dt><a name="-GetFileType"><strong>GetFileType</strong></a>(handle)</dt></dl>
+ <dl><dt><a name="-GetLastError"><strong>GetLastError</strong></a>()</dt></dl>
+ <dl><dt><a name="-GetModuleFileName"><strong>GetModuleFileName</strong></a>(module_handle, /)</dt><dd><tt>Return&nbsp;the&nbsp;fully-qualified&nbsp;path&nbsp;for&nbsp;the&nbsp;file&nbsp;that&nbsp;contains&nbsp;module.<br>
+&nbsp;<br>
+The&nbsp;module&nbsp;must&nbsp;have&nbsp;been&nbsp;loaded&nbsp;by&nbsp;the&nbsp;current&nbsp;process.<br>
+&nbsp;<br>
+The&nbsp;module&nbsp;parameter&nbsp;should&nbsp;be&nbsp;a&nbsp;handle&nbsp;to&nbsp;the&nbsp;loaded&nbsp;module<br>
+whose&nbsp;path&nbsp;is&nbsp;being&nbsp;requested.&nbsp;If&nbsp;this&nbsp;parameter&nbsp;is&nbsp;0,<br>
+GetModuleFileName&nbsp;retrieves&nbsp;the&nbsp;path&nbsp;of&nbsp;the&nbsp;executable&nbsp;file<br>
+of&nbsp;the&nbsp;current&nbsp;process.</tt></dd></dl>
+ <dl><dt><a name="-GetStdHandle"><strong>GetStdHandle</strong></a>(std_handle, /)</dt><dd><tt>Return&nbsp;a&nbsp;handle&nbsp;to&nbsp;the&nbsp;specified&nbsp;standard&nbsp;device.<br>
+&nbsp;<br>
+&nbsp;&nbsp;std_handle<br>
+&nbsp;&nbsp;&nbsp;&nbsp;One&nbsp;of&nbsp;STD_INPUT_HANDLE,&nbsp;STD_OUTPUT_HANDLE,&nbsp;or&nbsp;STD_ERROR_HANDLE.<br>
+&nbsp;<br>
+The&nbsp;integer&nbsp;associated&nbsp;with&nbsp;the&nbsp;handle&nbsp;<a href="builtins.html#object">object</a>&nbsp;is&nbsp;returned.</tt></dd></dl>
+ <dl><dt><a name="-GetVersion"><strong>GetVersion</strong></a>()</dt><dd><tt>Return&nbsp;the&nbsp;version&nbsp;number&nbsp;of&nbsp;the&nbsp;current&nbsp;operating&nbsp;system.</tt></dd></dl>
+ <dl><dt><a name="-MapViewOfFile"><strong>MapViewOfFile</strong></a>(file_map, desired_access, file_offset_high, file_offset_low, number_bytes, /)</dt></dl>
+ <dl><dt><a name="-OpenFileMapping"><strong>OpenFileMapping</strong></a>(desired_access, inherit_handle, name, /)</dt></dl>
+ <dl><dt><a name="-OpenProcess"><strong>OpenProcess</strong></a>(desired_access, inherit_handle, process_id, /)</dt></dl>
+ <dl><dt><a name="-PeekNamedPipe"><strong>PeekNamedPipe</strong></a>(handle, size=0, /)</dt></dl>
+ <dl><dt><a name="-ReadFile"><strong>ReadFile</strong></a>(handle, size, overlapped=False)</dt></dl>
+ <dl><dt><a name="-SetNamedPipeHandleState"><strong>SetNamedPipeHandleState</strong></a>(named_pipe, mode, max_collection_count, collect_data_timeout, /)</dt></dl>
+ <dl><dt><a name="-TerminateProcess"><strong>TerminateProcess</strong></a>(handle, exit_code, /)</dt><dd><tt>Terminate&nbsp;the&nbsp;specified&nbsp;process&nbsp;and&nbsp;all&nbsp;of&nbsp;its&nbsp;threads.</tt></dd></dl>
+ <dl><dt><a name="-VirtualQuerySize"><strong>VirtualQuerySize</strong></a>(address, /)</dt></dl>
+ <dl><dt><a name="-WaitForMultipleObjects"><strong>WaitForMultipleObjects</strong></a>(handle_seq, wait_flag, milliseconds=4294967295, /)</dt></dl>
+ <dl><dt><a name="-WaitForSingleObject"><strong>WaitForSingleObject</strong></a>(handle, milliseconds, /)</dt><dd><tt>Wait&nbsp;for&nbsp;a&nbsp;single&nbsp;<a href="builtins.html#object">object</a>.<br>
+&nbsp;<br>
+Wait&nbsp;until&nbsp;the&nbsp;specified&nbsp;<a href="builtins.html#object">object</a>&nbsp;is&nbsp;in&nbsp;the&nbsp;signaled&nbsp;state&nbsp;or<br>
+the&nbsp;time-out&nbsp;interval&nbsp;elapses.&nbsp;The&nbsp;timeout&nbsp;value&nbsp;is&nbsp;specified<br>
+in&nbsp;milliseconds.</tt></dd></dl>
+ <dl><dt><a name="-WaitNamedPipe"><strong>WaitNamedPipe</strong></a>(name, timeout, /)</dt></dl>
+ <dl><dt><a name="-WriteFile"><strong>WriteFile</strong></a>(handle, buffer, overlapped=False)</dt></dl>
+</td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#55aa55">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Data</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#55aa55"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><strong>ABOVE_NORMAL_PRIORITY_CLASS</strong> = 32768<br>
+<strong>BELOW_NORMAL_PRIORITY_CLASS</strong> = 16384<br>
+<strong>CREATE_BREAKAWAY_FROM_JOB</strong> = 16777216<br>
+<strong>CREATE_DEFAULT_ERROR_MODE</strong> = 67108864<br>
+<strong>CREATE_NEW_CONSOLE</strong> = 16<br>
+<strong>CREATE_NEW_PROCESS_GROUP</strong> = 512<br>
+<strong>CREATE_NO_WINDOW</strong> = 134217728<br>
+<strong>DETACHED_PROCESS</strong> = 8<br>
+<strong>DUPLICATE_CLOSE_SOURCE</strong> = 1<br>
+<strong>DUPLICATE_SAME_ACCESS</strong> = 2<br>
+<strong>ERROR_ALREADY_EXISTS</strong> = 183<br>
+<strong>ERROR_BROKEN_PIPE</strong> = 109<br>
+<strong>ERROR_IO_PENDING</strong> = 997<br>
+<strong>ERROR_MORE_DATA</strong> = 234<br>
+<strong>ERROR_NETNAME_DELETED</strong> = 64<br>
+<strong>ERROR_NO_DATA</strong> = 232<br>
+<strong>ERROR_NO_SYSTEM_RESOURCES</strong> = 1450<br>
+<strong>ERROR_OPERATION_ABORTED</strong> = 995<br>
+<strong>ERROR_PIPE_BUSY</strong> = 231<br>
+<strong>ERROR_PIPE_CONNECTED</strong> = 535<br>
+<strong>ERROR_SEM_TIMEOUT</strong> = 121<br>
+<strong>FILE_FLAG_FIRST_PIPE_INSTANCE</strong> = 524288<br>
+<strong>FILE_FLAG_OVERLAPPED</strong> = 1073741824<br>
+<strong>FILE_GENERIC_READ</strong> = 1179785<br>
+<strong>FILE_GENERIC_WRITE</strong> = 1179926<br>
+<strong>FILE_MAP_ALL_ACCESS</strong> = 983071<br>
+<strong>FILE_MAP_COPY</strong> = 1<br>
+<strong>FILE_MAP_EXECUTE</strong> = 32<br>
+<strong>FILE_MAP_READ</strong> = 4<br>
+<strong>FILE_MAP_WRITE</strong> = 2<br>
+<strong>FILE_TYPE_CHAR</strong> = 2<br>
+<strong>FILE_TYPE_DISK</strong> = 1<br>
+<strong>FILE_TYPE_PIPE</strong> = 3<br>
+<strong>FILE_TYPE_REMOTE</strong> = 32768<br>
+<strong>FILE_TYPE_UNKNOWN</strong> = 0<br>
+<strong>GENERIC_READ</strong> = 2147483648<br>
+<strong>GENERIC_WRITE</strong> = 1073741824<br>
+<strong>HIGH_PRIORITY_CLASS</strong> = 128<br>
+<strong>IDLE_PRIORITY_CLASS</strong> = 64<br>
+<strong>INFINITE</strong> = 4294967295<br>
+<strong>INVALID_HANDLE_VALUE</strong> = 18446744073709551615<br>
+<strong>MEM_COMMIT</strong> = 4096<br>
+<strong>MEM_FREE</strong> = 65536<br>
+<strong>MEM_IMAGE</strong> = 16777216<br>
+<strong>MEM_MAPPED</strong> = 262144<br>
+<strong>MEM_PRIVATE</strong> = 131072<br>
+<strong>MEM_RESERVE</strong> = 8192<br>
+<strong>NMPWAIT_WAIT_FOREVER</strong> = 4294967295<br>
+<strong>NORMAL_PRIORITY_CLASS</strong> = 32<br>
+<strong>NULL</strong> = 0<br>
+<strong>OPEN_EXISTING</strong> = 3<br>
+<strong>PAGE_EXECUTE</strong> = 16<br>
+<strong>PAGE_EXECUTE_READ</strong> = 32<br>
+<strong>PAGE_EXECUTE_READWRITE</strong> = 64<br>
+<strong>PAGE_EXECUTE_WRITECOPY</strong> = 128<br>
+<strong>PAGE_GUARD</strong> = 256<br>
+<strong>PAGE_NOACCESS</strong> = 1<br>
+<strong>PAGE_NOCACHE</strong> = 512<br>
+<strong>PAGE_READONLY</strong> = 2<br>
+<strong>PAGE_READWRITE</strong> = 4<br>
+<strong>PAGE_WRITECOMBINE</strong> = 1024<br>
+<strong>PAGE_WRITECOPY</strong> = 8<br>
+<strong>PIPE_ACCESS_DUPLEX</strong> = 3<br>
+<strong>PIPE_ACCESS_INBOUND</strong> = 1<br>
+<strong>PIPE_READMODE_MESSAGE</strong> = 2<br>
+<strong>PIPE_TYPE_MESSAGE</strong> = 4<br>
+<strong>PIPE_UNLIMITED_INSTANCES</strong> = 255<br>
+<strong>PIPE_WAIT</strong> = 0<br>
+<strong>PROCESS_ALL_ACCESS</strong> = 2097151<br>
+<strong>PROCESS_DUP_HANDLE</strong> = 64<br>
+<strong>REALTIME_PRIORITY_CLASS</strong> = 256<br>
+<strong>SEC_COMMIT</strong> = 134217728<br>
+<strong>SEC_IMAGE</strong> = 16777216<br>
+<strong>SEC_LARGE_PAGES</strong> = 2147483648<br>
+<strong>SEC_NOCACHE</strong> = 268435456<br>
+<strong>SEC_RESERVE</strong> = 67108864<br>
+<strong>SEC_WRITECOMBINE</strong> = 1073741824<br>
+<strong>STARTF_USESHOWWINDOW</strong> = 1<br>
+<strong>STARTF_USESTDHANDLES</strong> = 256<br>
+<strong>STD_ERROR_HANDLE</strong> = 4294967284<br>
+<strong>STD_INPUT_HANDLE</strong> = 4294967286<br>
+<strong>STD_OUTPUT_HANDLE</strong> = 4294967285<br>
+<strong>STILL_ACTIVE</strong> = 259<br>
+<strong>SW_HIDE</strong> = 0<br>
+<strong>SYNCHRONIZE</strong> = 1048576<br>
+<strong>WAIT_ABANDONED_0</strong> = 128<br>
+<strong>WAIT_OBJECT_0</strong> = 0<br>
+<strong>WAIT_TIMEOUT</strong> = 258</td></tr></table>
+</body></html>

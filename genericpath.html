@@ -1,0 +1,53 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head><title>Python: module genericpath</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+</head><body bgcolor="#f0f0f8">
+
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="heading">
+<tr bgcolor="#7799ee">
+<td valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong>genericpath</strong></big></big></font></td
+><td align=right valign=bottom
+><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:c%3A%5Cpython38%5Clib%5Cgenericpath.py">c:\python38\lib\genericpath.py</a><br><a href="https://docs.python.org/3.8/library/genericpath">Module Reference</a></font></td></tr></table>
+    <p><tt>Path&nbsp;operations&nbsp;common&nbsp;to&nbsp;more&nbsp;than&nbsp;one&nbsp;OS<br>
+Do&nbsp;not&nbsp;use&nbsp;directly.&nbsp;&nbsp;The&nbsp;OS&nbsp;specific&nbsp;modules&nbsp;import&nbsp;the&nbsp;appropriate<br>
+functions&nbsp;from&nbsp;this&nbsp;module&nbsp;themselves.</tt></p>
+<p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#aa55cc">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Modules</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#aa55cc"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><table width="100%" summary="list"><tr><td width="25%" valign=top><a href="os.html">os</a><br>
+</td><td width="25%" valign=top><a href="stat.html">stat</a><br>
+</td><td width="25%" valign=top></td><td width="25%" valign=top></td></tr></table></td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#eeaa77">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Functions</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#eeaa77"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl><dt><a name="-commonprefix"><strong>commonprefix</strong></a>(m)</dt><dd><tt>Given&nbsp;a&nbsp;list&nbsp;of&nbsp;pathnames,&nbsp;returns&nbsp;the&nbsp;longest&nbsp;common&nbsp;leading&nbsp;component</tt></dd></dl>
+ <dl><dt><a name="-exists"><strong>exists</strong></a>(path)</dt><dd><tt>Test&nbsp;whether&nbsp;a&nbsp;path&nbsp;exists.&nbsp;&nbsp;Returns&nbsp;False&nbsp;for&nbsp;broken&nbsp;symbolic&nbsp;links</tt></dd></dl>
+ <dl><dt><a name="-getatime"><strong>getatime</strong></a>(filename)</dt><dd><tt>Return&nbsp;the&nbsp;last&nbsp;access&nbsp;time&nbsp;of&nbsp;a&nbsp;file,&nbsp;reported&nbsp;by&nbsp;os.stat().</tt></dd></dl>
+ <dl><dt><a name="-getctime"><strong>getctime</strong></a>(filename)</dt><dd><tt>Return&nbsp;the&nbsp;metadata&nbsp;change&nbsp;time&nbsp;of&nbsp;a&nbsp;file,&nbsp;reported&nbsp;by&nbsp;os.stat().</tt></dd></dl>
+ <dl><dt><a name="-getmtime"><strong>getmtime</strong></a>(filename)</dt><dd><tt>Return&nbsp;the&nbsp;last&nbsp;modification&nbsp;time&nbsp;of&nbsp;a&nbsp;file,&nbsp;reported&nbsp;by&nbsp;os.stat().</tt></dd></dl>
+ <dl><dt><a name="-getsize"><strong>getsize</strong></a>(filename)</dt><dd><tt>Return&nbsp;the&nbsp;size&nbsp;of&nbsp;a&nbsp;file,&nbsp;reported&nbsp;by&nbsp;os.stat().</tt></dd></dl>
+ <dl><dt><a name="-isdir"><strong>isdir</strong></a>(s)</dt><dd><tt>Return&nbsp;true&nbsp;if&nbsp;the&nbsp;pathname&nbsp;refers&nbsp;to&nbsp;an&nbsp;existing&nbsp;directory.</tt></dd></dl>
+ <dl><dt><a name="-isfile"><strong>isfile</strong></a>(path)</dt><dd><tt>Test&nbsp;whether&nbsp;a&nbsp;path&nbsp;is&nbsp;a&nbsp;regular&nbsp;file</tt></dd></dl>
+ <dl><dt><a name="-samefile"><strong>samefile</strong></a>(f1, f2)</dt><dd><tt>Test&nbsp;whether&nbsp;two&nbsp;pathnames&nbsp;reference&nbsp;the&nbsp;same&nbsp;actual&nbsp;file&nbsp;or&nbsp;directory<br>
+&nbsp;<br>
+This&nbsp;is&nbsp;determined&nbsp;by&nbsp;the&nbsp;device&nbsp;number&nbsp;and&nbsp;i-node&nbsp;number&nbsp;and<br>
+raises&nbsp;an&nbsp;exception&nbsp;if&nbsp;an&nbsp;os.stat()&nbsp;call&nbsp;on&nbsp;either&nbsp;pathname&nbsp;fails.</tt></dd></dl>
+ <dl><dt><a name="-sameopenfile"><strong>sameopenfile</strong></a>(fp1, fp2)</dt><dd><tt>Test&nbsp;whether&nbsp;two&nbsp;open&nbsp;file&nbsp;objects&nbsp;reference&nbsp;the&nbsp;same&nbsp;file</tt></dd></dl>
+ <dl><dt><a name="-samestat"><strong>samestat</strong></a>(s1, s2)</dt><dd><tt>Test&nbsp;whether&nbsp;two&nbsp;stat&nbsp;buffers&nbsp;reference&nbsp;the&nbsp;same&nbsp;file</tt></dd></dl>
+</td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#55aa55">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Data</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#55aa55"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><strong>__all__</strong> = ['commonprefix', 'exists', 'getatime', 'getctime', 'getmtime', 'getsize', 'isdir', 'isfile', 'samefile', 'sameopenfile', 'samestat']</td></tr></table>
+</body></html>

@@ -1,0 +1,121 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head><title>Python: module chunk</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+</head><body bgcolor="#f0f0f8">
+
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="heading">
+<tr bgcolor="#7799ee">
+<td valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong>chunk</strong></big></big></font></td
+><td align=right valign=bottom
+><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:c%3A%5Cpython38%5Clib%5Cchunk.py">c:\python38\lib\chunk.py</a><br><a href="https://docs.python.org/3.8/library/chunk">Module Reference</a></font></td></tr></table>
+    <p><tt>Simple&nbsp;class&nbsp;to&nbsp;read&nbsp;IFF&nbsp;chunks.<br>
+&nbsp;<br>
+An&nbsp;IFF&nbsp;chunk&nbsp;(used&nbsp;in&nbsp;formats&nbsp;such&nbsp;as&nbsp;AIFF,&nbsp;TIFF,&nbsp;RMFF&nbsp;(RealMedia&nbsp;File<br>
+Format))&nbsp;has&nbsp;the&nbsp;following&nbsp;structure:<br>
+&nbsp;<br>
++----------------+<br>
+|&nbsp;ID&nbsp;(4&nbsp;bytes)&nbsp;&nbsp;&nbsp;|<br>
++----------------+<br>
+|&nbsp;size&nbsp;(4&nbsp;bytes)&nbsp;|<br>
++----------------+<br>
+|&nbsp;data&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|<br>
+|&nbsp;...&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|<br>
++----------------+<br>
+&nbsp;<br>
+The&nbsp;ID&nbsp;is&nbsp;a&nbsp;4-byte&nbsp;string&nbsp;which&nbsp;identifies&nbsp;the&nbsp;type&nbsp;of&nbsp;chunk.<br>
+&nbsp;<br>
+The&nbsp;size&nbsp;field&nbsp;(a&nbsp;32-bit&nbsp;value,&nbsp;encoded&nbsp;using&nbsp;big-endian&nbsp;byte&nbsp;order)<br>
+gives&nbsp;the&nbsp;size&nbsp;of&nbsp;the&nbsp;whole&nbsp;chunk,&nbsp;including&nbsp;the&nbsp;8-byte&nbsp;header.<br>
+&nbsp;<br>
+Usually&nbsp;an&nbsp;IFF-type&nbsp;file&nbsp;consists&nbsp;of&nbsp;one&nbsp;or&nbsp;more&nbsp;chunks.&nbsp;&nbsp;The&nbsp;proposed<br>
+usage&nbsp;of&nbsp;the&nbsp;<a href="#Chunk">Chunk</a>&nbsp;class&nbsp;defined&nbsp;here&nbsp;is&nbsp;to&nbsp;instantiate&nbsp;an&nbsp;instance&nbsp;at<br>
+the&nbsp;start&nbsp;of&nbsp;each&nbsp;chunk&nbsp;and&nbsp;read&nbsp;from&nbsp;the&nbsp;instance&nbsp;until&nbsp;it&nbsp;reaches<br>
+the&nbsp;end,&nbsp;after&nbsp;which&nbsp;a&nbsp;new&nbsp;instance&nbsp;can&nbsp;be&nbsp;instantiated.&nbsp;&nbsp;At&nbsp;the&nbsp;end<br>
+of&nbsp;the&nbsp;file,&nbsp;creating&nbsp;a&nbsp;new&nbsp;instance&nbsp;will&nbsp;fail&nbsp;with&nbsp;an&nbsp;EOFError<br>
+exception.<br>
+&nbsp;<br>
+Usage:<br>
+while&nbsp;True:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;try:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;chunk&nbsp;=&nbsp;<a href="#Chunk">Chunk</a>(file)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;except&nbsp;EOFError:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;break<br>
+&nbsp;&nbsp;&nbsp;&nbsp;chunktype&nbsp;=&nbsp;chunk.getname()<br>
+&nbsp;&nbsp;&nbsp;&nbsp;while&nbsp;True:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;data&nbsp;=&nbsp;chunk.read(nbytes)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;not&nbsp;data:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;pass<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;do&nbsp;something&nbsp;with&nbsp;data<br>
+&nbsp;<br>
+The&nbsp;interface&nbsp;is&nbsp;file-like.&nbsp;&nbsp;The&nbsp;implemented&nbsp;methods&nbsp;are:<br>
+read,&nbsp;close,&nbsp;seek,&nbsp;tell,&nbsp;isatty.<br>
+Extra&nbsp;methods&nbsp;are:&nbsp;skip()&nbsp;(called&nbsp;by&nbsp;close,&nbsp;skips&nbsp;to&nbsp;the&nbsp;end&nbsp;of&nbsp;the&nbsp;chunk),<br>
+getname()&nbsp;(returns&nbsp;the&nbsp;name&nbsp;(ID)&nbsp;of&nbsp;the&nbsp;chunk)<br>
+&nbsp;<br>
+The&nbsp;__init__&nbsp;method&nbsp;has&nbsp;one&nbsp;required&nbsp;argument,&nbsp;a&nbsp;file-like&nbsp;<a href="builtins.html#object">object</a><br>
+(including&nbsp;a&nbsp;chunk&nbsp;instance),&nbsp;and&nbsp;one&nbsp;optional&nbsp;argument,&nbsp;a&nbsp;flag&nbsp;which<br>
+specifies&nbsp;whether&nbsp;or&nbsp;not&nbsp;chunks&nbsp;are&nbsp;aligned&nbsp;on&nbsp;2-byte&nbsp;boundaries.&nbsp;&nbsp;The<br>
+default&nbsp;is&nbsp;1,&nbsp;i.e.&nbsp;aligned.</tt></p>
+<p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ee77aa">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Classes</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#ee77aa"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl>
+<dt><font face="helvetica, arial"><a href="builtins.html#object">builtins.object</a>
+</font></dt><dd>
+<dl>
+<dt><font face="helvetica, arial"><a href="chunk.html#Chunk">Chunk</a>
+</font></dt></dl>
+</dd>
+</dl>
+ <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="Chunk">class <strong>Chunk</strong></a>(<a href="builtins.html#object">builtins.object</a>)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt><a href="#Chunk">Chunk</a>(file,&nbsp;align=True,&nbsp;bigendian=True,&nbsp;inclheader=False)<br>
+&nbsp;<br>
+<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%">Methods defined here:<br>
+<dl><dt><a name="Chunk-__init__"><strong>__init__</strong></a>(self, file, align=True, bigendian=True, inclheader=False)</dt><dd><tt>Initialize&nbsp;self.&nbsp;&nbsp;See&nbsp;help(type(self))&nbsp;for&nbsp;accurate&nbsp;signature.</tt></dd></dl>
+
+<dl><dt><a name="Chunk-close"><strong>close</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="Chunk-getname"><strong>getname</strong></a>(self)</dt><dd><tt>Return&nbsp;the&nbsp;name&nbsp;(ID)&nbsp;of&nbsp;the&nbsp;current&nbsp;chunk.</tt></dd></dl>
+
+<dl><dt><a name="Chunk-getsize"><strong>getsize</strong></a>(self)</dt><dd><tt>Return&nbsp;the&nbsp;size&nbsp;of&nbsp;the&nbsp;current&nbsp;chunk.</tt></dd></dl>
+
+<dl><dt><a name="Chunk-isatty"><strong>isatty</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="Chunk-read"><strong>read</strong></a>(self, size=-1)</dt><dd><tt>Read&nbsp;at&nbsp;most&nbsp;size&nbsp;bytes&nbsp;from&nbsp;the&nbsp;chunk.<br>
+If&nbsp;size&nbsp;is&nbsp;omitted&nbsp;or&nbsp;negative,&nbsp;read&nbsp;until&nbsp;the&nbsp;end<br>
+of&nbsp;the&nbsp;chunk.</tt></dd></dl>
+
+<dl><dt><a name="Chunk-seek"><strong>seek</strong></a>(self, pos, whence=0)</dt><dd><tt>Seek&nbsp;to&nbsp;specified&nbsp;position&nbsp;into&nbsp;the&nbsp;chunk.<br>
+Default&nbsp;position&nbsp;is&nbsp;0&nbsp;(start&nbsp;of&nbsp;chunk).<br>
+If&nbsp;the&nbsp;file&nbsp;is&nbsp;not&nbsp;seekable,&nbsp;this&nbsp;will&nbsp;result&nbsp;in&nbsp;an&nbsp;error.</tt></dd></dl>
+
+<dl><dt><a name="Chunk-skip"><strong>skip</strong></a>(self)</dt><dd><tt>Skip&nbsp;the&nbsp;rest&nbsp;of&nbsp;the&nbsp;chunk.<br>
+If&nbsp;you&nbsp;are&nbsp;not&nbsp;interested&nbsp;in&nbsp;the&nbsp;contents&nbsp;of&nbsp;the&nbsp;chunk,<br>
+this&nbsp;method&nbsp;should&nbsp;be&nbsp;called&nbsp;so&nbsp;that&nbsp;the&nbsp;file&nbsp;points&nbsp;to<br>
+the&nbsp;start&nbsp;of&nbsp;the&nbsp;next&nbsp;chunk.</tt></dd></dl>
+
+<dl><dt><a name="Chunk-tell"><strong>tell</strong></a>(self)</dt></dl>
+
+<hr>
+Data descriptors defined here:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><tt>dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+</td></tr></table></td></tr></table>
+</body></html>

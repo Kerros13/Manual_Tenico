@@ -1,0 +1,50 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head><title>Python: module mailcap</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+</head><body bgcolor="#f0f0f8">
+
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="heading">
+<tr bgcolor="#7799ee">
+<td valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong>mailcap</strong></big></big></font></td
+><td align=right valign=bottom
+><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:c%3A%5Cpython38%5Clib%5Cmailcap.py">c:\python38\lib\mailcap.py</a><br><a href="https://docs.python.org/3.8/library/mailcap">Module Reference</a></font></td></tr></table>
+    <p><tt>Mailcap&nbsp;file&nbsp;handling.&nbsp;&nbsp;See&nbsp;<a href="http://www.rfc-editor.org/rfc/rfc1524.txt">RFC&nbsp;1524</a>.</tt></p>
+<p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#aa55cc">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Modules</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#aa55cc"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><table width="100%" summary="list"><tr><td width="25%" valign=top><a href="os.html">os</a><br>
+</td><td width="25%" valign=top><a href="warnings.html">warnings</a><br>
+</td><td width="25%" valign=top></td><td width="25%" valign=top></td></tr></table></td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#eeaa77">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Functions</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#eeaa77"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl><dt><a name="-findmatch"><strong>findmatch</strong></a>(caps, MIMEtype, key='view', filename='/dev/null', plist=[])</dt><dd><tt>Find&nbsp;a&nbsp;match&nbsp;for&nbsp;a&nbsp;mailcap&nbsp;entry.<br>
+&nbsp;<br>
+Return&nbsp;a&nbsp;tuple&nbsp;containing&nbsp;the&nbsp;command&nbsp;line,&nbsp;and&nbsp;the&nbsp;mailcap&nbsp;entry<br>
+used;&nbsp;(None,&nbsp;None)&nbsp;if&nbsp;no&nbsp;match&nbsp;is&nbsp;found.&nbsp;&nbsp;This&nbsp;may&nbsp;invoke&nbsp;the<br>
+'test'&nbsp;command&nbsp;of&nbsp;several&nbsp;matching&nbsp;entries&nbsp;before&nbsp;deciding&nbsp;which<br>
+entry&nbsp;to&nbsp;use.</tt></dd></dl>
+ <dl><dt><a name="-getcaps"><strong>getcaps</strong></a>()</dt><dd><tt>Return&nbsp;a&nbsp;dictionary&nbsp;containing&nbsp;the&nbsp;mailcap&nbsp;database.<br>
+&nbsp;<br>
+The&nbsp;dictionary&nbsp;maps&nbsp;a&nbsp;MIME&nbsp;type&nbsp;(in&nbsp;all&nbsp;lowercase,&nbsp;e.g.&nbsp;'text/plain')<br>
+to&nbsp;a&nbsp;list&nbsp;of&nbsp;dictionaries&nbsp;corresponding&nbsp;to&nbsp;mailcap&nbsp;entries.&nbsp;&nbsp;The&nbsp;list<br>
+collects&nbsp;all&nbsp;the&nbsp;entries&nbsp;for&nbsp;that&nbsp;MIME&nbsp;type&nbsp;from&nbsp;all&nbsp;available&nbsp;mailcap<br>
+files.&nbsp;&nbsp;Each&nbsp;dictionary&nbsp;contains&nbsp;key-value&nbsp;pairs&nbsp;for&nbsp;that&nbsp;MIME&nbsp;type,<br>
+where&nbsp;the&nbsp;viewing&nbsp;command&nbsp;is&nbsp;stored&nbsp;with&nbsp;the&nbsp;key&nbsp;"view".</tt></dd></dl>
+</td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#55aa55">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Data</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#55aa55"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><strong>__all__</strong> = ['getcaps', 'findmatch']</td></tr></table>
+</body></html>

@@ -1,0 +1,357 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head><title>Python: module enum</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+</head><body bgcolor="#f0f0f8">
+
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="heading">
+<tr bgcolor="#7799ee">
+<td valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong>enum</strong></big></big></font></td
+><td align=right valign=bottom
+><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:c%3A%5Cpython38%5Clib%5Cenum.py">c:\python38\lib\enum.py</a><br><a href="https://docs.python.org/3.8/library/enum">Module Reference</a></font></td></tr></table>
+    <p></p>
+<p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#aa55cc">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Modules</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#aa55cc"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><table width="100%" summary="list"><tr><td width="25%" valign=top><a href="sys.html">sys</a><br>
+</td><td width="25%" valign=top></td><td width="25%" valign=top></td><td width="25%" valign=top></td></tr></table></td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ee77aa">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Classes</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#ee77aa"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl>
+<dt><font face="helvetica, arial"><a href="builtins.html#int">builtins.int</a>(<a href="builtins.html#object">builtins.object</a>)
+</font></dt><dd>
+<dl>
+<dt><font face="helvetica, arial"><a href="enum.html#IntEnum">IntEnum</a>(<a href="builtins.html#int">builtins.int</a>, <a href="enum.html#Enum">Enum</a>)
+</font></dt><dt><font face="helvetica, arial"><a href="enum.html#IntFlag">IntFlag</a>(<a href="builtins.html#int">builtins.int</a>, <a href="enum.html#Flag">Flag</a>)
+</font></dt></dl>
+</dd>
+<dt><font face="helvetica, arial"><a href="builtins.html#object">builtins.object</a>
+</font></dt><dd>
+<dl>
+<dt><font face="helvetica, arial"><a href="enum.html#Enum">Enum</a>
+</font></dt><dd>
+<dl>
+<dt><font face="helvetica, arial"><a href="enum.html#Flag">Flag</a>
+</font></dt><dd>
+<dl>
+<dt><font face="helvetica, arial"><a href="enum.html#IntFlag">IntFlag</a>(<a href="builtins.html#int">builtins.int</a>, <a href="enum.html#Flag">Flag</a>)
+</font></dt></dl>
+</dd>
+<dt><font face="helvetica, arial"><a href="enum.html#IntEnum">IntEnum</a>(<a href="builtins.html#int">builtins.int</a>, <a href="enum.html#Enum">Enum</a>)
+</font></dt></dl>
+</dd>
+<dt><font face="helvetica, arial"><a href="enum.html#auto">auto</a>
+</font></dt></dl>
+</dd>
+<dt><font face="helvetica, arial"><a href="builtins.html#type">builtins.type</a>(<a href="builtins.html#object">builtins.object</a>)
+</font></dt><dd>
+<dl>
+<dt><font face="helvetica, arial"><a href="enum.html#EnumMeta">EnumMeta</a>
+</font></dt></dl>
+</dd>
+</dl>
+ <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="Enum">class <strong>Enum</strong></a>(<a href="builtins.html#object">builtins.object</a>)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt><a href="#Enum">Enum</a>(value,&nbsp;names=None,&nbsp;*,&nbsp;module=None,&nbsp;qualname=None,&nbsp;<a href="builtins.html#type">type</a>=None,&nbsp;start=1)<br>
+&nbsp;<br>
+Generic&nbsp;enumeration.<br>
+&nbsp;<br>
+Derive&nbsp;from&nbsp;this&nbsp;class&nbsp;to&nbsp;define&nbsp;new&nbsp;enumerations.<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%">Data descriptors defined here:<br>
+<dl><dt><strong>name</strong></dt>
+<dd><tt>The&nbsp;name&nbsp;of&nbsp;the&nbsp;Enum&nbsp;member.</tt></dd>
+</dl>
+<dl><dt><strong>value</strong></dt>
+<dd><tt>The&nbsp;value&nbsp;of&nbsp;the&nbsp;Enum&nbsp;member.</tt></dd>
+</dl>
+<hr>
+Readonly properties inherited from <a href="enum.html#EnumMeta">EnumMeta</a>:<br>
+<dl><dt><strong>__members__</strong></dt>
+<dd><tt>Returns&nbsp;a&nbsp;mapping&nbsp;of&nbsp;member&nbsp;name-&gt;value.<br>
+&nbsp;<br>
+This&nbsp;mapping&nbsp;lists&nbsp;all&nbsp;enum&nbsp;members,&nbsp;including&nbsp;aliases.&nbsp;Note&nbsp;that&nbsp;this<br>
+is&nbsp;a&nbsp;read-only&nbsp;view&nbsp;of&nbsp;the&nbsp;internal&nbsp;mapping.</tt></dd>
+</dl>
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="EnumMeta">class <strong>EnumMeta</strong></a>(<a href="builtins.html#type">builtins.type</a>)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt><a href="#EnumMeta">EnumMeta</a>(cls,&nbsp;bases,&nbsp;classdict)<br>
+&nbsp;<br>
+Metaclass&nbsp;for&nbsp;<a href="#Enum">Enum</a><br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%"><dl><dt>Method resolution order:</dt>
+<dd><a href="enum.html#EnumMeta">EnumMeta</a></dd>
+<dd><a href="builtins.html#type">builtins.type</a></dd>
+<dd><a href="builtins.html#object">builtins.object</a></dd>
+</dl>
+<hr>
+Methods defined here:<br>
+<dl><dt><a name="EnumMeta-__bool__"><strong>__bool__</strong></a>(self)</dt><dd><tt>classes/types&nbsp;should&nbsp;always&nbsp;be&nbsp;True.</tt></dd></dl>
+
+<dl><dt><a name="EnumMeta-__call__"><strong>__call__</strong></a>(cls, value, names=None, *, module=None, qualname=None, type=None, start=1)</dt><dd><tt>Either&nbsp;returns&nbsp;an&nbsp;existing&nbsp;member,&nbsp;or&nbsp;creates&nbsp;a&nbsp;new&nbsp;enum&nbsp;class.<br>
+&nbsp;<br>
+This&nbsp;method&nbsp;is&nbsp;used&nbsp;both&nbsp;when&nbsp;an&nbsp;enum&nbsp;class&nbsp;is&nbsp;given&nbsp;a&nbsp;value&nbsp;to&nbsp;match<br>
+to&nbsp;an&nbsp;enumeration&nbsp;member&nbsp;(i.e.&nbsp;Color(3))&nbsp;and&nbsp;for&nbsp;the&nbsp;functional&nbsp;API<br>
+(i.e.&nbsp;Color&nbsp;=&nbsp;<a href="#Enum">Enum</a>('Color',&nbsp;names='RED&nbsp;GREEN&nbsp;BLUE')).<br>
+&nbsp;<br>
+When&nbsp;used&nbsp;for&nbsp;the&nbsp;functional&nbsp;API:<br>
+&nbsp;<br>
+`value`&nbsp;will&nbsp;be&nbsp;the&nbsp;name&nbsp;of&nbsp;the&nbsp;new&nbsp;class.<br>
+&nbsp;<br>
+`names`&nbsp;should&nbsp;be&nbsp;either&nbsp;a&nbsp;string&nbsp;of&nbsp;white-space/comma&nbsp;delimited&nbsp;names<br>
+(values&nbsp;will&nbsp;start&nbsp;at&nbsp;`start`),&nbsp;or&nbsp;an&nbsp;iterator/mapping&nbsp;of&nbsp;name,&nbsp;value&nbsp;pairs.<br>
+&nbsp;<br>
+`module`&nbsp;should&nbsp;be&nbsp;set&nbsp;to&nbsp;the&nbsp;module&nbsp;this&nbsp;class&nbsp;is&nbsp;being&nbsp;created&nbsp;in;<br>
+if&nbsp;it&nbsp;is&nbsp;not&nbsp;set,&nbsp;an&nbsp;attempt&nbsp;to&nbsp;find&nbsp;that&nbsp;module&nbsp;will&nbsp;be&nbsp;made,&nbsp;but&nbsp;if<br>
+it&nbsp;fails&nbsp;the&nbsp;class&nbsp;will&nbsp;not&nbsp;be&nbsp;picklable.<br>
+&nbsp;<br>
+`qualname`&nbsp;should&nbsp;be&nbsp;set&nbsp;to&nbsp;the&nbsp;actual&nbsp;location&nbsp;this&nbsp;class&nbsp;can&nbsp;be&nbsp;found<br>
+at&nbsp;in&nbsp;its&nbsp;module;&nbsp;by&nbsp;default&nbsp;it&nbsp;is&nbsp;set&nbsp;to&nbsp;the&nbsp;global&nbsp;scope.&nbsp;&nbsp;If&nbsp;this&nbsp;is<br>
+not&nbsp;correct,&nbsp;unpickling&nbsp;will&nbsp;fail&nbsp;in&nbsp;some&nbsp;circumstances.<br>
+&nbsp;<br>
+`<a href="builtins.html#type">type</a>`,&nbsp;if&nbsp;set,&nbsp;will&nbsp;be&nbsp;mixed&nbsp;in&nbsp;as&nbsp;the&nbsp;first&nbsp;base&nbsp;class.</tt></dd></dl>
+
+<dl><dt><a name="EnumMeta-__contains__"><strong>__contains__</strong></a>(cls, member)</dt></dl>
+
+<dl><dt><a name="EnumMeta-__delattr__"><strong>__delattr__</strong></a>(cls, attr)</dt><dd><tt>Implement&nbsp;delattr(self,&nbsp;name).</tt></dd></dl>
+
+<dl><dt><a name="EnumMeta-__dir__"><strong>__dir__</strong></a>(self)</dt><dd><tt>Specialized&nbsp;__dir__&nbsp;implementation&nbsp;for&nbsp;types.</tt></dd></dl>
+
+<dl><dt><a name="EnumMeta-__getattr__"><strong>__getattr__</strong></a>(cls, name)</dt><dd><tt>Return&nbsp;the&nbsp;enum&nbsp;member&nbsp;matching&nbsp;`name`<br>
+&nbsp;<br>
+We&nbsp;use&nbsp;__getattr__&nbsp;instead&nbsp;of&nbsp;descriptors&nbsp;or&nbsp;inserting&nbsp;into&nbsp;the&nbsp;enum<br>
+class'&nbsp;__dict__&nbsp;in&nbsp;order&nbsp;to&nbsp;support&nbsp;`name`&nbsp;and&nbsp;`value`&nbsp;being&nbsp;both<br>
+properties&nbsp;for&nbsp;enum&nbsp;members&nbsp;(which&nbsp;live&nbsp;in&nbsp;the&nbsp;class'&nbsp;__dict__)&nbsp;and<br>
+enum&nbsp;members&nbsp;themselves.</tt></dd></dl>
+
+<dl><dt><a name="EnumMeta-__getitem__"><strong>__getitem__</strong></a>(cls, name)</dt></dl>
+
+<dl><dt><a name="EnumMeta-__iter__"><strong>__iter__</strong></a>(cls)</dt></dl>
+
+<dl><dt><a name="EnumMeta-__len__"><strong>__len__</strong></a>(cls)</dt></dl>
+
+<dl><dt><a name="EnumMeta-__repr__"><strong>__repr__</strong></a>(cls)</dt><dd><tt>Return&nbsp;repr(self).</tt></dd></dl>
+
+<dl><dt><a name="EnumMeta-__reversed__"><strong>__reversed__</strong></a>(cls)</dt></dl>
+
+<dl><dt><a name="EnumMeta-__setattr__"><strong>__setattr__</strong></a>(cls, name, value)</dt><dd><tt>Block&nbsp;attempts&nbsp;to&nbsp;reassign&nbsp;<a href="#Enum">Enum</a>&nbsp;members.<br>
+&nbsp;<br>
+A&nbsp;simple&nbsp;assignment&nbsp;to&nbsp;the&nbsp;class&nbsp;namespace&nbsp;only&nbsp;changes&nbsp;one&nbsp;of&nbsp;the<br>
+several&nbsp;possible&nbsp;ways&nbsp;to&nbsp;get&nbsp;an&nbsp;<a href="#Enum">Enum</a>&nbsp;member&nbsp;from&nbsp;the&nbsp;<a href="#Enum">Enum</a>&nbsp;class,<br>
+resulting&nbsp;in&nbsp;an&nbsp;inconsistent&nbsp;Enumeration.</tt></dd></dl>
+
+<hr>
+Class methods defined here:<br>
+<dl><dt><a name="EnumMeta-__prepare__"><strong>__prepare__</strong></a>(cls, bases)<font color="#909090"><font face="helvetica, arial"> from <a href="builtins.html#type">builtins.type</a></font></font></dt><dd><tt><a href="#EnumMeta-__prepare__">__prepare__</a>()&nbsp;-&gt;&nbsp;dict<br>
+used&nbsp;to&nbsp;create&nbsp;the&nbsp;namespace&nbsp;for&nbsp;the&nbsp;class&nbsp;statement</tt></dd></dl>
+
+<hr>
+Static methods defined here:<br>
+<dl><dt><a name="EnumMeta-__new__"><strong>__new__</strong></a>(metacls, cls, bases, classdict)</dt><dd><tt>Create&nbsp;and&nbsp;return&nbsp;a&nbsp;new&nbsp;<a href="builtins.html#object">object</a>.&nbsp;&nbsp;See&nbsp;help(<a href="builtins.html#type">type</a>)&nbsp;for&nbsp;accurate&nbsp;signature.</tt></dd></dl>
+
+<hr>
+Readonly properties defined here:<br>
+<dl><dt><strong>__members__</strong></dt>
+<dd><tt>Returns&nbsp;a&nbsp;mapping&nbsp;of&nbsp;member&nbsp;name-&gt;value.<br>
+&nbsp;<br>
+This&nbsp;mapping&nbsp;lists&nbsp;all&nbsp;enum&nbsp;members,&nbsp;including&nbsp;aliases.&nbsp;Note&nbsp;that&nbsp;this<br>
+is&nbsp;a&nbsp;read-only&nbsp;view&nbsp;of&nbsp;the&nbsp;internal&nbsp;mapping.</tt></dd>
+</dl>
+<hr>
+Methods inherited from <a href="builtins.html#type">builtins.type</a>:<br>
+<dl><dt><a name="EnumMeta-__getattribute__"><strong>__getattribute__</strong></a>(self, name, /)</dt><dd><tt>Return&nbsp;getattr(self,&nbsp;name).</tt></dd></dl>
+
+<dl><dt><a name="EnumMeta-__init__"><strong>__init__</strong></a>(self, /, *args, **kwargs)</dt><dd><tt>Initialize&nbsp;self.&nbsp;&nbsp;See&nbsp;help(<a href="builtins.html#type">type</a>(self))&nbsp;for&nbsp;accurate&nbsp;signature.</tt></dd></dl>
+
+<dl><dt><a name="EnumMeta-__instancecheck__"><strong>__instancecheck__</strong></a>(self, instance, /)</dt><dd><tt>Check&nbsp;if&nbsp;an&nbsp;<a href="builtins.html#object">object</a>&nbsp;is&nbsp;an&nbsp;instance.</tt></dd></dl>
+
+<dl><dt><a name="EnumMeta-__sizeof__"><strong>__sizeof__</strong></a>(self, /)</dt><dd><tt>Return&nbsp;memory&nbsp;consumption&nbsp;of&nbsp;the&nbsp;<a href="builtins.html#type">type</a>&nbsp;<a href="builtins.html#object">object</a>.</tt></dd></dl>
+
+<dl><dt><a name="EnumMeta-__subclasscheck__"><strong>__subclasscheck__</strong></a>(self, subclass, /)</dt><dd><tt>Check&nbsp;if&nbsp;a&nbsp;class&nbsp;is&nbsp;a&nbsp;subclass.</tt></dd></dl>
+
+<dl><dt><a name="EnumMeta-__subclasses__"><strong>__subclasses__</strong></a>(self, /)</dt><dd><tt>Return&nbsp;a&nbsp;list&nbsp;of&nbsp;immediate&nbsp;subclasses.</tt></dd></dl>
+
+<dl><dt><a name="EnumMeta-mro"><strong>mro</strong></a>(self, /)</dt><dd><tt>Return&nbsp;a&nbsp;<a href="builtins.html#type">type</a>'s&nbsp;method&nbsp;resolution&nbsp;order.</tt></dd></dl>
+
+<hr>
+Data descriptors inherited from <a href="builtins.html#type">builtins.type</a>:<br>
+<dl><dt><strong>__abstractmethods__</strong></dt>
+</dl>
+<dl><dt><strong>__dict__</strong></dt>
+</dl>
+<dl><dt><strong>__text_signature__</strong></dt>
+</dl>
+<hr>
+Data and other attributes inherited from <a href="builtins.html#type">builtins.type</a>:<br>
+<dl><dt><strong>__base__</strong> = &lt;class 'type'&gt;<dd><tt><a href="builtins.html#type">type</a>(object_or_name,&nbsp;bases,&nbsp;dict)<br>
+<a href="builtins.html#type">type</a>(<a href="builtins.html#object">object</a>)&nbsp;-&gt;&nbsp;the&nbsp;<a href="builtins.html#object">object</a>'s&nbsp;<a href="builtins.html#type">type</a><br>
+<a href="builtins.html#type">type</a>(name,&nbsp;bases,&nbsp;dict)&nbsp;-&gt;&nbsp;a&nbsp;new&nbsp;<a href="builtins.html#type">type</a></tt></dl>
+
+<dl><dt><strong>__bases__</strong> = (&lt;class 'type'&gt;,)</dl>
+
+<dl><dt><strong>__basicsize__</strong> = 880</dl>
+
+<dl><dt><strong>__dictoffset__</strong> = 264</dl>
+
+<dl><dt><strong>__flags__</strong> = 2148292096</dl>
+
+<dl><dt><strong>__itemsize__</strong> = 40</dl>
+
+<dl><dt><strong>__mro__</strong> = (&lt;class 'enum.EnumMeta'&gt;, &lt;class 'type'&gt;, &lt;class 'object'&gt;)</dl>
+
+<dl><dt><strong>__weakrefoffset__</strong> = 368</dl>
+
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="Flag">class <strong>Flag</strong></a>(<a href="enum.html#Enum">Enum</a>)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt><a href="#Flag">Flag</a>(value,&nbsp;names=None,&nbsp;*,&nbsp;module=None,&nbsp;qualname=None,&nbsp;<a href="builtins.html#type">type</a>=None,&nbsp;start=1)<br>
+&nbsp;<br>
+Support&nbsp;for&nbsp;flags<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%"><dl><dt>Method resolution order:</dt>
+<dd><a href="enum.html#Flag">Flag</a></dd>
+<dd><a href="enum.html#Enum">Enum</a></dd>
+<dd><a href="builtins.html#object">builtins.object</a></dd>
+</dl>
+<hr>
+Data descriptors inherited from <a href="enum.html#Enum">Enum</a>:<br>
+<dl><dt><strong>name</strong></dt>
+<dd><tt>The&nbsp;name&nbsp;of&nbsp;the&nbsp;Enum&nbsp;member.</tt></dd>
+</dl>
+<dl><dt><strong>value</strong></dt>
+<dd><tt>The&nbsp;value&nbsp;of&nbsp;the&nbsp;Enum&nbsp;member.</tt></dd>
+</dl>
+<hr>
+Readonly properties inherited from <a href="enum.html#EnumMeta">EnumMeta</a>:<br>
+<dl><dt><strong>__members__</strong></dt>
+<dd><tt>Returns&nbsp;a&nbsp;mapping&nbsp;of&nbsp;member&nbsp;name-&gt;value.<br>
+&nbsp;<br>
+This&nbsp;mapping&nbsp;lists&nbsp;all&nbsp;enum&nbsp;members,&nbsp;including&nbsp;aliases.&nbsp;Note&nbsp;that&nbsp;this<br>
+is&nbsp;a&nbsp;read-only&nbsp;view&nbsp;of&nbsp;the&nbsp;internal&nbsp;mapping.</tt></dd>
+</dl>
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="IntEnum">class <strong>IntEnum</strong></a>(<a href="builtins.html#int">builtins.int</a>, <a href="enum.html#Enum">Enum</a>)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt><a href="#IntEnum">IntEnum</a>(value,&nbsp;names=None,&nbsp;*,&nbsp;module=None,&nbsp;qualname=None,&nbsp;<a href="builtins.html#type">type</a>=None,&nbsp;start=1)<br>
+&nbsp;<br>
+<a href="#Enum">Enum</a>&nbsp;where&nbsp;members&nbsp;are&nbsp;also&nbsp;(and&nbsp;must&nbsp;be)&nbsp;ints<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%"><dl><dt>Method resolution order:</dt>
+<dd><a href="enum.html#IntEnum">IntEnum</a></dd>
+<dd><a href="builtins.html#int">builtins.int</a></dd>
+<dd><a href="enum.html#Enum">Enum</a></dd>
+<dd><a href="builtins.html#object">builtins.object</a></dd>
+</dl>
+<hr>
+Data descriptors inherited from <a href="enum.html#Enum">Enum</a>:<br>
+<dl><dt><strong>name</strong></dt>
+<dd><tt>The&nbsp;name&nbsp;of&nbsp;the&nbsp;Enum&nbsp;member.</tt></dd>
+</dl>
+<dl><dt><strong>value</strong></dt>
+<dd><tt>The&nbsp;value&nbsp;of&nbsp;the&nbsp;Enum&nbsp;member.</tt></dd>
+</dl>
+<hr>
+Readonly properties inherited from <a href="enum.html#EnumMeta">EnumMeta</a>:<br>
+<dl><dt><strong>__members__</strong></dt>
+<dd><tt>Returns&nbsp;a&nbsp;mapping&nbsp;of&nbsp;member&nbsp;name-&gt;value.<br>
+&nbsp;<br>
+This&nbsp;mapping&nbsp;lists&nbsp;all&nbsp;enum&nbsp;members,&nbsp;including&nbsp;aliases.&nbsp;Note&nbsp;that&nbsp;this<br>
+is&nbsp;a&nbsp;read-only&nbsp;view&nbsp;of&nbsp;the&nbsp;internal&nbsp;mapping.</tt></dd>
+</dl>
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="IntFlag">class <strong>IntFlag</strong></a>(<a href="builtins.html#int">builtins.int</a>, <a href="enum.html#Flag">Flag</a>)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt><a href="#IntFlag">IntFlag</a>(value,&nbsp;names=None,&nbsp;*,&nbsp;module=None,&nbsp;qualname=None,&nbsp;<a href="builtins.html#type">type</a>=None,&nbsp;start=1)<br>
+&nbsp;<br>
+Support&nbsp;for&nbsp;integer-based&nbsp;Flags<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%"><dl><dt>Method resolution order:</dt>
+<dd><a href="enum.html#IntFlag">IntFlag</a></dd>
+<dd><a href="builtins.html#int">builtins.int</a></dd>
+<dd><a href="enum.html#Flag">Flag</a></dd>
+<dd><a href="enum.html#Enum">Enum</a></dd>
+<dd><a href="builtins.html#object">builtins.object</a></dd>
+</dl>
+<hr>
+Data descriptors inherited from <a href="enum.html#Enum">Enum</a>:<br>
+<dl><dt><strong>name</strong></dt>
+<dd><tt>The&nbsp;name&nbsp;of&nbsp;the&nbsp;Enum&nbsp;member.</tt></dd>
+</dl>
+<dl><dt><strong>value</strong></dt>
+<dd><tt>The&nbsp;value&nbsp;of&nbsp;the&nbsp;Enum&nbsp;member.</tt></dd>
+</dl>
+<hr>
+Readonly properties inherited from <a href="enum.html#EnumMeta">EnumMeta</a>:<br>
+<dl><dt><strong>__members__</strong></dt>
+<dd><tt>Returns&nbsp;a&nbsp;mapping&nbsp;of&nbsp;member&nbsp;name-&gt;value.<br>
+&nbsp;<br>
+This&nbsp;mapping&nbsp;lists&nbsp;all&nbsp;enum&nbsp;members,&nbsp;including&nbsp;aliases.&nbsp;Note&nbsp;that&nbsp;this<br>
+is&nbsp;a&nbsp;read-only&nbsp;view&nbsp;of&nbsp;the&nbsp;internal&nbsp;mapping.</tt></dd>
+</dl>
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="auto">class <strong>auto</strong></a>(<a href="builtins.html#object">builtins.object</a>)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt>Instances&nbsp;are&nbsp;replaced&nbsp;with&nbsp;an&nbsp;appropriate&nbsp;value&nbsp;in&nbsp;<a href="#Enum">Enum</a>&nbsp;class&nbsp;suites.<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%">Data descriptors defined here:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><tt>dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<hr>
+Data and other attributes defined here:<br>
+<dl><dt><strong>value</strong> = &lt;object object&gt;</dl>
+
+</td></tr></table></td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#eeaa77">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Functions</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#eeaa77"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl><dt><a name="-unique"><strong>unique</strong></a>(enumeration)</dt><dd><tt>Class&nbsp;decorator&nbsp;for&nbsp;enumerations&nbsp;ensuring&nbsp;unique&nbsp;member&nbsp;values.</tt></dd></dl>
+</td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#55aa55">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Data</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#55aa55"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><strong>__all__</strong> = ['EnumMeta', 'Enum', 'IntEnum', 'Flag', 'IntFlag', 'auto', 'unique']</td></tr></table>
+</body></html>

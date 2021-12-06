@@ -1,0 +1,1023 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head><title>Python: module imaplib</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+</head><body bgcolor="#f0f0f8">
+
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="heading">
+<tr bgcolor="#7799ee">
+<td valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong>imaplib</strong></big></big> (version 2.58)</font></td
+><td align=right valign=bottom
+><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:c%3A%5Cpython38%5Clib%5Cimaplib.py">c:\python38\lib\imaplib.py</a><br><a href="https://docs.python.org/3.8/library/imaplib">Module Reference</a></font></td></tr></table>
+    <p><tt><a href="#IMAP4">IMAP4</a>&nbsp;client.<br>
+&nbsp;<br>
+Based&nbsp;on&nbsp;<a href="http://www.rfc-editor.org/rfc/rfc2060.txt">RFC&nbsp;2060</a>.<br>
+&nbsp;<br>
+Public&nbsp;class:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#IMAP4">IMAP4</a><br>
+Public&nbsp;variable:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Debug<br>
+Public&nbsp;functions:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Internaldate2tuple<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Int2AP<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ParseFlags<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Time2Internaldate</tt></p>
+<p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#aa55cc">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Modules</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#aa55cc"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><table width="100%" summary="list"><tr><td width="25%" valign=top><a href="binascii.html">binascii</a><br>
+<a href="calendar.html">calendar</a><br>
+<a href="errno.html">errno</a><br>
+</td><td width="25%" valign=top><a href="random.html">random</a><br>
+<a href="re.html">re</a><br>
+<a href="socket.html">socket</a><br>
+</td><td width="25%" valign=top><a href="ssl.html">ssl</a><br>
+<a href="subprocess.html">subprocess</a><br>
+<a href="sys.html">sys</a><br>
+</td><td width="25%" valign=top><a href="time.html">time</a><br>
+</td></tr></table></td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ee77aa">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Classes</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#ee77aa"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl>
+<dt><font face="helvetica, arial"><a href="builtins.html#object">builtins.object</a>
+</font></dt><dd>
+<dl>
+<dt><font face="helvetica, arial"><a href="imaplib.html#IMAP4">IMAP4</a>
+</font></dt><dd>
+<dl>
+<dt><font face="helvetica, arial"><a href="imaplib.html#IMAP4_SSL">IMAP4_SSL</a>
+</font></dt><dt><font face="helvetica, arial"><a href="imaplib.html#IMAP4_stream">IMAP4_stream</a>
+</font></dt></dl>
+</dd>
+</dl>
+</dd>
+</dl>
+ <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="IMAP4">class <strong>IMAP4</strong></a>(<a href="builtins.html#object">builtins.object</a>)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt><a href="#IMAP4">IMAP4</a>(host='',&nbsp;port=143)<br>
+&nbsp;<br>
+<a href="#IMAP4">IMAP4</a>&nbsp;client&nbsp;class.<br>
+&nbsp;<br>
+Instantiate&nbsp;with:&nbsp;<a href="#IMAP4">IMAP4</a>([host[,&nbsp;port]])<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;host&nbsp;-&nbsp;host's&nbsp;name&nbsp;(default:&nbsp;localhost);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;port&nbsp;-&nbsp;port&nbsp;number&nbsp;(default:&nbsp;standard&nbsp;<a href="#IMAP4">IMAP4</a>&nbsp;port).<br>
+&nbsp;<br>
+All&nbsp;IMAP4rev1&nbsp;commands&nbsp;are&nbsp;supported&nbsp;by&nbsp;methods&nbsp;of&nbsp;the&nbsp;same<br>
+name&nbsp;(in&nbsp;lower-case).<br>
+&nbsp;<br>
+All&nbsp;arguments&nbsp;to&nbsp;commands&nbsp;are&nbsp;converted&nbsp;to&nbsp;strings,&nbsp;except&nbsp;for<br>
+AUTHENTICATE,&nbsp;and&nbsp;the&nbsp;last&nbsp;argument&nbsp;to&nbsp;APPEND&nbsp;which&nbsp;is&nbsp;passed&nbsp;as<br>
+an&nbsp;<a href="#IMAP4">IMAP4</a>&nbsp;literal.&nbsp;&nbsp;If&nbsp;necessary&nbsp;(the&nbsp;string&nbsp;contains&nbsp;any<br>
+non-printing&nbsp;characters&nbsp;or&nbsp;white-space&nbsp;and&nbsp;isn't&nbsp;enclosed&nbsp;with<br>
+either&nbsp;parentheses&nbsp;or&nbsp;double&nbsp;quotes)&nbsp;each&nbsp;string&nbsp;is&nbsp;quoted.<br>
+However,&nbsp;the&nbsp;'password'&nbsp;argument&nbsp;to&nbsp;the&nbsp;LOGIN&nbsp;command&nbsp;is&nbsp;always<br>
+quoted.&nbsp;&nbsp;If&nbsp;you&nbsp;want&nbsp;to&nbsp;avoid&nbsp;having&nbsp;an&nbsp;argument&nbsp;string&nbsp;quoted<br>
+(eg:&nbsp;the&nbsp;'flags'&nbsp;argument&nbsp;to&nbsp;STORE)&nbsp;then&nbsp;enclose&nbsp;the&nbsp;string&nbsp;in<br>
+parentheses&nbsp;(eg:&nbsp;"(\Deleted)").<br>
+&nbsp;<br>
+Each&nbsp;command&nbsp;returns&nbsp;a&nbsp;tuple:&nbsp;(type,&nbsp;[data,&nbsp;...])&nbsp;where&nbsp;'type'<br>
+is&nbsp;usually&nbsp;'OK'&nbsp;or&nbsp;'NO',&nbsp;and&nbsp;'data'&nbsp;is&nbsp;either&nbsp;the&nbsp;text&nbsp;from&nbsp;the<br>
+tagged&nbsp;response,&nbsp;or&nbsp;untagged&nbsp;results&nbsp;from&nbsp;command.&nbsp;Each&nbsp;'data'<br>
+is&nbsp;either&nbsp;a&nbsp;string,&nbsp;or&nbsp;a&nbsp;tuple.&nbsp;If&nbsp;a&nbsp;tuple,&nbsp;then&nbsp;the&nbsp;first&nbsp;part<br>
+is&nbsp;the&nbsp;header&nbsp;of&nbsp;the&nbsp;response,&nbsp;and&nbsp;the&nbsp;second&nbsp;part&nbsp;contains<br>
+the&nbsp;data&nbsp;(ie:&nbsp;'literal'&nbsp;value).<br>
+&nbsp;<br>
+Errors&nbsp;raise&nbsp;the&nbsp;exception&nbsp;class&nbsp;&lt;instance&gt;.<a href="#IMAP4-error">error</a>("&lt;reason&gt;").<br>
+<a href="#IMAP4">IMAP4</a>&nbsp;server&nbsp;errors&nbsp;raise&nbsp;&lt;instance&gt;.<a href="#IMAP4-abort">abort</a>("&lt;reason&gt;"),<br>
+which&nbsp;is&nbsp;a&nbsp;sub-class&nbsp;of&nbsp;'error'.&nbsp;Mailbox&nbsp;status&nbsp;changes<br>
+from&nbsp;READ-WRITE&nbsp;to&nbsp;READ-ONLY&nbsp;raise&nbsp;the&nbsp;exception&nbsp;class<br>
+&lt;instance&gt;.<a href="#IMAP4-readonly">readonly</a>("&lt;reason&gt;"),&nbsp;which&nbsp;is&nbsp;a&nbsp;sub-class&nbsp;of&nbsp;'abort'.<br>
+&nbsp;<br>
+"error"&nbsp;exceptions&nbsp;imply&nbsp;a&nbsp;program&nbsp;error.<br>
+"abort"&nbsp;exceptions&nbsp;imply&nbsp;the&nbsp;connection&nbsp;should&nbsp;be&nbsp;reset,&nbsp;and<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;the&nbsp;command&nbsp;re-tried.<br>
+"readonly"&nbsp;exceptions&nbsp;imply&nbsp;the&nbsp;command&nbsp;should&nbsp;be&nbsp;re-tried.<br>
+&nbsp;<br>
+Note:&nbsp;to&nbsp;use&nbsp;this&nbsp;module,&nbsp;you&nbsp;must&nbsp;read&nbsp;the&nbsp;RFCs&nbsp;pertaining&nbsp;to&nbsp;the<br>
+<a href="#IMAP4">IMAP4</a>&nbsp;protocol,&nbsp;as&nbsp;the&nbsp;semantics&nbsp;of&nbsp;the&nbsp;arguments&nbsp;to&nbsp;each&nbsp;<a href="#IMAP4">IMAP4</a><br>
+command&nbsp;are&nbsp;left&nbsp;to&nbsp;the&nbsp;invoker,&nbsp;not&nbsp;to&nbsp;mention&nbsp;the&nbsp;results.&nbsp;Also,<br>
+most&nbsp;IMAP&nbsp;servers&nbsp;implement&nbsp;a&nbsp;sub-set&nbsp;of&nbsp;the&nbsp;commands&nbsp;available&nbsp;here.<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%">Methods defined here:<br>
+<dl><dt><a name="IMAP4-__enter__"><strong>__enter__</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="IMAP4-__exit__"><strong>__exit__</strong></a>(self, *args)</dt></dl>
+
+<dl><dt><a name="IMAP4-__getattr__"><strong>__getattr__</strong></a>(self, attr)</dt></dl>
+
+<dl><dt><a name="IMAP4-__init__"><strong>__init__</strong></a>(self, host='', port=143)</dt><dd><tt>Initialize&nbsp;self.&nbsp;&nbsp;See&nbsp;help(type(self))&nbsp;for&nbsp;accurate&nbsp;signature.</tt></dd></dl>
+
+<dl><dt><a name="IMAP4-append"><strong>append</strong></a>(self, mailbox, flags, date_time, message)</dt><dd><tt>Append&nbsp;message&nbsp;to&nbsp;named&nbsp;mailbox.<br>
+&nbsp;<br>
+(typ,&nbsp;[data])&nbsp;=&nbsp;&lt;instance&gt;.<a href="#IMAP4-append">append</a>(mailbox,&nbsp;flags,&nbsp;date_time,&nbsp;message)<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;All&nbsp;args&nbsp;except&nbsp;`message'&nbsp;can&nbsp;be&nbsp;None.</tt></dd></dl>
+
+<dl><dt><a name="IMAP4-authenticate"><strong>authenticate</strong></a>(self, mechanism, authobject)</dt><dd><tt>Authenticate&nbsp;command&nbsp;-&nbsp;requires&nbsp;response&nbsp;processing.<br>
+&nbsp;<br>
+'mechanism'&nbsp;specifies&nbsp;which&nbsp;authentication&nbsp;mechanism&nbsp;is&nbsp;to<br>
+be&nbsp;used&nbsp;-&nbsp;it&nbsp;must&nbsp;appear&nbsp;in&nbsp;&lt;instance&gt;.capabilities&nbsp;in&nbsp;the<br>
+form&nbsp;AUTH=&lt;mechanism&gt;.<br>
+&nbsp;<br>
+'authobject'&nbsp;must&nbsp;be&nbsp;a&nbsp;callable&nbsp;<a href="builtins.html#object">object</a>:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;data&nbsp;=&nbsp;authobject(response)<br>
+&nbsp;<br>
+It&nbsp;will&nbsp;be&nbsp;called&nbsp;to&nbsp;process&nbsp;server&nbsp;continuation&nbsp;responses;&nbsp;the<br>
+response&nbsp;argument&nbsp;it&nbsp;is&nbsp;passed&nbsp;will&nbsp;be&nbsp;a&nbsp;bytes.&nbsp;&nbsp;It&nbsp;should&nbsp;return&nbsp;bytes<br>
+data&nbsp;that&nbsp;will&nbsp;be&nbsp;base64&nbsp;encoded&nbsp;and&nbsp;sent&nbsp;to&nbsp;the&nbsp;server.&nbsp;&nbsp;It&nbsp;should<br>
+return&nbsp;None&nbsp;if&nbsp;the&nbsp;client&nbsp;abort&nbsp;response&nbsp;'*'&nbsp;should&nbsp;be&nbsp;sent&nbsp;instead.</tt></dd></dl>
+
+<dl><dt><a name="IMAP4-capability"><strong>capability</strong></a>(self)</dt><dd><tt>(typ,&nbsp;[data])&nbsp;=&nbsp;&lt;instance&gt;.<a href="#IMAP4-capability">capability</a>()<br>
+Fetch&nbsp;capabilities&nbsp;list&nbsp;from&nbsp;server.</tt></dd></dl>
+
+<dl><dt><a name="IMAP4-check"><strong>check</strong></a>(self)</dt><dd><tt>Checkpoint&nbsp;mailbox&nbsp;on&nbsp;server.<br>
+&nbsp;<br>
+(typ,&nbsp;[data])&nbsp;=&nbsp;&lt;instance&gt;.<a href="#IMAP4-check">check</a>()</tt></dd></dl>
+
+<dl><dt><a name="IMAP4-close"><strong>close</strong></a>(self)</dt><dd><tt>Close&nbsp;currently&nbsp;selected&nbsp;mailbox.<br>
+&nbsp;<br>
+Deleted&nbsp;messages&nbsp;are&nbsp;removed&nbsp;from&nbsp;writable&nbsp;mailbox.<br>
+This&nbsp;is&nbsp;the&nbsp;recommended&nbsp;command&nbsp;before&nbsp;'LOGOUT'.<br>
+&nbsp;<br>
+(typ,&nbsp;[data])&nbsp;=&nbsp;&lt;instance&gt;.<a href="#IMAP4-close">close</a>()</tt></dd></dl>
+
+<dl><dt><a name="IMAP4-copy"><strong>copy</strong></a>(self, message_set, new_mailbox)</dt><dd><tt>Copy&nbsp;'message_set'&nbsp;messages&nbsp;onto&nbsp;end&nbsp;of&nbsp;'new_mailbox'.<br>
+&nbsp;<br>
+(typ,&nbsp;[data])&nbsp;=&nbsp;&lt;instance&gt;.<a href="#IMAP4-copy">copy</a>(message_set,&nbsp;new_mailbox)</tt></dd></dl>
+
+<dl><dt><a name="IMAP4-create"><strong>create</strong></a>(self, mailbox)</dt><dd><tt>Create&nbsp;new&nbsp;mailbox.<br>
+&nbsp;<br>
+(typ,&nbsp;[data])&nbsp;=&nbsp;&lt;instance&gt;.<a href="#IMAP4-create">create</a>(mailbox)</tt></dd></dl>
+
+<dl><dt><a name="IMAP4-delete"><strong>delete</strong></a>(self, mailbox)</dt><dd><tt>Delete&nbsp;old&nbsp;mailbox.<br>
+&nbsp;<br>
+(typ,&nbsp;[data])&nbsp;=&nbsp;&lt;instance&gt;.<a href="#IMAP4-delete">delete</a>(mailbox)</tt></dd></dl>
+
+<dl><dt><a name="IMAP4-deleteacl"><strong>deleteacl</strong></a>(self, mailbox, who)</dt><dd><tt>Delete&nbsp;the&nbsp;ACLs&nbsp;(remove&nbsp;any&nbsp;rights)&nbsp;set&nbsp;for&nbsp;who&nbsp;on&nbsp;mailbox.<br>
+&nbsp;<br>
+(typ,&nbsp;[data])&nbsp;=&nbsp;&lt;instance&gt;.<a href="#IMAP4-deleteacl">deleteacl</a>(mailbox,&nbsp;who)</tt></dd></dl>
+
+<dl><dt><a name="IMAP4-enable"><strong>enable</strong></a>(self, capability)</dt><dd><tt>Send&nbsp;an&nbsp;<a href="http://www.rfc-editor.org/rfc/rfc5161.txt">RFC5161</a>&nbsp;enable&nbsp;string&nbsp;to&nbsp;the&nbsp;server.<br>
+&nbsp;<br>
+(typ,&nbsp;[data])&nbsp;=&nbsp;&lt;intance&gt;.<a href="#IMAP4-enable">enable</a>(capability)</tt></dd></dl>
+
+<dl><dt><a name="IMAP4-expunge"><strong>expunge</strong></a>(self)</dt><dd><tt>Permanently&nbsp;remove&nbsp;deleted&nbsp;items&nbsp;from&nbsp;selected&nbsp;mailbox.<br>
+&nbsp;<br>
+Generates&nbsp;'EXPUNGE'&nbsp;response&nbsp;for&nbsp;each&nbsp;deleted&nbsp;message.<br>
+&nbsp;<br>
+(typ,&nbsp;[data])&nbsp;=&nbsp;&lt;instance&gt;.<a href="#IMAP4-expunge">expunge</a>()<br>
+&nbsp;<br>
+'data'&nbsp;is&nbsp;list&nbsp;of&nbsp;'EXPUNGE'd&nbsp;message&nbsp;numbers&nbsp;in&nbsp;order&nbsp;received.</tt></dd></dl>
+
+<dl><dt><a name="IMAP4-fetch"><strong>fetch</strong></a>(self, message_set, message_parts)</dt><dd><tt>Fetch&nbsp;(parts&nbsp;of)&nbsp;messages.<br>
+&nbsp;<br>
+(typ,&nbsp;[data,&nbsp;...])&nbsp;=&nbsp;&lt;instance&gt;.<a href="#IMAP4-fetch">fetch</a>(message_set,&nbsp;message_parts)<br>
+&nbsp;<br>
+'message_parts'&nbsp;should&nbsp;be&nbsp;a&nbsp;string&nbsp;of&nbsp;selected&nbsp;parts<br>
+enclosed&nbsp;in&nbsp;parentheses,&nbsp;eg:&nbsp;"(UID&nbsp;BODY[TEXT])".<br>
+&nbsp;<br>
+'data'&nbsp;are&nbsp;tuples&nbsp;of&nbsp;message&nbsp;part&nbsp;envelope&nbsp;and&nbsp;data.</tt></dd></dl>
+
+<dl><dt><a name="IMAP4-getacl"><strong>getacl</strong></a>(self, mailbox)</dt><dd><tt>Get&nbsp;the&nbsp;ACLs&nbsp;for&nbsp;a&nbsp;mailbox.<br>
+&nbsp;<br>
+(typ,&nbsp;[data])&nbsp;=&nbsp;&lt;instance&gt;.<a href="#IMAP4-getacl">getacl</a>(mailbox)</tt></dd></dl>
+
+<dl><dt><a name="IMAP4-getannotation"><strong>getannotation</strong></a>(self, mailbox, entry, attribute)</dt><dd><tt>(typ,&nbsp;[data])&nbsp;=&nbsp;&lt;instance&gt;.<a href="#IMAP4-getannotation">getannotation</a>(mailbox,&nbsp;entry,&nbsp;attribute)<br>
+Retrieve&nbsp;ANNOTATIONs.</tt></dd></dl>
+
+<dl><dt><a name="IMAP4-getquota"><strong>getquota</strong></a>(self, root)</dt><dd><tt>Get&nbsp;the&nbsp;quota&nbsp;root's&nbsp;resource&nbsp;usage&nbsp;and&nbsp;limits.<br>
+&nbsp;<br>
+Part&nbsp;of&nbsp;the&nbsp;<a href="#IMAP4">IMAP4</a>&nbsp;QUOTA&nbsp;extension&nbsp;defined&nbsp;in&nbsp;rfc2087.<br>
+&nbsp;<br>
+(typ,&nbsp;[data])&nbsp;=&nbsp;&lt;instance&gt;.<a href="#IMAP4-getquota">getquota</a>(root)</tt></dd></dl>
+
+<dl><dt><a name="IMAP4-getquotaroot"><strong>getquotaroot</strong></a>(self, mailbox)</dt><dd><tt>Get&nbsp;the&nbsp;list&nbsp;of&nbsp;quota&nbsp;roots&nbsp;for&nbsp;the&nbsp;named&nbsp;mailbox.<br>
+&nbsp;<br>
+(typ,&nbsp;[[QUOTAROOT&nbsp;responses...],&nbsp;[QUOTA&nbsp;responses]])&nbsp;=&nbsp;&lt;instance&gt;.<a href="#IMAP4-getquotaroot">getquotaroot</a>(mailbox)</tt></dd></dl>
+
+<dl><dt><a name="IMAP4-list"><strong>list</strong></a>(self, directory='""', pattern='*')</dt><dd><tt>List&nbsp;mailbox&nbsp;names&nbsp;in&nbsp;directory&nbsp;matching&nbsp;pattern.<br>
+&nbsp;<br>
+(typ,&nbsp;[data])&nbsp;=&nbsp;&lt;instance&gt;.<a href="#IMAP4-list">list</a>(directory='""',&nbsp;pattern='*')<br>
+&nbsp;<br>
+'data'&nbsp;is&nbsp;list&nbsp;of&nbsp;LIST&nbsp;responses.</tt></dd></dl>
+
+<dl><dt><a name="IMAP4-login"><strong>login</strong></a>(self, user, password)</dt><dd><tt>Identify&nbsp;client&nbsp;using&nbsp;plaintext&nbsp;password.<br>
+&nbsp;<br>
+(typ,&nbsp;[data])&nbsp;=&nbsp;&lt;instance&gt;.<a href="#IMAP4-login">login</a>(user,&nbsp;password)<br>
+&nbsp;<br>
+NB:&nbsp;'password'&nbsp;will&nbsp;be&nbsp;quoted.</tt></dd></dl>
+
+<dl><dt><a name="IMAP4-login_cram_md5"><strong>login_cram_md5</strong></a>(self, user, password)</dt><dd><tt>Force&nbsp;use&nbsp;of&nbsp;CRAM-MD5&nbsp;authentication.<br>
+&nbsp;<br>
+(typ,&nbsp;[data])&nbsp;=&nbsp;&lt;instance&gt;.<a href="#IMAP4-login_cram_md5">login_cram_md5</a>(user,&nbsp;password)</tt></dd></dl>
+
+<dl><dt><a name="IMAP4-logout"><strong>logout</strong></a>(self)</dt><dd><tt>Shutdown&nbsp;connection&nbsp;to&nbsp;server.<br>
+&nbsp;<br>
+(typ,&nbsp;[data])&nbsp;=&nbsp;&lt;instance&gt;.<a href="#IMAP4-logout">logout</a>()<br>
+&nbsp;<br>
+Returns&nbsp;server&nbsp;'BYE'&nbsp;response.</tt></dd></dl>
+
+<dl><dt><a name="IMAP4-lsub"><strong>lsub</strong></a>(self, directory='""', pattern='*')</dt><dd><tt>List&nbsp;'subscribed'&nbsp;mailbox&nbsp;names&nbsp;in&nbsp;directory&nbsp;matching&nbsp;pattern.<br>
+&nbsp;<br>
+(typ,&nbsp;[data,&nbsp;...])&nbsp;=&nbsp;&lt;instance&gt;.<a href="#IMAP4-lsub">lsub</a>(directory='""',&nbsp;pattern='*')<br>
+&nbsp;<br>
+'data'&nbsp;are&nbsp;tuples&nbsp;of&nbsp;message&nbsp;part&nbsp;envelope&nbsp;and&nbsp;data.</tt></dd></dl>
+
+<dl><dt><a name="IMAP4-myrights"><strong>myrights</strong></a>(self, mailbox)</dt><dd><tt>Show&nbsp;my&nbsp;ACLs&nbsp;for&nbsp;a&nbsp;mailbox&nbsp;(i.e.&nbsp;the&nbsp;rights&nbsp;that&nbsp;I&nbsp;have&nbsp;on&nbsp;mailbox).<br>
+&nbsp;<br>
+(typ,&nbsp;[data])&nbsp;=&nbsp;&lt;instance&gt;.<a href="#IMAP4-myrights">myrights</a>(mailbox)</tt></dd></dl>
+
+<dl><dt><a name="IMAP4-namespace"><strong>namespace</strong></a>(self)</dt><dd><tt>Returns&nbsp;IMAP&nbsp;namespaces&nbsp;ala&nbsp;rfc2342<br>
+&nbsp;<br>
+(typ,&nbsp;[data,&nbsp;...])&nbsp;=&nbsp;&lt;instance&gt;.<a href="#IMAP4-namespace">namespace</a>()</tt></dd></dl>
+
+<dl><dt><a name="IMAP4-noop"><strong>noop</strong></a>(self)</dt><dd><tt>Send&nbsp;NOOP&nbsp;command.<br>
+&nbsp;<br>
+(typ,&nbsp;[data])&nbsp;=&nbsp;&lt;instance&gt;.<a href="#IMAP4-noop">noop</a>()</tt></dd></dl>
+
+<dl><dt><a name="IMAP4-open"><strong>open</strong></a>(self, host='', port=143)</dt><dd><tt>Setup&nbsp;connection&nbsp;to&nbsp;remote&nbsp;server&nbsp;on&nbsp;"host:port"<br>
+&nbsp;&nbsp;&nbsp;&nbsp;(default:&nbsp;localhost:standard&nbsp;<a href="#IMAP4">IMAP4</a>&nbsp;port).<br>
+This&nbsp;connection&nbsp;will&nbsp;be&nbsp;used&nbsp;by&nbsp;the&nbsp;routines:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;read,&nbsp;readline,&nbsp;send,&nbsp;shutdown.</tt></dd></dl>
+
+<dl><dt><a name="IMAP4-partial"><strong>partial</strong></a>(self, message_num, message_part, start, length)</dt><dd><tt>Fetch&nbsp;truncated&nbsp;part&nbsp;of&nbsp;a&nbsp;message.<br>
+&nbsp;<br>
+(typ,&nbsp;[data,&nbsp;...])&nbsp;=&nbsp;&lt;instance&gt;.<a href="#IMAP4-partial">partial</a>(message_num,&nbsp;message_part,&nbsp;start,&nbsp;length)<br>
+&nbsp;<br>
+'data'&nbsp;is&nbsp;tuple&nbsp;of&nbsp;message&nbsp;part&nbsp;envelope&nbsp;and&nbsp;data.</tt></dd></dl>
+
+<dl><dt><a name="IMAP4-print_log"><strong>print_log</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="IMAP4-proxyauth"><strong>proxyauth</strong></a>(self, user)</dt><dd><tt>Assume&nbsp;authentication&nbsp;as&nbsp;"user".<br>
+&nbsp;<br>
+Allows&nbsp;an&nbsp;authorised&nbsp;administrator&nbsp;to&nbsp;proxy&nbsp;into&nbsp;any&nbsp;user's<br>
+mailbox.<br>
+&nbsp;<br>
+(typ,&nbsp;[data])&nbsp;=&nbsp;&lt;instance&gt;.<a href="#IMAP4-proxyauth">proxyauth</a>(user)</tt></dd></dl>
+
+<dl><dt><a name="IMAP4-read"><strong>read</strong></a>(self, size)</dt><dd><tt>Read&nbsp;'size'&nbsp;bytes&nbsp;from&nbsp;remote.</tt></dd></dl>
+
+<dl><dt><a name="IMAP4-readline"><strong>readline</strong></a>(self)</dt><dd><tt>Read&nbsp;line&nbsp;from&nbsp;remote.</tt></dd></dl>
+
+<dl><dt><a name="IMAP4-recent"><strong>recent</strong></a>(self)</dt><dd><tt>Return&nbsp;most&nbsp;recent&nbsp;'RECENT'&nbsp;responses&nbsp;if&nbsp;any&nbsp;exist,<br>
+else&nbsp;prompt&nbsp;server&nbsp;for&nbsp;an&nbsp;update&nbsp;using&nbsp;the&nbsp;'NOOP'&nbsp;command.<br>
+&nbsp;<br>
+(typ,&nbsp;[data])&nbsp;=&nbsp;&lt;instance&gt;.<a href="#IMAP4-recent">recent</a>()<br>
+&nbsp;<br>
+'data'&nbsp;is&nbsp;None&nbsp;if&nbsp;no&nbsp;new&nbsp;messages,<br>
+else&nbsp;list&nbsp;of&nbsp;RECENT&nbsp;responses,&nbsp;most&nbsp;recent&nbsp;last.</tt></dd></dl>
+
+<dl><dt><a name="IMAP4-rename"><strong>rename</strong></a>(self, oldmailbox, newmailbox)</dt><dd><tt>Rename&nbsp;old&nbsp;mailbox&nbsp;name&nbsp;to&nbsp;new.<br>
+&nbsp;<br>
+(typ,&nbsp;[data])&nbsp;=&nbsp;&lt;instance&gt;.<a href="#IMAP4-rename">rename</a>(oldmailbox,&nbsp;newmailbox)</tt></dd></dl>
+
+<dl><dt><a name="IMAP4-response"><strong>response</strong></a>(self, code)</dt><dd><tt>Return&nbsp;data&nbsp;for&nbsp;response&nbsp;'code'&nbsp;if&nbsp;received,&nbsp;or&nbsp;None.<br>
+&nbsp;<br>
+Old&nbsp;value&nbsp;for&nbsp;response&nbsp;'code'&nbsp;is&nbsp;cleared.<br>
+&nbsp;<br>
+(code,&nbsp;[data])&nbsp;=&nbsp;&lt;instance&gt;.<a href="#IMAP4-response">response</a>(code)</tt></dd></dl>
+
+<dl><dt><a name="IMAP4-search"><strong>search</strong></a>(self, charset, *criteria)</dt><dd><tt>Search&nbsp;mailbox&nbsp;for&nbsp;matching&nbsp;messages.<br>
+&nbsp;<br>
+(typ,&nbsp;[data])&nbsp;=&nbsp;&lt;instance&gt;.<a href="#IMAP4-search">search</a>(charset,&nbsp;criterion,&nbsp;...)<br>
+&nbsp;<br>
+'data'&nbsp;is&nbsp;space&nbsp;separated&nbsp;list&nbsp;of&nbsp;matching&nbsp;message&nbsp;numbers.<br>
+If&nbsp;UTF8&nbsp;is&nbsp;enabled,&nbsp;charset&nbsp;MUST&nbsp;be&nbsp;None.</tt></dd></dl>
+
+<dl><dt><a name="IMAP4-select"><strong>select</strong></a>(self, mailbox='INBOX', readonly=False)</dt><dd><tt>Select&nbsp;a&nbsp;mailbox.<br>
+&nbsp;<br>
+Flush&nbsp;all&nbsp;untagged&nbsp;responses.<br>
+&nbsp;<br>
+(typ,&nbsp;[data])&nbsp;=&nbsp;&lt;instance&gt;.<a href="#IMAP4-select">select</a>(mailbox='INBOX',&nbsp;readonly=False)<br>
+&nbsp;<br>
+'data'&nbsp;is&nbsp;count&nbsp;of&nbsp;messages&nbsp;in&nbsp;mailbox&nbsp;('EXISTS'&nbsp;response).<br>
+&nbsp;<br>
+Mandated&nbsp;responses&nbsp;are&nbsp;('FLAGS',&nbsp;'EXISTS',&nbsp;'RECENT',&nbsp;'UIDVALIDITY'),&nbsp;so<br>
+other&nbsp;responses&nbsp;should&nbsp;be&nbsp;obtained&nbsp;via&nbsp;&lt;instance&gt;.<a href="#IMAP4-response">response</a>('FLAGS')&nbsp;etc.</tt></dd></dl>
+
+<dl><dt><a name="IMAP4-send"><strong>send</strong></a>(self, data)</dt><dd><tt>Send&nbsp;data&nbsp;to&nbsp;remote.</tt></dd></dl>
+
+<dl><dt><a name="IMAP4-setacl"><strong>setacl</strong></a>(self, mailbox, who, what)</dt><dd><tt>Set&nbsp;a&nbsp;mailbox&nbsp;acl.<br>
+&nbsp;<br>
+(typ,&nbsp;[data])&nbsp;=&nbsp;&lt;instance&gt;.<a href="#IMAP4-setacl">setacl</a>(mailbox,&nbsp;who,&nbsp;what)</tt></dd></dl>
+
+<dl><dt><a name="IMAP4-setannotation"><strong>setannotation</strong></a>(self, *args)</dt><dd><tt>(typ,&nbsp;[data])&nbsp;=&nbsp;&lt;instance&gt;.<a href="#IMAP4-setannotation">setannotation</a>(mailbox[,&nbsp;entry,&nbsp;attribute]+)<br>
+Set&nbsp;ANNOTATIONs.</tt></dd></dl>
+
+<dl><dt><a name="IMAP4-setquota"><strong>setquota</strong></a>(self, root, limits)</dt><dd><tt>Set&nbsp;the&nbsp;quota&nbsp;root's&nbsp;resource&nbsp;limits.<br>
+&nbsp;<br>
+(typ,&nbsp;[data])&nbsp;=&nbsp;&lt;instance&gt;.<a href="#IMAP4-setquota">setquota</a>(root,&nbsp;limits)</tt></dd></dl>
+
+<dl><dt><a name="IMAP4-shutdown"><strong>shutdown</strong></a>(self)</dt><dd><tt>Close&nbsp;I/O&nbsp;established&nbsp;in&nbsp;"open".</tt></dd></dl>
+
+<dl><dt><a name="IMAP4-socket"><strong>socket</strong></a>(self)</dt><dd><tt>Return&nbsp;socket&nbsp;instance&nbsp;used&nbsp;to&nbsp;connect&nbsp;to&nbsp;<a href="#IMAP4">IMAP4</a>&nbsp;server.<br>
+&nbsp;<br>
+socket&nbsp;=&nbsp;&lt;instance&gt;.<a href="#IMAP4-socket">socket</a>()</tt></dd></dl>
+
+<dl><dt><a name="IMAP4-sort"><strong>sort</strong></a>(self, sort_criteria, charset, *search_criteria)</dt><dd><tt>IMAP4rev1&nbsp;extension&nbsp;SORT&nbsp;command.<br>
+&nbsp;<br>
+(typ,&nbsp;[data])&nbsp;=&nbsp;&lt;instance&gt;.<a href="#IMAP4-sort">sort</a>(sort_criteria,&nbsp;charset,&nbsp;search_criteria,&nbsp;...)</tt></dd></dl>
+
+<dl><dt><a name="IMAP4-starttls"><strong>starttls</strong></a>(self, ssl_context=None)</dt></dl>
+
+<dl><dt><a name="IMAP4-status"><strong>status</strong></a>(self, mailbox, names)</dt><dd><tt>Request&nbsp;named&nbsp;status&nbsp;conditions&nbsp;for&nbsp;mailbox.<br>
+&nbsp;<br>
+(typ,&nbsp;[data])&nbsp;=&nbsp;&lt;instance&gt;.<a href="#IMAP4-status">status</a>(mailbox,&nbsp;names)</tt></dd></dl>
+
+<dl><dt><a name="IMAP4-store"><strong>store</strong></a>(self, message_set, command, flags)</dt><dd><tt>Alters&nbsp;flag&nbsp;dispositions&nbsp;for&nbsp;messages&nbsp;in&nbsp;mailbox.<br>
+&nbsp;<br>
+(typ,&nbsp;[data])&nbsp;=&nbsp;&lt;instance&gt;.<a href="#IMAP4-store">store</a>(message_set,&nbsp;command,&nbsp;flags)</tt></dd></dl>
+
+<dl><dt><a name="IMAP4-subscribe"><strong>subscribe</strong></a>(self, mailbox)</dt><dd><tt>Subscribe&nbsp;to&nbsp;new&nbsp;mailbox.<br>
+&nbsp;<br>
+(typ,&nbsp;[data])&nbsp;=&nbsp;&lt;instance&gt;.<a href="#IMAP4-subscribe">subscribe</a>(mailbox)</tt></dd></dl>
+
+<dl><dt><a name="IMAP4-thread"><strong>thread</strong></a>(self, threading_algorithm, charset, *search_criteria)</dt><dd><tt>IMAPrev1&nbsp;extension&nbsp;THREAD&nbsp;command.<br>
+&nbsp;<br>
+(type,&nbsp;[data])&nbsp;=&nbsp;&lt;instance&gt;.<a href="#IMAP4-thread">thread</a>(threading_algorithm,&nbsp;charset,&nbsp;search_criteria,&nbsp;...)</tt></dd></dl>
+
+<dl><dt><a name="IMAP4-uid"><strong>uid</strong></a>(self, command, *args)</dt><dd><tt>Execute&nbsp;"command&nbsp;arg&nbsp;..."&nbsp;with&nbsp;messages&nbsp;identified&nbsp;by&nbsp;UID,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;rather&nbsp;than&nbsp;message&nbsp;number.<br>
+&nbsp;<br>
+(typ,&nbsp;[data])&nbsp;=&nbsp;&lt;instance&gt;.<a href="#IMAP4-uid">uid</a>(command,&nbsp;arg1,&nbsp;arg2,&nbsp;...)<br>
+&nbsp;<br>
+Returns&nbsp;response&nbsp;appropriate&nbsp;to&nbsp;'command'.</tt></dd></dl>
+
+<dl><dt><a name="IMAP4-unsubscribe"><strong>unsubscribe</strong></a>(self, mailbox)</dt><dd><tt>Unsubscribe&nbsp;from&nbsp;old&nbsp;mailbox.<br>
+&nbsp;<br>
+(typ,&nbsp;[data])&nbsp;=&nbsp;&lt;instance&gt;.<a href="#IMAP4-unsubscribe">unsubscribe</a>(mailbox)</tt></dd></dl>
+
+<dl><dt><a name="IMAP4-xatom"><strong>xatom</strong></a>(self, name, *args)</dt><dd><tt>Allow&nbsp;simple&nbsp;extension&nbsp;commands<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;notified&nbsp;by&nbsp;server&nbsp;in&nbsp;CAPABILITY&nbsp;response.<br>
+&nbsp;<br>
+Assumes&nbsp;command&nbsp;is&nbsp;legal&nbsp;in&nbsp;current&nbsp;state.<br>
+&nbsp;<br>
+(typ,&nbsp;[data])&nbsp;=&nbsp;&lt;instance&gt;.<a href="#IMAP4-xatom">xatom</a>(name,&nbsp;arg,&nbsp;...)<br>
+&nbsp;<br>
+Returns&nbsp;response&nbsp;appropriate&nbsp;to&nbsp;extension&nbsp;command&nbsp;`name'.</tt></dd></dl>
+
+<hr>
+Data descriptors defined here:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><tt>dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<hr>
+Data and other attributes defined here:<br>
+<dl><dt><strong>abort</strong> = &lt;class 'imaplib.IMAP4.abort'&gt;</dl>
+
+<dl><dt><strong>error</strong> = &lt;class 'imaplib.IMAP4.error'&gt;</dl>
+
+<dl><dt><strong>readonly</strong> = &lt;class 'imaplib.IMAP4.readonly'&gt;</dl>
+
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="IMAP4_SSL">class <strong>IMAP4_SSL</strong></a>(<a href="imaplib.html#IMAP4">IMAP4</a>)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt><a href="#IMAP4_SSL">IMAP4_SSL</a>(host='',&nbsp;port=993,&nbsp;keyfile=None,&nbsp;certfile=None,&nbsp;ssl_context=None)<br>
+&nbsp;<br>
+<a href="#IMAP4">IMAP4</a>&nbsp;client&nbsp;class&nbsp;over&nbsp;SSL&nbsp;connection<br>
+&nbsp;<br>
+Instantiate&nbsp;with:&nbsp;<a href="#IMAP4_SSL">IMAP4_SSL</a>([host[,&nbsp;port[,&nbsp;keyfile[,&nbsp;certfile[,&nbsp;ssl_context]]]]])<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;host&nbsp;-&nbsp;host's&nbsp;name&nbsp;(default:&nbsp;localhost);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;port&nbsp;-&nbsp;port&nbsp;number&nbsp;(default:&nbsp;standard&nbsp;<a href="#IMAP4">IMAP4</a>&nbsp;SSL&nbsp;port);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;keyfile&nbsp;-&nbsp;PEM&nbsp;formatted&nbsp;file&nbsp;that&nbsp;contains&nbsp;your&nbsp;private&nbsp;key&nbsp;(default:&nbsp;None);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;certfile&nbsp;-&nbsp;PEM&nbsp;formatted&nbsp;certificate&nbsp;chain&nbsp;file&nbsp;(default:&nbsp;None);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ssl_context&nbsp;-&nbsp;a&nbsp;SSLContext&nbsp;<a href="builtins.html#object">object</a>&nbsp;that&nbsp;contains&nbsp;your&nbsp;certificate&nbsp;chain<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;and&nbsp;private&nbsp;key&nbsp;(default:&nbsp;None)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Note:&nbsp;if&nbsp;ssl_context&nbsp;is&nbsp;provided,&nbsp;then&nbsp;parameters&nbsp;keyfile&nbsp;or<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;certfile&nbsp;should&nbsp;not&nbsp;be&nbsp;set&nbsp;otherwise&nbsp;ValueError&nbsp;is&nbsp;raised.<br>
+&nbsp;<br>
+for&nbsp;more&nbsp;documentation&nbsp;see&nbsp;the&nbsp;docstring&nbsp;of&nbsp;the&nbsp;parent&nbsp;class&nbsp;<a href="#IMAP4">IMAP4</a>.<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%"><dl><dt>Method resolution order:</dt>
+<dd><a href="imaplib.html#IMAP4_SSL">IMAP4_SSL</a></dd>
+<dd><a href="imaplib.html#IMAP4">IMAP4</a></dd>
+<dd><a href="builtins.html#object">builtins.object</a></dd>
+</dl>
+<hr>
+Methods defined here:<br>
+<dl><dt><a name="IMAP4_SSL-__init__"><strong>__init__</strong></a>(self, host='', port=993, keyfile=None, certfile=None, ssl_context=None)</dt><dd><tt>Initialize&nbsp;self.&nbsp;&nbsp;See&nbsp;help(type(self))&nbsp;for&nbsp;accurate&nbsp;signature.</tt></dd></dl>
+
+<dl><dt><a name="IMAP4_SSL-open"><strong>open</strong></a>(self, host='', port=993)</dt><dd><tt>Setup&nbsp;connection&nbsp;to&nbsp;remote&nbsp;server&nbsp;on&nbsp;"host:port".<br>
+&nbsp;&nbsp;&nbsp;&nbsp;(default:&nbsp;localhost:standard&nbsp;<a href="#IMAP4">IMAP4</a>&nbsp;SSL&nbsp;port).<br>
+This&nbsp;connection&nbsp;will&nbsp;be&nbsp;used&nbsp;by&nbsp;the&nbsp;routines:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;read,&nbsp;readline,&nbsp;send,&nbsp;shutdown.</tt></dd></dl>
+
+<hr>
+Methods inherited from <a href="imaplib.html#IMAP4">IMAP4</a>:<br>
+<dl><dt><a name="IMAP4_SSL-__enter__"><strong>__enter__</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="IMAP4_SSL-__exit__"><strong>__exit__</strong></a>(self, *args)</dt></dl>
+
+<dl><dt><a name="IMAP4_SSL-__getattr__"><strong>__getattr__</strong></a>(self, attr)</dt></dl>
+
+<dl><dt><a name="IMAP4_SSL-append"><strong>append</strong></a>(self, mailbox, flags, date_time, message)</dt><dd><tt>Append&nbsp;message&nbsp;to&nbsp;named&nbsp;mailbox.<br>
+&nbsp;<br>
+(typ,&nbsp;[data])&nbsp;=&nbsp;&lt;instance&gt;.<a href="#IMAP4_SSL-append">append</a>(mailbox,&nbsp;flags,&nbsp;date_time,&nbsp;message)<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;All&nbsp;args&nbsp;except&nbsp;`message'&nbsp;can&nbsp;be&nbsp;None.</tt></dd></dl>
+
+<dl><dt><a name="IMAP4_SSL-authenticate"><strong>authenticate</strong></a>(self, mechanism, authobject)</dt><dd><tt>Authenticate&nbsp;command&nbsp;-&nbsp;requires&nbsp;response&nbsp;processing.<br>
+&nbsp;<br>
+'mechanism'&nbsp;specifies&nbsp;which&nbsp;authentication&nbsp;mechanism&nbsp;is&nbsp;to<br>
+be&nbsp;used&nbsp;-&nbsp;it&nbsp;must&nbsp;appear&nbsp;in&nbsp;&lt;instance&gt;.capabilities&nbsp;in&nbsp;the<br>
+form&nbsp;AUTH=&lt;mechanism&gt;.<br>
+&nbsp;<br>
+'authobject'&nbsp;must&nbsp;be&nbsp;a&nbsp;callable&nbsp;<a href="builtins.html#object">object</a>:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;data&nbsp;=&nbsp;authobject(response)<br>
+&nbsp;<br>
+It&nbsp;will&nbsp;be&nbsp;called&nbsp;to&nbsp;process&nbsp;server&nbsp;continuation&nbsp;responses;&nbsp;the<br>
+response&nbsp;argument&nbsp;it&nbsp;is&nbsp;passed&nbsp;will&nbsp;be&nbsp;a&nbsp;bytes.&nbsp;&nbsp;It&nbsp;should&nbsp;return&nbsp;bytes<br>
+data&nbsp;that&nbsp;will&nbsp;be&nbsp;base64&nbsp;encoded&nbsp;and&nbsp;sent&nbsp;to&nbsp;the&nbsp;server.&nbsp;&nbsp;It&nbsp;should<br>
+return&nbsp;None&nbsp;if&nbsp;the&nbsp;client&nbsp;abort&nbsp;response&nbsp;'*'&nbsp;should&nbsp;be&nbsp;sent&nbsp;instead.</tt></dd></dl>
+
+<dl><dt><a name="IMAP4_SSL-capability"><strong>capability</strong></a>(self)</dt><dd><tt>(typ,&nbsp;[data])&nbsp;=&nbsp;&lt;instance&gt;.<a href="#IMAP4_SSL-capability">capability</a>()<br>
+Fetch&nbsp;capabilities&nbsp;list&nbsp;from&nbsp;server.</tt></dd></dl>
+
+<dl><dt><a name="IMAP4_SSL-check"><strong>check</strong></a>(self)</dt><dd><tt>Checkpoint&nbsp;mailbox&nbsp;on&nbsp;server.<br>
+&nbsp;<br>
+(typ,&nbsp;[data])&nbsp;=&nbsp;&lt;instance&gt;.<a href="#IMAP4_SSL-check">check</a>()</tt></dd></dl>
+
+<dl><dt><a name="IMAP4_SSL-close"><strong>close</strong></a>(self)</dt><dd><tt>Close&nbsp;currently&nbsp;selected&nbsp;mailbox.<br>
+&nbsp;<br>
+Deleted&nbsp;messages&nbsp;are&nbsp;removed&nbsp;from&nbsp;writable&nbsp;mailbox.<br>
+This&nbsp;is&nbsp;the&nbsp;recommended&nbsp;command&nbsp;before&nbsp;'LOGOUT'.<br>
+&nbsp;<br>
+(typ,&nbsp;[data])&nbsp;=&nbsp;&lt;instance&gt;.<a href="#IMAP4_SSL-close">close</a>()</tt></dd></dl>
+
+<dl><dt><a name="IMAP4_SSL-copy"><strong>copy</strong></a>(self, message_set, new_mailbox)</dt><dd><tt>Copy&nbsp;'message_set'&nbsp;messages&nbsp;onto&nbsp;end&nbsp;of&nbsp;'new_mailbox'.<br>
+&nbsp;<br>
+(typ,&nbsp;[data])&nbsp;=&nbsp;&lt;instance&gt;.<a href="#IMAP4_SSL-copy">copy</a>(message_set,&nbsp;new_mailbox)</tt></dd></dl>
+
+<dl><dt><a name="IMAP4_SSL-create"><strong>create</strong></a>(self, mailbox)</dt><dd><tt>Create&nbsp;new&nbsp;mailbox.<br>
+&nbsp;<br>
+(typ,&nbsp;[data])&nbsp;=&nbsp;&lt;instance&gt;.<a href="#IMAP4_SSL-create">create</a>(mailbox)</tt></dd></dl>
+
+<dl><dt><a name="IMAP4_SSL-delete"><strong>delete</strong></a>(self, mailbox)</dt><dd><tt>Delete&nbsp;old&nbsp;mailbox.<br>
+&nbsp;<br>
+(typ,&nbsp;[data])&nbsp;=&nbsp;&lt;instance&gt;.<a href="#IMAP4_SSL-delete">delete</a>(mailbox)</tt></dd></dl>
+
+<dl><dt><a name="IMAP4_SSL-deleteacl"><strong>deleteacl</strong></a>(self, mailbox, who)</dt><dd><tt>Delete&nbsp;the&nbsp;ACLs&nbsp;(remove&nbsp;any&nbsp;rights)&nbsp;set&nbsp;for&nbsp;who&nbsp;on&nbsp;mailbox.<br>
+&nbsp;<br>
+(typ,&nbsp;[data])&nbsp;=&nbsp;&lt;instance&gt;.<a href="#IMAP4_SSL-deleteacl">deleteacl</a>(mailbox,&nbsp;who)</tt></dd></dl>
+
+<dl><dt><a name="IMAP4_SSL-enable"><strong>enable</strong></a>(self, capability)</dt><dd><tt>Send&nbsp;an&nbsp;<a href="http://www.rfc-editor.org/rfc/rfc5161.txt">RFC5161</a>&nbsp;enable&nbsp;string&nbsp;to&nbsp;the&nbsp;server.<br>
+&nbsp;<br>
+(typ,&nbsp;[data])&nbsp;=&nbsp;&lt;intance&gt;.<a href="#IMAP4_SSL-enable">enable</a>(capability)</tt></dd></dl>
+
+<dl><dt><a name="IMAP4_SSL-expunge"><strong>expunge</strong></a>(self)</dt><dd><tt>Permanently&nbsp;remove&nbsp;deleted&nbsp;items&nbsp;from&nbsp;selected&nbsp;mailbox.<br>
+&nbsp;<br>
+Generates&nbsp;'EXPUNGE'&nbsp;response&nbsp;for&nbsp;each&nbsp;deleted&nbsp;message.<br>
+&nbsp;<br>
+(typ,&nbsp;[data])&nbsp;=&nbsp;&lt;instance&gt;.<a href="#IMAP4_SSL-expunge">expunge</a>()<br>
+&nbsp;<br>
+'data'&nbsp;is&nbsp;list&nbsp;of&nbsp;'EXPUNGE'd&nbsp;message&nbsp;numbers&nbsp;in&nbsp;order&nbsp;received.</tt></dd></dl>
+
+<dl><dt><a name="IMAP4_SSL-fetch"><strong>fetch</strong></a>(self, message_set, message_parts)</dt><dd><tt>Fetch&nbsp;(parts&nbsp;of)&nbsp;messages.<br>
+&nbsp;<br>
+(typ,&nbsp;[data,&nbsp;...])&nbsp;=&nbsp;&lt;instance&gt;.<a href="#IMAP4_SSL-fetch">fetch</a>(message_set,&nbsp;message_parts)<br>
+&nbsp;<br>
+'message_parts'&nbsp;should&nbsp;be&nbsp;a&nbsp;string&nbsp;of&nbsp;selected&nbsp;parts<br>
+enclosed&nbsp;in&nbsp;parentheses,&nbsp;eg:&nbsp;"(UID&nbsp;BODY[TEXT])".<br>
+&nbsp;<br>
+'data'&nbsp;are&nbsp;tuples&nbsp;of&nbsp;message&nbsp;part&nbsp;envelope&nbsp;and&nbsp;data.</tt></dd></dl>
+
+<dl><dt><a name="IMAP4_SSL-getacl"><strong>getacl</strong></a>(self, mailbox)</dt><dd><tt>Get&nbsp;the&nbsp;ACLs&nbsp;for&nbsp;a&nbsp;mailbox.<br>
+&nbsp;<br>
+(typ,&nbsp;[data])&nbsp;=&nbsp;&lt;instance&gt;.<a href="#IMAP4_SSL-getacl">getacl</a>(mailbox)</tt></dd></dl>
+
+<dl><dt><a name="IMAP4_SSL-getannotation"><strong>getannotation</strong></a>(self, mailbox, entry, attribute)</dt><dd><tt>(typ,&nbsp;[data])&nbsp;=&nbsp;&lt;instance&gt;.<a href="#IMAP4_SSL-getannotation">getannotation</a>(mailbox,&nbsp;entry,&nbsp;attribute)<br>
+Retrieve&nbsp;ANNOTATIONs.</tt></dd></dl>
+
+<dl><dt><a name="IMAP4_SSL-getquota"><strong>getquota</strong></a>(self, root)</dt><dd><tt>Get&nbsp;the&nbsp;quota&nbsp;root's&nbsp;resource&nbsp;usage&nbsp;and&nbsp;limits.<br>
+&nbsp;<br>
+Part&nbsp;of&nbsp;the&nbsp;<a href="#IMAP4">IMAP4</a>&nbsp;QUOTA&nbsp;extension&nbsp;defined&nbsp;in&nbsp;rfc2087.<br>
+&nbsp;<br>
+(typ,&nbsp;[data])&nbsp;=&nbsp;&lt;instance&gt;.<a href="#IMAP4_SSL-getquota">getquota</a>(root)</tt></dd></dl>
+
+<dl><dt><a name="IMAP4_SSL-getquotaroot"><strong>getquotaroot</strong></a>(self, mailbox)</dt><dd><tt>Get&nbsp;the&nbsp;list&nbsp;of&nbsp;quota&nbsp;roots&nbsp;for&nbsp;the&nbsp;named&nbsp;mailbox.<br>
+&nbsp;<br>
+(typ,&nbsp;[[QUOTAROOT&nbsp;responses...],&nbsp;[QUOTA&nbsp;responses]])&nbsp;=&nbsp;&lt;instance&gt;.<a href="#IMAP4_SSL-getquotaroot">getquotaroot</a>(mailbox)</tt></dd></dl>
+
+<dl><dt><a name="IMAP4_SSL-list"><strong>list</strong></a>(self, directory='""', pattern='*')</dt><dd><tt>List&nbsp;mailbox&nbsp;names&nbsp;in&nbsp;directory&nbsp;matching&nbsp;pattern.<br>
+&nbsp;<br>
+(typ,&nbsp;[data])&nbsp;=&nbsp;&lt;instance&gt;.<a href="#IMAP4_SSL-list">list</a>(directory='""',&nbsp;pattern='*')<br>
+&nbsp;<br>
+'data'&nbsp;is&nbsp;list&nbsp;of&nbsp;LIST&nbsp;responses.</tt></dd></dl>
+
+<dl><dt><a name="IMAP4_SSL-login"><strong>login</strong></a>(self, user, password)</dt><dd><tt>Identify&nbsp;client&nbsp;using&nbsp;plaintext&nbsp;password.<br>
+&nbsp;<br>
+(typ,&nbsp;[data])&nbsp;=&nbsp;&lt;instance&gt;.<a href="#IMAP4_SSL-login">login</a>(user,&nbsp;password)<br>
+&nbsp;<br>
+NB:&nbsp;'password'&nbsp;will&nbsp;be&nbsp;quoted.</tt></dd></dl>
+
+<dl><dt><a name="IMAP4_SSL-login_cram_md5"><strong>login_cram_md5</strong></a>(self, user, password)</dt><dd><tt>Force&nbsp;use&nbsp;of&nbsp;CRAM-MD5&nbsp;authentication.<br>
+&nbsp;<br>
+(typ,&nbsp;[data])&nbsp;=&nbsp;&lt;instance&gt;.<a href="#IMAP4_SSL-login_cram_md5">login_cram_md5</a>(user,&nbsp;password)</tt></dd></dl>
+
+<dl><dt><a name="IMAP4_SSL-logout"><strong>logout</strong></a>(self)</dt><dd><tt>Shutdown&nbsp;connection&nbsp;to&nbsp;server.<br>
+&nbsp;<br>
+(typ,&nbsp;[data])&nbsp;=&nbsp;&lt;instance&gt;.<a href="#IMAP4_SSL-logout">logout</a>()<br>
+&nbsp;<br>
+Returns&nbsp;server&nbsp;'BYE'&nbsp;response.</tt></dd></dl>
+
+<dl><dt><a name="IMAP4_SSL-lsub"><strong>lsub</strong></a>(self, directory='""', pattern='*')</dt><dd><tt>List&nbsp;'subscribed'&nbsp;mailbox&nbsp;names&nbsp;in&nbsp;directory&nbsp;matching&nbsp;pattern.<br>
+&nbsp;<br>
+(typ,&nbsp;[data,&nbsp;...])&nbsp;=&nbsp;&lt;instance&gt;.<a href="#IMAP4_SSL-lsub">lsub</a>(directory='""',&nbsp;pattern='*')<br>
+&nbsp;<br>
+'data'&nbsp;are&nbsp;tuples&nbsp;of&nbsp;message&nbsp;part&nbsp;envelope&nbsp;and&nbsp;data.</tt></dd></dl>
+
+<dl><dt><a name="IMAP4_SSL-myrights"><strong>myrights</strong></a>(self, mailbox)</dt><dd><tt>Show&nbsp;my&nbsp;ACLs&nbsp;for&nbsp;a&nbsp;mailbox&nbsp;(i.e.&nbsp;the&nbsp;rights&nbsp;that&nbsp;I&nbsp;have&nbsp;on&nbsp;mailbox).<br>
+&nbsp;<br>
+(typ,&nbsp;[data])&nbsp;=&nbsp;&lt;instance&gt;.<a href="#IMAP4_SSL-myrights">myrights</a>(mailbox)</tt></dd></dl>
+
+<dl><dt><a name="IMAP4_SSL-namespace"><strong>namespace</strong></a>(self)</dt><dd><tt>Returns&nbsp;IMAP&nbsp;namespaces&nbsp;ala&nbsp;rfc2342<br>
+&nbsp;<br>
+(typ,&nbsp;[data,&nbsp;...])&nbsp;=&nbsp;&lt;instance&gt;.<a href="#IMAP4_SSL-namespace">namespace</a>()</tt></dd></dl>
+
+<dl><dt><a name="IMAP4_SSL-noop"><strong>noop</strong></a>(self)</dt><dd><tt>Send&nbsp;NOOP&nbsp;command.<br>
+&nbsp;<br>
+(typ,&nbsp;[data])&nbsp;=&nbsp;&lt;instance&gt;.<a href="#IMAP4_SSL-noop">noop</a>()</tt></dd></dl>
+
+<dl><dt><a name="IMAP4_SSL-partial"><strong>partial</strong></a>(self, message_num, message_part, start, length)</dt><dd><tt>Fetch&nbsp;truncated&nbsp;part&nbsp;of&nbsp;a&nbsp;message.<br>
+&nbsp;<br>
+(typ,&nbsp;[data,&nbsp;...])&nbsp;=&nbsp;&lt;instance&gt;.<a href="#IMAP4_SSL-partial">partial</a>(message_num,&nbsp;message_part,&nbsp;start,&nbsp;length)<br>
+&nbsp;<br>
+'data'&nbsp;is&nbsp;tuple&nbsp;of&nbsp;message&nbsp;part&nbsp;envelope&nbsp;and&nbsp;data.</tt></dd></dl>
+
+<dl><dt><a name="IMAP4_SSL-print_log"><strong>print_log</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="IMAP4_SSL-proxyauth"><strong>proxyauth</strong></a>(self, user)</dt><dd><tt>Assume&nbsp;authentication&nbsp;as&nbsp;"user".<br>
+&nbsp;<br>
+Allows&nbsp;an&nbsp;authorised&nbsp;administrator&nbsp;to&nbsp;proxy&nbsp;into&nbsp;any&nbsp;user's<br>
+mailbox.<br>
+&nbsp;<br>
+(typ,&nbsp;[data])&nbsp;=&nbsp;&lt;instance&gt;.<a href="#IMAP4_SSL-proxyauth">proxyauth</a>(user)</tt></dd></dl>
+
+<dl><dt><a name="IMAP4_SSL-read"><strong>read</strong></a>(self, size)</dt><dd><tt>Read&nbsp;'size'&nbsp;bytes&nbsp;from&nbsp;remote.</tt></dd></dl>
+
+<dl><dt><a name="IMAP4_SSL-readline"><strong>readline</strong></a>(self)</dt><dd><tt>Read&nbsp;line&nbsp;from&nbsp;remote.</tt></dd></dl>
+
+<dl><dt><a name="IMAP4_SSL-recent"><strong>recent</strong></a>(self)</dt><dd><tt>Return&nbsp;most&nbsp;recent&nbsp;'RECENT'&nbsp;responses&nbsp;if&nbsp;any&nbsp;exist,<br>
+else&nbsp;prompt&nbsp;server&nbsp;for&nbsp;an&nbsp;update&nbsp;using&nbsp;the&nbsp;'NOOP'&nbsp;command.<br>
+&nbsp;<br>
+(typ,&nbsp;[data])&nbsp;=&nbsp;&lt;instance&gt;.<a href="#IMAP4_SSL-recent">recent</a>()<br>
+&nbsp;<br>
+'data'&nbsp;is&nbsp;None&nbsp;if&nbsp;no&nbsp;new&nbsp;messages,<br>
+else&nbsp;list&nbsp;of&nbsp;RECENT&nbsp;responses,&nbsp;most&nbsp;recent&nbsp;last.</tt></dd></dl>
+
+<dl><dt><a name="IMAP4_SSL-rename"><strong>rename</strong></a>(self, oldmailbox, newmailbox)</dt><dd><tt>Rename&nbsp;old&nbsp;mailbox&nbsp;name&nbsp;to&nbsp;new.<br>
+&nbsp;<br>
+(typ,&nbsp;[data])&nbsp;=&nbsp;&lt;instance&gt;.<a href="#IMAP4_SSL-rename">rename</a>(oldmailbox,&nbsp;newmailbox)</tt></dd></dl>
+
+<dl><dt><a name="IMAP4_SSL-response"><strong>response</strong></a>(self, code)</dt><dd><tt>Return&nbsp;data&nbsp;for&nbsp;response&nbsp;'code'&nbsp;if&nbsp;received,&nbsp;or&nbsp;None.<br>
+&nbsp;<br>
+Old&nbsp;value&nbsp;for&nbsp;response&nbsp;'code'&nbsp;is&nbsp;cleared.<br>
+&nbsp;<br>
+(code,&nbsp;[data])&nbsp;=&nbsp;&lt;instance&gt;.<a href="#IMAP4_SSL-response">response</a>(code)</tt></dd></dl>
+
+<dl><dt><a name="IMAP4_SSL-search"><strong>search</strong></a>(self, charset, *criteria)</dt><dd><tt>Search&nbsp;mailbox&nbsp;for&nbsp;matching&nbsp;messages.<br>
+&nbsp;<br>
+(typ,&nbsp;[data])&nbsp;=&nbsp;&lt;instance&gt;.<a href="#IMAP4_SSL-search">search</a>(charset,&nbsp;criterion,&nbsp;...)<br>
+&nbsp;<br>
+'data'&nbsp;is&nbsp;space&nbsp;separated&nbsp;list&nbsp;of&nbsp;matching&nbsp;message&nbsp;numbers.<br>
+If&nbsp;UTF8&nbsp;is&nbsp;enabled,&nbsp;charset&nbsp;MUST&nbsp;be&nbsp;None.</tt></dd></dl>
+
+<dl><dt><a name="IMAP4_SSL-select"><strong>select</strong></a>(self, mailbox='INBOX', readonly=False)</dt><dd><tt>Select&nbsp;a&nbsp;mailbox.<br>
+&nbsp;<br>
+Flush&nbsp;all&nbsp;untagged&nbsp;responses.<br>
+&nbsp;<br>
+(typ,&nbsp;[data])&nbsp;=&nbsp;&lt;instance&gt;.<a href="#IMAP4_SSL-select">select</a>(mailbox='INBOX',&nbsp;readonly=False)<br>
+&nbsp;<br>
+'data'&nbsp;is&nbsp;count&nbsp;of&nbsp;messages&nbsp;in&nbsp;mailbox&nbsp;('EXISTS'&nbsp;response).<br>
+&nbsp;<br>
+Mandated&nbsp;responses&nbsp;are&nbsp;('FLAGS',&nbsp;'EXISTS',&nbsp;'RECENT',&nbsp;'UIDVALIDITY'),&nbsp;so<br>
+other&nbsp;responses&nbsp;should&nbsp;be&nbsp;obtained&nbsp;via&nbsp;&lt;instance&gt;.<a href="#IMAP4_SSL-response">response</a>('FLAGS')&nbsp;etc.</tt></dd></dl>
+
+<dl><dt><a name="IMAP4_SSL-send"><strong>send</strong></a>(self, data)</dt><dd><tt>Send&nbsp;data&nbsp;to&nbsp;remote.</tt></dd></dl>
+
+<dl><dt><a name="IMAP4_SSL-setacl"><strong>setacl</strong></a>(self, mailbox, who, what)</dt><dd><tt>Set&nbsp;a&nbsp;mailbox&nbsp;acl.<br>
+&nbsp;<br>
+(typ,&nbsp;[data])&nbsp;=&nbsp;&lt;instance&gt;.<a href="#IMAP4_SSL-setacl">setacl</a>(mailbox,&nbsp;who,&nbsp;what)</tt></dd></dl>
+
+<dl><dt><a name="IMAP4_SSL-setannotation"><strong>setannotation</strong></a>(self, *args)</dt><dd><tt>(typ,&nbsp;[data])&nbsp;=&nbsp;&lt;instance&gt;.<a href="#IMAP4_SSL-setannotation">setannotation</a>(mailbox[,&nbsp;entry,&nbsp;attribute]+)<br>
+Set&nbsp;ANNOTATIONs.</tt></dd></dl>
+
+<dl><dt><a name="IMAP4_SSL-setquota"><strong>setquota</strong></a>(self, root, limits)</dt><dd><tt>Set&nbsp;the&nbsp;quota&nbsp;root's&nbsp;resource&nbsp;limits.<br>
+&nbsp;<br>
+(typ,&nbsp;[data])&nbsp;=&nbsp;&lt;instance&gt;.<a href="#IMAP4_SSL-setquota">setquota</a>(root,&nbsp;limits)</tt></dd></dl>
+
+<dl><dt><a name="IMAP4_SSL-shutdown"><strong>shutdown</strong></a>(self)</dt><dd><tt>Close&nbsp;I/O&nbsp;established&nbsp;in&nbsp;"open".</tt></dd></dl>
+
+<dl><dt><a name="IMAP4_SSL-socket"><strong>socket</strong></a>(self)</dt><dd><tt>Return&nbsp;socket&nbsp;instance&nbsp;used&nbsp;to&nbsp;connect&nbsp;to&nbsp;<a href="#IMAP4">IMAP4</a>&nbsp;server.<br>
+&nbsp;<br>
+socket&nbsp;=&nbsp;&lt;instance&gt;.<a href="#IMAP4_SSL-socket">socket</a>()</tt></dd></dl>
+
+<dl><dt><a name="IMAP4_SSL-sort"><strong>sort</strong></a>(self, sort_criteria, charset, *search_criteria)</dt><dd><tt>IMAP4rev1&nbsp;extension&nbsp;SORT&nbsp;command.<br>
+&nbsp;<br>
+(typ,&nbsp;[data])&nbsp;=&nbsp;&lt;instance&gt;.<a href="#IMAP4_SSL-sort">sort</a>(sort_criteria,&nbsp;charset,&nbsp;search_criteria,&nbsp;...)</tt></dd></dl>
+
+<dl><dt><a name="IMAP4_SSL-starttls"><strong>starttls</strong></a>(self, ssl_context=None)</dt></dl>
+
+<dl><dt><a name="IMAP4_SSL-status"><strong>status</strong></a>(self, mailbox, names)</dt><dd><tt>Request&nbsp;named&nbsp;status&nbsp;conditions&nbsp;for&nbsp;mailbox.<br>
+&nbsp;<br>
+(typ,&nbsp;[data])&nbsp;=&nbsp;&lt;instance&gt;.<a href="#IMAP4_SSL-status">status</a>(mailbox,&nbsp;names)</tt></dd></dl>
+
+<dl><dt><a name="IMAP4_SSL-store"><strong>store</strong></a>(self, message_set, command, flags)</dt><dd><tt>Alters&nbsp;flag&nbsp;dispositions&nbsp;for&nbsp;messages&nbsp;in&nbsp;mailbox.<br>
+&nbsp;<br>
+(typ,&nbsp;[data])&nbsp;=&nbsp;&lt;instance&gt;.<a href="#IMAP4_SSL-store">store</a>(message_set,&nbsp;command,&nbsp;flags)</tt></dd></dl>
+
+<dl><dt><a name="IMAP4_SSL-subscribe"><strong>subscribe</strong></a>(self, mailbox)</dt><dd><tt>Subscribe&nbsp;to&nbsp;new&nbsp;mailbox.<br>
+&nbsp;<br>
+(typ,&nbsp;[data])&nbsp;=&nbsp;&lt;instance&gt;.<a href="#IMAP4_SSL-subscribe">subscribe</a>(mailbox)</tt></dd></dl>
+
+<dl><dt><a name="IMAP4_SSL-thread"><strong>thread</strong></a>(self, threading_algorithm, charset, *search_criteria)</dt><dd><tt>IMAPrev1&nbsp;extension&nbsp;THREAD&nbsp;command.<br>
+&nbsp;<br>
+(type,&nbsp;[data])&nbsp;=&nbsp;&lt;instance&gt;.<a href="#IMAP4_SSL-thread">thread</a>(threading_algorithm,&nbsp;charset,&nbsp;search_criteria,&nbsp;...)</tt></dd></dl>
+
+<dl><dt><a name="IMAP4_SSL-uid"><strong>uid</strong></a>(self, command, *args)</dt><dd><tt>Execute&nbsp;"command&nbsp;arg&nbsp;..."&nbsp;with&nbsp;messages&nbsp;identified&nbsp;by&nbsp;UID,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;rather&nbsp;than&nbsp;message&nbsp;number.<br>
+&nbsp;<br>
+(typ,&nbsp;[data])&nbsp;=&nbsp;&lt;instance&gt;.<a href="#IMAP4_SSL-uid">uid</a>(command,&nbsp;arg1,&nbsp;arg2,&nbsp;...)<br>
+&nbsp;<br>
+Returns&nbsp;response&nbsp;appropriate&nbsp;to&nbsp;'command'.</tt></dd></dl>
+
+<dl><dt><a name="IMAP4_SSL-unsubscribe"><strong>unsubscribe</strong></a>(self, mailbox)</dt><dd><tt>Unsubscribe&nbsp;from&nbsp;old&nbsp;mailbox.<br>
+&nbsp;<br>
+(typ,&nbsp;[data])&nbsp;=&nbsp;&lt;instance&gt;.<a href="#IMAP4_SSL-unsubscribe">unsubscribe</a>(mailbox)</tt></dd></dl>
+
+<dl><dt><a name="IMAP4_SSL-xatom"><strong>xatom</strong></a>(self, name, *args)</dt><dd><tt>Allow&nbsp;simple&nbsp;extension&nbsp;commands<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;notified&nbsp;by&nbsp;server&nbsp;in&nbsp;CAPABILITY&nbsp;response.<br>
+&nbsp;<br>
+Assumes&nbsp;command&nbsp;is&nbsp;legal&nbsp;in&nbsp;current&nbsp;state.<br>
+&nbsp;<br>
+(typ,&nbsp;[data])&nbsp;=&nbsp;&lt;instance&gt;.<a href="#IMAP4_SSL-xatom">xatom</a>(name,&nbsp;arg,&nbsp;...)<br>
+&nbsp;<br>
+Returns&nbsp;response&nbsp;appropriate&nbsp;to&nbsp;extension&nbsp;command&nbsp;`name'.</tt></dd></dl>
+
+<hr>
+Data descriptors inherited from <a href="imaplib.html#IMAP4">IMAP4</a>:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><tt>dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<hr>
+Data and other attributes inherited from <a href="imaplib.html#IMAP4">IMAP4</a>:<br>
+<dl><dt><strong>abort</strong> = &lt;class 'imaplib.IMAP4.abort'&gt;</dl>
+
+<dl><dt><strong>error</strong> = &lt;class 'imaplib.IMAP4.error'&gt;</dl>
+
+<dl><dt><strong>readonly</strong> = &lt;class 'imaplib.IMAP4.readonly'&gt;</dl>
+
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="IMAP4_stream">class <strong>IMAP4_stream</strong></a>(<a href="imaplib.html#IMAP4">IMAP4</a>)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt><a href="#IMAP4_stream">IMAP4_stream</a>(command)<br>
+&nbsp;<br>
+<a href="#IMAP4">IMAP4</a>&nbsp;client&nbsp;class&nbsp;over&nbsp;a&nbsp;stream<br>
+&nbsp;<br>
+Instantiate&nbsp;with:&nbsp;<a href="#IMAP4_stream">IMAP4_stream</a>(command)<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"command"&nbsp;-&nbsp;a&nbsp;string&nbsp;that&nbsp;can&nbsp;be&nbsp;passed&nbsp;to&nbsp;subprocess.Popen()<br>
+&nbsp;<br>
+for&nbsp;more&nbsp;documentation&nbsp;see&nbsp;the&nbsp;docstring&nbsp;of&nbsp;the&nbsp;parent&nbsp;class&nbsp;<a href="#IMAP4">IMAP4</a>.<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%"><dl><dt>Method resolution order:</dt>
+<dd><a href="imaplib.html#IMAP4_stream">IMAP4_stream</a></dd>
+<dd><a href="imaplib.html#IMAP4">IMAP4</a></dd>
+<dd><a href="builtins.html#object">builtins.object</a></dd>
+</dl>
+<hr>
+Methods defined here:<br>
+<dl><dt><a name="IMAP4_stream-__init__"><strong>__init__</strong></a>(self, command)</dt><dd><tt>Initialize&nbsp;self.&nbsp;&nbsp;See&nbsp;help(type(self))&nbsp;for&nbsp;accurate&nbsp;signature.</tt></dd></dl>
+
+<dl><dt><a name="IMAP4_stream-open"><strong>open</strong></a>(self, host=None, port=None)</dt><dd><tt>Setup&nbsp;a&nbsp;stream&nbsp;connection.<br>
+This&nbsp;connection&nbsp;will&nbsp;be&nbsp;used&nbsp;by&nbsp;the&nbsp;routines:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;read,&nbsp;readline,&nbsp;send,&nbsp;shutdown.</tt></dd></dl>
+
+<dl><dt><a name="IMAP4_stream-read"><strong>read</strong></a>(self, size)</dt><dd><tt>Read&nbsp;'size'&nbsp;bytes&nbsp;from&nbsp;remote.</tt></dd></dl>
+
+<dl><dt><a name="IMAP4_stream-readline"><strong>readline</strong></a>(self)</dt><dd><tt>Read&nbsp;line&nbsp;from&nbsp;remote.</tt></dd></dl>
+
+<dl><dt><a name="IMAP4_stream-send"><strong>send</strong></a>(self, data)</dt><dd><tt>Send&nbsp;data&nbsp;to&nbsp;remote.</tt></dd></dl>
+
+<dl><dt><a name="IMAP4_stream-shutdown"><strong>shutdown</strong></a>(self)</dt><dd><tt>Close&nbsp;I/O&nbsp;established&nbsp;in&nbsp;"open".</tt></dd></dl>
+
+<hr>
+Methods inherited from <a href="imaplib.html#IMAP4">IMAP4</a>:<br>
+<dl><dt><a name="IMAP4_stream-__enter__"><strong>__enter__</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="IMAP4_stream-__exit__"><strong>__exit__</strong></a>(self, *args)</dt></dl>
+
+<dl><dt><a name="IMAP4_stream-__getattr__"><strong>__getattr__</strong></a>(self, attr)</dt></dl>
+
+<dl><dt><a name="IMAP4_stream-append"><strong>append</strong></a>(self, mailbox, flags, date_time, message)</dt><dd><tt>Append&nbsp;message&nbsp;to&nbsp;named&nbsp;mailbox.<br>
+&nbsp;<br>
+(typ,&nbsp;[data])&nbsp;=&nbsp;&lt;instance&gt;.<a href="#IMAP4_stream-append">append</a>(mailbox,&nbsp;flags,&nbsp;date_time,&nbsp;message)<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;All&nbsp;args&nbsp;except&nbsp;`message'&nbsp;can&nbsp;be&nbsp;None.</tt></dd></dl>
+
+<dl><dt><a name="IMAP4_stream-authenticate"><strong>authenticate</strong></a>(self, mechanism, authobject)</dt><dd><tt>Authenticate&nbsp;command&nbsp;-&nbsp;requires&nbsp;response&nbsp;processing.<br>
+&nbsp;<br>
+'mechanism'&nbsp;specifies&nbsp;which&nbsp;authentication&nbsp;mechanism&nbsp;is&nbsp;to<br>
+be&nbsp;used&nbsp;-&nbsp;it&nbsp;must&nbsp;appear&nbsp;in&nbsp;&lt;instance&gt;.capabilities&nbsp;in&nbsp;the<br>
+form&nbsp;AUTH=&lt;mechanism&gt;.<br>
+&nbsp;<br>
+'authobject'&nbsp;must&nbsp;be&nbsp;a&nbsp;callable&nbsp;<a href="builtins.html#object">object</a>:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;data&nbsp;=&nbsp;authobject(response)<br>
+&nbsp;<br>
+It&nbsp;will&nbsp;be&nbsp;called&nbsp;to&nbsp;process&nbsp;server&nbsp;continuation&nbsp;responses;&nbsp;the<br>
+response&nbsp;argument&nbsp;it&nbsp;is&nbsp;passed&nbsp;will&nbsp;be&nbsp;a&nbsp;bytes.&nbsp;&nbsp;It&nbsp;should&nbsp;return&nbsp;bytes<br>
+data&nbsp;that&nbsp;will&nbsp;be&nbsp;base64&nbsp;encoded&nbsp;and&nbsp;sent&nbsp;to&nbsp;the&nbsp;server.&nbsp;&nbsp;It&nbsp;should<br>
+return&nbsp;None&nbsp;if&nbsp;the&nbsp;client&nbsp;abort&nbsp;response&nbsp;'*'&nbsp;should&nbsp;be&nbsp;sent&nbsp;instead.</tt></dd></dl>
+
+<dl><dt><a name="IMAP4_stream-capability"><strong>capability</strong></a>(self)</dt><dd><tt>(typ,&nbsp;[data])&nbsp;=&nbsp;&lt;instance&gt;.<a href="#IMAP4_stream-capability">capability</a>()<br>
+Fetch&nbsp;capabilities&nbsp;list&nbsp;from&nbsp;server.</tt></dd></dl>
+
+<dl><dt><a name="IMAP4_stream-check"><strong>check</strong></a>(self)</dt><dd><tt>Checkpoint&nbsp;mailbox&nbsp;on&nbsp;server.<br>
+&nbsp;<br>
+(typ,&nbsp;[data])&nbsp;=&nbsp;&lt;instance&gt;.<a href="#IMAP4_stream-check">check</a>()</tt></dd></dl>
+
+<dl><dt><a name="IMAP4_stream-close"><strong>close</strong></a>(self)</dt><dd><tt>Close&nbsp;currently&nbsp;selected&nbsp;mailbox.<br>
+&nbsp;<br>
+Deleted&nbsp;messages&nbsp;are&nbsp;removed&nbsp;from&nbsp;writable&nbsp;mailbox.<br>
+This&nbsp;is&nbsp;the&nbsp;recommended&nbsp;command&nbsp;before&nbsp;'LOGOUT'.<br>
+&nbsp;<br>
+(typ,&nbsp;[data])&nbsp;=&nbsp;&lt;instance&gt;.<a href="#IMAP4_stream-close">close</a>()</tt></dd></dl>
+
+<dl><dt><a name="IMAP4_stream-copy"><strong>copy</strong></a>(self, message_set, new_mailbox)</dt><dd><tt>Copy&nbsp;'message_set'&nbsp;messages&nbsp;onto&nbsp;end&nbsp;of&nbsp;'new_mailbox'.<br>
+&nbsp;<br>
+(typ,&nbsp;[data])&nbsp;=&nbsp;&lt;instance&gt;.<a href="#IMAP4_stream-copy">copy</a>(message_set,&nbsp;new_mailbox)</tt></dd></dl>
+
+<dl><dt><a name="IMAP4_stream-create"><strong>create</strong></a>(self, mailbox)</dt><dd><tt>Create&nbsp;new&nbsp;mailbox.<br>
+&nbsp;<br>
+(typ,&nbsp;[data])&nbsp;=&nbsp;&lt;instance&gt;.<a href="#IMAP4_stream-create">create</a>(mailbox)</tt></dd></dl>
+
+<dl><dt><a name="IMAP4_stream-delete"><strong>delete</strong></a>(self, mailbox)</dt><dd><tt>Delete&nbsp;old&nbsp;mailbox.<br>
+&nbsp;<br>
+(typ,&nbsp;[data])&nbsp;=&nbsp;&lt;instance&gt;.<a href="#IMAP4_stream-delete">delete</a>(mailbox)</tt></dd></dl>
+
+<dl><dt><a name="IMAP4_stream-deleteacl"><strong>deleteacl</strong></a>(self, mailbox, who)</dt><dd><tt>Delete&nbsp;the&nbsp;ACLs&nbsp;(remove&nbsp;any&nbsp;rights)&nbsp;set&nbsp;for&nbsp;who&nbsp;on&nbsp;mailbox.<br>
+&nbsp;<br>
+(typ,&nbsp;[data])&nbsp;=&nbsp;&lt;instance&gt;.<a href="#IMAP4_stream-deleteacl">deleteacl</a>(mailbox,&nbsp;who)</tt></dd></dl>
+
+<dl><dt><a name="IMAP4_stream-enable"><strong>enable</strong></a>(self, capability)</dt><dd><tt>Send&nbsp;an&nbsp;<a href="http://www.rfc-editor.org/rfc/rfc5161.txt">RFC5161</a>&nbsp;enable&nbsp;string&nbsp;to&nbsp;the&nbsp;server.<br>
+&nbsp;<br>
+(typ,&nbsp;[data])&nbsp;=&nbsp;&lt;intance&gt;.<a href="#IMAP4_stream-enable">enable</a>(capability)</tt></dd></dl>
+
+<dl><dt><a name="IMAP4_stream-expunge"><strong>expunge</strong></a>(self)</dt><dd><tt>Permanently&nbsp;remove&nbsp;deleted&nbsp;items&nbsp;from&nbsp;selected&nbsp;mailbox.<br>
+&nbsp;<br>
+Generates&nbsp;'EXPUNGE'&nbsp;response&nbsp;for&nbsp;each&nbsp;deleted&nbsp;message.<br>
+&nbsp;<br>
+(typ,&nbsp;[data])&nbsp;=&nbsp;&lt;instance&gt;.<a href="#IMAP4_stream-expunge">expunge</a>()<br>
+&nbsp;<br>
+'data'&nbsp;is&nbsp;list&nbsp;of&nbsp;'EXPUNGE'd&nbsp;message&nbsp;numbers&nbsp;in&nbsp;order&nbsp;received.</tt></dd></dl>
+
+<dl><dt><a name="IMAP4_stream-fetch"><strong>fetch</strong></a>(self, message_set, message_parts)</dt><dd><tt>Fetch&nbsp;(parts&nbsp;of)&nbsp;messages.<br>
+&nbsp;<br>
+(typ,&nbsp;[data,&nbsp;...])&nbsp;=&nbsp;&lt;instance&gt;.<a href="#IMAP4_stream-fetch">fetch</a>(message_set,&nbsp;message_parts)<br>
+&nbsp;<br>
+'message_parts'&nbsp;should&nbsp;be&nbsp;a&nbsp;string&nbsp;of&nbsp;selected&nbsp;parts<br>
+enclosed&nbsp;in&nbsp;parentheses,&nbsp;eg:&nbsp;"(UID&nbsp;BODY[TEXT])".<br>
+&nbsp;<br>
+'data'&nbsp;are&nbsp;tuples&nbsp;of&nbsp;message&nbsp;part&nbsp;envelope&nbsp;and&nbsp;data.</tt></dd></dl>
+
+<dl><dt><a name="IMAP4_stream-getacl"><strong>getacl</strong></a>(self, mailbox)</dt><dd><tt>Get&nbsp;the&nbsp;ACLs&nbsp;for&nbsp;a&nbsp;mailbox.<br>
+&nbsp;<br>
+(typ,&nbsp;[data])&nbsp;=&nbsp;&lt;instance&gt;.<a href="#IMAP4_stream-getacl">getacl</a>(mailbox)</tt></dd></dl>
+
+<dl><dt><a name="IMAP4_stream-getannotation"><strong>getannotation</strong></a>(self, mailbox, entry, attribute)</dt><dd><tt>(typ,&nbsp;[data])&nbsp;=&nbsp;&lt;instance&gt;.<a href="#IMAP4_stream-getannotation">getannotation</a>(mailbox,&nbsp;entry,&nbsp;attribute)<br>
+Retrieve&nbsp;ANNOTATIONs.</tt></dd></dl>
+
+<dl><dt><a name="IMAP4_stream-getquota"><strong>getquota</strong></a>(self, root)</dt><dd><tt>Get&nbsp;the&nbsp;quota&nbsp;root's&nbsp;resource&nbsp;usage&nbsp;and&nbsp;limits.<br>
+&nbsp;<br>
+Part&nbsp;of&nbsp;the&nbsp;<a href="#IMAP4">IMAP4</a>&nbsp;QUOTA&nbsp;extension&nbsp;defined&nbsp;in&nbsp;rfc2087.<br>
+&nbsp;<br>
+(typ,&nbsp;[data])&nbsp;=&nbsp;&lt;instance&gt;.<a href="#IMAP4_stream-getquota">getquota</a>(root)</tt></dd></dl>
+
+<dl><dt><a name="IMAP4_stream-getquotaroot"><strong>getquotaroot</strong></a>(self, mailbox)</dt><dd><tt>Get&nbsp;the&nbsp;list&nbsp;of&nbsp;quota&nbsp;roots&nbsp;for&nbsp;the&nbsp;named&nbsp;mailbox.<br>
+&nbsp;<br>
+(typ,&nbsp;[[QUOTAROOT&nbsp;responses...],&nbsp;[QUOTA&nbsp;responses]])&nbsp;=&nbsp;&lt;instance&gt;.<a href="#IMAP4_stream-getquotaroot">getquotaroot</a>(mailbox)</tt></dd></dl>
+
+<dl><dt><a name="IMAP4_stream-list"><strong>list</strong></a>(self, directory='""', pattern='*')</dt><dd><tt>List&nbsp;mailbox&nbsp;names&nbsp;in&nbsp;directory&nbsp;matching&nbsp;pattern.<br>
+&nbsp;<br>
+(typ,&nbsp;[data])&nbsp;=&nbsp;&lt;instance&gt;.<a href="#IMAP4_stream-list">list</a>(directory='""',&nbsp;pattern='*')<br>
+&nbsp;<br>
+'data'&nbsp;is&nbsp;list&nbsp;of&nbsp;LIST&nbsp;responses.</tt></dd></dl>
+
+<dl><dt><a name="IMAP4_stream-login"><strong>login</strong></a>(self, user, password)</dt><dd><tt>Identify&nbsp;client&nbsp;using&nbsp;plaintext&nbsp;password.<br>
+&nbsp;<br>
+(typ,&nbsp;[data])&nbsp;=&nbsp;&lt;instance&gt;.<a href="#IMAP4_stream-login">login</a>(user,&nbsp;password)<br>
+&nbsp;<br>
+NB:&nbsp;'password'&nbsp;will&nbsp;be&nbsp;quoted.</tt></dd></dl>
+
+<dl><dt><a name="IMAP4_stream-login_cram_md5"><strong>login_cram_md5</strong></a>(self, user, password)</dt><dd><tt>Force&nbsp;use&nbsp;of&nbsp;CRAM-MD5&nbsp;authentication.<br>
+&nbsp;<br>
+(typ,&nbsp;[data])&nbsp;=&nbsp;&lt;instance&gt;.<a href="#IMAP4_stream-login_cram_md5">login_cram_md5</a>(user,&nbsp;password)</tt></dd></dl>
+
+<dl><dt><a name="IMAP4_stream-logout"><strong>logout</strong></a>(self)</dt><dd><tt>Shutdown&nbsp;connection&nbsp;to&nbsp;server.<br>
+&nbsp;<br>
+(typ,&nbsp;[data])&nbsp;=&nbsp;&lt;instance&gt;.<a href="#IMAP4_stream-logout">logout</a>()<br>
+&nbsp;<br>
+Returns&nbsp;server&nbsp;'BYE'&nbsp;response.</tt></dd></dl>
+
+<dl><dt><a name="IMAP4_stream-lsub"><strong>lsub</strong></a>(self, directory='""', pattern='*')</dt><dd><tt>List&nbsp;'subscribed'&nbsp;mailbox&nbsp;names&nbsp;in&nbsp;directory&nbsp;matching&nbsp;pattern.<br>
+&nbsp;<br>
+(typ,&nbsp;[data,&nbsp;...])&nbsp;=&nbsp;&lt;instance&gt;.<a href="#IMAP4_stream-lsub">lsub</a>(directory='""',&nbsp;pattern='*')<br>
+&nbsp;<br>
+'data'&nbsp;are&nbsp;tuples&nbsp;of&nbsp;message&nbsp;part&nbsp;envelope&nbsp;and&nbsp;data.</tt></dd></dl>
+
+<dl><dt><a name="IMAP4_stream-myrights"><strong>myrights</strong></a>(self, mailbox)</dt><dd><tt>Show&nbsp;my&nbsp;ACLs&nbsp;for&nbsp;a&nbsp;mailbox&nbsp;(i.e.&nbsp;the&nbsp;rights&nbsp;that&nbsp;I&nbsp;have&nbsp;on&nbsp;mailbox).<br>
+&nbsp;<br>
+(typ,&nbsp;[data])&nbsp;=&nbsp;&lt;instance&gt;.<a href="#IMAP4_stream-myrights">myrights</a>(mailbox)</tt></dd></dl>
+
+<dl><dt><a name="IMAP4_stream-namespace"><strong>namespace</strong></a>(self)</dt><dd><tt>Returns&nbsp;IMAP&nbsp;namespaces&nbsp;ala&nbsp;rfc2342<br>
+&nbsp;<br>
+(typ,&nbsp;[data,&nbsp;...])&nbsp;=&nbsp;&lt;instance&gt;.<a href="#IMAP4_stream-namespace">namespace</a>()</tt></dd></dl>
+
+<dl><dt><a name="IMAP4_stream-noop"><strong>noop</strong></a>(self)</dt><dd><tt>Send&nbsp;NOOP&nbsp;command.<br>
+&nbsp;<br>
+(typ,&nbsp;[data])&nbsp;=&nbsp;&lt;instance&gt;.<a href="#IMAP4_stream-noop">noop</a>()</tt></dd></dl>
+
+<dl><dt><a name="IMAP4_stream-partial"><strong>partial</strong></a>(self, message_num, message_part, start, length)</dt><dd><tt>Fetch&nbsp;truncated&nbsp;part&nbsp;of&nbsp;a&nbsp;message.<br>
+&nbsp;<br>
+(typ,&nbsp;[data,&nbsp;...])&nbsp;=&nbsp;&lt;instance&gt;.<a href="#IMAP4_stream-partial">partial</a>(message_num,&nbsp;message_part,&nbsp;start,&nbsp;length)<br>
+&nbsp;<br>
+'data'&nbsp;is&nbsp;tuple&nbsp;of&nbsp;message&nbsp;part&nbsp;envelope&nbsp;and&nbsp;data.</tt></dd></dl>
+
+<dl><dt><a name="IMAP4_stream-print_log"><strong>print_log</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="IMAP4_stream-proxyauth"><strong>proxyauth</strong></a>(self, user)</dt><dd><tt>Assume&nbsp;authentication&nbsp;as&nbsp;"user".<br>
+&nbsp;<br>
+Allows&nbsp;an&nbsp;authorised&nbsp;administrator&nbsp;to&nbsp;proxy&nbsp;into&nbsp;any&nbsp;user's<br>
+mailbox.<br>
+&nbsp;<br>
+(typ,&nbsp;[data])&nbsp;=&nbsp;&lt;instance&gt;.<a href="#IMAP4_stream-proxyauth">proxyauth</a>(user)</tt></dd></dl>
+
+<dl><dt><a name="IMAP4_stream-recent"><strong>recent</strong></a>(self)</dt><dd><tt>Return&nbsp;most&nbsp;recent&nbsp;'RECENT'&nbsp;responses&nbsp;if&nbsp;any&nbsp;exist,<br>
+else&nbsp;prompt&nbsp;server&nbsp;for&nbsp;an&nbsp;update&nbsp;using&nbsp;the&nbsp;'NOOP'&nbsp;command.<br>
+&nbsp;<br>
+(typ,&nbsp;[data])&nbsp;=&nbsp;&lt;instance&gt;.<a href="#IMAP4_stream-recent">recent</a>()<br>
+&nbsp;<br>
+'data'&nbsp;is&nbsp;None&nbsp;if&nbsp;no&nbsp;new&nbsp;messages,<br>
+else&nbsp;list&nbsp;of&nbsp;RECENT&nbsp;responses,&nbsp;most&nbsp;recent&nbsp;last.</tt></dd></dl>
+
+<dl><dt><a name="IMAP4_stream-rename"><strong>rename</strong></a>(self, oldmailbox, newmailbox)</dt><dd><tt>Rename&nbsp;old&nbsp;mailbox&nbsp;name&nbsp;to&nbsp;new.<br>
+&nbsp;<br>
+(typ,&nbsp;[data])&nbsp;=&nbsp;&lt;instance&gt;.<a href="#IMAP4_stream-rename">rename</a>(oldmailbox,&nbsp;newmailbox)</tt></dd></dl>
+
+<dl><dt><a name="IMAP4_stream-response"><strong>response</strong></a>(self, code)</dt><dd><tt>Return&nbsp;data&nbsp;for&nbsp;response&nbsp;'code'&nbsp;if&nbsp;received,&nbsp;or&nbsp;None.<br>
+&nbsp;<br>
+Old&nbsp;value&nbsp;for&nbsp;response&nbsp;'code'&nbsp;is&nbsp;cleared.<br>
+&nbsp;<br>
+(code,&nbsp;[data])&nbsp;=&nbsp;&lt;instance&gt;.<a href="#IMAP4_stream-response">response</a>(code)</tt></dd></dl>
+
+<dl><dt><a name="IMAP4_stream-search"><strong>search</strong></a>(self, charset, *criteria)</dt><dd><tt>Search&nbsp;mailbox&nbsp;for&nbsp;matching&nbsp;messages.<br>
+&nbsp;<br>
+(typ,&nbsp;[data])&nbsp;=&nbsp;&lt;instance&gt;.<a href="#IMAP4_stream-search">search</a>(charset,&nbsp;criterion,&nbsp;...)<br>
+&nbsp;<br>
+'data'&nbsp;is&nbsp;space&nbsp;separated&nbsp;list&nbsp;of&nbsp;matching&nbsp;message&nbsp;numbers.<br>
+If&nbsp;UTF8&nbsp;is&nbsp;enabled,&nbsp;charset&nbsp;MUST&nbsp;be&nbsp;None.</tt></dd></dl>
+
+<dl><dt><a name="IMAP4_stream-select"><strong>select</strong></a>(self, mailbox='INBOX', readonly=False)</dt><dd><tt>Select&nbsp;a&nbsp;mailbox.<br>
+&nbsp;<br>
+Flush&nbsp;all&nbsp;untagged&nbsp;responses.<br>
+&nbsp;<br>
+(typ,&nbsp;[data])&nbsp;=&nbsp;&lt;instance&gt;.<a href="#IMAP4_stream-select">select</a>(mailbox='INBOX',&nbsp;readonly=False)<br>
+&nbsp;<br>
+'data'&nbsp;is&nbsp;count&nbsp;of&nbsp;messages&nbsp;in&nbsp;mailbox&nbsp;('EXISTS'&nbsp;response).<br>
+&nbsp;<br>
+Mandated&nbsp;responses&nbsp;are&nbsp;('FLAGS',&nbsp;'EXISTS',&nbsp;'RECENT',&nbsp;'UIDVALIDITY'),&nbsp;so<br>
+other&nbsp;responses&nbsp;should&nbsp;be&nbsp;obtained&nbsp;via&nbsp;&lt;instance&gt;.<a href="#IMAP4_stream-response">response</a>('FLAGS')&nbsp;etc.</tt></dd></dl>
+
+<dl><dt><a name="IMAP4_stream-setacl"><strong>setacl</strong></a>(self, mailbox, who, what)</dt><dd><tt>Set&nbsp;a&nbsp;mailbox&nbsp;acl.<br>
+&nbsp;<br>
+(typ,&nbsp;[data])&nbsp;=&nbsp;&lt;instance&gt;.<a href="#IMAP4_stream-setacl">setacl</a>(mailbox,&nbsp;who,&nbsp;what)</tt></dd></dl>
+
+<dl><dt><a name="IMAP4_stream-setannotation"><strong>setannotation</strong></a>(self, *args)</dt><dd><tt>(typ,&nbsp;[data])&nbsp;=&nbsp;&lt;instance&gt;.<a href="#IMAP4_stream-setannotation">setannotation</a>(mailbox[,&nbsp;entry,&nbsp;attribute]+)<br>
+Set&nbsp;ANNOTATIONs.</tt></dd></dl>
+
+<dl><dt><a name="IMAP4_stream-setquota"><strong>setquota</strong></a>(self, root, limits)</dt><dd><tt>Set&nbsp;the&nbsp;quota&nbsp;root's&nbsp;resource&nbsp;limits.<br>
+&nbsp;<br>
+(typ,&nbsp;[data])&nbsp;=&nbsp;&lt;instance&gt;.<a href="#IMAP4_stream-setquota">setquota</a>(root,&nbsp;limits)</tt></dd></dl>
+
+<dl><dt><a name="IMAP4_stream-socket"><strong>socket</strong></a>(self)</dt><dd><tt>Return&nbsp;socket&nbsp;instance&nbsp;used&nbsp;to&nbsp;connect&nbsp;to&nbsp;<a href="#IMAP4">IMAP4</a>&nbsp;server.<br>
+&nbsp;<br>
+socket&nbsp;=&nbsp;&lt;instance&gt;.<a href="#IMAP4_stream-socket">socket</a>()</tt></dd></dl>
+
+<dl><dt><a name="IMAP4_stream-sort"><strong>sort</strong></a>(self, sort_criteria, charset, *search_criteria)</dt><dd><tt>IMAP4rev1&nbsp;extension&nbsp;SORT&nbsp;command.<br>
+&nbsp;<br>
+(typ,&nbsp;[data])&nbsp;=&nbsp;&lt;instance&gt;.<a href="#IMAP4_stream-sort">sort</a>(sort_criteria,&nbsp;charset,&nbsp;search_criteria,&nbsp;...)</tt></dd></dl>
+
+<dl><dt><a name="IMAP4_stream-starttls"><strong>starttls</strong></a>(self, ssl_context=None)</dt></dl>
+
+<dl><dt><a name="IMAP4_stream-status"><strong>status</strong></a>(self, mailbox, names)</dt><dd><tt>Request&nbsp;named&nbsp;status&nbsp;conditions&nbsp;for&nbsp;mailbox.<br>
+&nbsp;<br>
+(typ,&nbsp;[data])&nbsp;=&nbsp;&lt;instance&gt;.<a href="#IMAP4_stream-status">status</a>(mailbox,&nbsp;names)</tt></dd></dl>
+
+<dl><dt><a name="IMAP4_stream-store"><strong>store</strong></a>(self, message_set, command, flags)</dt><dd><tt>Alters&nbsp;flag&nbsp;dispositions&nbsp;for&nbsp;messages&nbsp;in&nbsp;mailbox.<br>
+&nbsp;<br>
+(typ,&nbsp;[data])&nbsp;=&nbsp;&lt;instance&gt;.<a href="#IMAP4_stream-store">store</a>(message_set,&nbsp;command,&nbsp;flags)</tt></dd></dl>
+
+<dl><dt><a name="IMAP4_stream-subscribe"><strong>subscribe</strong></a>(self, mailbox)</dt><dd><tt>Subscribe&nbsp;to&nbsp;new&nbsp;mailbox.<br>
+&nbsp;<br>
+(typ,&nbsp;[data])&nbsp;=&nbsp;&lt;instance&gt;.<a href="#IMAP4_stream-subscribe">subscribe</a>(mailbox)</tt></dd></dl>
+
+<dl><dt><a name="IMAP4_stream-thread"><strong>thread</strong></a>(self, threading_algorithm, charset, *search_criteria)</dt><dd><tt>IMAPrev1&nbsp;extension&nbsp;THREAD&nbsp;command.<br>
+&nbsp;<br>
+(type,&nbsp;[data])&nbsp;=&nbsp;&lt;instance&gt;.<a href="#IMAP4_stream-thread">thread</a>(threading_algorithm,&nbsp;charset,&nbsp;search_criteria,&nbsp;...)</tt></dd></dl>
+
+<dl><dt><a name="IMAP4_stream-uid"><strong>uid</strong></a>(self, command, *args)</dt><dd><tt>Execute&nbsp;"command&nbsp;arg&nbsp;..."&nbsp;with&nbsp;messages&nbsp;identified&nbsp;by&nbsp;UID,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;rather&nbsp;than&nbsp;message&nbsp;number.<br>
+&nbsp;<br>
+(typ,&nbsp;[data])&nbsp;=&nbsp;&lt;instance&gt;.<a href="#IMAP4_stream-uid">uid</a>(command,&nbsp;arg1,&nbsp;arg2,&nbsp;...)<br>
+&nbsp;<br>
+Returns&nbsp;response&nbsp;appropriate&nbsp;to&nbsp;'command'.</tt></dd></dl>
+
+<dl><dt><a name="IMAP4_stream-unsubscribe"><strong>unsubscribe</strong></a>(self, mailbox)</dt><dd><tt>Unsubscribe&nbsp;from&nbsp;old&nbsp;mailbox.<br>
+&nbsp;<br>
+(typ,&nbsp;[data])&nbsp;=&nbsp;&lt;instance&gt;.<a href="#IMAP4_stream-unsubscribe">unsubscribe</a>(mailbox)</tt></dd></dl>
+
+<dl><dt><a name="IMAP4_stream-xatom"><strong>xatom</strong></a>(self, name, *args)</dt><dd><tt>Allow&nbsp;simple&nbsp;extension&nbsp;commands<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;notified&nbsp;by&nbsp;server&nbsp;in&nbsp;CAPABILITY&nbsp;response.<br>
+&nbsp;<br>
+Assumes&nbsp;command&nbsp;is&nbsp;legal&nbsp;in&nbsp;current&nbsp;state.<br>
+&nbsp;<br>
+(typ,&nbsp;[data])&nbsp;=&nbsp;&lt;instance&gt;.<a href="#IMAP4_stream-xatom">xatom</a>(name,&nbsp;arg,&nbsp;...)<br>
+&nbsp;<br>
+Returns&nbsp;response&nbsp;appropriate&nbsp;to&nbsp;extension&nbsp;command&nbsp;`name'.</tt></dd></dl>
+
+<hr>
+Data descriptors inherited from <a href="imaplib.html#IMAP4">IMAP4</a>:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><tt>dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<hr>
+Data and other attributes inherited from <a href="imaplib.html#IMAP4">IMAP4</a>:<br>
+<dl><dt><strong>abort</strong> = &lt;class 'imaplib.IMAP4.abort'&gt;</dl>
+
+<dl><dt><strong>error</strong> = &lt;class 'imaplib.IMAP4.error'&gt;</dl>
+
+<dl><dt><strong>readonly</strong> = &lt;class 'imaplib.IMAP4.readonly'&gt;</dl>
+
+</td></tr></table></td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#eeaa77">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Functions</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#eeaa77"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl><dt><a name="-Int2AP"><strong>Int2AP</strong></a>(num)</dt><dd><tt>Convert&nbsp;integer&nbsp;to&nbsp;A-P&nbsp;string&nbsp;representation.</tt></dd></dl>
+ <dl><dt><a name="-Internaldate2tuple"><strong>Internaldate2tuple</strong></a>(resp)</dt><dd><tt>Parse&nbsp;an&nbsp;<a href="#IMAP4">IMAP4</a>&nbsp;INTERNALDATE&nbsp;string.<br>
+&nbsp;<br>
+Return&nbsp;corresponding&nbsp;local&nbsp;time.&nbsp;&nbsp;The&nbsp;return&nbsp;value&nbsp;is&nbsp;a<br>
+time.struct_time&nbsp;tuple&nbsp;or&nbsp;None&nbsp;if&nbsp;the&nbsp;string&nbsp;has&nbsp;wrong&nbsp;format.</tt></dd></dl>
+ <dl><dt><a name="-ParseFlags"><strong>ParseFlags</strong></a>(resp)</dt><dd><tt>Convert&nbsp;<a href="#IMAP4">IMAP4</a>&nbsp;flags&nbsp;response&nbsp;to&nbsp;python&nbsp;tuple.</tt></dd></dl>
+ <dl><dt><a name="-Time2Internaldate"><strong>Time2Internaldate</strong></a>(date_time)</dt><dd><tt>Convert&nbsp;date_time&nbsp;to&nbsp;<a href="#IMAP4">IMAP4</a>&nbsp;INTERNALDATE&nbsp;representation.<br>
+&nbsp;<br>
+Return&nbsp;string&nbsp;in&nbsp;form:&nbsp;'"DD-Mmm-YYYY&nbsp;HH:MM:SS&nbsp;+HHMM"'.&nbsp;&nbsp;The<br>
+date_time&nbsp;argument&nbsp;can&nbsp;be&nbsp;a&nbsp;number&nbsp;(int&nbsp;or&nbsp;float)&nbsp;representing<br>
+seconds&nbsp;since&nbsp;epoch&nbsp;(as&nbsp;returned&nbsp;by&nbsp;time.time()),&nbsp;a&nbsp;9-tuple<br>
+representing&nbsp;local&nbsp;time,&nbsp;an&nbsp;instance&nbsp;of&nbsp;time.struct_time&nbsp;(as<br>
+returned&nbsp;by&nbsp;time.localtime()),&nbsp;an&nbsp;aware&nbsp;datetime&nbsp;instance&nbsp;or&nbsp;a<br>
+double-quoted&nbsp;string.&nbsp;&nbsp;In&nbsp;the&nbsp;last&nbsp;case,&nbsp;it&nbsp;is&nbsp;assumed&nbsp;to&nbsp;already<br>
+be&nbsp;in&nbsp;the&nbsp;correct&nbsp;format.</tt></dd></dl>
+</td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#55aa55">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Data</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#55aa55"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><strong>__all__</strong> = ['IMAP4', 'IMAP4_stream', 'Internaldate2tuple', 'Int2AP', 'ParseFlags', 'Time2Internaldate', 'IMAP4_SSL']</td></tr></table>
+</body></html>

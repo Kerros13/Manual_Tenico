@@ -1,0 +1,128 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head><title>Python: built-in module _blake2</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+</head><body bgcolor="#f0f0f8">
+
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="heading">
+<tr bgcolor="#7799ee">
+<td valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong>_blake2</strong></big></big></font></td
+><td align=right valign=bottom
+><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br>(built-in)</font></td></tr></table>
+    <p><tt>_blake2b&nbsp;provides&nbsp;BLAKE2b&nbsp;for&nbsp;hashlib</tt></p>
+<p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ee77aa">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Classes</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#ee77aa"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl>
+<dt><font face="helvetica, arial"><a href="builtins.html#object">builtins.object</a>
+</font></dt><dd>
+<dl>
+<dt><font face="helvetica, arial"><a href="_blake2.html#blake2b">blake2b</a>
+</font></dt><dt><font face="helvetica, arial"><a href="_blake2.html#blake2s">blake2s</a>
+</font></dt></dl>
+</dd>
+</dl>
+ <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="blake2b">class <strong>blake2b</strong></a>(<a href="builtins.html#object">builtins.object</a>)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt><a href="#blake2b">blake2b</a>(data=b'',&nbsp;/,&nbsp;*,&nbsp;digest_size=64,&nbsp;key=b'',&nbsp;salt=b'',&nbsp;person=b'',&nbsp;fanout=1,&nbsp;depth=1,&nbsp;leaf_size=0,&nbsp;node_offset=0,&nbsp;node_depth=0,&nbsp;inner_size=0,&nbsp;last_node=False)<br>
+&nbsp;<br>
+Return&nbsp;a&nbsp;new&nbsp;BLAKE2b&nbsp;hash&nbsp;<a href="builtins.html#object">object</a>.<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%">Methods defined here:<br>
+<dl><dt><a name="blake2b-copy"><strong>copy</strong></a>(self, /)</dt><dd><tt>Return&nbsp;a&nbsp;copy&nbsp;of&nbsp;the&nbsp;hash&nbsp;<a href="builtins.html#object">object</a>.</tt></dd></dl>
+
+<dl><dt><a name="blake2b-digest"><strong>digest</strong></a>(self, /)</dt><dd><tt>Return&nbsp;the&nbsp;digest&nbsp;value&nbsp;as&nbsp;a&nbsp;bytes&nbsp;<a href="builtins.html#object">object</a>.</tt></dd></dl>
+
+<dl><dt><a name="blake2b-hexdigest"><strong>hexdigest</strong></a>(self, /)</dt><dd><tt>Return&nbsp;the&nbsp;digest&nbsp;value&nbsp;as&nbsp;a&nbsp;string&nbsp;of&nbsp;hexadecimal&nbsp;digits.</tt></dd></dl>
+
+<dl><dt><a name="blake2b-update"><strong>update</strong></a>(self, data, /)</dt><dd><tt>Update&nbsp;this&nbsp;hash&nbsp;<a href="builtins.html#object">object</a>'s&nbsp;state&nbsp;with&nbsp;the&nbsp;provided&nbsp;bytes-like&nbsp;<a href="builtins.html#object">object</a>.</tt></dd></dl>
+
+<hr>
+Static methods defined here:<br>
+<dl><dt><a name="blake2b-__new__"><strong>__new__</strong></a>(*args, **kwargs)<font color="#909090"><font face="helvetica, arial"> from <a href="builtins.html#type">builtins.type</a></font></font></dt><dd><tt>Create&nbsp;and&nbsp;return&nbsp;a&nbsp;new&nbsp;<a href="builtins.html#object">object</a>.&nbsp;&nbsp;See&nbsp;help(type)&nbsp;for&nbsp;accurate&nbsp;signature.</tt></dd></dl>
+
+<hr>
+Data descriptors defined here:<br>
+<dl><dt><strong>block_size</strong></dt>
+</dl>
+<dl><dt><strong>digest_size</strong></dt>
+</dl>
+<dl><dt><strong>name</strong></dt>
+</dl>
+<hr>
+Data and other attributes defined here:<br>
+<dl><dt><strong>MAX_DIGEST_SIZE</strong> = 64</dl>
+
+<dl><dt><strong>MAX_KEY_SIZE</strong> = 64</dl>
+
+<dl><dt><strong>PERSON_SIZE</strong> = 16</dl>
+
+<dl><dt><strong>SALT_SIZE</strong> = 16</dl>
+
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="blake2s">class <strong>blake2s</strong></a>(<a href="builtins.html#object">builtins.object</a>)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt><a href="#blake2s">blake2s</a>(data=b'',&nbsp;/,&nbsp;*,&nbsp;digest_size=32,&nbsp;key=b'',&nbsp;salt=b'',&nbsp;person=b'',&nbsp;fanout=1,&nbsp;depth=1,&nbsp;leaf_size=0,&nbsp;node_offset=0,&nbsp;node_depth=0,&nbsp;inner_size=0,&nbsp;last_node=False)<br>
+&nbsp;<br>
+Return&nbsp;a&nbsp;new&nbsp;BLAKE2s&nbsp;hash&nbsp;<a href="builtins.html#object">object</a>.<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%">Methods defined here:<br>
+<dl><dt><a name="blake2s-copy"><strong>copy</strong></a>(self, /)</dt><dd><tt>Return&nbsp;a&nbsp;copy&nbsp;of&nbsp;the&nbsp;hash&nbsp;<a href="builtins.html#object">object</a>.</tt></dd></dl>
+
+<dl><dt><a name="blake2s-digest"><strong>digest</strong></a>(self, /)</dt><dd><tt>Return&nbsp;the&nbsp;digest&nbsp;value&nbsp;as&nbsp;a&nbsp;bytes&nbsp;<a href="builtins.html#object">object</a>.</tt></dd></dl>
+
+<dl><dt><a name="blake2s-hexdigest"><strong>hexdigest</strong></a>(self, /)</dt><dd><tt>Return&nbsp;the&nbsp;digest&nbsp;value&nbsp;as&nbsp;a&nbsp;string&nbsp;of&nbsp;hexadecimal&nbsp;digits.</tt></dd></dl>
+
+<dl><dt><a name="blake2s-update"><strong>update</strong></a>(self, data, /)</dt><dd><tt>Update&nbsp;this&nbsp;hash&nbsp;<a href="builtins.html#object">object</a>'s&nbsp;state&nbsp;with&nbsp;the&nbsp;provided&nbsp;bytes-like&nbsp;<a href="builtins.html#object">object</a>.</tt></dd></dl>
+
+<hr>
+Static methods defined here:<br>
+<dl><dt><a name="blake2s-__new__"><strong>__new__</strong></a>(*args, **kwargs)<font color="#909090"><font face="helvetica, arial"> from <a href="builtins.html#type">builtins.type</a></font></font></dt><dd><tt>Create&nbsp;and&nbsp;return&nbsp;a&nbsp;new&nbsp;<a href="builtins.html#object">object</a>.&nbsp;&nbsp;See&nbsp;help(type)&nbsp;for&nbsp;accurate&nbsp;signature.</tt></dd></dl>
+
+<hr>
+Data descriptors defined here:<br>
+<dl><dt><strong>block_size</strong></dt>
+</dl>
+<dl><dt><strong>digest_size</strong></dt>
+</dl>
+<dl><dt><strong>name</strong></dt>
+</dl>
+<hr>
+Data and other attributes defined here:<br>
+<dl><dt><strong>MAX_DIGEST_SIZE</strong> = 32</dl>
+
+<dl><dt><strong>MAX_KEY_SIZE</strong> = 32</dl>
+
+<dl><dt><strong>PERSON_SIZE</strong> = 8</dl>
+
+<dl><dt><strong>SALT_SIZE</strong> = 8</dl>
+
+</td></tr></table></td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#55aa55">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Data</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#55aa55"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><strong>BLAKE2B_MAX_DIGEST_SIZE</strong> = 64<br>
+<strong>BLAKE2B_MAX_KEY_SIZE</strong> = 64<br>
+<strong>BLAKE2B_PERSON_SIZE</strong> = 16<br>
+<strong>BLAKE2B_SALT_SIZE</strong> = 16<br>
+<strong>BLAKE2S_MAX_DIGEST_SIZE</strong> = 32<br>
+<strong>BLAKE2S_MAX_KEY_SIZE</strong> = 32<br>
+<strong>BLAKE2S_PERSON_SIZE</strong> = 8<br>
+<strong>BLAKE2S_SALT_SIZE</strong> = 8</td></tr></table>
+</body></html>

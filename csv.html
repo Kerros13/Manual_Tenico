@@ -1,0 +1,487 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head><title>Python: module csv</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+</head><body bgcolor="#f0f0f8">
+
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="heading">
+<tr bgcolor="#7799ee">
+<td valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong>csv</strong></big></big> (version 1.0)</font></td
+><td align=right valign=bottom
+><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:c%3A%5Cpython38%5Clib%5Ccsv.py">c:\python38\lib\csv.py</a><br><a href="https://docs.python.org/3.8/library/csv">Module Reference</a></font></td></tr></table>
+    <p><tt>CSV&nbsp;parsing&nbsp;and&nbsp;writing.<br>
+&nbsp;<br>
+This&nbsp;module&nbsp;provides&nbsp;classes&nbsp;that&nbsp;assist&nbsp;in&nbsp;the&nbsp;reading&nbsp;and&nbsp;writing<br>
+of&nbsp;Comma&nbsp;Separated&nbsp;Value&nbsp;(CSV)&nbsp;files,&nbsp;and&nbsp;implements&nbsp;the&nbsp;interface<br>
+described&nbsp;by&nbsp;<a href="http://www.python.org/dev/peps/pep-0305/">PEP&nbsp;305</a>.&nbsp;&nbsp;Although&nbsp;many&nbsp;CSV&nbsp;files&nbsp;are&nbsp;simple&nbsp;to&nbsp;parse,<br>
+the&nbsp;format&nbsp;is&nbsp;not&nbsp;formally&nbsp;defined&nbsp;by&nbsp;a&nbsp;stable&nbsp;specification&nbsp;and<br>
+is&nbsp;subtle&nbsp;enough&nbsp;that&nbsp;parsing&nbsp;lines&nbsp;of&nbsp;a&nbsp;CSV&nbsp;file&nbsp;with&nbsp;something<br>
+like&nbsp;line.split(",")&nbsp;is&nbsp;bound&nbsp;to&nbsp;fail.&nbsp;&nbsp;The&nbsp;module&nbsp;supports&nbsp;three<br>
+basic&nbsp;APIs:&nbsp;reading,&nbsp;writing,&nbsp;and&nbsp;registration&nbsp;of&nbsp;dialects.<br>
+&nbsp;<br>
+&nbsp;<br>
+DIALECT&nbsp;REGISTRATION:<br>
+&nbsp;<br>
+Readers&nbsp;and&nbsp;writers&nbsp;support&nbsp;a&nbsp;dialect&nbsp;argument,&nbsp;which&nbsp;is&nbsp;a&nbsp;convenient<br>
+handle&nbsp;on&nbsp;a&nbsp;group&nbsp;of&nbsp;settings.&nbsp;&nbsp;When&nbsp;the&nbsp;dialect&nbsp;argument&nbsp;is&nbsp;a&nbsp;string,<br>
+it&nbsp;identifies&nbsp;one&nbsp;of&nbsp;the&nbsp;dialects&nbsp;previously&nbsp;registered&nbsp;with&nbsp;the&nbsp;module.<br>
+If&nbsp;it&nbsp;is&nbsp;a&nbsp;class&nbsp;or&nbsp;instance,&nbsp;the&nbsp;attributes&nbsp;of&nbsp;the&nbsp;argument&nbsp;are&nbsp;used&nbsp;as<br>
+the&nbsp;settings&nbsp;for&nbsp;the&nbsp;reader&nbsp;or&nbsp;writer:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;class&nbsp;<a href="#excel">excel</a>:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;delimiter&nbsp;=&nbsp;','<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;quotechar&nbsp;=&nbsp;'"'<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;escapechar&nbsp;=&nbsp;None<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;doublequote&nbsp;=&nbsp;True<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;skipinitialspace&nbsp;=&nbsp;False<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;lineterminator&nbsp;=&nbsp;'\r\n'<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;quoting&nbsp;=&nbsp;QUOTE_MINIMAL<br>
+&nbsp;<br>
+SETTINGS:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;quotechar&nbsp;-&nbsp;specifies&nbsp;a&nbsp;one-character&nbsp;string&nbsp;to&nbsp;use&nbsp;as&nbsp;the<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;quoting&nbsp;character.&nbsp;&nbsp;It&nbsp;defaults&nbsp;to&nbsp;'"'.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;delimiter&nbsp;-&nbsp;specifies&nbsp;a&nbsp;one-character&nbsp;string&nbsp;to&nbsp;use&nbsp;as&nbsp;the<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;field&nbsp;separator.&nbsp;&nbsp;It&nbsp;defaults&nbsp;to&nbsp;','.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;skipinitialspace&nbsp;-&nbsp;specifies&nbsp;how&nbsp;to&nbsp;interpret&nbsp;whitespace&nbsp;which<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;immediately&nbsp;follows&nbsp;a&nbsp;delimiter.&nbsp;&nbsp;It&nbsp;defaults&nbsp;to&nbsp;False,&nbsp;which<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;means&nbsp;that&nbsp;whitespace&nbsp;immediately&nbsp;following&nbsp;a&nbsp;delimiter&nbsp;is&nbsp;part<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;of&nbsp;the&nbsp;following&nbsp;field.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;lineterminator&nbsp;-&nbsp;&nbsp;specifies&nbsp;the&nbsp;character&nbsp;sequence&nbsp;which&nbsp;should<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;terminate&nbsp;rows.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;quoting&nbsp;-&nbsp;controls&nbsp;when&nbsp;quotes&nbsp;should&nbsp;be&nbsp;generated&nbsp;by&nbsp;the&nbsp;writer.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;It&nbsp;can&nbsp;take&nbsp;on&nbsp;any&nbsp;of&nbsp;the&nbsp;following&nbsp;module&nbsp;constants:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;csv.QUOTE_MINIMAL&nbsp;means&nbsp;only&nbsp;when&nbsp;required,&nbsp;for&nbsp;example,&nbsp;when&nbsp;a<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;field&nbsp;contains&nbsp;either&nbsp;the&nbsp;quotechar&nbsp;or&nbsp;the&nbsp;delimiter<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;csv.QUOTE_ALL&nbsp;means&nbsp;that&nbsp;quotes&nbsp;are&nbsp;always&nbsp;placed&nbsp;around&nbsp;fields.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;csv.QUOTE_NONNUMERIC&nbsp;means&nbsp;that&nbsp;quotes&nbsp;are&nbsp;always&nbsp;placed&nbsp;around<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;fields&nbsp;which&nbsp;do&nbsp;not&nbsp;parse&nbsp;as&nbsp;integers&nbsp;or&nbsp;floating&nbsp;point<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;numbers.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;csv.QUOTE_NONE&nbsp;means&nbsp;that&nbsp;quotes&nbsp;are&nbsp;never&nbsp;placed&nbsp;around&nbsp;fields.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;escapechar&nbsp;-&nbsp;specifies&nbsp;a&nbsp;one-character&nbsp;string&nbsp;used&nbsp;to&nbsp;escape<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;the&nbsp;delimiter&nbsp;when&nbsp;quoting&nbsp;is&nbsp;set&nbsp;to&nbsp;QUOTE_NONE.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;doublequote&nbsp;-&nbsp;controls&nbsp;the&nbsp;handling&nbsp;of&nbsp;quotes&nbsp;inside&nbsp;fields.&nbsp;&nbsp;When<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;True,&nbsp;two&nbsp;consecutive&nbsp;quotes&nbsp;are&nbsp;interpreted&nbsp;as&nbsp;one&nbsp;during&nbsp;read,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;and&nbsp;when&nbsp;writing,&nbsp;each&nbsp;quote&nbsp;character&nbsp;embedded&nbsp;in&nbsp;the&nbsp;data&nbsp;is<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;written&nbsp;as&nbsp;two&nbsp;quotes</tt></p>
+<p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#aa55cc">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Modules</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#aa55cc"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><table width="100%" summary="list"><tr><td width="25%" valign=top><a href="re.html">re</a><br>
+</td><td width="25%" valign=top></td><td width="25%" valign=top></td><td width="25%" valign=top></td></tr></table></td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ee77aa">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Classes</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#ee77aa"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl>
+<dt><font face="helvetica, arial"><a href="builtins.html#Exception">builtins.Exception</a>(<a href="builtins.html#BaseException">builtins.BaseException</a>)
+</font></dt><dd>
+<dl>
+<dt><font face="helvetica, arial"><a href="_csv.html#Error">_csv.Error</a>
+</font></dt></dl>
+</dd>
+<dt><font face="helvetica, arial"><a href="builtins.html#object">builtins.object</a>
+</font></dt><dd>
+<dl>
+<dt><font face="helvetica, arial"><a href="csv.html#Dialect">Dialect</a>
+</font></dt><dd>
+<dl>
+<dt><font face="helvetica, arial"><a href="csv.html#excel">excel</a>
+</font></dt><dd>
+<dl>
+<dt><font face="helvetica, arial"><a href="csv.html#excel_tab">excel_tab</a>
+</font></dt></dl>
+</dd>
+<dt><font face="helvetica, arial"><a href="csv.html#unix_dialect">unix_dialect</a>
+</font></dt></dl>
+</dd>
+<dt><font face="helvetica, arial"><a href="csv.html#DictReader">DictReader</a>
+</font></dt><dt><font face="helvetica, arial"><a href="csv.html#DictWriter">DictWriter</a>
+</font></dt><dt><font face="helvetica, arial"><a href="csv.html#Sniffer">Sniffer</a>
+</font></dt></dl>
+</dd>
+</dl>
+ <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="Dialect">class <strong>Dialect</strong></a>(<a href="builtins.html#object">builtins.object</a>)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt>Describe&nbsp;a&nbsp;CSV&nbsp;dialect.<br>
+&nbsp;<br>
+This&nbsp;must&nbsp;be&nbsp;subclassed&nbsp;(see&nbsp;csv.<a href="#excel">excel</a>).&nbsp;&nbsp;Valid&nbsp;attributes&nbsp;are:<br>
+delimiter,&nbsp;quotechar,&nbsp;escapechar,&nbsp;doublequote,&nbsp;skipinitialspace,<br>
+lineterminator,&nbsp;quoting.<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%">Methods defined here:<br>
+<dl><dt><a name="Dialect-__init__"><strong>__init__</strong></a>(self)</dt><dd><tt>Initialize&nbsp;self.&nbsp;&nbsp;See&nbsp;help(type(self))&nbsp;for&nbsp;accurate&nbsp;signature.</tt></dd></dl>
+
+<hr>
+Data descriptors defined here:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><tt>dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<hr>
+Data and other attributes defined here:<br>
+<dl><dt><strong>delimiter</strong> = None</dl>
+
+<dl><dt><strong>doublequote</strong> = None</dl>
+
+<dl><dt><strong>escapechar</strong> = None</dl>
+
+<dl><dt><strong>lineterminator</strong> = None</dl>
+
+<dl><dt><strong>quotechar</strong> = None</dl>
+
+<dl><dt><strong>quoting</strong> = None</dl>
+
+<dl><dt><strong>skipinitialspace</strong> = None</dl>
+
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="DictReader">class <strong>DictReader</strong></a>(<a href="builtins.html#object">builtins.object</a>)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt><a href="#DictReader">DictReader</a>(f,&nbsp;fieldnames=None,&nbsp;restkey=None,&nbsp;restval=None,&nbsp;dialect='<a href="#excel">excel</a>',&nbsp;*args,&nbsp;**kwds)<br>
+&nbsp;<br>
+<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%">Methods defined here:<br>
+<dl><dt><a name="DictReader-__init__"><strong>__init__</strong></a>(self, f, fieldnames=None, restkey=None, restval=None, dialect='excel', *args, **kwds)</dt><dd><tt>Initialize&nbsp;self.&nbsp;&nbsp;See&nbsp;help(type(self))&nbsp;for&nbsp;accurate&nbsp;signature.</tt></dd></dl>
+
+<dl><dt><a name="DictReader-__iter__"><strong>__iter__</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="DictReader-__next__"><strong>__next__</strong></a>(self)</dt></dl>
+
+<hr>
+Data descriptors defined here:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><tt>dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<dl><dt><strong>fieldnames</strong></dt>
+</dl>
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="DictWriter">class <strong>DictWriter</strong></a>(<a href="builtins.html#object">builtins.object</a>)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt><a href="#DictWriter">DictWriter</a>(f,&nbsp;fieldnames,&nbsp;restval='',&nbsp;extrasaction='raise',&nbsp;dialect='<a href="#excel">excel</a>',&nbsp;*args,&nbsp;**kwds)<br>
+&nbsp;<br>
+<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%">Methods defined here:<br>
+<dl><dt><a name="DictWriter-__init__"><strong>__init__</strong></a>(self, f, fieldnames, restval='', extrasaction='raise', dialect='excel', *args, **kwds)</dt><dd><tt>Initialize&nbsp;self.&nbsp;&nbsp;See&nbsp;help(type(self))&nbsp;for&nbsp;accurate&nbsp;signature.</tt></dd></dl>
+
+<dl><dt><a name="DictWriter-writeheader"><strong>writeheader</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="DictWriter-writerow"><strong>writerow</strong></a>(self, rowdict)</dt></dl>
+
+<dl><dt><a name="DictWriter-writerows"><strong>writerows</strong></a>(self, rowdicts)</dt></dl>
+
+<hr>
+Data descriptors defined here:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><tt>dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="Error">class <strong>Error</strong></a>(<a href="builtins.html#Exception">builtins.Exception</a>)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt>Common&nbsp;base&nbsp;class&nbsp;for&nbsp;all&nbsp;non-exit&nbsp;exceptions.<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%"><dl><dt>Method resolution order:</dt>
+<dd><a href="_csv.html#Error">Error</a></dd>
+<dd><a href="builtins.html#Exception">builtins.Exception</a></dd>
+<dd><a href="builtins.html#BaseException">builtins.BaseException</a></dd>
+<dd><a href="builtins.html#object">builtins.object</a></dd>
+</dl>
+<hr>
+Data descriptors defined here:<br>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<hr>
+Methods inherited from <a href="builtins.html#Exception">builtins.Exception</a>:<br>
+<dl><dt><a name="Error-__init__"><strong>__init__</strong></a>(self, /, *args, **kwargs)</dt><dd><tt>Initialize&nbsp;self.&nbsp;&nbsp;See&nbsp;help(type(self))&nbsp;for&nbsp;accurate&nbsp;signature.</tt></dd></dl>
+
+<hr>
+Static methods inherited from <a href="builtins.html#Exception">builtins.Exception</a>:<br>
+<dl><dt><a name="Error-__new__"><strong>__new__</strong></a>(*args, **kwargs)<font color="#909090"><font face="helvetica, arial"> from <a href="builtins.html#type">builtins.type</a></font></font></dt><dd><tt>Create&nbsp;and&nbsp;return&nbsp;a&nbsp;new&nbsp;<a href="builtins.html#object">object</a>.&nbsp;&nbsp;See&nbsp;help(type)&nbsp;for&nbsp;accurate&nbsp;signature.</tt></dd></dl>
+
+<hr>
+Methods inherited from <a href="builtins.html#BaseException">builtins.BaseException</a>:<br>
+<dl><dt><a name="Error-__delattr__"><strong>__delattr__</strong></a>(self, name, /)</dt><dd><tt>Implement&nbsp;delattr(self,&nbsp;name).</tt></dd></dl>
+
+<dl><dt><a name="Error-__getattribute__"><strong>__getattribute__</strong></a>(self, name, /)</dt><dd><tt>Return&nbsp;getattr(self,&nbsp;name).</tt></dd></dl>
+
+<dl><dt><a name="Error-__reduce__"><strong>__reduce__</strong></a>(...)</dt><dd><tt>Helper&nbsp;for&nbsp;pickle.</tt></dd></dl>
+
+<dl><dt><a name="Error-__repr__"><strong>__repr__</strong></a>(self, /)</dt><dd><tt>Return&nbsp;repr(self).</tt></dd></dl>
+
+<dl><dt><a name="Error-__setattr__"><strong>__setattr__</strong></a>(self, name, value, /)</dt><dd><tt>Implement&nbsp;setattr(self,&nbsp;name,&nbsp;value).</tt></dd></dl>
+
+<dl><dt><a name="Error-__setstate__"><strong>__setstate__</strong></a>(...)</dt></dl>
+
+<dl><dt><a name="Error-__str__"><strong>__str__</strong></a>(self, /)</dt><dd><tt>Return&nbsp;str(self).</tt></dd></dl>
+
+<dl><dt><a name="Error-with_traceback"><strong>with_traceback</strong></a>(...)</dt><dd><tt><a href="builtins.html#Exception">Exception</a>.<a href="#Error-with_traceback">with_traceback</a>(tb)&nbsp;--<br>
+set&nbsp;self.<strong>__traceback__</strong>&nbsp;to&nbsp;tb&nbsp;and&nbsp;return&nbsp;self.</tt></dd></dl>
+
+<hr>
+Data descriptors inherited from <a href="builtins.html#BaseException">builtins.BaseException</a>:<br>
+<dl><dt><strong>__cause__</strong></dt>
+<dd><tt>exception&nbsp;cause</tt></dd>
+</dl>
+<dl><dt><strong>__context__</strong></dt>
+<dd><tt>exception&nbsp;context</tt></dd>
+</dl>
+<dl><dt><strong>__dict__</strong></dt>
+</dl>
+<dl><dt><strong>__suppress_context__</strong></dt>
+</dl>
+<dl><dt><strong>__traceback__</strong></dt>
+</dl>
+<dl><dt><strong>args</strong></dt>
+</dl>
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="Sniffer">class <strong>Sniffer</strong></a>(<a href="builtins.html#object">builtins.object</a>)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt>"Sniffs"&nbsp;the&nbsp;format&nbsp;of&nbsp;a&nbsp;CSV&nbsp;file&nbsp;(i.e.&nbsp;delimiter,&nbsp;quotechar)<br>
+Returns&nbsp;a&nbsp;<a href="#Dialect">Dialect</a>&nbsp;<a href="builtins.html#object">object</a>.<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%">Methods defined here:<br>
+<dl><dt><a name="Sniffer-__init__"><strong>__init__</strong></a>(self)</dt><dd><tt>Initialize&nbsp;self.&nbsp;&nbsp;See&nbsp;help(type(self))&nbsp;for&nbsp;accurate&nbsp;signature.</tt></dd></dl>
+
+<dl><dt><a name="Sniffer-has_header"><strong>has_header</strong></a>(self, sample)</dt></dl>
+
+<dl><dt><a name="Sniffer-sniff"><strong>sniff</strong></a>(self, sample, delimiters=None)</dt><dd><tt>Returns&nbsp;a&nbsp;dialect&nbsp;(or&nbsp;None)&nbsp;corresponding&nbsp;to&nbsp;the&nbsp;sample</tt></dd></dl>
+
+<hr>
+Data descriptors defined here:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><tt>dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="excel">class <strong>excel</strong></a>(<a href="csv.html#Dialect">Dialect</a>)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt>Describe&nbsp;the&nbsp;usual&nbsp;properties&nbsp;of&nbsp;Excel-generated&nbsp;CSV&nbsp;files.<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%"><dl><dt>Method resolution order:</dt>
+<dd><a href="csv.html#excel">excel</a></dd>
+<dd><a href="csv.html#Dialect">Dialect</a></dd>
+<dd><a href="builtins.html#object">builtins.object</a></dd>
+</dl>
+<hr>
+Data and other attributes defined here:<br>
+<dl><dt><strong>delimiter</strong> = ','</dl>
+
+<dl><dt><strong>doublequote</strong> = True</dl>
+
+<dl><dt><strong>lineterminator</strong> = '<font color="#c040c0">\r\n</font>'</dl>
+
+<dl><dt><strong>quotechar</strong> = '"'</dl>
+
+<dl><dt><strong>quoting</strong> = 0</dl>
+
+<dl><dt><strong>skipinitialspace</strong> = False</dl>
+
+<hr>
+Methods inherited from <a href="csv.html#Dialect">Dialect</a>:<br>
+<dl><dt><a name="excel-__init__"><strong>__init__</strong></a>(self)</dt><dd><tt>Initialize&nbsp;self.&nbsp;&nbsp;See&nbsp;help(type(self))&nbsp;for&nbsp;accurate&nbsp;signature.</tt></dd></dl>
+
+<hr>
+Data descriptors inherited from <a href="csv.html#Dialect">Dialect</a>:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><tt>dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<hr>
+Data and other attributes inherited from <a href="csv.html#Dialect">Dialect</a>:<br>
+<dl><dt><strong>escapechar</strong> = None</dl>
+
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="excel_tab">class <strong>excel_tab</strong></a>(<a href="csv.html#excel">excel</a>)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt>Describe&nbsp;the&nbsp;usual&nbsp;properties&nbsp;of&nbsp;Excel-generated&nbsp;TAB-delimited&nbsp;files.<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%"><dl><dt>Method resolution order:</dt>
+<dd><a href="csv.html#excel_tab">excel_tab</a></dd>
+<dd><a href="csv.html#excel">excel</a></dd>
+<dd><a href="csv.html#Dialect">Dialect</a></dd>
+<dd><a href="builtins.html#object">builtins.object</a></dd>
+</dl>
+<hr>
+Data and other attributes defined here:<br>
+<dl><dt><strong>delimiter</strong> = '<font color="#c040c0">\t</font>'</dl>
+
+<hr>
+Data and other attributes inherited from <a href="csv.html#excel">excel</a>:<br>
+<dl><dt><strong>doublequote</strong> = True</dl>
+
+<dl><dt><strong>lineterminator</strong> = '<font color="#c040c0">\r\n</font>'</dl>
+
+<dl><dt><strong>quotechar</strong> = '"'</dl>
+
+<dl><dt><strong>quoting</strong> = 0</dl>
+
+<dl><dt><strong>skipinitialspace</strong> = False</dl>
+
+<hr>
+Methods inherited from <a href="csv.html#Dialect">Dialect</a>:<br>
+<dl><dt><a name="excel_tab-__init__"><strong>__init__</strong></a>(self)</dt><dd><tt>Initialize&nbsp;self.&nbsp;&nbsp;See&nbsp;help(type(self))&nbsp;for&nbsp;accurate&nbsp;signature.</tt></dd></dl>
+
+<hr>
+Data descriptors inherited from <a href="csv.html#Dialect">Dialect</a>:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><tt>dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<hr>
+Data and other attributes inherited from <a href="csv.html#Dialect">Dialect</a>:<br>
+<dl><dt><strong>escapechar</strong> = None</dl>
+
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="unix_dialect">class <strong>unix_dialect</strong></a>(<a href="csv.html#Dialect">Dialect</a>)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt>Describe&nbsp;the&nbsp;usual&nbsp;properties&nbsp;of&nbsp;Unix-generated&nbsp;CSV&nbsp;files.<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%"><dl><dt>Method resolution order:</dt>
+<dd><a href="csv.html#unix_dialect">unix_dialect</a></dd>
+<dd><a href="csv.html#Dialect">Dialect</a></dd>
+<dd><a href="builtins.html#object">builtins.object</a></dd>
+</dl>
+<hr>
+Data and other attributes defined here:<br>
+<dl><dt><strong>delimiter</strong> = ','</dl>
+
+<dl><dt><strong>doublequote</strong> = True</dl>
+
+<dl><dt><strong>lineterminator</strong> = '<font color="#c040c0">\n</font>'</dl>
+
+<dl><dt><strong>quotechar</strong> = '"'</dl>
+
+<dl><dt><strong>quoting</strong> = 1</dl>
+
+<dl><dt><strong>skipinitialspace</strong> = False</dl>
+
+<hr>
+Methods inherited from <a href="csv.html#Dialect">Dialect</a>:<br>
+<dl><dt><a name="unix_dialect-__init__"><strong>__init__</strong></a>(self)</dt><dd><tt>Initialize&nbsp;self.&nbsp;&nbsp;See&nbsp;help(type(self))&nbsp;for&nbsp;accurate&nbsp;signature.</tt></dd></dl>
+
+<hr>
+Data descriptors inherited from <a href="csv.html#Dialect">Dialect</a>:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><tt>dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<hr>
+Data and other attributes inherited from <a href="csv.html#Dialect">Dialect</a>:<br>
+<dl><dt><strong>escapechar</strong> = None</dl>
+
+</td></tr></table></td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#eeaa77">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Functions</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#eeaa77"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl><dt><a name="-field_size_limit"><strong>field_size_limit</strong></a>(...)</dt><dd><tt>Sets&nbsp;an&nbsp;upper&nbsp;limit&nbsp;on&nbsp;parsed&nbsp;fields.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;csv.<a href="#-field_size_limit">field_size_limit</a>([limit])<br>
+&nbsp;<br>
+Returns&nbsp;old&nbsp;limit.&nbsp;If&nbsp;limit&nbsp;is&nbsp;not&nbsp;given,&nbsp;no&nbsp;new&nbsp;limit&nbsp;is&nbsp;set&nbsp;and<br>
+the&nbsp;old&nbsp;limit&nbsp;is&nbsp;returned</tt></dd></dl>
+ <dl><dt><a name="-get_dialect"><strong>get_dialect</strong></a>(...)</dt><dd><tt>Return&nbsp;the&nbsp;dialect&nbsp;instance&nbsp;associated&nbsp;with&nbsp;name.<br>
+dialect&nbsp;=&nbsp;csv.<a href="#-get_dialect">get_dialect</a>(name)</tt></dd></dl>
+ <dl><dt><a name="-list_dialects"><strong>list_dialects</strong></a>(...)</dt><dd><tt>Return&nbsp;a&nbsp;list&nbsp;of&nbsp;all&nbsp;know&nbsp;dialect&nbsp;names.<br>
+names&nbsp;=&nbsp;csv.<a href="#-list_dialects">list_dialects</a>()</tt></dd></dl>
+ <dl><dt><a name="-reader"><strong>reader</strong></a>(...)</dt><dd><tt>csv_reader&nbsp;=&nbsp;<a href="#-reader">reader</a>(iterable&nbsp;[,&nbsp;dialect='<a href="#excel">excel</a>']<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[optional&nbsp;keyword&nbsp;args])<br>
+&nbsp;&nbsp;&nbsp;&nbsp;for&nbsp;row&nbsp;in&nbsp;csv_reader:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;process(row)<br>
+&nbsp;<br>
+The&nbsp;"iterable"&nbsp;argument&nbsp;can&nbsp;be&nbsp;any&nbsp;<a href="builtins.html#object">object</a>&nbsp;that&nbsp;returns&nbsp;a&nbsp;line<br>
+of&nbsp;input&nbsp;for&nbsp;each&nbsp;iteration,&nbsp;such&nbsp;as&nbsp;a&nbsp;file&nbsp;<a href="builtins.html#object">object</a>&nbsp;or&nbsp;a&nbsp;list.&nbsp;&nbsp;The<br>
+optional&nbsp;"dialect"&nbsp;parameter&nbsp;is&nbsp;discussed&nbsp;below.&nbsp;&nbsp;The&nbsp;function<br>
+also&nbsp;accepts&nbsp;optional&nbsp;keyword&nbsp;arguments&nbsp;which&nbsp;override&nbsp;settings<br>
+provided&nbsp;by&nbsp;the&nbsp;dialect.<br>
+&nbsp;<br>
+The&nbsp;returned&nbsp;<a href="builtins.html#object">object</a>&nbsp;is&nbsp;an&nbsp;iterator.&nbsp;&nbsp;Each&nbsp;iteration&nbsp;returns&nbsp;a&nbsp;row<br>
+of&nbsp;the&nbsp;CSV&nbsp;file&nbsp;(which&nbsp;can&nbsp;span&nbsp;multiple&nbsp;input&nbsp;lines).</tt></dd></dl>
+ <dl><dt><a name="-register_dialect"><strong>register_dialect</strong></a>(...)</dt><dd><tt>Create&nbsp;a&nbsp;mapping&nbsp;from&nbsp;a&nbsp;string&nbsp;name&nbsp;to&nbsp;a&nbsp;dialect&nbsp;class.<br>
+dialect&nbsp;=&nbsp;csv.<a href="#-register_dialect">register_dialect</a>(name[,&nbsp;dialect[,&nbsp;**fmtparams]])</tt></dd></dl>
+ <dl><dt><a name="-unregister_dialect"><strong>unregister_dialect</strong></a>(...)</dt><dd><tt>Delete&nbsp;the&nbsp;name/dialect&nbsp;mapping&nbsp;associated&nbsp;with&nbsp;a&nbsp;string&nbsp;name.<br>
+csv.<a href="#-unregister_dialect">unregister_dialect</a>(name)</tt></dd></dl>
+ <dl><dt><a name="-writer"><strong>writer</strong></a>(...)</dt><dd><tt>csv_writer&nbsp;=&nbsp;csv.<a href="#-writer">writer</a>(fileobj&nbsp;[,&nbsp;dialect='<a href="#excel">excel</a>']<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[optional&nbsp;keyword&nbsp;args])<br>
+&nbsp;&nbsp;&nbsp;&nbsp;for&nbsp;row&nbsp;in&nbsp;sequence:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;csv_writer.writerow(row)<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;[or]<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;csv_writer&nbsp;=&nbsp;csv.<a href="#-writer">writer</a>(fileobj&nbsp;[,&nbsp;dialect='<a href="#excel">excel</a>']<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[optional&nbsp;keyword&nbsp;args])<br>
+&nbsp;&nbsp;&nbsp;&nbsp;csv_writer.writerows(rows)<br>
+&nbsp;<br>
+The&nbsp;"fileobj"&nbsp;argument&nbsp;can&nbsp;be&nbsp;any&nbsp;<a href="builtins.html#object">object</a>&nbsp;that&nbsp;supports&nbsp;the&nbsp;file&nbsp;API.</tt></dd></dl>
+</td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#55aa55">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Data</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#55aa55"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><strong>QUOTE_ALL</strong> = 1<br>
+<strong>QUOTE_MINIMAL</strong> = 0<br>
+<strong>QUOTE_NONE</strong> = 3<br>
+<strong>QUOTE_NONNUMERIC</strong> = 2<br>
+<strong>__all__</strong> = ['QUOTE_MINIMAL', 'QUOTE_ALL', 'QUOTE_NONNUMERIC', 'QUOTE_NONE', 'Error', 'Dialect', '__doc__', 'excel', 'excel_tab', 'field_size_limit', 'reader', 'writer', 'register_dialect', 'get_dialect', 'list_dialects', 'Sniffer', 'unregister_dialect', '__version__', 'DictReader', 'DictWriter', ...]</td></tr></table>
+</body></html>

@@ -1,0 +1,74 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head><title>Python: package dbm</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+</head><body bgcolor="#f0f0f8">
+
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="heading">
+<tr bgcolor="#7799ee">
+<td valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong>dbm</strong></big></big></font></td
+><td align=right valign=bottom
+><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:c%3A%5Cpython38%5Clib%5Cdbm%5C__init__.py">c:\python38\lib\dbm\__init__.py</a><br><a href="https://docs.python.org/3.8/library/dbm">Module Reference</a></font></td></tr></table>
+    <p><tt>Generic&nbsp;interface&nbsp;to&nbsp;all&nbsp;dbm&nbsp;clones.<br>
+&nbsp;<br>
+Use<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;import&nbsp;dbm<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;d&nbsp;=&nbsp;dbm.<a href="#-open">open</a>(file,&nbsp;'w',&nbsp;0o666)<br>
+&nbsp;<br>
+The&nbsp;returned&nbsp;object&nbsp;is&nbsp;a&nbsp;dbm.gnu,&nbsp;dbm.ndbm&nbsp;or&nbsp;dbm.dumb&nbsp;object,&nbsp;dependent&nbsp;on&nbsp;the<br>
+type&nbsp;of&nbsp;database&nbsp;being&nbsp;opened&nbsp;(determined&nbsp;by&nbsp;the&nbsp;whichdb&nbsp;function)&nbsp;in&nbsp;the&nbsp;case<br>
+of&nbsp;an&nbsp;existing&nbsp;dbm.&nbsp;If&nbsp;the&nbsp;dbm&nbsp;does&nbsp;not&nbsp;exist&nbsp;and&nbsp;the&nbsp;create&nbsp;or&nbsp;new&nbsp;flag&nbsp;('c'<br>
+or&nbsp;'n')&nbsp;was&nbsp;specified,&nbsp;the&nbsp;dbm&nbsp;type&nbsp;will&nbsp;be&nbsp;determined&nbsp;by&nbsp;the&nbsp;availability&nbsp;of<br>
+the&nbsp;modules&nbsp;(tested&nbsp;in&nbsp;the&nbsp;above&nbsp;order).<br>
+&nbsp;<br>
+It&nbsp;has&nbsp;the&nbsp;following&nbsp;interface&nbsp;(key&nbsp;and&nbsp;data&nbsp;are&nbsp;strings):<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;d[key]&nbsp;=&nbsp;data&nbsp;&nbsp;&nbsp;#&nbsp;store&nbsp;data&nbsp;at&nbsp;key&nbsp;(may&nbsp;override&nbsp;data&nbsp;at<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;existing&nbsp;key)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;data&nbsp;=&nbsp;d[key]&nbsp;&nbsp;&nbsp;#&nbsp;retrieve&nbsp;data&nbsp;at&nbsp;key&nbsp;(raise&nbsp;KeyError&nbsp;if&nbsp;no<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;such&nbsp;key)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;del&nbsp;d[key]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;delete&nbsp;data&nbsp;stored&nbsp;at&nbsp;key&nbsp;(raises&nbsp;KeyError<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;if&nbsp;no&nbsp;such&nbsp;key)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;flag&nbsp;=&nbsp;key&nbsp;in&nbsp;d&nbsp;#&nbsp;true&nbsp;if&nbsp;the&nbsp;key&nbsp;exists<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;list&nbsp;=&nbsp;d.keys()&nbsp;#&nbsp;return&nbsp;a&nbsp;list&nbsp;of&nbsp;all&nbsp;existing&nbsp;keys&nbsp;(slow!)<br>
+&nbsp;<br>
+Future&nbsp;versions&nbsp;may&nbsp;change&nbsp;the&nbsp;order&nbsp;in&nbsp;which&nbsp;implementations&nbsp;are<br>
+tested&nbsp;for&nbsp;existence,&nbsp;and&nbsp;add&nbsp;interfaces&nbsp;to&nbsp;other&nbsp;dbm-like<br>
+implementations.</tt></p>
+<p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#eeaa77">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Functions</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#eeaa77"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl><dt><a name="-open"><strong>open</strong></a>(file, flag='r', mode=438)</dt><dd><tt>Open&nbsp;or&nbsp;create&nbsp;database&nbsp;at&nbsp;path&nbsp;given&nbsp;by&nbsp;*file*.<br>
+&nbsp;<br>
+Optional&nbsp;argument&nbsp;*flag*&nbsp;can&nbsp;be&nbsp;'r'&nbsp;(default)&nbsp;for&nbsp;read-only&nbsp;access,&nbsp;'w'<br>
+for&nbsp;read-write&nbsp;access&nbsp;of&nbsp;an&nbsp;existing&nbsp;database,&nbsp;'c'&nbsp;for&nbsp;read-write&nbsp;access<br>
+to&nbsp;a&nbsp;new&nbsp;or&nbsp;existing&nbsp;database,&nbsp;and&nbsp;'n'&nbsp;for&nbsp;read-write&nbsp;access&nbsp;to&nbsp;a&nbsp;new<br>
+database.<br>
+&nbsp;<br>
+Note:&nbsp;'r'&nbsp;and&nbsp;'w'&nbsp;fail&nbsp;if&nbsp;the&nbsp;database&nbsp;doesn't&nbsp;exist;&nbsp;'c'&nbsp;creates&nbsp;it<br>
+only&nbsp;if&nbsp;it&nbsp;doesn't&nbsp;exist;&nbsp;and&nbsp;'n'&nbsp;always&nbsp;creates&nbsp;a&nbsp;new&nbsp;database.</tt></dd></dl>
+ <dl><dt><a name="-whichdb"><strong>whichdb</strong></a>(filename)</dt><dd><tt>Guess&nbsp;which&nbsp;db&nbsp;package&nbsp;to&nbsp;use&nbsp;to&nbsp;open&nbsp;a&nbsp;db&nbsp;file.<br>
+&nbsp;<br>
+Return&nbsp;values:<br>
+&nbsp;<br>
+-&nbsp;None&nbsp;if&nbsp;the&nbsp;database&nbsp;file&nbsp;can't&nbsp;be&nbsp;read;<br>
+-&nbsp;empty&nbsp;string&nbsp;if&nbsp;the&nbsp;file&nbsp;can&nbsp;be&nbsp;read&nbsp;but&nbsp;can't&nbsp;be&nbsp;recognized<br>
+-&nbsp;the&nbsp;name&nbsp;of&nbsp;the&nbsp;dbm&nbsp;submodule&nbsp;(e.g.&nbsp;"ndbm"&nbsp;or&nbsp;"gnu")&nbsp;if&nbsp;recognized.<br>
+&nbsp;<br>
+Importing&nbsp;the&nbsp;given&nbsp;module&nbsp;may&nbsp;still&nbsp;fail,&nbsp;and&nbsp;opening&nbsp;the<br>
+database&nbsp;using&nbsp;that&nbsp;module&nbsp;may&nbsp;still&nbsp;fail.</tt></dd></dl>
+</td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#55aa55">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Data</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#55aa55"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><strong>__all__</strong> = ['open', 'whichdb', 'error']<br>
+<strong>error</strong> = (&lt;class 'dbm.error'&gt;, &lt;class 'OSError'&gt;)</td></tr></table>
+</body></html>

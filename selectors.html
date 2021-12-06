@@ -1,0 +1,494 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head><title>Python: module selectors</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+</head><body bgcolor="#f0f0f8">
+
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="heading">
+<tr bgcolor="#7799ee">
+<td valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong>selectors</strong></big></big></font></td
+><td align=right valign=bottom
+><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:c%3A%5Cpython38%5Clib%5Cselectors.py">c:\python38\lib\selectors.py</a><br><a href="https://docs.python.org/3.8/library/selectors">Module Reference</a></font></td></tr></table>
+    <p><tt>Selectors&nbsp;module.<br>
+&nbsp;<br>
+This&nbsp;module&nbsp;allows&nbsp;high-level&nbsp;and&nbsp;efficient&nbsp;I/O&nbsp;multiplexing,&nbsp;built&nbsp;upon&nbsp;the<br>
+`select`&nbsp;module&nbsp;primitives.</tt></p>
+<p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#aa55cc">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Modules</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#aa55cc"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><table width="100%" summary="list"><tr><td width="25%" valign=top><a href="math.html">math</a><br>
+</td><td width="25%" valign=top><a href="select.html">select</a><br>
+</td><td width="25%" valign=top><a href="sys.html">sys</a><br>
+</td><td width="25%" valign=top></td></tr></table></td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ee77aa">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Classes</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#ee77aa"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl>
+<dt><font face="helvetica, arial"><a href="builtins.html#object">builtins.object</a>
+</font></dt><dd>
+<dl>
+<dt><font face="helvetica, arial"><a href="selectors.html#BaseSelector">BaseSelector</a>
+</font></dt></dl>
+</dd>
+<dt><font face="helvetica, arial"><a href="builtins.html#tuple">builtins.tuple</a>(<a href="builtins.html#object">builtins.object</a>)
+</font></dt><dd>
+<dl>
+<dt><font face="helvetica, arial"><a href="selectors.html#SelectorKey">SelectorKey</a>
+</font></dt></dl>
+</dd>
+<dt><font face="helvetica, arial"><a href="selectors.html#_BaseSelectorImpl">_BaseSelectorImpl</a>(<a href="selectors.html#BaseSelector">BaseSelector</a>)
+</font></dt><dd>
+<dl>
+<dt><font face="helvetica, arial"><a href="selectors.html#SelectSelector">SelectSelector</a>
+</font></dt></dl>
+</dd>
+</dl>
+ <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="BaseSelector">class <strong>BaseSelector</strong></a>(<a href="builtins.html#object">builtins.object</a>)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt>Selector&nbsp;abstract&nbsp;base&nbsp;class.<br>
+&nbsp;<br>
+A&nbsp;selector&nbsp;supports&nbsp;registering&nbsp;file&nbsp;objects&nbsp;to&nbsp;be&nbsp;monitored&nbsp;for&nbsp;specific<br>
+I/O&nbsp;events.<br>
+&nbsp;<br>
+A&nbsp;file&nbsp;<a href="builtins.html#object">object</a>&nbsp;is&nbsp;a&nbsp;file&nbsp;descriptor&nbsp;or&nbsp;any&nbsp;<a href="builtins.html#object">object</a>&nbsp;with&nbsp;a&nbsp;`fileno()`&nbsp;method.<br>
+An&nbsp;arbitrary&nbsp;<a href="builtins.html#object">object</a>&nbsp;can&nbsp;be&nbsp;attached&nbsp;to&nbsp;the&nbsp;file&nbsp;<a href="builtins.html#object">object</a>,&nbsp;which&nbsp;can&nbsp;be&nbsp;used<br>
+for&nbsp;example&nbsp;to&nbsp;store&nbsp;context&nbsp;information,&nbsp;a&nbsp;callback,&nbsp;etc.<br>
+&nbsp;<br>
+A&nbsp;selector&nbsp;can&nbsp;use&nbsp;various&nbsp;implementations&nbsp;(<a href="#BaseSelector-select">select</a>(),&nbsp;poll(),&nbsp;epoll()...)<br>
+depending&nbsp;on&nbsp;the&nbsp;platform.&nbsp;The&nbsp;default&nbsp;`Selector`&nbsp;class&nbsp;uses&nbsp;the&nbsp;most<br>
+efficient&nbsp;implementation&nbsp;on&nbsp;the&nbsp;current&nbsp;platform.<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%">Methods defined here:<br>
+<dl><dt><a name="BaseSelector-__enter__"><strong>__enter__</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="BaseSelector-__exit__"><strong>__exit__</strong></a>(self, *args)</dt></dl>
+
+<dl><dt><a name="BaseSelector-close"><strong>close</strong></a>(self)</dt><dd><tt>Close&nbsp;the&nbsp;selector.<br>
+&nbsp;<br>
+This&nbsp;must&nbsp;be&nbsp;called&nbsp;to&nbsp;make&nbsp;sure&nbsp;that&nbsp;any&nbsp;underlying&nbsp;resource&nbsp;is&nbsp;freed.</tt></dd></dl>
+
+<dl><dt><a name="BaseSelector-get_key"><strong>get_key</strong></a>(self, fileobj)</dt><dd><tt>Return&nbsp;the&nbsp;key&nbsp;associated&nbsp;to&nbsp;a&nbsp;registered&nbsp;file&nbsp;<a href="builtins.html#object">object</a>.<br>
+&nbsp;<br>
+Returns:<br>
+<a href="#SelectorKey">SelectorKey</a>&nbsp;for&nbsp;this&nbsp;file&nbsp;<a href="builtins.html#object">object</a></tt></dd></dl>
+
+<dl><dt><a name="BaseSelector-get_map"><strong>get_map</strong></a>(self)</dt><dd><tt>Return&nbsp;a&nbsp;mapping&nbsp;of&nbsp;file&nbsp;objects&nbsp;to&nbsp;selector&nbsp;keys.</tt></dd></dl>
+
+<dl><dt><a name="BaseSelector-modify"><strong>modify</strong></a>(self, fileobj, events, data=None)</dt><dd><tt>Change&nbsp;a&nbsp;registered&nbsp;file&nbsp;<a href="builtins.html#object">object</a>&nbsp;monitored&nbsp;events&nbsp;or&nbsp;attached&nbsp;data.<br>
+&nbsp;<br>
+Parameters:<br>
+fileobj&nbsp;--&nbsp;file&nbsp;<a href="builtins.html#object">object</a>&nbsp;or&nbsp;file&nbsp;descriptor<br>
+events&nbsp;&nbsp;--&nbsp;events&nbsp;to&nbsp;monitor&nbsp;(bitwise&nbsp;mask&nbsp;of&nbsp;EVENT_READ|EVENT_WRITE)<br>
+data&nbsp;&nbsp;&nbsp;&nbsp;--&nbsp;attached&nbsp;data<br>
+&nbsp;<br>
+Returns:<br>
+<a href="#SelectorKey">SelectorKey</a>&nbsp;instance<br>
+&nbsp;<br>
+Raises:<br>
+Anything&nbsp;that&nbsp;<a href="#BaseSelector-unregister">unregister</a>()&nbsp;or&nbsp;<a href="#BaseSelector-register">register</a>()&nbsp;raises</tt></dd></dl>
+
+<dl><dt><a name="BaseSelector-register"><strong>register</strong></a>(self, fileobj, events, data=None)</dt><dd><tt>Register&nbsp;a&nbsp;file&nbsp;<a href="builtins.html#object">object</a>.<br>
+&nbsp;<br>
+Parameters:<br>
+fileobj&nbsp;--&nbsp;file&nbsp;<a href="builtins.html#object">object</a>&nbsp;or&nbsp;file&nbsp;descriptor<br>
+events&nbsp;&nbsp;--&nbsp;events&nbsp;to&nbsp;monitor&nbsp;(bitwise&nbsp;mask&nbsp;of&nbsp;EVENT_READ|EVENT_WRITE)<br>
+data&nbsp;&nbsp;&nbsp;&nbsp;--&nbsp;attached&nbsp;data<br>
+&nbsp;<br>
+Returns:<br>
+<a href="#SelectorKey">SelectorKey</a>&nbsp;instance<br>
+&nbsp;<br>
+Raises:<br>
+ValueError&nbsp;if&nbsp;events&nbsp;is&nbsp;invalid<br>
+KeyError&nbsp;if&nbsp;fileobj&nbsp;is&nbsp;already&nbsp;registered<br>
+OSError&nbsp;if&nbsp;fileobj&nbsp;is&nbsp;closed&nbsp;or&nbsp;otherwise&nbsp;is&nbsp;unacceptable&nbsp;to<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;the&nbsp;underlying&nbsp;system&nbsp;call&nbsp;(if&nbsp;a&nbsp;system&nbsp;call&nbsp;is&nbsp;made)<br>
+&nbsp;<br>
+Note:<br>
+OSError&nbsp;may&nbsp;or&nbsp;may&nbsp;not&nbsp;be&nbsp;raised</tt></dd></dl>
+
+<dl><dt><a name="BaseSelector-select"><strong>select</strong></a>(self, timeout=None)</dt><dd><tt>Perform&nbsp;the&nbsp;actual&nbsp;selection,&nbsp;until&nbsp;some&nbsp;monitored&nbsp;file&nbsp;objects&nbsp;are<br>
+ready&nbsp;or&nbsp;a&nbsp;timeout&nbsp;expires.<br>
+&nbsp;<br>
+Parameters:<br>
+timeout&nbsp;--&nbsp;if&nbsp;timeout&nbsp;&gt;&nbsp;0,&nbsp;this&nbsp;specifies&nbsp;the&nbsp;maximum&nbsp;wait&nbsp;time,&nbsp;in<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;seconds<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;timeout&nbsp;&lt;=&nbsp;0,&nbsp;the&nbsp;<a href="#BaseSelector-select">select</a>()&nbsp;call&nbsp;won't&nbsp;block,&nbsp;and&nbsp;will<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;report&nbsp;the&nbsp;currently&nbsp;ready&nbsp;file&nbsp;objects<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;timeout&nbsp;is&nbsp;None,&nbsp;<a href="#BaseSelector-select">select</a>()&nbsp;will&nbsp;block&nbsp;until&nbsp;a&nbsp;monitored<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;file&nbsp;<a href="builtins.html#object">object</a>&nbsp;becomes&nbsp;ready<br>
+&nbsp;<br>
+Returns:<br>
+list&nbsp;of&nbsp;(key,&nbsp;events)&nbsp;for&nbsp;ready&nbsp;file&nbsp;objects<br>
+`events`&nbsp;is&nbsp;a&nbsp;bitwise&nbsp;mask&nbsp;of&nbsp;EVENT_READ|EVENT_WRITE</tt></dd></dl>
+
+<dl><dt><a name="BaseSelector-unregister"><strong>unregister</strong></a>(self, fileobj)</dt><dd><tt>Unregister&nbsp;a&nbsp;file&nbsp;<a href="builtins.html#object">object</a>.<br>
+&nbsp;<br>
+Parameters:<br>
+fileobj&nbsp;--&nbsp;file&nbsp;<a href="builtins.html#object">object</a>&nbsp;or&nbsp;file&nbsp;descriptor<br>
+&nbsp;<br>
+Returns:<br>
+<a href="#SelectorKey">SelectorKey</a>&nbsp;instance<br>
+&nbsp;<br>
+Raises:<br>
+KeyError&nbsp;if&nbsp;fileobj&nbsp;is&nbsp;not&nbsp;registered<br>
+&nbsp;<br>
+Note:<br>
+If&nbsp;fileobj&nbsp;is&nbsp;registered&nbsp;but&nbsp;has&nbsp;since&nbsp;been&nbsp;closed&nbsp;this&nbsp;does<br>
+*not*&nbsp;raise&nbsp;OSError&nbsp;(even&nbsp;if&nbsp;the&nbsp;wrapped&nbsp;syscall&nbsp;does)</tt></dd></dl>
+
+<hr>
+Data descriptors defined here:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><tt>dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<hr>
+Data and other attributes defined here:<br>
+<dl><dt><strong>__abstractmethods__</strong> = frozenset({'get_map', 'register', 'select', 'unregister'})</dl>
+
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><strong>DefaultSelector</strong> = <a name="DefaultSelector">class SelectSelector</a>(<a href="selectors.html#_BaseSelectorImpl">_BaseSelectorImpl</a>)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt>Select-based&nbsp;selector.<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%"><dl><dt>Method resolution order:</dt>
+<dd><a href="selectors.html#SelectSelector">SelectSelector</a></dd>
+<dd><a href="selectors.html#_BaseSelectorImpl">_BaseSelectorImpl</a></dd>
+<dd><a href="selectors.html#BaseSelector">BaseSelector</a></dd>
+<dd><a href="builtins.html#object">builtins.object</a></dd>
+</dl>
+<hr>
+Methods defined here:<br>
+<dl><dt><a name="SelectSelector-__init__"><strong>__init__</strong></a>(self)</dt><dd><tt>Initialize&nbsp;self.&nbsp;&nbsp;See&nbsp;help(type(self))&nbsp;for&nbsp;accurate&nbsp;signature.</tt></dd></dl>
+
+<dl><dt><a name="SelectSelector-register"><strong>register</strong></a>(self, fileobj, events, data=None)</dt><dd><tt>Register&nbsp;a&nbsp;file&nbsp;<a href="builtins.html#object">object</a>.<br>
+&nbsp;<br>
+Parameters:<br>
+fileobj&nbsp;--&nbsp;file&nbsp;<a href="builtins.html#object">object</a>&nbsp;or&nbsp;file&nbsp;descriptor<br>
+events&nbsp;&nbsp;--&nbsp;events&nbsp;to&nbsp;monitor&nbsp;(bitwise&nbsp;mask&nbsp;of&nbsp;EVENT_READ|EVENT_WRITE)<br>
+data&nbsp;&nbsp;&nbsp;&nbsp;--&nbsp;attached&nbsp;data<br>
+&nbsp;<br>
+Returns:<br>
+<a href="#SelectorKey">SelectorKey</a>&nbsp;instance<br>
+&nbsp;<br>
+Raises:<br>
+ValueError&nbsp;if&nbsp;events&nbsp;is&nbsp;invalid<br>
+KeyError&nbsp;if&nbsp;fileobj&nbsp;is&nbsp;already&nbsp;registered<br>
+OSError&nbsp;if&nbsp;fileobj&nbsp;is&nbsp;closed&nbsp;or&nbsp;otherwise&nbsp;is&nbsp;unacceptable&nbsp;to<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;the&nbsp;underlying&nbsp;system&nbsp;call&nbsp;(if&nbsp;a&nbsp;system&nbsp;call&nbsp;is&nbsp;made)<br>
+&nbsp;<br>
+Note:<br>
+OSError&nbsp;may&nbsp;or&nbsp;may&nbsp;not&nbsp;be&nbsp;raised</tt></dd></dl>
+
+<dl><dt><a name="SelectSelector-select"><strong>select</strong></a>(self, timeout=None)</dt><dd><tt>Perform&nbsp;the&nbsp;actual&nbsp;selection,&nbsp;until&nbsp;some&nbsp;monitored&nbsp;file&nbsp;objects&nbsp;are<br>
+ready&nbsp;or&nbsp;a&nbsp;timeout&nbsp;expires.<br>
+&nbsp;<br>
+Parameters:<br>
+timeout&nbsp;--&nbsp;if&nbsp;timeout&nbsp;&gt;&nbsp;0,&nbsp;this&nbsp;specifies&nbsp;the&nbsp;maximum&nbsp;wait&nbsp;time,&nbsp;in<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;seconds<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;timeout&nbsp;&lt;=&nbsp;0,&nbsp;the&nbsp;<a href="#DefaultSelector-select">select</a>()&nbsp;call&nbsp;won't&nbsp;block,&nbsp;and&nbsp;will<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;report&nbsp;the&nbsp;currently&nbsp;ready&nbsp;file&nbsp;objects<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;timeout&nbsp;is&nbsp;None,&nbsp;<a href="#DefaultSelector-select">select</a>()&nbsp;will&nbsp;block&nbsp;until&nbsp;a&nbsp;monitored<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;file&nbsp;<a href="builtins.html#object">object</a>&nbsp;becomes&nbsp;ready<br>
+&nbsp;<br>
+Returns:<br>
+list&nbsp;of&nbsp;(key,&nbsp;events)&nbsp;for&nbsp;ready&nbsp;file&nbsp;objects<br>
+`events`&nbsp;is&nbsp;a&nbsp;bitwise&nbsp;mask&nbsp;of&nbsp;EVENT_READ|EVENT_WRITE</tt></dd></dl>
+
+<dl><dt><a name="SelectSelector-unregister"><strong>unregister</strong></a>(self, fileobj)</dt><dd><tt>Unregister&nbsp;a&nbsp;file&nbsp;<a href="builtins.html#object">object</a>.<br>
+&nbsp;<br>
+Parameters:<br>
+fileobj&nbsp;--&nbsp;file&nbsp;<a href="builtins.html#object">object</a>&nbsp;or&nbsp;file&nbsp;descriptor<br>
+&nbsp;<br>
+Returns:<br>
+<a href="#SelectorKey">SelectorKey</a>&nbsp;instance<br>
+&nbsp;<br>
+Raises:<br>
+KeyError&nbsp;if&nbsp;fileobj&nbsp;is&nbsp;not&nbsp;registered<br>
+&nbsp;<br>
+Note:<br>
+If&nbsp;fileobj&nbsp;is&nbsp;registered&nbsp;but&nbsp;has&nbsp;since&nbsp;been&nbsp;closed&nbsp;this&nbsp;does<br>
+*not*&nbsp;raise&nbsp;OSError&nbsp;(even&nbsp;if&nbsp;the&nbsp;wrapped&nbsp;syscall&nbsp;does)</tt></dd></dl>
+
+<hr>
+Data and other attributes defined here:<br>
+<dl><dt><strong>__abstractmethods__</strong> = frozenset()</dl>
+
+<hr>
+Methods inherited from <a href="selectors.html#_BaseSelectorImpl">_BaseSelectorImpl</a>:<br>
+<dl><dt><a name="SelectSelector-close"><strong>close</strong></a>(self)</dt><dd><tt>Close&nbsp;the&nbsp;selector.<br>
+&nbsp;<br>
+This&nbsp;must&nbsp;be&nbsp;called&nbsp;to&nbsp;make&nbsp;sure&nbsp;that&nbsp;any&nbsp;underlying&nbsp;resource&nbsp;is&nbsp;freed.</tt></dd></dl>
+
+<dl><dt><a name="SelectSelector-get_map"><strong>get_map</strong></a>(self)</dt><dd><tt>Return&nbsp;a&nbsp;mapping&nbsp;of&nbsp;file&nbsp;objects&nbsp;to&nbsp;selector&nbsp;keys.</tt></dd></dl>
+
+<dl><dt><a name="SelectSelector-modify"><strong>modify</strong></a>(self, fileobj, events, data=None)</dt><dd><tt>Change&nbsp;a&nbsp;registered&nbsp;file&nbsp;<a href="builtins.html#object">object</a>&nbsp;monitored&nbsp;events&nbsp;or&nbsp;attached&nbsp;data.<br>
+&nbsp;<br>
+Parameters:<br>
+fileobj&nbsp;--&nbsp;file&nbsp;<a href="builtins.html#object">object</a>&nbsp;or&nbsp;file&nbsp;descriptor<br>
+events&nbsp;&nbsp;--&nbsp;events&nbsp;to&nbsp;monitor&nbsp;(bitwise&nbsp;mask&nbsp;of&nbsp;EVENT_READ|EVENT_WRITE)<br>
+data&nbsp;&nbsp;&nbsp;&nbsp;--&nbsp;attached&nbsp;data<br>
+&nbsp;<br>
+Returns:<br>
+<a href="#SelectorKey">SelectorKey</a>&nbsp;instance<br>
+&nbsp;<br>
+Raises:<br>
+Anything&nbsp;that&nbsp;<a href="#DefaultSelector-unregister">unregister</a>()&nbsp;or&nbsp;<a href="#DefaultSelector-register">register</a>()&nbsp;raises</tt></dd></dl>
+
+<hr>
+Methods inherited from <a href="selectors.html#BaseSelector">BaseSelector</a>:<br>
+<dl><dt><a name="SelectSelector-__enter__"><strong>__enter__</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="SelectSelector-__exit__"><strong>__exit__</strong></a>(self, *args)</dt></dl>
+
+<dl><dt><a name="SelectSelector-get_key"><strong>get_key</strong></a>(self, fileobj)</dt><dd><tt>Return&nbsp;the&nbsp;key&nbsp;associated&nbsp;to&nbsp;a&nbsp;registered&nbsp;file&nbsp;<a href="builtins.html#object">object</a>.<br>
+&nbsp;<br>
+Returns:<br>
+<a href="#SelectorKey">SelectorKey</a>&nbsp;for&nbsp;this&nbsp;file&nbsp;<a href="builtins.html#object">object</a></tt></dd></dl>
+
+<hr>
+Data descriptors inherited from <a href="selectors.html#BaseSelector">BaseSelector</a>:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><tt>dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="SelectSelector">class <strong>SelectSelector</strong></a>(<a href="selectors.html#_BaseSelectorImpl">_BaseSelectorImpl</a>)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt>Select-based&nbsp;selector.<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%"><dl><dt>Method resolution order:</dt>
+<dd><a href="selectors.html#SelectSelector">SelectSelector</a></dd>
+<dd><a href="selectors.html#_BaseSelectorImpl">_BaseSelectorImpl</a></dd>
+<dd><a href="selectors.html#BaseSelector">BaseSelector</a></dd>
+<dd><a href="builtins.html#object">builtins.object</a></dd>
+</dl>
+<hr>
+Methods defined here:<br>
+<dl><dt><a name="SelectSelector-__init__"><strong>__init__</strong></a>(self)</dt><dd><tt>Initialize&nbsp;self.&nbsp;&nbsp;See&nbsp;help(type(self))&nbsp;for&nbsp;accurate&nbsp;signature.</tt></dd></dl>
+
+<dl><dt><a name="SelectSelector-register"><strong>register</strong></a>(self, fileobj, events, data=None)</dt><dd><tt>Register&nbsp;a&nbsp;file&nbsp;<a href="builtins.html#object">object</a>.<br>
+&nbsp;<br>
+Parameters:<br>
+fileobj&nbsp;--&nbsp;file&nbsp;<a href="builtins.html#object">object</a>&nbsp;or&nbsp;file&nbsp;descriptor<br>
+events&nbsp;&nbsp;--&nbsp;events&nbsp;to&nbsp;monitor&nbsp;(bitwise&nbsp;mask&nbsp;of&nbsp;EVENT_READ|EVENT_WRITE)<br>
+data&nbsp;&nbsp;&nbsp;&nbsp;--&nbsp;attached&nbsp;data<br>
+&nbsp;<br>
+Returns:<br>
+<a href="#SelectorKey">SelectorKey</a>&nbsp;instance<br>
+&nbsp;<br>
+Raises:<br>
+ValueError&nbsp;if&nbsp;events&nbsp;is&nbsp;invalid<br>
+KeyError&nbsp;if&nbsp;fileobj&nbsp;is&nbsp;already&nbsp;registered<br>
+OSError&nbsp;if&nbsp;fileobj&nbsp;is&nbsp;closed&nbsp;or&nbsp;otherwise&nbsp;is&nbsp;unacceptable&nbsp;to<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;the&nbsp;underlying&nbsp;system&nbsp;call&nbsp;(if&nbsp;a&nbsp;system&nbsp;call&nbsp;is&nbsp;made)<br>
+&nbsp;<br>
+Note:<br>
+OSError&nbsp;may&nbsp;or&nbsp;may&nbsp;not&nbsp;be&nbsp;raised</tt></dd></dl>
+
+<dl><dt><a name="SelectSelector-select"><strong>select</strong></a>(self, timeout=None)</dt><dd><tt>Perform&nbsp;the&nbsp;actual&nbsp;selection,&nbsp;until&nbsp;some&nbsp;monitored&nbsp;file&nbsp;objects&nbsp;are<br>
+ready&nbsp;or&nbsp;a&nbsp;timeout&nbsp;expires.<br>
+&nbsp;<br>
+Parameters:<br>
+timeout&nbsp;--&nbsp;if&nbsp;timeout&nbsp;&gt;&nbsp;0,&nbsp;this&nbsp;specifies&nbsp;the&nbsp;maximum&nbsp;wait&nbsp;time,&nbsp;in<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;seconds<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;timeout&nbsp;&lt;=&nbsp;0,&nbsp;the&nbsp;<a href="#SelectSelector-select">select</a>()&nbsp;call&nbsp;won't&nbsp;block,&nbsp;and&nbsp;will<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;report&nbsp;the&nbsp;currently&nbsp;ready&nbsp;file&nbsp;objects<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;timeout&nbsp;is&nbsp;None,&nbsp;<a href="#SelectSelector-select">select</a>()&nbsp;will&nbsp;block&nbsp;until&nbsp;a&nbsp;monitored<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;file&nbsp;<a href="builtins.html#object">object</a>&nbsp;becomes&nbsp;ready<br>
+&nbsp;<br>
+Returns:<br>
+list&nbsp;of&nbsp;(key,&nbsp;events)&nbsp;for&nbsp;ready&nbsp;file&nbsp;objects<br>
+`events`&nbsp;is&nbsp;a&nbsp;bitwise&nbsp;mask&nbsp;of&nbsp;EVENT_READ|EVENT_WRITE</tt></dd></dl>
+
+<dl><dt><a name="SelectSelector-unregister"><strong>unregister</strong></a>(self, fileobj)</dt><dd><tt>Unregister&nbsp;a&nbsp;file&nbsp;<a href="builtins.html#object">object</a>.<br>
+&nbsp;<br>
+Parameters:<br>
+fileobj&nbsp;--&nbsp;file&nbsp;<a href="builtins.html#object">object</a>&nbsp;or&nbsp;file&nbsp;descriptor<br>
+&nbsp;<br>
+Returns:<br>
+<a href="#SelectorKey">SelectorKey</a>&nbsp;instance<br>
+&nbsp;<br>
+Raises:<br>
+KeyError&nbsp;if&nbsp;fileobj&nbsp;is&nbsp;not&nbsp;registered<br>
+&nbsp;<br>
+Note:<br>
+If&nbsp;fileobj&nbsp;is&nbsp;registered&nbsp;but&nbsp;has&nbsp;since&nbsp;been&nbsp;closed&nbsp;this&nbsp;does<br>
+*not*&nbsp;raise&nbsp;OSError&nbsp;(even&nbsp;if&nbsp;the&nbsp;wrapped&nbsp;syscall&nbsp;does)</tt></dd></dl>
+
+<hr>
+Data and other attributes defined here:<br>
+<dl><dt><strong>__abstractmethods__</strong> = frozenset()</dl>
+
+<hr>
+Methods inherited from <a href="selectors.html#_BaseSelectorImpl">_BaseSelectorImpl</a>:<br>
+<dl><dt><a name="SelectSelector-close"><strong>close</strong></a>(self)</dt><dd><tt>Close&nbsp;the&nbsp;selector.<br>
+&nbsp;<br>
+This&nbsp;must&nbsp;be&nbsp;called&nbsp;to&nbsp;make&nbsp;sure&nbsp;that&nbsp;any&nbsp;underlying&nbsp;resource&nbsp;is&nbsp;freed.</tt></dd></dl>
+
+<dl><dt><a name="SelectSelector-get_map"><strong>get_map</strong></a>(self)</dt><dd><tt>Return&nbsp;a&nbsp;mapping&nbsp;of&nbsp;file&nbsp;objects&nbsp;to&nbsp;selector&nbsp;keys.</tt></dd></dl>
+
+<dl><dt><a name="SelectSelector-modify"><strong>modify</strong></a>(self, fileobj, events, data=None)</dt><dd><tt>Change&nbsp;a&nbsp;registered&nbsp;file&nbsp;<a href="builtins.html#object">object</a>&nbsp;monitored&nbsp;events&nbsp;or&nbsp;attached&nbsp;data.<br>
+&nbsp;<br>
+Parameters:<br>
+fileobj&nbsp;--&nbsp;file&nbsp;<a href="builtins.html#object">object</a>&nbsp;or&nbsp;file&nbsp;descriptor<br>
+events&nbsp;&nbsp;--&nbsp;events&nbsp;to&nbsp;monitor&nbsp;(bitwise&nbsp;mask&nbsp;of&nbsp;EVENT_READ|EVENT_WRITE)<br>
+data&nbsp;&nbsp;&nbsp;&nbsp;--&nbsp;attached&nbsp;data<br>
+&nbsp;<br>
+Returns:<br>
+<a href="#SelectorKey">SelectorKey</a>&nbsp;instance<br>
+&nbsp;<br>
+Raises:<br>
+Anything&nbsp;that&nbsp;<a href="#SelectSelector-unregister">unregister</a>()&nbsp;or&nbsp;<a href="#SelectSelector-register">register</a>()&nbsp;raises</tt></dd></dl>
+
+<hr>
+Methods inherited from <a href="selectors.html#BaseSelector">BaseSelector</a>:<br>
+<dl><dt><a name="SelectSelector-__enter__"><strong>__enter__</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="SelectSelector-__exit__"><strong>__exit__</strong></a>(self, *args)</dt></dl>
+
+<dl><dt><a name="SelectSelector-get_key"><strong>get_key</strong></a>(self, fileobj)</dt><dd><tt>Return&nbsp;the&nbsp;key&nbsp;associated&nbsp;to&nbsp;a&nbsp;registered&nbsp;file&nbsp;<a href="builtins.html#object">object</a>.<br>
+&nbsp;<br>
+Returns:<br>
+<a href="#SelectorKey">SelectorKey</a>&nbsp;for&nbsp;this&nbsp;file&nbsp;<a href="builtins.html#object">object</a></tt></dd></dl>
+
+<hr>
+Data descriptors inherited from <a href="selectors.html#BaseSelector">BaseSelector</a>:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><tt>dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="SelectorKey">class <strong>SelectorKey</strong></a>(<a href="builtins.html#tuple">builtins.tuple</a>)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt><a href="#SelectorKey">SelectorKey</a>(fileobj,&nbsp;fd,&nbsp;events,&nbsp;data)<br>
+&nbsp;<br>
+<a href="#SelectorKey">SelectorKey</a>(fileobj,&nbsp;fd,&nbsp;events,&nbsp;data)<br>
+&nbsp;<br>
+Object&nbsp;used&nbsp;to&nbsp;associate&nbsp;a&nbsp;file&nbsp;<a href="builtins.html#object">object</a>&nbsp;to&nbsp;its&nbsp;backing<br>
+file&nbsp;descriptor,&nbsp;selected&nbsp;event&nbsp;mask,&nbsp;and&nbsp;attached&nbsp;data.<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%"><dl><dt>Method resolution order:</dt>
+<dd><a href="selectors.html#SelectorKey">SelectorKey</a></dd>
+<dd><a href="builtins.html#tuple">builtins.tuple</a></dd>
+<dd><a href="builtins.html#object">builtins.object</a></dd>
+</dl>
+<hr>
+Methods defined here:<br>
+<dl><dt><a name="SelectorKey-__getnewargs__"><strong>__getnewargs__</strong></a>(self)</dt><dd><tt>Return&nbsp;self&nbsp;as&nbsp;a&nbsp;plain&nbsp;<a href="builtins.html#tuple">tuple</a>.&nbsp;&nbsp;Used&nbsp;by&nbsp;copy&nbsp;and&nbsp;pickle.</tt></dd></dl>
+
+<dl><dt><a name="SelectorKey-__repr__"><strong>__repr__</strong></a>(self)</dt><dd><tt>Return&nbsp;a&nbsp;nicely&nbsp;formatted&nbsp;representation&nbsp;string</tt></dd></dl>
+
+<dl><dt><a name="SelectorKey-_asdict"><strong>_asdict</strong></a>(self)</dt><dd><tt>Return&nbsp;a&nbsp;new&nbsp;dict&nbsp;which&nbsp;maps&nbsp;field&nbsp;names&nbsp;to&nbsp;their&nbsp;values.</tt></dd></dl>
+
+<dl><dt><a name="SelectorKey-_replace"><strong>_replace</strong></a>(self, /, **kwds)</dt><dd><tt>Return&nbsp;a&nbsp;new&nbsp;<a href="#SelectorKey">SelectorKey</a>&nbsp;<a href="builtins.html#object">object</a>&nbsp;replacing&nbsp;specified&nbsp;fields&nbsp;with&nbsp;new&nbsp;values</tt></dd></dl>
+
+<hr>
+Class methods defined here:<br>
+<dl><dt><a name="SelectorKey-_make"><strong>_make</strong></a>(iterable)<font color="#909090"><font face="helvetica, arial"> from <a href="builtins.html#type">builtins.type</a></font></font></dt><dd><tt>Make&nbsp;a&nbsp;new&nbsp;<a href="#SelectorKey">SelectorKey</a>&nbsp;<a href="builtins.html#object">object</a>&nbsp;from&nbsp;a&nbsp;sequence&nbsp;or&nbsp;iterable</tt></dd></dl>
+
+<hr>
+Static methods defined here:<br>
+<dl><dt><a name="SelectorKey-__new__"><strong>__new__</strong></a>(_cls, fileobj, fd, events, data)</dt><dd><tt>Create&nbsp;new&nbsp;instance&nbsp;of&nbsp;<a href="#SelectorKey">SelectorKey</a>(fileobj,&nbsp;fd,&nbsp;events,&nbsp;data)</tt></dd></dl>
+
+<hr>
+Data descriptors defined here:<br>
+<dl><dt><strong>fileobj</strong></dt>
+<dd><tt>File&nbsp;object&nbsp;registered.</tt></dd>
+</dl>
+<dl><dt><strong>fd</strong></dt>
+<dd><tt>Underlying&nbsp;file&nbsp;descriptor.</tt></dd>
+</dl>
+<dl><dt><strong>events</strong></dt>
+<dd><tt>Events&nbsp;that&nbsp;must&nbsp;be&nbsp;waited&nbsp;for&nbsp;on&nbsp;this&nbsp;file&nbsp;object.</tt></dd>
+</dl>
+<dl><dt><strong>data</strong></dt>
+<dd><tt>Optional&nbsp;opaque&nbsp;data&nbsp;associated&nbsp;to&nbsp;this&nbsp;file&nbsp;object.<br>
+For&nbsp;example,&nbsp;this&nbsp;could&nbsp;be&nbsp;used&nbsp;to&nbsp;store&nbsp;a&nbsp;per-client&nbsp;session&nbsp;ID.</tt></dd>
+</dl>
+<hr>
+Data and other attributes defined here:<br>
+<dl><dt><strong>_field_defaults</strong> = {}</dl>
+
+<dl><dt><strong>_fields</strong> = ('fileobj', 'fd', 'events', 'data')</dl>
+
+<dl><dt><strong>_fields_defaults</strong> = {}</dl>
+
+<hr>
+Methods inherited from <a href="builtins.html#tuple">builtins.tuple</a>:<br>
+<dl><dt><a name="SelectorKey-__add__"><strong>__add__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;self+value.</tt></dd></dl>
+
+<dl><dt><a name="SelectorKey-__contains__"><strong>__contains__</strong></a>(self, key, /)</dt><dd><tt>Return&nbsp;key&nbsp;in&nbsp;self.</tt></dd></dl>
+
+<dl><dt><a name="SelectorKey-__eq__"><strong>__eq__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;self==value.</tt></dd></dl>
+
+<dl><dt><a name="SelectorKey-__ge__"><strong>__ge__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;self&gt;=value.</tt></dd></dl>
+
+<dl><dt><a name="SelectorKey-__getattribute__"><strong>__getattribute__</strong></a>(self, name, /)</dt><dd><tt>Return&nbsp;getattr(self,&nbsp;name).</tt></dd></dl>
+
+<dl><dt><a name="SelectorKey-__getitem__"><strong>__getitem__</strong></a>(self, key, /)</dt><dd><tt>Return&nbsp;self[key].</tt></dd></dl>
+
+<dl><dt><a name="SelectorKey-__gt__"><strong>__gt__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;self&gt;value.</tt></dd></dl>
+
+<dl><dt><a name="SelectorKey-__hash__"><strong>__hash__</strong></a>(self, /)</dt><dd><tt>Return&nbsp;hash(self).</tt></dd></dl>
+
+<dl><dt><a name="SelectorKey-__iter__"><strong>__iter__</strong></a>(self, /)</dt><dd><tt>Implement&nbsp;iter(self).</tt></dd></dl>
+
+<dl><dt><a name="SelectorKey-__le__"><strong>__le__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;self&lt;=value.</tt></dd></dl>
+
+<dl><dt><a name="SelectorKey-__len__"><strong>__len__</strong></a>(self, /)</dt><dd><tt>Return&nbsp;len(self).</tt></dd></dl>
+
+<dl><dt><a name="SelectorKey-__lt__"><strong>__lt__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;self&lt;value.</tt></dd></dl>
+
+<dl><dt><a name="SelectorKey-__mul__"><strong>__mul__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;self*value.</tt></dd></dl>
+
+<dl><dt><a name="SelectorKey-__ne__"><strong>__ne__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;self!=value.</tt></dd></dl>
+
+<dl><dt><a name="SelectorKey-__rmul__"><strong>__rmul__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;value*self.</tt></dd></dl>
+
+<dl><dt><a name="SelectorKey-count"><strong>count</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;number&nbsp;of&nbsp;occurrences&nbsp;of&nbsp;value.</tt></dd></dl>
+
+<dl><dt><a name="SelectorKey-index"><strong>index</strong></a>(self, value, start=0, stop=9223372036854775807, /)</dt><dd><tt>Return&nbsp;first&nbsp;index&nbsp;of&nbsp;value.<br>
+&nbsp;<br>
+Raises&nbsp;ValueError&nbsp;if&nbsp;the&nbsp;value&nbsp;is&nbsp;not&nbsp;present.</tt></dd></dl>
+
+</td></tr></table></td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#55aa55">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Data</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#55aa55"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><strong>EVENT_READ</strong> = 1<br>
+<strong>EVENT_WRITE</strong> = 2</td></tr></table>
+</body></html>

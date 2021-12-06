@@ -1,0 +1,134 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head><title>Python: module getpass</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+</head><body bgcolor="#f0f0f8">
+
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="heading">
+<tr bgcolor="#7799ee">
+<td valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong>getpass</strong></big></big></font></td
+><td align=right valign=bottom
+><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:c%3A%5Cpython38%5Clib%5Cgetpass.py">c:\python38\lib\getpass.py</a><br><a href="https://docs.python.org/3.8/library/getpass">Module Reference</a></font></td></tr></table>
+    <p><tt>Utilities&nbsp;to&nbsp;get&nbsp;a&nbsp;password&nbsp;and/or&nbsp;the&nbsp;current&nbsp;user&nbsp;name.<br>
+&nbsp;<br>
+<a href="#-getpass">getpass</a>(prompt[,&nbsp;stream])&nbsp;-&nbsp;Prompt&nbsp;for&nbsp;a&nbsp;password,&nbsp;with&nbsp;echo&nbsp;turned&nbsp;off.<br>
+<a href="#-getuser">getuser</a>()&nbsp;-&nbsp;Get&nbsp;the&nbsp;user&nbsp;name&nbsp;from&nbsp;the&nbsp;environment&nbsp;or&nbsp;password&nbsp;database.<br>
+&nbsp;<br>
+<a href="#GetPassWarning">GetPassWarning</a>&nbsp;-&nbsp;This&nbsp;<a href="builtins.html#UserWarning">UserWarning</a>&nbsp;is&nbsp;issued&nbsp;when&nbsp;<a href="#-getpass">getpass</a>()&nbsp;cannot&nbsp;prevent<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echoing&nbsp;of&nbsp;the&nbsp;password&nbsp;contents&nbsp;while&nbsp;reading.<br>
+&nbsp;<br>
+On&nbsp;Windows,&nbsp;the&nbsp;msvcrt&nbsp;module&nbsp;will&nbsp;be&nbsp;used.</tt></p>
+<p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#aa55cc">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Modules</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#aa55cc"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><table width="100%" summary="list"><tr><td width="25%" valign=top><a href="contextlib.html">contextlib</a><br>
+<a href="io.html">io</a><br>
+</td><td width="25%" valign=top><a href="msvcrt.html">msvcrt</a><br>
+<a href="os.html">os</a><br>
+</td><td width="25%" valign=top><a href="sys.html">sys</a><br>
+<a href="warnings.html">warnings</a><br>
+</td><td width="25%" valign=top></td></tr></table></td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ee77aa">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Classes</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#ee77aa"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl>
+<dt><font face="helvetica, arial"><a href="builtins.html#UserWarning">builtins.UserWarning</a>(<a href="builtins.html#Warning">builtins.Warning</a>)
+</font></dt><dd>
+<dl>
+<dt><font face="helvetica, arial"><a href="getpass.html#GetPassWarning">GetPassWarning</a>
+</font></dt></dl>
+</dd>
+</dl>
+ <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="GetPassWarning">class <strong>GetPassWarning</strong></a>(<a href="builtins.html#UserWarning">builtins.UserWarning</a>)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt>Base&nbsp;class&nbsp;for&nbsp;warnings&nbsp;generated&nbsp;by&nbsp;user&nbsp;code.<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%"><dl><dt>Method resolution order:</dt>
+<dd><a href="getpass.html#GetPassWarning">GetPassWarning</a></dd>
+<dd><a href="builtins.html#UserWarning">builtins.UserWarning</a></dd>
+<dd><a href="builtins.html#Warning">builtins.Warning</a></dd>
+<dd><a href="builtins.html#Exception">builtins.Exception</a></dd>
+<dd><a href="builtins.html#BaseException">builtins.BaseException</a></dd>
+<dd><a href="builtins.html#object">builtins.object</a></dd>
+</dl>
+<hr>
+Data descriptors defined here:<br>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<hr>
+Methods inherited from <a href="builtins.html#UserWarning">builtins.UserWarning</a>:<br>
+<dl><dt><a name="GetPassWarning-__init__"><strong>__init__</strong></a>(self, /, *args, **kwargs)</dt><dd><tt>Initialize&nbsp;self.&nbsp;&nbsp;See&nbsp;help(type(self))&nbsp;for&nbsp;accurate&nbsp;signature.</tt></dd></dl>
+
+<hr>
+Static methods inherited from <a href="builtins.html#UserWarning">builtins.UserWarning</a>:<br>
+<dl><dt><a name="GetPassWarning-__new__"><strong>__new__</strong></a>(*args, **kwargs)<font color="#909090"><font face="helvetica, arial"> from <a href="builtins.html#type">builtins.type</a></font></font></dt><dd><tt>Create&nbsp;and&nbsp;return&nbsp;a&nbsp;new&nbsp;object.&nbsp;&nbsp;See&nbsp;help(type)&nbsp;for&nbsp;accurate&nbsp;signature.</tt></dd></dl>
+
+<hr>
+Methods inherited from <a href="builtins.html#BaseException">builtins.BaseException</a>:<br>
+<dl><dt><a name="GetPassWarning-__delattr__"><strong>__delattr__</strong></a>(self, name, /)</dt><dd><tt>Implement&nbsp;delattr(self,&nbsp;name).</tt></dd></dl>
+
+<dl><dt><a name="GetPassWarning-__getattribute__"><strong>__getattribute__</strong></a>(self, name, /)</dt><dd><tt>Return&nbsp;getattr(self,&nbsp;name).</tt></dd></dl>
+
+<dl><dt><a name="GetPassWarning-__reduce__"><strong>__reduce__</strong></a>(...)</dt><dd><tt>Helper&nbsp;for&nbsp;pickle.</tt></dd></dl>
+
+<dl><dt><a name="GetPassWarning-__repr__"><strong>__repr__</strong></a>(self, /)</dt><dd><tt>Return&nbsp;repr(self).</tt></dd></dl>
+
+<dl><dt><a name="GetPassWarning-__setattr__"><strong>__setattr__</strong></a>(self, name, value, /)</dt><dd><tt>Implement&nbsp;setattr(self,&nbsp;name,&nbsp;value).</tt></dd></dl>
+
+<dl><dt><a name="GetPassWarning-__setstate__"><strong>__setstate__</strong></a>(...)</dt></dl>
+
+<dl><dt><a name="GetPassWarning-__str__"><strong>__str__</strong></a>(self, /)</dt><dd><tt>Return&nbsp;str(self).</tt></dd></dl>
+
+<dl><dt><a name="GetPassWarning-with_traceback"><strong>with_traceback</strong></a>(...)</dt><dd><tt>Exception.<a href="#GetPassWarning-with_traceback">with_traceback</a>(tb)&nbsp;--<br>
+set&nbsp;self.<strong>__traceback__</strong>&nbsp;to&nbsp;tb&nbsp;and&nbsp;return&nbsp;self.</tt></dd></dl>
+
+<hr>
+Data descriptors inherited from <a href="builtins.html#BaseException">builtins.BaseException</a>:<br>
+<dl><dt><strong>__cause__</strong></dt>
+<dd><tt>exception&nbsp;cause</tt></dd>
+</dl>
+<dl><dt><strong>__context__</strong></dt>
+<dd><tt>exception&nbsp;context</tt></dd>
+</dl>
+<dl><dt><strong>__dict__</strong></dt>
+</dl>
+<dl><dt><strong>__suppress_context__</strong></dt>
+</dl>
+<dl><dt><strong>__traceback__</strong></dt>
+</dl>
+<dl><dt><strong>args</strong></dt>
+</dl>
+</td></tr></table></td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#eeaa77">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Functions</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#eeaa77"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl><dt><a name="-getpass"><strong>getpass</strong></a> = win_getpass(prompt='Password: ', stream=None)</dt><dd><tt>Prompt&nbsp;for&nbsp;password&nbsp;with&nbsp;echo&nbsp;off,&nbsp;using&nbsp;Windows&nbsp;getch().</tt></dd></dl>
+ <dl><dt><a name="-getuser"><strong>getuser</strong></a>()</dt><dd><tt>Get&nbsp;the&nbsp;username&nbsp;from&nbsp;the&nbsp;environment&nbsp;or&nbsp;password&nbsp;database.<br>
+&nbsp;<br>
+First&nbsp;try&nbsp;various&nbsp;environment&nbsp;variables,&nbsp;then&nbsp;the&nbsp;password<br>
+database.&nbsp;&nbsp;This&nbsp;works&nbsp;on&nbsp;Windows&nbsp;as&nbsp;long&nbsp;as&nbsp;USERNAME&nbsp;is&nbsp;set.</tt></dd></dl>
+</td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#55aa55">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Data</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#55aa55"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><strong>__all__</strong> = ['getpass', 'getuser', 'GetPassWarning']</td></tr></table>
+</body></html>

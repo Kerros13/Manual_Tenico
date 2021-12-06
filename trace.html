@@ -1,0 +1,175 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head><title>Python: module trace</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+</head><body bgcolor="#f0f0f8">
+
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="heading">
+<tr bgcolor="#7799ee">
+<td valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong>trace</strong></big></big></font></td
+><td align=right valign=bottom
+><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:c%3A%5Cpython38%5Clib%5Ctrace.py">c:\python38\lib\trace.py</a><br><a href="https://docs.python.org/3.8/library/trace">Module Reference</a></font></td></tr></table>
+    <p><tt>program/module&nbsp;to&nbsp;trace&nbsp;Python&nbsp;program&nbsp;or&nbsp;function&nbsp;execution<br>
+&nbsp;<br>
+Sample&nbsp;use,&nbsp;command&nbsp;line:<br>
+&nbsp;&nbsp;trace.py&nbsp;-c&nbsp;-f&nbsp;counts&nbsp;--ignore-dir&nbsp;'$prefix'&nbsp;spam.py&nbsp;eggs<br>
+&nbsp;&nbsp;trace.py&nbsp;-t&nbsp;--ignore-dir&nbsp;'$prefix'&nbsp;spam.py&nbsp;eggs<br>
+&nbsp;&nbsp;trace.py&nbsp;--trackcalls&nbsp;spam.py&nbsp;eggs<br>
+&nbsp;<br>
+Sample&nbsp;use,&nbsp;programmatically<br>
+&nbsp;&nbsp;import&nbsp;sys<br>
+&nbsp;<br>
+&nbsp;&nbsp;#&nbsp;create&nbsp;a&nbsp;<a href="#Trace">Trace</a>&nbsp;<a href="builtins.html#object">object</a>,&nbsp;telling&nbsp;it&nbsp;what&nbsp;to&nbsp;ignore,&nbsp;and&nbsp;whether&nbsp;to<br>
+&nbsp;&nbsp;#&nbsp;do&nbsp;tracing&nbsp;or&nbsp;line-counting&nbsp;or&nbsp;both.<br>
+&nbsp;&nbsp;tracer&nbsp;=&nbsp;trace.<a href="#Trace">Trace</a>(ignoredirs=[sys.base_prefix,&nbsp;sys.base_exec_prefix,],<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;trace=0,&nbsp;count=1)<br>
+&nbsp;&nbsp;#&nbsp;run&nbsp;the&nbsp;new&nbsp;command&nbsp;using&nbsp;the&nbsp;given&nbsp;tracer<br>
+&nbsp;&nbsp;tracer.run('main()')<br>
+&nbsp;&nbsp;#&nbsp;make&nbsp;a&nbsp;report,&nbsp;placing&nbsp;output&nbsp;in&nbsp;/tmp<br>
+&nbsp;&nbsp;r&nbsp;=&nbsp;tracer.results()<br>
+&nbsp;&nbsp;r.write_results(show_missing=True,&nbsp;coverdir="/tmp")</tt></p>
+<p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#aa55cc">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Modules</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#aa55cc"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><table width="100%" summary="list"><tr><td width="25%" valign=top><a href="dis.html">dis</a><br>
+<a href="gc.html">gc</a><br>
+<a href="inspect.html">inspect</a><br>
+</td><td width="25%" valign=top><a href="linecache.html">linecache</a><br>
+<a href="os.html">os</a><br>
+<a href="pickle.html">pickle</a><br>
+</td><td width="25%" valign=top><a href="sys.html">sys</a><br>
+<a href="sysconfig.html">sysconfig</a><br>
+<a href="threading.html">threading</a><br>
+</td><td width="25%" valign=top><a href="token.html">token</a><br>
+<a href="tokenize.html">tokenize</a><br>
+</td></tr></table></td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ee77aa">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Classes</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#ee77aa"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl>
+<dt><font face="helvetica, arial"><a href="builtins.html#object">builtins.object</a>
+</font></dt><dd>
+<dl>
+<dt><font face="helvetica, arial"><a href="trace.html#CoverageResults">CoverageResults</a>
+</font></dt><dt><font face="helvetica, arial"><a href="trace.html#Trace">Trace</a>
+</font></dt></dl>
+</dd>
+</dl>
+ <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="CoverageResults">class <strong>CoverageResults</strong></a>(<a href="builtins.html#object">builtins.object</a>)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt><a href="#CoverageResults">CoverageResults</a>(counts=None,&nbsp;calledfuncs=None,&nbsp;infile=None,&nbsp;callers=None,&nbsp;outfile=None)<br>
+&nbsp;<br>
+<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%">Methods defined here:<br>
+<dl><dt><a name="CoverageResults-__init__"><strong>__init__</strong></a>(self, counts=None, calledfuncs=None, infile=None, callers=None, outfile=None)</dt><dd><tt>Initialize&nbsp;self.&nbsp;&nbsp;See&nbsp;help(type(self))&nbsp;for&nbsp;accurate&nbsp;signature.</tt></dd></dl>
+
+<dl><dt><a name="CoverageResults-is_ignored_filename"><strong>is_ignored_filename</strong></a>(self, filename)</dt><dd><tt>Return&nbsp;True&nbsp;if&nbsp;the&nbsp;filename&nbsp;does&nbsp;not&nbsp;refer&nbsp;to&nbsp;a&nbsp;file<br>
+we&nbsp;want&nbsp;to&nbsp;have&nbsp;reported.</tt></dd></dl>
+
+<dl><dt><a name="CoverageResults-update"><strong>update</strong></a>(self, other)</dt><dd><tt>Merge&nbsp;in&nbsp;the&nbsp;data&nbsp;from&nbsp;another&nbsp;<a href="#CoverageResults">CoverageResults</a></tt></dd></dl>
+
+<dl><dt><a name="CoverageResults-write_results"><strong>write_results</strong></a>(self, show_missing=True, summary=False, coverdir=None)</dt><dd><tt>Write&nbsp;the&nbsp;coverage&nbsp;results.<br>
+&nbsp;<br>
+:param&nbsp;show_missing:&nbsp;Show&nbsp;lines&nbsp;that&nbsp;had&nbsp;no&nbsp;hits.<br>
+:param&nbsp;summary:&nbsp;Include&nbsp;coverage&nbsp;summary&nbsp;per&nbsp;module.<br>
+:param&nbsp;coverdir:&nbsp;If&nbsp;None,&nbsp;the&nbsp;results&nbsp;of&nbsp;each&nbsp;module&nbsp;are&nbsp;placed&nbsp;in&nbsp;its<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;directory,&nbsp;otherwise&nbsp;it&nbsp;is&nbsp;included&nbsp;in&nbsp;the&nbsp;directory<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;specified.</tt></dd></dl>
+
+<dl><dt><a name="CoverageResults-write_results_file"><strong>write_results_file</strong></a>(self, path, lines, lnotab, lines_hit, encoding=None)</dt><dd><tt>Return&nbsp;a&nbsp;coverage&nbsp;results&nbsp;file&nbsp;in&nbsp;path.</tt></dd></dl>
+
+<hr>
+Data descriptors defined here:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><tt>dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="Trace">class <strong>Trace</strong></a>(<a href="builtins.html#object">builtins.object</a>)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt><a href="#Trace">Trace</a>(count=1,&nbsp;trace=1,&nbsp;countfuncs=0,&nbsp;countcallers=0,&nbsp;ignoremods=(),&nbsp;ignoredirs=(),&nbsp;infile=None,&nbsp;outfile=None,&nbsp;timing=False)<br>
+&nbsp;<br>
+<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%">Methods defined here:<br>
+<dl><dt><a name="Trace-__init__"><strong>__init__</strong></a>(self, count=1, trace=1, countfuncs=0, countcallers=0, ignoremods=(), ignoredirs=(), infile=None, outfile=None, timing=False)</dt><dd><tt>@param&nbsp;count&nbsp;true&nbsp;iff&nbsp;it&nbsp;should&nbsp;count&nbsp;number&nbsp;of&nbsp;times&nbsp;each<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;line&nbsp;is&nbsp;executed<br>
+@param&nbsp;trace&nbsp;true&nbsp;iff&nbsp;it&nbsp;should&nbsp;print&nbsp;out&nbsp;each&nbsp;line&nbsp;that&nbsp;is<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;being&nbsp;counted<br>
+@param&nbsp;countfuncs&nbsp;true&nbsp;iff&nbsp;it&nbsp;should&nbsp;just&nbsp;output&nbsp;a&nbsp;list&nbsp;of<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(filename,&nbsp;modulename,&nbsp;funcname,)&nbsp;for&nbsp;functions<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;that&nbsp;were&nbsp;called&nbsp;at&nbsp;least&nbsp;once;&nbsp;&nbsp;This&nbsp;overrides<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`count'&nbsp;and&nbsp;`trace'<br>
+@param&nbsp;ignoremods&nbsp;a&nbsp;list&nbsp;of&nbsp;the&nbsp;names&nbsp;of&nbsp;modules&nbsp;to&nbsp;ignore<br>
+@param&nbsp;ignoredirs&nbsp;a&nbsp;list&nbsp;of&nbsp;the&nbsp;names&nbsp;of&nbsp;directories&nbsp;to&nbsp;ignore<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;all&nbsp;of&nbsp;the&nbsp;(recursive)&nbsp;contents&nbsp;of<br>
+@param&nbsp;infile&nbsp;file&nbsp;from&nbsp;which&nbsp;to&nbsp;read&nbsp;stored&nbsp;counts&nbsp;to&nbsp;be<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;added&nbsp;into&nbsp;the&nbsp;results<br>
+@param&nbsp;outfile&nbsp;file&nbsp;in&nbsp;which&nbsp;to&nbsp;write&nbsp;the&nbsp;results<br>
+@param&nbsp;timing&nbsp;true&nbsp;iff&nbsp;timing&nbsp;information&nbsp;be&nbsp;displayed</tt></dd></dl>
+
+<dl><dt><a name="Trace-file_module_function_of"><strong>file_module_function_of</strong></a>(self, frame)</dt></dl>
+
+<dl><dt><a name="Trace-globaltrace_countfuncs"><strong>globaltrace_countfuncs</strong></a>(self, frame, why, arg)</dt><dd><tt>Handler&nbsp;for&nbsp;call&nbsp;events.<br>
+&nbsp;<br>
+Adds&nbsp;(filename,&nbsp;modulename,&nbsp;funcname)&nbsp;to&nbsp;the&nbsp;self.<strong>_calledfuncs</strong>&nbsp;dict.</tt></dd></dl>
+
+<dl><dt><a name="Trace-globaltrace_lt"><strong>globaltrace_lt</strong></a>(self, frame, why, arg)</dt><dd><tt>Handler&nbsp;for&nbsp;call&nbsp;events.<br>
+&nbsp;<br>
+If&nbsp;the&nbsp;code&nbsp;block&nbsp;being&nbsp;entered&nbsp;is&nbsp;to&nbsp;be&nbsp;ignored,&nbsp;returns&nbsp;`None',<br>
+else&nbsp;returns&nbsp;self.<strong>localtrace</strong>.</tt></dd></dl>
+
+<dl><dt><a name="Trace-globaltrace_trackcallers"><strong>globaltrace_trackcallers</strong></a>(self, frame, why, arg)</dt><dd><tt>Handler&nbsp;for&nbsp;call&nbsp;events.<br>
+&nbsp;<br>
+Adds&nbsp;information&nbsp;about&nbsp;who&nbsp;called&nbsp;who&nbsp;to&nbsp;the&nbsp;self.<strong>_callers</strong>&nbsp;dict.</tt></dd></dl>
+
+<dl><dt><a name="Trace-localtrace_count"><strong>localtrace_count</strong></a>(self, frame, why, arg)</dt></dl>
+
+<dl><dt><a name="Trace-localtrace_trace"><strong>localtrace_trace</strong></a>(self, frame, why, arg)</dt></dl>
+
+<dl><dt><a name="Trace-localtrace_trace_and_count"><strong>localtrace_trace_and_count</strong></a>(self, frame, why, arg)</dt></dl>
+
+<dl><dt><a name="Trace-results"><strong>results</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="Trace-run"><strong>run</strong></a>(self, cmd)</dt></dl>
+
+<dl><dt><a name="Trace-runctx"><strong>runctx</strong></a>(self, cmd, globals=None, locals=None)</dt></dl>
+
+<dl><dt><a name="Trace-runfunc"><strong>runfunc</strong></a>(self, func, /, *args, **kw)</dt></dl>
+
+<hr>
+Data descriptors defined here:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><tt>dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+</td></tr></table></td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#55aa55">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Data</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#55aa55"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><strong>__all__</strong> = ['Trace', 'CoverageResults']</td></tr></table>
+</body></html>

@@ -1,0 +1,234 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head><title>Python: module operator</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+</head><body bgcolor="#f0f0f8">
+
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="heading">
+<tr bgcolor="#7799ee">
+<td valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong>operator</strong></big></big></font></td
+><td align=right valign=bottom
+><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:c%3A%5Cpython38%5Clib%5Coperator.py">c:\python38\lib\operator.py</a><br><a href="https://docs.python.org/3.8/library/operator">Module Reference</a></font></td></tr></table>
+    <p><tt>Operator&nbsp;interface.<br>
+&nbsp;<br>
+This&nbsp;module&nbsp;exports&nbsp;a&nbsp;set&nbsp;of&nbsp;functions&nbsp;implemented&nbsp;in&nbsp;C&nbsp;corresponding<br>
+to&nbsp;the&nbsp;intrinsic&nbsp;operators&nbsp;of&nbsp;Python.&nbsp;&nbsp;For&nbsp;example,&nbsp;operator.<a href="#-add">add</a>(x,&nbsp;y)<br>
+is&nbsp;equivalent&nbsp;to&nbsp;the&nbsp;expression&nbsp;x+y.&nbsp;&nbsp;The&nbsp;function&nbsp;names&nbsp;are&nbsp;those<br>
+used&nbsp;for&nbsp;special&nbsp;methods;&nbsp;variants&nbsp;without&nbsp;leading&nbsp;and&nbsp;trailing<br>
+'__'&nbsp;are&nbsp;also&nbsp;provided&nbsp;for&nbsp;convenience.</tt></p>
+<p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ee77aa">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Classes</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#ee77aa"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl>
+<dt><font face="helvetica, arial"><a href="builtins.html#object">builtins.object</a>
+</font></dt><dd>
+<dl>
+<dt><font face="helvetica, arial"><a href="operator.html#attrgetter">attrgetter</a>
+</font></dt><dt><font face="helvetica, arial"><a href="operator.html#itemgetter">itemgetter</a>
+</font></dt><dt><font face="helvetica, arial"><a href="operator.html#methodcaller">methodcaller</a>
+</font></dt></dl>
+</dd>
+</dl>
+ <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="attrgetter">class <strong>attrgetter</strong></a>(<a href="builtins.html#object">builtins.object</a>)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt><a href="#attrgetter">attrgetter</a>(attr,&nbsp;...)&nbsp;--&gt;&nbsp;<a href="#attrgetter">attrgetter</a>&nbsp;<a href="builtins.html#object">object</a><br>
+&nbsp;<br>
+Return&nbsp;a&nbsp;callable&nbsp;<a href="builtins.html#object">object</a>&nbsp;that&nbsp;fetches&nbsp;the&nbsp;given&nbsp;attribute(s)&nbsp;from&nbsp;its&nbsp;operand.<br>
+After&nbsp;f&nbsp;=&nbsp;<a href="#attrgetter">attrgetter</a>('name'),&nbsp;the&nbsp;call&nbsp;f(r)&nbsp;returns&nbsp;r.name.<br>
+After&nbsp;g&nbsp;=&nbsp;<a href="#attrgetter">attrgetter</a>('name',&nbsp;'date'),&nbsp;the&nbsp;call&nbsp;g(r)&nbsp;returns&nbsp;(r.name,&nbsp;r.date).<br>
+After&nbsp;h&nbsp;=&nbsp;<a href="#attrgetter">attrgetter</a>('name.first',&nbsp;'name.last'),&nbsp;the&nbsp;call&nbsp;h(r)&nbsp;returns<br>
+(r.name.first,&nbsp;r.name.last).<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%">Methods defined here:<br>
+<dl><dt><a name="attrgetter-__call__"><strong>__call__</strong></a>(self, /, *args, **kwargs)</dt><dd><tt>Call&nbsp;self&nbsp;as&nbsp;a&nbsp;function.</tt></dd></dl>
+
+<dl><dt><a name="attrgetter-__getattribute__"><strong>__getattribute__</strong></a>(self, name, /)</dt><dd><tt>Return&nbsp;getattr(self,&nbsp;name).</tt></dd></dl>
+
+<dl><dt><a name="attrgetter-__reduce__"><strong>__reduce__</strong></a>(...)</dt><dd><tt>Return&nbsp;state&nbsp;information&nbsp;for&nbsp;pickling</tt></dd></dl>
+
+<dl><dt><a name="attrgetter-__repr__"><strong>__repr__</strong></a>(self, /)</dt><dd><tt>Return&nbsp;repr(self).</tt></dd></dl>
+
+<hr>
+Static methods defined here:<br>
+<dl><dt><a name="attrgetter-__new__"><strong>__new__</strong></a>(*args, **kwargs)<font color="#909090"><font face="helvetica, arial"> from <a href="builtins.html#type">builtins.type</a></font></font></dt><dd><tt>Create&nbsp;and&nbsp;return&nbsp;a&nbsp;new&nbsp;<a href="builtins.html#object">object</a>.&nbsp;&nbsp;See&nbsp;help(type)&nbsp;for&nbsp;accurate&nbsp;signature.</tt></dd></dl>
+
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="itemgetter">class <strong>itemgetter</strong></a>(<a href="builtins.html#object">builtins.object</a>)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt><a href="#itemgetter">itemgetter</a>(item,&nbsp;...)&nbsp;--&gt;&nbsp;<a href="#itemgetter">itemgetter</a>&nbsp;<a href="builtins.html#object">object</a><br>
+&nbsp;<br>
+Return&nbsp;a&nbsp;callable&nbsp;<a href="builtins.html#object">object</a>&nbsp;that&nbsp;fetches&nbsp;the&nbsp;given&nbsp;item(s)&nbsp;from&nbsp;its&nbsp;operand.<br>
+After&nbsp;f&nbsp;=&nbsp;<a href="#itemgetter">itemgetter</a>(2),&nbsp;the&nbsp;call&nbsp;f(r)&nbsp;returns&nbsp;r[2].<br>
+After&nbsp;g&nbsp;=&nbsp;<a href="#itemgetter">itemgetter</a>(2,&nbsp;5,&nbsp;3),&nbsp;the&nbsp;call&nbsp;g(r)&nbsp;returns&nbsp;(r[2],&nbsp;r[5],&nbsp;r[3])<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%">Methods defined here:<br>
+<dl><dt><a name="itemgetter-__call__"><strong>__call__</strong></a>(self, /, *args, **kwargs)</dt><dd><tt>Call&nbsp;self&nbsp;as&nbsp;a&nbsp;function.</tt></dd></dl>
+
+<dl><dt><a name="itemgetter-__getattribute__"><strong>__getattribute__</strong></a>(self, name, /)</dt><dd><tt>Return&nbsp;getattr(self,&nbsp;name).</tt></dd></dl>
+
+<dl><dt><a name="itemgetter-__reduce__"><strong>__reduce__</strong></a>(...)</dt><dd><tt>Return&nbsp;state&nbsp;information&nbsp;for&nbsp;pickling</tt></dd></dl>
+
+<dl><dt><a name="itemgetter-__repr__"><strong>__repr__</strong></a>(self, /)</dt><dd><tt>Return&nbsp;repr(self).</tt></dd></dl>
+
+<hr>
+Static methods defined here:<br>
+<dl><dt><a name="itemgetter-__new__"><strong>__new__</strong></a>(*args, **kwargs)<font color="#909090"><font face="helvetica, arial"> from <a href="builtins.html#type">builtins.type</a></font></font></dt><dd><tt>Create&nbsp;and&nbsp;return&nbsp;a&nbsp;new&nbsp;<a href="builtins.html#object">object</a>.&nbsp;&nbsp;See&nbsp;help(type)&nbsp;for&nbsp;accurate&nbsp;signature.</tt></dd></dl>
+
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="methodcaller">class <strong>methodcaller</strong></a>(<a href="builtins.html#object">builtins.object</a>)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt><a href="#methodcaller">methodcaller</a>(name,&nbsp;...)&nbsp;--&gt;&nbsp;<a href="#methodcaller">methodcaller</a>&nbsp;<a href="builtins.html#object">object</a><br>
+&nbsp;<br>
+Return&nbsp;a&nbsp;callable&nbsp;<a href="builtins.html#object">object</a>&nbsp;that&nbsp;calls&nbsp;the&nbsp;given&nbsp;method&nbsp;on&nbsp;its&nbsp;operand.<br>
+After&nbsp;f&nbsp;=&nbsp;<a href="#methodcaller">methodcaller</a>('name'),&nbsp;the&nbsp;call&nbsp;f(r)&nbsp;returns&nbsp;r.name().<br>
+After&nbsp;g&nbsp;=&nbsp;<a href="#methodcaller">methodcaller</a>('name',&nbsp;'date',&nbsp;foo=1),&nbsp;the&nbsp;call&nbsp;g(r)&nbsp;returns<br>
+r.name('date',&nbsp;foo=1).<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%">Methods defined here:<br>
+<dl><dt><a name="methodcaller-__call__"><strong>__call__</strong></a>(self, /, *args, **kwargs)</dt><dd><tt>Call&nbsp;self&nbsp;as&nbsp;a&nbsp;function.</tt></dd></dl>
+
+<dl><dt><a name="methodcaller-__getattribute__"><strong>__getattribute__</strong></a>(self, name, /)</dt><dd><tt>Return&nbsp;getattr(self,&nbsp;name).</tt></dd></dl>
+
+<dl><dt><a name="methodcaller-__reduce__"><strong>__reduce__</strong></a>(...)</dt><dd><tt>Return&nbsp;state&nbsp;information&nbsp;for&nbsp;pickling</tt></dd></dl>
+
+<dl><dt><a name="methodcaller-__repr__"><strong>__repr__</strong></a>(self, /)</dt><dd><tt>Return&nbsp;repr(self).</tt></dd></dl>
+
+<hr>
+Static methods defined here:<br>
+<dl><dt><a name="methodcaller-__new__"><strong>__new__</strong></a>(*args, **kwargs)<font color="#909090"><font face="helvetica, arial"> from <a href="builtins.html#type">builtins.type</a></font></font></dt><dd><tt>Create&nbsp;and&nbsp;return&nbsp;a&nbsp;new&nbsp;<a href="builtins.html#object">object</a>.&nbsp;&nbsp;See&nbsp;help(type)&nbsp;for&nbsp;accurate&nbsp;signature.</tt></dd></dl>
+
+</td></tr></table></td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#eeaa77">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Functions</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#eeaa77"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl><dt><a name="-__abs__"><strong>__abs__</strong></a> = abs(a, /)</dt><dd><tt>Same&nbsp;as&nbsp;<a href="#-abs">abs</a>(a).</tt></dd></dl>
+ <dl><dt><a name="-__add__"><strong>__add__</strong></a> = add(a, b, /)</dt><dd><tt>Same&nbsp;as&nbsp;a&nbsp;+&nbsp;b.</tt></dd></dl>
+ <dl><dt><a name="-__and__"><strong>__and__</strong></a> = and_(a, b, /)</dt><dd><tt>Same&nbsp;as&nbsp;a&nbsp;&amp;&nbsp;b.</tt></dd></dl>
+ <dl><dt><a name="-__concat__"><strong>__concat__</strong></a> = concat(a, b, /)</dt><dd><tt>Same&nbsp;as&nbsp;a&nbsp;+&nbsp;b,&nbsp;for&nbsp;a&nbsp;and&nbsp;b&nbsp;sequences.</tt></dd></dl>
+ <dl><dt><a name="-__contains__"><strong>__contains__</strong></a> = contains(a, b, /)</dt><dd><tt>Same&nbsp;as&nbsp;b&nbsp;in&nbsp;a&nbsp;(note&nbsp;reversed&nbsp;operands).</tt></dd></dl>
+ <dl><dt><a name="-__delitem__"><strong>__delitem__</strong></a> = delitem(a, b, /)</dt><dd><tt>Same&nbsp;as&nbsp;del&nbsp;a[b].</tt></dd></dl>
+ <dl><dt><a name="-__eq__"><strong>__eq__</strong></a> = eq(a, b, /)</dt><dd><tt>Same&nbsp;as&nbsp;a&nbsp;==&nbsp;b.</tt></dd></dl>
+ <dl><dt><a name="-__floordiv__"><strong>__floordiv__</strong></a> = floordiv(a, b, /)</dt><dd><tt>Same&nbsp;as&nbsp;a&nbsp;//&nbsp;b.</tt></dd></dl>
+ <dl><dt><a name="-__ge__"><strong>__ge__</strong></a> = ge(a, b, /)</dt><dd><tt>Same&nbsp;as&nbsp;a&nbsp;&gt;=&nbsp;b.</tt></dd></dl>
+ <dl><dt><a name="-__getitem__"><strong>__getitem__</strong></a> = getitem(a, b, /)</dt><dd><tt>Same&nbsp;as&nbsp;a[b].</tt></dd></dl>
+ <dl><dt><a name="-__gt__"><strong>__gt__</strong></a> = gt(a, b, /)</dt><dd><tt>Same&nbsp;as&nbsp;a&nbsp;&gt;&nbsp;b.</tt></dd></dl>
+ <dl><dt><a name="-__iadd__"><strong>__iadd__</strong></a> = iadd(a, b, /)</dt><dd><tt>Same&nbsp;as&nbsp;a&nbsp;+=&nbsp;b.</tt></dd></dl>
+ <dl><dt><a name="-__iand__"><strong>__iand__</strong></a> = iand(a, b, /)</dt><dd><tt>Same&nbsp;as&nbsp;a&nbsp;&amp;=&nbsp;b.</tt></dd></dl>
+ <dl><dt><a name="-__iconcat__"><strong>__iconcat__</strong></a> = iconcat(a, b, /)</dt><dd><tt>Same&nbsp;as&nbsp;a&nbsp;+=&nbsp;b,&nbsp;for&nbsp;a&nbsp;and&nbsp;b&nbsp;sequences.</tt></dd></dl>
+ <dl><dt><a name="-__ifloordiv__"><strong>__ifloordiv__</strong></a> = ifloordiv(a, b, /)</dt><dd><tt>Same&nbsp;as&nbsp;a&nbsp;//=&nbsp;b.</tt></dd></dl>
+ <dl><dt><a name="-__ilshift__"><strong>__ilshift__</strong></a> = ilshift(a, b, /)</dt><dd><tt>Same&nbsp;as&nbsp;a&nbsp;&lt;&lt;=&nbsp;b.</tt></dd></dl>
+ <dl><dt><a name="-__imatmul__"><strong>__imatmul__</strong></a> = imatmul(a, b, /)</dt><dd><tt>Same&nbsp;as&nbsp;a&nbsp;@=&nbsp;b.</tt></dd></dl>
+ <dl><dt><a name="-__imod__"><strong>__imod__</strong></a> = imod(a, b, /)</dt><dd><tt>Same&nbsp;as&nbsp;a&nbsp;%=&nbsp;b.</tt></dd></dl>
+ <dl><dt><a name="-__imul__"><strong>__imul__</strong></a> = imul(a, b, /)</dt><dd><tt>Same&nbsp;as&nbsp;a&nbsp;*=&nbsp;b.</tt></dd></dl>
+ <dl><dt><a name="-__index__"><strong>__index__</strong></a> = index(a, /)</dt><dd><tt>Same&nbsp;as&nbsp;a.<a href="#-__index__">__index__</a>()</tt></dd></dl>
+ <dl><dt><a name="-__inv__"><strong>__inv__</strong></a> = inv(a, /)</dt><dd><tt>Same&nbsp;as&nbsp;~a.</tt></dd></dl>
+ <dl><dt><a name="-__invert__"><strong>__invert__</strong></a> = invert(a, /)</dt><dd><tt>Same&nbsp;as&nbsp;~a.</tt></dd></dl>
+ <dl><dt><a name="-__ior__"><strong>__ior__</strong></a> = ior(a, b, /)</dt><dd><tt>Same&nbsp;as&nbsp;a&nbsp;|=&nbsp;b.</tt></dd></dl>
+ <dl><dt><a name="-__ipow__"><strong>__ipow__</strong></a> = ipow(a, b, /)</dt><dd><tt>Same&nbsp;as&nbsp;a&nbsp;**=&nbsp;b.</tt></dd></dl>
+ <dl><dt><a name="-__irshift__"><strong>__irshift__</strong></a> = irshift(a, b, /)</dt><dd><tt>Same&nbsp;as&nbsp;a&nbsp;&gt;&gt;=&nbsp;b.</tt></dd></dl>
+ <dl><dt><a name="-__isub__"><strong>__isub__</strong></a> = isub(a, b, /)</dt><dd><tt>Same&nbsp;as&nbsp;a&nbsp;-=&nbsp;b.</tt></dd></dl>
+ <dl><dt><a name="-__itruediv__"><strong>__itruediv__</strong></a> = itruediv(a, b, /)</dt><dd><tt>Same&nbsp;as&nbsp;a&nbsp;/=&nbsp;b.</tt></dd></dl>
+ <dl><dt><a name="-__ixor__"><strong>__ixor__</strong></a> = ixor(a, b, /)</dt><dd><tt>Same&nbsp;as&nbsp;a&nbsp;^=&nbsp;b.</tt></dd></dl>
+ <dl><dt><a name="-__le__"><strong>__le__</strong></a> = le(a, b, /)</dt><dd><tt>Same&nbsp;as&nbsp;a&nbsp;&lt;=&nbsp;b.</tt></dd></dl>
+ <dl><dt><a name="-__lshift__"><strong>__lshift__</strong></a> = lshift(a, b, /)</dt><dd><tt>Same&nbsp;as&nbsp;a&nbsp;&lt;&lt;&nbsp;b.</tt></dd></dl>
+ <dl><dt><a name="-__lt__"><strong>__lt__</strong></a> = lt(a, b, /)</dt><dd><tt>Same&nbsp;as&nbsp;a&nbsp;&lt;&nbsp;b.</tt></dd></dl>
+ <dl><dt><a name="-__matmul__"><strong>__matmul__</strong></a> = matmul(a, b, /)</dt><dd><tt>Same&nbsp;as&nbsp;a&nbsp;@&nbsp;b.</tt></dd></dl>
+ <dl><dt><a name="-__mod__"><strong>__mod__</strong></a> = mod(a, b, /)</dt><dd><tt>Same&nbsp;as&nbsp;a&nbsp;%&nbsp;b.</tt></dd></dl>
+ <dl><dt><a name="-__mul__"><strong>__mul__</strong></a> = mul(a, b, /)</dt><dd><tt>Same&nbsp;as&nbsp;a&nbsp;*&nbsp;b.</tt></dd></dl>
+ <dl><dt><a name="-__ne__"><strong>__ne__</strong></a> = ne(a, b, /)</dt><dd><tt>Same&nbsp;as&nbsp;a&nbsp;!=&nbsp;b.</tt></dd></dl>
+ <dl><dt><a name="-__neg__"><strong>__neg__</strong></a> = neg(a, /)</dt><dd><tt>Same&nbsp;as&nbsp;-a.</tt></dd></dl>
+ <dl><dt><a name="-__not__"><strong>__not__</strong></a> = not_(a, /)</dt><dd><tt>Same&nbsp;as&nbsp;not&nbsp;a.</tt></dd></dl>
+ <dl><dt><a name="-__or__"><strong>__or__</strong></a> = or_(a, b, /)</dt><dd><tt>Same&nbsp;as&nbsp;a&nbsp;|&nbsp;b.</tt></dd></dl>
+ <dl><dt><a name="-__pos__"><strong>__pos__</strong></a> = pos(a, /)</dt><dd><tt>Same&nbsp;as&nbsp;+a.</tt></dd></dl>
+ <dl><dt><a name="-__pow__"><strong>__pow__</strong></a> = pow(a, b, /)</dt><dd><tt>Same&nbsp;as&nbsp;a&nbsp;**&nbsp;b.</tt></dd></dl>
+ <dl><dt><a name="-__rshift__"><strong>__rshift__</strong></a> = rshift(a, b, /)</dt><dd><tt>Same&nbsp;as&nbsp;a&nbsp;&gt;&gt;&nbsp;b.</tt></dd></dl>
+ <dl><dt><a name="-__setitem__"><strong>__setitem__</strong></a> = setitem(a, b, c, /)</dt><dd><tt>Same&nbsp;as&nbsp;a[b]&nbsp;=&nbsp;c.</tt></dd></dl>
+ <dl><dt><a name="-__sub__"><strong>__sub__</strong></a> = sub(a, b, /)</dt><dd><tt>Same&nbsp;as&nbsp;a&nbsp;-&nbsp;b.</tt></dd></dl>
+ <dl><dt><a name="-__truediv__"><strong>__truediv__</strong></a> = truediv(a, b, /)</dt><dd><tt>Same&nbsp;as&nbsp;a&nbsp;/&nbsp;b.</tt></dd></dl>
+ <dl><dt><a name="-__xor__"><strong>__xor__</strong></a> = xor(a, b, /)</dt><dd><tt>Same&nbsp;as&nbsp;a&nbsp;^&nbsp;b.</tt></dd></dl>
+ <dl><dt><a name="-abs"><strong>abs</strong></a>(a, /)</dt><dd><tt>Same&nbsp;as&nbsp;<a href="#-abs">abs</a>(a).</tt></dd></dl>
+ <dl><dt><a name="-add"><strong>add</strong></a>(a, b, /)</dt><dd><tt>Same&nbsp;as&nbsp;a&nbsp;+&nbsp;b.</tt></dd></dl>
+ <dl><dt><a name="-and_"><strong>and_</strong></a>(a, b, /)</dt><dd><tt>Same&nbsp;as&nbsp;a&nbsp;&amp;&nbsp;b.</tt></dd></dl>
+ <dl><dt><a name="-concat"><strong>concat</strong></a>(a, b, /)</dt><dd><tt>Same&nbsp;as&nbsp;a&nbsp;+&nbsp;b,&nbsp;for&nbsp;a&nbsp;and&nbsp;b&nbsp;sequences.</tt></dd></dl>
+ <dl><dt><a name="-contains"><strong>contains</strong></a>(a, b, /)</dt><dd><tt>Same&nbsp;as&nbsp;b&nbsp;in&nbsp;a&nbsp;(note&nbsp;reversed&nbsp;operands).</tt></dd></dl>
+ <dl><dt><a name="-countOf"><strong>countOf</strong></a>(a, b, /)</dt><dd><tt>Return&nbsp;the&nbsp;number&nbsp;of&nbsp;times&nbsp;b&nbsp;occurs&nbsp;in&nbsp;a.</tt></dd></dl>
+ <dl><dt><a name="-delitem"><strong>delitem</strong></a>(a, b, /)</dt><dd><tt>Same&nbsp;as&nbsp;del&nbsp;a[b].</tt></dd></dl>
+ <dl><dt><a name="-eq"><strong>eq</strong></a>(a, b, /)</dt><dd><tt>Same&nbsp;as&nbsp;a&nbsp;==&nbsp;b.</tt></dd></dl>
+ <dl><dt><a name="-floordiv"><strong>floordiv</strong></a>(a, b, /)</dt><dd><tt>Same&nbsp;as&nbsp;a&nbsp;//&nbsp;b.</tt></dd></dl>
+ <dl><dt><a name="-ge"><strong>ge</strong></a>(a, b, /)</dt><dd><tt>Same&nbsp;as&nbsp;a&nbsp;&gt;=&nbsp;b.</tt></dd></dl>
+ <dl><dt><a name="-getitem"><strong>getitem</strong></a>(a, b, /)</dt><dd><tt>Same&nbsp;as&nbsp;a[b].</tt></dd></dl>
+ <dl><dt><a name="-gt"><strong>gt</strong></a>(a, b, /)</dt><dd><tt>Same&nbsp;as&nbsp;a&nbsp;&gt;&nbsp;b.</tt></dd></dl>
+ <dl><dt><a name="-iadd"><strong>iadd</strong></a>(a, b, /)</dt><dd><tt>Same&nbsp;as&nbsp;a&nbsp;+=&nbsp;b.</tt></dd></dl>
+ <dl><dt><a name="-iand"><strong>iand</strong></a>(a, b, /)</dt><dd><tt>Same&nbsp;as&nbsp;a&nbsp;&amp;=&nbsp;b.</tt></dd></dl>
+ <dl><dt><a name="-iconcat"><strong>iconcat</strong></a>(a, b, /)</dt><dd><tt>Same&nbsp;as&nbsp;a&nbsp;+=&nbsp;b,&nbsp;for&nbsp;a&nbsp;and&nbsp;b&nbsp;sequences.</tt></dd></dl>
+ <dl><dt><a name="-ifloordiv"><strong>ifloordiv</strong></a>(a, b, /)</dt><dd><tt>Same&nbsp;as&nbsp;a&nbsp;//=&nbsp;b.</tt></dd></dl>
+ <dl><dt><a name="-ilshift"><strong>ilshift</strong></a>(a, b, /)</dt><dd><tt>Same&nbsp;as&nbsp;a&nbsp;&lt;&lt;=&nbsp;b.</tt></dd></dl>
+ <dl><dt><a name="-imatmul"><strong>imatmul</strong></a>(a, b, /)</dt><dd><tt>Same&nbsp;as&nbsp;a&nbsp;@=&nbsp;b.</tt></dd></dl>
+ <dl><dt><a name="-imod"><strong>imod</strong></a>(a, b, /)</dt><dd><tt>Same&nbsp;as&nbsp;a&nbsp;%=&nbsp;b.</tt></dd></dl>
+ <dl><dt><a name="-imul"><strong>imul</strong></a>(a, b, /)</dt><dd><tt>Same&nbsp;as&nbsp;a&nbsp;*=&nbsp;b.</tt></dd></dl>
+ <dl><dt><a name="-index"><strong>index</strong></a>(a, /)</dt><dd><tt>Same&nbsp;as&nbsp;a.<a href="#-__index__">__index__</a>()</tt></dd></dl>
+ <dl><dt><a name="-indexOf"><strong>indexOf</strong></a>(a, b, /)</dt><dd><tt>Return&nbsp;the&nbsp;first&nbsp;index&nbsp;of&nbsp;b&nbsp;in&nbsp;a.</tt></dd></dl>
+ <dl><dt><a name="-inv"><strong>inv</strong></a>(a, /)</dt><dd><tt>Same&nbsp;as&nbsp;~a.</tt></dd></dl>
+ <dl><dt><a name="-invert"><strong>invert</strong></a>(a, /)</dt><dd><tt>Same&nbsp;as&nbsp;~a.</tt></dd></dl>
+ <dl><dt><a name="-ior"><strong>ior</strong></a>(a, b, /)</dt><dd><tt>Same&nbsp;as&nbsp;a&nbsp;|=&nbsp;b.</tt></dd></dl>
+ <dl><dt><a name="-ipow"><strong>ipow</strong></a>(a, b, /)</dt><dd><tt>Same&nbsp;as&nbsp;a&nbsp;**=&nbsp;b.</tt></dd></dl>
+ <dl><dt><a name="-irshift"><strong>irshift</strong></a>(a, b, /)</dt><dd><tt>Same&nbsp;as&nbsp;a&nbsp;&gt;&gt;=&nbsp;b.</tt></dd></dl>
+ <dl><dt><a name="-is_"><strong>is_</strong></a>(a, b, /)</dt><dd><tt>Same&nbsp;as&nbsp;a&nbsp;is&nbsp;b.</tt></dd></dl>
+ <dl><dt><a name="-is_not"><strong>is_not</strong></a>(a, b, /)</dt><dd><tt>Same&nbsp;as&nbsp;a&nbsp;is&nbsp;not&nbsp;b.</tt></dd></dl>
+ <dl><dt><a name="-isub"><strong>isub</strong></a>(a, b, /)</dt><dd><tt>Same&nbsp;as&nbsp;a&nbsp;-=&nbsp;b.</tt></dd></dl>
+ <dl><dt><a name="-itruediv"><strong>itruediv</strong></a>(a, b, /)</dt><dd><tt>Same&nbsp;as&nbsp;a&nbsp;/=&nbsp;b.</tt></dd></dl>
+ <dl><dt><a name="-ixor"><strong>ixor</strong></a>(a, b, /)</dt><dd><tt>Same&nbsp;as&nbsp;a&nbsp;^=&nbsp;b.</tt></dd></dl>
+ <dl><dt><a name="-le"><strong>le</strong></a>(a, b, /)</dt><dd><tt>Same&nbsp;as&nbsp;a&nbsp;&lt;=&nbsp;b.</tt></dd></dl>
+ <dl><dt><a name="-length_hint"><strong>length_hint</strong></a>(obj, default=0, /)</dt><dd><tt>Return&nbsp;an&nbsp;estimate&nbsp;of&nbsp;the&nbsp;number&nbsp;of&nbsp;items&nbsp;in&nbsp;obj.<br>
+&nbsp;<br>
+This&nbsp;is&nbsp;useful&nbsp;for&nbsp;presizing&nbsp;containers&nbsp;when&nbsp;building&nbsp;from&nbsp;an&nbsp;iterable.<br>
+&nbsp;<br>
+If&nbsp;the&nbsp;<a href="builtins.html#object">object</a>&nbsp;supports&nbsp;len(),&nbsp;the&nbsp;result&nbsp;will&nbsp;be&nbsp;exact.<br>
+Otherwise,&nbsp;it&nbsp;may&nbsp;over-&nbsp;or&nbsp;under-estimate&nbsp;by&nbsp;an&nbsp;arbitrary&nbsp;amount.<br>
+The&nbsp;result&nbsp;will&nbsp;be&nbsp;an&nbsp;integer&nbsp;&gt;=&nbsp;0.</tt></dd></dl>
+ <dl><dt><a name="-lshift"><strong>lshift</strong></a>(a, b, /)</dt><dd><tt>Same&nbsp;as&nbsp;a&nbsp;&lt;&lt;&nbsp;b.</tt></dd></dl>
+ <dl><dt><a name="-lt"><strong>lt</strong></a>(a, b, /)</dt><dd><tt>Same&nbsp;as&nbsp;a&nbsp;&lt;&nbsp;b.</tt></dd></dl>
+ <dl><dt><a name="-matmul"><strong>matmul</strong></a>(a, b, /)</dt><dd><tt>Same&nbsp;as&nbsp;a&nbsp;@&nbsp;b.</tt></dd></dl>
+ <dl><dt><a name="-mod"><strong>mod</strong></a>(a, b, /)</dt><dd><tt>Same&nbsp;as&nbsp;a&nbsp;%&nbsp;b.</tt></dd></dl>
+ <dl><dt><a name="-mul"><strong>mul</strong></a>(a, b, /)</dt><dd><tt>Same&nbsp;as&nbsp;a&nbsp;*&nbsp;b.</tt></dd></dl>
+ <dl><dt><a name="-ne"><strong>ne</strong></a>(a, b, /)</dt><dd><tt>Same&nbsp;as&nbsp;a&nbsp;!=&nbsp;b.</tt></dd></dl>
+ <dl><dt><a name="-neg"><strong>neg</strong></a>(a, /)</dt><dd><tt>Same&nbsp;as&nbsp;-a.</tt></dd></dl>
+ <dl><dt><a name="-not_"><strong>not_</strong></a>(a, /)</dt><dd><tt>Same&nbsp;as&nbsp;not&nbsp;a.</tt></dd></dl>
+ <dl><dt><a name="-or_"><strong>or_</strong></a>(a, b, /)</dt><dd><tt>Same&nbsp;as&nbsp;a&nbsp;|&nbsp;b.</tt></dd></dl>
+ <dl><dt><a name="-pos"><strong>pos</strong></a>(a, /)</dt><dd><tt>Same&nbsp;as&nbsp;+a.</tt></dd></dl>
+ <dl><dt><a name="-pow"><strong>pow</strong></a>(a, b, /)</dt><dd><tt>Same&nbsp;as&nbsp;a&nbsp;**&nbsp;b.</tt></dd></dl>
+ <dl><dt><a name="-rshift"><strong>rshift</strong></a>(a, b, /)</dt><dd><tt>Same&nbsp;as&nbsp;a&nbsp;&gt;&gt;&nbsp;b.</tt></dd></dl>
+ <dl><dt><a name="-setitem"><strong>setitem</strong></a>(a, b, c, /)</dt><dd><tt>Same&nbsp;as&nbsp;a[b]&nbsp;=&nbsp;c.</tt></dd></dl>
+ <dl><dt><a name="-sub"><strong>sub</strong></a>(a, b, /)</dt><dd><tt>Same&nbsp;as&nbsp;a&nbsp;-&nbsp;b.</tt></dd></dl>
+ <dl><dt><a name="-truediv"><strong>truediv</strong></a>(a, b, /)</dt><dd><tt>Same&nbsp;as&nbsp;a&nbsp;/&nbsp;b.</tt></dd></dl>
+ <dl><dt><a name="-truth"><strong>truth</strong></a>(a, /)</dt><dd><tt>Return&nbsp;True&nbsp;if&nbsp;a&nbsp;is&nbsp;true,&nbsp;False&nbsp;otherwise.</tt></dd></dl>
+ <dl><dt><a name="-xor"><strong>xor</strong></a>(a, b, /)</dt><dd><tt>Same&nbsp;as&nbsp;a&nbsp;^&nbsp;b.</tt></dd></dl>
+</td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#55aa55">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Data</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#55aa55"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><strong>__all__</strong> = ['abs', 'add', 'and_', 'attrgetter', 'concat', 'contains', 'countOf', 'delitem', 'eq', 'floordiv', 'ge', 'getitem', 'gt', 'iadd', 'iand', 'iconcat', 'ifloordiv', 'ilshift', 'imatmul', 'imod', ...]</td></tr></table>
+</body></html>

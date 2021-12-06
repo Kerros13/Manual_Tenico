@@ -1,0 +1,47 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head><title>Python: package importlib</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+</head><body bgcolor="#f0f0f8">
+
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="heading">
+<tr bgcolor="#7799ee">
+<td valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong>importlib</strong></big></big></font></td
+><td align=right valign=bottom
+><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:c%3A%5Cpython38%5Clib%5Cimportlib%5C__init__.py">c:\python38\lib\importlib\__init__.py</a><br><a href="https://docs.python.org/3.8/library/importlib">Module Reference</a></font></td></tr></table>
+    <p><tt>A&nbsp;pure&nbsp;Python&nbsp;implementation&nbsp;of&nbsp;import.</tt></p>
+<p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#eeaa77">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Functions</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#eeaa77"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl><dt><a name="-__import__"><strong>__import__</strong></a>(name, globals=None, locals=None, fromlist=(), level=0)</dt><dd><tt>Import&nbsp;a&nbsp;module.<br>
+&nbsp;<br>
+The&nbsp;'globals'&nbsp;argument&nbsp;is&nbsp;used&nbsp;to&nbsp;infer&nbsp;where&nbsp;the&nbsp;import&nbsp;is&nbsp;occurring&nbsp;from<br>
+to&nbsp;handle&nbsp;relative&nbsp;imports.&nbsp;The&nbsp;'locals'&nbsp;argument&nbsp;is&nbsp;ignored.&nbsp;The<br>
+'fromlist'&nbsp;argument&nbsp;specifies&nbsp;what&nbsp;should&nbsp;exist&nbsp;as&nbsp;attributes&nbsp;on&nbsp;the&nbsp;module<br>
+being&nbsp;imported&nbsp;(e.g.&nbsp;``from&nbsp;module&nbsp;import&nbsp;&lt;fromlist&gt;``).&nbsp;&nbsp;The&nbsp;'level'<br>
+argument&nbsp;represents&nbsp;the&nbsp;package&nbsp;location&nbsp;to&nbsp;import&nbsp;from&nbsp;in&nbsp;a&nbsp;relative<br>
+import&nbsp;(e.g.&nbsp;``from&nbsp;..pkg&nbsp;import&nbsp;mod``&nbsp;would&nbsp;have&nbsp;a&nbsp;'level'&nbsp;of&nbsp;2).</tt></dd></dl>
+ <dl><dt><a name="-import_module"><strong>import_module</strong></a>(name, package=None)</dt><dd><tt>Import&nbsp;a&nbsp;module.<br>
+&nbsp;<br>
+The&nbsp;'package'&nbsp;argument&nbsp;is&nbsp;required&nbsp;when&nbsp;performing&nbsp;a&nbsp;relative&nbsp;import.&nbsp;It<br>
+specifies&nbsp;the&nbsp;package&nbsp;to&nbsp;use&nbsp;as&nbsp;the&nbsp;anchor&nbsp;point&nbsp;from&nbsp;which&nbsp;to&nbsp;resolve&nbsp;the<br>
+relative&nbsp;import&nbsp;to&nbsp;an&nbsp;absolute&nbsp;import.</tt></dd></dl>
+ <dl><dt><a name="-invalidate_caches"><strong>invalidate_caches</strong></a>()</dt><dd><tt>Call&nbsp;the&nbsp;<a href="#-invalidate_caches">invalidate_caches</a>()&nbsp;method&nbsp;on&nbsp;all&nbsp;meta&nbsp;path&nbsp;finders&nbsp;stored&nbsp;in<br>
+sys.meta_path&nbsp;(where&nbsp;implemented).</tt></dd></dl>
+ <dl><dt><a name="-reload"><strong>reload</strong></a>(module)</dt><dd><tt>Reload&nbsp;the&nbsp;module&nbsp;and&nbsp;return&nbsp;it.<br>
+&nbsp;<br>
+The&nbsp;module&nbsp;must&nbsp;have&nbsp;been&nbsp;successfully&nbsp;imported&nbsp;before.</tt></dd></dl>
+</td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#55aa55">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Data</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#55aa55"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><strong>__all__</strong> = ['__import__', 'import_module', 'invalidate_caches', 'reload']<br>
+<strong>__warningregistry__</strong> = {'version': 0}</td></tr></table>
+</body></html>

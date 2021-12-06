@@ -1,0 +1,110 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head><title>Python: module pickletools</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+</head><body bgcolor="#f0f0f8">
+
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="heading">
+<tr bgcolor="#7799ee">
+<td valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong>pickletools</strong></big></big></font></td
+><td align=right valign=bottom
+><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:c%3A%5Cpython38%5Clib%5Cpickletools.py">c:\python38\lib\pickletools.py</a><br><a href="https://docs.python.org/3.8/library/pickletools">Module Reference</a></font></td></tr></table>
+    <p><tt>"Executable&nbsp;documentation"&nbsp;for&nbsp;the&nbsp;pickle&nbsp;module.<br>
+&nbsp;<br>
+Extensive&nbsp;comments&nbsp;about&nbsp;the&nbsp;pickle&nbsp;protocols&nbsp;and&nbsp;pickle-machine&nbsp;opcodes<br>
+can&nbsp;be&nbsp;found&nbsp;here.&nbsp;&nbsp;Some&nbsp;functions&nbsp;meant&nbsp;for&nbsp;external&nbsp;use:<br>
+&nbsp;<br>
+<a href="#-genops">genops</a>(pickle)<br>
+&nbsp;&nbsp;&nbsp;Generate&nbsp;all&nbsp;the&nbsp;opcodes&nbsp;in&nbsp;a&nbsp;pickle,&nbsp;as&nbsp;(opcode,&nbsp;arg,&nbsp;position)&nbsp;triples.<br>
+&nbsp;<br>
+<a href="#-dis">dis</a>(pickle,&nbsp;out=None,&nbsp;memo=None,&nbsp;indentlevel=4)<br>
+&nbsp;&nbsp;&nbsp;Print&nbsp;a&nbsp;symbolic&nbsp;disassembly&nbsp;of&nbsp;a&nbsp;pickle.</tt></p>
+<p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#aa55cc">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Modules</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#aa55cc"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><table width="100%" summary="list"><tr><td width="25%" valign=top><a href="codecs.html">codecs</a><br>
+<a href="io.html">io</a><br>
+</td><td width="25%" valign=top><a href="pickle.html">pickle</a><br>
+<a href="re.html">re</a><br>
+</td><td width="25%" valign=top><a href="sys.html">sys</a><br>
+</td><td width="25%" valign=top></td></tr></table></td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#eeaa77">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Functions</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#eeaa77"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl><dt><a name="-dis"><strong>dis</strong></a>(pickle, out=None, memo=None, indentlevel=4, annotate=0)</dt><dd><tt>Produce&nbsp;a&nbsp;symbolic&nbsp;disassembly&nbsp;of&nbsp;a&nbsp;pickle.<br>
+&nbsp;<br>
+'pickle'&nbsp;is&nbsp;a&nbsp;file-like&nbsp;object,&nbsp;or&nbsp;string,&nbsp;containing&nbsp;a&nbsp;(at&nbsp;least&nbsp;one)<br>
+pickle.&nbsp;&nbsp;The&nbsp;pickle&nbsp;is&nbsp;disassembled&nbsp;from&nbsp;the&nbsp;current&nbsp;position,&nbsp;through<br>
+the&nbsp;first&nbsp;STOP&nbsp;opcode&nbsp;encountered.<br>
+&nbsp;<br>
+Optional&nbsp;arg&nbsp;'out'&nbsp;is&nbsp;a&nbsp;file-like&nbsp;object&nbsp;to&nbsp;which&nbsp;the&nbsp;disassembly&nbsp;is<br>
+printed.&nbsp;&nbsp;It&nbsp;defaults&nbsp;to&nbsp;sys.stdout.<br>
+&nbsp;<br>
+Optional&nbsp;arg&nbsp;'memo'&nbsp;is&nbsp;a&nbsp;Python&nbsp;dict,&nbsp;used&nbsp;as&nbsp;the&nbsp;pickle's&nbsp;memo.&nbsp;&nbsp;It<br>
+may&nbsp;be&nbsp;mutated&nbsp;by&nbsp;<a href="#-dis">dis</a>(),&nbsp;if&nbsp;the&nbsp;pickle&nbsp;contains&nbsp;PUT&nbsp;or&nbsp;BINPUT&nbsp;opcodes.<br>
+Passing&nbsp;the&nbsp;same&nbsp;memo&nbsp;object&nbsp;to&nbsp;another&nbsp;<a href="#-dis">dis</a>()&nbsp;call&nbsp;then&nbsp;allows&nbsp;disassembly<br>
+to&nbsp;proceed&nbsp;across&nbsp;multiple&nbsp;pickles&nbsp;that&nbsp;were&nbsp;all&nbsp;created&nbsp;by&nbsp;the&nbsp;same<br>
+pickler&nbsp;with&nbsp;the&nbsp;same&nbsp;memo.&nbsp;&nbsp;Ordinarily&nbsp;you&nbsp;don't&nbsp;need&nbsp;to&nbsp;worry&nbsp;about&nbsp;this.<br>
+&nbsp;<br>
+Optional&nbsp;arg&nbsp;'indentlevel'&nbsp;is&nbsp;the&nbsp;number&nbsp;of&nbsp;blanks&nbsp;by&nbsp;which&nbsp;to&nbsp;indent<br>
+a&nbsp;new&nbsp;MARK&nbsp;level.&nbsp;&nbsp;It&nbsp;defaults&nbsp;to&nbsp;4.<br>
+&nbsp;<br>
+Optional&nbsp;arg&nbsp;'annotate'&nbsp;if&nbsp;nonzero&nbsp;instructs&nbsp;<a href="#-dis">dis</a>()&nbsp;to&nbsp;add&nbsp;short<br>
+description&nbsp;of&nbsp;the&nbsp;opcode&nbsp;on&nbsp;each&nbsp;line&nbsp;of&nbsp;disassembled&nbsp;output.<br>
+The&nbsp;value&nbsp;given&nbsp;to&nbsp;'annotate'&nbsp;must&nbsp;be&nbsp;an&nbsp;integer&nbsp;and&nbsp;is&nbsp;used&nbsp;as&nbsp;a<br>
+hint&nbsp;for&nbsp;the&nbsp;column&nbsp;where&nbsp;annotation&nbsp;should&nbsp;start.&nbsp;&nbsp;The&nbsp;default<br>
+value&nbsp;is&nbsp;0,&nbsp;meaning&nbsp;no&nbsp;annotations.<br>
+&nbsp;<br>
+In&nbsp;addition&nbsp;to&nbsp;printing&nbsp;the&nbsp;disassembly,&nbsp;some&nbsp;sanity&nbsp;checks&nbsp;are&nbsp;made:<br>
+&nbsp;<br>
++&nbsp;All&nbsp;embedded&nbsp;opcode&nbsp;arguments&nbsp;"make&nbsp;sense".<br>
+&nbsp;<br>
++&nbsp;Explicit&nbsp;and&nbsp;implicit&nbsp;pop&nbsp;operations&nbsp;have&nbsp;enough&nbsp;items&nbsp;on&nbsp;the&nbsp;stack.<br>
+&nbsp;<br>
++&nbsp;When&nbsp;an&nbsp;opcode&nbsp;implicitly&nbsp;refers&nbsp;to&nbsp;a&nbsp;markobject,&nbsp;a&nbsp;markobject&nbsp;is<br>
+&nbsp;&nbsp;actually&nbsp;on&nbsp;the&nbsp;stack.<br>
+&nbsp;<br>
++&nbsp;A&nbsp;memo&nbsp;entry&nbsp;isn't&nbsp;referenced&nbsp;before&nbsp;it's&nbsp;defined.<br>
+&nbsp;<br>
++&nbsp;The&nbsp;markobject&nbsp;isn't&nbsp;stored&nbsp;in&nbsp;the&nbsp;memo.<br>
+&nbsp;<br>
++&nbsp;A&nbsp;memo&nbsp;entry&nbsp;isn't&nbsp;redefined.</tt></dd></dl>
+ <dl><dt><a name="-genops"><strong>genops</strong></a>(pickle)</dt><dd><tt>Generate&nbsp;all&nbsp;the&nbsp;opcodes&nbsp;in&nbsp;a&nbsp;pickle.<br>
+&nbsp;<br>
+'pickle'&nbsp;is&nbsp;a&nbsp;file-like&nbsp;object,&nbsp;or&nbsp;string,&nbsp;containing&nbsp;the&nbsp;pickle.<br>
+&nbsp;<br>
+Each&nbsp;opcode&nbsp;in&nbsp;the&nbsp;pickle&nbsp;is&nbsp;generated,&nbsp;from&nbsp;the&nbsp;current&nbsp;pickle&nbsp;position,<br>
+stopping&nbsp;after&nbsp;a&nbsp;STOP&nbsp;opcode&nbsp;is&nbsp;delivered.&nbsp;&nbsp;A&nbsp;triple&nbsp;is&nbsp;generated&nbsp;for<br>
+each&nbsp;opcode:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;opcode,&nbsp;arg,&nbsp;pos<br>
+&nbsp;<br>
+opcode&nbsp;is&nbsp;an&nbsp;OpcodeInfo&nbsp;record,&nbsp;describing&nbsp;the&nbsp;current&nbsp;opcode.<br>
+&nbsp;<br>
+If&nbsp;the&nbsp;opcode&nbsp;has&nbsp;an&nbsp;argument&nbsp;embedded&nbsp;in&nbsp;the&nbsp;pickle,&nbsp;arg&nbsp;is&nbsp;its&nbsp;decoded<br>
+value,&nbsp;as&nbsp;a&nbsp;Python&nbsp;object.&nbsp;&nbsp;If&nbsp;the&nbsp;opcode&nbsp;doesn't&nbsp;have&nbsp;an&nbsp;argument,&nbsp;arg<br>
+is&nbsp;None.<br>
+&nbsp;<br>
+If&nbsp;the&nbsp;pickle&nbsp;has&nbsp;a&nbsp;tell()&nbsp;method,&nbsp;pos&nbsp;was&nbsp;the&nbsp;value&nbsp;of&nbsp;pickle.tell()<br>
+before&nbsp;reading&nbsp;the&nbsp;current&nbsp;opcode.&nbsp;&nbsp;If&nbsp;the&nbsp;pickle&nbsp;is&nbsp;a&nbsp;bytes&nbsp;object,<br>
+it's&nbsp;wrapped&nbsp;in&nbsp;a&nbsp;BytesIO&nbsp;object,&nbsp;and&nbsp;the&nbsp;latter's&nbsp;tell()&nbsp;result&nbsp;is<br>
+used.&nbsp;&nbsp;Else&nbsp;(the&nbsp;pickle&nbsp;doesn't&nbsp;have&nbsp;a&nbsp;tell(),&nbsp;and&nbsp;it's&nbsp;not&nbsp;obvious&nbsp;how<br>
+to&nbsp;query&nbsp;its&nbsp;current&nbsp;position)&nbsp;pos&nbsp;is&nbsp;None.</tt></dd></dl>
+ <dl><dt><a name="-optimize"><strong>optimize</strong></a>(p)</dt><dd><tt>Optimize&nbsp;a&nbsp;pickle&nbsp;string&nbsp;by&nbsp;removing&nbsp;unused&nbsp;PUT&nbsp;opcodes</tt></dd></dl>
+</td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#55aa55">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Data</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#55aa55"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><strong>__all__</strong> = ['dis', 'genops', 'optimize']<br>
+<strong>__test__</strong> = {'disassembler_memo_test': '<font color="#c040c0">\n</font>&gt;&gt;&gt; import pickle<font color="#c040c0">\n</font>&gt;&gt;&gt; import io<font color="#c040c0">\n</font>&gt;&gt;&gt; f = io.Byte...18: .    STOP<font color="#c040c0">\n</font>highest protocol among opcodes = 2<font color="#c040c0">\n</font>', 'disassembler_test': "<font color="#c040c0">\n</font>&gt;&gt;&gt; import pickle<font color="#c040c0">\n</font>&gt;&gt;&gt; x = [1, 2, (3, 4), {b'abc...ing machine.<font color="#c040c0">\n</font>highest protocol among opcodes = 2<font color="#c040c0">\n\n</font>"}</td></tr></table>
+</body></html>

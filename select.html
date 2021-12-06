@@ -1,0 +1,46 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head><title>Python: module select</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+</head><body bgcolor="#f0f0f8">
+
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="heading">
+<tr bgcolor="#7799ee">
+<td valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong>select</strong></big></big></font></td
+><td align=right valign=bottom
+><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:c%3A%5Cpython38%5Cdlls%5Cselect.pyd">c:\python38\dlls\select.pyd</a></font></td></tr></table>
+    <p><tt>This&nbsp;module&nbsp;supports&nbsp;asynchronous&nbsp;I/O&nbsp;on&nbsp;multiple&nbsp;file&nbsp;descriptors.<br>
+&nbsp;<br>
+***&nbsp;IMPORTANT&nbsp;NOTICE&nbsp;***<br>
+On&nbsp;Windows,&nbsp;only&nbsp;sockets&nbsp;are&nbsp;supported;&nbsp;on&nbsp;Unix,&nbsp;all&nbsp;file&nbsp;descriptors.</tt></p>
+<p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#eeaa77">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Functions</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#eeaa77"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl><dt><a name="-select"><strong>select</strong></a>(rlist, wlist, xlist, timeout=None, /)</dt><dd><tt>Wait&nbsp;until&nbsp;one&nbsp;or&nbsp;more&nbsp;file&nbsp;descriptors&nbsp;are&nbsp;ready&nbsp;for&nbsp;some&nbsp;kind&nbsp;of&nbsp;I/O.<br>
+&nbsp;<br>
+The&nbsp;first&nbsp;three&nbsp;arguments&nbsp;are&nbsp;iterables&nbsp;of&nbsp;file&nbsp;descriptors&nbsp;to&nbsp;be&nbsp;waited&nbsp;for:<br>
+rlist&nbsp;--&nbsp;wait&nbsp;until&nbsp;ready&nbsp;for&nbsp;reading<br>
+wlist&nbsp;--&nbsp;wait&nbsp;until&nbsp;ready&nbsp;for&nbsp;writing<br>
+xlist&nbsp;--&nbsp;wait&nbsp;for&nbsp;an&nbsp;"exceptional&nbsp;condition"<br>
+If&nbsp;only&nbsp;one&nbsp;kind&nbsp;of&nbsp;condition&nbsp;is&nbsp;required,&nbsp;pass&nbsp;[]&nbsp;for&nbsp;the&nbsp;other&nbsp;lists.<br>
+&nbsp;<br>
+A&nbsp;file&nbsp;descriptor&nbsp;is&nbsp;either&nbsp;a&nbsp;socket&nbsp;or&nbsp;file&nbsp;object,&nbsp;or&nbsp;a&nbsp;small&nbsp;integer<br>
+gotten&nbsp;from&nbsp;a&nbsp;fileno()&nbsp;method&nbsp;call&nbsp;on&nbsp;one&nbsp;of&nbsp;those.<br>
+&nbsp;<br>
+The&nbsp;optional&nbsp;4th&nbsp;argument&nbsp;specifies&nbsp;a&nbsp;timeout&nbsp;in&nbsp;seconds;&nbsp;it&nbsp;may&nbsp;be<br>
+a&nbsp;floating&nbsp;point&nbsp;number&nbsp;to&nbsp;specify&nbsp;fractions&nbsp;of&nbsp;seconds.&nbsp;&nbsp;If&nbsp;it&nbsp;is&nbsp;absent<br>
+or&nbsp;None,&nbsp;the&nbsp;call&nbsp;will&nbsp;never&nbsp;time&nbsp;out.<br>
+&nbsp;<br>
+The&nbsp;return&nbsp;value&nbsp;is&nbsp;a&nbsp;tuple&nbsp;of&nbsp;three&nbsp;lists&nbsp;corresponding&nbsp;to&nbsp;the&nbsp;first&nbsp;three<br>
+arguments;&nbsp;each&nbsp;contains&nbsp;the&nbsp;subset&nbsp;of&nbsp;the&nbsp;corresponding&nbsp;file&nbsp;descriptors<br>
+that&nbsp;are&nbsp;ready.<br>
+&nbsp;<br>
+***&nbsp;IMPORTANT&nbsp;NOTICE&nbsp;***<br>
+On&nbsp;Windows,&nbsp;only&nbsp;sockets&nbsp;are&nbsp;supported;&nbsp;on&nbsp;Unix,&nbsp;all&nbsp;file<br>
+descriptors&nbsp;can&nbsp;be&nbsp;used.</tt></dd></dl>
+</td></tr></table>
+</body></html>

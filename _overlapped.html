@@ -1,0 +1,184 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head><title>Python: module _overlapped</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+</head><body bgcolor="#f0f0f8">
+
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="heading">
+<tr bgcolor="#7799ee">
+<td valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong>_overlapped</strong></big></big></font></td
+><td align=right valign=bottom
+><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:c%3A%5Cpython38%5Cdlls%5C_overlapped.pyd">c:\python38\dlls\_overlapped.pyd</a></font></td></tr></table>
+    <p></p>
+<p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ee77aa">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Classes</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#ee77aa"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl>
+<dt><font face="helvetica, arial"><a href="builtins.html#object">builtins.object</a>
+</font></dt><dd>
+<dl>
+<dt><font face="helvetica, arial"><a href="_overlapped.html#Overlapped">Overlapped</a>
+</font></dt></dl>
+</dd>
+</dl>
+ <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="Overlapped">class <strong>Overlapped</strong></a>(<a href="builtins.html#object">builtins.object</a>)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt>OVERLAPPED&nbsp;structure&nbsp;wrapper<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%">Methods defined here:<br>
+<dl><dt><a name="Overlapped-AcceptEx"><strong>AcceptEx</strong></a>(...)</dt><dd><tt><a href="#Overlapped-AcceptEx">AcceptEx</a>(listen_handle,&nbsp;accept_handle)&nbsp;-&gt;&nbsp;<a href="#Overlapped">Overlapped</a>[address_as_bytes]<br>
+&nbsp;<br>
+Start&nbsp;overlapped&nbsp;wait&nbsp;for&nbsp;client&nbsp;to&nbsp;connect</tt></dd></dl>
+
+<dl><dt><a name="Overlapped-ConnectEx"><strong>ConnectEx</strong></a>(...)</dt><dd><tt><a href="#Overlapped-ConnectEx">ConnectEx</a>(client_handle,&nbsp;address_as_bytes)&nbsp;-&gt;&nbsp;<a href="#Overlapped">Overlapped</a>[None]<br>
+&nbsp;<br>
+Start&nbsp;overlapped&nbsp;connect.&nbsp;&nbsp;client_handle&nbsp;should&nbsp;be&nbsp;unbound.</tt></dd></dl>
+
+<dl><dt><a name="Overlapped-ConnectNamedPipe"><strong>ConnectNamedPipe</strong></a>(...)</dt><dd><tt><a href="#Overlapped-ConnectNamedPipe">ConnectNamedPipe</a>(handle)&nbsp;-&gt;&nbsp;<a href="#Overlapped">Overlapped</a>[None]<br>
+&nbsp;<br>
+Start&nbsp;overlapped&nbsp;wait&nbsp;for&nbsp;a&nbsp;client&nbsp;to&nbsp;connect.</tt></dd></dl>
+
+<dl><dt><a name="Overlapped-DisconnectEx"><strong>DisconnectEx</strong></a>(...)</dt><dd><tt><a href="#Overlapped-DisconnectEx">DisconnectEx</a>(handle,&nbsp;flags)&nbsp;-&gt;&nbsp;<a href="#Overlapped">Overlapped</a>[None]<br>
+&nbsp;<br>
+Start&nbsp;overlapped&nbsp;connect.&nbsp;&nbsp;client_handle&nbsp;should&nbsp;be&nbsp;unbound.</tt></dd></dl>
+
+<dl><dt><a name="Overlapped-ReadFile"><strong>ReadFile</strong></a>(...)</dt><dd><tt><a href="#Overlapped-ReadFile">ReadFile</a>(handle,&nbsp;size)&nbsp;-&gt;&nbsp;<a href="#Overlapped">Overlapped</a>[message]<br>
+&nbsp;<br>
+Start&nbsp;overlapped&nbsp;read</tt></dd></dl>
+
+<dl><dt><a name="Overlapped-ReadFileInto"><strong>ReadFileInto</strong></a>(...)</dt><dd><tt><a href="#Overlapped-ReadFileInto">ReadFileInto</a>(handle,&nbsp;buf)&nbsp;-&gt;&nbsp;<a href="#Overlapped">Overlapped</a>[bytes_transferred]<br>
+&nbsp;<br>
+Start&nbsp;overlapped&nbsp;receive</tt></dd></dl>
+
+<dl><dt><a name="Overlapped-TransmitFile"><strong>TransmitFile</strong></a>(...)</dt><dd><tt><a href="#Overlapped-TransmitFile">TransmitFile</a>(socket,&nbsp;file,&nbsp;offset,&nbsp;offset_high,&nbsp;count_to_write,&nbsp;count_per_send,&nbsp;flags)&nbsp;-&gt;&nbsp;<a href="#Overlapped">Overlapped</a>[None]<br>
+&nbsp;<br>
+Transmit&nbsp;file&nbsp;data&nbsp;over&nbsp;a&nbsp;connected&nbsp;socket.</tt></dd></dl>
+
+<dl><dt><a name="Overlapped-WSARecv"><strong>WSARecv</strong></a>(...)</dt><dd><tt>RecvFile(handle,&nbsp;size,&nbsp;flags)&nbsp;-&gt;&nbsp;<a href="#Overlapped">Overlapped</a>[message]<br>
+&nbsp;<br>
+Start&nbsp;overlapped&nbsp;receive</tt></dd></dl>
+
+<dl><dt><a name="Overlapped-WSARecvFrom"><strong>WSARecvFrom</strong></a>(...)</dt><dd><tt>RecvFile(handle,&nbsp;size,&nbsp;flags)&nbsp;-&gt;&nbsp;<a href="#Overlapped">Overlapped</a>[(message,&nbsp;(host,&nbsp;port))]<br>
+&nbsp;<br>
+Start&nbsp;overlapped&nbsp;receive</tt></dd></dl>
+
+<dl><dt><a name="Overlapped-WSARecvInto"><strong>WSARecvInto</strong></a>(...)</dt><dd><tt><a href="#Overlapped-WSARecvInto">WSARecvInto</a>(handle,&nbsp;buf,&nbsp;flags)&nbsp;-&gt;&nbsp;<a href="#Overlapped">Overlapped</a>[bytes_transferred]<br>
+&nbsp;<br>
+Start&nbsp;overlapped&nbsp;receive</tt></dd></dl>
+
+<dl><dt><a name="Overlapped-WSASend"><strong>WSASend</strong></a>(...)</dt><dd><tt><a href="#Overlapped-WSASend">WSASend</a>(handle,&nbsp;buf,&nbsp;flags)&nbsp;-&gt;&nbsp;<a href="#Overlapped">Overlapped</a>[bytes_transferred]<br>
+&nbsp;<br>
+Start&nbsp;overlapped&nbsp;send</tt></dd></dl>
+
+<dl><dt><a name="Overlapped-WSASendTo"><strong>WSASendTo</strong></a>(...)</dt><dd><tt><a href="#Overlapped-WSASendTo">WSASendTo</a>(handle,&nbsp;buf,&nbsp;flags,&nbsp;address_as_bytes)&nbsp;-&gt;&nbsp;<a href="#Overlapped">Overlapped</a>[bytes_transferred]<br>
+&nbsp;<br>
+Start&nbsp;overlapped&nbsp;sendto&nbsp;over&nbsp;a&nbsp;connectionless&nbsp;(UDP)&nbsp;socket</tt></dd></dl>
+
+<dl><dt><a name="Overlapped-WriteFile"><strong>WriteFile</strong></a>(...)</dt><dd><tt><a href="#Overlapped-WriteFile">WriteFile</a>(handle,&nbsp;buf)&nbsp;-&gt;&nbsp;<a href="#Overlapped">Overlapped</a>[bytes_transferred]<br>
+&nbsp;<br>
+Start&nbsp;overlapped&nbsp;write</tt></dd></dl>
+
+<dl><dt><a name="Overlapped-cancel"><strong>cancel</strong></a>(...)</dt><dd><tt><a href="#Overlapped-cancel">cancel</a>()&nbsp;-&gt;&nbsp;None<br>
+&nbsp;<br>
+Cancel&nbsp;overlapped&nbsp;operation</tt></dd></dl>
+
+<dl><dt><a name="Overlapped-getresult"><strong>getresult</strong></a>(...)</dt><dd><tt><a href="#Overlapped-getresult">getresult</a>(wait=False)&nbsp;-&gt;&nbsp;result<br>
+&nbsp;<br>
+Retrieve&nbsp;result&nbsp;of&nbsp;operation.&nbsp;&nbsp;If&nbsp;wait&nbsp;is&nbsp;true&nbsp;then&nbsp;it&nbsp;blocks<br>
+until&nbsp;the&nbsp;operation&nbsp;is&nbsp;finished.&nbsp;&nbsp;If&nbsp;wait&nbsp;is&nbsp;false&nbsp;and&nbsp;the<br>
+operation&nbsp;is&nbsp;still&nbsp;pending&nbsp;then&nbsp;an&nbsp;error&nbsp;is&nbsp;raised.</tt></dd></dl>
+
+<hr>
+Static methods defined here:<br>
+<dl><dt><a name="Overlapped-__new__"><strong>__new__</strong></a>(*args, **kwargs)<font color="#909090"><font face="helvetica, arial"> from <a href="builtins.html#type">builtins.type</a></font></font></dt><dd><tt>Create&nbsp;and&nbsp;return&nbsp;a&nbsp;new&nbsp;<a href="builtins.html#object">object</a>.&nbsp;&nbsp;See&nbsp;help(type)&nbsp;for&nbsp;accurate&nbsp;signature.</tt></dd></dl>
+
+<hr>
+Data descriptors defined here:<br>
+<dl><dt><strong>address</strong></dt>
+<dd><tt>Address&nbsp;of&nbsp;overlapped&nbsp;structure</tt></dd>
+</dl>
+<dl><dt><strong>error</strong></dt>
+<dd><tt>Error&nbsp;from&nbsp;last&nbsp;operation</tt></dd>
+</dl>
+<dl><dt><strong>event</strong></dt>
+<dd><tt>Overlapped&nbsp;event&nbsp;handle</tt></dd>
+</dl>
+<dl><dt><strong>pending</strong></dt>
+<dd><tt>Whether&nbsp;the&nbsp;operation&nbsp;is&nbsp;pending</tt></dd>
+</dl>
+</td></tr></table></td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#eeaa77">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Functions</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#eeaa77"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl><dt><a name="-BindLocal"><strong>BindLocal</strong></a>(...)</dt><dd><tt><a href="#-BindLocal">BindLocal</a>(handle,&nbsp;family)&nbsp;-&gt;&nbsp;None<br>
+&nbsp;<br>
+Bind&nbsp;a&nbsp;socket&nbsp;handle&nbsp;to&nbsp;an&nbsp;arbitrary&nbsp;local&nbsp;port.<br>
+family&nbsp;should&nbsp;AF_INET&nbsp;or&nbsp;AF_INET6.</tt></dd></dl>
+ <dl><dt><a name="-ConnectPipe"><strong>ConnectPipe</strong></a>(...)</dt><dd><tt><a href="#-ConnectPipe">ConnectPipe</a>(addr)&nbsp;-&gt;&nbsp;pipe_handle<br>
+&nbsp;<br>
+Connect&nbsp;to&nbsp;the&nbsp;pipe&nbsp;for&nbsp;asynchronous&nbsp;I/O&nbsp;(overlapped).</tt></dd></dl>
+ <dl><dt><a name="-CreateEvent"><strong>CreateEvent</strong></a>(...)</dt><dd><tt><a href="#-CreateEvent">CreateEvent</a>(EventAttributes,&nbsp;ManualReset,&nbsp;InitialState,&nbsp;Name)&nbsp;-&gt;&nbsp;Handle<br>
+&nbsp;<br>
+Create&nbsp;an&nbsp;event.&nbsp;&nbsp;EventAttributes&nbsp;must&nbsp;be&nbsp;None.</tt></dd></dl>
+ <dl><dt><a name="-CreateIoCompletionPort"><strong>CreateIoCompletionPort</strong></a>(...)</dt><dd><tt><a href="#-CreateIoCompletionPort">CreateIoCompletionPort</a>(handle,&nbsp;port,&nbsp;key,&nbsp;concurrency)&nbsp;-&gt;&nbsp;port<br>
+&nbsp;<br>
+Create&nbsp;a&nbsp;completion&nbsp;port&nbsp;or&nbsp;register&nbsp;a&nbsp;handle&nbsp;with&nbsp;a&nbsp;port.</tt></dd></dl>
+ <dl><dt><a name="-FormatMessage"><strong>FormatMessage</strong></a>(...)</dt><dd><tt><a href="#-FormatMessage">FormatMessage</a>(error_code)&nbsp;-&gt;&nbsp;error_message<br>
+&nbsp;<br>
+Return&nbsp;error&nbsp;message&nbsp;for&nbsp;an&nbsp;error&nbsp;code.</tt></dd></dl>
+ <dl><dt><a name="-GetQueuedCompletionStatus"><strong>GetQueuedCompletionStatus</strong></a>(...)</dt><dd><tt><a href="#-GetQueuedCompletionStatus">GetQueuedCompletionStatus</a>(port,&nbsp;msecs)&nbsp;-&gt;&nbsp;(err,&nbsp;bytes,&nbsp;key,&nbsp;address)<br>
+&nbsp;<br>
+Get&nbsp;a&nbsp;message&nbsp;from&nbsp;completion&nbsp;port.&nbsp;&nbsp;Wait&nbsp;for&nbsp;up&nbsp;to&nbsp;msecs&nbsp;milliseconds.</tt></dd></dl>
+ <dl><dt><a name="-PostQueuedCompletionStatus"><strong>PostQueuedCompletionStatus</strong></a>(...)</dt><dd><tt><a href="#-PostQueuedCompletionStatus">PostQueuedCompletionStatus</a>(port,&nbsp;bytes,&nbsp;key,&nbsp;address)&nbsp;-&gt;&nbsp;None<br>
+&nbsp;<br>
+Post&nbsp;a&nbsp;message&nbsp;to&nbsp;completion&nbsp;port.</tt></dd></dl>
+ <dl><dt><a name="-RegisterWaitWithQueue"><strong>RegisterWaitWithQueue</strong></a>(...)</dt><dd><tt><a href="#-RegisterWaitWithQueue">RegisterWaitWithQueue</a>(Object,&nbsp;CompletionPort,&nbsp;<a href="#Overlapped">Overlapped</a>,&nbsp;Timeout)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;-&gt;&nbsp;WaitHandle<br>
+&nbsp;<br>
+Register&nbsp;wait&nbsp;for&nbsp;Object;&nbsp;when&nbsp;complete&nbsp;CompletionPort&nbsp;is&nbsp;notified.</tt></dd></dl>
+ <dl><dt><a name="-ResetEvent"><strong>ResetEvent</strong></a>(...)</dt><dd><tt><a href="#-ResetEvent">ResetEvent</a>(Handle)&nbsp;-&gt;&nbsp;None<br>
+&nbsp;<br>
+Reset&nbsp;event.</tt></dd></dl>
+ <dl><dt><a name="-SetEvent"><strong>SetEvent</strong></a>(...)</dt><dd><tt><a href="#-SetEvent">SetEvent</a>(Handle)&nbsp;-&gt;&nbsp;None<br>
+&nbsp;<br>
+Set&nbsp;event.</tt></dd></dl>
+ <dl><dt><a name="-UnregisterWait"><strong>UnregisterWait</strong></a>(...)</dt><dd><tt><a href="#-UnregisterWait">UnregisterWait</a>(WaitHandle)&nbsp;-&gt;&nbsp;None<br>
+&nbsp;<br>
+Unregister&nbsp;wait&nbsp;handle.</tt></dd></dl>
+ <dl><dt><a name="-UnregisterWaitEx"><strong>UnregisterWaitEx</strong></a>(...)</dt><dd><tt><a href="#-UnregisterWaitEx">UnregisterWaitEx</a>(WaitHandle,&nbsp;Event)&nbsp;-&gt;&nbsp;None<br>
+&nbsp;<br>
+Unregister&nbsp;wait&nbsp;handle.</tt></dd></dl>
+ <dl><dt><a name="-WSAConnect"><strong>WSAConnect</strong></a>(...)</dt><dd><tt><a href="#-WSAConnect">WSAConnect</a>(client_handle,&nbsp;address_as_bytes)&nbsp;-&gt;&nbsp;<a href="#Overlapped">Overlapped</a>[None]<br>
+&nbsp;<br>
+Bind&nbsp;a&nbsp;remote&nbsp;address&nbsp;to&nbsp;a&nbsp;connectionless&nbsp;(UDP)&nbsp;socket</tt></dd></dl>
+</td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#55aa55">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Data</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#55aa55"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><strong>ERROR_IO_PENDING</strong> = 997<br>
+<strong>ERROR_NETNAME_DELETED</strong> = 64<br>
+<strong>ERROR_OPERATION_ABORTED</strong> = 995<br>
+<strong>ERROR_PIPE_BUSY</strong> = 231<br>
+<strong>ERROR_SEM_TIMEOUT</strong> = 121<br>
+<strong>INFINITE</strong> = 4294967295<br>
+<strong>INVALID_HANDLE_VALUE</strong> = 18446744073709551615<br>
+<strong>NULL</strong> = 0<br>
+<strong>SO_UPDATE_ACCEPT_CONTEXT</strong> = 28683<br>
+<strong>SO_UPDATE_CONNECT_CONTEXT</strong> = 28688<br>
+<strong>TF_REUSE_SOCKET</strong> = 2</td></tr></table>
+</body></html>

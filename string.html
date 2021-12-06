@@ -1,0 +1,162 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head><title>Python: module string</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+</head><body bgcolor="#f0f0f8">
+
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="heading">
+<tr bgcolor="#7799ee">
+<td valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong>string</strong></big></big></font></td
+><td align=right valign=bottom
+><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:c%3A%5Cpython38%5Clib%5Cstring.py">c:\python38\lib\string.py</a><br><a href="https://docs.python.org/3.8/library/string">Module Reference</a></font></td></tr></table>
+    <p><tt>A&nbsp;collection&nbsp;of&nbsp;string&nbsp;constants.<br>
+&nbsp;<br>
+Public&nbsp;module&nbsp;variables:<br>
+&nbsp;<br>
+whitespace&nbsp;--&nbsp;a&nbsp;string&nbsp;containing&nbsp;all&nbsp;ASCII&nbsp;whitespace<br>
+ascii_lowercase&nbsp;--&nbsp;a&nbsp;string&nbsp;containing&nbsp;all&nbsp;ASCII&nbsp;lowercase&nbsp;letters<br>
+ascii_uppercase&nbsp;--&nbsp;a&nbsp;string&nbsp;containing&nbsp;all&nbsp;ASCII&nbsp;uppercase&nbsp;letters<br>
+ascii_letters&nbsp;--&nbsp;a&nbsp;string&nbsp;containing&nbsp;all&nbsp;ASCII&nbsp;letters<br>
+digits&nbsp;--&nbsp;a&nbsp;string&nbsp;containing&nbsp;all&nbsp;ASCII&nbsp;decimal&nbsp;digits<br>
+hexdigits&nbsp;--&nbsp;a&nbsp;string&nbsp;containing&nbsp;all&nbsp;ASCII&nbsp;hexadecimal&nbsp;digits<br>
+octdigits&nbsp;--&nbsp;a&nbsp;string&nbsp;containing&nbsp;all&nbsp;ASCII&nbsp;octal&nbsp;digits<br>
+punctuation&nbsp;--&nbsp;a&nbsp;string&nbsp;containing&nbsp;all&nbsp;ASCII&nbsp;punctuation&nbsp;characters<br>
+printable&nbsp;--&nbsp;a&nbsp;string&nbsp;containing&nbsp;all&nbsp;ASCII&nbsp;characters&nbsp;considered&nbsp;printable</tt></p>
+<p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#aa55cc">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Modules</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#aa55cc"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><table width="100%" summary="list"><tr><td width="25%" valign=top><a href="re.html">re</a><br>
+</td><td width="25%" valign=top><a href="_string.html">_string</a><br>
+</td><td width="25%" valign=top></td><td width="25%" valign=top></td></tr></table></td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ee77aa">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Classes</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#ee77aa"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl>
+<dt><font face="helvetica, arial"><a href="builtins.html#object">builtins.object</a>
+</font></dt><dd>
+<dl>
+<dt><font face="helvetica, arial"><a href="string.html#Formatter">Formatter</a>
+</font></dt><dt><font face="helvetica, arial"><a href="string.html#Template">Template</a>
+</font></dt></dl>
+</dd>
+</dl>
+ <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="Formatter">class <strong>Formatter</strong></a>(<a href="builtins.html#object">builtins.object</a>)</font></td></tr>
+    
+<tr><td bgcolor="#ffc8d8"><tt>&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%">Methods defined here:<br>
+<dl><dt><a name="Formatter-check_unused_args"><strong>check_unused_args</strong></a>(self, used_args, args, kwargs)</dt></dl>
+
+<dl><dt><a name="Formatter-convert_field"><strong>convert_field</strong></a>(self, value, conversion)</dt></dl>
+
+<dl><dt><a name="Formatter-format"><strong>format</strong></a>(self, format_string, /, *args, **kwargs)</dt></dl>
+
+<dl><dt><a name="Formatter-format_field"><strong>format_field</strong></a>(self, value, format_spec)</dt></dl>
+
+<dl><dt><a name="Formatter-get_field"><strong>get_field</strong></a>(self, field_name, args, kwargs)</dt><dd><tt>#&nbsp;given&nbsp;a&nbsp;field_name,&nbsp;find&nbsp;the&nbsp;<a href="builtins.html#object">object</a>&nbsp;it&nbsp;references.<br>
+#&nbsp;&nbsp;field_name:&nbsp;&nbsp;&nbsp;the&nbsp;field&nbsp;being&nbsp;looked&nbsp;up,&nbsp;e.g.&nbsp;"0.name"<br>
+#&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;or&nbsp;"lookup[3]"<br>
+#&nbsp;&nbsp;used_args:&nbsp;&nbsp;&nbsp;&nbsp;a&nbsp;set&nbsp;of&nbsp;which&nbsp;args&nbsp;have&nbsp;been&nbsp;used<br>
+#&nbsp;&nbsp;args,&nbsp;kwargs:&nbsp;as&nbsp;passed&nbsp;in&nbsp;to&nbsp;vformat</tt></dd></dl>
+
+<dl><dt><a name="Formatter-get_value"><strong>get_value</strong></a>(self, key, args, kwargs)</dt></dl>
+
+<dl><dt><a name="Formatter-parse"><strong>parse</strong></a>(self, format_string)</dt><dd><tt>#&nbsp;returns&nbsp;an&nbsp;iterable&nbsp;that&nbsp;contains&nbsp;tuples&nbsp;of&nbsp;the&nbsp;form:<br>
+#&nbsp;(literal_text,&nbsp;field_name,&nbsp;format_spec,&nbsp;conversion)<br>
+#&nbsp;literal_text&nbsp;can&nbsp;be&nbsp;zero&nbsp;length<br>
+#&nbsp;field_name&nbsp;can&nbsp;be&nbsp;None,&nbsp;in&nbsp;which&nbsp;case&nbsp;there's&nbsp;no<br>
+#&nbsp;&nbsp;<a href="builtins.html#object">object</a>&nbsp;to&nbsp;format&nbsp;and&nbsp;output<br>
+#&nbsp;if&nbsp;field_name&nbsp;is&nbsp;not&nbsp;None,&nbsp;it&nbsp;is&nbsp;looked&nbsp;up,&nbsp;formatted<br>
+#&nbsp;&nbsp;with&nbsp;format_spec&nbsp;and&nbsp;conversion&nbsp;and&nbsp;then&nbsp;used</tt></dd></dl>
+
+<dl><dt><a name="Formatter-vformat"><strong>vformat</strong></a>(self, format_string, args, kwargs)</dt></dl>
+
+<hr>
+Data descriptors defined here:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><tt>dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="Template">class <strong>Template</strong></a>(<a href="builtins.html#object">builtins.object</a>)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt><a href="#Template">Template</a>(template)<br>
+&nbsp;<br>
+A&nbsp;string&nbsp;class&nbsp;for&nbsp;supporting&nbsp;$-substitutions.<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%">Methods defined here:<br>
+<dl><dt><a name="Template-__init__"><strong>__init__</strong></a>(self, template)</dt><dd><tt>Initialize&nbsp;self.&nbsp;&nbsp;See&nbsp;help(type(self))&nbsp;for&nbsp;accurate&nbsp;signature.</tt></dd></dl>
+
+<dl><dt><a name="Template-safe_substitute"><strong>safe_substitute</strong></a>(self, mapping={}, /, **kws)</dt></dl>
+
+<dl><dt><a name="Template-substitute"><strong>substitute</strong></a>(self, mapping={}, /, **kws)</dt></dl>
+
+<hr>
+Data descriptors defined here:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><tt>dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<hr>
+Data and other attributes defined here:<br>
+<dl><dt><strong>braceidpattern</strong> = None</dl>
+
+<dl><dt><strong>delimiter</strong> = '$'</dl>
+
+<dl><dt><strong>flags</strong> = re.IGNORECASE</dl>
+
+<dl><dt><strong>idpattern</strong> = '(?a:[_a-z][_a-z0-9]*)'</dl>
+
+<dl><dt><strong>pattern</strong> = re.compile('\n    \\$(?:\n      (?P&lt;escaped&gt;\\$)...ced&gt;(?a:[_a-z][_a-z0-9, re.IGNORECASE|re.VERBOSE)</dl>
+
+</td></tr></table></td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#eeaa77">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Functions</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#eeaa77"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl><dt><a name="-capwords"><strong>capwords</strong></a>(s, sep=None)</dt><dd><tt><a href="#-capwords">capwords</a>(s&nbsp;[,sep])&nbsp;-&gt;&nbsp;string<br>
+&nbsp;<br>
+Split&nbsp;the&nbsp;argument&nbsp;into&nbsp;words&nbsp;using&nbsp;split,&nbsp;capitalize&nbsp;each<br>
+word&nbsp;using&nbsp;capitalize,&nbsp;and&nbsp;join&nbsp;the&nbsp;capitalized&nbsp;words&nbsp;using<br>
+join.&nbsp;&nbsp;If&nbsp;the&nbsp;optional&nbsp;second&nbsp;argument&nbsp;sep&nbsp;is&nbsp;absent&nbsp;or&nbsp;None,<br>
+runs&nbsp;of&nbsp;whitespace&nbsp;characters&nbsp;are&nbsp;replaced&nbsp;by&nbsp;a&nbsp;single&nbsp;space<br>
+and&nbsp;leading&nbsp;and&nbsp;trailing&nbsp;whitespace&nbsp;are&nbsp;removed,&nbsp;otherwise<br>
+sep&nbsp;is&nbsp;used&nbsp;to&nbsp;split&nbsp;and&nbsp;join&nbsp;the&nbsp;words.</tt></dd></dl>
+</td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#55aa55">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Data</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#55aa55"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><strong>__all__</strong> = ['ascii_letters', 'ascii_lowercase', 'ascii_uppercase', 'capwords', 'digits', 'hexdigits', 'octdigits', 'printable', 'punctuation', 'whitespace', 'Formatter', 'Template']<br>
+<strong>ascii_letters</strong> = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'<br>
+<strong>ascii_lowercase</strong> = 'abcdefghijklmnopqrstuvwxyz'<br>
+<strong>ascii_uppercase</strong> = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'<br>
+<strong>digits</strong> = '0123456789'<br>
+<strong>hexdigits</strong> = '0123456789abcdefABCDEF'<br>
+<strong>octdigits</strong> = '01234567'<br>
+<strong>printable</strong> = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ!"#$%&amp;<font color="#c040c0">\'</font>()*+,-./:;&lt;=&gt;?@[<font color="#c040c0">\\</font>]^_`{|}~ <font color="#c040c0">\t\n\r\x0b\x0c</font>'<br>
+<strong>punctuation</strong> = '!"#$%&amp;<font color="#c040c0">\'</font>()*+,-./:;&lt;=&gt;?@[<font color="#c040c0">\\</font>]^_`{|}~'<br>
+<strong>whitespace</strong> = ' <font color="#c040c0">\t\n\r\x0b\x0c</font>'</td></tr></table>
+</body></html>

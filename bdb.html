@@ -1,0 +1,378 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head><title>Python: module bdb</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+</head><body bgcolor="#f0f0f8">
+
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="heading">
+<tr bgcolor="#7799ee">
+<td valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong>bdb</strong></big></big></font></td
+><td align=right valign=bottom
+><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:c%3A%5Cpython38%5Clib%5Cbdb.py">c:\python38\lib\bdb.py</a><br><a href="https://docs.python.org/3.8/library/bdb">Module Reference</a></font></td></tr></table>
+    <p><tt>Debugger&nbsp;basics</tt></p>
+<p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#aa55cc">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Modules</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#aa55cc"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><table width="100%" summary="list"><tr><td width="25%" valign=top><a href="fnmatch.html">fnmatch</a><br>
+</td><td width="25%" valign=top><a href="os.html">os</a><br>
+</td><td width="25%" valign=top><a href="sys.html">sys</a><br>
+</td><td width="25%" valign=top></td></tr></table></td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ee77aa">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Classes</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#ee77aa"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl>
+<dt><font face="helvetica, arial"><a href="builtins.html#Exception">builtins.Exception</a>(<a href="builtins.html#BaseException">builtins.BaseException</a>)
+</font></dt><dd>
+<dl>
+<dt><font face="helvetica, arial"><a href="bdb.html#BdbQuit">BdbQuit</a>
+</font></dt></dl>
+</dd>
+<dt><font face="helvetica, arial"><a href="builtins.html#object">builtins.object</a>
+</font></dt><dd>
+<dl>
+<dt><font face="helvetica, arial"><a href="bdb.html#Bdb">Bdb</a>
+</font></dt><dt><font face="helvetica, arial"><a href="bdb.html#Breakpoint">Breakpoint</a>
+</font></dt></dl>
+</dd>
+</dl>
+ <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="Bdb">class <strong>Bdb</strong></a>(<a href="builtins.html#object">builtins.object</a>)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt><a href="#Bdb">Bdb</a>(skip=None)<br>
+&nbsp;<br>
+Generic&nbsp;Python&nbsp;debugger&nbsp;base&nbsp;class.<br>
+&nbsp;<br>
+This&nbsp;class&nbsp;takes&nbsp;care&nbsp;of&nbsp;details&nbsp;of&nbsp;the&nbsp;trace&nbsp;facility;<br>
+a&nbsp;derived&nbsp;class&nbsp;should&nbsp;implement&nbsp;user&nbsp;interaction.<br>
+The&nbsp;standard&nbsp;debugger&nbsp;class&nbsp;(pdb.Pdb)&nbsp;is&nbsp;an&nbsp;example.<br>
+&nbsp;<br>
+The&nbsp;optional&nbsp;skip&nbsp;argument&nbsp;must&nbsp;be&nbsp;an&nbsp;iterable&nbsp;of&nbsp;glob-style<br>
+module&nbsp;name&nbsp;patterns.&nbsp;&nbsp;The&nbsp;debugger&nbsp;will&nbsp;not&nbsp;step&nbsp;into&nbsp;frames<br>
+that&nbsp;originate&nbsp;in&nbsp;a&nbsp;module&nbsp;that&nbsp;matches&nbsp;one&nbsp;of&nbsp;these&nbsp;patterns.<br>
+Whether&nbsp;a&nbsp;frame&nbsp;is&nbsp;considered&nbsp;to&nbsp;originate&nbsp;in&nbsp;a&nbsp;certain&nbsp;module<br>
+is&nbsp;determined&nbsp;by&nbsp;the&nbsp;__name__&nbsp;in&nbsp;the&nbsp;frame&nbsp;globals.<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%">Methods defined here:<br>
+<dl><dt><a name="Bdb-__init__"><strong>__init__</strong></a>(self, skip=None)</dt><dd><tt>Initialize&nbsp;self.&nbsp;&nbsp;See&nbsp;help(type(self))&nbsp;for&nbsp;accurate&nbsp;signature.</tt></dd></dl>
+
+<dl><dt><a name="Bdb-break_anywhere"><strong>break_anywhere</strong></a>(self, frame)</dt><dd><tt>Return&nbsp;True&nbsp;if&nbsp;there&nbsp;is&nbsp;any&nbsp;breakpoint&nbsp;for&nbsp;frame's&nbsp;filename.</tt></dd></dl>
+
+<dl><dt><a name="Bdb-break_here"><strong>break_here</strong></a>(self, frame)</dt><dd><tt>Return&nbsp;True&nbsp;if&nbsp;there&nbsp;is&nbsp;an&nbsp;effective&nbsp;breakpoint&nbsp;for&nbsp;this&nbsp;line.<br>
+&nbsp;<br>
+Check&nbsp;for&nbsp;line&nbsp;or&nbsp;function&nbsp;breakpoint&nbsp;and&nbsp;if&nbsp;in&nbsp;effect.<br>
+Delete&nbsp;temporary&nbsp;breakpoints&nbsp;if&nbsp;effective()&nbsp;says&nbsp;to.</tt></dd></dl>
+
+<dl><dt><a name="Bdb-canonic"><strong>canonic</strong></a>(self, filename)</dt><dd><tt>Return&nbsp;canonical&nbsp;form&nbsp;of&nbsp;filename.<br>
+&nbsp;<br>
+For&nbsp;real&nbsp;filenames,&nbsp;the&nbsp;canonical&nbsp;form&nbsp;is&nbsp;a&nbsp;case-normalized&nbsp;(on<br>
+case&nbsp;insensitive&nbsp;filesystems)&nbsp;absolute&nbsp;path.&nbsp;&nbsp;'Filenames'&nbsp;with<br>
+angle&nbsp;brackets,&nbsp;such&nbsp;as&nbsp;"&lt;stdin&gt;",&nbsp;generated&nbsp;in&nbsp;interactive<br>
+mode,&nbsp;are&nbsp;returned&nbsp;unchanged.</tt></dd></dl>
+
+<dl><dt><a name="Bdb-clear_all_breaks"><strong>clear_all_breaks</strong></a>(self)</dt><dd><tt>Delete&nbsp;all&nbsp;existing&nbsp;breakpoints.<br>
+&nbsp;<br>
+If&nbsp;none&nbsp;were&nbsp;set,&nbsp;return&nbsp;an&nbsp;error&nbsp;message.</tt></dd></dl>
+
+<dl><dt><a name="Bdb-clear_all_file_breaks"><strong>clear_all_file_breaks</strong></a>(self, filename)</dt><dd><tt>Delete&nbsp;all&nbsp;breakpoints&nbsp;in&nbsp;filename.<br>
+&nbsp;<br>
+If&nbsp;none&nbsp;were&nbsp;set,&nbsp;return&nbsp;an&nbsp;error&nbsp;message.</tt></dd></dl>
+
+<dl><dt><a name="Bdb-clear_bpbynumber"><strong>clear_bpbynumber</strong></a>(self, arg)</dt><dd><tt>Delete&nbsp;a&nbsp;breakpoint&nbsp;by&nbsp;its&nbsp;index&nbsp;in&nbsp;<a href="#Breakpoint">Breakpoint</a>.bpbynumber.<br>
+&nbsp;<br>
+If&nbsp;arg&nbsp;is&nbsp;invalid,&nbsp;return&nbsp;an&nbsp;error&nbsp;message.</tt></dd></dl>
+
+<dl><dt><a name="Bdb-clear_break"><strong>clear_break</strong></a>(self, filename, lineno)</dt><dd><tt>Delete&nbsp;breakpoints&nbsp;for&nbsp;filename:lineno.<br>
+&nbsp;<br>
+If&nbsp;no&nbsp;breakpoints&nbsp;were&nbsp;set,&nbsp;return&nbsp;an&nbsp;error&nbsp;message.</tt></dd></dl>
+
+<dl><dt><a name="Bdb-dispatch_call"><strong>dispatch_call</strong></a>(self, frame, arg)</dt><dd><tt>Invoke&nbsp;user&nbsp;function&nbsp;and&nbsp;return&nbsp;trace&nbsp;function&nbsp;for&nbsp;call&nbsp;event.<br>
+&nbsp;<br>
+If&nbsp;the&nbsp;debugger&nbsp;stops&nbsp;on&nbsp;this&nbsp;function&nbsp;call,&nbsp;invoke<br>
+self.<a href="#Bdb-user_call">user_call</a>().&nbsp;Raise&nbsp;BbdQuit&nbsp;if&nbsp;self.<strong>quitting</strong>&nbsp;is&nbsp;set.<br>
+Return&nbsp;self.<strong>trace_dispatch</strong>&nbsp;to&nbsp;continue&nbsp;tracing&nbsp;in&nbsp;this&nbsp;scope.</tt></dd></dl>
+
+<dl><dt><a name="Bdb-dispatch_exception"><strong>dispatch_exception</strong></a>(self, frame, arg)</dt><dd><tt>Invoke&nbsp;user&nbsp;function&nbsp;and&nbsp;return&nbsp;trace&nbsp;function&nbsp;for&nbsp;exception&nbsp;event.<br>
+&nbsp;<br>
+If&nbsp;the&nbsp;debugger&nbsp;stops&nbsp;on&nbsp;this&nbsp;exception,&nbsp;invoke<br>
+self.<a href="#Bdb-user_exception">user_exception</a>().&nbsp;Raise&nbsp;<a href="#BdbQuit">BdbQuit</a>&nbsp;if&nbsp;self.<strong>quitting</strong>&nbsp;is&nbsp;set.<br>
+Return&nbsp;self.<strong>trace_dispatch</strong>&nbsp;to&nbsp;continue&nbsp;tracing&nbsp;in&nbsp;this&nbsp;scope.</tt></dd></dl>
+
+<dl><dt><a name="Bdb-dispatch_line"><strong>dispatch_line</strong></a>(self, frame)</dt><dd><tt>Invoke&nbsp;user&nbsp;function&nbsp;and&nbsp;return&nbsp;trace&nbsp;function&nbsp;for&nbsp;line&nbsp;event.<br>
+&nbsp;<br>
+If&nbsp;the&nbsp;debugger&nbsp;stops&nbsp;on&nbsp;the&nbsp;current&nbsp;line,&nbsp;invoke<br>
+self.<a href="#Bdb-user_line">user_line</a>().&nbsp;Raise&nbsp;<a href="#BdbQuit">BdbQuit</a>&nbsp;if&nbsp;self.<strong>quitting</strong>&nbsp;is&nbsp;set.<br>
+Return&nbsp;self.<strong>trace_dispatch</strong>&nbsp;to&nbsp;continue&nbsp;tracing&nbsp;in&nbsp;this&nbsp;scope.</tt></dd></dl>
+
+<dl><dt><a name="Bdb-dispatch_return"><strong>dispatch_return</strong></a>(self, frame, arg)</dt><dd><tt>Invoke&nbsp;user&nbsp;function&nbsp;and&nbsp;return&nbsp;trace&nbsp;function&nbsp;for&nbsp;return&nbsp;event.<br>
+&nbsp;<br>
+If&nbsp;the&nbsp;debugger&nbsp;stops&nbsp;on&nbsp;this&nbsp;function&nbsp;return,&nbsp;invoke<br>
+self.<a href="#Bdb-user_return">user_return</a>().&nbsp;Raise&nbsp;<a href="#BdbQuit">BdbQuit</a>&nbsp;if&nbsp;self.<strong>quitting</strong>&nbsp;is&nbsp;set.<br>
+Return&nbsp;self.<strong>trace_dispatch</strong>&nbsp;to&nbsp;continue&nbsp;tracing&nbsp;in&nbsp;this&nbsp;scope.</tt></dd></dl>
+
+<dl><dt><a name="Bdb-do_clear"><strong>do_clear</strong></a>(self, arg)</dt><dd><tt>Remove&nbsp;temporary&nbsp;breakpoint.<br>
+&nbsp;<br>
+Must&nbsp;implement&nbsp;in&nbsp;derived&nbsp;classes&nbsp;or&nbsp;get&nbsp;NotImplementedError.</tt></dd></dl>
+
+<dl><dt><a name="Bdb-format_stack_entry"><strong>format_stack_entry</strong></a>(self, frame_lineno, lprefix=': ')</dt><dd><tt>Return&nbsp;a&nbsp;string&nbsp;with&nbsp;information&nbsp;about&nbsp;a&nbsp;stack&nbsp;entry.<br>
+&nbsp;<br>
+The&nbsp;stack&nbsp;entry&nbsp;frame_lineno&nbsp;is&nbsp;a&nbsp;(frame,&nbsp;lineno)&nbsp;tuple.&nbsp;&nbsp;The<br>
+return&nbsp;string&nbsp;contains&nbsp;the&nbsp;canonical&nbsp;filename,&nbsp;the&nbsp;function&nbsp;name<br>
+or&nbsp;'&lt;lambda&gt;',&nbsp;the&nbsp;input&nbsp;arguments,&nbsp;the&nbsp;return&nbsp;value,&nbsp;and&nbsp;the<br>
+line&nbsp;of&nbsp;code&nbsp;(if&nbsp;it&nbsp;exists).</tt></dd></dl>
+
+<dl><dt><a name="Bdb-get_all_breaks"><strong>get_all_breaks</strong></a>(self)</dt><dd><tt>Return&nbsp;all&nbsp;breakpoints&nbsp;that&nbsp;are&nbsp;set.</tt></dd></dl>
+
+<dl><dt><a name="Bdb-get_bpbynumber"><strong>get_bpbynumber</strong></a>(self, arg)</dt><dd><tt>Return&nbsp;a&nbsp;breakpoint&nbsp;by&nbsp;its&nbsp;index&nbsp;in&nbsp;<a href="#Breakpoint">Breakpoint</a>.bybpnumber.<br>
+&nbsp;<br>
+For&nbsp;invalid&nbsp;arg&nbsp;values&nbsp;or&nbsp;if&nbsp;the&nbsp;breakpoint&nbsp;doesn't&nbsp;exist,<br>
+raise&nbsp;a&nbsp;ValueError.</tt></dd></dl>
+
+<dl><dt><a name="Bdb-get_break"><strong>get_break</strong></a>(self, filename, lineno)</dt><dd><tt>Return&nbsp;True&nbsp;if&nbsp;there&nbsp;is&nbsp;a&nbsp;breakpoint&nbsp;for&nbsp;filename:lineno.</tt></dd></dl>
+
+<dl><dt><a name="Bdb-get_breaks"><strong>get_breaks</strong></a>(self, filename, lineno)</dt><dd><tt>Return&nbsp;all&nbsp;breakpoints&nbsp;for&nbsp;filename:lineno.<br>
+&nbsp;<br>
+If&nbsp;no&nbsp;breakpoints&nbsp;are&nbsp;set,&nbsp;return&nbsp;an&nbsp;empty&nbsp;list.</tt></dd></dl>
+
+<dl><dt><a name="Bdb-get_file_breaks"><strong>get_file_breaks</strong></a>(self, filename)</dt><dd><tt>Return&nbsp;all&nbsp;lines&nbsp;with&nbsp;breakpoints&nbsp;for&nbsp;filename.<br>
+&nbsp;<br>
+If&nbsp;no&nbsp;breakpoints&nbsp;are&nbsp;set,&nbsp;return&nbsp;an&nbsp;empty&nbsp;list.</tt></dd></dl>
+
+<dl><dt><a name="Bdb-get_stack"><strong>get_stack</strong></a>(self, f, t)</dt><dd><tt>Return&nbsp;a&nbsp;list&nbsp;of&nbsp;(frame,&nbsp;lineno)&nbsp;in&nbsp;a&nbsp;stack&nbsp;trace&nbsp;and&nbsp;a&nbsp;size.<br>
+&nbsp;<br>
+List&nbsp;starts&nbsp;with&nbsp;original&nbsp;calling&nbsp;frame,&nbsp;if&nbsp;there&nbsp;is&nbsp;one.<br>
+Size&nbsp;may&nbsp;be&nbsp;number&nbsp;of&nbsp;frames&nbsp;above&nbsp;or&nbsp;below&nbsp;f.</tt></dd></dl>
+
+<dl><dt><a name="Bdb-is_skipped_module"><strong>is_skipped_module</strong></a>(self, module_name)</dt><dd><tt>Return&nbsp;True&nbsp;if&nbsp;module_name&nbsp;matches&nbsp;any&nbsp;skip&nbsp;pattern.</tt></dd></dl>
+
+<dl><dt><a name="Bdb-reset"><strong>reset</strong></a>(self)</dt><dd><tt>Set&nbsp;values&nbsp;of&nbsp;attributes&nbsp;as&nbsp;ready&nbsp;to&nbsp;start&nbsp;debugging.</tt></dd></dl>
+
+<dl><dt><a name="Bdb-run"><strong>run</strong></a>(self, cmd, globals=None, locals=None)</dt><dd><tt>Debug&nbsp;a&nbsp;statement&nbsp;executed&nbsp;via&nbsp;the&nbsp;exec()&nbsp;function.<br>
+&nbsp;<br>
+globals&nbsp;defaults&nbsp;to&nbsp;__main__.dict;&nbsp;locals&nbsp;defaults&nbsp;to&nbsp;globals.</tt></dd></dl>
+
+<dl><dt><a name="Bdb-runcall"><strong>runcall</strong></a>(self, func, /, *args, **kwds)</dt><dd><tt>Debug&nbsp;a&nbsp;single&nbsp;function&nbsp;call.<br>
+&nbsp;<br>
+Return&nbsp;the&nbsp;result&nbsp;of&nbsp;the&nbsp;function&nbsp;call.</tt></dd></dl>
+
+<dl><dt><a name="Bdb-runctx"><strong>runctx</strong></a>(self, cmd, globals, locals)</dt><dd><tt>For&nbsp;backwards-compatibility.&nbsp;&nbsp;Defers&nbsp;to&nbsp;<a href="#Bdb-run">run</a>().</tt></dd></dl>
+
+<dl><dt><a name="Bdb-runeval"><strong>runeval</strong></a>(self, expr, globals=None, locals=None)</dt><dd><tt>Debug&nbsp;an&nbsp;expression&nbsp;executed&nbsp;via&nbsp;the&nbsp;eval()&nbsp;function.<br>
+&nbsp;<br>
+globals&nbsp;defaults&nbsp;to&nbsp;__main__.dict;&nbsp;locals&nbsp;defaults&nbsp;to&nbsp;globals.</tt></dd></dl>
+
+<dl><dt><a name="Bdb-set_break"><strong>set_break</strong></a>(self, filename, lineno, temporary=False, cond=None, funcname=None)</dt><dd><tt>Set&nbsp;a&nbsp;new&nbsp;breakpoint&nbsp;for&nbsp;filename:lineno.<br>
+&nbsp;<br>
+If&nbsp;lineno&nbsp;doesn't&nbsp;exist&nbsp;for&nbsp;the&nbsp;filename,&nbsp;return&nbsp;an&nbsp;error&nbsp;message.<br>
+The&nbsp;filename&nbsp;should&nbsp;be&nbsp;in&nbsp;canonical&nbsp;form.</tt></dd></dl>
+
+<dl><dt><a name="Bdb-set_continue"><strong>set_continue</strong></a>(self)</dt><dd><tt>Stop&nbsp;only&nbsp;at&nbsp;breakpoints&nbsp;or&nbsp;when&nbsp;finished.<br>
+&nbsp;<br>
+If&nbsp;there&nbsp;are&nbsp;no&nbsp;breakpoints,&nbsp;set&nbsp;the&nbsp;system&nbsp;trace&nbsp;function&nbsp;to&nbsp;None.</tt></dd></dl>
+
+<dl><dt><a name="Bdb-set_next"><strong>set_next</strong></a>(self, frame)</dt><dd><tt>Stop&nbsp;on&nbsp;the&nbsp;next&nbsp;line&nbsp;in&nbsp;or&nbsp;below&nbsp;the&nbsp;given&nbsp;frame.</tt></dd></dl>
+
+<dl><dt><a name="Bdb-set_quit"><strong>set_quit</strong></a>(self)</dt><dd><tt>Set&nbsp;quitting&nbsp;attribute&nbsp;to&nbsp;True.<br>
+&nbsp;<br>
+Raises&nbsp;<a href="#BdbQuit">BdbQuit</a>&nbsp;exception&nbsp;in&nbsp;the&nbsp;next&nbsp;call&nbsp;to&nbsp;a&nbsp;dispatch_*()&nbsp;method.</tt></dd></dl>
+
+<dl><dt><a name="Bdb-set_return"><strong>set_return</strong></a>(self, frame)</dt><dd><tt>Stop&nbsp;when&nbsp;returning&nbsp;from&nbsp;the&nbsp;given&nbsp;frame.</tt></dd></dl>
+
+<dl><dt><a name="Bdb-set_step"><strong>set_step</strong></a>(self)</dt><dd><tt>Stop&nbsp;after&nbsp;one&nbsp;line&nbsp;of&nbsp;code.</tt></dd></dl>
+
+<dl><dt><a name="Bdb-set_trace"><strong>set_trace</strong></a>(self, frame=None)</dt><dd><tt>Start&nbsp;debugging&nbsp;from&nbsp;frame.<br>
+&nbsp;<br>
+If&nbsp;frame&nbsp;is&nbsp;not&nbsp;specified,&nbsp;debugging&nbsp;starts&nbsp;from&nbsp;caller's&nbsp;frame.</tt></dd></dl>
+
+<dl><dt><a name="Bdb-set_until"><strong>set_until</strong></a>(self, frame, lineno=None)</dt><dd><tt>Stop&nbsp;when&nbsp;the&nbsp;line&nbsp;with&nbsp;the&nbsp;lineno&nbsp;greater&nbsp;than&nbsp;the&nbsp;current&nbsp;one&nbsp;is<br>
+reached&nbsp;or&nbsp;when&nbsp;returning&nbsp;from&nbsp;current&nbsp;frame.</tt></dd></dl>
+
+<dl><dt><a name="Bdb-stop_here"><strong>stop_here</strong></a>(self, frame)</dt><dd><tt>Return&nbsp;True&nbsp;if&nbsp;frame&nbsp;is&nbsp;below&nbsp;the&nbsp;starting&nbsp;frame&nbsp;in&nbsp;the&nbsp;stack.</tt></dd></dl>
+
+<dl><dt><a name="Bdb-trace_dispatch"><strong>trace_dispatch</strong></a>(self, frame, event, arg)</dt><dd><tt>Dispatch&nbsp;a&nbsp;trace&nbsp;function&nbsp;for&nbsp;debugged&nbsp;frames&nbsp;based&nbsp;on&nbsp;the&nbsp;event.<br>
+&nbsp;<br>
+This&nbsp;function&nbsp;is&nbsp;installed&nbsp;as&nbsp;the&nbsp;trace&nbsp;function&nbsp;for&nbsp;debugged<br>
+frames.&nbsp;Its&nbsp;return&nbsp;value&nbsp;is&nbsp;the&nbsp;new&nbsp;trace&nbsp;function,&nbsp;which&nbsp;is<br>
+usually&nbsp;itself.&nbsp;The&nbsp;default&nbsp;implementation&nbsp;decides&nbsp;how&nbsp;to<br>
+dispatch&nbsp;a&nbsp;frame,&nbsp;depending&nbsp;on&nbsp;the&nbsp;type&nbsp;of&nbsp;event&nbsp;(passed&nbsp;in&nbsp;as&nbsp;a<br>
+string)&nbsp;that&nbsp;is&nbsp;about&nbsp;to&nbsp;be&nbsp;executed.<br>
+&nbsp;<br>
+The&nbsp;event&nbsp;can&nbsp;be&nbsp;one&nbsp;of&nbsp;the&nbsp;following:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;line:&nbsp;A&nbsp;new&nbsp;line&nbsp;of&nbsp;code&nbsp;is&nbsp;going&nbsp;to&nbsp;be&nbsp;executed.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;call:&nbsp;A&nbsp;function&nbsp;is&nbsp;about&nbsp;to&nbsp;be&nbsp;called&nbsp;or&nbsp;another&nbsp;code&nbsp;block<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;is&nbsp;entered.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;return:&nbsp;A&nbsp;function&nbsp;or&nbsp;other&nbsp;code&nbsp;block&nbsp;is&nbsp;about&nbsp;to&nbsp;return.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;exception:&nbsp;An&nbsp;exception&nbsp;has&nbsp;occurred.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;c_call:&nbsp;A&nbsp;C&nbsp;function&nbsp;is&nbsp;about&nbsp;to&nbsp;be&nbsp;called.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;c_return:&nbsp;A&nbsp;C&nbsp;function&nbsp;has&nbsp;returned.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;c_exception:&nbsp;A&nbsp;C&nbsp;function&nbsp;has&nbsp;raised&nbsp;an&nbsp;exception.<br>
+&nbsp;<br>
+For&nbsp;the&nbsp;Python&nbsp;events,&nbsp;specialized&nbsp;functions&nbsp;(see&nbsp;the&nbsp;dispatch_*()<br>
+methods)&nbsp;are&nbsp;called.&nbsp;&nbsp;For&nbsp;the&nbsp;C&nbsp;events,&nbsp;no&nbsp;action&nbsp;is&nbsp;taken.<br>
+&nbsp;<br>
+The&nbsp;arg&nbsp;parameter&nbsp;depends&nbsp;on&nbsp;the&nbsp;previous&nbsp;event.</tt></dd></dl>
+
+<dl><dt><a name="Bdb-user_call"><strong>user_call</strong></a>(self, frame, argument_list)</dt><dd><tt>Called&nbsp;if&nbsp;we&nbsp;might&nbsp;stop&nbsp;in&nbsp;a&nbsp;function.</tt></dd></dl>
+
+<dl><dt><a name="Bdb-user_exception"><strong>user_exception</strong></a>(self, frame, exc_info)</dt><dd><tt>Called&nbsp;when&nbsp;we&nbsp;stop&nbsp;on&nbsp;an&nbsp;exception.</tt></dd></dl>
+
+<dl><dt><a name="Bdb-user_line"><strong>user_line</strong></a>(self, frame)</dt><dd><tt>Called&nbsp;when&nbsp;we&nbsp;stop&nbsp;or&nbsp;break&nbsp;at&nbsp;a&nbsp;line.</tt></dd></dl>
+
+<dl><dt><a name="Bdb-user_return"><strong>user_return</strong></a>(self, frame, return_value)</dt><dd><tt>Called&nbsp;when&nbsp;a&nbsp;return&nbsp;trap&nbsp;is&nbsp;set&nbsp;here.</tt></dd></dl>
+
+<hr>
+Data descriptors defined here:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><tt>dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="BdbQuit">class <strong>BdbQuit</strong></a>(<a href="builtins.html#Exception">builtins.Exception</a>)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt><a href="builtins.html#Exception">Exception</a>&nbsp;to&nbsp;give&nbsp;up&nbsp;completely.<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%"><dl><dt>Method resolution order:</dt>
+<dd><a href="bdb.html#BdbQuit">BdbQuit</a></dd>
+<dd><a href="builtins.html#Exception">builtins.Exception</a></dd>
+<dd><a href="builtins.html#BaseException">builtins.BaseException</a></dd>
+<dd><a href="builtins.html#object">builtins.object</a></dd>
+</dl>
+<hr>
+Data descriptors defined here:<br>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<hr>
+Methods inherited from <a href="builtins.html#Exception">builtins.Exception</a>:<br>
+<dl><dt><a name="BdbQuit-__init__"><strong>__init__</strong></a>(self, /, *args, **kwargs)</dt><dd><tt>Initialize&nbsp;self.&nbsp;&nbsp;See&nbsp;help(type(self))&nbsp;for&nbsp;accurate&nbsp;signature.</tt></dd></dl>
+
+<hr>
+Static methods inherited from <a href="builtins.html#Exception">builtins.Exception</a>:<br>
+<dl><dt><a name="BdbQuit-__new__"><strong>__new__</strong></a>(*args, **kwargs)<font color="#909090"><font face="helvetica, arial"> from <a href="builtins.html#type">builtins.type</a></font></font></dt><dd><tt>Create&nbsp;and&nbsp;return&nbsp;a&nbsp;new&nbsp;<a href="builtins.html#object">object</a>.&nbsp;&nbsp;See&nbsp;help(type)&nbsp;for&nbsp;accurate&nbsp;signature.</tt></dd></dl>
+
+<hr>
+Methods inherited from <a href="builtins.html#BaseException">builtins.BaseException</a>:<br>
+<dl><dt><a name="BdbQuit-__delattr__"><strong>__delattr__</strong></a>(self, name, /)</dt><dd><tt>Implement&nbsp;delattr(self,&nbsp;name).</tt></dd></dl>
+
+<dl><dt><a name="BdbQuit-__getattribute__"><strong>__getattribute__</strong></a>(self, name, /)</dt><dd><tt>Return&nbsp;getattr(self,&nbsp;name).</tt></dd></dl>
+
+<dl><dt><a name="BdbQuit-__reduce__"><strong>__reduce__</strong></a>(...)</dt><dd><tt>Helper&nbsp;for&nbsp;pickle.</tt></dd></dl>
+
+<dl><dt><a name="BdbQuit-__repr__"><strong>__repr__</strong></a>(self, /)</dt><dd><tt>Return&nbsp;repr(self).</tt></dd></dl>
+
+<dl><dt><a name="BdbQuit-__setattr__"><strong>__setattr__</strong></a>(self, name, value, /)</dt><dd><tt>Implement&nbsp;setattr(self,&nbsp;name,&nbsp;value).</tt></dd></dl>
+
+<dl><dt><a name="BdbQuit-__setstate__"><strong>__setstate__</strong></a>(...)</dt></dl>
+
+<dl><dt><a name="BdbQuit-__str__"><strong>__str__</strong></a>(self, /)</dt><dd><tt>Return&nbsp;str(self).</tt></dd></dl>
+
+<dl><dt><a name="BdbQuit-with_traceback"><strong>with_traceback</strong></a>(...)</dt><dd><tt><a href="builtins.html#Exception">Exception</a>.<a href="#BdbQuit-with_traceback">with_traceback</a>(tb)&nbsp;--<br>
+set&nbsp;self.<strong>__traceback__</strong>&nbsp;to&nbsp;tb&nbsp;and&nbsp;return&nbsp;self.</tt></dd></dl>
+
+<hr>
+Data descriptors inherited from <a href="builtins.html#BaseException">builtins.BaseException</a>:<br>
+<dl><dt><strong>__cause__</strong></dt>
+<dd><tt>exception&nbsp;cause</tt></dd>
+</dl>
+<dl><dt><strong>__context__</strong></dt>
+<dd><tt>exception&nbsp;context</tt></dd>
+</dl>
+<dl><dt><strong>__dict__</strong></dt>
+</dl>
+<dl><dt><strong>__suppress_context__</strong></dt>
+</dl>
+<dl><dt><strong>__traceback__</strong></dt>
+</dl>
+<dl><dt><strong>args</strong></dt>
+</dl>
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="Breakpoint">class <strong>Breakpoint</strong></a>(<a href="builtins.html#object">builtins.object</a>)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt><a href="#Breakpoint">Breakpoint</a>(file,&nbsp;line,&nbsp;temporary=False,&nbsp;cond=None,&nbsp;funcname=None)<br>
+&nbsp;<br>
+<a href="#Breakpoint">Breakpoint</a>&nbsp;class.<br>
+&nbsp;<br>
+Implements&nbsp;temporary&nbsp;breakpoints,&nbsp;ignore&nbsp;counts,&nbsp;disabling&nbsp;and<br>
+(re)-enabling,&nbsp;and&nbsp;conditionals.<br>
+&nbsp;<br>
+Breakpoints&nbsp;are&nbsp;indexed&nbsp;by&nbsp;number&nbsp;through&nbsp;bpbynumber&nbsp;and&nbsp;by<br>
+the&nbsp;(file,&nbsp;line)&nbsp;tuple&nbsp;using&nbsp;bplist.&nbsp;&nbsp;The&nbsp;former&nbsp;points&nbsp;to&nbsp;a<br>
+single&nbsp;instance&nbsp;of&nbsp;class&nbsp;<a href="#Breakpoint">Breakpoint</a>.&nbsp;&nbsp;The&nbsp;latter&nbsp;points&nbsp;to&nbsp;a<br>
+list&nbsp;of&nbsp;such&nbsp;instances&nbsp;since&nbsp;there&nbsp;may&nbsp;be&nbsp;more&nbsp;than&nbsp;one<br>
+breakpoint&nbsp;per&nbsp;line.<br>
+&nbsp;<br>
+When&nbsp;creating&nbsp;a&nbsp;breakpoint,&nbsp;its&nbsp;associated&nbsp;filename&nbsp;should&nbsp;be<br>
+in&nbsp;canonical&nbsp;form.&nbsp;&nbsp;If&nbsp;funcname&nbsp;is&nbsp;defined,&nbsp;a&nbsp;breakpoint&nbsp;hit&nbsp;will&nbsp;be<br>
+counted&nbsp;when&nbsp;the&nbsp;first&nbsp;line&nbsp;of&nbsp;that&nbsp;function&nbsp;is&nbsp;executed.&nbsp;&nbsp;A<br>
+conditional&nbsp;breakpoint&nbsp;always&nbsp;counts&nbsp;a&nbsp;hit.<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%">Methods defined here:<br>
+<dl><dt><a name="Breakpoint-__init__"><strong>__init__</strong></a>(self, file, line, temporary=False, cond=None, funcname=None)</dt><dd><tt>Initialize&nbsp;self.&nbsp;&nbsp;See&nbsp;help(type(self))&nbsp;for&nbsp;accurate&nbsp;signature.</tt></dd></dl>
+
+<dl><dt><a name="Breakpoint-__str__"><strong>__str__</strong></a>(self)</dt><dd><tt>Return&nbsp;a&nbsp;condensed&nbsp;description&nbsp;of&nbsp;the&nbsp;breakpoint.</tt></dd></dl>
+
+<dl><dt><a name="Breakpoint-bpformat"><strong>bpformat</strong></a>(self)</dt><dd><tt>Return&nbsp;a&nbsp;string&nbsp;with&nbsp;information&nbsp;about&nbsp;the&nbsp;breakpoint.<br>
+&nbsp;<br>
+The&nbsp;information&nbsp;includes&nbsp;the&nbsp;breakpoint&nbsp;number,&nbsp;temporary<br>
+status,&nbsp;file:line&nbsp;position,&nbsp;break&nbsp;condition,&nbsp;number&nbsp;of&nbsp;times&nbsp;to<br>
+ignore,&nbsp;and&nbsp;number&nbsp;of&nbsp;times&nbsp;hit.</tt></dd></dl>
+
+<dl><dt><a name="Breakpoint-bpprint"><strong>bpprint</strong></a>(self, out=None)</dt><dd><tt>Print&nbsp;the&nbsp;output&nbsp;of&nbsp;<a href="#Breakpoint-bpformat">bpformat</a>().<br>
+&nbsp;<br>
+The&nbsp;optional&nbsp;out&nbsp;argument&nbsp;directs&nbsp;where&nbsp;the&nbsp;output&nbsp;is&nbsp;sent<br>
+and&nbsp;defaults&nbsp;to&nbsp;standard&nbsp;output.</tt></dd></dl>
+
+<dl><dt><a name="Breakpoint-deleteMe"><strong>deleteMe</strong></a>(self)</dt><dd><tt>Delete&nbsp;the&nbsp;breakpoint&nbsp;from&nbsp;the&nbsp;list&nbsp;associated&nbsp;to&nbsp;a&nbsp;file:line.<br>
+&nbsp;<br>
+If&nbsp;it&nbsp;is&nbsp;the&nbsp;last&nbsp;breakpoint&nbsp;in&nbsp;that&nbsp;position,&nbsp;it&nbsp;also&nbsp;deletes<br>
+the&nbsp;entry&nbsp;for&nbsp;the&nbsp;file:line.</tt></dd></dl>
+
+<dl><dt><a name="Breakpoint-disable"><strong>disable</strong></a>(self)</dt><dd><tt>Mark&nbsp;the&nbsp;breakpoint&nbsp;as&nbsp;disabled.</tt></dd></dl>
+
+<dl><dt><a name="Breakpoint-enable"><strong>enable</strong></a>(self)</dt><dd><tt>Mark&nbsp;the&nbsp;breakpoint&nbsp;as&nbsp;enabled.</tt></dd></dl>
+
+<hr>
+Data descriptors defined here:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><tt>dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<hr>
+Data and other attributes defined here:<br>
+<dl><dt><strong>bpbynumber</strong> = [None]</dl>
+
+<dl><dt><strong>bplist</strong> = {}</dl>
+
+<dl><dt><strong>next</strong> = 1</dl>
+
+</td></tr></table></td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#55aa55">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Data</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#55aa55"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><strong>__all__</strong> = ['BdbQuit', 'Bdb', 'Breakpoint']</td></tr></table>
+</body></html>

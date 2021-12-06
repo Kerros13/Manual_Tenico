@@ -1,0 +1,83 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head><title>Python: built-in module msvcrt</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+</head><body bgcolor="#f0f0f8">
+
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="heading">
+<tr bgcolor="#7799ee">
+<td valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong>msvcrt</strong></big></big></font></td
+><td align=right valign=bottom
+><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br>(built-in)</font></td></tr></table>
+    <p></p>
+<p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#eeaa77">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Functions</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#eeaa77"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl><dt><a name="-SetErrorMode"><strong>SetErrorMode</strong></a>(mode, /)</dt><dd><tt>Wrapper&nbsp;around&nbsp;SetErrorMode.</tt></dd></dl>
+ <dl><dt><a name="-get_osfhandle"><strong>get_osfhandle</strong></a>(fd, /)</dt><dd><tt>Return&nbsp;the&nbsp;file&nbsp;handle&nbsp;for&nbsp;the&nbsp;file&nbsp;descriptor&nbsp;fd.<br>
+&nbsp;<br>
+Raises&nbsp;OSError&nbsp;if&nbsp;fd&nbsp;is&nbsp;not&nbsp;recognized.</tt></dd></dl>
+ <dl><dt><a name="-getch"><strong>getch</strong></a>()</dt><dd><tt>Read&nbsp;a&nbsp;keypress&nbsp;and&nbsp;return&nbsp;the&nbsp;resulting&nbsp;character&nbsp;as&nbsp;a&nbsp;byte&nbsp;string.<br>
+&nbsp;<br>
+Nothing&nbsp;is&nbsp;echoed&nbsp;to&nbsp;the&nbsp;console.&nbsp;This&nbsp;call&nbsp;will&nbsp;block&nbsp;if&nbsp;a&nbsp;keypress&nbsp;is<br>
+not&nbsp;already&nbsp;available,&nbsp;but&nbsp;will&nbsp;not&nbsp;wait&nbsp;for&nbsp;Enter&nbsp;to&nbsp;be&nbsp;pressed.&nbsp;If&nbsp;the<br>
+pressed&nbsp;key&nbsp;was&nbsp;a&nbsp;special&nbsp;function&nbsp;key,&nbsp;this&nbsp;will&nbsp;return&nbsp;'\000'&nbsp;or<br>
+'\xe0';&nbsp;the&nbsp;next&nbsp;call&nbsp;will&nbsp;return&nbsp;the&nbsp;keycode.&nbsp;The&nbsp;Control-C&nbsp;keypress<br>
+cannot&nbsp;be&nbsp;read&nbsp;with&nbsp;this&nbsp;function.</tt></dd></dl>
+ <dl><dt><a name="-getche"><strong>getche</strong></a>()</dt><dd><tt>Similar&nbsp;to&nbsp;<a href="#-getch">getch</a>(),&nbsp;but&nbsp;the&nbsp;keypress&nbsp;will&nbsp;be&nbsp;echoed&nbsp;if&nbsp;possible.</tt></dd></dl>
+ <dl><dt><a name="-getwch"><strong>getwch</strong></a>()</dt><dd><tt>Wide&nbsp;char&nbsp;variant&nbsp;of&nbsp;<a href="#-getch">getch</a>(),&nbsp;returning&nbsp;a&nbsp;Unicode&nbsp;value.</tt></dd></dl>
+ <dl><dt><a name="-getwche"><strong>getwche</strong></a>()</dt><dd><tt>Wide&nbsp;char&nbsp;variant&nbsp;of&nbsp;<a href="#-getche">getche</a>(),&nbsp;returning&nbsp;a&nbsp;Unicode&nbsp;value.</tt></dd></dl>
+ <dl><dt><a name="-heapmin"><strong>heapmin</strong></a>()</dt><dd><tt>Minimize&nbsp;the&nbsp;malloc()&nbsp;heap.<br>
+&nbsp;<br>
+Force&nbsp;the&nbsp;malloc()&nbsp;heap&nbsp;to&nbsp;clean&nbsp;itself&nbsp;up&nbsp;and&nbsp;return&nbsp;unused&nbsp;blocks<br>
+to&nbsp;the&nbsp;operating&nbsp;system.&nbsp;On&nbsp;failure,&nbsp;this&nbsp;raises&nbsp;OSError.</tt></dd></dl>
+ <dl><dt><a name="-kbhit"><strong>kbhit</strong></a>()</dt><dd><tt>Return&nbsp;true&nbsp;if&nbsp;a&nbsp;keypress&nbsp;is&nbsp;waiting&nbsp;to&nbsp;be&nbsp;read.</tt></dd></dl>
+ <dl><dt><a name="-locking"><strong>locking</strong></a>(fd, mode, nbytes, /)</dt><dd><tt>Lock&nbsp;part&nbsp;of&nbsp;a&nbsp;file&nbsp;based&nbsp;on&nbsp;file&nbsp;descriptor&nbsp;fd&nbsp;from&nbsp;the&nbsp;C&nbsp;runtime.<br>
+&nbsp;<br>
+Raises&nbsp;OSError&nbsp;on&nbsp;failure.&nbsp;The&nbsp;locked&nbsp;region&nbsp;of&nbsp;the&nbsp;file&nbsp;extends&nbsp;from<br>
+the&nbsp;current&nbsp;file&nbsp;position&nbsp;for&nbsp;nbytes&nbsp;bytes,&nbsp;and&nbsp;may&nbsp;continue&nbsp;beyond<br>
+the&nbsp;end&nbsp;of&nbsp;the&nbsp;file.&nbsp;mode&nbsp;must&nbsp;be&nbsp;one&nbsp;of&nbsp;the&nbsp;LK_*&nbsp;constants&nbsp;listed<br>
+below.&nbsp;Multiple&nbsp;regions&nbsp;in&nbsp;a&nbsp;file&nbsp;may&nbsp;be&nbsp;locked&nbsp;at&nbsp;the&nbsp;same&nbsp;time,&nbsp;but<br>
+may&nbsp;not&nbsp;overlap.&nbsp;Adjacent&nbsp;regions&nbsp;are&nbsp;not&nbsp;merged;&nbsp;they&nbsp;must&nbsp;be&nbsp;unlocked<br>
+individually.</tt></dd></dl>
+ <dl><dt><a name="-open_osfhandle"><strong>open_osfhandle</strong></a>(handle, flags, /)</dt><dd><tt>Create&nbsp;a&nbsp;C&nbsp;runtime&nbsp;file&nbsp;descriptor&nbsp;from&nbsp;the&nbsp;file&nbsp;handle&nbsp;handle.<br>
+&nbsp;<br>
+The&nbsp;flags&nbsp;parameter&nbsp;should&nbsp;be&nbsp;a&nbsp;bitwise&nbsp;OR&nbsp;of&nbsp;os.O_APPEND,&nbsp;os.O_RDONLY,<br>
+and&nbsp;os.O_TEXT.&nbsp;The&nbsp;returned&nbsp;file&nbsp;descriptor&nbsp;may&nbsp;be&nbsp;used&nbsp;as&nbsp;a&nbsp;parameter<br>
+to&nbsp;os.fdopen()&nbsp;to&nbsp;create&nbsp;a&nbsp;file&nbsp;object.</tt></dd></dl>
+ <dl><dt><a name="-putch"><strong>putch</strong></a>(char, /)</dt><dd><tt>Print&nbsp;the&nbsp;byte&nbsp;string&nbsp;char&nbsp;to&nbsp;the&nbsp;console&nbsp;without&nbsp;buffering.</tt></dd></dl>
+ <dl><dt><a name="-putwch"><strong>putwch</strong></a>(unicode_char, /)</dt><dd><tt>Wide&nbsp;char&nbsp;variant&nbsp;of&nbsp;<a href="#-putch">putch</a>(),&nbsp;accepting&nbsp;a&nbsp;Unicode&nbsp;value.</tt></dd></dl>
+ <dl><dt><a name="-setmode"><strong>setmode</strong></a>(fd, mode, /)</dt><dd><tt>Set&nbsp;the&nbsp;line-end&nbsp;translation&nbsp;mode&nbsp;for&nbsp;the&nbsp;file&nbsp;descriptor&nbsp;fd.<br>
+&nbsp;<br>
+To&nbsp;set&nbsp;it&nbsp;to&nbsp;text&nbsp;mode,&nbsp;flags&nbsp;should&nbsp;be&nbsp;os.O_TEXT;&nbsp;for&nbsp;binary,&nbsp;it<br>
+should&nbsp;be&nbsp;os.O_BINARY.<br>
+&nbsp;<br>
+Return&nbsp;value&nbsp;is&nbsp;the&nbsp;previous&nbsp;mode.</tt></dd></dl>
+ <dl><dt><a name="-ungetch"><strong>ungetch</strong></a>(char, /)</dt><dd><tt>Opposite&nbsp;of&nbsp;getch.<br>
+&nbsp;<br>
+Cause&nbsp;the&nbsp;byte&nbsp;string&nbsp;char&nbsp;to&nbsp;be&nbsp;"pushed&nbsp;back"&nbsp;into&nbsp;the<br>
+console&nbsp;buffer;&nbsp;it&nbsp;will&nbsp;be&nbsp;the&nbsp;next&nbsp;character&nbsp;read&nbsp;by<br>
+<a href="#-getch">getch</a>()&nbsp;or&nbsp;<a href="#-getche">getche</a>().</tt></dd></dl>
+ <dl><dt><a name="-ungetwch"><strong>ungetwch</strong></a>(unicode_char, /)</dt><dd><tt>Wide&nbsp;char&nbsp;variant&nbsp;of&nbsp;<a href="#-ungetch">ungetch</a>(),&nbsp;accepting&nbsp;a&nbsp;Unicode&nbsp;value.</tt></dd></dl>
+</td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#55aa55">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Data</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#55aa55"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><strong>CRT_ASSEMBLY_VERSION</strong> = '14.27.29110.0'<br>
+<strong>LK_LOCK</strong> = 1<br>
+<strong>LK_NBLCK</strong> = 2<br>
+<strong>LK_NBRLCK</strong> = 4<br>
+<strong>LK_RLCK</strong> = 3<br>
+<strong>LK_UNLCK</strong> = 0<br>
+<strong>SEM_FAILCRITICALERRORS</strong> = 1<br>
+<strong>SEM_NOALIGNMENTFAULTEXCEPT</strong> = 4<br>
+<strong>SEM_NOGPFAULTERRORBOX</strong> = 2<br>
+<strong>SEM_NOOPENFILEERRORBOX</strong> = 32768</td></tr></table>
+</body></html>

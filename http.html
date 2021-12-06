@@ -1,0 +1,203 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head><title>Python: package http</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+</head><body bgcolor="#f0f0f8">
+
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="heading">
+<tr bgcolor="#7799ee">
+<td valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong>http</strong></big></big></font></td
+><td align=right valign=bottom
+><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:c%3A%5Cpython38%5Clib%5Chttp%5C__init__.py">c:\python38\lib\http\__init__.py</a><br><a href="https://docs.python.org/3.8/library/http">Module Reference</a></font></td></tr></table>
+    <p></p>
+<p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ee77aa">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Classes</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#ee77aa"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl>
+<dt><font face="helvetica, arial"><a href="enum.html#IntEnum">enum.IntEnum</a>(<a href="builtins.html#int">builtins.int</a>, <a href="enum.html#Enum">enum.Enum</a>)
+</font></dt><dd>
+<dl>
+<dt><font face="helvetica, arial"><a href="http.html#HTTPStatus">HTTPStatus</a>
+</font></dt></dl>
+</dd>
+</dl>
+ <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="HTTPStatus">class <strong>HTTPStatus</strong></a>(<a href="enum.html#IntEnum">enum.IntEnum</a>)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt><a href="#HTTPStatus">HTTPStatus</a>(value,&nbsp;names=None,&nbsp;*,&nbsp;module=None,&nbsp;qualname=None,&nbsp;type=None,&nbsp;start=1)<br>
+&nbsp;<br>
+HTTP&nbsp;status&nbsp;codes&nbsp;and&nbsp;reason&nbsp;phrases<br>
+&nbsp;<br>
+Status&nbsp;codes&nbsp;from&nbsp;the&nbsp;following&nbsp;RFCs&nbsp;are&nbsp;all&nbsp;observed:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;<a href="http://www.rfc-editor.org/rfc/rfc7231.txt">RFC&nbsp;7231</a>:&nbsp;Hypertext&nbsp;Transfer&nbsp;Protocol&nbsp;(HTTP/1.1),&nbsp;obsoletes&nbsp;2616<br>
+&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;<a href="http://www.rfc-editor.org/rfc/rfc6585.txt">RFC&nbsp;6585</a>:&nbsp;Additional&nbsp;HTTP&nbsp;Status&nbsp;Codes<br>
+&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;<a href="http://www.rfc-editor.org/rfc/rfc3229.txt">RFC&nbsp;3229</a>:&nbsp;Delta&nbsp;encoding&nbsp;in&nbsp;HTTP<br>
+&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;<a href="http://www.rfc-editor.org/rfc/rfc4918.txt">RFC&nbsp;4918</a>:&nbsp;HTTP&nbsp;Extensions&nbsp;for&nbsp;WebDAV,&nbsp;obsoletes&nbsp;2518<br>
+&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;<a href="http://www.rfc-editor.org/rfc/rfc5842.txt">RFC&nbsp;5842</a>:&nbsp;Binding&nbsp;Extensions&nbsp;to&nbsp;WebDAV<br>
+&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;<a href="http://www.rfc-editor.org/rfc/rfc7238.txt">RFC&nbsp;7238</a>:&nbsp;Permanent&nbsp;Redirect<br>
+&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;<a href="http://www.rfc-editor.org/rfc/rfc2295.txt">RFC&nbsp;2295</a>:&nbsp;Transparent&nbsp;Content&nbsp;Negotiation&nbsp;in&nbsp;HTTP<br>
+&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;<a href="http://www.rfc-editor.org/rfc/rfc2774.txt">RFC&nbsp;2774</a>:&nbsp;An&nbsp;HTTP&nbsp;Extension&nbsp;Framework<br>
+&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;<a href="http://www.rfc-editor.org/rfc/rfc7725.txt">RFC&nbsp;7725</a>:&nbsp;An&nbsp;HTTP&nbsp;Status&nbsp;Code&nbsp;to&nbsp;Report&nbsp;Legal&nbsp;Obstacles<br>
+&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;<a href="http://www.rfc-editor.org/rfc/rfc7540.txt">RFC&nbsp;7540</a>:&nbsp;Hypertext&nbsp;Transfer&nbsp;Protocol&nbsp;Version&nbsp;2&nbsp;(HTTP/2)<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%"><dl><dt>Method resolution order:</dt>
+<dd><a href="http.html#HTTPStatus">HTTPStatus</a></dd>
+<dd><a href="enum.html#IntEnum">enum.IntEnum</a></dd>
+<dd><a href="builtins.html#int">builtins.int</a></dd>
+<dd><a href="enum.html#Enum">enum.Enum</a></dd>
+<dd><a href="builtins.html#object">builtins.object</a></dd>
+</dl>
+<hr>
+Data and other attributes defined here:<br>
+<dl><dt><strong>ACCEPTED</strong> = &lt;HTTPStatus.ACCEPTED: 202&gt;</dl>
+
+<dl><dt><strong>ALREADY_REPORTED</strong> = &lt;HTTPStatus.ALREADY_REPORTED: 208&gt;</dl>
+
+<dl><dt><strong>BAD_GATEWAY</strong> = &lt;HTTPStatus.BAD_GATEWAY: 502&gt;</dl>
+
+<dl><dt><strong>BAD_REQUEST</strong> = &lt;HTTPStatus.BAD_REQUEST: 400&gt;</dl>
+
+<dl><dt><strong>CONFLICT</strong> = &lt;HTTPStatus.CONFLICT: 409&gt;</dl>
+
+<dl><dt><strong>CONTINUE</strong> = &lt;HTTPStatus.CONTINUE: 100&gt;</dl>
+
+<dl><dt><strong>CREATED</strong> = &lt;HTTPStatus.CREATED: 201&gt;</dl>
+
+<dl><dt><strong>EXPECTATION_FAILED</strong> = &lt;HTTPStatus.EXPECTATION_FAILED: 417&gt;</dl>
+
+<dl><dt><strong>FAILED_DEPENDENCY</strong> = &lt;HTTPStatus.FAILED_DEPENDENCY: 424&gt;</dl>
+
+<dl><dt><strong>FORBIDDEN</strong> = &lt;HTTPStatus.FORBIDDEN: 403&gt;</dl>
+
+<dl><dt><strong>FOUND</strong> = &lt;HTTPStatus.FOUND: 302&gt;</dl>
+
+<dl><dt><strong>GATEWAY_TIMEOUT</strong> = &lt;HTTPStatus.GATEWAY_TIMEOUT: 504&gt;</dl>
+
+<dl><dt><strong>GONE</strong> = &lt;HTTPStatus.GONE: 410&gt;</dl>
+
+<dl><dt><strong>HTTP_VERSION_NOT_SUPPORTED</strong> = &lt;HTTPStatus.HTTP_VERSION_NOT_SUPPORTED: 505&gt;</dl>
+
+<dl><dt><strong>IM_USED</strong> = &lt;HTTPStatus.IM_USED: 226&gt;</dl>
+
+<dl><dt><strong>INSUFFICIENT_STORAGE</strong> = &lt;HTTPStatus.INSUFFICIENT_STORAGE: 507&gt;</dl>
+
+<dl><dt><strong>INTERNAL_SERVER_ERROR</strong> = &lt;HTTPStatus.INTERNAL_SERVER_ERROR: 500&gt;</dl>
+
+<dl><dt><strong>LENGTH_REQUIRED</strong> = &lt;HTTPStatus.LENGTH_REQUIRED: 411&gt;</dl>
+
+<dl><dt><strong>LOCKED</strong> = &lt;HTTPStatus.LOCKED: 423&gt;</dl>
+
+<dl><dt><strong>LOOP_DETECTED</strong> = &lt;HTTPStatus.LOOP_DETECTED: 508&gt;</dl>
+
+<dl><dt><strong>METHOD_NOT_ALLOWED</strong> = &lt;HTTPStatus.METHOD_NOT_ALLOWED: 405&gt;</dl>
+
+<dl><dt><strong>MISDIRECTED_REQUEST</strong> = &lt;HTTPStatus.MISDIRECTED_REQUEST: 421&gt;</dl>
+
+<dl><dt><strong>MOVED_PERMANENTLY</strong> = &lt;HTTPStatus.MOVED_PERMANENTLY: 301&gt;</dl>
+
+<dl><dt><strong>MULTIPLE_CHOICES</strong> = &lt;HTTPStatus.MULTIPLE_CHOICES: 300&gt;</dl>
+
+<dl><dt><strong>MULTI_STATUS</strong> = &lt;HTTPStatus.MULTI_STATUS: 207&gt;</dl>
+
+<dl><dt><strong>NETWORK_AUTHENTICATION_REQUIRED</strong> = &lt;HTTPStatus.NETWORK_AUTHENTICATION_REQUIRED: 511&gt;</dl>
+
+<dl><dt><strong>NON_AUTHORITATIVE_INFORMATION</strong> = &lt;HTTPStatus.NON_AUTHORITATIVE_INFORMATION: 203&gt;</dl>
+
+<dl><dt><strong>NOT_ACCEPTABLE</strong> = &lt;HTTPStatus.NOT_ACCEPTABLE: 406&gt;</dl>
+
+<dl><dt><strong>NOT_EXTENDED</strong> = &lt;HTTPStatus.NOT_EXTENDED: 510&gt;</dl>
+
+<dl><dt><strong>NOT_FOUND</strong> = &lt;HTTPStatus.NOT_FOUND: 404&gt;</dl>
+
+<dl><dt><strong>NOT_IMPLEMENTED</strong> = &lt;HTTPStatus.NOT_IMPLEMENTED: 501&gt;</dl>
+
+<dl><dt><strong>NOT_MODIFIED</strong> = &lt;HTTPStatus.NOT_MODIFIED: 304&gt;</dl>
+
+<dl><dt><strong>NO_CONTENT</strong> = &lt;HTTPStatus.NO_CONTENT: 204&gt;</dl>
+
+<dl><dt><strong>OK</strong> = &lt;HTTPStatus.OK: 200&gt;</dl>
+
+<dl><dt><strong>PARTIAL_CONTENT</strong> = &lt;HTTPStatus.PARTIAL_CONTENT: 206&gt;</dl>
+
+<dl><dt><strong>PAYMENT_REQUIRED</strong> = &lt;HTTPStatus.PAYMENT_REQUIRED: 402&gt;</dl>
+
+<dl><dt><strong>PERMANENT_REDIRECT</strong> = &lt;HTTPStatus.PERMANENT_REDIRECT: 308&gt;</dl>
+
+<dl><dt><strong>PRECONDITION_FAILED</strong> = &lt;HTTPStatus.PRECONDITION_FAILED: 412&gt;</dl>
+
+<dl><dt><strong>PRECONDITION_REQUIRED</strong> = &lt;HTTPStatus.PRECONDITION_REQUIRED: 428&gt;</dl>
+
+<dl><dt><strong>PROCESSING</strong> = &lt;HTTPStatus.PROCESSING: 102&gt;</dl>
+
+<dl><dt><strong>PROXY_AUTHENTICATION_REQUIRED</strong> = &lt;HTTPStatus.PROXY_AUTHENTICATION_REQUIRED: 407&gt;</dl>
+
+<dl><dt><strong>REQUESTED_RANGE_NOT_SATISFIABLE</strong> = &lt;HTTPStatus.REQUESTED_RANGE_NOT_SATISFIABLE: 416&gt;</dl>
+
+<dl><dt><strong>REQUEST_ENTITY_TOO_LARGE</strong> = &lt;HTTPStatus.REQUEST_ENTITY_TOO_LARGE: 413&gt;</dl>
+
+<dl><dt><strong>REQUEST_HEADER_FIELDS_TOO_LARGE</strong> = &lt;HTTPStatus.REQUEST_HEADER_FIELDS_TOO_LARGE: 431&gt;</dl>
+
+<dl><dt><strong>REQUEST_TIMEOUT</strong> = &lt;HTTPStatus.REQUEST_TIMEOUT: 408&gt;</dl>
+
+<dl><dt><strong>REQUEST_URI_TOO_LONG</strong> = &lt;HTTPStatus.REQUEST_URI_TOO_LONG: 414&gt;</dl>
+
+<dl><dt><strong>RESET_CONTENT</strong> = &lt;HTTPStatus.RESET_CONTENT: 205&gt;</dl>
+
+<dl><dt><strong>SEE_OTHER</strong> = &lt;HTTPStatus.SEE_OTHER: 303&gt;</dl>
+
+<dl><dt><strong>SERVICE_UNAVAILABLE</strong> = &lt;HTTPStatus.SERVICE_UNAVAILABLE: 503&gt;</dl>
+
+<dl><dt><strong>SWITCHING_PROTOCOLS</strong> = &lt;HTTPStatus.SWITCHING_PROTOCOLS: 101&gt;</dl>
+
+<dl><dt><strong>TEMPORARY_REDIRECT</strong> = &lt;HTTPStatus.TEMPORARY_REDIRECT: 307&gt;</dl>
+
+<dl><dt><strong>TOO_MANY_REQUESTS</strong> = &lt;HTTPStatus.TOO_MANY_REQUESTS: 429&gt;</dl>
+
+<dl><dt><strong>UNAUTHORIZED</strong> = &lt;HTTPStatus.UNAUTHORIZED: 401&gt;</dl>
+
+<dl><dt><strong>UNAVAILABLE_FOR_LEGAL_REASONS</strong> = &lt;HTTPStatus.UNAVAILABLE_FOR_LEGAL_REASONS: 451&gt;</dl>
+
+<dl><dt><strong>UNPROCESSABLE_ENTITY</strong> = &lt;HTTPStatus.UNPROCESSABLE_ENTITY: 422&gt;</dl>
+
+<dl><dt><strong>UNSUPPORTED_MEDIA_TYPE</strong> = &lt;HTTPStatus.UNSUPPORTED_MEDIA_TYPE: 415&gt;</dl>
+
+<dl><dt><strong>UPGRADE_REQUIRED</strong> = &lt;HTTPStatus.UPGRADE_REQUIRED: 426&gt;</dl>
+
+<dl><dt><strong>USE_PROXY</strong> = &lt;HTTPStatus.USE_PROXY: 305&gt;</dl>
+
+<dl><dt><strong>VARIANT_ALSO_NEGOTIATES</strong> = &lt;HTTPStatus.VARIANT_ALSO_NEGOTIATES: 506&gt;</dl>
+
+<hr>
+Data descriptors inherited from <a href="enum.html#Enum">enum.Enum</a>:<br>
+<dl><dt><strong>name</strong></dt>
+<dd><tt>The&nbsp;name&nbsp;of&nbsp;the&nbsp;Enum&nbsp;member.</tt></dd>
+</dl>
+<dl><dt><strong>value</strong></dt>
+<dd><tt>The&nbsp;value&nbsp;of&nbsp;the&nbsp;Enum&nbsp;member.</tt></dd>
+</dl>
+<hr>
+Readonly properties inherited from <a href="enum.html#EnumMeta">enum.EnumMeta</a>:<br>
+<dl><dt><strong>__members__</strong></dt>
+<dd><tt>Returns&nbsp;a&nbsp;mapping&nbsp;of&nbsp;member&nbsp;name-&gt;value.<br>
+&nbsp;<br>
+This&nbsp;mapping&nbsp;lists&nbsp;all&nbsp;enum&nbsp;members,&nbsp;including&nbsp;aliases.&nbsp;Note&nbsp;that&nbsp;this<br>
+is&nbsp;a&nbsp;read-only&nbsp;view&nbsp;of&nbsp;the&nbsp;internal&nbsp;mapping.</tt></dd>
+</dl>
+</td></tr></table></td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#55aa55">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Data</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#55aa55"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><strong>__all__</strong> = ['HTTPStatus']</td></tr></table>
+</body></html>

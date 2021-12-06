@@ -1,0 +1,84 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head><title>Python: module sysconfig</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+</head><body bgcolor="#f0f0f8">
+
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="heading">
+<tr bgcolor="#7799ee">
+<td valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong>sysconfig</strong></big></big></font></td
+><td align=right valign=bottom
+><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:c%3A%5Cpython38%5Clib%5Csysconfig.py">c:\python38\lib\sysconfig.py</a><br><a href="https://docs.python.org/3.8/library/sysconfig">Module Reference</a></font></td></tr></table>
+    <p><tt>Access&nbsp;to&nbsp;Python's&nbsp;configuration&nbsp;information.</tt></p>
+<p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#aa55cc">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Modules</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#aa55cc"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><table width="100%" summary="list"><tr><td width="25%" valign=top><a href="os.html">os</a><br>
+</td><td width="25%" valign=top><a href="sys.html">sys</a><br>
+</td><td width="25%" valign=top></td><td width="25%" valign=top></td></tr></table></td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#eeaa77">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Functions</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#eeaa77"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl><dt><a name="-get_config_h_filename"><strong>get_config_h_filename</strong></a>()</dt><dd><tt>Return&nbsp;the&nbsp;path&nbsp;of&nbsp;pyconfig.h.</tt></dd></dl>
+ <dl><dt><a name="-get_config_var"><strong>get_config_var</strong></a>(name)</dt><dd><tt>Return&nbsp;the&nbsp;value&nbsp;of&nbsp;a&nbsp;single&nbsp;variable&nbsp;using&nbsp;the&nbsp;dictionary&nbsp;returned&nbsp;by<br>
+'<a href="#-get_config_vars">get_config_vars</a>()'.<br>
+&nbsp;<br>
+Equivalent&nbsp;to&nbsp;<a href="#-get_config_vars">get_config_vars</a>().get(name)</tt></dd></dl>
+ <dl><dt><a name="-get_config_vars"><strong>get_config_vars</strong></a>(*args)</dt><dd><tt>With&nbsp;no&nbsp;arguments,&nbsp;return&nbsp;a&nbsp;dictionary&nbsp;of&nbsp;all&nbsp;configuration<br>
+variables&nbsp;relevant&nbsp;for&nbsp;the&nbsp;current&nbsp;platform.<br>
+&nbsp;<br>
+On&nbsp;Unix,&nbsp;this&nbsp;means&nbsp;every&nbsp;variable&nbsp;defined&nbsp;in&nbsp;Python's&nbsp;installed&nbsp;Makefile;<br>
+On&nbsp;Windows&nbsp;it's&nbsp;a&nbsp;much&nbsp;smaller&nbsp;set.<br>
+&nbsp;<br>
+With&nbsp;arguments,&nbsp;return&nbsp;a&nbsp;list&nbsp;of&nbsp;values&nbsp;that&nbsp;result&nbsp;from&nbsp;looking&nbsp;up<br>
+each&nbsp;argument&nbsp;in&nbsp;the&nbsp;configuration&nbsp;variable&nbsp;dictionary.</tt></dd></dl>
+ <dl><dt><a name="-get_makefile_filename"><strong>get_makefile_filename</strong></a>()</dt><dd><tt>Return&nbsp;the&nbsp;path&nbsp;of&nbsp;the&nbsp;Makefile.</tt></dd></dl>
+ <dl><dt><a name="-get_path"><strong>get_path</strong></a>(name, scheme='nt', vars=None, expand=True)</dt><dd><tt>Return&nbsp;a&nbsp;path&nbsp;corresponding&nbsp;to&nbsp;the&nbsp;scheme.<br>
+&nbsp;<br>
+``scheme``&nbsp;is&nbsp;the&nbsp;install&nbsp;scheme&nbsp;name.</tt></dd></dl>
+ <dl><dt><a name="-get_path_names"><strong>get_path_names</strong></a>()</dt><dd><tt>Return&nbsp;a&nbsp;tuple&nbsp;containing&nbsp;the&nbsp;paths&nbsp;names.</tt></dd></dl>
+ <dl><dt><a name="-get_paths"><strong>get_paths</strong></a>(scheme='nt', vars=None, expand=True)</dt><dd><tt>Return&nbsp;a&nbsp;mapping&nbsp;containing&nbsp;an&nbsp;install&nbsp;scheme.<br>
+&nbsp;<br>
+``scheme``&nbsp;is&nbsp;the&nbsp;install&nbsp;scheme&nbsp;name.&nbsp;If&nbsp;not&nbsp;provided,&nbsp;it&nbsp;will<br>
+return&nbsp;the&nbsp;default&nbsp;scheme&nbsp;for&nbsp;the&nbsp;current&nbsp;platform.</tt></dd></dl>
+ <dl><dt><a name="-get_platform"><strong>get_platform</strong></a>()</dt><dd><tt>Return&nbsp;a&nbsp;string&nbsp;that&nbsp;identifies&nbsp;the&nbsp;current&nbsp;platform.<br>
+&nbsp;<br>
+This&nbsp;is&nbsp;used&nbsp;mainly&nbsp;to&nbsp;distinguish&nbsp;platform-specific&nbsp;build&nbsp;directories&nbsp;and<br>
+platform-specific&nbsp;built&nbsp;distributions.&nbsp;&nbsp;Typically&nbsp;includes&nbsp;the&nbsp;OS&nbsp;name&nbsp;and<br>
+version&nbsp;and&nbsp;the&nbsp;architecture&nbsp;(as&nbsp;supplied&nbsp;by&nbsp;'os.uname()'),&nbsp;although&nbsp;the<br>
+exact&nbsp;information&nbsp;included&nbsp;depends&nbsp;on&nbsp;the&nbsp;OS;&nbsp;on&nbsp;Linux,&nbsp;the&nbsp;kernel&nbsp;version<br>
+isn't&nbsp;particularly&nbsp;important.<br>
+&nbsp;<br>
+Examples&nbsp;of&nbsp;returned&nbsp;values:<br>
+&nbsp;&nbsp;&nbsp;linux-i586<br>
+&nbsp;&nbsp;&nbsp;linux-alpha&nbsp;(?)<br>
+&nbsp;&nbsp;&nbsp;solaris-2.6-sun4u<br>
+&nbsp;<br>
+Windows&nbsp;will&nbsp;return&nbsp;one&nbsp;of:<br>
+&nbsp;&nbsp;&nbsp;win-amd64&nbsp;(64bit&nbsp;Windows&nbsp;on&nbsp;AMD64&nbsp;(aka&nbsp;x86_64,&nbsp;Intel64,&nbsp;EM64T,&nbsp;etc)<br>
+&nbsp;&nbsp;&nbsp;win32&nbsp;(all&nbsp;others&nbsp;-&nbsp;specifically,&nbsp;sys.platform&nbsp;is&nbsp;returned)<br>
+&nbsp;<br>
+For&nbsp;other&nbsp;non-POSIX&nbsp;platforms,&nbsp;currently&nbsp;just&nbsp;returns&nbsp;'sys.platform'.</tt></dd></dl>
+ <dl><dt><a name="-get_python_version"><strong>get_python_version</strong></a>()</dt></dl>
+ <dl><dt><a name="-get_scheme_names"><strong>get_scheme_names</strong></a>()</dt><dd><tt>Return&nbsp;a&nbsp;tuple&nbsp;containing&nbsp;the&nbsp;schemes&nbsp;names.</tt></dd></dl>
+ <dl><dt><a name="-parse_config_h"><strong>parse_config_h</strong></a>(fp, vars=None)</dt><dd><tt>Parse&nbsp;a&nbsp;config.h-style&nbsp;file.<br>
+&nbsp;<br>
+A&nbsp;dictionary&nbsp;containing&nbsp;name/value&nbsp;pairs&nbsp;is&nbsp;returned.&nbsp;&nbsp;If&nbsp;an<br>
+optional&nbsp;dictionary&nbsp;is&nbsp;passed&nbsp;in&nbsp;as&nbsp;the&nbsp;second&nbsp;argument,&nbsp;it&nbsp;is<br>
+used&nbsp;instead&nbsp;of&nbsp;a&nbsp;new&nbsp;dictionary.</tt></dd></dl>
+</td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#55aa55">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Data</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#55aa55"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><strong>__all__</strong> = ['get_config_h_filename', 'get_config_var', 'get_config_vars', 'get_makefile_filename', 'get_path', 'get_path_names', 'get_paths', 'get_platform', 'get_python_version', 'get_scheme_names', 'parse_config_h']</td></tr></table>
+</body></html>

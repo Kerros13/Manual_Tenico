@@ -1,0 +1,431 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head><title>Python: built-in module winreg</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+</head><body bgcolor="#f0f0f8">
+
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="heading">
+<tr bgcolor="#7799ee">
+<td valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong>winreg</strong></big></big></font></td
+><td align=right valign=bottom
+><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br>(built-in)</font></td></tr></table>
+    <p><tt>This&nbsp;module&nbsp;provides&nbsp;access&nbsp;to&nbsp;the&nbsp;Windows&nbsp;registry&nbsp;API.<br>
+&nbsp;<br>
+Functions:<br>
+&nbsp;<br>
+<a href="#-CloseKey">CloseKey</a>()&nbsp;-&nbsp;Closes&nbsp;a&nbsp;registry&nbsp;key.<br>
+<a href="#-ConnectRegistry">ConnectRegistry</a>()&nbsp;-&nbsp;Establishes&nbsp;a&nbsp;connection&nbsp;to&nbsp;a&nbsp;predefined&nbsp;registry&nbsp;handle<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;on&nbsp;another&nbsp;computer.<br>
+<a href="#-CreateKey">CreateKey</a>()&nbsp;-&nbsp;Creates&nbsp;the&nbsp;specified&nbsp;key,&nbsp;or&nbsp;opens&nbsp;it&nbsp;if&nbsp;it&nbsp;already&nbsp;exists.<br>
+<a href="#-DeleteKey">DeleteKey</a>()&nbsp;-&nbsp;Deletes&nbsp;the&nbsp;specified&nbsp;key.<br>
+<a href="#-DeleteValue">DeleteValue</a>()&nbsp;-&nbsp;Removes&nbsp;a&nbsp;named&nbsp;value&nbsp;from&nbsp;the&nbsp;specified&nbsp;registry&nbsp;key.<br>
+<a href="#-EnumKey">EnumKey</a>()&nbsp;-&nbsp;Enumerates&nbsp;subkeys&nbsp;of&nbsp;the&nbsp;specified&nbsp;open&nbsp;registry&nbsp;key.<br>
+<a href="#-EnumValue">EnumValue</a>()&nbsp;-&nbsp;Enumerates&nbsp;values&nbsp;of&nbsp;the&nbsp;specified&nbsp;open&nbsp;registry&nbsp;key.<br>
+<a href="#-ExpandEnvironmentStrings">ExpandEnvironmentStrings</a>()&nbsp;-&nbsp;Expand&nbsp;the&nbsp;env&nbsp;strings&nbsp;in&nbsp;a&nbsp;REG_EXPAND_SZ<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;string.<br>
+<a href="#-FlushKey">FlushKey</a>()&nbsp;-&nbsp;Writes&nbsp;all&nbsp;the&nbsp;attributes&nbsp;of&nbsp;the&nbsp;specified&nbsp;key&nbsp;to&nbsp;the&nbsp;registry.<br>
+<a href="#-LoadKey">LoadKey</a>()&nbsp;-&nbsp;Creates&nbsp;a&nbsp;subkey&nbsp;under&nbsp;HKEY_USER&nbsp;or&nbsp;HKEY_LOCAL_MACHINE&nbsp;and<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;stores&nbsp;registration&nbsp;information&nbsp;from&nbsp;a&nbsp;specified&nbsp;file&nbsp;into&nbsp;that<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;subkey.<br>
+<a href="#-OpenKey">OpenKey</a>()&nbsp;-&nbsp;Opens&nbsp;the&nbsp;specified&nbsp;key.<br>
+<a href="#-OpenKeyEx">OpenKeyEx</a>()&nbsp;-&nbsp;Alias&nbsp;of&nbsp;<a href="#-OpenKey">OpenKey</a>().<br>
+<a href="#-QueryValue">QueryValue</a>()&nbsp;-&nbsp;Retrieves&nbsp;the&nbsp;value&nbsp;associated&nbsp;with&nbsp;the&nbsp;unnamed&nbsp;value&nbsp;for&nbsp;a<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;specified&nbsp;key&nbsp;in&nbsp;the&nbsp;registry.<br>
+<a href="#-QueryValueEx">QueryValueEx</a>()&nbsp;-&nbsp;Retrieves&nbsp;the&nbsp;type&nbsp;and&nbsp;data&nbsp;for&nbsp;a&nbsp;specified&nbsp;value&nbsp;name<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;associated&nbsp;with&nbsp;an&nbsp;open&nbsp;registry&nbsp;key.<br>
+<a href="#-QueryInfoKey">QueryInfoKey</a>()&nbsp;-&nbsp;Returns&nbsp;information&nbsp;about&nbsp;the&nbsp;specified&nbsp;key.<br>
+<a href="#-SaveKey">SaveKey</a>()&nbsp;-&nbsp;Saves&nbsp;the&nbsp;specified&nbsp;key,&nbsp;and&nbsp;all&nbsp;its&nbsp;subkeys&nbsp;a&nbsp;file.<br>
+<a href="#-SetValue">SetValue</a>()&nbsp;-&nbsp;Associates&nbsp;a&nbsp;value&nbsp;with&nbsp;a&nbsp;specified&nbsp;key.<br>
+<a href="#-SetValueEx">SetValueEx</a>()&nbsp;-&nbsp;Stores&nbsp;data&nbsp;in&nbsp;the&nbsp;value&nbsp;field&nbsp;of&nbsp;an&nbsp;open&nbsp;registry&nbsp;key.<br>
+&nbsp;<br>
+Special&nbsp;objects:<br>
+&nbsp;<br>
+HKEYType&nbsp;--&nbsp;type&nbsp;object&nbsp;for&nbsp;HKEY&nbsp;objects<br>
+error&nbsp;--&nbsp;exception&nbsp;raised&nbsp;for&nbsp;Win32&nbsp;errors<br>
+&nbsp;<br>
+Integer&nbsp;constants:<br>
+Many&nbsp;constants&nbsp;are&nbsp;defined&nbsp;-&nbsp;see&nbsp;the&nbsp;documentation&nbsp;for&nbsp;each&nbsp;function<br>
+to&nbsp;see&nbsp;what&nbsp;constants&nbsp;are&nbsp;used,&nbsp;and&nbsp;where.</tt></p>
+<p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#eeaa77">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Functions</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#eeaa77"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl><dt><a name="-CloseKey"><strong>CloseKey</strong></a>(hkey, /)</dt><dd><tt>Closes&nbsp;a&nbsp;previously&nbsp;opened&nbsp;registry&nbsp;key.<br>
+&nbsp;<br>
+&nbsp;&nbsp;hkey<br>
+&nbsp;&nbsp;&nbsp;&nbsp;A&nbsp;previously&nbsp;opened&nbsp;key.<br>
+&nbsp;<br>
+Note&nbsp;that&nbsp;if&nbsp;the&nbsp;key&nbsp;is&nbsp;not&nbsp;closed&nbsp;using&nbsp;this&nbsp;method,&nbsp;it&nbsp;will&nbsp;be<br>
+closed&nbsp;when&nbsp;the&nbsp;hkey&nbsp;object&nbsp;is&nbsp;destroyed&nbsp;by&nbsp;Python.</tt></dd></dl>
+ <dl><dt><a name="-ConnectRegistry"><strong>ConnectRegistry</strong></a>(computer_name, key, /)</dt><dd><tt>Establishes&nbsp;a&nbsp;connection&nbsp;to&nbsp;the&nbsp;registry&nbsp;on&nbsp;another&nbsp;computer.<br>
+&nbsp;<br>
+&nbsp;&nbsp;computer_name<br>
+&nbsp;&nbsp;&nbsp;&nbsp;The&nbsp;name&nbsp;of&nbsp;the&nbsp;remote&nbsp;computer,&nbsp;of&nbsp;the&nbsp;form&nbsp;r"\\computername".&nbsp;&nbsp;If<br>
+&nbsp;&nbsp;&nbsp;&nbsp;None,&nbsp;the&nbsp;local&nbsp;computer&nbsp;is&nbsp;used.<br>
+&nbsp;&nbsp;key<br>
+&nbsp;&nbsp;&nbsp;&nbsp;The&nbsp;predefined&nbsp;key&nbsp;to&nbsp;connect&nbsp;to.<br>
+&nbsp;<br>
+The&nbsp;return&nbsp;value&nbsp;is&nbsp;the&nbsp;handle&nbsp;of&nbsp;the&nbsp;opened&nbsp;key.<br>
+If&nbsp;the&nbsp;function&nbsp;fails,&nbsp;an&nbsp;OSError&nbsp;exception&nbsp;is&nbsp;raised.</tt></dd></dl>
+ <dl><dt><a name="-CreateKey"><strong>CreateKey</strong></a>(key, sub_key, /)</dt><dd><tt>Creates&nbsp;or&nbsp;opens&nbsp;the&nbsp;specified&nbsp;key.<br>
+&nbsp;<br>
+&nbsp;&nbsp;key<br>
+&nbsp;&nbsp;&nbsp;&nbsp;An&nbsp;already&nbsp;open&nbsp;key,&nbsp;or&nbsp;one&nbsp;of&nbsp;the&nbsp;predefined&nbsp;HKEY_*&nbsp;constants.<br>
+&nbsp;&nbsp;sub_key<br>
+&nbsp;&nbsp;&nbsp;&nbsp;The&nbsp;name&nbsp;of&nbsp;the&nbsp;key&nbsp;this&nbsp;method&nbsp;opens&nbsp;or&nbsp;creates.<br>
+&nbsp;<br>
+If&nbsp;key&nbsp;is&nbsp;one&nbsp;of&nbsp;the&nbsp;predefined&nbsp;keys,&nbsp;sub_key&nbsp;may&nbsp;be&nbsp;None.&nbsp;In&nbsp;that&nbsp;case,<br>
+the&nbsp;handle&nbsp;returned&nbsp;is&nbsp;the&nbsp;same&nbsp;key&nbsp;handle&nbsp;passed&nbsp;in&nbsp;to&nbsp;the&nbsp;function.<br>
+&nbsp;<br>
+If&nbsp;the&nbsp;key&nbsp;already&nbsp;exists,&nbsp;this&nbsp;function&nbsp;opens&nbsp;the&nbsp;existing&nbsp;key.<br>
+&nbsp;<br>
+The&nbsp;return&nbsp;value&nbsp;is&nbsp;the&nbsp;handle&nbsp;of&nbsp;the&nbsp;opened&nbsp;key.<br>
+If&nbsp;the&nbsp;function&nbsp;fails,&nbsp;an&nbsp;OSError&nbsp;exception&nbsp;is&nbsp;raised.</tt></dd></dl>
+ <dl><dt><a name="-CreateKeyEx"><strong>CreateKeyEx</strong></a>(key, sub_key, reserved=0, access=131078)</dt><dd><tt>Creates&nbsp;or&nbsp;opens&nbsp;the&nbsp;specified&nbsp;key.<br>
+&nbsp;<br>
+&nbsp;&nbsp;key<br>
+&nbsp;&nbsp;&nbsp;&nbsp;An&nbsp;already&nbsp;open&nbsp;key,&nbsp;or&nbsp;one&nbsp;of&nbsp;the&nbsp;predefined&nbsp;HKEY_*&nbsp;constants.<br>
+&nbsp;&nbsp;sub_key<br>
+&nbsp;&nbsp;&nbsp;&nbsp;The&nbsp;name&nbsp;of&nbsp;the&nbsp;key&nbsp;this&nbsp;method&nbsp;opens&nbsp;or&nbsp;creates.<br>
+&nbsp;&nbsp;reserved<br>
+&nbsp;&nbsp;&nbsp;&nbsp;A&nbsp;reserved&nbsp;integer,&nbsp;and&nbsp;must&nbsp;be&nbsp;zero.&nbsp;&nbsp;Default&nbsp;is&nbsp;zero.<br>
+&nbsp;&nbsp;access<br>
+&nbsp;&nbsp;&nbsp;&nbsp;An&nbsp;integer&nbsp;that&nbsp;specifies&nbsp;an&nbsp;access&nbsp;mask&nbsp;that&nbsp;describes&nbsp;the<br>
+&nbsp;&nbsp;&nbsp;&nbsp;desired&nbsp;security&nbsp;access&nbsp;for&nbsp;the&nbsp;key.&nbsp;Default&nbsp;is&nbsp;KEY_WRITE.<br>
+&nbsp;<br>
+If&nbsp;key&nbsp;is&nbsp;one&nbsp;of&nbsp;the&nbsp;predefined&nbsp;keys,&nbsp;sub_key&nbsp;may&nbsp;be&nbsp;None.&nbsp;In&nbsp;that&nbsp;case,<br>
+the&nbsp;handle&nbsp;returned&nbsp;is&nbsp;the&nbsp;same&nbsp;key&nbsp;handle&nbsp;passed&nbsp;in&nbsp;to&nbsp;the&nbsp;function.<br>
+&nbsp;<br>
+If&nbsp;the&nbsp;key&nbsp;already&nbsp;exists,&nbsp;this&nbsp;function&nbsp;opens&nbsp;the&nbsp;existing&nbsp;key<br>
+&nbsp;<br>
+The&nbsp;return&nbsp;value&nbsp;is&nbsp;the&nbsp;handle&nbsp;of&nbsp;the&nbsp;opened&nbsp;key.<br>
+If&nbsp;the&nbsp;function&nbsp;fails,&nbsp;an&nbsp;OSError&nbsp;exception&nbsp;is&nbsp;raised.</tt></dd></dl>
+ <dl><dt><a name="-DeleteKey"><strong>DeleteKey</strong></a>(key, sub_key, /)</dt><dd><tt>Deletes&nbsp;the&nbsp;specified&nbsp;key.<br>
+&nbsp;<br>
+&nbsp;&nbsp;key<br>
+&nbsp;&nbsp;&nbsp;&nbsp;An&nbsp;already&nbsp;open&nbsp;key,&nbsp;or&nbsp;any&nbsp;one&nbsp;of&nbsp;the&nbsp;predefined&nbsp;HKEY_*&nbsp;constants.<br>
+&nbsp;&nbsp;sub_key<br>
+&nbsp;&nbsp;&nbsp;&nbsp;A&nbsp;string&nbsp;that&nbsp;must&nbsp;be&nbsp;the&nbsp;name&nbsp;of&nbsp;a&nbsp;subkey&nbsp;of&nbsp;the&nbsp;key&nbsp;identified&nbsp;by<br>
+&nbsp;&nbsp;&nbsp;&nbsp;the&nbsp;key&nbsp;parameter.&nbsp;This&nbsp;value&nbsp;must&nbsp;not&nbsp;be&nbsp;None,&nbsp;and&nbsp;the&nbsp;key&nbsp;may&nbsp;not<br>
+&nbsp;&nbsp;&nbsp;&nbsp;have&nbsp;subkeys.<br>
+&nbsp;<br>
+This&nbsp;method&nbsp;can&nbsp;not&nbsp;delete&nbsp;keys&nbsp;with&nbsp;subkeys.<br>
+&nbsp;<br>
+If&nbsp;the&nbsp;function&nbsp;succeeds,&nbsp;the&nbsp;entire&nbsp;key,&nbsp;including&nbsp;all&nbsp;of&nbsp;its&nbsp;values,<br>
+is&nbsp;removed.&nbsp;&nbsp;If&nbsp;the&nbsp;function&nbsp;fails,&nbsp;an&nbsp;OSError&nbsp;exception&nbsp;is&nbsp;raised.</tt></dd></dl>
+ <dl><dt><a name="-DeleteKeyEx"><strong>DeleteKeyEx</strong></a>(key, sub_key, access=256, reserved=0)</dt><dd><tt>Deletes&nbsp;the&nbsp;specified&nbsp;key&nbsp;(64-bit&nbsp;OS&nbsp;only).<br>
+&nbsp;<br>
+&nbsp;&nbsp;key<br>
+&nbsp;&nbsp;&nbsp;&nbsp;An&nbsp;already&nbsp;open&nbsp;key,&nbsp;or&nbsp;any&nbsp;one&nbsp;of&nbsp;the&nbsp;predefined&nbsp;HKEY_*&nbsp;constants.<br>
+&nbsp;&nbsp;sub_key<br>
+&nbsp;&nbsp;&nbsp;&nbsp;A&nbsp;string&nbsp;that&nbsp;must&nbsp;be&nbsp;the&nbsp;name&nbsp;of&nbsp;a&nbsp;subkey&nbsp;of&nbsp;the&nbsp;key&nbsp;identified&nbsp;by<br>
+&nbsp;&nbsp;&nbsp;&nbsp;the&nbsp;key&nbsp;parameter.&nbsp;This&nbsp;value&nbsp;must&nbsp;not&nbsp;be&nbsp;None,&nbsp;and&nbsp;the&nbsp;key&nbsp;may&nbsp;not<br>
+&nbsp;&nbsp;&nbsp;&nbsp;have&nbsp;subkeys.<br>
+&nbsp;&nbsp;access<br>
+&nbsp;&nbsp;&nbsp;&nbsp;An&nbsp;integer&nbsp;that&nbsp;specifies&nbsp;an&nbsp;access&nbsp;mask&nbsp;that&nbsp;describes&nbsp;the<br>
+&nbsp;&nbsp;&nbsp;&nbsp;desired&nbsp;security&nbsp;access&nbsp;for&nbsp;the&nbsp;key.&nbsp;Default&nbsp;is&nbsp;KEY_WOW64_64KEY.<br>
+&nbsp;&nbsp;reserved<br>
+&nbsp;&nbsp;&nbsp;&nbsp;A&nbsp;reserved&nbsp;integer,&nbsp;and&nbsp;must&nbsp;be&nbsp;zero.&nbsp;&nbsp;Default&nbsp;is&nbsp;zero.<br>
+&nbsp;<br>
+This&nbsp;method&nbsp;can&nbsp;not&nbsp;delete&nbsp;keys&nbsp;with&nbsp;subkeys.<br>
+&nbsp;<br>
+If&nbsp;the&nbsp;function&nbsp;succeeds,&nbsp;the&nbsp;entire&nbsp;key,&nbsp;including&nbsp;all&nbsp;of&nbsp;its&nbsp;values,<br>
+is&nbsp;removed.&nbsp;&nbsp;If&nbsp;the&nbsp;function&nbsp;fails,&nbsp;an&nbsp;OSError&nbsp;exception&nbsp;is&nbsp;raised.<br>
+On&nbsp;unsupported&nbsp;Windows&nbsp;versions,&nbsp;NotImplementedError&nbsp;is&nbsp;raised.</tt></dd></dl>
+ <dl><dt><a name="-DeleteValue"><strong>DeleteValue</strong></a>(key, value, /)</dt><dd><tt>Removes&nbsp;a&nbsp;named&nbsp;value&nbsp;from&nbsp;a&nbsp;registry&nbsp;key.<br>
+&nbsp;<br>
+key<br>
+&nbsp;&nbsp;An&nbsp;already&nbsp;open&nbsp;key,&nbsp;or&nbsp;any&nbsp;one&nbsp;of&nbsp;the&nbsp;predefined&nbsp;HKEY_*&nbsp;constants.<br>
+value<br>
+&nbsp;&nbsp;A&nbsp;string&nbsp;that&nbsp;identifies&nbsp;the&nbsp;value&nbsp;to&nbsp;remove.</tt></dd></dl>
+ <dl><dt><a name="-DisableReflectionKey"><strong>DisableReflectionKey</strong></a>(key, /)</dt><dd><tt>Disables&nbsp;registry&nbsp;reflection&nbsp;for&nbsp;32bit&nbsp;processes&nbsp;running&nbsp;on&nbsp;a&nbsp;64bit&nbsp;OS.<br>
+&nbsp;<br>
+&nbsp;&nbsp;key<br>
+&nbsp;&nbsp;&nbsp;&nbsp;An&nbsp;already&nbsp;open&nbsp;key,&nbsp;or&nbsp;any&nbsp;one&nbsp;of&nbsp;the&nbsp;predefined&nbsp;HKEY_*&nbsp;constants.<br>
+&nbsp;<br>
+Will&nbsp;generally&nbsp;raise&nbsp;NotImplementedError&nbsp;if&nbsp;executed&nbsp;on&nbsp;a&nbsp;32bit&nbsp;OS.<br>
+&nbsp;<br>
+If&nbsp;the&nbsp;key&nbsp;is&nbsp;not&nbsp;on&nbsp;the&nbsp;reflection&nbsp;list,&nbsp;the&nbsp;function&nbsp;succeeds&nbsp;but&nbsp;has<br>
+no&nbsp;effect.&nbsp;&nbsp;Disabling&nbsp;reflection&nbsp;for&nbsp;a&nbsp;key&nbsp;does&nbsp;not&nbsp;affect&nbsp;reflection<br>
+of&nbsp;any&nbsp;subkeys.</tt></dd></dl>
+ <dl><dt><a name="-EnableReflectionKey"><strong>EnableReflectionKey</strong></a>(key, /)</dt><dd><tt>Restores&nbsp;registry&nbsp;reflection&nbsp;for&nbsp;the&nbsp;specified&nbsp;disabled&nbsp;key.<br>
+&nbsp;<br>
+&nbsp;&nbsp;key<br>
+&nbsp;&nbsp;&nbsp;&nbsp;An&nbsp;already&nbsp;open&nbsp;key,&nbsp;or&nbsp;any&nbsp;one&nbsp;of&nbsp;the&nbsp;predefined&nbsp;HKEY_*&nbsp;constants.<br>
+&nbsp;<br>
+Will&nbsp;generally&nbsp;raise&nbsp;NotImplementedError&nbsp;if&nbsp;executed&nbsp;on&nbsp;a&nbsp;32bit&nbsp;OS.<br>
+Restoring&nbsp;reflection&nbsp;for&nbsp;a&nbsp;key&nbsp;does&nbsp;not&nbsp;affect&nbsp;reflection&nbsp;of&nbsp;any<br>
+subkeys.</tt></dd></dl>
+ <dl><dt><a name="-EnumKey"><strong>EnumKey</strong></a>(key, index, /)</dt><dd><tt>Enumerates&nbsp;subkeys&nbsp;of&nbsp;an&nbsp;open&nbsp;registry&nbsp;key.<br>
+&nbsp;<br>
+&nbsp;&nbsp;key<br>
+&nbsp;&nbsp;&nbsp;&nbsp;An&nbsp;already&nbsp;open&nbsp;key,&nbsp;or&nbsp;any&nbsp;one&nbsp;of&nbsp;the&nbsp;predefined&nbsp;HKEY_*&nbsp;constants.<br>
+&nbsp;&nbsp;index<br>
+&nbsp;&nbsp;&nbsp;&nbsp;An&nbsp;integer&nbsp;that&nbsp;identifies&nbsp;the&nbsp;index&nbsp;of&nbsp;the&nbsp;key&nbsp;to&nbsp;retrieve.<br>
+&nbsp;<br>
+The&nbsp;function&nbsp;retrieves&nbsp;the&nbsp;name&nbsp;of&nbsp;one&nbsp;subkey&nbsp;each&nbsp;time&nbsp;it&nbsp;is&nbsp;called.<br>
+It&nbsp;is&nbsp;typically&nbsp;called&nbsp;repeatedly&nbsp;until&nbsp;an&nbsp;OSError&nbsp;exception&nbsp;is<br>
+raised,&nbsp;indicating&nbsp;no&nbsp;more&nbsp;values&nbsp;are&nbsp;available.</tt></dd></dl>
+ <dl><dt><a name="-EnumValue"><strong>EnumValue</strong></a>(key, index, /)</dt><dd><tt>Enumerates&nbsp;values&nbsp;of&nbsp;an&nbsp;open&nbsp;registry&nbsp;key.<br>
+&nbsp;<br>
+&nbsp;&nbsp;key<br>
+&nbsp;&nbsp;&nbsp;&nbsp;An&nbsp;already&nbsp;open&nbsp;key,&nbsp;or&nbsp;any&nbsp;one&nbsp;of&nbsp;the&nbsp;predefined&nbsp;HKEY_*&nbsp;constants.<br>
+&nbsp;&nbsp;index<br>
+&nbsp;&nbsp;&nbsp;&nbsp;An&nbsp;integer&nbsp;that&nbsp;identifies&nbsp;the&nbsp;index&nbsp;of&nbsp;the&nbsp;value&nbsp;to&nbsp;retrieve.<br>
+&nbsp;<br>
+The&nbsp;function&nbsp;retrieves&nbsp;the&nbsp;name&nbsp;of&nbsp;one&nbsp;subkey&nbsp;each&nbsp;time&nbsp;it&nbsp;is&nbsp;called.<br>
+It&nbsp;is&nbsp;typically&nbsp;called&nbsp;repeatedly,&nbsp;until&nbsp;an&nbsp;OSError&nbsp;exception<br>
+is&nbsp;raised,&nbsp;indicating&nbsp;no&nbsp;more&nbsp;values.<br>
+&nbsp;<br>
+The&nbsp;result&nbsp;is&nbsp;a&nbsp;tuple&nbsp;of&nbsp;3&nbsp;items:<br>
+&nbsp;&nbsp;value_name<br>
+&nbsp;&nbsp;&nbsp;&nbsp;A&nbsp;string&nbsp;that&nbsp;identifies&nbsp;the&nbsp;value.<br>
+&nbsp;&nbsp;value_data<br>
+&nbsp;&nbsp;&nbsp;&nbsp;An&nbsp;object&nbsp;that&nbsp;holds&nbsp;the&nbsp;value&nbsp;data,&nbsp;and&nbsp;whose&nbsp;type&nbsp;depends<br>
+&nbsp;&nbsp;&nbsp;&nbsp;on&nbsp;the&nbsp;underlying&nbsp;registry&nbsp;type.<br>
+&nbsp;&nbsp;data_type<br>
+&nbsp;&nbsp;&nbsp;&nbsp;An&nbsp;integer&nbsp;that&nbsp;identifies&nbsp;the&nbsp;type&nbsp;of&nbsp;the&nbsp;value&nbsp;data.</tt></dd></dl>
+ <dl><dt><a name="-ExpandEnvironmentStrings"><strong>ExpandEnvironmentStrings</strong></a>(string, /)</dt><dd><tt>Expand&nbsp;environment&nbsp;vars.</tt></dd></dl>
+ <dl><dt><a name="-FlushKey"><strong>FlushKey</strong></a>(key, /)</dt><dd><tt>Writes&nbsp;all&nbsp;the&nbsp;attributes&nbsp;of&nbsp;a&nbsp;key&nbsp;to&nbsp;the&nbsp;registry.<br>
+&nbsp;<br>
+&nbsp;&nbsp;key<br>
+&nbsp;&nbsp;&nbsp;&nbsp;An&nbsp;already&nbsp;open&nbsp;key,&nbsp;or&nbsp;any&nbsp;one&nbsp;of&nbsp;the&nbsp;predefined&nbsp;HKEY_*&nbsp;constants.<br>
+&nbsp;<br>
+It&nbsp;is&nbsp;not&nbsp;necessary&nbsp;to&nbsp;call&nbsp;FlushKey&nbsp;to&nbsp;change&nbsp;a&nbsp;key.&nbsp;&nbsp;Registry&nbsp;changes<br>
+are&nbsp;flushed&nbsp;to&nbsp;disk&nbsp;by&nbsp;the&nbsp;registry&nbsp;using&nbsp;its&nbsp;lazy&nbsp;flusher.&nbsp;&nbsp;Registry<br>
+changes&nbsp;are&nbsp;also&nbsp;flushed&nbsp;to&nbsp;disk&nbsp;at&nbsp;system&nbsp;shutdown.&nbsp;&nbsp;Unlike<br>
+<a href="#-CloseKey">CloseKey</a>(),&nbsp;the&nbsp;<a href="#-FlushKey">FlushKey</a>()&nbsp;method&nbsp;returns&nbsp;only&nbsp;when&nbsp;all&nbsp;the&nbsp;data&nbsp;has<br>
+been&nbsp;written&nbsp;to&nbsp;the&nbsp;registry.<br>
+&nbsp;<br>
+An&nbsp;application&nbsp;should&nbsp;only&nbsp;call&nbsp;<a href="#-FlushKey">FlushKey</a>()&nbsp;if&nbsp;it&nbsp;requires&nbsp;absolute<br>
+certainty&nbsp;that&nbsp;registry&nbsp;changes&nbsp;are&nbsp;on&nbsp;disk.&nbsp;&nbsp;If&nbsp;you&nbsp;don't&nbsp;know&nbsp;whether<br>
+a&nbsp;<a href="#-FlushKey">FlushKey</a>()&nbsp;call&nbsp;is&nbsp;required,&nbsp;it&nbsp;probably&nbsp;isn't.</tt></dd></dl>
+ <dl><dt><a name="-LoadKey"><strong>LoadKey</strong></a>(key, sub_key, file_name, /)</dt><dd><tt>Insert&nbsp;data&nbsp;into&nbsp;the&nbsp;registry&nbsp;from&nbsp;a&nbsp;file.<br>
+&nbsp;<br>
+&nbsp;&nbsp;key<br>
+&nbsp;&nbsp;&nbsp;&nbsp;An&nbsp;already&nbsp;open&nbsp;key,&nbsp;or&nbsp;any&nbsp;one&nbsp;of&nbsp;the&nbsp;predefined&nbsp;HKEY_*&nbsp;constants.<br>
+&nbsp;&nbsp;sub_key<br>
+&nbsp;&nbsp;&nbsp;&nbsp;A&nbsp;string&nbsp;that&nbsp;identifies&nbsp;the&nbsp;sub-key&nbsp;to&nbsp;load.<br>
+&nbsp;&nbsp;file_name<br>
+&nbsp;&nbsp;&nbsp;&nbsp;The&nbsp;name&nbsp;of&nbsp;the&nbsp;file&nbsp;to&nbsp;load&nbsp;registry&nbsp;data&nbsp;from.&nbsp;&nbsp;This&nbsp;file&nbsp;must<br>
+&nbsp;&nbsp;&nbsp;&nbsp;have&nbsp;been&nbsp;created&nbsp;with&nbsp;the&nbsp;<a href="#-SaveKey">SaveKey</a>()&nbsp;function.&nbsp;&nbsp;Under&nbsp;the&nbsp;file<br>
+&nbsp;&nbsp;&nbsp;&nbsp;allocation&nbsp;table&nbsp;(FAT)&nbsp;file&nbsp;system,&nbsp;the&nbsp;filename&nbsp;may&nbsp;not&nbsp;have&nbsp;an<br>
+&nbsp;&nbsp;&nbsp;&nbsp;extension.<br>
+&nbsp;<br>
+Creates&nbsp;a&nbsp;subkey&nbsp;under&nbsp;the&nbsp;specified&nbsp;key&nbsp;and&nbsp;stores&nbsp;registration<br>
+information&nbsp;from&nbsp;a&nbsp;specified&nbsp;file&nbsp;into&nbsp;that&nbsp;subkey.<br>
+&nbsp;<br>
+A&nbsp;call&nbsp;to&nbsp;<a href="#-LoadKey">LoadKey</a>()&nbsp;fails&nbsp;if&nbsp;the&nbsp;calling&nbsp;process&nbsp;does&nbsp;not&nbsp;have&nbsp;the<br>
+SE_RESTORE_PRIVILEGE&nbsp;privilege.<br>
+&nbsp;<br>
+If&nbsp;key&nbsp;is&nbsp;a&nbsp;handle&nbsp;returned&nbsp;by&nbsp;<a href="#-ConnectRegistry">ConnectRegistry</a>(),&nbsp;then&nbsp;the&nbsp;path<br>
+specified&nbsp;in&nbsp;fileName&nbsp;is&nbsp;relative&nbsp;to&nbsp;the&nbsp;remote&nbsp;computer.<br>
+&nbsp;<br>
+The&nbsp;MSDN&nbsp;docs&nbsp;imply&nbsp;key&nbsp;must&nbsp;be&nbsp;in&nbsp;the&nbsp;HKEY_USER&nbsp;or&nbsp;HKEY_LOCAL_MACHINE<br>
+tree.</tt></dd></dl>
+ <dl><dt><a name="-OpenKey"><strong>OpenKey</strong></a>(key, sub_key, reserved=0, access=131097)</dt><dd><tt>Opens&nbsp;the&nbsp;specified&nbsp;key.<br>
+&nbsp;<br>
+&nbsp;&nbsp;key<br>
+&nbsp;&nbsp;&nbsp;&nbsp;An&nbsp;already&nbsp;open&nbsp;key,&nbsp;or&nbsp;any&nbsp;one&nbsp;of&nbsp;the&nbsp;predefined&nbsp;HKEY_*&nbsp;constants.<br>
+&nbsp;&nbsp;sub_key<br>
+&nbsp;&nbsp;&nbsp;&nbsp;A&nbsp;string&nbsp;that&nbsp;identifies&nbsp;the&nbsp;sub_key&nbsp;to&nbsp;open.<br>
+&nbsp;&nbsp;reserved<br>
+&nbsp;&nbsp;&nbsp;&nbsp;A&nbsp;reserved&nbsp;integer&nbsp;that&nbsp;must&nbsp;be&nbsp;zero.&nbsp;&nbsp;Default&nbsp;is&nbsp;zero.<br>
+&nbsp;&nbsp;access<br>
+&nbsp;&nbsp;&nbsp;&nbsp;An&nbsp;integer&nbsp;that&nbsp;specifies&nbsp;an&nbsp;access&nbsp;mask&nbsp;that&nbsp;describes&nbsp;the&nbsp;desired<br>
+&nbsp;&nbsp;&nbsp;&nbsp;security&nbsp;access&nbsp;for&nbsp;the&nbsp;key.&nbsp;&nbsp;Default&nbsp;is&nbsp;KEY_READ.<br>
+&nbsp;<br>
+The&nbsp;result&nbsp;is&nbsp;a&nbsp;new&nbsp;handle&nbsp;to&nbsp;the&nbsp;specified&nbsp;key.<br>
+If&nbsp;the&nbsp;function&nbsp;fails,&nbsp;an&nbsp;OSError&nbsp;exception&nbsp;is&nbsp;raised.</tt></dd></dl>
+ <dl><dt><a name="-OpenKeyEx"><strong>OpenKeyEx</strong></a>(key, sub_key, reserved=0, access=131097)</dt><dd><tt>Opens&nbsp;the&nbsp;specified&nbsp;key.<br>
+&nbsp;<br>
+&nbsp;&nbsp;key<br>
+&nbsp;&nbsp;&nbsp;&nbsp;An&nbsp;already&nbsp;open&nbsp;key,&nbsp;or&nbsp;any&nbsp;one&nbsp;of&nbsp;the&nbsp;predefined&nbsp;HKEY_*&nbsp;constants.<br>
+&nbsp;&nbsp;sub_key<br>
+&nbsp;&nbsp;&nbsp;&nbsp;A&nbsp;string&nbsp;that&nbsp;identifies&nbsp;the&nbsp;sub_key&nbsp;to&nbsp;open.<br>
+&nbsp;&nbsp;reserved<br>
+&nbsp;&nbsp;&nbsp;&nbsp;A&nbsp;reserved&nbsp;integer&nbsp;that&nbsp;must&nbsp;be&nbsp;zero.&nbsp;&nbsp;Default&nbsp;is&nbsp;zero.<br>
+&nbsp;&nbsp;access<br>
+&nbsp;&nbsp;&nbsp;&nbsp;An&nbsp;integer&nbsp;that&nbsp;specifies&nbsp;an&nbsp;access&nbsp;mask&nbsp;that&nbsp;describes&nbsp;the&nbsp;desired<br>
+&nbsp;&nbsp;&nbsp;&nbsp;security&nbsp;access&nbsp;for&nbsp;the&nbsp;key.&nbsp;&nbsp;Default&nbsp;is&nbsp;KEY_READ.<br>
+&nbsp;<br>
+The&nbsp;result&nbsp;is&nbsp;a&nbsp;new&nbsp;handle&nbsp;to&nbsp;the&nbsp;specified&nbsp;key.<br>
+If&nbsp;the&nbsp;function&nbsp;fails,&nbsp;an&nbsp;OSError&nbsp;exception&nbsp;is&nbsp;raised.</tt></dd></dl>
+ <dl><dt><a name="-QueryInfoKey"><strong>QueryInfoKey</strong></a>(key, /)</dt><dd><tt>Returns&nbsp;information&nbsp;about&nbsp;a&nbsp;key.<br>
+&nbsp;<br>
+&nbsp;&nbsp;key<br>
+&nbsp;&nbsp;&nbsp;&nbsp;An&nbsp;already&nbsp;open&nbsp;key,&nbsp;or&nbsp;any&nbsp;one&nbsp;of&nbsp;the&nbsp;predefined&nbsp;HKEY_*&nbsp;constants.<br>
+&nbsp;<br>
+The&nbsp;result&nbsp;is&nbsp;a&nbsp;tuple&nbsp;of&nbsp;3&nbsp;items:<br>
+An&nbsp;integer&nbsp;that&nbsp;identifies&nbsp;the&nbsp;number&nbsp;of&nbsp;sub&nbsp;keys&nbsp;this&nbsp;key&nbsp;has.<br>
+An&nbsp;integer&nbsp;that&nbsp;identifies&nbsp;the&nbsp;number&nbsp;of&nbsp;values&nbsp;this&nbsp;key&nbsp;has.<br>
+An&nbsp;integer&nbsp;that&nbsp;identifies&nbsp;when&nbsp;the&nbsp;key&nbsp;was&nbsp;last&nbsp;modified&nbsp;(if&nbsp;available)<br>
+as&nbsp;100's&nbsp;of&nbsp;nanoseconds&nbsp;since&nbsp;Jan&nbsp;1,&nbsp;1600.</tt></dd></dl>
+ <dl><dt><a name="-QueryReflectionKey"><strong>QueryReflectionKey</strong></a>(key, /)</dt><dd><tt>Returns&nbsp;the&nbsp;reflection&nbsp;state&nbsp;for&nbsp;the&nbsp;specified&nbsp;key&nbsp;as&nbsp;a&nbsp;bool.<br>
+&nbsp;<br>
+&nbsp;&nbsp;key<br>
+&nbsp;&nbsp;&nbsp;&nbsp;An&nbsp;already&nbsp;open&nbsp;key,&nbsp;or&nbsp;any&nbsp;one&nbsp;of&nbsp;the&nbsp;predefined&nbsp;HKEY_*&nbsp;constants.<br>
+&nbsp;<br>
+Will&nbsp;generally&nbsp;raise&nbsp;NotImplementedError&nbsp;if&nbsp;executed&nbsp;on&nbsp;a&nbsp;32bit&nbsp;OS.</tt></dd></dl>
+ <dl><dt><a name="-QueryValue"><strong>QueryValue</strong></a>(key, sub_key, /)</dt><dd><tt>Retrieves&nbsp;the&nbsp;unnamed&nbsp;value&nbsp;for&nbsp;a&nbsp;key.<br>
+&nbsp;<br>
+&nbsp;&nbsp;key<br>
+&nbsp;&nbsp;&nbsp;&nbsp;An&nbsp;already&nbsp;open&nbsp;key,&nbsp;or&nbsp;any&nbsp;one&nbsp;of&nbsp;the&nbsp;predefined&nbsp;HKEY_*&nbsp;constants.<br>
+&nbsp;&nbsp;sub_key<br>
+&nbsp;&nbsp;&nbsp;&nbsp;A&nbsp;string&nbsp;that&nbsp;holds&nbsp;the&nbsp;name&nbsp;of&nbsp;the&nbsp;subkey&nbsp;with&nbsp;which&nbsp;the&nbsp;value<br>
+&nbsp;&nbsp;&nbsp;&nbsp;is&nbsp;associated.&nbsp;&nbsp;If&nbsp;this&nbsp;parameter&nbsp;is&nbsp;None&nbsp;or&nbsp;empty,&nbsp;the&nbsp;function<br>
+&nbsp;&nbsp;&nbsp;&nbsp;retrieves&nbsp;the&nbsp;value&nbsp;set&nbsp;by&nbsp;the&nbsp;<a href="#-SetValue">SetValue</a>()&nbsp;method&nbsp;for&nbsp;the&nbsp;key<br>
+&nbsp;&nbsp;&nbsp;&nbsp;identified&nbsp;by&nbsp;key.<br>
+&nbsp;<br>
+Values&nbsp;in&nbsp;the&nbsp;registry&nbsp;have&nbsp;name,&nbsp;type,&nbsp;and&nbsp;data&nbsp;components.&nbsp;This&nbsp;method<br>
+retrieves&nbsp;the&nbsp;data&nbsp;for&nbsp;a&nbsp;key's&nbsp;first&nbsp;value&nbsp;that&nbsp;has&nbsp;a&nbsp;NULL&nbsp;name.<br>
+But&nbsp;since&nbsp;the&nbsp;underlying&nbsp;API&nbsp;call&nbsp;doesn't&nbsp;return&nbsp;the&nbsp;type,&nbsp;you'll<br>
+probably&nbsp;be&nbsp;happier&nbsp;using&nbsp;QueryValueEx;&nbsp;this&nbsp;function&nbsp;is&nbsp;just&nbsp;here&nbsp;for<br>
+completeness.</tt></dd></dl>
+ <dl><dt><a name="-QueryValueEx"><strong>QueryValueEx</strong></a>(key, name, /)</dt><dd><tt>Retrieves&nbsp;the&nbsp;type&nbsp;and&nbsp;value&nbsp;of&nbsp;a&nbsp;specified&nbsp;sub-key.<br>
+&nbsp;<br>
+&nbsp;&nbsp;key<br>
+&nbsp;&nbsp;&nbsp;&nbsp;An&nbsp;already&nbsp;open&nbsp;key,&nbsp;or&nbsp;any&nbsp;one&nbsp;of&nbsp;the&nbsp;predefined&nbsp;HKEY_*&nbsp;constants.<br>
+&nbsp;&nbsp;name<br>
+&nbsp;&nbsp;&nbsp;&nbsp;A&nbsp;string&nbsp;indicating&nbsp;the&nbsp;value&nbsp;to&nbsp;query.<br>
+&nbsp;<br>
+Behaves&nbsp;mostly&nbsp;like&nbsp;<a href="#-QueryValue">QueryValue</a>(),&nbsp;but&nbsp;also&nbsp;returns&nbsp;the&nbsp;type&nbsp;of&nbsp;the<br>
+specified&nbsp;value&nbsp;name&nbsp;associated&nbsp;with&nbsp;the&nbsp;given&nbsp;open&nbsp;registry&nbsp;key.<br>
+&nbsp;<br>
+The&nbsp;return&nbsp;value&nbsp;is&nbsp;a&nbsp;tuple&nbsp;of&nbsp;the&nbsp;value&nbsp;and&nbsp;the&nbsp;type_id.</tt></dd></dl>
+ <dl><dt><a name="-SaveKey"><strong>SaveKey</strong></a>(key, file_name, /)</dt><dd><tt>Saves&nbsp;the&nbsp;specified&nbsp;key,&nbsp;and&nbsp;all&nbsp;its&nbsp;subkeys&nbsp;to&nbsp;the&nbsp;specified&nbsp;file.<br>
+&nbsp;<br>
+&nbsp;&nbsp;key<br>
+&nbsp;&nbsp;&nbsp;&nbsp;An&nbsp;already&nbsp;open&nbsp;key,&nbsp;or&nbsp;any&nbsp;one&nbsp;of&nbsp;the&nbsp;predefined&nbsp;HKEY_*&nbsp;constants.<br>
+&nbsp;&nbsp;file_name<br>
+&nbsp;&nbsp;&nbsp;&nbsp;The&nbsp;name&nbsp;of&nbsp;the&nbsp;file&nbsp;to&nbsp;save&nbsp;registry&nbsp;data&nbsp;to.&nbsp;&nbsp;This&nbsp;file&nbsp;cannot<br>
+&nbsp;&nbsp;&nbsp;&nbsp;already&nbsp;exist.&nbsp;If&nbsp;this&nbsp;filename&nbsp;includes&nbsp;an&nbsp;extension,&nbsp;it&nbsp;cannot&nbsp;be<br>
+&nbsp;&nbsp;&nbsp;&nbsp;used&nbsp;on&nbsp;file&nbsp;allocation&nbsp;table&nbsp;(FAT)&nbsp;file&nbsp;systems&nbsp;by&nbsp;the&nbsp;<a href="#-LoadKey">LoadKey</a>(),<br>
+&nbsp;&nbsp;&nbsp;&nbsp;ReplaceKey()&nbsp;or&nbsp;RestoreKey()&nbsp;methods.<br>
+&nbsp;<br>
+If&nbsp;key&nbsp;represents&nbsp;a&nbsp;key&nbsp;on&nbsp;a&nbsp;remote&nbsp;computer,&nbsp;the&nbsp;path&nbsp;described&nbsp;by<br>
+file_name&nbsp;is&nbsp;relative&nbsp;to&nbsp;the&nbsp;remote&nbsp;computer.<br>
+&nbsp;<br>
+The&nbsp;caller&nbsp;of&nbsp;this&nbsp;method&nbsp;must&nbsp;possess&nbsp;the&nbsp;SeBackupPrivilege<br>
+security&nbsp;privilege.&nbsp;&nbsp;This&nbsp;function&nbsp;passes&nbsp;NULL&nbsp;for&nbsp;security_attributes<br>
+to&nbsp;the&nbsp;API.</tt></dd></dl>
+ <dl><dt><a name="-SetValue"><strong>SetValue</strong></a>(key, sub_key, type, value, /)</dt><dd><tt>Associates&nbsp;a&nbsp;value&nbsp;with&nbsp;a&nbsp;specified&nbsp;key.<br>
+&nbsp;<br>
+&nbsp;&nbsp;key<br>
+&nbsp;&nbsp;&nbsp;&nbsp;An&nbsp;already&nbsp;open&nbsp;key,&nbsp;or&nbsp;any&nbsp;one&nbsp;of&nbsp;the&nbsp;predefined&nbsp;HKEY_*&nbsp;constants.<br>
+&nbsp;&nbsp;sub_key<br>
+&nbsp;&nbsp;&nbsp;&nbsp;A&nbsp;string&nbsp;that&nbsp;names&nbsp;the&nbsp;subkey&nbsp;with&nbsp;which&nbsp;the&nbsp;value&nbsp;is&nbsp;associated.<br>
+&nbsp;&nbsp;type<br>
+&nbsp;&nbsp;&nbsp;&nbsp;An&nbsp;integer&nbsp;that&nbsp;specifies&nbsp;the&nbsp;type&nbsp;of&nbsp;the&nbsp;data.&nbsp;&nbsp;Currently&nbsp;this&nbsp;must<br>
+&nbsp;&nbsp;&nbsp;&nbsp;be&nbsp;REG_SZ,&nbsp;meaning&nbsp;only&nbsp;strings&nbsp;are&nbsp;supported.<br>
+&nbsp;&nbsp;value<br>
+&nbsp;&nbsp;&nbsp;&nbsp;A&nbsp;string&nbsp;that&nbsp;specifies&nbsp;the&nbsp;new&nbsp;value.<br>
+&nbsp;<br>
+If&nbsp;the&nbsp;key&nbsp;specified&nbsp;by&nbsp;the&nbsp;sub_key&nbsp;parameter&nbsp;does&nbsp;not&nbsp;exist,&nbsp;the<br>
+SetValue&nbsp;function&nbsp;creates&nbsp;it.<br>
+&nbsp;<br>
+Value&nbsp;lengths&nbsp;are&nbsp;limited&nbsp;by&nbsp;available&nbsp;memory.&nbsp;Long&nbsp;values&nbsp;(more&nbsp;than<br>
+2048&nbsp;bytes)&nbsp;should&nbsp;be&nbsp;stored&nbsp;as&nbsp;files&nbsp;with&nbsp;the&nbsp;filenames&nbsp;stored&nbsp;in<br>
+the&nbsp;configuration&nbsp;registry&nbsp;to&nbsp;help&nbsp;the&nbsp;registry&nbsp;perform&nbsp;efficiently.<br>
+&nbsp;<br>
+The&nbsp;key&nbsp;identified&nbsp;by&nbsp;the&nbsp;key&nbsp;parameter&nbsp;must&nbsp;have&nbsp;been&nbsp;opened&nbsp;with<br>
+KEY_SET_VALUE&nbsp;access.</tt></dd></dl>
+ <dl><dt><a name="-SetValueEx"><strong>SetValueEx</strong></a>(key, value_name, reserved, type, value, /)</dt><dd><tt>Stores&nbsp;data&nbsp;in&nbsp;the&nbsp;value&nbsp;field&nbsp;of&nbsp;an&nbsp;open&nbsp;registry&nbsp;key.<br>
+&nbsp;<br>
+&nbsp;&nbsp;key<br>
+&nbsp;&nbsp;&nbsp;&nbsp;An&nbsp;already&nbsp;open&nbsp;key,&nbsp;or&nbsp;any&nbsp;one&nbsp;of&nbsp;the&nbsp;predefined&nbsp;HKEY_*&nbsp;constants.<br>
+&nbsp;&nbsp;value_name<br>
+&nbsp;&nbsp;&nbsp;&nbsp;A&nbsp;string&nbsp;containing&nbsp;the&nbsp;name&nbsp;of&nbsp;the&nbsp;value&nbsp;to&nbsp;set,&nbsp;or&nbsp;None.<br>
+&nbsp;&nbsp;reserved<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Can&nbsp;be&nbsp;anything&nbsp;-&nbsp;zero&nbsp;is&nbsp;always&nbsp;passed&nbsp;to&nbsp;the&nbsp;API.<br>
+&nbsp;&nbsp;type<br>
+&nbsp;&nbsp;&nbsp;&nbsp;An&nbsp;integer&nbsp;that&nbsp;specifies&nbsp;the&nbsp;type&nbsp;of&nbsp;the&nbsp;data,&nbsp;one&nbsp;of:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;REG_BINARY&nbsp;--&nbsp;Binary&nbsp;data&nbsp;in&nbsp;any&nbsp;form.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;REG_DWORD&nbsp;--&nbsp;A&nbsp;32-bit&nbsp;number.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;REG_DWORD_LITTLE_ENDIAN&nbsp;--&nbsp;A&nbsp;32-bit&nbsp;number&nbsp;in&nbsp;little-endian&nbsp;format.&nbsp;Equivalent&nbsp;to&nbsp;REG_DWORD<br>
+&nbsp;&nbsp;&nbsp;&nbsp;REG_DWORD_BIG_ENDIAN&nbsp;--&nbsp;A&nbsp;32-bit&nbsp;number&nbsp;in&nbsp;big-endian&nbsp;format.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;REG_EXPAND_SZ&nbsp;--&nbsp;A&nbsp;null-terminated&nbsp;string&nbsp;that&nbsp;contains&nbsp;unexpanded<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;references&nbsp;to&nbsp;environment&nbsp;variables&nbsp;(for&nbsp;example,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;%PATH%).<br>
+&nbsp;&nbsp;&nbsp;&nbsp;REG_LINK&nbsp;--&nbsp;A&nbsp;Unicode&nbsp;symbolic&nbsp;link.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;REG_MULTI_SZ&nbsp;--&nbsp;A&nbsp;sequence&nbsp;of&nbsp;null-terminated&nbsp;strings,&nbsp;terminated<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;by&nbsp;two&nbsp;null&nbsp;characters.&nbsp;&nbsp;Note&nbsp;that&nbsp;Python&nbsp;handles<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;this&nbsp;termination&nbsp;automatically.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;REG_NONE&nbsp;--&nbsp;No&nbsp;defined&nbsp;value&nbsp;type.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;REG_QWORD&nbsp;--&nbsp;A&nbsp;64-bit&nbsp;number.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;REG_QWORD_LITTLE_ENDIAN&nbsp;--&nbsp;A&nbsp;64-bit&nbsp;number&nbsp;in&nbsp;little-endian&nbsp;format.&nbsp;Equivalent&nbsp;to&nbsp;REG_QWORD.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;REG_RESOURCE_LIST&nbsp;--&nbsp;A&nbsp;device-driver&nbsp;resource&nbsp;list.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;REG_SZ&nbsp;--&nbsp;A&nbsp;null-terminated&nbsp;string.<br>
+&nbsp;&nbsp;value<br>
+&nbsp;&nbsp;&nbsp;&nbsp;A&nbsp;string&nbsp;that&nbsp;specifies&nbsp;the&nbsp;new&nbsp;value.<br>
+&nbsp;<br>
+This&nbsp;method&nbsp;can&nbsp;also&nbsp;set&nbsp;additional&nbsp;value&nbsp;and&nbsp;type&nbsp;information&nbsp;for&nbsp;the<br>
+specified&nbsp;key.&nbsp;&nbsp;The&nbsp;key&nbsp;identified&nbsp;by&nbsp;the&nbsp;key&nbsp;parameter&nbsp;must&nbsp;have&nbsp;been<br>
+opened&nbsp;with&nbsp;KEY_SET_VALUE&nbsp;access.<br>
+&nbsp;<br>
+To&nbsp;open&nbsp;the&nbsp;key,&nbsp;use&nbsp;the&nbsp;<a href="#-CreateKeyEx">CreateKeyEx</a>()&nbsp;or&nbsp;<a href="#-OpenKeyEx">OpenKeyEx</a>()&nbsp;methods.<br>
+&nbsp;<br>
+Value&nbsp;lengths&nbsp;are&nbsp;limited&nbsp;by&nbsp;available&nbsp;memory.&nbsp;Long&nbsp;values&nbsp;(more&nbsp;than<br>
+2048&nbsp;bytes)&nbsp;should&nbsp;be&nbsp;stored&nbsp;as&nbsp;files&nbsp;with&nbsp;the&nbsp;filenames&nbsp;stored&nbsp;in<br>
+the&nbsp;configuration&nbsp;registry&nbsp;to&nbsp;help&nbsp;the&nbsp;registry&nbsp;perform&nbsp;efficiently.</tt></dd></dl>
+</td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#55aa55">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Data</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#55aa55"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><strong>HKEY_CLASSES_ROOT</strong> = 18446744071562067968<br>
+<strong>HKEY_CURRENT_CONFIG</strong> = 18446744071562067973<br>
+<strong>HKEY_CURRENT_USER</strong> = 18446744071562067969<br>
+<strong>HKEY_DYN_DATA</strong> = 18446744071562067974<br>
+<strong>HKEY_LOCAL_MACHINE</strong> = 18446744071562067970<br>
+<strong>HKEY_PERFORMANCE_DATA</strong> = 18446744071562067972<br>
+<strong>HKEY_USERS</strong> = 18446744071562067971<br>
+<strong>KEY_ALL_ACCESS</strong> = 983103<br>
+<strong>KEY_CREATE_LINK</strong> = 32<br>
+<strong>KEY_CREATE_SUB_KEY</strong> = 4<br>
+<strong>KEY_ENUMERATE_SUB_KEYS</strong> = 8<br>
+<strong>KEY_EXECUTE</strong> = 131097<br>
+<strong>KEY_NOTIFY</strong> = 16<br>
+<strong>KEY_QUERY_VALUE</strong> = 1<br>
+<strong>KEY_READ</strong> = 131097<br>
+<strong>KEY_SET_VALUE</strong> = 2<br>
+<strong>KEY_WOW64_32KEY</strong> = 512<br>
+<strong>KEY_WOW64_64KEY</strong> = 256<br>
+<strong>KEY_WRITE</strong> = 131078<br>
+<strong>REG_BINARY</strong> = 3<br>
+<strong>REG_CREATED_NEW_KEY</strong> = 1<br>
+<strong>REG_DWORD</strong> = 4<br>
+<strong>REG_DWORD_BIG_ENDIAN</strong> = 5<br>
+<strong>REG_DWORD_LITTLE_ENDIAN</strong> = 4<br>
+<strong>REG_EXPAND_SZ</strong> = 2<br>
+<strong>REG_FULL_RESOURCE_DESCRIPTOR</strong> = 9<br>
+<strong>REG_LEGAL_CHANGE_FILTER</strong> = 268435471<br>
+<strong>REG_LEGAL_OPTION</strong> = 31<br>
+<strong>REG_LINK</strong> = 6<br>
+<strong>REG_MULTI_SZ</strong> = 7<br>
+<strong>REG_NONE</strong> = 0<br>
+<strong>REG_NOTIFY_CHANGE_ATTRIBUTES</strong> = 2<br>
+<strong>REG_NOTIFY_CHANGE_LAST_SET</strong> = 4<br>
+<strong>REG_NOTIFY_CHANGE_NAME</strong> = 1<br>
+<strong>REG_NOTIFY_CHANGE_SECURITY</strong> = 8<br>
+<strong>REG_NO_LAZY_FLUSH</strong> = 4<br>
+<strong>REG_OPENED_EXISTING_KEY</strong> = 2<br>
+<strong>REG_OPTION_BACKUP_RESTORE</strong> = 4<br>
+<strong>REG_OPTION_CREATE_LINK</strong> = 2<br>
+<strong>REG_OPTION_NON_VOLATILE</strong> = 0<br>
+<strong>REG_OPTION_OPEN_LINK</strong> = 8<br>
+<strong>REG_OPTION_RESERVED</strong> = 0<br>
+<strong>REG_OPTION_VOLATILE</strong> = 1<br>
+<strong>REG_QWORD</strong> = 11<br>
+<strong>REG_QWORD_LITTLE_ENDIAN</strong> = 11<br>
+<strong>REG_REFRESH_HIVE</strong> = 2<br>
+<strong>REG_RESOURCE_LIST</strong> = 8<br>
+<strong>REG_RESOURCE_REQUIREMENTS_LIST</strong> = 10<br>
+<strong>REG_SZ</strong> = 1<br>
+<strong>REG_WHOLE_HIVE_VOLATILE</strong> = 1</td></tr></table>
+</body></html>

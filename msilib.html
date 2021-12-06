@@ -1,0 +1,372 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head><title>Python: package msilib</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+</head><body bgcolor="#f0f0f8">
+
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="heading">
+<tr bgcolor="#7799ee">
+<td valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong>msilib</strong></big></big></font></td
+><td align=right valign=bottom
+><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:c%3A%5Cpython38%5Clib%5Cmsilib%5C__init__.py">c:\python38\lib\msilib\__init__.py</a><br><a href="https://docs.python.org/3.8/library/msilib">Module Reference</a></font></td></tr></table>
+    <p><tt>#&nbsp;Copyright&nbsp;(C)&nbsp;2005&nbsp;Martin&nbsp;v.&nbsp;Löwis<br>
+#&nbsp;Licensed&nbsp;to&nbsp;PSF&nbsp;under&nbsp;a&nbsp;Contributor&nbsp;Agreement.</tt></p>
+<p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ee77aa">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Classes</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#ee77aa"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl>
+<dt><font face="helvetica, arial"><a href="builtins.html#object">builtins.object</a>
+</font></dt><dd>
+<dl>
+<dt><font face="helvetica, arial"><a href="msilib.html#Binary">Binary</a>
+</font></dt><dt><font face="helvetica, arial"><a href="msilib.html#CAB">CAB</a>
+</font></dt><dt><font face="helvetica, arial"><a href="msilib.html#Control">Control</a>
+</font></dt><dd>
+<dl>
+<dt><font face="helvetica, arial"><a href="msilib.html#RadioButtonGroup">RadioButtonGroup</a>
+</font></dt></dl>
+</dd>
+<dt><font face="helvetica, arial"><a href="msilib.html#Dialog">Dialog</a>
+</font></dt><dt><font face="helvetica, arial"><a href="msilib.html#Directory">Directory</a>
+</font></dt><dt><font face="helvetica, arial"><a href="msilib.html#Feature">Feature</a>
+</font></dt><dt><font face="helvetica, arial"><a href="msilib.html#Table">Table</a>
+</font></dt></dl>
+</dd>
+</dl>
+ <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="Binary">class <strong>Binary</strong></a>(<a href="builtins.html#object">builtins.object</a>)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt><a href="#Binary">Binary</a>(fname)<br>
+&nbsp;<br>
+<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%">Methods defined here:<br>
+<dl><dt><a name="Binary-__init__"><strong>__init__</strong></a>(self, fname)</dt><dd><tt>Initialize&nbsp;self.&nbsp;&nbsp;See&nbsp;help(type(self))&nbsp;for&nbsp;accurate&nbsp;signature.</tt></dd></dl>
+
+<dl><dt><a name="Binary-__repr__"><strong>__repr__</strong></a>(self)</dt><dd><tt>Return&nbsp;repr(self).</tt></dd></dl>
+
+<hr>
+Data descriptors defined here:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><tt>dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="CAB">class <strong>CAB</strong></a>(<a href="builtins.html#object">builtins.object</a>)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt><a href="#CAB">CAB</a>(name)<br>
+&nbsp;<br>
+<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%">Methods defined here:<br>
+<dl><dt><a name="CAB-__init__"><strong>__init__</strong></a>(self, name)</dt><dd><tt>Initialize&nbsp;self.&nbsp;&nbsp;See&nbsp;help(type(self))&nbsp;for&nbsp;accurate&nbsp;signature.</tt></dd></dl>
+
+<dl><dt><a name="CAB-append"><strong>append</strong></a>(self, full, file, logical)</dt></dl>
+
+<dl><dt><a name="CAB-commit"><strong>commit</strong></a>(self, db)</dt></dl>
+
+<dl><dt><a name="CAB-gen_id"><strong>gen_id</strong></a>(self, file)</dt></dl>
+
+<hr>
+Data descriptors defined here:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><tt>dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="Control">class <strong>Control</strong></a>(<a href="builtins.html#object">builtins.object</a>)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt><a href="#Control">Control</a>(dlg,&nbsp;name)<br>
+&nbsp;<br>
+<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%">Methods defined here:<br>
+<dl><dt><a name="Control-__init__"><strong>__init__</strong></a>(self, dlg, name)</dt><dd><tt>Initialize&nbsp;self.&nbsp;&nbsp;See&nbsp;help(type(self))&nbsp;for&nbsp;accurate&nbsp;signature.</tt></dd></dl>
+
+<dl><dt><a name="Control-condition"><strong>condition</strong></a>(self, action, condition)</dt></dl>
+
+<dl><dt><a name="Control-event"><strong>event</strong></a>(self, event, argument, condition='1', ordering=None)</dt></dl>
+
+<dl><dt><a name="Control-mapping"><strong>mapping</strong></a>(self, event, attribute)</dt></dl>
+
+<hr>
+Data descriptors defined here:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><tt>dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="Dialog">class <strong>Dialog</strong></a>(<a href="builtins.html#object">builtins.object</a>)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt><a href="#Dialog">Dialog</a>(db,&nbsp;name,&nbsp;x,&nbsp;y,&nbsp;w,&nbsp;h,&nbsp;attr,&nbsp;title,&nbsp;first,&nbsp;default,&nbsp;cancel)<br>
+&nbsp;<br>
+<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%">Methods defined here:<br>
+<dl><dt><a name="Dialog-__init__"><strong>__init__</strong></a>(self, db, name, x, y, w, h, attr, title, first, default, cancel)</dt><dd><tt>Initialize&nbsp;self.&nbsp;&nbsp;See&nbsp;help(type(self))&nbsp;for&nbsp;accurate&nbsp;signature.</tt></dd></dl>
+
+<dl><dt><a name="Dialog-bitmap"><strong>bitmap</strong></a>(self, name, x, y, w, h, text)</dt></dl>
+
+<dl><dt><a name="Dialog-checkbox"><strong>checkbox</strong></a>(self, name, x, y, w, h, attr, prop, text, next)</dt></dl>
+
+<dl><dt><a name="Dialog-control"><strong>control</strong></a>(self, name, type, x, y, w, h, attr, prop, text, next, help)</dt></dl>
+
+<dl><dt><a name="Dialog-line"><strong>line</strong></a>(self, name, x, y, w, h)</dt></dl>
+
+<dl><dt><a name="Dialog-pushbutton"><strong>pushbutton</strong></a>(self, name, x, y, w, h, attr, text, next)</dt></dl>
+
+<dl><dt><a name="Dialog-radiogroup"><strong>radiogroup</strong></a>(self, name, x, y, w, h, attr, prop, text, next)</dt></dl>
+
+<dl><dt><a name="Dialog-text"><strong>text</strong></a>(self, name, x, y, w, h, attr, text)</dt></dl>
+
+<hr>
+Data descriptors defined here:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><tt>dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="Directory">class <strong>Directory</strong></a>(<a href="builtins.html#object">builtins.object</a>)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt><a href="#Directory">Directory</a>(db,&nbsp;cab,&nbsp;basedir,&nbsp;physical,&nbsp;_logical,&nbsp;default,&nbsp;componentflags=None)<br>
+&nbsp;<br>
+<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%">Methods defined here:<br>
+<dl><dt><a name="Directory-__init__"><strong>__init__</strong></a>(self, db, cab, basedir, physical, _logical, default, componentflags=None)</dt><dd><tt>Create&nbsp;a&nbsp;new&nbsp;directory&nbsp;in&nbsp;the&nbsp;<a href="#Directory">Directory</a>&nbsp;table.&nbsp;There&nbsp;is&nbsp;a&nbsp;current&nbsp;component<br>
+at&nbsp;each&nbsp;point&nbsp;in&nbsp;time&nbsp;for&nbsp;the&nbsp;directory,&nbsp;which&nbsp;is&nbsp;either&nbsp;explicitly&nbsp;created<br>
+through&nbsp;start_component,&nbsp;or&nbsp;implicitly&nbsp;when&nbsp;files&nbsp;are&nbsp;added&nbsp;for&nbsp;the&nbsp;first<br>
+time.&nbsp;Files&nbsp;are&nbsp;added&nbsp;into&nbsp;the&nbsp;current&nbsp;component,&nbsp;and&nbsp;into&nbsp;the&nbsp;cab&nbsp;file.<br>
+To&nbsp;create&nbsp;a&nbsp;directory,&nbsp;a&nbsp;base&nbsp;directory&nbsp;<a href="builtins.html#object">object</a>&nbsp;needs&nbsp;to&nbsp;be&nbsp;specified&nbsp;(can&nbsp;be<br>
+None),&nbsp;the&nbsp;path&nbsp;to&nbsp;the&nbsp;physical&nbsp;directory,&nbsp;and&nbsp;a&nbsp;logical&nbsp;directory&nbsp;name.<br>
+Default&nbsp;specifies&nbsp;the&nbsp;DefaultDir&nbsp;slot&nbsp;in&nbsp;the&nbsp;directory&nbsp;table.&nbsp;componentflags<br>
+specifies&nbsp;the&nbsp;default&nbsp;flags&nbsp;that&nbsp;new&nbsp;components&nbsp;get.</tt></dd></dl>
+
+<dl><dt><a name="Directory-add_file"><strong>add_file</strong></a>(self, file, src=None, version=None, language=None)</dt><dd><tt>Add&nbsp;a&nbsp;file&nbsp;to&nbsp;the&nbsp;current&nbsp;component&nbsp;of&nbsp;the&nbsp;directory,&nbsp;starting&nbsp;a&nbsp;new&nbsp;one<br>
+if&nbsp;there&nbsp;is&nbsp;no&nbsp;current&nbsp;component.&nbsp;By&nbsp;default,&nbsp;the&nbsp;file&nbsp;name&nbsp;in&nbsp;the&nbsp;source<br>
+and&nbsp;the&nbsp;file&nbsp;table&nbsp;will&nbsp;be&nbsp;identical.&nbsp;If&nbsp;the&nbsp;src&nbsp;file&nbsp;is&nbsp;specified,&nbsp;it&nbsp;is<br>
+interpreted&nbsp;relative&nbsp;to&nbsp;the&nbsp;current&nbsp;directory.&nbsp;Optionally,&nbsp;a&nbsp;version&nbsp;and&nbsp;a<br>
+language&nbsp;can&nbsp;be&nbsp;specified&nbsp;for&nbsp;the&nbsp;entry&nbsp;in&nbsp;the&nbsp;File&nbsp;table.</tt></dd></dl>
+
+<dl><dt><a name="Directory-glob"><strong>glob</strong></a>(self, pattern, exclude=None)</dt><dd><tt>Add&nbsp;a&nbsp;list&nbsp;of&nbsp;files&nbsp;to&nbsp;the&nbsp;current&nbsp;component&nbsp;as&nbsp;specified&nbsp;in&nbsp;the<br>
+glob&nbsp;pattern.&nbsp;Individual&nbsp;files&nbsp;can&nbsp;be&nbsp;excluded&nbsp;in&nbsp;the&nbsp;exclude&nbsp;list.</tt></dd></dl>
+
+<dl><dt><a name="Directory-make_short"><strong>make_short</strong></a>(self, file)</dt></dl>
+
+<dl><dt><a name="Directory-remove_pyc"><strong>remove_pyc</strong></a>(self)</dt><dd><tt>Remove&nbsp;.pyc&nbsp;files&nbsp;on&nbsp;uninstall</tt></dd></dl>
+
+<dl><dt><a name="Directory-start_component"><strong>start_component</strong></a>(self, component=None, feature=None, flags=None, keyfile=None, uuid=None)</dt><dd><tt>Add&nbsp;an&nbsp;entry&nbsp;to&nbsp;the&nbsp;Component&nbsp;table,&nbsp;and&nbsp;make&nbsp;this&nbsp;component&nbsp;the&nbsp;current&nbsp;for&nbsp;this<br>
+directory.&nbsp;If&nbsp;no&nbsp;component&nbsp;name&nbsp;is&nbsp;given,&nbsp;the&nbsp;directory&nbsp;name&nbsp;is&nbsp;used.&nbsp;If&nbsp;no&nbsp;feature<br>
+is&nbsp;given,&nbsp;the&nbsp;current&nbsp;feature&nbsp;is&nbsp;used.&nbsp;If&nbsp;no&nbsp;flags&nbsp;are&nbsp;given,&nbsp;the&nbsp;directory's&nbsp;default<br>
+flags&nbsp;are&nbsp;used.&nbsp;If&nbsp;no&nbsp;keyfile&nbsp;is&nbsp;given,&nbsp;the&nbsp;KeyPath&nbsp;is&nbsp;left&nbsp;null&nbsp;in&nbsp;the&nbsp;Component<br>
+table.</tt></dd></dl>
+
+<hr>
+Data descriptors defined here:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><tt>dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="Feature">class <strong>Feature</strong></a>(<a href="builtins.html#object">builtins.object</a>)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt><a href="#Feature">Feature</a>(db,&nbsp;id,&nbsp;title,&nbsp;desc,&nbsp;display,&nbsp;level=1,&nbsp;parent=None,&nbsp;directory=None,&nbsp;attributes=0)<br>
+&nbsp;<br>
+<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%">Methods defined here:<br>
+<dl><dt><a name="Feature-__init__"><strong>__init__</strong></a>(self, db, id, title, desc, display, level=1, parent=None, directory=None, attributes=0)</dt><dd><tt>Initialize&nbsp;self.&nbsp;&nbsp;See&nbsp;help(type(self))&nbsp;for&nbsp;accurate&nbsp;signature.</tt></dd></dl>
+
+<dl><dt><a name="Feature-set_current"><strong>set_current</strong></a>(self)</dt></dl>
+
+<hr>
+Data descriptors defined here:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><tt>dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="RadioButtonGroup">class <strong>RadioButtonGroup</strong></a>(<a href="msilib.html#Control">Control</a>)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt><a href="#RadioButtonGroup">RadioButtonGroup</a>(dlg,&nbsp;name,&nbsp;property)<br>
+&nbsp;<br>
+<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%"><dl><dt>Method resolution order:</dt>
+<dd><a href="msilib.html#RadioButtonGroup">RadioButtonGroup</a></dd>
+<dd><a href="msilib.html#Control">Control</a></dd>
+<dd><a href="builtins.html#object">builtins.object</a></dd>
+</dl>
+<hr>
+Methods defined here:<br>
+<dl><dt><a name="RadioButtonGroup-__init__"><strong>__init__</strong></a>(self, dlg, name, property)</dt><dd><tt>Initialize&nbsp;self.&nbsp;&nbsp;See&nbsp;help(type(self))&nbsp;for&nbsp;accurate&nbsp;signature.</tt></dd></dl>
+
+<dl><dt><a name="RadioButtonGroup-add"><strong>add</strong></a>(self, name, x, y, w, h, text, value=None)</dt></dl>
+
+<hr>
+Methods inherited from <a href="msilib.html#Control">Control</a>:<br>
+<dl><dt><a name="RadioButtonGroup-condition"><strong>condition</strong></a>(self, action, condition)</dt></dl>
+
+<dl><dt><a name="RadioButtonGroup-event"><strong>event</strong></a>(self, event, argument, condition='1', ordering=None)</dt></dl>
+
+<dl><dt><a name="RadioButtonGroup-mapping"><strong>mapping</strong></a>(self, event, attribute)</dt></dl>
+
+<hr>
+Data descriptors inherited from <a href="msilib.html#Control">Control</a>:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><tt>dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="Table">class <strong>Table</strong></a>(<a href="builtins.html#object">builtins.object</a>)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt><a href="#Table">Table</a>(name)<br>
+&nbsp;<br>
+<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%">Methods defined here:<br>
+<dl><dt><a name="Table-__init__"><strong>__init__</strong></a>(self, name)</dt><dd><tt>Initialize&nbsp;self.&nbsp;&nbsp;See&nbsp;help(type(self))&nbsp;for&nbsp;accurate&nbsp;signature.</tt></dd></dl>
+
+<dl><dt><a name="Table-add_field"><strong>add_field</strong></a>(self, index, name, type)</dt></dl>
+
+<dl><dt><a name="Table-create"><strong>create</strong></a>(self, db)</dt></dl>
+
+<dl><dt><a name="Table-sql"><strong>sql</strong></a>(self)</dt></dl>
+
+<hr>
+Data descriptors defined here:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><tt>dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+</td></tr></table></td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#eeaa77">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Functions</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#eeaa77"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl><dt><a name="-CreateRecord"><strong>CreateRecord</strong></a>(...)</dt><dd><tt><a href="#-OpenDatabase">OpenDatabase</a>(name,&nbsp;flags)&nbsp;-&gt;&nbsp;dbobj<br>
+Wraps&nbsp;MsiCreateRecord</tt></dd></dl>
+ <dl><dt><a name="-FCICreate"><strong>FCICreate</strong></a>(...)</dt><dd><tt>fcicreate(cabname,files)&nbsp;-&gt;&nbsp;None</tt></dd></dl>
+ <dl><dt><a name="-OpenDatabase"><strong>OpenDatabase</strong></a>(...)</dt><dd><tt><a href="#-OpenDatabase">OpenDatabase</a>(name,&nbsp;flags)&nbsp;-&gt;&nbsp;dbobj<br>
+Wraps&nbsp;MsiOpenDatabase</tt></dd></dl>
+ <dl><dt><a name="-UuidCreate"><strong>UuidCreate</strong></a>(...)</dt><dd><tt><a href="#-UuidCreate">UuidCreate</a>()&nbsp;-&gt;&nbsp;string</tt></dd></dl>
+ <dl><dt><a name="-add_data"><strong>add_data</strong></a>(db, table, values)</dt></dl>
+ <dl><dt><a name="-add_stream"><strong>add_stream</strong></a>(db, name, path)</dt></dl>
+ <dl><dt><a name="-add_tables"><strong>add_tables</strong></a>(db, module)</dt></dl>
+ <dl><dt><a name="-change_sequence"><strong>change_sequence</strong></a>(seq, action, seqno=&lt;class 'msilib._Unspecified'&gt;, cond=&lt;class 'msilib._Unspecified'&gt;)</dt><dd><tt>Change&nbsp;the&nbsp;sequence&nbsp;number&nbsp;of&nbsp;an&nbsp;action&nbsp;in&nbsp;a&nbsp;sequence&nbsp;list</tt></dd></dl>
+ <dl><dt><a name="-gen_uuid"><strong>gen_uuid</strong></a>()</dt></dl>
+ <dl><dt><a name="-init_database"><strong>init_database</strong></a>(name, schema, ProductName, ProductCode, ProductVersion, Manufacturer)</dt></dl>
+ <dl><dt><a name="-make_id"><strong>make_id</strong></a>(str)</dt></dl>
+</td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#55aa55">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Data</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#55aa55"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><strong>AMD64</strong> = True<br>
+<strong>MSICOLINFO_NAMES</strong> = 0<br>
+<strong>MSICOLINFO_TYPES</strong> = 1<br>
+<strong>MSIDBOPEN_CREATE</strong> = 3<br>
+<strong>MSIDBOPEN_CREATEDIRECT</strong> = 4<br>
+<strong>MSIDBOPEN_DIRECT</strong> = 2<br>
+<strong>MSIDBOPEN_PATCHFILE</strong> = 32<br>
+<strong>MSIDBOPEN_READONLY</strong> = 0<br>
+<strong>MSIDBOPEN_TRANSACT</strong> = 1<br>
+<strong>MSIMODIFY_ASSIGN</strong> = 3<br>
+<strong>MSIMODIFY_DELETE</strong> = 6<br>
+<strong>MSIMODIFY_INSERT</strong> = 1<br>
+<strong>MSIMODIFY_INSERT_TEMPORARY</strong> = 7<br>
+<strong>MSIMODIFY_MERGE</strong> = 5<br>
+<strong>MSIMODIFY_REFRESH</strong> = 0<br>
+<strong>MSIMODIFY_REPLACE</strong> = 4<br>
+<strong>MSIMODIFY_SEEK</strong> = -1<br>
+<strong>MSIMODIFY_UPDATE</strong> = 2<br>
+<strong>MSIMODIFY_VALIDATE</strong> = 8<br>
+<strong>MSIMODIFY_VALIDATE_DELETE</strong> = 11<br>
+<strong>MSIMODIFY_VALIDATE_FIELD</strong> = 10<br>
+<strong>MSIMODIFY_VALIDATE_NEW</strong> = 9<br>
+<strong>PID_APPNAME</strong> = 18<br>
+<strong>PID_AUTHOR</strong> = 4<br>
+<strong>PID_CHARCOUNT</strong> = 16<br>
+<strong>PID_CODEPAGE</strong> = 1<br>
+<strong>PID_COMMENTS</strong> = 6<br>
+<strong>PID_CREATE_DTM</strong> = 12<br>
+<strong>PID_KEYWORDS</strong> = 5<br>
+<strong>PID_LASTAUTHOR</strong> = 8<br>
+<strong>PID_LASTPRINTED</strong> = 11<br>
+<strong>PID_LASTSAVE_DTM</strong> = 13<br>
+<strong>PID_PAGECOUNT</strong> = 14<br>
+<strong>PID_REVNUMBER</strong> = 9<br>
+<strong>PID_SECURITY</strong> = 19<br>
+<strong>PID_SUBJECT</strong> = 3<br>
+<strong>PID_TEMPLATE</strong> = 7<br>
+<strong>PID_TITLE</strong> = 2<br>
+<strong>PID_WORDCOUNT</strong> = 15<br>
+<strong>Win64</strong> = True<br>
+<strong>datasizemask</strong> = 255<br>
+<strong>knownbits</strong> = 16383<br>
+<strong>type_binary</strong> = 2048<br>
+<strong>type_key</strong> = 8192<br>
+<strong>type_localizable</strong> = 512<br>
+<strong>type_long</strong> = 0<br>
+<strong>type_nullable</strong> = 4096<br>
+<strong>type_short</strong> = 1024<br>
+<strong>type_string</strong> = 3072<br>
+<strong>type_valid</strong> = 256<br>
+<strong>typemask</strong> = 3072</td></tr></table>
+</body></html>

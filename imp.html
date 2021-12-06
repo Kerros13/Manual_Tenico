@@ -1,0 +1,170 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head><title>Python: module imp</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+</head><body bgcolor="#f0f0f8">
+
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="heading">
+<tr bgcolor="#7799ee">
+<td valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong>imp</strong></big></big></font></td
+><td align=right valign=bottom
+><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:c%3A%5Cpython38%5Clib%5Cimp.py">c:\python38\lib\imp.py</a><br><a href="https://docs.python.org/3.8/library/imp">Module Reference</a></font></td></tr></table>
+    <p><tt>This&nbsp;module&nbsp;provides&nbsp;the&nbsp;components&nbsp;needed&nbsp;to&nbsp;build&nbsp;your&nbsp;own&nbsp;__import__<br>
+function.&nbsp;&nbsp;Undocumented&nbsp;functions&nbsp;are&nbsp;obsolete.<br>
+&nbsp;<br>
+In&nbsp;most&nbsp;cases&nbsp;it&nbsp;is&nbsp;preferred&nbsp;you&nbsp;consider&nbsp;using&nbsp;the&nbsp;importlib&nbsp;module's<br>
+functionality&nbsp;over&nbsp;this&nbsp;module.</tt></p>
+<p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#aa55cc">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Modules</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#aa55cc"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><table width="100%" summary="list"><tr><td width="25%" valign=top><a href="importlib.html">importlib</a><br>
+<a href="importlib.machinery.html">importlib.machinery</a><br>
+</td><td width="25%" valign=top><a href="os.html">os</a><br>
+<a href="sys.html">sys</a><br>
+</td><td width="25%" valign=top><a href="tokenize.html">tokenize</a><br>
+<a href="types.html">types</a><br>
+</td><td width="25%" valign=top><a href="importlib.util.html">importlib.util</a><br>
+<a href="warnings.html">warnings</a><br>
+</td></tr></table></td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ee77aa">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Classes</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#ee77aa"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl>
+<dt><font face="helvetica, arial"><a href="builtins.html#object">builtins.object</a>
+</font></dt><dd>
+<dl>
+<dt><font face="helvetica, arial"><a href="imp.html#NullImporter">NullImporter</a>
+</font></dt></dl>
+</dd>
+</dl>
+ <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="NullImporter">class <strong>NullImporter</strong></a>(<a href="builtins.html#object">builtins.object</a>)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt><a href="#NullImporter">NullImporter</a>(path)<br>
+&nbsp;<br>
+**DEPRECATED**<br>
+&nbsp;<br>
+Null&nbsp;import&nbsp;<a href="builtins.html#object">object</a>.<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%">Methods defined here:<br>
+<dl><dt><a name="NullImporter-__init__"><strong>__init__</strong></a>(self, path)</dt><dd><tt>Initialize&nbsp;self.&nbsp;&nbsp;See&nbsp;help(type(self))&nbsp;for&nbsp;accurate&nbsp;signature.</tt></dd></dl>
+
+<dl><dt><a name="NullImporter-find_module"><strong>find_module</strong></a>(self, fullname)</dt><dd><tt>Always&nbsp;returns&nbsp;None.</tt></dd></dl>
+
+<hr>
+Data descriptors defined here:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><tt>dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+</td></tr></table></td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#eeaa77">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Functions</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#eeaa77"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl><dt><a name="-acquire_lock"><strong>acquire_lock</strong></a>()</dt><dd><tt>Acquires&nbsp;the&nbsp;interpreter's&nbsp;import&nbsp;lock&nbsp;for&nbsp;the&nbsp;current&nbsp;thread.<br>
+&nbsp;<br>
+This&nbsp;lock&nbsp;should&nbsp;be&nbsp;used&nbsp;by&nbsp;import&nbsp;hooks&nbsp;to&nbsp;ensure&nbsp;thread-safety&nbsp;when&nbsp;importing<br>
+modules.&nbsp;On&nbsp;platforms&nbsp;without&nbsp;threads,&nbsp;this&nbsp;function&nbsp;does&nbsp;nothing.</tt></dd></dl>
+ <dl><dt><a name="-cache_from_source"><strong>cache_from_source</strong></a>(path, debug_override=None)</dt><dd><tt>**DEPRECATED**<br>
+&nbsp;<br>
+Given&nbsp;the&nbsp;path&nbsp;to&nbsp;a&nbsp;.py&nbsp;file,&nbsp;return&nbsp;the&nbsp;path&nbsp;to&nbsp;its&nbsp;.pyc&nbsp;file.<br>
+&nbsp;<br>
+The&nbsp;.py&nbsp;file&nbsp;does&nbsp;not&nbsp;need&nbsp;to&nbsp;exist;&nbsp;this&nbsp;simply&nbsp;returns&nbsp;the&nbsp;path&nbsp;to&nbsp;the<br>
+.pyc&nbsp;file&nbsp;calculated&nbsp;as&nbsp;if&nbsp;the&nbsp;.py&nbsp;file&nbsp;were&nbsp;imported.<br>
+&nbsp;<br>
+If&nbsp;debug_override&nbsp;is&nbsp;not&nbsp;None,&nbsp;then&nbsp;it&nbsp;must&nbsp;be&nbsp;a&nbsp;boolean&nbsp;and&nbsp;is&nbsp;used&nbsp;in<br>
+place&nbsp;of&nbsp;sys.flags.optimize.<br>
+&nbsp;<br>
+If&nbsp;sys.implementation.cache_tag&nbsp;is&nbsp;None&nbsp;then&nbsp;NotImplementedError&nbsp;is&nbsp;raised.</tt></dd></dl>
+ <dl><dt><a name="-create_dynamic"><strong>create_dynamic</strong></a>(...)</dt><dd><tt>Create&nbsp;an&nbsp;extension&nbsp;module.</tt></dd></dl>
+ <dl><dt><a name="-find_module"><strong>find_module</strong></a>(name, path=None)</dt><dd><tt>**DEPRECATED**<br>
+&nbsp;<br>
+Search&nbsp;for&nbsp;a&nbsp;module.<br>
+&nbsp;<br>
+If&nbsp;path&nbsp;is&nbsp;omitted&nbsp;or&nbsp;None,&nbsp;search&nbsp;for&nbsp;a&nbsp;built-in,&nbsp;frozen&nbsp;or&nbsp;special<br>
+module&nbsp;and&nbsp;continue&nbsp;search&nbsp;in&nbsp;sys.path.&nbsp;The&nbsp;module&nbsp;name&nbsp;cannot<br>
+contain&nbsp;'.';&nbsp;to&nbsp;search&nbsp;for&nbsp;a&nbsp;submodule&nbsp;of&nbsp;a&nbsp;package,&nbsp;pass&nbsp;the<br>
+submodule&nbsp;name&nbsp;and&nbsp;the&nbsp;package's&nbsp;__path__.</tt></dd></dl>
+ <dl><dt><a name="-get_frozen_object"><strong>get_frozen_object</strong></a>(name, /)</dt><dd><tt>Create&nbsp;a&nbsp;code&nbsp;<a href="builtins.html#object">object</a>&nbsp;for&nbsp;a&nbsp;frozen&nbsp;module.</tt></dd></dl>
+ <dl><dt><a name="-get_magic"><strong>get_magic</strong></a>()</dt><dd><tt>**DEPRECATED**<br>
+&nbsp;<br>
+Return&nbsp;the&nbsp;magic&nbsp;number&nbsp;for&nbsp;.pyc&nbsp;files.</tt></dd></dl>
+ <dl><dt><a name="-get_suffixes"><strong>get_suffixes</strong></a>()</dt><dd><tt>**DEPRECATED**</tt></dd></dl>
+ <dl><dt><a name="-get_tag"><strong>get_tag</strong></a>()</dt><dd><tt>Return&nbsp;the&nbsp;magic&nbsp;tag&nbsp;for&nbsp;.pyc&nbsp;files.</tt></dd></dl>
+ <dl><dt><a name="-init_builtin"><strong>init_builtin</strong></a>(name)</dt><dd><tt>**DEPRECATED**<br>
+&nbsp;<br>
+Load&nbsp;and&nbsp;return&nbsp;a&nbsp;built-in&nbsp;module&nbsp;by&nbsp;name,&nbsp;or&nbsp;None&nbsp;is&nbsp;such&nbsp;module&nbsp;doesn't<br>
+exist</tt></dd></dl>
+ <dl><dt><a name="-init_frozen"><strong>init_frozen</strong></a>(name, /)</dt><dd><tt>Initializes&nbsp;a&nbsp;frozen&nbsp;module.</tt></dd></dl>
+ <dl><dt><a name="-is_builtin"><strong>is_builtin</strong></a>(name, /)</dt><dd><tt>Returns&nbsp;True&nbsp;if&nbsp;the&nbsp;module&nbsp;name&nbsp;corresponds&nbsp;to&nbsp;a&nbsp;built-in&nbsp;module.</tt></dd></dl>
+ <dl><dt><a name="-is_frozen"><strong>is_frozen</strong></a>(name, /)</dt><dd><tt>Returns&nbsp;True&nbsp;if&nbsp;the&nbsp;module&nbsp;name&nbsp;corresponds&nbsp;to&nbsp;a&nbsp;frozen&nbsp;module.</tt></dd></dl>
+ <dl><dt><a name="-is_frozen_package"><strong>is_frozen_package</strong></a>(name, /)</dt><dd><tt>Returns&nbsp;True&nbsp;if&nbsp;the&nbsp;module&nbsp;name&nbsp;is&nbsp;of&nbsp;a&nbsp;frozen&nbsp;package.</tt></dd></dl>
+ <dl><dt><a name="-load_compiled"><strong>load_compiled</strong></a>(name, pathname, file=None)</dt><dd><tt>**DEPRECATED**</tt></dd></dl>
+ <dl><dt><a name="-load_dynamic"><strong>load_dynamic</strong></a>(name, path, file=None)</dt><dd><tt>**DEPRECATED**<br>
+&nbsp;<br>
+Load&nbsp;an&nbsp;extension&nbsp;module.</tt></dd></dl>
+ <dl><dt><a name="-load_module"><strong>load_module</strong></a>(name, file, filename, details)</dt><dd><tt>**DEPRECATED**<br>
+&nbsp;<br>
+Load&nbsp;a&nbsp;module,&nbsp;given&nbsp;information&nbsp;returned&nbsp;by&nbsp;<a href="#-find_module">find_module</a>().<br>
+&nbsp;<br>
+The&nbsp;module&nbsp;name&nbsp;must&nbsp;include&nbsp;the&nbsp;full&nbsp;package&nbsp;name,&nbsp;if&nbsp;any.</tt></dd></dl>
+ <dl><dt><a name="-load_package"><strong>load_package</strong></a>(name, path)</dt><dd><tt>**DEPRECATED**</tt></dd></dl>
+ <dl><dt><a name="-load_source"><strong>load_source</strong></a>(name, pathname, file=None)</dt></dl>
+ <dl><dt><a name="-lock_held"><strong>lock_held</strong></a>()</dt><dd><tt>Return&nbsp;True&nbsp;if&nbsp;the&nbsp;import&nbsp;lock&nbsp;is&nbsp;currently&nbsp;held,&nbsp;else&nbsp;False.<br>
+&nbsp;<br>
+On&nbsp;platforms&nbsp;without&nbsp;threads,&nbsp;return&nbsp;False.</tt></dd></dl>
+ <dl><dt><a name="-new_module"><strong>new_module</strong></a>(name)</dt><dd><tt>**DEPRECATED**<br>
+&nbsp;<br>
+Create&nbsp;a&nbsp;new&nbsp;module.<br>
+&nbsp;<br>
+The&nbsp;module&nbsp;is&nbsp;not&nbsp;entered&nbsp;into&nbsp;sys.modules.</tt></dd></dl>
+ <dl><dt><a name="-release_lock"><strong>release_lock</strong></a>()</dt><dd><tt>Release&nbsp;the&nbsp;interpreter's&nbsp;import&nbsp;lock.<br>
+&nbsp;<br>
+On&nbsp;platforms&nbsp;without&nbsp;threads,&nbsp;this&nbsp;function&nbsp;does&nbsp;nothing.</tt></dd></dl>
+ <dl><dt><a name="-reload"><strong>reload</strong></a>(module)</dt><dd><tt>**DEPRECATED**<br>
+&nbsp;<br>
+Reload&nbsp;the&nbsp;module&nbsp;and&nbsp;return&nbsp;it.<br>
+&nbsp;<br>
+The&nbsp;module&nbsp;must&nbsp;have&nbsp;been&nbsp;successfully&nbsp;imported&nbsp;before.</tt></dd></dl>
+ <dl><dt><a name="-source_from_cache"><strong>source_from_cache</strong></a>(path)</dt><dd><tt>**DEPRECATED**<br>
+&nbsp;<br>
+Given&nbsp;the&nbsp;path&nbsp;to&nbsp;a&nbsp;.pyc.&nbsp;file,&nbsp;return&nbsp;the&nbsp;path&nbsp;to&nbsp;its&nbsp;.py&nbsp;file.<br>
+&nbsp;<br>
+The&nbsp;.pyc&nbsp;file&nbsp;does&nbsp;not&nbsp;need&nbsp;to&nbsp;exist;&nbsp;this&nbsp;simply&nbsp;returns&nbsp;the&nbsp;path&nbsp;to<br>
+the&nbsp;.py&nbsp;file&nbsp;calculated&nbsp;to&nbsp;correspond&nbsp;to&nbsp;the&nbsp;.pyc&nbsp;file.&nbsp;&nbsp;If&nbsp;path&nbsp;does<br>
+not&nbsp;conform&nbsp;to&nbsp;<a href="http://www.python.org/dev/peps/pep-3147/">PEP&nbsp;3147</a>&nbsp;format,&nbsp;ValueError&nbsp;will&nbsp;be&nbsp;raised.&nbsp;If<br>
+sys.implementation.cache_tag&nbsp;is&nbsp;None&nbsp;then&nbsp;NotImplementedError&nbsp;is&nbsp;raised.</tt></dd></dl>
+</td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#55aa55">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Data</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#55aa55"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><strong>C_BUILTIN</strong> = 6<br>
+<strong>C_EXTENSION</strong> = 3<br>
+<strong>IMP_HOOK</strong> = 9<br>
+<strong>PKG_DIRECTORY</strong> = 5<br>
+<strong>PY_CODERESOURCE</strong> = 8<br>
+<strong>PY_COMPILED</strong> = 2<br>
+<strong>PY_FROZEN</strong> = 7<br>
+<strong>PY_RESOURCE</strong> = 4<br>
+<strong>PY_SOURCE</strong> = 1<br>
+<strong>SEARCH_ERROR</strong> = 0</td></tr></table>
+</body></html>

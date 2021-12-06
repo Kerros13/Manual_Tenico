@@ -1,0 +1,206 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head><title>Python: module pstats</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+</head><body bgcolor="#f0f0f8">
+
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="heading">
+<tr bgcolor="#7799ee">
+<td valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong>pstats</strong></big></big></font></td
+><td align=right valign=bottom
+><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:c%3A%5Cpython38%5Clib%5Cpstats.py">c:\python38\lib\pstats.py</a><br><a href="https://docs.python.org/3.8/library/pstats">Module Reference</a></font></td></tr></table>
+    <p><tt>Class&nbsp;for&nbsp;printing&nbsp;reports&nbsp;on&nbsp;profiled&nbsp;python&nbsp;code.</tt></p>
+<p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#aa55cc">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Modules</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#aa55cc"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><table width="100%" summary="list"><tr><td width="25%" valign=top><a href="marshal.html">marshal</a><br>
+<a href="os.html">os</a><br>
+</td><td width="25%" valign=top><a href="re.html">re</a><br>
+<a href="sys.html">sys</a><br>
+</td><td width="25%" valign=top><a href="time.html">time</a><br>
+</td><td width="25%" valign=top></td></tr></table></td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ee77aa">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Classes</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#ee77aa"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl>
+<dt><font face="helvetica, arial"><a href="builtins.html#object">builtins.object</a>
+</font></dt><dd>
+<dl>
+<dt><font face="helvetica, arial"><a href="pstats.html#Stats">Stats</a>
+</font></dt></dl>
+</dd>
+<dt><font face="helvetica, arial"><a href="builtins.html#str">builtins.str</a>(<a href="builtins.html#object">builtins.object</a>)
+</font></dt><dd>
+<dl>
+<dt><font face="helvetica, arial"><a href="pstats.html#SortKey">SortKey</a>(<a href="builtins.html#str">builtins.str</a>, <a href="enum.html#Enum">enum.Enum</a>)
+</font></dt></dl>
+</dd>
+<dt><font face="helvetica, arial"><a href="enum.html#Enum">enum.Enum</a>(<a href="builtins.html#object">builtins.object</a>)
+</font></dt><dd>
+<dl>
+<dt><font face="helvetica, arial"><a href="pstats.html#SortKey">SortKey</a>(<a href="builtins.html#str">builtins.str</a>, <a href="enum.html#Enum">enum.Enum</a>)
+</font></dt></dl>
+</dd>
+</dl>
+ <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="SortKey">class <strong>SortKey</strong></a>(<a href="builtins.html#str">builtins.str</a>, <a href="enum.html#Enum">enum.Enum</a>)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt><a href="#SortKey">SortKey</a>(value,&nbsp;names=None,&nbsp;*,&nbsp;module=None,&nbsp;qualname=None,&nbsp;type=None,&nbsp;start=1)<br>
+&nbsp;<br>
+An&nbsp;enumeration.<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%"><dl><dt>Method resolution order:</dt>
+<dd><a href="pstats.html#SortKey">SortKey</a></dd>
+<dd><a href="builtins.html#str">builtins.str</a></dd>
+<dd><a href="enum.html#Enum">enum.Enum</a></dd>
+<dd><a href="builtins.html#object">builtins.object</a></dd>
+</dl>
+<hr>
+Data and other attributes defined here:<br>
+<dl><dt><strong>CALLS</strong> = &lt;SortKey.CALLS: 'calls'&gt;</dl>
+
+<dl><dt><strong>CUMULATIVE</strong> = &lt;SortKey.CUMULATIVE: 'cumulative'&gt;</dl>
+
+<dl><dt><strong>FILENAME</strong> = &lt;SortKey.FILENAME: 'filename'&gt;</dl>
+
+<dl><dt><strong>LINE</strong> = &lt;SortKey.LINE: 'line'&gt;</dl>
+
+<dl><dt><strong>NAME</strong> = &lt;SortKey.NAME: 'name'&gt;</dl>
+
+<dl><dt><strong>NFL</strong> = &lt;SortKey.NFL: 'nfl'&gt;</dl>
+
+<dl><dt><strong>PCALLS</strong> = &lt;SortKey.PCALLS: 'pcalls'&gt;</dl>
+
+<dl><dt><strong>STDNAME</strong> = &lt;SortKey.STDNAME: 'stdname'&gt;</dl>
+
+<dl><dt><strong>TIME</strong> = &lt;SortKey.TIME: 'time'&gt;</dl>
+
+<hr>
+Data descriptors inherited from <a href="enum.html#Enum">enum.Enum</a>:<br>
+<dl><dt><strong>name</strong></dt>
+<dd><tt>The&nbsp;name&nbsp;of&nbsp;the&nbsp;Enum&nbsp;member.</tt></dd>
+</dl>
+<dl><dt><strong>value</strong></dt>
+<dd><tt>The&nbsp;value&nbsp;of&nbsp;the&nbsp;Enum&nbsp;member.</tt></dd>
+</dl>
+<hr>
+Readonly properties inherited from <a href="enum.html#EnumMeta">enum.EnumMeta</a>:<br>
+<dl><dt><strong>__members__</strong></dt>
+<dd><tt>Returns&nbsp;a&nbsp;mapping&nbsp;of&nbsp;member&nbsp;name-&gt;value.<br>
+&nbsp;<br>
+This&nbsp;mapping&nbsp;lists&nbsp;all&nbsp;enum&nbsp;members,&nbsp;including&nbsp;aliases.&nbsp;Note&nbsp;that&nbsp;this<br>
+is&nbsp;a&nbsp;read-only&nbsp;view&nbsp;of&nbsp;the&nbsp;internal&nbsp;mapping.</tt></dd>
+</dl>
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="Stats">class <strong>Stats</strong></a>(<a href="builtins.html#object">builtins.object</a>)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt><a href="#Stats">Stats</a>(*args,&nbsp;stream=None)<br>
+&nbsp;<br>
+This&nbsp;class&nbsp;is&nbsp;used&nbsp;for&nbsp;creating&nbsp;reports&nbsp;from&nbsp;data&nbsp;generated&nbsp;by&nbsp;the<br>
+Profile&nbsp;class.&nbsp;&nbsp;It&nbsp;is&nbsp;a&nbsp;"friend"&nbsp;of&nbsp;that&nbsp;class,&nbsp;and&nbsp;imports&nbsp;data&nbsp;either<br>
+by&nbsp;direct&nbsp;access&nbsp;to&nbsp;members&nbsp;of&nbsp;Profile&nbsp;class,&nbsp;or&nbsp;by&nbsp;reading&nbsp;in&nbsp;a&nbsp;dictionary<br>
+that&nbsp;was&nbsp;emitted&nbsp;(via&nbsp;marshal)&nbsp;from&nbsp;the&nbsp;Profile&nbsp;class.<br>
+&nbsp;<br>
+The&nbsp;big&nbsp;change&nbsp;from&nbsp;the&nbsp;previous&nbsp;Profiler&nbsp;(in&nbsp;terms&nbsp;of&nbsp;raw&nbsp;functionality)<br>
+is&nbsp;that&nbsp;an&nbsp;"<a href="#Stats-add">add</a>()"&nbsp;method&nbsp;has&nbsp;been&nbsp;provided&nbsp;to&nbsp;combine&nbsp;<a href="#Stats">Stats</a>&nbsp;from<br>
+several&nbsp;distinct&nbsp;profile&nbsp;runs.&nbsp;&nbsp;Both&nbsp;the&nbsp;constructor&nbsp;and&nbsp;the&nbsp;<a href="#Stats-add">add</a>()<br>
+method&nbsp;now&nbsp;take&nbsp;arbitrarily&nbsp;many&nbsp;file&nbsp;names&nbsp;as&nbsp;arguments.<br>
+&nbsp;<br>
+All&nbsp;the&nbsp;print&nbsp;methods&nbsp;now&nbsp;take&nbsp;an&nbsp;argument&nbsp;that&nbsp;indicates&nbsp;how&nbsp;many&nbsp;lines<br>
+to&nbsp;print.&nbsp;&nbsp;If&nbsp;the&nbsp;arg&nbsp;is&nbsp;a&nbsp;floating&nbsp;point&nbsp;number&nbsp;between&nbsp;0&nbsp;and&nbsp;1.0,&nbsp;then<br>
+it&nbsp;is&nbsp;taken&nbsp;as&nbsp;a&nbsp;decimal&nbsp;percentage&nbsp;of&nbsp;the&nbsp;available&nbsp;lines&nbsp;to&nbsp;be&nbsp;printed<br>
+(e.g.,&nbsp;.1&nbsp;means&nbsp;print&nbsp;10%&nbsp;of&nbsp;all&nbsp;available&nbsp;lines).&nbsp;&nbsp;If&nbsp;it&nbsp;is&nbsp;an&nbsp;integer,<br>
+it&nbsp;is&nbsp;taken&nbsp;to&nbsp;mean&nbsp;the&nbsp;number&nbsp;of&nbsp;lines&nbsp;of&nbsp;data&nbsp;that&nbsp;you&nbsp;wish&nbsp;to&nbsp;have<br>
+printed.<br>
+&nbsp;<br>
+The&nbsp;<a href="#Stats-sort_stats">sort_stats</a>()&nbsp;method&nbsp;now&nbsp;processes&nbsp;some&nbsp;additional&nbsp;options&nbsp;(i.e.,&nbsp;in<br>
+addition&nbsp;to&nbsp;the&nbsp;old&nbsp;-1,&nbsp;0,&nbsp;1,&nbsp;or&nbsp;2&nbsp;that&nbsp;are&nbsp;respectively&nbsp;interpreted&nbsp;as<br>
+'stdname',&nbsp;'calls',&nbsp;'time',&nbsp;and&nbsp;'cumulative').&nbsp;&nbsp;It&nbsp;takes&nbsp;either&nbsp;an<br>
+arbitrary&nbsp;number&nbsp;of&nbsp;quoted&nbsp;strings&nbsp;or&nbsp;<a href="#SortKey">SortKey</a>&nbsp;enum&nbsp;to&nbsp;select&nbsp;the&nbsp;sort<br>
+order.<br>
+&nbsp;<br>
+For&nbsp;example&nbsp;<a href="#Stats-sort_stats">sort_stats</a>('time',&nbsp;'name')&nbsp;or&nbsp;<a href="#Stats-sort_stats">sort_stats</a>(<a href="#SortKey">SortKey</a>.TIME,<br>
+<a href="#SortKey">SortKey</a>.NAME)&nbsp;sorts&nbsp;on&nbsp;the&nbsp;major&nbsp;key&nbsp;of&nbsp;'internal&nbsp;function&nbsp;time',&nbsp;and&nbsp;on<br>
+the&nbsp;minor&nbsp;key&nbsp;of&nbsp;'the&nbsp;name&nbsp;of&nbsp;the&nbsp;function'.&nbsp;&nbsp;Look&nbsp;at&nbsp;the&nbsp;two&nbsp;tables&nbsp;in<br>
+<a href="#Stats-sort_stats">sort_stats</a>()&nbsp;and&nbsp;<a href="#Stats-get_sort_arg_defs">get_sort_arg_defs</a>(self)&nbsp;for&nbsp;more&nbsp;examples.<br>
+&nbsp;<br>
+All&nbsp;methods&nbsp;return&nbsp;self,&nbsp;so&nbsp;you&nbsp;can&nbsp;string&nbsp;together&nbsp;commands&nbsp;like:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<a href="#Stats">Stats</a>('foo',&nbsp;'goo').<a href="#Stats-strip_dirs">strip_dirs</a>().<a href="#Stats-sort_stats">sort_stats</a>('calls').&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#Stats-print_stats">print_stats</a>(5).<a href="#Stats-print_callers">print_callers</a>(5)<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%">Methods defined here:<br>
+<dl><dt><a name="Stats-__init__"><strong>__init__</strong></a>(self, *args, stream=None)</dt><dd><tt>Initialize&nbsp;self.&nbsp;&nbsp;See&nbsp;help(type(self))&nbsp;for&nbsp;accurate&nbsp;signature.</tt></dd></dl>
+
+<dl><dt><a name="Stats-add"><strong>add</strong></a>(self, *arg_list)</dt></dl>
+
+<dl><dt><a name="Stats-calc_callees"><strong>calc_callees</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="Stats-dump_stats"><strong>dump_stats</strong></a>(self, filename)</dt><dd><tt>Write&nbsp;the&nbsp;profile&nbsp;data&nbsp;to&nbsp;a&nbsp;file&nbsp;we&nbsp;know&nbsp;how&nbsp;to&nbsp;load&nbsp;back.</tt></dd></dl>
+
+<dl><dt><a name="Stats-eval_print_amount"><strong>eval_print_amount</strong></a>(self, sel, list, msg)</dt></dl>
+
+<dl><dt><a name="Stats-get_print_list"><strong>get_print_list</strong></a>(self, sel_list)</dt></dl>
+
+<dl><dt><a name="Stats-get_sort_arg_defs"><strong>get_sort_arg_defs</strong></a>(self)</dt><dd><tt>Expand&nbsp;all&nbsp;abbreviations&nbsp;that&nbsp;are&nbsp;unique.</tt></dd></dl>
+
+<dl><dt><a name="Stats-get_top_level_stats"><strong>get_top_level_stats</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="Stats-init"><strong>init</strong></a>(self, arg)</dt></dl>
+
+<dl><dt><a name="Stats-load_stats"><strong>load_stats</strong></a>(self, arg)</dt></dl>
+
+<dl><dt><a name="Stats-print_call_heading"><strong>print_call_heading</strong></a>(self, name_size, column_title)</dt></dl>
+
+<dl><dt><a name="Stats-print_call_line"><strong>print_call_line</strong></a>(self, name_size, source, call_dict, arrow='-&gt;')</dt></dl>
+
+<dl><dt><a name="Stats-print_callees"><strong>print_callees</strong></a>(self, *amount)</dt></dl>
+
+<dl><dt><a name="Stats-print_callers"><strong>print_callers</strong></a>(self, *amount)</dt></dl>
+
+<dl><dt><a name="Stats-print_line"><strong>print_line</strong></a>(self, func)</dt></dl>
+
+<dl><dt><a name="Stats-print_stats"><strong>print_stats</strong></a>(self, *amount)</dt></dl>
+
+<dl><dt><a name="Stats-print_title"><strong>print_title</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="Stats-reverse_order"><strong>reverse_order</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="Stats-sort_stats"><strong>sort_stats</strong></a>(self, *field)</dt></dl>
+
+<dl><dt><a name="Stats-strip_dirs"><strong>strip_dirs</strong></a>(self)</dt></dl>
+
+<hr>
+Data descriptors defined here:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><tt>dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<hr>
+Data and other attributes defined here:<br>
+<dl><dt><strong>sort_arg_dict_default</strong> = {'calls': (((1, -1),), 'call count'), 'cumtime': (((3, -1),), 'cumulative time'), 'cumulative': (((3, -1),), 'cumulative time'), 'filename': (((4, 1),), 'file name'), 'line': (((5, 1),), 'line number'), 'module': (((4, 1),), 'file name'), 'name': (((6, 1),), 'function name'), 'ncalls': (((1, -1),), 'call count'), 'nfl': (((6, 1), (4, 1), (5, 1)), 'name/file/line'), 'pcalls': (((0, -1),), 'primitive call count'), ...}</dl>
+
+</td></tr></table></td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#55aa55">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Data</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#55aa55"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><strong>__all__</strong> = ['Stats', 'SortKey']</td></tr></table>
+</body></html>

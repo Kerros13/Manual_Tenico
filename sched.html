@@ -1,0 +1,137 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head><title>Python: module sched</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+</head><body bgcolor="#f0f0f8">
+
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="heading">
+<tr bgcolor="#7799ee">
+<td valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong>sched</strong></big></big></font></td
+><td align=right valign=bottom
+><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:c%3A%5Cpython38%5Clib%5Csched.py">c:\python38\lib\sched.py</a><br><a href="https://docs.python.org/3.8/library/sched">Module Reference</a></font></td></tr></table>
+    <p><tt>A&nbsp;generally&nbsp;useful&nbsp;event&nbsp;<a href="#scheduler">scheduler</a>&nbsp;class.<br>
+&nbsp;<br>
+Each&nbsp;instance&nbsp;of&nbsp;this&nbsp;class&nbsp;manages&nbsp;its&nbsp;own&nbsp;queue.<br>
+No&nbsp;multi-threading&nbsp;is&nbsp;implied;&nbsp;you&nbsp;are&nbsp;supposed&nbsp;to&nbsp;hack&nbsp;that<br>
+yourself,&nbsp;or&nbsp;use&nbsp;a&nbsp;single&nbsp;instance&nbsp;per&nbsp;application.<br>
+&nbsp;<br>
+Each&nbsp;instance&nbsp;is&nbsp;parametrized&nbsp;with&nbsp;two&nbsp;functions,&nbsp;one&nbsp;that&nbsp;is<br>
+supposed&nbsp;to&nbsp;return&nbsp;the&nbsp;current&nbsp;time,&nbsp;one&nbsp;that&nbsp;is&nbsp;supposed&nbsp;to<br>
+implement&nbsp;a&nbsp;delay.&nbsp;&nbsp;You&nbsp;can&nbsp;implement&nbsp;real-time&nbsp;scheduling&nbsp;by<br>
+substituting&nbsp;time&nbsp;and&nbsp;sleep&nbsp;from&nbsp;built-in&nbsp;module&nbsp;time,&nbsp;or&nbsp;you&nbsp;can<br>
+implement&nbsp;simulated&nbsp;time&nbsp;by&nbsp;writing&nbsp;your&nbsp;own&nbsp;functions.&nbsp;&nbsp;This&nbsp;can<br>
+also&nbsp;be&nbsp;used&nbsp;to&nbsp;integrate&nbsp;scheduling&nbsp;with&nbsp;STDWIN&nbsp;events;&nbsp;the&nbsp;delay<br>
+function&nbsp;is&nbsp;allowed&nbsp;to&nbsp;modify&nbsp;the&nbsp;queue.&nbsp;&nbsp;Time&nbsp;can&nbsp;be&nbsp;expressed&nbsp;as<br>
+integers&nbsp;or&nbsp;floating&nbsp;point&nbsp;numbers,&nbsp;as&nbsp;long&nbsp;as&nbsp;it&nbsp;is&nbsp;consistent.<br>
+&nbsp;<br>
+Events&nbsp;are&nbsp;specified&nbsp;by&nbsp;tuples&nbsp;(time,&nbsp;priority,&nbsp;action,&nbsp;argument,&nbsp;kwargs).<br>
+As&nbsp;in&nbsp;UNIX,&nbsp;lower&nbsp;priority&nbsp;numbers&nbsp;mean&nbsp;higher&nbsp;priority;&nbsp;in&nbsp;this<br>
+way&nbsp;the&nbsp;queue&nbsp;can&nbsp;be&nbsp;maintained&nbsp;as&nbsp;a&nbsp;priority&nbsp;queue.&nbsp;&nbsp;Execution&nbsp;of&nbsp;the<br>
+event&nbsp;means&nbsp;calling&nbsp;the&nbsp;action&nbsp;function,&nbsp;passing&nbsp;it&nbsp;the&nbsp;argument<br>
+sequence&nbsp;in&nbsp;"argument"&nbsp;(remember&nbsp;that&nbsp;in&nbsp;Python,&nbsp;multiple&nbsp;function<br>
+arguments&nbsp;are&nbsp;be&nbsp;packed&nbsp;in&nbsp;a&nbsp;sequence)&nbsp;and&nbsp;keyword&nbsp;parameters&nbsp;in&nbsp;"kwargs".<br>
+The&nbsp;action&nbsp;function&nbsp;may&nbsp;be&nbsp;an&nbsp;instance&nbsp;method&nbsp;so&nbsp;it<br>
+has&nbsp;another&nbsp;way&nbsp;to&nbsp;reference&nbsp;private&nbsp;data&nbsp;(besides&nbsp;global&nbsp;variables).</tt></p>
+<p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#aa55cc">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Modules</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#aa55cc"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><table width="100%" summary="list"><tr><td width="25%" valign=top><a href="heapq.html">heapq</a><br>
+</td><td width="25%" valign=top><a href="threading.html">threading</a><br>
+</td><td width="25%" valign=top><a href="time.html">time</a><br>
+</td><td width="25%" valign=top></td></tr></table></td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ee77aa">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Classes</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#ee77aa"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl>
+<dt><font face="helvetica, arial"><a href="builtins.html#object">builtins.object</a>
+</font></dt><dd>
+<dl>
+<dt><font face="helvetica, arial"><a href="sched.html#scheduler">scheduler</a>
+</font></dt></dl>
+</dd>
+</dl>
+ <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="scheduler">class <strong>scheduler</strong></a>(<a href="builtins.html#object">builtins.object</a>)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt><a href="#scheduler">scheduler</a>(timefunc=&amp;lt;built-in&nbsp;function&nbsp;monotonic&amp;gt;,&nbsp;delayfunc=&amp;lt;built-in&nbsp;function&nbsp;sleep&amp;gt;)<br>
+&nbsp;<br>
+<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%">Methods defined here:<br>
+<dl><dt><a name="scheduler-__init__"><strong>__init__</strong></a>(self, timefunc=&lt;built-in function monotonic&gt;, delayfunc=&lt;built-in function sleep&gt;)</dt><dd><tt>Initialize&nbsp;a&nbsp;new&nbsp;instance,&nbsp;passing&nbsp;the&nbsp;time&nbsp;and&nbsp;delay<br>
+functions</tt></dd></dl>
+
+<dl><dt><a name="scheduler-cancel"><strong>cancel</strong></a>(self, event)</dt><dd><tt>Remove&nbsp;an&nbsp;event&nbsp;from&nbsp;the&nbsp;queue.<br>
+&nbsp;<br>
+This&nbsp;must&nbsp;be&nbsp;presented&nbsp;the&nbsp;ID&nbsp;as&nbsp;returned&nbsp;by&nbsp;<a href="#scheduler-enter">enter</a>().<br>
+If&nbsp;the&nbsp;event&nbsp;is&nbsp;not&nbsp;in&nbsp;the&nbsp;queue,&nbsp;this&nbsp;raises&nbsp;ValueError.</tt></dd></dl>
+
+<dl><dt><a name="scheduler-empty"><strong>empty</strong></a>(self)</dt><dd><tt>Check&nbsp;whether&nbsp;the&nbsp;queue&nbsp;is&nbsp;empty.</tt></dd></dl>
+
+<dl><dt><a name="scheduler-enter"><strong>enter</strong></a>(self, delay, priority, action, argument=(), kwargs=&lt;object object at 0x000001F4981282D0&gt;)</dt><dd><tt>A&nbsp;variant&nbsp;that&nbsp;specifies&nbsp;the&nbsp;time&nbsp;as&nbsp;a&nbsp;relative&nbsp;time.<br>
+&nbsp;<br>
+This&nbsp;is&nbsp;actually&nbsp;the&nbsp;more&nbsp;commonly&nbsp;used&nbsp;interface.</tt></dd></dl>
+
+<dl><dt><a name="scheduler-enterabs"><strong>enterabs</strong></a>(self, time, priority, action, argument=(), kwargs=&lt;object object at 0x000001F4981282D0&gt;)</dt><dd><tt>Enter&nbsp;a&nbsp;new&nbsp;event&nbsp;in&nbsp;the&nbsp;queue&nbsp;at&nbsp;an&nbsp;absolute&nbsp;time.<br>
+&nbsp;<br>
+Returns&nbsp;an&nbsp;ID&nbsp;for&nbsp;the&nbsp;event&nbsp;which&nbsp;can&nbsp;be&nbsp;used&nbsp;to&nbsp;remove&nbsp;it,<br>
+if&nbsp;necessary.</tt></dd></dl>
+
+<dl><dt><a name="scheduler-run"><strong>run</strong></a>(self, blocking=True)</dt><dd><tt>Execute&nbsp;events&nbsp;until&nbsp;the&nbsp;queue&nbsp;is&nbsp;empty.<br>
+If&nbsp;blocking&nbsp;is&nbsp;False&nbsp;executes&nbsp;the&nbsp;scheduled&nbsp;events&nbsp;due&nbsp;to<br>
+expire&nbsp;soonest&nbsp;(if&nbsp;any)&nbsp;and&nbsp;then&nbsp;return&nbsp;the&nbsp;deadline&nbsp;of&nbsp;the<br>
+next&nbsp;scheduled&nbsp;call&nbsp;in&nbsp;the&nbsp;<a href="#scheduler">scheduler</a>.<br>
+&nbsp;<br>
+When&nbsp;there&nbsp;is&nbsp;a&nbsp;positive&nbsp;delay&nbsp;until&nbsp;the&nbsp;first&nbsp;event,&nbsp;the<br>
+delay&nbsp;function&nbsp;is&nbsp;called&nbsp;and&nbsp;the&nbsp;event&nbsp;is&nbsp;left&nbsp;in&nbsp;the&nbsp;queue;<br>
+otherwise,&nbsp;the&nbsp;event&nbsp;is&nbsp;removed&nbsp;from&nbsp;the&nbsp;queue&nbsp;and&nbsp;executed<br>
+(its&nbsp;action&nbsp;function&nbsp;is&nbsp;called,&nbsp;passing&nbsp;it&nbsp;the&nbsp;argument).&nbsp;&nbsp;If<br>
+the&nbsp;delay&nbsp;function&nbsp;returns&nbsp;prematurely,&nbsp;it&nbsp;is&nbsp;simply<br>
+restarted.<br>
+&nbsp;<br>
+It&nbsp;is&nbsp;legal&nbsp;for&nbsp;both&nbsp;the&nbsp;delay&nbsp;function&nbsp;and&nbsp;the&nbsp;action<br>
+function&nbsp;to&nbsp;modify&nbsp;the&nbsp;queue&nbsp;or&nbsp;to&nbsp;raise&nbsp;an&nbsp;exception;<br>
+exceptions&nbsp;are&nbsp;not&nbsp;caught&nbsp;but&nbsp;the&nbsp;<a href="#scheduler">scheduler</a>'s&nbsp;state&nbsp;remains<br>
+well-defined&nbsp;so&nbsp;<a href="#scheduler-run">run</a>()&nbsp;may&nbsp;be&nbsp;called&nbsp;again.<br>
+&nbsp;<br>
+A&nbsp;questionable&nbsp;hack&nbsp;is&nbsp;added&nbsp;to&nbsp;allow&nbsp;other&nbsp;threads&nbsp;to&nbsp;run:<br>
+just&nbsp;after&nbsp;an&nbsp;event&nbsp;is&nbsp;executed,&nbsp;a&nbsp;delay&nbsp;of&nbsp;0&nbsp;is&nbsp;executed,&nbsp;to<br>
+avoid&nbsp;monopolizing&nbsp;the&nbsp;CPU&nbsp;when&nbsp;other&nbsp;threads&nbsp;are&nbsp;also<br>
+runnable.</tt></dd></dl>
+
+<hr>
+Readonly properties defined here:<br>
+<dl><dt><strong>queue</strong></dt>
+<dd><tt>An&nbsp;ordered&nbsp;list&nbsp;of&nbsp;upcoming&nbsp;events.<br>
+&nbsp;<br>
+Events&nbsp;are&nbsp;named&nbsp;tuples&nbsp;with&nbsp;fields&nbsp;for:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;time,&nbsp;priority,&nbsp;action,&nbsp;arguments,&nbsp;kwargs</tt></dd>
+</dl>
+<hr>
+Data descriptors defined here:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><tt>dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+</td></tr></table></td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#55aa55">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Data</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#55aa55"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><strong>__all__</strong> = ['scheduler']</td></tr></table>
+</body></html>

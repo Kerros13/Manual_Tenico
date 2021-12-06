@@ -1,0 +1,929 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head><title>Python: module types</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+</head><body bgcolor="#f0f0f8">
+
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="heading">
+<tr bgcolor="#7799ee">
+<td valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong>types</strong></big></big></font></td
+><td align=right valign=bottom
+><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:c%3A%5Cpython38%5Clib%5Ctypes.py">c:\python38\lib\types.py</a><br><a href="https://docs.python.org/3.8/library/types">Module Reference</a></font></td></tr></table>
+    <p><tt>Define&nbsp;names&nbsp;for&nbsp;built-in&nbsp;types&nbsp;that&nbsp;aren't&nbsp;directly&nbsp;accessible&nbsp;as&nbsp;a&nbsp;builtin.</tt></p>
+<p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ee77aa">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Classes</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#ee77aa"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl>
+<dt><font face="helvetica, arial"><a href="builtins.html#object">builtins.object</a>
+</font></dt><dd>
+<dl>
+<dt><font face="helvetica, arial">builtins.async_generator
+</font></dt><dt><font face="helvetica, arial">builtins.builtin_function_or_method
+</font></dt><dt><font face="helvetica, arial">builtins.cell
+</font></dt><dt><font face="helvetica, arial">builtins.classmethod_descriptor
+</font></dt><dt><font face="helvetica, arial">builtins.code
+</font></dt><dt><font face="helvetica, arial">builtins.coroutine
+</font></dt><dt><font face="helvetica, arial">builtins.frame
+</font></dt><dt><font face="helvetica, arial">builtins.function
+</font></dt><dt><font face="helvetica, arial">builtins.generator
+</font></dt><dt><font face="helvetica, arial">builtins.getset_descriptor
+</font></dt><dt><font face="helvetica, arial">builtins.mappingproxy
+</font></dt><dt><font face="helvetica, arial">builtins.member_descriptor
+</font></dt><dt><font face="helvetica, arial">builtins.method
+</font></dt><dt><font face="helvetica, arial">builtins.method-wrapper
+</font></dt><dt><font face="helvetica, arial">builtins.method_descriptor
+</font></dt><dt><font face="helvetica, arial">builtins.module
+</font></dt><dt><font face="helvetica, arial">builtins.traceback
+</font></dt><dt><font face="helvetica, arial">builtins.wrapper_descriptor
+</font></dt><dt><font face="helvetica, arial"><a href="types.html#DynamicClassAttribute">DynamicClassAttribute</a>
+</font></dt><dt><font face="helvetica, arial"><a href="types.html#SimpleNamespace">SimpleNamespace</a>
+</font></dt></dl>
+</dd>
+</dl>
+ <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><strong>AsyncGeneratorType</strong> = <a name="AsyncGeneratorType">class async_generator</a>(<a href="builtins.html#object">object</a>)</font></td></tr>
+    
+<tr><td bgcolor="#ffc8d8"><tt>&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%">Methods defined here:<br>
+<dl><dt><a name="async_generator-__aiter__"><strong>__aiter__</strong></a>(self, /)</dt><dd><tt>Return&nbsp;an&nbsp;awaitable,&nbsp;that&nbsp;resolves&nbsp;in&nbsp;asynchronous&nbsp;iterator.</tt></dd></dl>
+
+<dl><dt><a name="async_generator-__anext__"><strong>__anext__</strong></a>(self, /)</dt><dd><tt>Return&nbsp;a&nbsp;value&nbsp;or&nbsp;raise&nbsp;StopAsyncIteration.</tt></dd></dl>
+
+<dl><dt><a name="async_generator-__del__"><strong>__del__</strong></a>(...)</dt></dl>
+
+<dl><dt><a name="async_generator-__getattribute__"><strong>__getattribute__</strong></a>(self, name, /)</dt><dd><tt>Return&nbsp;getattr(self,&nbsp;name).</tt></dd></dl>
+
+<dl><dt><a name="async_generator-__repr__"><strong>__repr__</strong></a>(self, /)</dt><dd><tt>Return&nbsp;repr(self).</tt></dd></dl>
+
+<dl><dt><a name="async_generator-aclose"><strong>aclose</strong></a>(...)</dt><dd><tt><a href="#AsyncGeneratorType-aclose">aclose</a>()&nbsp;-&gt;&nbsp;raise&nbsp;GeneratorExit&nbsp;inside&nbsp;generator.</tt></dd></dl>
+
+<dl><dt><a name="async_generator-asend"><strong>asend</strong></a>(...)</dt><dd><tt><a href="#AsyncGeneratorType-asend">asend</a>(v)&nbsp;-&gt;&nbsp;send&nbsp;'v'&nbsp;in&nbsp;generator.</tt></dd></dl>
+
+<dl><dt><a name="async_generator-athrow"><strong>athrow</strong></a>(...)</dt><dd><tt><a href="#AsyncGeneratorType-athrow">athrow</a>(typ[,val[,tb]])&nbsp;-&gt;&nbsp;raise&nbsp;exception&nbsp;in&nbsp;generator.</tt></dd></dl>
+
+<hr>
+Data descriptors defined here:<br>
+<dl><dt><strong>ag_await</strong></dt>
+<dd><tt>object&nbsp;being&nbsp;awaited&nbsp;on,&nbsp;or&nbsp;None</tt></dd>
+</dl>
+<dl><dt><strong>ag_code</strong></dt>
+</dl>
+<dl><dt><strong>ag_frame</strong></dt>
+</dl>
+<dl><dt><strong>ag_running</strong></dt>
+</dl>
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><strong>BuiltinFunctionType</strong> = <a name="BuiltinFunctionType">class builtin_function_or_method</a>(<a href="builtins.html#object">object</a>)</font></td></tr>
+    
+<tr><td bgcolor="#ffc8d8"><tt>&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%">Methods defined here:<br>
+<dl><dt><a name="builtin_function_or_method-__call__"><strong>__call__</strong></a>(self, /, *args, **kwargs)</dt><dd><tt>Call&nbsp;self&nbsp;as&nbsp;a&nbsp;function.</tt></dd></dl>
+
+<dl><dt><a name="builtin_function_or_method-__eq__"><strong>__eq__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;self==value.</tt></dd></dl>
+
+<dl><dt><a name="builtin_function_or_method-__ge__"><strong>__ge__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;self&gt;=value.</tt></dd></dl>
+
+<dl><dt><a name="builtin_function_or_method-__getattribute__"><strong>__getattribute__</strong></a>(self, name, /)</dt><dd><tt>Return&nbsp;getattr(self,&nbsp;name).</tt></dd></dl>
+
+<dl><dt><a name="builtin_function_or_method-__gt__"><strong>__gt__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;self&gt;value.</tt></dd></dl>
+
+<dl><dt><a name="builtin_function_or_method-__hash__"><strong>__hash__</strong></a>(self, /)</dt><dd><tt>Return&nbsp;hash(self).</tt></dd></dl>
+
+<dl><dt><a name="builtin_function_or_method-__le__"><strong>__le__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;self&lt;=value.</tt></dd></dl>
+
+<dl><dt><a name="builtin_function_or_method-__lt__"><strong>__lt__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;self&lt;value.</tt></dd></dl>
+
+<dl><dt><a name="builtin_function_or_method-__ne__"><strong>__ne__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;self!=value.</tt></dd></dl>
+
+<dl><dt><a name="builtin_function_or_method-__reduce__"><strong>__reduce__</strong></a>(...)</dt><dd><tt>Helper&nbsp;for&nbsp;pickle.</tt></dd></dl>
+
+<dl><dt><a name="builtin_function_or_method-__repr__"><strong>__repr__</strong></a>(self, /)</dt><dd><tt>Return&nbsp;repr(self).</tt></dd></dl>
+
+<hr>
+Data descriptors defined here:<br>
+<dl><dt><strong>__self__</strong></dt>
+</dl>
+<dl><dt><strong>__text_signature__</strong></dt>
+</dl>
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><strong>BuiltinMethodType</strong> = <a name="BuiltinMethodType">class builtin_function_or_method</a>(<a href="builtins.html#object">object</a>)</font></td></tr>
+    
+<tr><td bgcolor="#ffc8d8"><tt>&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%">Methods defined here:<br>
+<dl><dt><a name="builtin_function_or_method-__call__"><strong>__call__</strong></a>(self, /, *args, **kwargs)</dt><dd><tt>Call&nbsp;self&nbsp;as&nbsp;a&nbsp;function.</tt></dd></dl>
+
+<dl><dt><a name="builtin_function_or_method-__eq__"><strong>__eq__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;self==value.</tt></dd></dl>
+
+<dl><dt><a name="builtin_function_or_method-__ge__"><strong>__ge__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;self&gt;=value.</tt></dd></dl>
+
+<dl><dt><a name="builtin_function_or_method-__getattribute__"><strong>__getattribute__</strong></a>(self, name, /)</dt><dd><tt>Return&nbsp;getattr(self,&nbsp;name).</tt></dd></dl>
+
+<dl><dt><a name="builtin_function_or_method-__gt__"><strong>__gt__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;self&gt;value.</tt></dd></dl>
+
+<dl><dt><a name="builtin_function_or_method-__hash__"><strong>__hash__</strong></a>(self, /)</dt><dd><tt>Return&nbsp;hash(self).</tt></dd></dl>
+
+<dl><dt><a name="builtin_function_or_method-__le__"><strong>__le__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;self&lt;=value.</tt></dd></dl>
+
+<dl><dt><a name="builtin_function_or_method-__lt__"><strong>__lt__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;self&lt;value.</tt></dd></dl>
+
+<dl><dt><a name="builtin_function_or_method-__ne__"><strong>__ne__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;self!=value.</tt></dd></dl>
+
+<dl><dt><a name="builtin_function_or_method-__reduce__"><strong>__reduce__</strong></a>(...)</dt><dd><tt>Helper&nbsp;for&nbsp;pickle.</tt></dd></dl>
+
+<dl><dt><a name="builtin_function_or_method-__repr__"><strong>__repr__</strong></a>(self, /)</dt><dd><tt>Return&nbsp;repr(self).</tt></dd></dl>
+
+<hr>
+Data descriptors defined here:<br>
+<dl><dt><strong>__self__</strong></dt>
+</dl>
+<dl><dt><strong>__text_signature__</strong></dt>
+</dl>
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><strong>CellType</strong> = <a name="CellType">class cell</a>(<a href="builtins.html#object">object</a>)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt>Create&nbsp;a&nbsp;new&nbsp;cell&nbsp;<a href="builtins.html#object">object</a>.<br>
+&nbsp;<br>
+&nbsp;contents<br>
+&nbsp;&nbsp;&nbsp;the&nbsp;contents&nbsp;of&nbsp;the&nbsp;cell.&nbsp;If&nbsp;not&nbsp;specified,&nbsp;the&nbsp;cell&nbsp;will&nbsp;be&nbsp;empty,<br>
+&nbsp;&nbsp;&nbsp;and&nbsp;<br>
+further&nbsp;attempts&nbsp;to&nbsp;access&nbsp;its&nbsp;cell_contents&nbsp;attribute&nbsp;will<br>
+&nbsp;&nbsp;&nbsp;raise&nbsp;a&nbsp;ValueError.<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%">Methods defined here:<br>
+<dl><dt><a name="cell-__eq__"><strong>__eq__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;self==value.</tt></dd></dl>
+
+<dl><dt><a name="cell-__ge__"><strong>__ge__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;self&gt;=value.</tt></dd></dl>
+
+<dl><dt><a name="cell-__getattribute__"><strong>__getattribute__</strong></a>(self, name, /)</dt><dd><tt>Return&nbsp;getattr(self,&nbsp;name).</tt></dd></dl>
+
+<dl><dt><a name="cell-__gt__"><strong>__gt__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;self&gt;value.</tt></dd></dl>
+
+<dl><dt><a name="cell-__le__"><strong>__le__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;self&lt;=value.</tt></dd></dl>
+
+<dl><dt><a name="cell-__lt__"><strong>__lt__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;self&lt;value.</tt></dd></dl>
+
+<dl><dt><a name="cell-__ne__"><strong>__ne__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;self!=value.</tt></dd></dl>
+
+<dl><dt><a name="cell-__repr__"><strong>__repr__</strong></a>(self, /)</dt><dd><tt>Return&nbsp;repr(self).</tt></dd></dl>
+
+<hr>
+Static methods defined here:<br>
+<dl><dt><a name="cell-__new__"><strong>__new__</strong></a>(*args, **kwargs)<font color="#909090"><font face="helvetica, arial"> from <a href="builtins.html#type">builtins.type</a></font></font></dt><dd><tt>Create&nbsp;and&nbsp;return&nbsp;a&nbsp;new&nbsp;<a href="builtins.html#object">object</a>.&nbsp;&nbsp;See&nbsp;help(type)&nbsp;for&nbsp;accurate&nbsp;signature.</tt></dd></dl>
+
+<hr>
+Data descriptors defined here:<br>
+<dl><dt><strong>cell_contents</strong></dt>
+</dl>
+<hr>
+Data and other attributes defined here:<br>
+<dl><dt><strong>__hash__</strong> = None</dl>
+
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><strong>ClassMethodDescriptorType</strong> = <a name="ClassMethodDescriptorType">class classmethod_descriptor</a>(<a href="builtins.html#object">object</a>)</font></td></tr>
+    
+<tr><td bgcolor="#ffc8d8"><tt>&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%">Methods defined here:<br>
+<dl><dt><a name="classmethod_descriptor-__call__"><strong>__call__</strong></a>(self, /, *args, **kwargs)</dt><dd><tt>Call&nbsp;self&nbsp;as&nbsp;a&nbsp;function.</tt></dd></dl>
+
+<dl><dt><a name="classmethod_descriptor-__get__"><strong>__get__</strong></a>(self, instance, owner, /)</dt><dd><tt>Return&nbsp;an&nbsp;attribute&nbsp;of&nbsp;instance,&nbsp;which&nbsp;is&nbsp;of&nbsp;type&nbsp;owner.</tt></dd></dl>
+
+<dl><dt><a name="classmethod_descriptor-__getattribute__"><strong>__getattribute__</strong></a>(self, name, /)</dt><dd><tt>Return&nbsp;getattr(self,&nbsp;name).</tt></dd></dl>
+
+<dl><dt><a name="classmethod_descriptor-__reduce__"><strong>__reduce__</strong></a>(...)</dt><dd><tt>Helper&nbsp;for&nbsp;pickle.</tt></dd></dl>
+
+<dl><dt><a name="classmethod_descriptor-__repr__"><strong>__repr__</strong></a>(self, /)</dt><dd><tt>Return&nbsp;repr(self).</tt></dd></dl>
+
+<hr>
+Data descriptors defined here:<br>
+<dl><dt><strong>__objclass__</strong></dt>
+</dl>
+<dl><dt><strong>__text_signature__</strong></dt>
+</dl>
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><strong>CodeType</strong> = <a name="CodeType">class code</a>(<a href="builtins.html#object">object</a>)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt>code(argcount,&nbsp;posonlyargcount,&nbsp;kwonlyargcount,&nbsp;nlocals,&nbsp;stacksize,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;flags,&nbsp;codestring,&nbsp;constants,&nbsp;names,&nbsp;varnames,&nbsp;filename,&nbsp;name,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;firstlineno,&nbsp;lnotab[,&nbsp;freevars[,&nbsp;cellvars]])<br>
+&nbsp;<br>
+Create&nbsp;a&nbsp;code&nbsp;<a href="builtins.html#object">object</a>.&nbsp;&nbsp;Not&nbsp;for&nbsp;the&nbsp;faint&nbsp;of&nbsp;heart.<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%">Methods defined here:<br>
+<dl><dt><a name="code-__eq__"><strong>__eq__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;self==value.</tt></dd></dl>
+
+<dl><dt><a name="code-__ge__"><strong>__ge__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;self&gt;=value.</tt></dd></dl>
+
+<dl><dt><a name="code-__getattribute__"><strong>__getattribute__</strong></a>(self, name, /)</dt><dd><tt>Return&nbsp;getattr(self,&nbsp;name).</tt></dd></dl>
+
+<dl><dt><a name="code-__gt__"><strong>__gt__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;self&gt;value.</tt></dd></dl>
+
+<dl><dt><a name="code-__hash__"><strong>__hash__</strong></a>(self, /)</dt><dd><tt>Return&nbsp;hash(self).</tt></dd></dl>
+
+<dl><dt><a name="code-__le__"><strong>__le__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;self&lt;=value.</tt></dd></dl>
+
+<dl><dt><a name="code-__lt__"><strong>__lt__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;self&lt;value.</tt></dd></dl>
+
+<dl><dt><a name="code-__ne__"><strong>__ne__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;self!=value.</tt></dd></dl>
+
+<dl><dt><a name="code-__repr__"><strong>__repr__</strong></a>(self, /)</dt><dd><tt>Return&nbsp;repr(self).</tt></dd></dl>
+
+<dl><dt><a name="code-__sizeof__"><strong>__sizeof__</strong></a>(...)</dt><dd><tt>Size&nbsp;of&nbsp;<a href="builtins.html#object">object</a>&nbsp;in&nbsp;memory,&nbsp;in&nbsp;bytes.</tt></dd></dl>
+
+<dl><dt><a name="code-replace"><strong>replace</strong></a>(self, /, *, co_argcount=-1, co_posonlyargcount=-1, co_kwonlyargcount=-1, co_nlocals=-1, co_stacksize=-1, co_flags=-1, co_firstlineno=-1, co_code=None, co_consts=None, co_names=None, co_varnames=None, co_freevars=None, co_cellvars=None, co_filename=None, co_name=None, co_lnotab=None)</dt><dd><tt>Return&nbsp;a&nbsp;copy&nbsp;of&nbsp;the&nbsp;code&nbsp;<a href="builtins.html#object">object</a>&nbsp;with&nbsp;new&nbsp;values&nbsp;for&nbsp;the&nbsp;specified&nbsp;fields.</tt></dd></dl>
+
+<hr>
+Static methods defined here:<br>
+<dl><dt><a name="code-__new__"><strong>__new__</strong></a>(*args, **kwargs)<font color="#909090"><font face="helvetica, arial"> from <a href="builtins.html#type">builtins.type</a></font></font></dt><dd><tt>Create&nbsp;and&nbsp;return&nbsp;a&nbsp;new&nbsp;<a href="builtins.html#object">object</a>.&nbsp;&nbsp;See&nbsp;help(type)&nbsp;for&nbsp;accurate&nbsp;signature.</tt></dd></dl>
+
+<hr>
+Data descriptors defined here:<br>
+<dl><dt><strong>co_argcount</strong></dt>
+</dl>
+<dl><dt><strong>co_cellvars</strong></dt>
+</dl>
+<dl><dt><strong>co_code</strong></dt>
+</dl>
+<dl><dt><strong>co_consts</strong></dt>
+</dl>
+<dl><dt><strong>co_filename</strong></dt>
+</dl>
+<dl><dt><strong>co_firstlineno</strong></dt>
+</dl>
+<dl><dt><strong>co_flags</strong></dt>
+</dl>
+<dl><dt><strong>co_freevars</strong></dt>
+</dl>
+<dl><dt><strong>co_kwonlyargcount</strong></dt>
+</dl>
+<dl><dt><strong>co_lnotab</strong></dt>
+</dl>
+<dl><dt><strong>co_name</strong></dt>
+</dl>
+<dl><dt><strong>co_names</strong></dt>
+</dl>
+<dl><dt><strong>co_nlocals</strong></dt>
+</dl>
+<dl><dt><strong>co_posonlyargcount</strong></dt>
+</dl>
+<dl><dt><strong>co_stacksize</strong></dt>
+</dl>
+<dl><dt><strong>co_varnames</strong></dt>
+</dl>
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><strong>CoroutineType</strong> = <a name="CoroutineType">class coroutine</a>(<a href="builtins.html#object">object</a>)</font></td></tr>
+    
+<tr><td bgcolor="#ffc8d8"><tt>&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%">Methods defined here:<br>
+<dl><dt><a name="coroutine-__await__"><strong>__await__</strong></a>(self, /)</dt><dd><tt>Return&nbsp;an&nbsp;iterator&nbsp;to&nbsp;be&nbsp;used&nbsp;in&nbsp;await&nbsp;expression.</tt></dd></dl>
+
+<dl><dt><a name="coroutine-__del__"><strong>__del__</strong></a>(...)</dt></dl>
+
+<dl><dt><a name="coroutine-__getattribute__"><strong>__getattribute__</strong></a>(self, name, /)</dt><dd><tt>Return&nbsp;getattr(self,&nbsp;name).</tt></dd></dl>
+
+<dl><dt><a name="coroutine-__repr__"><strong>__repr__</strong></a>(self, /)</dt><dd><tt>Return&nbsp;repr(self).</tt></dd></dl>
+
+<dl><dt><a name="coroutine-close"><strong>close</strong></a>(...)</dt><dd><tt><a href="#CoroutineType-close">close</a>()&nbsp;-&gt;&nbsp;raise&nbsp;GeneratorExit&nbsp;inside&nbsp;coroutine.</tt></dd></dl>
+
+<dl><dt><a name="coroutine-send"><strong>send</strong></a>(...)</dt><dd><tt><a href="#CoroutineType-send">send</a>(arg)&nbsp;-&gt;&nbsp;send&nbsp;'arg'&nbsp;into&nbsp;coroutine,<br>
+return&nbsp;next&nbsp;iterated&nbsp;value&nbsp;or&nbsp;raise&nbsp;StopIteration.</tt></dd></dl>
+
+<dl><dt><a name="coroutine-throw"><strong>throw</strong></a>(...)</dt><dd><tt><a href="#CoroutineType-throw">throw</a>(typ[,val[,tb]])&nbsp;-&gt;&nbsp;raise&nbsp;exception&nbsp;in&nbsp;coroutine,<br>
+return&nbsp;next&nbsp;iterated&nbsp;value&nbsp;or&nbsp;raise&nbsp;StopIteration.</tt></dd></dl>
+
+<hr>
+Data descriptors defined here:<br>
+<dl><dt><strong>cr_await</strong></dt>
+<dd><tt>object&nbsp;being&nbsp;awaited&nbsp;on,&nbsp;or&nbsp;None</tt></dd>
+</dl>
+<dl><dt><strong>cr_code</strong></dt>
+</dl>
+<dl><dt><strong>cr_frame</strong></dt>
+</dl>
+<dl><dt><strong>cr_origin</strong></dt>
+</dl>
+<dl><dt><strong>cr_running</strong></dt>
+</dl>
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="DynamicClassAttribute">class <strong>DynamicClassAttribute</strong></a>(<a href="builtins.html#object">builtins.object</a>)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt><a href="#DynamicClassAttribute">DynamicClassAttribute</a>(fget=None,&nbsp;fset=None,&nbsp;fdel=None,&nbsp;doc=None)<br>
+&nbsp;<br>
+Route&nbsp;attribute&nbsp;access&nbsp;on&nbsp;a&nbsp;class&nbsp;to&nbsp;__getattr__.<br>
+&nbsp;<br>
+This&nbsp;is&nbsp;a&nbsp;descriptor,&nbsp;used&nbsp;to&nbsp;define&nbsp;attributes&nbsp;that&nbsp;act&nbsp;differently&nbsp;when<br>
+accessed&nbsp;through&nbsp;an&nbsp;instance&nbsp;and&nbsp;through&nbsp;a&nbsp;class.&nbsp;&nbsp;Instance&nbsp;access&nbsp;remains<br>
+normal,&nbsp;but&nbsp;access&nbsp;to&nbsp;an&nbsp;attribute&nbsp;through&nbsp;a&nbsp;class&nbsp;will&nbsp;be&nbsp;routed&nbsp;to&nbsp;the<br>
+class's&nbsp;__getattr__&nbsp;method;&nbsp;this&nbsp;is&nbsp;done&nbsp;by&nbsp;raising&nbsp;AttributeError.<br>
+&nbsp;<br>
+This&nbsp;allows&nbsp;one&nbsp;to&nbsp;have&nbsp;properties&nbsp;active&nbsp;on&nbsp;an&nbsp;instance,&nbsp;and&nbsp;have&nbsp;virtual<br>
+attributes&nbsp;on&nbsp;the&nbsp;class&nbsp;with&nbsp;the&nbsp;same&nbsp;name&nbsp;(see&nbsp;Enum&nbsp;for&nbsp;an&nbsp;example).<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%">Methods defined here:<br>
+<dl><dt><a name="DynamicClassAttribute-__delete__"><strong>__delete__</strong></a>(self, instance)</dt></dl>
+
+<dl><dt><a name="DynamicClassAttribute-__get__"><strong>__get__</strong></a>(self, instance, ownerclass=None)</dt></dl>
+
+<dl><dt><a name="DynamicClassAttribute-__init__"><strong>__init__</strong></a>(self, fget=None, fset=None, fdel=None, doc=None)</dt><dd><tt>Initialize&nbsp;self.&nbsp;&nbsp;See&nbsp;help(type(self))&nbsp;for&nbsp;accurate&nbsp;signature.</tt></dd></dl>
+
+<dl><dt><a name="DynamicClassAttribute-__set__"><strong>__set__</strong></a>(self, instance, value)</dt></dl>
+
+<dl><dt><a name="DynamicClassAttribute-deleter"><strong>deleter</strong></a>(self, fdel)</dt></dl>
+
+<dl><dt><a name="DynamicClassAttribute-getter"><strong>getter</strong></a>(self, fget)</dt></dl>
+
+<dl><dt><a name="DynamicClassAttribute-setter"><strong>setter</strong></a>(self, fset)</dt></dl>
+
+<hr>
+Data descriptors defined here:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><tt>dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><strong>FrameType</strong> = <a name="FrameType">class frame</a>(<a href="builtins.html#object">object</a>)</font></td></tr>
+    
+<tr><td bgcolor="#ffc8d8"><tt>&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%">Methods defined here:<br>
+<dl><dt><a name="frame-__delattr__"><strong>__delattr__</strong></a>(self, name, /)</dt><dd><tt>Implement&nbsp;delattr(self,&nbsp;name).</tt></dd></dl>
+
+<dl><dt><a name="frame-__getattribute__"><strong>__getattribute__</strong></a>(self, name, /)</dt><dd><tt>Return&nbsp;getattr(self,&nbsp;name).</tt></dd></dl>
+
+<dl><dt><a name="frame-__repr__"><strong>__repr__</strong></a>(self, /)</dt><dd><tt>Return&nbsp;repr(self).</tt></dd></dl>
+
+<dl><dt><a name="frame-__setattr__"><strong>__setattr__</strong></a>(self, name, value, /)</dt><dd><tt>Implement&nbsp;setattr(self,&nbsp;name,&nbsp;value).</tt></dd></dl>
+
+<dl><dt><a name="frame-__sizeof__"><strong>__sizeof__</strong></a>(...)</dt><dd><tt>F.<a href="#FrameType-__sizeof__">__sizeof__</a>()&nbsp;-&gt;&nbsp;size&nbsp;of&nbsp;F&nbsp;in&nbsp;memory,&nbsp;in&nbsp;bytes</tt></dd></dl>
+
+<dl><dt><a name="frame-clear"><strong>clear</strong></a>(...)</dt><dd><tt>F.<a href="#FrameType-clear">clear</a>():&nbsp;clear&nbsp;most&nbsp;references&nbsp;held&nbsp;by&nbsp;the&nbsp;frame</tt></dd></dl>
+
+<hr>
+Data descriptors defined here:<br>
+<dl><dt><strong>f_back</strong></dt>
+</dl>
+<dl><dt><strong>f_builtins</strong></dt>
+</dl>
+<dl><dt><strong>f_code</strong></dt>
+</dl>
+<dl><dt><strong>f_globals</strong></dt>
+</dl>
+<dl><dt><strong>f_lasti</strong></dt>
+</dl>
+<dl><dt><strong>f_lineno</strong></dt>
+</dl>
+<dl><dt><strong>f_locals</strong></dt>
+</dl>
+<dl><dt><strong>f_trace</strong></dt>
+</dl>
+<dl><dt><strong>f_trace_lines</strong></dt>
+</dl>
+<dl><dt><strong>f_trace_opcodes</strong></dt>
+</dl>
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><strong>FunctionType</strong> = <a name="FunctionType">class function</a>(<a href="builtins.html#object">object</a>)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt><a href="#FunctionType">FunctionType</a>(code,&nbsp;globals,&nbsp;name=None,&nbsp;argdefs=None,&nbsp;closure=None)<br>
+&nbsp;<br>
+Create&nbsp;a&nbsp;function&nbsp;<a href="builtins.html#object">object</a>.<br>
+&nbsp;<br>
+code<br>
+&nbsp;&nbsp;a&nbsp;code&nbsp;<a href="builtins.html#object">object</a><br>
+globals<br>
+&nbsp;&nbsp;the&nbsp;globals&nbsp;dictionary<br>
+name<br>
+&nbsp;&nbsp;a&nbsp;string&nbsp;that&nbsp;overrides&nbsp;the&nbsp;name&nbsp;from&nbsp;the&nbsp;code&nbsp;<a href="builtins.html#object">object</a><br>
+argdefs<br>
+&nbsp;&nbsp;a&nbsp;tuple&nbsp;that&nbsp;specifies&nbsp;the&nbsp;default&nbsp;argument&nbsp;values<br>
+closure<br>
+&nbsp;&nbsp;a&nbsp;tuple&nbsp;that&nbsp;supplies&nbsp;the&nbsp;bindings&nbsp;for&nbsp;free&nbsp;variables<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%">Methods defined here:<br>
+<dl><dt><a name="function-__call__"><strong>__call__</strong></a>(self, /, *args, **kwargs)</dt><dd><tt>Call&nbsp;self&nbsp;as&nbsp;a&nbsp;function.</tt></dd></dl>
+
+<dl><dt><a name="function-__get__"><strong>__get__</strong></a>(self, instance, owner, /)</dt><dd><tt>Return&nbsp;an&nbsp;attribute&nbsp;of&nbsp;instance,&nbsp;which&nbsp;is&nbsp;of&nbsp;type&nbsp;owner.</tt></dd></dl>
+
+<dl><dt><a name="function-__repr__"><strong>__repr__</strong></a>(self, /)</dt><dd><tt>Return&nbsp;repr(self).</tt></dd></dl>
+
+<hr>
+Static methods defined here:<br>
+<dl><dt><a name="function-__new__"><strong>__new__</strong></a>(*args, **kwargs)<font color="#909090"><font face="helvetica, arial"> from <a href="builtins.html#type">builtins.type</a></font></font></dt><dd><tt>Create&nbsp;and&nbsp;return&nbsp;a&nbsp;new&nbsp;<a href="builtins.html#object">object</a>.&nbsp;&nbsp;See&nbsp;help(type)&nbsp;for&nbsp;accurate&nbsp;signature.</tt></dd></dl>
+
+<hr>
+Data descriptors defined here:<br>
+<dl><dt><strong>__annotations__</strong></dt>
+</dl>
+<dl><dt><strong>__closure__</strong></dt>
+</dl>
+<dl><dt><strong>__code__</strong></dt>
+</dl>
+<dl><dt><strong>__defaults__</strong></dt>
+</dl>
+<dl><dt><strong>__dict__</strong></dt>
+</dl>
+<dl><dt><strong>__globals__</strong></dt>
+</dl>
+<dl><dt><strong>__kwdefaults__</strong></dt>
+</dl>
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><strong>GeneratorType</strong> = <a name="GeneratorType">class generator</a>(<a href="builtins.html#object">object</a>)</font></td></tr>
+    
+<tr><td bgcolor="#ffc8d8"><tt>&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%">Methods defined here:<br>
+<dl><dt><a name="generator-__del__"><strong>__del__</strong></a>(...)</dt></dl>
+
+<dl><dt><a name="generator-__getattribute__"><strong>__getattribute__</strong></a>(self, name, /)</dt><dd><tt>Return&nbsp;getattr(self,&nbsp;name).</tt></dd></dl>
+
+<dl><dt><a name="generator-__iter__"><strong>__iter__</strong></a>(self, /)</dt><dd><tt>Implement&nbsp;iter(self).</tt></dd></dl>
+
+<dl><dt><a name="generator-__next__"><strong>__next__</strong></a>(self, /)</dt><dd><tt>Implement&nbsp;next(self).</tt></dd></dl>
+
+<dl><dt><a name="generator-__repr__"><strong>__repr__</strong></a>(self, /)</dt><dd><tt>Return&nbsp;repr(self).</tt></dd></dl>
+
+<dl><dt><a name="generator-close"><strong>close</strong></a>(...)</dt><dd><tt><a href="#GeneratorType-close">close</a>()&nbsp;-&gt;&nbsp;raise&nbsp;GeneratorExit&nbsp;inside&nbsp;generator.</tt></dd></dl>
+
+<dl><dt><a name="generator-send"><strong>send</strong></a>(...)</dt><dd><tt><a href="#GeneratorType-send">send</a>(arg)&nbsp;-&gt;&nbsp;send&nbsp;'arg'&nbsp;into&nbsp;generator,<br>
+return&nbsp;next&nbsp;yielded&nbsp;value&nbsp;or&nbsp;raise&nbsp;StopIteration.</tt></dd></dl>
+
+<dl><dt><a name="generator-throw"><strong>throw</strong></a>(...)</dt><dd><tt><a href="#GeneratorType-throw">throw</a>(typ[,val[,tb]])&nbsp;-&gt;&nbsp;raise&nbsp;exception&nbsp;in&nbsp;generator,<br>
+return&nbsp;next&nbsp;yielded&nbsp;value&nbsp;or&nbsp;raise&nbsp;StopIteration.</tt></dd></dl>
+
+<hr>
+Data descriptors defined here:<br>
+<dl><dt><strong>gi_code</strong></dt>
+</dl>
+<dl><dt><strong>gi_frame</strong></dt>
+</dl>
+<dl><dt><strong>gi_running</strong></dt>
+</dl>
+<dl><dt><strong>gi_yieldfrom</strong></dt>
+<dd><tt>object&nbsp;being&nbsp;iterated&nbsp;by&nbsp;yield&nbsp;from,&nbsp;or&nbsp;None</tt></dd>
+</dl>
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><strong>GetSetDescriptorType</strong> = <a name="GetSetDescriptorType">class getset_descriptor</a>(<a href="builtins.html#object">object</a>)</font></td></tr>
+    
+<tr><td bgcolor="#ffc8d8"><tt>&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%">Methods defined here:<br>
+<dl><dt><a name="getset_descriptor-__delete__"><strong>__delete__</strong></a>(self, instance, /)</dt><dd><tt>Delete&nbsp;an&nbsp;attribute&nbsp;of&nbsp;instance.</tt></dd></dl>
+
+<dl><dt><a name="getset_descriptor-__get__"><strong>__get__</strong></a>(self, instance, owner, /)</dt><dd><tt>Return&nbsp;an&nbsp;attribute&nbsp;of&nbsp;instance,&nbsp;which&nbsp;is&nbsp;of&nbsp;type&nbsp;owner.</tt></dd></dl>
+
+<dl><dt><a name="getset_descriptor-__getattribute__"><strong>__getattribute__</strong></a>(self, name, /)</dt><dd><tt>Return&nbsp;getattr(self,&nbsp;name).</tt></dd></dl>
+
+<dl><dt><a name="getset_descriptor-__repr__"><strong>__repr__</strong></a>(self, /)</dt><dd><tt>Return&nbsp;repr(self).</tt></dd></dl>
+
+<dl><dt><a name="getset_descriptor-__set__"><strong>__set__</strong></a>(self, instance, value, /)</dt><dd><tt>Set&nbsp;an&nbsp;attribute&nbsp;of&nbsp;instance&nbsp;to&nbsp;value.</tt></dd></dl>
+
+<hr>
+Data descriptors defined here:<br>
+<dl><dt><strong>__objclass__</strong></dt>
+</dl>
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><strong>LambdaType</strong> = <a name="LambdaType">class function</a>(<a href="builtins.html#object">object</a>)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt><a href="#LambdaType">LambdaType</a>(code,&nbsp;globals,&nbsp;name=None,&nbsp;argdefs=None,&nbsp;closure=None)<br>
+&nbsp;<br>
+Create&nbsp;a&nbsp;function&nbsp;<a href="builtins.html#object">object</a>.<br>
+&nbsp;<br>
+code<br>
+&nbsp;&nbsp;a&nbsp;code&nbsp;<a href="builtins.html#object">object</a><br>
+globals<br>
+&nbsp;&nbsp;the&nbsp;globals&nbsp;dictionary<br>
+name<br>
+&nbsp;&nbsp;a&nbsp;string&nbsp;that&nbsp;overrides&nbsp;the&nbsp;name&nbsp;from&nbsp;the&nbsp;code&nbsp;<a href="builtins.html#object">object</a><br>
+argdefs<br>
+&nbsp;&nbsp;a&nbsp;tuple&nbsp;that&nbsp;specifies&nbsp;the&nbsp;default&nbsp;argument&nbsp;values<br>
+closure<br>
+&nbsp;&nbsp;a&nbsp;tuple&nbsp;that&nbsp;supplies&nbsp;the&nbsp;bindings&nbsp;for&nbsp;free&nbsp;variables<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%">Methods defined here:<br>
+<dl><dt><a name="function-__call__"><strong>__call__</strong></a>(self, /, *args, **kwargs)</dt><dd><tt>Call&nbsp;self&nbsp;as&nbsp;a&nbsp;function.</tt></dd></dl>
+
+<dl><dt><a name="function-__get__"><strong>__get__</strong></a>(self, instance, owner, /)</dt><dd><tt>Return&nbsp;an&nbsp;attribute&nbsp;of&nbsp;instance,&nbsp;which&nbsp;is&nbsp;of&nbsp;type&nbsp;owner.</tt></dd></dl>
+
+<dl><dt><a name="function-__repr__"><strong>__repr__</strong></a>(self, /)</dt><dd><tt>Return&nbsp;repr(self).</tt></dd></dl>
+
+<hr>
+Static methods defined here:<br>
+<dl><dt><a name="function-__new__"><strong>__new__</strong></a>(*args, **kwargs)<font color="#909090"><font face="helvetica, arial"> from <a href="builtins.html#type">builtins.type</a></font></font></dt><dd><tt>Create&nbsp;and&nbsp;return&nbsp;a&nbsp;new&nbsp;<a href="builtins.html#object">object</a>.&nbsp;&nbsp;See&nbsp;help(type)&nbsp;for&nbsp;accurate&nbsp;signature.</tt></dd></dl>
+
+<hr>
+Data descriptors defined here:<br>
+<dl><dt><strong>__annotations__</strong></dt>
+</dl>
+<dl><dt><strong>__closure__</strong></dt>
+</dl>
+<dl><dt><strong>__code__</strong></dt>
+</dl>
+<dl><dt><strong>__defaults__</strong></dt>
+</dl>
+<dl><dt><strong>__dict__</strong></dt>
+</dl>
+<dl><dt><strong>__globals__</strong></dt>
+</dl>
+<dl><dt><strong>__kwdefaults__</strong></dt>
+</dl>
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><strong>MappingProxyType</strong> = <a name="MappingProxyType">class mappingproxy</a>(<a href="builtins.html#object">object</a>)</font></td></tr>
+    
+<tr><td bgcolor="#ffc8d8"><tt>&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%">Methods defined here:<br>
+<dl><dt><a name="mappingproxy-__contains__"><strong>__contains__</strong></a>(self, key, /)</dt><dd><tt>Return&nbsp;key&nbsp;in&nbsp;self.</tt></dd></dl>
+
+<dl><dt><a name="mappingproxy-__eq__"><strong>__eq__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;self==value.</tt></dd></dl>
+
+<dl><dt><a name="mappingproxy-__ge__"><strong>__ge__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;self&gt;=value.</tt></dd></dl>
+
+<dl><dt><a name="mappingproxy-__getattribute__"><strong>__getattribute__</strong></a>(self, name, /)</dt><dd><tt>Return&nbsp;getattr(self,&nbsp;name).</tt></dd></dl>
+
+<dl><dt><a name="mappingproxy-__getitem__"><strong>__getitem__</strong></a>(self, key, /)</dt><dd><tt>Return&nbsp;self[key].</tt></dd></dl>
+
+<dl><dt><a name="mappingproxy-__gt__"><strong>__gt__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;self&gt;value.</tt></dd></dl>
+
+<dl><dt><a name="mappingproxy-__iter__"><strong>__iter__</strong></a>(self, /)</dt><dd><tt>Implement&nbsp;iter(self).</tt></dd></dl>
+
+<dl><dt><a name="mappingproxy-__le__"><strong>__le__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;self&lt;=value.</tt></dd></dl>
+
+<dl><dt><a name="mappingproxy-__len__"><strong>__len__</strong></a>(self, /)</dt><dd><tt>Return&nbsp;len(self).</tt></dd></dl>
+
+<dl><dt><a name="mappingproxy-__lt__"><strong>__lt__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;self&lt;value.</tt></dd></dl>
+
+<dl><dt><a name="mappingproxy-__ne__"><strong>__ne__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;self!=value.</tt></dd></dl>
+
+<dl><dt><a name="mappingproxy-__repr__"><strong>__repr__</strong></a>(self, /)</dt><dd><tt>Return&nbsp;repr(self).</tt></dd></dl>
+
+<dl><dt><a name="mappingproxy-__str__"><strong>__str__</strong></a>(self, /)</dt><dd><tt>Return&nbsp;str(self).</tt></dd></dl>
+
+<dl><dt><a name="mappingproxy-copy"><strong>copy</strong></a>(...)</dt><dd><tt>D.<a href="#MappingProxyType-copy">copy</a>()&nbsp;-&gt;&nbsp;a&nbsp;shallow&nbsp;copy&nbsp;of&nbsp;D</tt></dd></dl>
+
+<dl><dt><a name="mappingproxy-get"><strong>get</strong></a>(...)</dt><dd><tt>D.<a href="#MappingProxyType-get">get</a>(k[,d])&nbsp;-&gt;&nbsp;D[k]&nbsp;if&nbsp;k&nbsp;in&nbsp;D,&nbsp;else&nbsp;d.&nbsp;&nbsp;d&nbsp;defaults&nbsp;to&nbsp;None.</tt></dd></dl>
+
+<dl><dt><a name="mappingproxy-items"><strong>items</strong></a>(...)</dt><dd><tt>D.<a href="#MappingProxyType-items">items</a>()&nbsp;-&gt;&nbsp;list&nbsp;of&nbsp;D's&nbsp;(key,&nbsp;value)&nbsp;pairs,&nbsp;as&nbsp;2-tuples</tt></dd></dl>
+
+<dl><dt><a name="mappingproxy-keys"><strong>keys</strong></a>(...)</dt><dd><tt>D.<a href="#MappingProxyType-keys">keys</a>()&nbsp;-&gt;&nbsp;list&nbsp;of&nbsp;D's&nbsp;keys</tt></dd></dl>
+
+<dl><dt><a name="mappingproxy-values"><strong>values</strong></a>(...)</dt><dd><tt>D.<a href="#MappingProxyType-values">values</a>()&nbsp;-&gt;&nbsp;list&nbsp;of&nbsp;D's&nbsp;values</tt></dd></dl>
+
+<hr>
+Static methods defined here:<br>
+<dl><dt><a name="mappingproxy-__new__"><strong>__new__</strong></a>(*args, **kwargs)<font color="#909090"><font face="helvetica, arial"> from <a href="builtins.html#type">builtins.type</a></font></font></dt><dd><tt>Create&nbsp;and&nbsp;return&nbsp;a&nbsp;new&nbsp;<a href="builtins.html#object">object</a>.&nbsp;&nbsp;See&nbsp;help(type)&nbsp;for&nbsp;accurate&nbsp;signature.</tt></dd></dl>
+
+<hr>
+Data and other attributes defined here:<br>
+<dl><dt><strong>__hash__</strong> = None</dl>
+
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><strong>MemberDescriptorType</strong> = <a name="MemberDescriptorType">class member_descriptor</a>(<a href="builtins.html#object">object</a>)</font></td></tr>
+    
+<tr><td bgcolor="#ffc8d8"><tt>&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%">Methods defined here:<br>
+<dl><dt><a name="member_descriptor-__delete__"><strong>__delete__</strong></a>(self, instance, /)</dt><dd><tt>Delete&nbsp;an&nbsp;attribute&nbsp;of&nbsp;instance.</tt></dd></dl>
+
+<dl><dt><a name="member_descriptor-__get__"><strong>__get__</strong></a>(self, instance, owner, /)</dt><dd><tt>Return&nbsp;an&nbsp;attribute&nbsp;of&nbsp;instance,&nbsp;which&nbsp;is&nbsp;of&nbsp;type&nbsp;owner.</tt></dd></dl>
+
+<dl><dt><a name="member_descriptor-__getattribute__"><strong>__getattribute__</strong></a>(self, name, /)</dt><dd><tt>Return&nbsp;getattr(self,&nbsp;name).</tt></dd></dl>
+
+<dl><dt><a name="member_descriptor-__reduce__"><strong>__reduce__</strong></a>(...)</dt><dd><tt>Helper&nbsp;for&nbsp;pickle.</tt></dd></dl>
+
+<dl><dt><a name="member_descriptor-__repr__"><strong>__repr__</strong></a>(self, /)</dt><dd><tt>Return&nbsp;repr(self).</tt></dd></dl>
+
+<dl><dt><a name="member_descriptor-__set__"><strong>__set__</strong></a>(self, instance, value, /)</dt><dd><tt>Set&nbsp;an&nbsp;attribute&nbsp;of&nbsp;instance&nbsp;to&nbsp;value.</tt></dd></dl>
+
+<hr>
+Data descriptors defined here:<br>
+<dl><dt><strong>__objclass__</strong></dt>
+</dl>
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><strong>MethodDescriptorType</strong> = <a name="MethodDescriptorType">class method_descriptor</a>(<a href="builtins.html#object">object</a>)</font></td></tr>
+    
+<tr><td bgcolor="#ffc8d8"><tt>&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%">Methods defined here:<br>
+<dl><dt><a name="method_descriptor-__call__"><strong>__call__</strong></a>(self, /, *args, **kwargs)</dt><dd><tt>Call&nbsp;self&nbsp;as&nbsp;a&nbsp;function.</tt></dd></dl>
+
+<dl><dt><a name="method_descriptor-__get__"><strong>__get__</strong></a>(self, instance, owner, /)</dt><dd><tt>Return&nbsp;an&nbsp;attribute&nbsp;of&nbsp;instance,&nbsp;which&nbsp;is&nbsp;of&nbsp;type&nbsp;owner.</tt></dd></dl>
+
+<dl><dt><a name="method_descriptor-__getattribute__"><strong>__getattribute__</strong></a>(self, name, /)</dt><dd><tt>Return&nbsp;getattr(self,&nbsp;name).</tt></dd></dl>
+
+<dl><dt><a name="method_descriptor-__reduce__"><strong>__reduce__</strong></a>(...)</dt><dd><tt>Helper&nbsp;for&nbsp;pickle.</tt></dd></dl>
+
+<dl><dt><a name="method_descriptor-__repr__"><strong>__repr__</strong></a>(self, /)</dt><dd><tt>Return&nbsp;repr(self).</tt></dd></dl>
+
+<hr>
+Data descriptors defined here:<br>
+<dl><dt><strong>__objclass__</strong></dt>
+</dl>
+<dl><dt><strong>__text_signature__</strong></dt>
+</dl>
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><strong>MethodType</strong> = <a name="MethodType">class method</a>(<a href="builtins.html#object">object</a>)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt>method(function,&nbsp;instance)<br>
+&nbsp;<br>
+Create&nbsp;a&nbsp;bound&nbsp;instance&nbsp;method&nbsp;<a href="builtins.html#object">object</a>.<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%">Methods defined here:<br>
+<dl><dt><a name="method-__call__"><strong>__call__</strong></a>(self, /, *args, **kwargs)</dt><dd><tt>Call&nbsp;self&nbsp;as&nbsp;a&nbsp;function.</tt></dd></dl>
+
+<dl><dt><a name="method-__delattr__"><strong>__delattr__</strong></a>(self, name, /)</dt><dd><tt>Implement&nbsp;delattr(self,&nbsp;name).</tt></dd></dl>
+
+<dl><dt><a name="method-__eq__"><strong>__eq__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;self==value.</tt></dd></dl>
+
+<dl><dt><a name="method-__ge__"><strong>__ge__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;self&gt;=value.</tt></dd></dl>
+
+<dl><dt><a name="method-__get__"><strong>__get__</strong></a>(self, instance, owner, /)</dt><dd><tt>Return&nbsp;an&nbsp;attribute&nbsp;of&nbsp;instance,&nbsp;which&nbsp;is&nbsp;of&nbsp;type&nbsp;owner.</tt></dd></dl>
+
+<dl><dt><a name="method-__getattribute__"><strong>__getattribute__</strong></a>(self, name, /)</dt><dd><tt>Return&nbsp;getattr(self,&nbsp;name).</tt></dd></dl>
+
+<dl><dt><a name="method-__gt__"><strong>__gt__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;self&gt;value.</tt></dd></dl>
+
+<dl><dt><a name="method-__hash__"><strong>__hash__</strong></a>(self, /)</dt><dd><tt>Return&nbsp;hash(self).</tt></dd></dl>
+
+<dl><dt><a name="method-__le__"><strong>__le__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;self&lt;=value.</tt></dd></dl>
+
+<dl><dt><a name="method-__lt__"><strong>__lt__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;self&lt;value.</tt></dd></dl>
+
+<dl><dt><a name="method-__ne__"><strong>__ne__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;self!=value.</tt></dd></dl>
+
+<dl><dt><a name="method-__reduce__"><strong>__reduce__</strong></a>(...)</dt><dd><tt>Helper&nbsp;for&nbsp;pickle.</tt></dd></dl>
+
+<dl><dt><a name="method-__repr__"><strong>__repr__</strong></a>(self, /)</dt><dd><tt>Return&nbsp;repr(self).</tt></dd></dl>
+
+<dl><dt><a name="method-__setattr__"><strong>__setattr__</strong></a>(self, name, value, /)</dt><dd><tt>Implement&nbsp;setattr(self,&nbsp;name,&nbsp;value).</tt></dd></dl>
+
+<hr>
+Static methods defined here:<br>
+<dl><dt><a name="method-__new__"><strong>__new__</strong></a>(*args, **kwargs)<font color="#909090"><font face="helvetica, arial"> from <a href="builtins.html#type">builtins.type</a></font></font></dt><dd><tt>Create&nbsp;and&nbsp;return&nbsp;a&nbsp;new&nbsp;<a href="builtins.html#object">object</a>.&nbsp;&nbsp;See&nbsp;help(type)&nbsp;for&nbsp;accurate&nbsp;signature.</tt></dd></dl>
+
+<hr>
+Data descriptors defined here:<br>
+<dl><dt><strong>__func__</strong></dt>
+<dd><tt>the&nbsp;function&nbsp;(or&nbsp;other&nbsp;callable)&nbsp;implementing&nbsp;a&nbsp;method</tt></dd>
+</dl>
+<dl><dt><strong>__self__</strong></dt>
+<dd><tt>the&nbsp;instance&nbsp;to&nbsp;which&nbsp;a&nbsp;method&nbsp;is&nbsp;bound</tt></dd>
+</dl>
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><strong>MethodWrapperType</strong> = <a name="MethodWrapperType">class method-wrapper</a>(<a href="builtins.html#object">object</a>)</font></td></tr>
+    
+<tr><td bgcolor="#ffc8d8"><tt>&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%">Methods defined here:<br>
+<dl><dt><a name="method-wrapper-__call__"><strong>__call__</strong></a>(self, /, *args, **kwargs)</dt><dd><tt>Call&nbsp;self&nbsp;as&nbsp;a&nbsp;function.</tt></dd></dl>
+
+<dl><dt><a name="method-wrapper-__eq__"><strong>__eq__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;self==value.</tt></dd></dl>
+
+<dl><dt><a name="method-wrapper-__ge__"><strong>__ge__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;self&gt;=value.</tt></dd></dl>
+
+<dl><dt><a name="method-wrapper-__getattribute__"><strong>__getattribute__</strong></a>(self, name, /)</dt><dd><tt>Return&nbsp;getattr(self,&nbsp;name).</tt></dd></dl>
+
+<dl><dt><a name="method-wrapper-__gt__"><strong>__gt__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;self&gt;value.</tt></dd></dl>
+
+<dl><dt><a name="method-wrapper-__hash__"><strong>__hash__</strong></a>(self, /)</dt><dd><tt>Return&nbsp;hash(self).</tt></dd></dl>
+
+<dl><dt><a name="method-wrapper-__le__"><strong>__le__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;self&lt;=value.</tt></dd></dl>
+
+<dl><dt><a name="method-wrapper-__lt__"><strong>__lt__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;self&lt;value.</tt></dd></dl>
+
+<dl><dt><a name="method-wrapper-__ne__"><strong>__ne__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;self!=value.</tt></dd></dl>
+
+<dl><dt><a name="method-wrapper-__reduce__"><strong>__reduce__</strong></a>(...)</dt><dd><tt>Helper&nbsp;for&nbsp;pickle.</tt></dd></dl>
+
+<dl><dt><a name="method-wrapper-__repr__"><strong>__repr__</strong></a>(self, /)</dt><dd><tt>Return&nbsp;repr(self).</tt></dd></dl>
+
+<hr>
+Data descriptors defined here:<br>
+<dl><dt><strong>__objclass__</strong></dt>
+</dl>
+<dl><dt><strong>__self__</strong></dt>
+</dl>
+<dl><dt><strong>__text_signature__</strong></dt>
+</dl>
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><strong>ModuleType</strong> = <a name="ModuleType">class module</a>(<a href="builtins.html#object">object</a>)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt><a href="#ModuleType">ModuleType</a>(name,&nbsp;doc=None)<br>
+&nbsp;<br>
+Create&nbsp;a&nbsp;module&nbsp;<a href="builtins.html#object">object</a>.<br>
+&nbsp;<br>
+The&nbsp;name&nbsp;must&nbsp;be&nbsp;a&nbsp;string;&nbsp;the&nbsp;optional&nbsp;doc&nbsp;argument&nbsp;can&nbsp;have&nbsp;any&nbsp;type.<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%">Methods defined here:<br>
+<dl><dt><a name="module-__delattr__"><strong>__delattr__</strong></a>(self, name, /)</dt><dd><tt>Implement&nbsp;delattr(self,&nbsp;name).</tt></dd></dl>
+
+<dl><dt><a name="module-__dir__"><strong>__dir__</strong></a>(...)</dt><dd><tt><a href="#ModuleType-__dir__">__dir__</a>()&nbsp;-&gt;&nbsp;list<br>
+specialized&nbsp;dir()&nbsp;implementation</tt></dd></dl>
+
+<dl><dt><a name="module-__getattribute__"><strong>__getattribute__</strong></a>(self, name, /)</dt><dd><tt>Return&nbsp;getattr(self,&nbsp;name).</tt></dd></dl>
+
+<dl><dt><a name="module-__init__"><strong>__init__</strong></a>(self, /, *args, **kwargs)</dt><dd><tt>Initialize&nbsp;self.&nbsp;&nbsp;See&nbsp;help(type(self))&nbsp;for&nbsp;accurate&nbsp;signature.</tt></dd></dl>
+
+<dl><dt><a name="module-__repr__"><strong>__repr__</strong></a>(self, /)</dt><dd><tt>Return&nbsp;repr(self).</tt></dd></dl>
+
+<dl><dt><a name="module-__setattr__"><strong>__setattr__</strong></a>(self, name, value, /)</dt><dd><tt>Implement&nbsp;setattr(self,&nbsp;name,&nbsp;value).</tt></dd></dl>
+
+<hr>
+Static methods defined here:<br>
+<dl><dt><a name="module-__new__"><strong>__new__</strong></a>(*args, **kwargs)<font color="#909090"><font face="helvetica, arial"> from <a href="builtins.html#type">builtins.type</a></font></font></dt><dd><tt>Create&nbsp;and&nbsp;return&nbsp;a&nbsp;new&nbsp;<a href="builtins.html#object">object</a>.&nbsp;&nbsp;See&nbsp;help(type)&nbsp;for&nbsp;accurate&nbsp;signature.</tt></dd></dl>
+
+<hr>
+Data descriptors defined here:<br>
+<dl><dt><strong>__dict__</strong></dt>
+</dl>
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="SimpleNamespace">class <strong>SimpleNamespace</strong></a>(<a href="builtins.html#object">builtins.object</a>)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt>A&nbsp;simple&nbsp;attribute-based&nbsp;namespace.<br>
+&nbsp;<br>
+<a href="#SimpleNamespace">SimpleNamespace</a>(**kwargs)<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%">Methods defined here:<br>
+<dl><dt><a name="SimpleNamespace-__delattr__"><strong>__delattr__</strong></a>(self, name, /)</dt><dd><tt>Implement&nbsp;delattr(self,&nbsp;name).</tt></dd></dl>
+
+<dl><dt><a name="SimpleNamespace-__eq__"><strong>__eq__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;self==value.</tt></dd></dl>
+
+<dl><dt><a name="SimpleNamespace-__ge__"><strong>__ge__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;self&gt;=value.</tt></dd></dl>
+
+<dl><dt><a name="SimpleNamespace-__getattribute__"><strong>__getattribute__</strong></a>(self, name, /)</dt><dd><tt>Return&nbsp;getattr(self,&nbsp;name).</tt></dd></dl>
+
+<dl><dt><a name="SimpleNamespace-__gt__"><strong>__gt__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;self&gt;value.</tt></dd></dl>
+
+<dl><dt><a name="SimpleNamespace-__init__"><strong>__init__</strong></a>(self, /, *args, **kwargs)</dt><dd><tt>Initialize&nbsp;self.&nbsp;&nbsp;See&nbsp;help(type(self))&nbsp;for&nbsp;accurate&nbsp;signature.</tt></dd></dl>
+
+<dl><dt><a name="SimpleNamespace-__le__"><strong>__le__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;self&lt;=value.</tt></dd></dl>
+
+<dl><dt><a name="SimpleNamespace-__lt__"><strong>__lt__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;self&lt;value.</tt></dd></dl>
+
+<dl><dt><a name="SimpleNamespace-__ne__"><strong>__ne__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;self!=value.</tt></dd></dl>
+
+<dl><dt><a name="SimpleNamespace-__reduce__"><strong>__reduce__</strong></a>(...)</dt><dd><tt>Return&nbsp;state&nbsp;information&nbsp;for&nbsp;pickling</tt></dd></dl>
+
+<dl><dt><a name="SimpleNamespace-__repr__"><strong>__repr__</strong></a>(self, /)</dt><dd><tt>Return&nbsp;repr(self).</tt></dd></dl>
+
+<dl><dt><a name="SimpleNamespace-__setattr__"><strong>__setattr__</strong></a>(self, name, value, /)</dt><dd><tt>Implement&nbsp;setattr(self,&nbsp;name,&nbsp;value).</tt></dd></dl>
+
+<hr>
+Static methods defined here:<br>
+<dl><dt><a name="SimpleNamespace-__new__"><strong>__new__</strong></a>(*args, **kwargs)<font color="#909090"><font face="helvetica, arial"> from <a href="builtins.html#type">builtins.type</a></font></font></dt><dd><tt>Create&nbsp;and&nbsp;return&nbsp;a&nbsp;new&nbsp;<a href="builtins.html#object">object</a>.&nbsp;&nbsp;See&nbsp;help(type)&nbsp;for&nbsp;accurate&nbsp;signature.</tt></dd></dl>
+
+<hr>
+Data descriptors defined here:<br>
+<dl><dt><strong>__dict__</strong></dt>
+</dl>
+<hr>
+Data and other attributes defined here:<br>
+<dl><dt><strong>__hash__</strong> = None</dl>
+
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><strong>TracebackType</strong> = <a name="TracebackType">class traceback</a>(<a href="builtins.html#object">object</a>)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt><a href="#TracebackType">TracebackType</a>(tb_next,&nbsp;tb_frame,&nbsp;tb_lasti,&nbsp;tb_lineno)<br>
+--<br>
+&nbsp;<br>
+Create&nbsp;a&nbsp;new&nbsp;traceback&nbsp;<a href="builtins.html#object">object</a>.<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%">Methods defined here:<br>
+<dl><dt><a name="traceback-__dir__"><strong>__dir__</strong></a>(...)</dt><dd><tt>Default&nbsp;dir()&nbsp;implementation.</tt></dd></dl>
+
+<dl><dt><a name="traceback-__getattribute__"><strong>__getattribute__</strong></a>(self, name, /)</dt><dd><tt>Return&nbsp;getattr(self,&nbsp;name).</tt></dd></dl>
+
+<hr>
+Static methods defined here:<br>
+<dl><dt><a name="traceback-__new__"><strong>__new__</strong></a>(*args, **kwargs)<font color="#909090"><font face="helvetica, arial"> from <a href="builtins.html#type">builtins.type</a></font></font></dt><dd><tt>Create&nbsp;and&nbsp;return&nbsp;a&nbsp;new&nbsp;<a href="builtins.html#object">object</a>.&nbsp;&nbsp;See&nbsp;help(type)&nbsp;for&nbsp;accurate&nbsp;signature.</tt></dd></dl>
+
+<hr>
+Data descriptors defined here:<br>
+<dl><dt><strong>tb_frame</strong></dt>
+</dl>
+<dl><dt><strong>tb_lasti</strong></dt>
+</dl>
+<dl><dt><strong>tb_lineno</strong></dt>
+</dl>
+<dl><dt><strong>tb_next</strong></dt>
+</dl>
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><strong>WrapperDescriptorType</strong> = <a name="WrapperDescriptorType">class wrapper_descriptor</a>(<a href="builtins.html#object">object</a>)</font></td></tr>
+    
+<tr><td bgcolor="#ffc8d8"><tt>&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%">Methods defined here:<br>
+<dl><dt><a name="wrapper_descriptor-__call__"><strong>__call__</strong></a>(self, /, *args, **kwargs)</dt><dd><tt>Call&nbsp;self&nbsp;as&nbsp;a&nbsp;function.</tt></dd></dl>
+
+<dl><dt><a name="wrapper_descriptor-__get__"><strong>__get__</strong></a>(self, instance, owner, /)</dt><dd><tt>Return&nbsp;an&nbsp;attribute&nbsp;of&nbsp;instance,&nbsp;which&nbsp;is&nbsp;of&nbsp;type&nbsp;owner.</tt></dd></dl>
+
+<dl><dt><a name="wrapper_descriptor-__getattribute__"><strong>__getattribute__</strong></a>(self, name, /)</dt><dd><tt>Return&nbsp;getattr(self,&nbsp;name).</tt></dd></dl>
+
+<dl><dt><a name="wrapper_descriptor-__reduce__"><strong>__reduce__</strong></a>(...)</dt><dd><tt>Helper&nbsp;for&nbsp;pickle.</tt></dd></dl>
+
+<dl><dt><a name="wrapper_descriptor-__repr__"><strong>__repr__</strong></a>(self, /)</dt><dd><tt>Return&nbsp;repr(self).</tt></dd></dl>
+
+<hr>
+Data descriptors defined here:<br>
+<dl><dt><strong>__objclass__</strong></dt>
+</dl>
+<dl><dt><strong>__text_signature__</strong></dt>
+</dl>
+</td></tr></table></td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#eeaa77">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Functions</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#eeaa77"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl><dt><a name="-coroutine"><strong>coroutine</strong></a>(func)</dt><dd><tt>Convert&nbsp;regular&nbsp;generator&nbsp;function&nbsp;to&nbsp;a&nbsp;coroutine.</tt></dd></dl>
+ <dl><dt><a name="-new_class"><strong>new_class</strong></a>(name, bases=(), kwds=None, exec_body=None)</dt><dd><tt>Create&nbsp;a&nbsp;class&nbsp;<a href="builtins.html#object">object</a>&nbsp;dynamically&nbsp;using&nbsp;the&nbsp;appropriate&nbsp;metaclass.</tt></dd></dl>
+ <dl><dt><a name="-prepare_class"><strong>prepare_class</strong></a>(name, bases=(), kwds=None)</dt><dd><tt>Call&nbsp;the&nbsp;__prepare__&nbsp;method&nbsp;of&nbsp;the&nbsp;appropriate&nbsp;metaclass.<br>
+&nbsp;<br>
+Returns&nbsp;(metaclass,&nbsp;namespace,&nbsp;kwds)&nbsp;as&nbsp;a&nbsp;3-tuple<br>
+&nbsp;<br>
+*metaclass*&nbsp;is&nbsp;the&nbsp;appropriate&nbsp;metaclass<br>
+*namespace*&nbsp;is&nbsp;the&nbsp;prepared&nbsp;class&nbsp;namespace<br>
+*kwds*&nbsp;is&nbsp;an&nbsp;updated&nbsp;copy&nbsp;of&nbsp;the&nbsp;passed&nbsp;in&nbsp;kwds&nbsp;argument&nbsp;with&nbsp;any<br>
+'metaclass'&nbsp;entry&nbsp;removed.&nbsp;If&nbsp;no&nbsp;kwds&nbsp;argument&nbsp;is&nbsp;passed&nbsp;in,&nbsp;this&nbsp;will<br>
+be&nbsp;an&nbsp;empty&nbsp;dict.</tt></dd></dl>
+ <dl><dt><a name="-resolve_bases"><strong>resolve_bases</strong></a>(bases)</dt><dd><tt>Resolve&nbsp;MRO&nbsp;entries&nbsp;dynamically&nbsp;as&nbsp;specified&nbsp;by&nbsp;<a href="http://www.python.org/dev/peps/pep-0560/">PEP&nbsp;560</a>.</tt></dd></dl>
+</td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#55aa55">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Data</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#55aa55"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><strong>__all__</strong> = ['FunctionType', 'LambdaType', 'CodeType', 'MappingProxyType', 'SimpleNamespace', 'CellType', 'GeneratorType', 'CoroutineType', 'AsyncGeneratorType', 'MethodType', 'BuiltinFunctionType', 'BuiltinMethodType', 'WrapperDescriptorType', 'MethodWrapperType', 'MethodDescriptorType', 'ClassMethodDescriptorType', 'ModuleType', 'TracebackType', 'FrameType', 'GetSetDescriptorType', ...]</td></tr></table>
+</body></html>

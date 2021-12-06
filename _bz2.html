@@ -1,0 +1,110 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head><title>Python: module _bz2</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+</head><body bgcolor="#f0f0f8">
+
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="heading">
+<tr bgcolor="#7799ee">
+<td valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong>_bz2</strong></big></big></font></td
+><td align=right valign=bottom
+><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:c%3A%5Cpython38%5Cdlls%5C_bz2.pyd">c:\python38\dlls\_bz2.pyd</a></font></td></tr></table>
+    <p></p>
+<p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ee77aa">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Classes</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#ee77aa"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl>
+<dt><font face="helvetica, arial"><a href="builtins.html#object">builtins.object</a>
+</font></dt><dd>
+<dl>
+<dt><font face="helvetica, arial"><a href="_bz2.html#BZ2Compressor">BZ2Compressor</a>
+</font></dt><dt><font face="helvetica, arial"><a href="_bz2.html#BZ2Decompressor">BZ2Decompressor</a>
+</font></dt></dl>
+</dd>
+</dl>
+ <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="BZ2Compressor">class <strong>BZ2Compressor</strong></a>(<a href="builtins.html#object">builtins.object</a>)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt><a href="#BZ2Compressor">BZ2Compressor</a>(compresslevel=9,&nbsp;/)<br>
+&nbsp;<br>
+Create&nbsp;a&nbsp;compressor&nbsp;<a href="builtins.html#object">object</a>&nbsp;for&nbsp;compressing&nbsp;data&nbsp;incrementally.<br>
+&nbsp;<br>
+&nbsp;&nbsp;compresslevel<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Compression&nbsp;level,&nbsp;as&nbsp;a&nbsp;number&nbsp;between&nbsp;1&nbsp;and&nbsp;9.<br>
+&nbsp;<br>
+For&nbsp;one-shot&nbsp;compression,&nbsp;use&nbsp;the&nbsp;<a href="#BZ2Compressor-compress">compress</a>()&nbsp;function&nbsp;instead.<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%">Methods defined here:<br>
+<dl><dt><a name="BZ2Compressor-__init__"><strong>__init__</strong></a>(self, /, *args, **kwargs)</dt><dd><tt>Initialize&nbsp;self.&nbsp;&nbsp;See&nbsp;help(type(self))&nbsp;for&nbsp;accurate&nbsp;signature.</tt></dd></dl>
+
+<dl><dt><a name="BZ2Compressor-compress"><strong>compress</strong></a>(self, data, /)</dt><dd><tt>Provide&nbsp;data&nbsp;to&nbsp;the&nbsp;compressor&nbsp;<a href="builtins.html#object">object</a>.<br>
+&nbsp;<br>
+Returns&nbsp;a&nbsp;chunk&nbsp;of&nbsp;compressed&nbsp;data&nbsp;if&nbsp;possible,&nbsp;or&nbsp;b''&nbsp;otherwise.<br>
+&nbsp;<br>
+When&nbsp;you&nbsp;have&nbsp;finished&nbsp;providing&nbsp;data&nbsp;to&nbsp;the&nbsp;compressor,&nbsp;call&nbsp;the<br>
+<a href="#BZ2Compressor-flush">flush</a>()&nbsp;method&nbsp;to&nbsp;finish&nbsp;the&nbsp;compression&nbsp;process.</tt></dd></dl>
+
+<dl><dt><a name="BZ2Compressor-flush"><strong>flush</strong></a>(self, /)</dt><dd><tt>Finish&nbsp;the&nbsp;compression&nbsp;process.<br>
+&nbsp;<br>
+Returns&nbsp;the&nbsp;compressed&nbsp;data&nbsp;left&nbsp;in&nbsp;internal&nbsp;buffers.<br>
+&nbsp;<br>
+The&nbsp;compressor&nbsp;<a href="builtins.html#object">object</a>&nbsp;may&nbsp;not&nbsp;be&nbsp;used&nbsp;after&nbsp;this&nbsp;method&nbsp;is&nbsp;called.</tt></dd></dl>
+
+<hr>
+Static methods defined here:<br>
+<dl><dt><a name="BZ2Compressor-__new__"><strong>__new__</strong></a>(*args, **kwargs)<font color="#909090"><font face="helvetica, arial"> from <a href="builtins.html#type">builtins.type</a></font></font></dt><dd><tt>Create&nbsp;and&nbsp;return&nbsp;a&nbsp;new&nbsp;<a href="builtins.html#object">object</a>.&nbsp;&nbsp;See&nbsp;help(type)&nbsp;for&nbsp;accurate&nbsp;signature.</tt></dd></dl>
+
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="BZ2Decompressor">class <strong>BZ2Decompressor</strong></a>(<a href="builtins.html#object">builtins.object</a>)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt>Create&nbsp;a&nbsp;decompressor&nbsp;<a href="builtins.html#object">object</a>&nbsp;for&nbsp;decompressing&nbsp;data&nbsp;incrementally.<br>
+&nbsp;<br>
+For&nbsp;one-shot&nbsp;decompression,&nbsp;use&nbsp;the&nbsp;<a href="#BZ2Decompressor-decompress">decompress</a>()&nbsp;function&nbsp;instead.<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%">Methods defined here:<br>
+<dl><dt><a name="BZ2Decompressor-__init__"><strong>__init__</strong></a>(self, /, *args, **kwargs)</dt><dd><tt>Initialize&nbsp;self.&nbsp;&nbsp;See&nbsp;help(type(self))&nbsp;for&nbsp;accurate&nbsp;signature.</tt></dd></dl>
+
+<dl><dt><a name="BZ2Decompressor-decompress"><strong>decompress</strong></a>(self, /, data, max_length=-1)</dt><dd><tt>Decompress&nbsp;*data*,&nbsp;returning&nbsp;uncompressed&nbsp;data&nbsp;as&nbsp;bytes.<br>
+&nbsp;<br>
+If&nbsp;*max_length*&nbsp;is&nbsp;nonnegative,&nbsp;returns&nbsp;at&nbsp;most&nbsp;*max_length*&nbsp;bytes&nbsp;of<br>
+decompressed&nbsp;data.&nbsp;If&nbsp;this&nbsp;limit&nbsp;is&nbsp;reached&nbsp;and&nbsp;further&nbsp;output&nbsp;can&nbsp;be<br>
+produced,&nbsp;*self.<strong>needs_input</strong>*&nbsp;will&nbsp;be&nbsp;set&nbsp;to&nbsp;``False``.&nbsp;In&nbsp;this&nbsp;case,&nbsp;the&nbsp;next<br>
+call&nbsp;to&nbsp;*<a href="#BZ2Decompressor-decompress">decompress</a>()*&nbsp;may&nbsp;provide&nbsp;*data*&nbsp;as&nbsp;b''&nbsp;to&nbsp;obtain&nbsp;more&nbsp;of&nbsp;the&nbsp;output.<br>
+&nbsp;<br>
+If&nbsp;all&nbsp;of&nbsp;the&nbsp;input&nbsp;data&nbsp;was&nbsp;decompressed&nbsp;and&nbsp;returned&nbsp;(either&nbsp;because&nbsp;this<br>
+was&nbsp;less&nbsp;than&nbsp;*max_length*&nbsp;bytes,&nbsp;or&nbsp;because&nbsp;*max_length*&nbsp;was&nbsp;negative),<br>
+*self.<strong>needs_input</strong>*&nbsp;will&nbsp;be&nbsp;set&nbsp;to&nbsp;True.<br>
+&nbsp;<br>
+Attempting&nbsp;to&nbsp;decompress&nbsp;data&nbsp;after&nbsp;the&nbsp;end&nbsp;of&nbsp;stream&nbsp;is&nbsp;reached&nbsp;raises&nbsp;an<br>
+EOFError.&nbsp;&nbsp;Any&nbsp;data&nbsp;found&nbsp;after&nbsp;the&nbsp;end&nbsp;of&nbsp;the&nbsp;stream&nbsp;is&nbsp;ignored&nbsp;and&nbsp;saved&nbsp;in<br>
+the&nbsp;unused_data&nbsp;attribute.</tt></dd></dl>
+
+<hr>
+Static methods defined here:<br>
+<dl><dt><a name="BZ2Decompressor-__new__"><strong>__new__</strong></a>(*args, **kwargs)<font color="#909090"><font face="helvetica, arial"> from <a href="builtins.html#type">builtins.type</a></font></font></dt><dd><tt>Create&nbsp;and&nbsp;return&nbsp;a&nbsp;new&nbsp;<a href="builtins.html#object">object</a>.&nbsp;&nbsp;See&nbsp;help(type)&nbsp;for&nbsp;accurate&nbsp;signature.</tt></dd></dl>
+
+<hr>
+Data descriptors defined here:<br>
+<dl><dt><strong>eof</strong></dt>
+<dd><tt>True&nbsp;if&nbsp;the&nbsp;end-of-stream&nbsp;marker&nbsp;has&nbsp;been&nbsp;reached.</tt></dd>
+</dl>
+<dl><dt><strong>needs_input</strong></dt>
+<dd><tt>True&nbsp;if&nbsp;more&nbsp;input&nbsp;is&nbsp;needed&nbsp;before&nbsp;more&nbsp;decompressed&nbsp;data&nbsp;can&nbsp;be&nbsp;produced.</tt></dd>
+</dl>
+<dl><dt><strong>unused_data</strong></dt>
+<dd><tt>Data&nbsp;found&nbsp;after&nbsp;the&nbsp;end&nbsp;of&nbsp;the&nbsp;compressed&nbsp;stream.</tt></dd>
+</dl>
+</td></tr></table></td></tr></table>
+</body></html>

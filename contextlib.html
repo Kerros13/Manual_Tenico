@@ -1,0 +1,671 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head><title>Python: module contextlib</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+</head><body bgcolor="#f0f0f8">
+
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="heading">
+<tr bgcolor="#7799ee">
+<td valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong>contextlib</strong></big></big></font></td
+><td align=right valign=bottom
+><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:c%3A%5Cpython38%5Clib%5Ccontextlib.py">c:\python38\lib\contextlib.py</a><br><a href="https://docs.python.org/3.8/library/contextlib">Module Reference</a></font></td></tr></table>
+    <p><tt>Utilities&nbsp;for&nbsp;with-statement&nbsp;contexts.&nbsp;&nbsp;See&nbsp;<a href="http://www.python.org/dev/peps/pep-0343/">PEP&nbsp;343</a>.</tt></p>
+<p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#aa55cc">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Modules</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#aa55cc"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><table width="100%" summary="list"><tr><td width="25%" valign=top><a href="collections.abc.html">collections.abc</a><br>
+</td><td width="25%" valign=top><a href="abc.html">abc</a><br>
+</td><td width="25%" valign=top><a href="sys.html">sys</a><br>
+</td><td width="25%" valign=top></td></tr></table></td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ee77aa">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Classes</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#ee77aa"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl>
+<dt><font face="helvetica, arial"><a href="abc.html#ABC">abc.ABC</a>(<a href="builtins.html#object">builtins.object</a>)
+</font></dt><dd>
+<dl>
+<dt><font face="helvetica, arial"><a href="contextlib.html#AbstractAsyncContextManager">AbstractAsyncContextManager</a>
+</font></dt><dd>
+<dl>
+<dt><font face="helvetica, arial"><a href="contextlib.html#AsyncExitStack">AsyncExitStack</a>(<a href="contextlib.html#_BaseExitStack">_BaseExitStack</a>, <a href="contextlib.html#AbstractAsyncContextManager">AbstractAsyncContextManager</a>)
+</font></dt></dl>
+</dd>
+<dt><font face="helvetica, arial"><a href="contextlib.html#AbstractContextManager">AbstractContextManager</a>
+</font></dt><dd>
+<dl>
+<dt><font face="helvetica, arial"><a href="contextlib.html#ExitStack">ExitStack</a>(<a href="contextlib.html#_BaseExitStack">_BaseExitStack</a>, <a href="contextlib.html#AbstractContextManager">AbstractContextManager</a>)
+</font></dt><dt><font face="helvetica, arial"><a href="contextlib.html#closing">closing</a>
+</font></dt><dt><font face="helvetica, arial"><a href="contextlib.html#nullcontext">nullcontext</a>
+</font></dt><dt><font face="helvetica, arial"><a href="contextlib.html#suppress">suppress</a>
+</font></dt></dl>
+</dd>
+</dl>
+</dd>
+<dt><font face="helvetica, arial"><a href="builtins.html#object">builtins.object</a>
+</font></dt><dd>
+<dl>
+<dt><font face="helvetica, arial"><a href="contextlib.html#ContextDecorator">ContextDecorator</a>
+</font></dt></dl>
+</dd>
+<dt><font face="helvetica, arial"><a href="contextlib.html#_BaseExitStack">_BaseExitStack</a>(<a href="builtins.html#object">builtins.object</a>)
+</font></dt><dd>
+<dl>
+<dt><font face="helvetica, arial"><a href="contextlib.html#AsyncExitStack">AsyncExitStack</a>(<a href="contextlib.html#_BaseExitStack">_BaseExitStack</a>, <a href="contextlib.html#AbstractAsyncContextManager">AbstractAsyncContextManager</a>)
+</font></dt><dt><font face="helvetica, arial"><a href="contextlib.html#ExitStack">ExitStack</a>(<a href="contextlib.html#_BaseExitStack">_BaseExitStack</a>, <a href="contextlib.html#AbstractContextManager">AbstractContextManager</a>)
+</font></dt></dl>
+</dd>
+<dt><font face="helvetica, arial"><a href="contextlib.html#_RedirectStream">_RedirectStream</a>(<a href="contextlib.html#AbstractContextManager">AbstractContextManager</a>)
+</font></dt><dd>
+<dl>
+<dt><font face="helvetica, arial"><a href="contextlib.html#redirect_stderr">redirect_stderr</a>
+</font></dt><dt><font face="helvetica, arial"><a href="contextlib.html#redirect_stdout">redirect_stdout</a>
+</font></dt></dl>
+</dd>
+</dl>
+ <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="AbstractAsyncContextManager">class <strong>AbstractAsyncContextManager</strong></a>(<a href="abc.html#ABC">abc.ABC</a>)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt>An&nbsp;abstract&nbsp;base&nbsp;class&nbsp;for&nbsp;asynchronous&nbsp;context&nbsp;managers.<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%"><dl><dt>Method resolution order:</dt>
+<dd><a href="contextlib.html#AbstractAsyncContextManager">AbstractAsyncContextManager</a></dd>
+<dd><a href="abc.html#ABC">abc.ABC</a></dd>
+<dd><a href="builtins.html#object">builtins.object</a></dd>
+</dl>
+<hr>
+Methods defined here:<br>
+<dl><dt>async <a name="AbstractAsyncContextManager-__aenter__"><strong>__aenter__</strong></a>(self)</dt><dd><tt>Return&nbsp;`self`&nbsp;upon&nbsp;entering&nbsp;the&nbsp;runtime&nbsp;context.</tt></dd></dl>
+
+<dl><dt>async <a name="AbstractAsyncContextManager-__aexit__"><strong>__aexit__</strong></a>(self, exc_type, exc_value, traceback)</dt><dd><tt>Raise&nbsp;any&nbsp;exception&nbsp;triggered&nbsp;within&nbsp;the&nbsp;runtime&nbsp;context.</tt></dd></dl>
+
+<hr>
+Class methods defined here:<br>
+<dl><dt><a name="AbstractAsyncContextManager-__subclasshook__"><strong>__subclasshook__</strong></a>(C)<font color="#909090"><font face="helvetica, arial"> from <a href="abc.html#ABCMeta">abc.ABCMeta</a></font></font></dt><dd><tt>Abstract&nbsp;classes&nbsp;can&nbsp;override&nbsp;this&nbsp;to&nbsp;customize&nbsp;issubclass().<br>
+&nbsp;<br>
+This&nbsp;is&nbsp;invoked&nbsp;early&nbsp;on&nbsp;by&nbsp;abc.ABCMeta.__subclasscheck__().<br>
+It&nbsp;should&nbsp;return&nbsp;True,&nbsp;False&nbsp;or&nbsp;NotImplemented.&nbsp;&nbsp;If&nbsp;it&nbsp;returns<br>
+NotImplemented,&nbsp;the&nbsp;normal&nbsp;algorithm&nbsp;is&nbsp;used.&nbsp;&nbsp;Otherwise,&nbsp;it<br>
+overrides&nbsp;the&nbsp;normal&nbsp;algorithm&nbsp;(and&nbsp;the&nbsp;outcome&nbsp;is&nbsp;cached).</tt></dd></dl>
+
+<hr>
+Data descriptors defined here:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><tt>dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<hr>
+Data and other attributes defined here:<br>
+<dl><dt><strong>__abstractmethods__</strong> = frozenset({'__aexit__'})</dl>
+
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="AbstractContextManager">class <strong>AbstractContextManager</strong></a>(<a href="abc.html#ABC">abc.ABC</a>)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt>An&nbsp;abstract&nbsp;base&nbsp;class&nbsp;for&nbsp;context&nbsp;managers.<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%"><dl><dt>Method resolution order:</dt>
+<dd><a href="contextlib.html#AbstractContextManager">AbstractContextManager</a></dd>
+<dd><a href="abc.html#ABC">abc.ABC</a></dd>
+<dd><a href="builtins.html#object">builtins.object</a></dd>
+</dl>
+<hr>
+Methods defined here:<br>
+<dl><dt><a name="AbstractContextManager-__enter__"><strong>__enter__</strong></a>(self)</dt><dd><tt>Return&nbsp;`self`&nbsp;upon&nbsp;entering&nbsp;the&nbsp;runtime&nbsp;context.</tt></dd></dl>
+
+<dl><dt><a name="AbstractContextManager-__exit__"><strong>__exit__</strong></a>(self, exc_type, exc_value, traceback)</dt><dd><tt>Raise&nbsp;any&nbsp;exception&nbsp;triggered&nbsp;within&nbsp;the&nbsp;runtime&nbsp;context.</tt></dd></dl>
+
+<hr>
+Class methods defined here:<br>
+<dl><dt><a name="AbstractContextManager-__subclasshook__"><strong>__subclasshook__</strong></a>(C)<font color="#909090"><font face="helvetica, arial"> from <a href="abc.html#ABCMeta">abc.ABCMeta</a></font></font></dt><dd><tt>Abstract&nbsp;classes&nbsp;can&nbsp;override&nbsp;this&nbsp;to&nbsp;customize&nbsp;issubclass().<br>
+&nbsp;<br>
+This&nbsp;is&nbsp;invoked&nbsp;early&nbsp;on&nbsp;by&nbsp;abc.ABCMeta.__subclasscheck__().<br>
+It&nbsp;should&nbsp;return&nbsp;True,&nbsp;False&nbsp;or&nbsp;NotImplemented.&nbsp;&nbsp;If&nbsp;it&nbsp;returns<br>
+NotImplemented,&nbsp;the&nbsp;normal&nbsp;algorithm&nbsp;is&nbsp;used.&nbsp;&nbsp;Otherwise,&nbsp;it<br>
+overrides&nbsp;the&nbsp;normal&nbsp;algorithm&nbsp;(and&nbsp;the&nbsp;outcome&nbsp;is&nbsp;cached).</tt></dd></dl>
+
+<hr>
+Data descriptors defined here:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><tt>dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<hr>
+Data and other attributes defined here:<br>
+<dl><dt><strong>__abstractmethods__</strong> = frozenset({'__exit__'})</dl>
+
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="AsyncExitStack">class <strong>AsyncExitStack</strong></a>(<a href="contextlib.html#_BaseExitStack">_BaseExitStack</a>, <a href="contextlib.html#AbstractAsyncContextManager">AbstractAsyncContextManager</a>)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt>Async&nbsp;context&nbsp;manager&nbsp;for&nbsp;dynamic&nbsp;management&nbsp;of&nbsp;a&nbsp;stack&nbsp;of&nbsp;exit<br>
+callbacks.<br>
+&nbsp;<br>
+For&nbsp;example:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;async&nbsp;with&nbsp;<a href="#AsyncExitStack">AsyncExitStack</a>()&nbsp;as&nbsp;stack:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;connections&nbsp;=&nbsp;[await&nbsp;stack.<a href="#AsyncExitStack-enter_async_context">enter_async_context</a>(get_connection())<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for&nbsp;i&nbsp;in&nbsp;range(5)]<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;All&nbsp;opened&nbsp;connections&nbsp;will&nbsp;automatically&nbsp;be&nbsp;released&nbsp;at&nbsp;the<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;end&nbsp;of&nbsp;the&nbsp;async&nbsp;with&nbsp;statement,&nbsp;even&nbsp;if&nbsp;attempts&nbsp;to&nbsp;open&nbsp;a<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;connection&nbsp;later&nbsp;in&nbsp;the&nbsp;list&nbsp;raise&nbsp;an&nbsp;exception.<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%"><dl><dt>Method resolution order:</dt>
+<dd><a href="contextlib.html#AsyncExitStack">AsyncExitStack</a></dd>
+<dd><a href="contextlib.html#_BaseExitStack">_BaseExitStack</a></dd>
+<dd><a href="contextlib.html#AbstractAsyncContextManager">AbstractAsyncContextManager</a></dd>
+<dd><a href="abc.html#ABC">abc.ABC</a></dd>
+<dd><a href="builtins.html#object">builtins.object</a></dd>
+</dl>
+<hr>
+Methods defined here:<br>
+<dl><dt>async <a name="AsyncExitStack-__aenter__"><strong>__aenter__</strong></a>(self)</dt><dd><tt>Return&nbsp;`self`&nbsp;upon&nbsp;entering&nbsp;the&nbsp;runtime&nbsp;context.</tt></dd></dl>
+
+<dl><dt>async <a name="AsyncExitStack-__aexit__"><strong>__aexit__</strong></a>(self, *exc_details)</dt><dd><tt>Raise&nbsp;any&nbsp;exception&nbsp;triggered&nbsp;within&nbsp;the&nbsp;runtime&nbsp;context.</tt></dd></dl>
+
+<dl><dt>async <a name="AsyncExitStack-aclose"><strong>aclose</strong></a>(self)</dt><dd><tt>Immediately&nbsp;unwind&nbsp;the&nbsp;context&nbsp;stack.</tt></dd></dl>
+
+<dl><dt>async <a name="AsyncExitStack-enter_async_context"><strong>enter_async_context</strong></a>(self, cm)</dt><dd><tt>Enters&nbsp;the&nbsp;supplied&nbsp;async&nbsp;context&nbsp;manager.<br>
+&nbsp;<br>
+If&nbsp;successful,&nbsp;also&nbsp;pushes&nbsp;its&nbsp;__aexit__&nbsp;method&nbsp;as&nbsp;a&nbsp;callback&nbsp;and<br>
+returns&nbsp;the&nbsp;result&nbsp;of&nbsp;the&nbsp;__aenter__&nbsp;method.</tt></dd></dl>
+
+<dl><dt><a name="AsyncExitStack-push_async_callback"><strong>push_async_callback</strong></a>(self, callback, /, *args, **kwds)</dt><dd><tt>Registers&nbsp;an&nbsp;arbitrary&nbsp;coroutine&nbsp;function&nbsp;and&nbsp;arguments.<br>
+&nbsp;<br>
+Cannot&nbsp;<a href="#suppress">suppress</a>&nbsp;exceptions.</tt></dd></dl>
+
+<dl><dt><a name="AsyncExitStack-push_async_exit"><strong>push_async_exit</strong></a>(self, exit)</dt><dd><tt>Registers&nbsp;a&nbsp;coroutine&nbsp;function&nbsp;with&nbsp;the&nbsp;standard&nbsp;__aexit__&nbsp;method<br>
+signature.<br>
+&nbsp;<br>
+Can&nbsp;<a href="#suppress">suppress</a>&nbsp;exceptions&nbsp;the&nbsp;same&nbsp;way&nbsp;__aexit__&nbsp;method&nbsp;can.<br>
+Also&nbsp;accepts&nbsp;any&nbsp;<a href="builtins.html#object">object</a>&nbsp;with&nbsp;an&nbsp;__aexit__&nbsp;method&nbsp;(registering&nbsp;a&nbsp;call<br>
+to&nbsp;the&nbsp;method&nbsp;instead&nbsp;of&nbsp;the&nbsp;<a href="builtins.html#object">object</a>&nbsp;itself).</tt></dd></dl>
+
+<hr>
+Data and other attributes defined here:<br>
+<dl><dt><strong>__abstractmethods__</strong> = frozenset()</dl>
+
+<hr>
+Methods inherited from <a href="contextlib.html#_BaseExitStack">_BaseExitStack</a>:<br>
+<dl><dt><a name="AsyncExitStack-__init__"><strong>__init__</strong></a>(self)</dt><dd><tt>Initialize&nbsp;self.&nbsp;&nbsp;See&nbsp;help(type(self))&nbsp;for&nbsp;accurate&nbsp;signature.</tt></dd></dl>
+
+<dl><dt><a name="AsyncExitStack-callback"><strong>callback</strong></a>(self, callback, /, *args, **kwds)</dt><dd><tt>Registers&nbsp;an&nbsp;arbitrary&nbsp;callback&nbsp;and&nbsp;arguments.<br>
+&nbsp;<br>
+Cannot&nbsp;<a href="#suppress">suppress</a>&nbsp;exceptions.</tt></dd></dl>
+
+<dl><dt><a name="AsyncExitStack-enter_context"><strong>enter_context</strong></a>(self, cm)</dt><dd><tt>Enters&nbsp;the&nbsp;supplied&nbsp;context&nbsp;manager.<br>
+&nbsp;<br>
+If&nbsp;successful,&nbsp;also&nbsp;pushes&nbsp;its&nbsp;__exit__&nbsp;method&nbsp;as&nbsp;a&nbsp;callback&nbsp;and<br>
+returns&nbsp;the&nbsp;result&nbsp;of&nbsp;the&nbsp;__enter__&nbsp;method.</tt></dd></dl>
+
+<dl><dt><a name="AsyncExitStack-pop_all"><strong>pop_all</strong></a>(self)</dt><dd><tt>Preserve&nbsp;the&nbsp;context&nbsp;stack&nbsp;by&nbsp;transferring&nbsp;it&nbsp;to&nbsp;a&nbsp;new&nbsp;instance.</tt></dd></dl>
+
+<dl><dt><a name="AsyncExitStack-push"><strong>push</strong></a>(self, exit)</dt><dd><tt>Registers&nbsp;a&nbsp;callback&nbsp;with&nbsp;the&nbsp;standard&nbsp;__exit__&nbsp;method&nbsp;signature.<br>
+&nbsp;<br>
+Can&nbsp;<a href="#suppress">suppress</a>&nbsp;exceptions&nbsp;the&nbsp;same&nbsp;way&nbsp;__exit__&nbsp;method&nbsp;can.<br>
+Also&nbsp;accepts&nbsp;any&nbsp;<a href="builtins.html#object">object</a>&nbsp;with&nbsp;an&nbsp;__exit__&nbsp;method&nbsp;(registering&nbsp;a&nbsp;call<br>
+to&nbsp;the&nbsp;method&nbsp;instead&nbsp;of&nbsp;the&nbsp;<a href="builtins.html#object">object</a>&nbsp;itself).</tt></dd></dl>
+
+<hr>
+Data descriptors inherited from <a href="contextlib.html#_BaseExitStack">_BaseExitStack</a>:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><tt>dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<hr>
+Class methods inherited from <a href="contextlib.html#AbstractAsyncContextManager">AbstractAsyncContextManager</a>:<br>
+<dl><dt><a name="AsyncExitStack-__subclasshook__"><strong>__subclasshook__</strong></a>(C)<font color="#909090"><font face="helvetica, arial"> from <a href="abc.html#ABCMeta">abc.ABCMeta</a></font></font></dt><dd><tt>Abstract&nbsp;classes&nbsp;can&nbsp;override&nbsp;this&nbsp;to&nbsp;customize&nbsp;issubclass().<br>
+&nbsp;<br>
+This&nbsp;is&nbsp;invoked&nbsp;early&nbsp;on&nbsp;by&nbsp;abc.ABCMeta.__subclasscheck__().<br>
+It&nbsp;should&nbsp;return&nbsp;True,&nbsp;False&nbsp;or&nbsp;NotImplemented.&nbsp;&nbsp;If&nbsp;it&nbsp;returns<br>
+NotImplemented,&nbsp;the&nbsp;normal&nbsp;algorithm&nbsp;is&nbsp;used.&nbsp;&nbsp;Otherwise,&nbsp;it<br>
+overrides&nbsp;the&nbsp;normal&nbsp;algorithm&nbsp;(and&nbsp;the&nbsp;outcome&nbsp;is&nbsp;cached).</tt></dd></dl>
+
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="ContextDecorator">class <strong>ContextDecorator</strong></a>(<a href="builtins.html#object">builtins.object</a>)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt>A&nbsp;base&nbsp;class&nbsp;or&nbsp;mixin&nbsp;that&nbsp;enables&nbsp;context&nbsp;managers&nbsp;to&nbsp;work&nbsp;as&nbsp;decorators.<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%">Methods defined here:<br>
+<dl><dt><a name="ContextDecorator-__call__"><strong>__call__</strong></a>(self, func)</dt><dd><tt>Call&nbsp;self&nbsp;as&nbsp;a&nbsp;function.</tt></dd></dl>
+
+<hr>
+Data descriptors defined here:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><tt>dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="ExitStack">class <strong>ExitStack</strong></a>(<a href="contextlib.html#_BaseExitStack">_BaseExitStack</a>, <a href="contextlib.html#AbstractContextManager">AbstractContextManager</a>)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt>Context&nbsp;manager&nbsp;for&nbsp;dynamic&nbsp;management&nbsp;of&nbsp;a&nbsp;stack&nbsp;of&nbsp;exit&nbsp;callbacks.<br>
+&nbsp;<br>
+For&nbsp;example:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;with&nbsp;<a href="#ExitStack">ExitStack</a>()&nbsp;as&nbsp;stack:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;files&nbsp;=&nbsp;[stack.<a href="#ExitStack-enter_context">enter_context</a>(open(fname))&nbsp;for&nbsp;fname&nbsp;in&nbsp;filenames]<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;All&nbsp;opened&nbsp;files&nbsp;will&nbsp;automatically&nbsp;be&nbsp;closed&nbsp;at&nbsp;the&nbsp;end&nbsp;of<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;the&nbsp;with&nbsp;statement,&nbsp;even&nbsp;if&nbsp;attempts&nbsp;to&nbsp;open&nbsp;files&nbsp;later<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;in&nbsp;the&nbsp;list&nbsp;raise&nbsp;an&nbsp;exception.<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%"><dl><dt>Method resolution order:</dt>
+<dd><a href="contextlib.html#ExitStack">ExitStack</a></dd>
+<dd><a href="contextlib.html#_BaseExitStack">_BaseExitStack</a></dd>
+<dd><a href="contextlib.html#AbstractContextManager">AbstractContextManager</a></dd>
+<dd><a href="abc.html#ABC">abc.ABC</a></dd>
+<dd><a href="builtins.html#object">builtins.object</a></dd>
+</dl>
+<hr>
+Methods defined here:<br>
+<dl><dt><a name="ExitStack-__enter__"><strong>__enter__</strong></a>(self)</dt><dd><tt>Return&nbsp;`self`&nbsp;upon&nbsp;entering&nbsp;the&nbsp;runtime&nbsp;context.</tt></dd></dl>
+
+<dl><dt><a name="ExitStack-__exit__"><strong>__exit__</strong></a>(self, *exc_details)</dt><dd><tt>Raise&nbsp;any&nbsp;exception&nbsp;triggered&nbsp;within&nbsp;the&nbsp;runtime&nbsp;context.</tt></dd></dl>
+
+<dl><dt><a name="ExitStack-close"><strong>close</strong></a>(self)</dt><dd><tt>Immediately&nbsp;unwind&nbsp;the&nbsp;context&nbsp;stack.</tt></dd></dl>
+
+<hr>
+Data and other attributes defined here:<br>
+<dl><dt><strong>__abstractmethods__</strong> = frozenset()</dl>
+
+<hr>
+Methods inherited from <a href="contextlib.html#_BaseExitStack">_BaseExitStack</a>:<br>
+<dl><dt><a name="ExitStack-__init__"><strong>__init__</strong></a>(self)</dt><dd><tt>Initialize&nbsp;self.&nbsp;&nbsp;See&nbsp;help(type(self))&nbsp;for&nbsp;accurate&nbsp;signature.</tt></dd></dl>
+
+<dl><dt><a name="ExitStack-callback"><strong>callback</strong></a>(self, callback, /, *args, **kwds)</dt><dd><tt>Registers&nbsp;an&nbsp;arbitrary&nbsp;callback&nbsp;and&nbsp;arguments.<br>
+&nbsp;<br>
+Cannot&nbsp;<a href="#suppress">suppress</a>&nbsp;exceptions.</tt></dd></dl>
+
+<dl><dt><a name="ExitStack-enter_context"><strong>enter_context</strong></a>(self, cm)</dt><dd><tt>Enters&nbsp;the&nbsp;supplied&nbsp;context&nbsp;manager.<br>
+&nbsp;<br>
+If&nbsp;successful,&nbsp;also&nbsp;pushes&nbsp;its&nbsp;__exit__&nbsp;method&nbsp;as&nbsp;a&nbsp;callback&nbsp;and<br>
+returns&nbsp;the&nbsp;result&nbsp;of&nbsp;the&nbsp;__enter__&nbsp;method.</tt></dd></dl>
+
+<dl><dt><a name="ExitStack-pop_all"><strong>pop_all</strong></a>(self)</dt><dd><tt>Preserve&nbsp;the&nbsp;context&nbsp;stack&nbsp;by&nbsp;transferring&nbsp;it&nbsp;to&nbsp;a&nbsp;new&nbsp;instance.</tt></dd></dl>
+
+<dl><dt><a name="ExitStack-push"><strong>push</strong></a>(self, exit)</dt><dd><tt>Registers&nbsp;a&nbsp;callback&nbsp;with&nbsp;the&nbsp;standard&nbsp;__exit__&nbsp;method&nbsp;signature.<br>
+&nbsp;<br>
+Can&nbsp;<a href="#suppress">suppress</a>&nbsp;exceptions&nbsp;the&nbsp;same&nbsp;way&nbsp;__exit__&nbsp;method&nbsp;can.<br>
+Also&nbsp;accepts&nbsp;any&nbsp;<a href="builtins.html#object">object</a>&nbsp;with&nbsp;an&nbsp;__exit__&nbsp;method&nbsp;(registering&nbsp;a&nbsp;call<br>
+to&nbsp;the&nbsp;method&nbsp;instead&nbsp;of&nbsp;the&nbsp;<a href="builtins.html#object">object</a>&nbsp;itself).</tt></dd></dl>
+
+<hr>
+Data descriptors inherited from <a href="contextlib.html#_BaseExitStack">_BaseExitStack</a>:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><tt>dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<hr>
+Class methods inherited from <a href="contextlib.html#AbstractContextManager">AbstractContextManager</a>:<br>
+<dl><dt><a name="ExitStack-__subclasshook__"><strong>__subclasshook__</strong></a>(C)<font color="#909090"><font face="helvetica, arial"> from <a href="abc.html#ABCMeta">abc.ABCMeta</a></font></font></dt><dd><tt>Abstract&nbsp;classes&nbsp;can&nbsp;override&nbsp;this&nbsp;to&nbsp;customize&nbsp;issubclass().<br>
+&nbsp;<br>
+This&nbsp;is&nbsp;invoked&nbsp;early&nbsp;on&nbsp;by&nbsp;abc.ABCMeta.__subclasscheck__().<br>
+It&nbsp;should&nbsp;return&nbsp;True,&nbsp;False&nbsp;or&nbsp;NotImplemented.&nbsp;&nbsp;If&nbsp;it&nbsp;returns<br>
+NotImplemented,&nbsp;the&nbsp;normal&nbsp;algorithm&nbsp;is&nbsp;used.&nbsp;&nbsp;Otherwise,&nbsp;it<br>
+overrides&nbsp;the&nbsp;normal&nbsp;algorithm&nbsp;(and&nbsp;the&nbsp;outcome&nbsp;is&nbsp;cached).</tt></dd></dl>
+
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="closing">class <strong>closing</strong></a>(<a href="contextlib.html#AbstractContextManager">AbstractContextManager</a>)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt><a href="#closing">closing</a>(thing)<br>
+&nbsp;<br>
+Context&nbsp;to&nbsp;automatically&nbsp;close&nbsp;something&nbsp;at&nbsp;the&nbsp;end&nbsp;of&nbsp;a&nbsp;block.<br>
+&nbsp;<br>
+Code&nbsp;like&nbsp;this:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;with&nbsp;<a href="#closing">closing</a>(&lt;module&gt;.open(&lt;arguments&gt;))&nbsp;as&nbsp;f:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;block&gt;<br>
+&nbsp;<br>
+is&nbsp;equivalent&nbsp;to&nbsp;this:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;f&nbsp;=&nbsp;&lt;module&gt;.open(&lt;arguments&gt;)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;try:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;block&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;finally:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;f.close()<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%"><dl><dt>Method resolution order:</dt>
+<dd><a href="contextlib.html#closing">closing</a></dd>
+<dd><a href="contextlib.html#AbstractContextManager">AbstractContextManager</a></dd>
+<dd><a href="abc.html#ABC">abc.ABC</a></dd>
+<dd><a href="builtins.html#object">builtins.object</a></dd>
+</dl>
+<hr>
+Methods defined here:<br>
+<dl><dt><a name="closing-__enter__"><strong>__enter__</strong></a>(self)</dt><dd><tt>Return&nbsp;`self`&nbsp;upon&nbsp;entering&nbsp;the&nbsp;runtime&nbsp;context.</tt></dd></dl>
+
+<dl><dt><a name="closing-__exit__"><strong>__exit__</strong></a>(self, *exc_info)</dt><dd><tt>Raise&nbsp;any&nbsp;exception&nbsp;triggered&nbsp;within&nbsp;the&nbsp;runtime&nbsp;context.</tt></dd></dl>
+
+<dl><dt><a name="closing-__init__"><strong>__init__</strong></a>(self, thing)</dt><dd><tt>Initialize&nbsp;self.&nbsp;&nbsp;See&nbsp;help(type(self))&nbsp;for&nbsp;accurate&nbsp;signature.</tt></dd></dl>
+
+<hr>
+Data and other attributes defined here:<br>
+<dl><dt><strong>__abstractmethods__</strong> = frozenset()</dl>
+
+<hr>
+Class methods inherited from <a href="contextlib.html#AbstractContextManager">AbstractContextManager</a>:<br>
+<dl><dt><a name="closing-__subclasshook__"><strong>__subclasshook__</strong></a>(C)<font color="#909090"><font face="helvetica, arial"> from <a href="abc.html#ABCMeta">abc.ABCMeta</a></font></font></dt><dd><tt>Abstract&nbsp;classes&nbsp;can&nbsp;override&nbsp;this&nbsp;to&nbsp;customize&nbsp;issubclass().<br>
+&nbsp;<br>
+This&nbsp;is&nbsp;invoked&nbsp;early&nbsp;on&nbsp;by&nbsp;abc.ABCMeta.__subclasscheck__().<br>
+It&nbsp;should&nbsp;return&nbsp;True,&nbsp;False&nbsp;or&nbsp;NotImplemented.&nbsp;&nbsp;If&nbsp;it&nbsp;returns<br>
+NotImplemented,&nbsp;the&nbsp;normal&nbsp;algorithm&nbsp;is&nbsp;used.&nbsp;&nbsp;Otherwise,&nbsp;it<br>
+overrides&nbsp;the&nbsp;normal&nbsp;algorithm&nbsp;(and&nbsp;the&nbsp;outcome&nbsp;is&nbsp;cached).</tt></dd></dl>
+
+<hr>
+Data descriptors inherited from <a href="contextlib.html#AbstractContextManager">AbstractContextManager</a>:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><tt>dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="nullcontext">class <strong>nullcontext</strong></a>(<a href="contextlib.html#AbstractContextManager">AbstractContextManager</a>)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt><a href="#nullcontext">nullcontext</a>(enter_result=None)<br>
+&nbsp;<br>
+Context&nbsp;manager&nbsp;that&nbsp;does&nbsp;no&nbsp;additional&nbsp;processing.<br>
+&nbsp;<br>
+Used&nbsp;as&nbsp;a&nbsp;stand-in&nbsp;for&nbsp;a&nbsp;normal&nbsp;context&nbsp;manager,&nbsp;when&nbsp;a&nbsp;particular<br>
+block&nbsp;of&nbsp;code&nbsp;is&nbsp;only&nbsp;sometimes&nbsp;used&nbsp;with&nbsp;a&nbsp;normal&nbsp;context&nbsp;manager:<br>
+&nbsp;<br>
+cm&nbsp;=&nbsp;optional_cm&nbsp;if&nbsp;condition&nbsp;else&nbsp;<a href="#nullcontext">nullcontext</a>()<br>
+with&nbsp;cm:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;Perform&nbsp;operation,&nbsp;using&nbsp;optional_cm&nbsp;if&nbsp;condition&nbsp;is&nbsp;True<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%"><dl><dt>Method resolution order:</dt>
+<dd><a href="contextlib.html#nullcontext">nullcontext</a></dd>
+<dd><a href="contextlib.html#AbstractContextManager">AbstractContextManager</a></dd>
+<dd><a href="abc.html#ABC">abc.ABC</a></dd>
+<dd><a href="builtins.html#object">builtins.object</a></dd>
+</dl>
+<hr>
+Methods defined here:<br>
+<dl><dt><a name="nullcontext-__enter__"><strong>__enter__</strong></a>(self)</dt><dd><tt>Return&nbsp;`self`&nbsp;upon&nbsp;entering&nbsp;the&nbsp;runtime&nbsp;context.</tt></dd></dl>
+
+<dl><dt><a name="nullcontext-__exit__"><strong>__exit__</strong></a>(self, *excinfo)</dt><dd><tt>Raise&nbsp;any&nbsp;exception&nbsp;triggered&nbsp;within&nbsp;the&nbsp;runtime&nbsp;context.</tt></dd></dl>
+
+<dl><dt><a name="nullcontext-__init__"><strong>__init__</strong></a>(self, enter_result=None)</dt><dd><tt>Initialize&nbsp;self.&nbsp;&nbsp;See&nbsp;help(type(self))&nbsp;for&nbsp;accurate&nbsp;signature.</tt></dd></dl>
+
+<hr>
+Data and other attributes defined here:<br>
+<dl><dt><strong>__abstractmethods__</strong> = frozenset()</dl>
+
+<hr>
+Class methods inherited from <a href="contextlib.html#AbstractContextManager">AbstractContextManager</a>:<br>
+<dl><dt><a name="nullcontext-__subclasshook__"><strong>__subclasshook__</strong></a>(C)<font color="#909090"><font face="helvetica, arial"> from <a href="abc.html#ABCMeta">abc.ABCMeta</a></font></font></dt><dd><tt>Abstract&nbsp;classes&nbsp;can&nbsp;override&nbsp;this&nbsp;to&nbsp;customize&nbsp;issubclass().<br>
+&nbsp;<br>
+This&nbsp;is&nbsp;invoked&nbsp;early&nbsp;on&nbsp;by&nbsp;abc.ABCMeta.__subclasscheck__().<br>
+It&nbsp;should&nbsp;return&nbsp;True,&nbsp;False&nbsp;or&nbsp;NotImplemented.&nbsp;&nbsp;If&nbsp;it&nbsp;returns<br>
+NotImplemented,&nbsp;the&nbsp;normal&nbsp;algorithm&nbsp;is&nbsp;used.&nbsp;&nbsp;Otherwise,&nbsp;it<br>
+overrides&nbsp;the&nbsp;normal&nbsp;algorithm&nbsp;(and&nbsp;the&nbsp;outcome&nbsp;is&nbsp;cached).</tt></dd></dl>
+
+<hr>
+Data descriptors inherited from <a href="contextlib.html#AbstractContextManager">AbstractContextManager</a>:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><tt>dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="redirect_stderr">class <strong>redirect_stderr</strong></a>(<a href="contextlib.html#_RedirectStream">_RedirectStream</a>)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt><a href="#redirect_stderr">redirect_stderr</a>(new_target)<br>
+&nbsp;<br>
+Context&nbsp;manager&nbsp;for&nbsp;temporarily&nbsp;redirecting&nbsp;stderr&nbsp;to&nbsp;another&nbsp;file.<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%"><dl><dt>Method resolution order:</dt>
+<dd><a href="contextlib.html#redirect_stderr">redirect_stderr</a></dd>
+<dd><a href="contextlib.html#_RedirectStream">_RedirectStream</a></dd>
+<dd><a href="contextlib.html#AbstractContextManager">AbstractContextManager</a></dd>
+<dd><a href="abc.html#ABC">abc.ABC</a></dd>
+<dd><a href="builtins.html#object">builtins.object</a></dd>
+</dl>
+<hr>
+Data and other attributes defined here:<br>
+<dl><dt><strong>__abstractmethods__</strong> = frozenset()</dl>
+
+<hr>
+Methods inherited from <a href="contextlib.html#_RedirectStream">_RedirectStream</a>:<br>
+<dl><dt><a name="redirect_stderr-__enter__"><strong>__enter__</strong></a>(self)</dt><dd><tt>Return&nbsp;`self`&nbsp;upon&nbsp;entering&nbsp;the&nbsp;runtime&nbsp;context.</tt></dd></dl>
+
+<dl><dt><a name="redirect_stderr-__exit__"><strong>__exit__</strong></a>(self, exctype, excinst, exctb)</dt><dd><tt>Raise&nbsp;any&nbsp;exception&nbsp;triggered&nbsp;within&nbsp;the&nbsp;runtime&nbsp;context.</tt></dd></dl>
+
+<dl><dt><a name="redirect_stderr-__init__"><strong>__init__</strong></a>(self, new_target)</dt><dd><tt>Initialize&nbsp;self.&nbsp;&nbsp;See&nbsp;help(type(self))&nbsp;for&nbsp;accurate&nbsp;signature.</tt></dd></dl>
+
+<hr>
+Class methods inherited from <a href="contextlib.html#AbstractContextManager">AbstractContextManager</a>:<br>
+<dl><dt><a name="redirect_stderr-__subclasshook__"><strong>__subclasshook__</strong></a>(C)<font color="#909090"><font face="helvetica, arial"> from <a href="abc.html#ABCMeta">abc.ABCMeta</a></font></font></dt><dd><tt>Abstract&nbsp;classes&nbsp;can&nbsp;override&nbsp;this&nbsp;to&nbsp;customize&nbsp;issubclass().<br>
+&nbsp;<br>
+This&nbsp;is&nbsp;invoked&nbsp;early&nbsp;on&nbsp;by&nbsp;abc.ABCMeta.__subclasscheck__().<br>
+It&nbsp;should&nbsp;return&nbsp;True,&nbsp;False&nbsp;or&nbsp;NotImplemented.&nbsp;&nbsp;If&nbsp;it&nbsp;returns<br>
+NotImplemented,&nbsp;the&nbsp;normal&nbsp;algorithm&nbsp;is&nbsp;used.&nbsp;&nbsp;Otherwise,&nbsp;it<br>
+overrides&nbsp;the&nbsp;normal&nbsp;algorithm&nbsp;(and&nbsp;the&nbsp;outcome&nbsp;is&nbsp;cached).</tt></dd></dl>
+
+<hr>
+Data descriptors inherited from <a href="contextlib.html#AbstractContextManager">AbstractContextManager</a>:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><tt>dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="redirect_stdout">class <strong>redirect_stdout</strong></a>(<a href="contextlib.html#_RedirectStream">_RedirectStream</a>)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt><a href="#redirect_stdout">redirect_stdout</a>(new_target)<br>
+&nbsp;<br>
+Context&nbsp;manager&nbsp;for&nbsp;temporarily&nbsp;redirecting&nbsp;stdout&nbsp;to&nbsp;another&nbsp;file.<br>
+&nbsp;<br>
+#&nbsp;How&nbsp;to&nbsp;send&nbsp;help()&nbsp;to&nbsp;stderr<br>
+with&nbsp;<a href="#redirect_stdout">redirect_stdout</a>(sys.stderr):<br>
+&nbsp;&nbsp;&nbsp;&nbsp;help(dir)<br>
+&nbsp;<br>
+#&nbsp;How&nbsp;to&nbsp;write&nbsp;help()&nbsp;to&nbsp;a&nbsp;file<br>
+with&nbsp;open('help.txt',&nbsp;'w')&nbsp;as&nbsp;f:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;with&nbsp;<a href="#redirect_stdout">redirect_stdout</a>(f):<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;help(pow)<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%"><dl><dt>Method resolution order:</dt>
+<dd><a href="contextlib.html#redirect_stdout">redirect_stdout</a></dd>
+<dd><a href="contextlib.html#_RedirectStream">_RedirectStream</a></dd>
+<dd><a href="contextlib.html#AbstractContextManager">AbstractContextManager</a></dd>
+<dd><a href="abc.html#ABC">abc.ABC</a></dd>
+<dd><a href="builtins.html#object">builtins.object</a></dd>
+</dl>
+<hr>
+Data and other attributes defined here:<br>
+<dl><dt><strong>__abstractmethods__</strong> = frozenset()</dl>
+
+<hr>
+Methods inherited from <a href="contextlib.html#_RedirectStream">_RedirectStream</a>:<br>
+<dl><dt><a name="redirect_stdout-__enter__"><strong>__enter__</strong></a>(self)</dt><dd><tt>Return&nbsp;`self`&nbsp;upon&nbsp;entering&nbsp;the&nbsp;runtime&nbsp;context.</tt></dd></dl>
+
+<dl><dt><a name="redirect_stdout-__exit__"><strong>__exit__</strong></a>(self, exctype, excinst, exctb)</dt><dd><tt>Raise&nbsp;any&nbsp;exception&nbsp;triggered&nbsp;within&nbsp;the&nbsp;runtime&nbsp;context.</tt></dd></dl>
+
+<dl><dt><a name="redirect_stdout-__init__"><strong>__init__</strong></a>(self, new_target)</dt><dd><tt>Initialize&nbsp;self.&nbsp;&nbsp;See&nbsp;help(type(self))&nbsp;for&nbsp;accurate&nbsp;signature.</tt></dd></dl>
+
+<hr>
+Class methods inherited from <a href="contextlib.html#AbstractContextManager">AbstractContextManager</a>:<br>
+<dl><dt><a name="redirect_stdout-__subclasshook__"><strong>__subclasshook__</strong></a>(C)<font color="#909090"><font face="helvetica, arial"> from <a href="abc.html#ABCMeta">abc.ABCMeta</a></font></font></dt><dd><tt>Abstract&nbsp;classes&nbsp;can&nbsp;override&nbsp;this&nbsp;to&nbsp;customize&nbsp;issubclass().<br>
+&nbsp;<br>
+This&nbsp;is&nbsp;invoked&nbsp;early&nbsp;on&nbsp;by&nbsp;abc.ABCMeta.__subclasscheck__().<br>
+It&nbsp;should&nbsp;return&nbsp;True,&nbsp;False&nbsp;or&nbsp;NotImplemented.&nbsp;&nbsp;If&nbsp;it&nbsp;returns<br>
+NotImplemented,&nbsp;the&nbsp;normal&nbsp;algorithm&nbsp;is&nbsp;used.&nbsp;&nbsp;Otherwise,&nbsp;it<br>
+overrides&nbsp;the&nbsp;normal&nbsp;algorithm&nbsp;(and&nbsp;the&nbsp;outcome&nbsp;is&nbsp;cached).</tt></dd></dl>
+
+<hr>
+Data descriptors inherited from <a href="contextlib.html#AbstractContextManager">AbstractContextManager</a>:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><tt>dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="suppress">class <strong>suppress</strong></a>(<a href="contextlib.html#AbstractContextManager">AbstractContextManager</a>)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt><a href="#suppress">suppress</a>(*exceptions)<br>
+&nbsp;<br>
+Context&nbsp;manager&nbsp;to&nbsp;<a href="#suppress">suppress</a>&nbsp;specified&nbsp;exceptions<br>
+&nbsp;<br>
+After&nbsp;the&nbsp;exception&nbsp;is&nbsp;suppressed,&nbsp;execution&nbsp;proceeds&nbsp;with&nbsp;the&nbsp;next<br>
+statement&nbsp;following&nbsp;the&nbsp;with&nbsp;statement.<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;with&nbsp;<a href="#suppress">suppress</a>(FileNotFoundError):<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;os.remove(somefile)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;Execution&nbsp;still&nbsp;resumes&nbsp;here&nbsp;if&nbsp;the&nbsp;file&nbsp;was&nbsp;already&nbsp;removed<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%"><dl><dt>Method resolution order:</dt>
+<dd><a href="contextlib.html#suppress">suppress</a></dd>
+<dd><a href="contextlib.html#AbstractContextManager">AbstractContextManager</a></dd>
+<dd><a href="abc.html#ABC">abc.ABC</a></dd>
+<dd><a href="builtins.html#object">builtins.object</a></dd>
+</dl>
+<hr>
+Methods defined here:<br>
+<dl><dt><a name="suppress-__enter__"><strong>__enter__</strong></a>(self)</dt><dd><tt>Return&nbsp;`self`&nbsp;upon&nbsp;entering&nbsp;the&nbsp;runtime&nbsp;context.</tt></dd></dl>
+
+<dl><dt><a name="suppress-__exit__"><strong>__exit__</strong></a>(self, exctype, excinst, exctb)</dt><dd><tt>Raise&nbsp;any&nbsp;exception&nbsp;triggered&nbsp;within&nbsp;the&nbsp;runtime&nbsp;context.</tt></dd></dl>
+
+<dl><dt><a name="suppress-__init__"><strong>__init__</strong></a>(self, *exceptions)</dt><dd><tt>Initialize&nbsp;self.&nbsp;&nbsp;See&nbsp;help(type(self))&nbsp;for&nbsp;accurate&nbsp;signature.</tt></dd></dl>
+
+<hr>
+Data and other attributes defined here:<br>
+<dl><dt><strong>__abstractmethods__</strong> = frozenset()</dl>
+
+<hr>
+Class methods inherited from <a href="contextlib.html#AbstractContextManager">AbstractContextManager</a>:<br>
+<dl><dt><a name="suppress-__subclasshook__"><strong>__subclasshook__</strong></a>(C)<font color="#909090"><font face="helvetica, arial"> from <a href="abc.html#ABCMeta">abc.ABCMeta</a></font></font></dt><dd><tt>Abstract&nbsp;classes&nbsp;can&nbsp;override&nbsp;this&nbsp;to&nbsp;customize&nbsp;issubclass().<br>
+&nbsp;<br>
+This&nbsp;is&nbsp;invoked&nbsp;early&nbsp;on&nbsp;by&nbsp;abc.ABCMeta.__subclasscheck__().<br>
+It&nbsp;should&nbsp;return&nbsp;True,&nbsp;False&nbsp;or&nbsp;NotImplemented.&nbsp;&nbsp;If&nbsp;it&nbsp;returns<br>
+NotImplemented,&nbsp;the&nbsp;normal&nbsp;algorithm&nbsp;is&nbsp;used.&nbsp;&nbsp;Otherwise,&nbsp;it<br>
+overrides&nbsp;the&nbsp;normal&nbsp;algorithm&nbsp;(and&nbsp;the&nbsp;outcome&nbsp;is&nbsp;cached).</tt></dd></dl>
+
+<hr>
+Data descriptors inherited from <a href="contextlib.html#AbstractContextManager">AbstractContextManager</a>:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><tt>dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+</td></tr></table></td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#eeaa77">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Functions</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#eeaa77"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl><dt><a name="-asynccontextmanager"><strong>asynccontextmanager</strong></a>(func)</dt><dd><tt>@asynccontextmanager&nbsp;decorator.<br>
+&nbsp;<br>
+Typical&nbsp;usage:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;@asynccontextmanager<br>
+&nbsp;&nbsp;&nbsp;&nbsp;async&nbsp;def&nbsp;some_async_generator(&lt;arguments&gt;):<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;setup&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;try:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;yield&nbsp;&lt;value&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;finally:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;cleanup&gt;<br>
+&nbsp;<br>
+This&nbsp;makes&nbsp;this:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;async&nbsp;with&nbsp;some_async_generator(&lt;arguments&gt;)&nbsp;as&nbsp;&lt;variable&gt;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;body&gt;<br>
+&nbsp;<br>
+equivalent&nbsp;to&nbsp;this:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;setup&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;try:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;variable&gt;&nbsp;=&nbsp;&lt;value&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;body&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;finally:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;cleanup&gt;</tt></dd></dl>
+ <dl><dt><a name="-contextmanager"><strong>contextmanager</strong></a>(func)</dt><dd><tt>@contextmanager&nbsp;decorator.<br>
+&nbsp;<br>
+Typical&nbsp;usage:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;@contextmanager<br>
+&nbsp;&nbsp;&nbsp;&nbsp;def&nbsp;some_generator(&lt;arguments&gt;):<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;setup&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;try:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;yield&nbsp;&lt;value&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;finally:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;cleanup&gt;<br>
+&nbsp;<br>
+This&nbsp;makes&nbsp;this:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;with&nbsp;some_generator(&lt;arguments&gt;)&nbsp;as&nbsp;&lt;variable&gt;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;body&gt;<br>
+&nbsp;<br>
+equivalent&nbsp;to&nbsp;this:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;setup&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;try:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;variable&gt;&nbsp;=&nbsp;&lt;value&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;body&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;finally:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;cleanup&gt;</tt></dd></dl>
+</td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#55aa55">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Data</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#55aa55"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><strong>__all__</strong> = ['asynccontextmanager', 'contextmanager', 'closing', 'nullcontext', 'AbstractContextManager', 'AbstractAsyncContextManager', 'AsyncExitStack', 'ContextDecorator', 'ExitStack', 'redirect_stdout', 'redirect_stderr', 'suppress']</td></tr></table>
+</body></html>

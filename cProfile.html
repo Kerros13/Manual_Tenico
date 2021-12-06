@@ -1,0 +1,160 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head><title>Python: module cProfile</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+</head><body bgcolor="#f0f0f8">
+
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="heading">
+<tr bgcolor="#7799ee">
+<td valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong>cProfile</strong></big></big></font></td
+><td align=right valign=bottom
+><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:c%3A%5Cpython38%5Clib%5Ccprofile.py">c:\python38\lib\cprofile.py</a><br><a href="https://docs.python.org/3.8/library/cprofile">Module Reference</a></font></td></tr></table>
+    <p><tt>Python&nbsp;interface&nbsp;for&nbsp;the&nbsp;'lsprof'&nbsp;profiler.<br>
+Compatible&nbsp;with&nbsp;the&nbsp;'profile'&nbsp;module.</tt></p>
+<p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#aa55cc">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Modules</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#aa55cc"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><table width="100%" summary="list"><tr><td width="25%" valign=top><a href="_lsprof.html">_lsprof</a><br>
+</td><td width="25%" valign=top><a href="profile.html">profile</a><br>
+</td><td width="25%" valign=top></td><td width="25%" valign=top></td></tr></table></td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ee77aa">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Classes</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#ee77aa"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl>
+<dt><font face="helvetica, arial"><a href="_lsprof.html#Profiler">_lsprof.Profiler</a>(<a href="builtins.html#object">builtins.object</a>)
+</font></dt><dd>
+<dl>
+<dt><font face="helvetica, arial"><a href="cProfile.html#Profile">Profile</a>
+</font></dt></dl>
+</dd>
+</dl>
+ <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="Profile">class <strong>Profile</strong></a>(<a href="_lsprof.html#Profiler">_lsprof.Profiler</a>)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt><a href="#Profile">Profile</a>(timer=None,&nbsp;timeunit=None,&nbsp;subcalls=True,&nbsp;builtins=True)<br>
+&nbsp;<br>
+Builds&nbsp;a&nbsp;profiler&nbsp;object&nbsp;using&nbsp;the&nbsp;specified&nbsp;timer&nbsp;function.<br>
+The&nbsp;default&nbsp;timer&nbsp;is&nbsp;a&nbsp;fast&nbsp;built-in&nbsp;one&nbsp;based&nbsp;on&nbsp;real&nbsp;time.<br>
+For&nbsp;custom&nbsp;timer&nbsp;functions&nbsp;returning&nbsp;integers,&nbsp;timeunit&nbsp;can<br>
+be&nbsp;a&nbsp;float&nbsp;specifying&nbsp;a&nbsp;scale&nbsp;(i.e.&nbsp;how&nbsp;long&nbsp;each&nbsp;integer&nbsp;unit<br>
+is,&nbsp;in&nbsp;seconds).<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%"><dl><dt>Method resolution order:</dt>
+<dd><a href="cProfile.html#Profile">Profile</a></dd>
+<dd><a href="_lsprof.html#Profiler">_lsprof.Profiler</a></dd>
+<dd><a href="builtins.html#object">builtins.object</a></dd>
+</dl>
+<hr>
+Methods defined here:<br>
+<dl><dt><a name="Profile-__enter__"><strong>__enter__</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="Profile-__exit__"><strong>__exit__</strong></a>(self, *exc_info)</dt></dl>
+
+<dl><dt><a name="Profile-create_stats"><strong>create_stats</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="Profile-dump_stats"><strong>dump_stats</strong></a>(self, file)</dt></dl>
+
+<dl><dt><a name="Profile-print_stats"><strong>print_stats</strong></a>(self, sort=-1)</dt></dl>
+
+<dl><dt><a name="Profile-run"><strong>run</strong></a>(self, cmd)</dt></dl>
+
+<dl><dt><a name="Profile-runcall"><strong>runcall</strong></a>(self, func, /, *args, **kw)</dt><dd><tt>#&nbsp;This&nbsp;method&nbsp;is&nbsp;more&nbsp;useful&nbsp;to&nbsp;profile&nbsp;a&nbsp;single&nbsp;function&nbsp;call.</tt></dd></dl>
+
+<dl><dt><a name="Profile-runctx"><strong>runctx</strong></a>(self, cmd, globals, locals)</dt></dl>
+
+<dl><dt><a name="Profile-snapshot_stats"><strong>snapshot_stats</strong></a>(self)</dt></dl>
+
+<hr>
+Data descriptors defined here:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><tt>dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<hr>
+Methods inherited from <a href="_lsprof.html#Profiler">_lsprof.Profiler</a>:<br>
+<dl><dt><a name="Profile-__init__"><strong>__init__</strong></a>(self, /, *args, **kwargs)</dt><dd><tt>Initialize&nbsp;self.&nbsp;&nbsp;See&nbsp;help(type(self))&nbsp;for&nbsp;accurate&nbsp;signature.</tt></dd></dl>
+
+<dl><dt><a name="Profile-clear"><strong>clear</strong></a>(...)</dt><dd><tt><a href="#Profile-clear">clear</a>()<br>
+&nbsp;<br>
+Clear&nbsp;all&nbsp;profiling&nbsp;information&nbsp;collected&nbsp;so&nbsp;far.</tt></dd></dl>
+
+<dl><dt><a name="Profile-disable"><strong>disable</strong></a>(...)</dt><dd><tt><a href="#Profile-disable">disable</a>()<br>
+&nbsp;<br>
+Stop&nbsp;collecting&nbsp;profiling&nbsp;information.</tt></dd></dl>
+
+<dl><dt><a name="Profile-enable"><strong>enable</strong></a>(...)</dt><dd><tt><a href="#Profile-enable">enable</a>(subcalls=True,&nbsp;builtins=True)<br>
+&nbsp;<br>
+Start&nbsp;collecting&nbsp;profiling&nbsp;information.<br>
+If&nbsp;'subcalls'&nbsp;is&nbsp;True,&nbsp;also&nbsp;records&nbsp;for&nbsp;each&nbsp;function<br>
+statistics&nbsp;separated&nbsp;according&nbsp;to&nbsp;its&nbsp;current&nbsp;caller.<br>
+If&nbsp;'builtins'&nbsp;is&nbsp;True,&nbsp;records&nbsp;the&nbsp;time&nbsp;spent&nbsp;in<br>
+built-in&nbsp;functions&nbsp;separately&nbsp;from&nbsp;their&nbsp;caller.</tt></dd></dl>
+
+<dl><dt><a name="Profile-getstats"><strong>getstats</strong></a>(...)</dt><dd><tt><a href="#Profile-getstats">getstats</a>()&nbsp;-&gt;&nbsp;list&nbsp;of&nbsp;profiler_entry&nbsp;objects<br>
+&nbsp;<br>
+Return&nbsp;all&nbsp;information&nbsp;collected&nbsp;by&nbsp;the&nbsp;profiler.<br>
+Each&nbsp;profiler_entry&nbsp;is&nbsp;a&nbsp;tuple-like&nbsp;object&nbsp;with&nbsp;the<br>
+following&nbsp;attributes:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;code&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;code&nbsp;object<br>
+&nbsp;&nbsp;&nbsp;&nbsp;callcount&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;how&nbsp;many&nbsp;times&nbsp;this&nbsp;was&nbsp;called<br>
+&nbsp;&nbsp;&nbsp;&nbsp;reccallcount&nbsp;&nbsp;how&nbsp;many&nbsp;times&nbsp;called&nbsp;recursively<br>
+&nbsp;&nbsp;&nbsp;&nbsp;totaltime&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;total&nbsp;time&nbsp;in&nbsp;this&nbsp;entry<br>
+&nbsp;&nbsp;&nbsp;&nbsp;inlinetime&nbsp;&nbsp;&nbsp;&nbsp;inline&nbsp;time&nbsp;in&nbsp;this&nbsp;entry&nbsp;(not&nbsp;in&nbsp;subcalls)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;calls&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;details&nbsp;of&nbsp;the&nbsp;calls<br>
+&nbsp;<br>
+The&nbsp;calls&nbsp;attribute&nbsp;is&nbsp;either&nbsp;None&nbsp;or&nbsp;a&nbsp;list&nbsp;of<br>
+profiler_subentry&nbsp;objects:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;code&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;called&nbsp;code&nbsp;object<br>
+&nbsp;&nbsp;&nbsp;&nbsp;callcount&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;how&nbsp;many&nbsp;times&nbsp;this&nbsp;is&nbsp;called<br>
+&nbsp;&nbsp;&nbsp;&nbsp;reccallcount&nbsp;&nbsp;how&nbsp;many&nbsp;times&nbsp;this&nbsp;is&nbsp;called&nbsp;recursively<br>
+&nbsp;&nbsp;&nbsp;&nbsp;totaltime&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;total&nbsp;time&nbsp;spent&nbsp;in&nbsp;this&nbsp;call<br>
+&nbsp;&nbsp;&nbsp;&nbsp;inlinetime&nbsp;&nbsp;&nbsp;&nbsp;inline&nbsp;time&nbsp;(not&nbsp;in&nbsp;further&nbsp;subcalls)</tt></dd></dl>
+
+<hr>
+Static methods inherited from <a href="_lsprof.html#Profiler">_lsprof.Profiler</a>:<br>
+<dl><dt><a name="Profile-__new__"><strong>__new__</strong></a>(*args, **kwargs)<font color="#909090"><font face="helvetica, arial"> from <a href="builtins.html#type">builtins.type</a></font></font></dt><dd><tt>Create&nbsp;and&nbsp;return&nbsp;a&nbsp;new&nbsp;object.&nbsp;&nbsp;See&nbsp;help(type)&nbsp;for&nbsp;accurate&nbsp;signature.</tt></dd></dl>
+
+</td></tr></table></td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#eeaa77">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Functions</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#eeaa77"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl><dt><a name="-run"><strong>run</strong></a>(statement, filename=None, sort=-1)</dt><dd><tt>Run&nbsp;statement&nbsp;under&nbsp;profiler&nbsp;optionally&nbsp;saving&nbsp;results&nbsp;in&nbsp;filename<br>
+&nbsp;<br>
+This&nbsp;function&nbsp;takes&nbsp;a&nbsp;single&nbsp;argument&nbsp;that&nbsp;can&nbsp;be&nbsp;passed&nbsp;to&nbsp;the<br>
+"exec"&nbsp;statement,&nbsp;and&nbsp;an&nbsp;optional&nbsp;file&nbsp;name.&nbsp;&nbsp;In&nbsp;all&nbsp;cases&nbsp;this<br>
+routine&nbsp;attempts&nbsp;to&nbsp;"exec"&nbsp;its&nbsp;first&nbsp;argument&nbsp;and&nbsp;gather&nbsp;profiling<br>
+statistics&nbsp;from&nbsp;the&nbsp;execution.&nbsp;If&nbsp;no&nbsp;file&nbsp;name&nbsp;is&nbsp;present,&nbsp;then&nbsp;this<br>
+function&nbsp;automatically&nbsp;prints&nbsp;a&nbsp;simple&nbsp;profiling&nbsp;report,&nbsp;sorted&nbsp;by&nbsp;the<br>
+standard&nbsp;name&nbsp;string&nbsp;(file/line/function-name)&nbsp;that&nbsp;is&nbsp;presented&nbsp;in<br>
+each&nbsp;line.</tt></dd></dl>
+ <dl><dt><a name="-runctx"><strong>runctx</strong></a>(statement, globals, locals, filename=None, sort=-1)</dt><dd><tt>Run&nbsp;statement&nbsp;under&nbsp;profiler,&nbsp;supplying&nbsp;your&nbsp;own&nbsp;globals&nbsp;and&nbsp;locals,<br>
+optionally&nbsp;saving&nbsp;results&nbsp;in&nbsp;filename.<br>
+&nbsp;<br>
+statement&nbsp;and&nbsp;filename&nbsp;have&nbsp;the&nbsp;same&nbsp;semantics&nbsp;as&nbsp;profile.run</tt></dd></dl>
+</td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#55aa55">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Data</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#55aa55"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><strong>__all__</strong> = ['run', 'runctx', 'Profile']</td></tr></table>
+</body></html>

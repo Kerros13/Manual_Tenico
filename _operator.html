@@ -1,0 +1,84 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head><title>Python: built-in module _operator</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+</head><body bgcolor="#f0f0f8">
+
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="heading">
+<tr bgcolor="#7799ee">
+<td valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong>_operator</strong></big></big></font></td
+><td align=right valign=bottom
+><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br>(built-in)</font></td></tr></table>
+    <p><tt>Operator&nbsp;interface.<br>
+&nbsp;<br>
+This&nbsp;module&nbsp;exports&nbsp;a&nbsp;set&nbsp;of&nbsp;functions&nbsp;implemented&nbsp;in&nbsp;C&nbsp;corresponding<br>
+to&nbsp;the&nbsp;intrinsic&nbsp;operators&nbsp;of&nbsp;Python.&nbsp;&nbsp;For&nbsp;example,&nbsp;operator.<a href="#-add">add</a>(x,&nbsp;y)<br>
+is&nbsp;equivalent&nbsp;to&nbsp;the&nbsp;expression&nbsp;x+y.&nbsp;&nbsp;The&nbsp;function&nbsp;names&nbsp;are&nbsp;those<br>
+used&nbsp;for&nbsp;special&nbsp;methods;&nbsp;variants&nbsp;without&nbsp;leading&nbsp;and&nbsp;trailing<br>
+'__'&nbsp;are&nbsp;also&nbsp;provided&nbsp;for&nbsp;convenience.</tt></p>
+<p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#eeaa77">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Functions</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#eeaa77"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl><dt><a name="-abs"><strong>abs</strong></a>(a, /)</dt><dd><tt>Same&nbsp;as&nbsp;<a href="#-abs">abs</a>(a).</tt></dd></dl>
+ <dl><dt><a name="-add"><strong>add</strong></a>(a, b, /)</dt><dd><tt>Same&nbsp;as&nbsp;a&nbsp;+&nbsp;b.</tt></dd></dl>
+ <dl><dt><a name="-and_"><strong>and_</strong></a>(a, b, /)</dt><dd><tt>Same&nbsp;as&nbsp;a&nbsp;&amp;&nbsp;b.</tt></dd></dl>
+ <dl><dt><a name="-concat"><strong>concat</strong></a>(a, b, /)</dt><dd><tt>Same&nbsp;as&nbsp;a&nbsp;+&nbsp;b,&nbsp;for&nbsp;a&nbsp;and&nbsp;b&nbsp;sequences.</tt></dd></dl>
+ <dl><dt><a name="-contains"><strong>contains</strong></a>(a, b, /)</dt><dd><tt>Same&nbsp;as&nbsp;b&nbsp;in&nbsp;a&nbsp;(note&nbsp;reversed&nbsp;operands).</tt></dd></dl>
+ <dl><dt><a name="-countOf"><strong>countOf</strong></a>(a, b, /)</dt><dd><tt>Return&nbsp;the&nbsp;number&nbsp;of&nbsp;times&nbsp;b&nbsp;occurs&nbsp;in&nbsp;a.</tt></dd></dl>
+ <dl><dt><a name="-delitem"><strong>delitem</strong></a>(a, b, /)</dt><dd><tt>Same&nbsp;as&nbsp;del&nbsp;a[b].</tt></dd></dl>
+ <dl><dt><a name="-eq"><strong>eq</strong></a>(a, b, /)</dt><dd><tt>Same&nbsp;as&nbsp;a&nbsp;==&nbsp;b.</tt></dd></dl>
+ <dl><dt><a name="-floordiv"><strong>floordiv</strong></a>(a, b, /)</dt><dd><tt>Same&nbsp;as&nbsp;a&nbsp;//&nbsp;b.</tt></dd></dl>
+ <dl><dt><a name="-ge"><strong>ge</strong></a>(a, b, /)</dt><dd><tt>Same&nbsp;as&nbsp;a&nbsp;&gt;=&nbsp;b.</tt></dd></dl>
+ <dl><dt><a name="-getitem"><strong>getitem</strong></a>(a, b, /)</dt><dd><tt>Same&nbsp;as&nbsp;a[b].</tt></dd></dl>
+ <dl><dt><a name="-gt"><strong>gt</strong></a>(a, b, /)</dt><dd><tt>Same&nbsp;as&nbsp;a&nbsp;&gt;&nbsp;b.</tt></dd></dl>
+ <dl><dt><a name="-iadd"><strong>iadd</strong></a>(a, b, /)</dt><dd><tt>Same&nbsp;as&nbsp;a&nbsp;+=&nbsp;b.</tt></dd></dl>
+ <dl><dt><a name="-iand"><strong>iand</strong></a>(a, b, /)</dt><dd><tt>Same&nbsp;as&nbsp;a&nbsp;&amp;=&nbsp;b.</tt></dd></dl>
+ <dl><dt><a name="-iconcat"><strong>iconcat</strong></a>(a, b, /)</dt><dd><tt>Same&nbsp;as&nbsp;a&nbsp;+=&nbsp;b,&nbsp;for&nbsp;a&nbsp;and&nbsp;b&nbsp;sequences.</tt></dd></dl>
+ <dl><dt><a name="-ifloordiv"><strong>ifloordiv</strong></a>(a, b, /)</dt><dd><tt>Same&nbsp;as&nbsp;a&nbsp;//=&nbsp;b.</tt></dd></dl>
+ <dl><dt><a name="-ilshift"><strong>ilshift</strong></a>(a, b, /)</dt><dd><tt>Same&nbsp;as&nbsp;a&nbsp;&lt;&lt;=&nbsp;b.</tt></dd></dl>
+ <dl><dt><a name="-imatmul"><strong>imatmul</strong></a>(a, b, /)</dt><dd><tt>Same&nbsp;as&nbsp;a&nbsp;@=&nbsp;b.</tt></dd></dl>
+ <dl><dt><a name="-imod"><strong>imod</strong></a>(a, b, /)</dt><dd><tt>Same&nbsp;as&nbsp;a&nbsp;%=&nbsp;b.</tt></dd></dl>
+ <dl><dt><a name="-imul"><strong>imul</strong></a>(a, b, /)</dt><dd><tt>Same&nbsp;as&nbsp;a&nbsp;*=&nbsp;b.</tt></dd></dl>
+ <dl><dt><a name="-index"><strong>index</strong></a>(a, /)</dt><dd><tt>Same&nbsp;as&nbsp;a.__index__()</tt></dd></dl>
+ <dl><dt><a name="-indexOf"><strong>indexOf</strong></a>(a, b, /)</dt><dd><tt>Return&nbsp;the&nbsp;first&nbsp;index&nbsp;of&nbsp;b&nbsp;in&nbsp;a.</tt></dd></dl>
+ <dl><dt><a name="-inv"><strong>inv</strong></a>(a, /)</dt><dd><tt>Same&nbsp;as&nbsp;~a.</tt></dd></dl>
+ <dl><dt><a name="-invert"><strong>invert</strong></a>(a, /)</dt><dd><tt>Same&nbsp;as&nbsp;~a.</tt></dd></dl>
+ <dl><dt><a name="-ior"><strong>ior</strong></a>(a, b, /)</dt><dd><tt>Same&nbsp;as&nbsp;a&nbsp;|=&nbsp;b.</tt></dd></dl>
+ <dl><dt><a name="-ipow"><strong>ipow</strong></a>(a, b, /)</dt><dd><tt>Same&nbsp;as&nbsp;a&nbsp;**=&nbsp;b.</tt></dd></dl>
+ <dl><dt><a name="-irshift"><strong>irshift</strong></a>(a, b, /)</dt><dd><tt>Same&nbsp;as&nbsp;a&nbsp;&gt;&gt;=&nbsp;b.</tt></dd></dl>
+ <dl><dt><a name="-is_"><strong>is_</strong></a>(a, b, /)</dt><dd><tt>Same&nbsp;as&nbsp;a&nbsp;is&nbsp;b.</tt></dd></dl>
+ <dl><dt><a name="-is_not"><strong>is_not</strong></a>(a, b, /)</dt><dd><tt>Same&nbsp;as&nbsp;a&nbsp;is&nbsp;not&nbsp;b.</tt></dd></dl>
+ <dl><dt><a name="-isub"><strong>isub</strong></a>(a, b, /)</dt><dd><tt>Same&nbsp;as&nbsp;a&nbsp;-=&nbsp;b.</tt></dd></dl>
+ <dl><dt><a name="-itruediv"><strong>itruediv</strong></a>(a, b, /)</dt><dd><tt>Same&nbsp;as&nbsp;a&nbsp;/=&nbsp;b.</tt></dd></dl>
+ <dl><dt><a name="-ixor"><strong>ixor</strong></a>(a, b, /)</dt><dd><tt>Same&nbsp;as&nbsp;a&nbsp;^=&nbsp;b.</tt></dd></dl>
+ <dl><dt><a name="-le"><strong>le</strong></a>(a, b, /)</dt><dd><tt>Same&nbsp;as&nbsp;a&nbsp;&lt;=&nbsp;b.</tt></dd></dl>
+ <dl><dt><a name="-length_hint"><strong>length_hint</strong></a>(obj, default=0, /)</dt><dd><tt>Return&nbsp;an&nbsp;estimate&nbsp;of&nbsp;the&nbsp;number&nbsp;of&nbsp;items&nbsp;in&nbsp;obj.<br>
+&nbsp;<br>
+This&nbsp;is&nbsp;useful&nbsp;for&nbsp;presizing&nbsp;containers&nbsp;when&nbsp;building&nbsp;from&nbsp;an&nbsp;iterable.<br>
+&nbsp;<br>
+If&nbsp;the&nbsp;object&nbsp;supports&nbsp;len(),&nbsp;the&nbsp;result&nbsp;will&nbsp;be&nbsp;exact.<br>
+Otherwise,&nbsp;it&nbsp;may&nbsp;over-&nbsp;or&nbsp;under-estimate&nbsp;by&nbsp;an&nbsp;arbitrary&nbsp;amount.<br>
+The&nbsp;result&nbsp;will&nbsp;be&nbsp;an&nbsp;integer&nbsp;&gt;=&nbsp;0.</tt></dd></dl>
+ <dl><dt><a name="-lshift"><strong>lshift</strong></a>(a, b, /)</dt><dd><tt>Same&nbsp;as&nbsp;a&nbsp;&lt;&lt;&nbsp;b.</tt></dd></dl>
+ <dl><dt><a name="-lt"><strong>lt</strong></a>(a, b, /)</dt><dd><tt>Same&nbsp;as&nbsp;a&nbsp;&lt;&nbsp;b.</tt></dd></dl>
+ <dl><dt><a name="-matmul"><strong>matmul</strong></a>(a, b, /)</dt><dd><tt>Same&nbsp;as&nbsp;a&nbsp;@&nbsp;b.</tt></dd></dl>
+ <dl><dt><a name="-mod"><strong>mod</strong></a>(a, b, /)</dt><dd><tt>Same&nbsp;as&nbsp;a&nbsp;%&nbsp;b.</tt></dd></dl>
+ <dl><dt><a name="-mul"><strong>mul</strong></a>(a, b, /)</dt><dd><tt>Same&nbsp;as&nbsp;a&nbsp;*&nbsp;b.</tt></dd></dl>
+ <dl><dt><a name="-ne"><strong>ne</strong></a>(a, b, /)</dt><dd><tt>Same&nbsp;as&nbsp;a&nbsp;!=&nbsp;b.</tt></dd></dl>
+ <dl><dt><a name="-neg"><strong>neg</strong></a>(a, /)</dt><dd><tt>Same&nbsp;as&nbsp;-a.</tt></dd></dl>
+ <dl><dt><a name="-not_"><strong>not_</strong></a>(a, /)</dt><dd><tt>Same&nbsp;as&nbsp;not&nbsp;a.</tt></dd></dl>
+ <dl><dt><a name="-or_"><strong>or_</strong></a>(a, b, /)</dt><dd><tt>Same&nbsp;as&nbsp;a&nbsp;|&nbsp;b.</tt></dd></dl>
+ <dl><dt><a name="-pos"><strong>pos</strong></a>(a, /)</dt><dd><tt>Same&nbsp;as&nbsp;+a.</tt></dd></dl>
+ <dl><dt><a name="-pow"><strong>pow</strong></a>(a, b, /)</dt><dd><tt>Same&nbsp;as&nbsp;a&nbsp;**&nbsp;b.</tt></dd></dl>
+ <dl><dt><a name="-rshift"><strong>rshift</strong></a>(a, b, /)</dt><dd><tt>Same&nbsp;as&nbsp;a&nbsp;&gt;&gt;&nbsp;b.</tt></dd></dl>
+ <dl><dt><a name="-setitem"><strong>setitem</strong></a>(a, b, c, /)</dt><dd><tt>Same&nbsp;as&nbsp;a[b]&nbsp;=&nbsp;c.</tt></dd></dl>
+ <dl><dt><a name="-sub"><strong>sub</strong></a>(a, b, /)</dt><dd><tt>Same&nbsp;as&nbsp;a&nbsp;-&nbsp;b.</tt></dd></dl>
+ <dl><dt><a name="-truediv"><strong>truediv</strong></a>(a, b, /)</dt><dd><tt>Same&nbsp;as&nbsp;a&nbsp;/&nbsp;b.</tt></dd></dl>
+ <dl><dt><a name="-truth"><strong>truth</strong></a>(a, /)</dt><dd><tt>Return&nbsp;True&nbsp;if&nbsp;a&nbsp;is&nbsp;true,&nbsp;False&nbsp;otherwise.</tt></dd></dl>
+ <dl><dt><a name="-xor"><strong>xor</strong></a>(a, b, /)</dt><dd><tt>Same&nbsp;as&nbsp;a&nbsp;^&nbsp;b.</tt></dd></dl>
+</td></tr></table>
+</body></html>

@@ -1,0 +1,377 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head><title>Python: module gzip</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+</head><body bgcolor="#f0f0f8">
+
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="heading">
+<tr bgcolor="#7799ee">
+<td valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong>gzip</strong></big></big></font></td
+><td align=right valign=bottom
+><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:c%3A%5Cpython38%5Clib%5Cgzip.py">c:\python38\lib\gzip.py</a><br><a href="https://docs.python.org/3.8/library/gzip">Module Reference</a></font></td></tr></table>
+    <p><tt>Functions&nbsp;that&nbsp;read&nbsp;and&nbsp;write&nbsp;gzipped&nbsp;files.<br>
+&nbsp;<br>
+The&nbsp;user&nbsp;of&nbsp;the&nbsp;file&nbsp;doesn't&nbsp;have&nbsp;to&nbsp;worry&nbsp;about&nbsp;the&nbsp;compression,<br>
+but&nbsp;random&nbsp;access&nbsp;is&nbsp;not&nbsp;allowed.</tt></p>
+<p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#aa55cc">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Modules</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#aa55cc"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><table width="100%" summary="list"><tr><td width="25%" valign=top><a href="_compression.html">_compression</a><br>
+<a href="builtins.html">builtins</a><br>
+</td><td width="25%" valign=top><a href="io.html">io</a><br>
+<a href="os.html">os</a><br>
+</td><td width="25%" valign=top><a href="struct.html">struct</a><br>
+<a href="sys.html">sys</a><br>
+</td><td width="25%" valign=top><a href="time.html">time</a><br>
+<a href="zlib.html">zlib</a><br>
+</td></tr></table></td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ee77aa">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Classes</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#ee77aa"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl>
+<dt><font face="helvetica, arial"><a href="_compression.html#BaseStream">_compression.BaseStream</a>(<a href="io.html#BufferedIOBase">io.BufferedIOBase</a>)
+</font></dt><dd>
+<dl>
+<dt><font face="helvetica, arial"><a href="gzip.html#GzipFile">GzipFile</a>
+</font></dt></dl>
+</dd>
+<dt><font face="helvetica, arial"><a href="builtins.html#OSError">builtins.OSError</a>(<a href="builtins.html#Exception">builtins.Exception</a>)
+</font></dt><dd>
+<dl>
+<dt><font face="helvetica, arial"><a href="gzip.html#BadGzipFile">BadGzipFile</a>
+</font></dt></dl>
+</dd>
+</dl>
+ <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="BadGzipFile">class <strong>BadGzipFile</strong></a>(<a href="builtins.html#OSError">builtins.OSError</a>)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt>Exception&nbsp;raised&nbsp;in&nbsp;some&nbsp;cases&nbsp;for&nbsp;invalid&nbsp;gzip&nbsp;files.<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%"><dl><dt>Method resolution order:</dt>
+<dd><a href="gzip.html#BadGzipFile">BadGzipFile</a></dd>
+<dd><a href="builtins.html#OSError">builtins.OSError</a></dd>
+<dd><a href="builtins.html#Exception">builtins.Exception</a></dd>
+<dd><a href="builtins.html#BaseException">builtins.BaseException</a></dd>
+<dd><a href="builtins.html#object">builtins.object</a></dd>
+</dl>
+<hr>
+Data descriptors defined here:<br>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<hr>
+Methods inherited from <a href="builtins.html#OSError">builtins.OSError</a>:<br>
+<dl><dt><a name="BadGzipFile-__init__"><strong>__init__</strong></a>(self, /, *args, **kwargs)</dt><dd><tt>Initialize&nbsp;self.&nbsp;&nbsp;See&nbsp;help(type(self))&nbsp;for&nbsp;accurate&nbsp;signature.</tt></dd></dl>
+
+<dl><dt><a name="BadGzipFile-__reduce__"><strong>__reduce__</strong></a>(...)</dt><dd><tt>Helper&nbsp;for&nbsp;pickle.</tt></dd></dl>
+
+<dl><dt><a name="BadGzipFile-__str__"><strong>__str__</strong></a>(self, /)</dt><dd><tt>Return&nbsp;str(self).</tt></dd></dl>
+
+<hr>
+Static methods inherited from <a href="builtins.html#OSError">builtins.OSError</a>:<br>
+<dl><dt><a name="BadGzipFile-__new__"><strong>__new__</strong></a>(*args, **kwargs)<font color="#909090"><font face="helvetica, arial"> from <a href="builtins.html#type">builtins.type</a></font></font></dt><dd><tt>Create&nbsp;and&nbsp;return&nbsp;a&nbsp;new&nbsp;object.&nbsp;&nbsp;See&nbsp;help(type)&nbsp;for&nbsp;accurate&nbsp;signature.</tt></dd></dl>
+
+<hr>
+Data descriptors inherited from <a href="builtins.html#OSError">builtins.OSError</a>:<br>
+<dl><dt><strong>characters_written</strong></dt>
+</dl>
+<dl><dt><strong>errno</strong></dt>
+<dd><tt>POSIX&nbsp;exception&nbsp;code</tt></dd>
+</dl>
+<dl><dt><strong>filename</strong></dt>
+<dd><tt>exception&nbsp;filename</tt></dd>
+</dl>
+<dl><dt><strong>filename2</strong></dt>
+<dd><tt>second&nbsp;exception&nbsp;filename</tt></dd>
+</dl>
+<dl><dt><strong>strerror</strong></dt>
+<dd><tt>exception&nbsp;strerror</tt></dd>
+</dl>
+<dl><dt><strong>winerror</strong></dt>
+<dd><tt>Win32&nbsp;exception&nbsp;code</tt></dd>
+</dl>
+<hr>
+Methods inherited from <a href="builtins.html#BaseException">builtins.BaseException</a>:<br>
+<dl><dt><a name="BadGzipFile-__delattr__"><strong>__delattr__</strong></a>(self, name, /)</dt><dd><tt>Implement&nbsp;delattr(self,&nbsp;name).</tt></dd></dl>
+
+<dl><dt><a name="BadGzipFile-__getattribute__"><strong>__getattribute__</strong></a>(self, name, /)</dt><dd><tt>Return&nbsp;getattr(self,&nbsp;name).</tt></dd></dl>
+
+<dl><dt><a name="BadGzipFile-__repr__"><strong>__repr__</strong></a>(self, /)</dt><dd><tt>Return&nbsp;repr(self).</tt></dd></dl>
+
+<dl><dt><a name="BadGzipFile-__setattr__"><strong>__setattr__</strong></a>(self, name, value, /)</dt><dd><tt>Implement&nbsp;setattr(self,&nbsp;name,&nbsp;value).</tt></dd></dl>
+
+<dl><dt><a name="BadGzipFile-__setstate__"><strong>__setstate__</strong></a>(...)</dt></dl>
+
+<dl><dt><a name="BadGzipFile-with_traceback"><strong>with_traceback</strong></a>(...)</dt><dd><tt>Exception.<a href="#BadGzipFile-with_traceback">with_traceback</a>(tb)&nbsp;--<br>
+set&nbsp;self.<strong>__traceback__</strong>&nbsp;to&nbsp;tb&nbsp;and&nbsp;return&nbsp;self.</tt></dd></dl>
+
+<hr>
+Data descriptors inherited from <a href="builtins.html#BaseException">builtins.BaseException</a>:<br>
+<dl><dt><strong>__cause__</strong></dt>
+<dd><tt>exception&nbsp;cause</tt></dd>
+</dl>
+<dl><dt><strong>__context__</strong></dt>
+<dd><tt>exception&nbsp;context</tt></dd>
+</dl>
+<dl><dt><strong>__dict__</strong></dt>
+</dl>
+<dl><dt><strong>__suppress_context__</strong></dt>
+</dl>
+<dl><dt><strong>__traceback__</strong></dt>
+</dl>
+<dl><dt><strong>args</strong></dt>
+</dl>
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="GzipFile">class <strong>GzipFile</strong></a>(<a href="_compression.html#BaseStream">_compression.BaseStream</a>)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt><a href="#GzipFile">GzipFile</a>(filename=None,&nbsp;mode=None,&nbsp;compresslevel=9,&nbsp;fileobj=None,&nbsp;mtime=None)<br>
+&nbsp;<br>
+The&nbsp;<a href="#GzipFile">GzipFile</a>&nbsp;class&nbsp;simulates&nbsp;most&nbsp;of&nbsp;the&nbsp;methods&nbsp;of&nbsp;a&nbsp;file&nbsp;object&nbsp;with<br>
+the&nbsp;exception&nbsp;of&nbsp;the&nbsp;<a href="#GzipFile-truncate">truncate</a>()&nbsp;method.<br>
+&nbsp;<br>
+This&nbsp;class&nbsp;only&nbsp;supports&nbsp;opening&nbsp;files&nbsp;in&nbsp;binary&nbsp;mode.&nbsp;If&nbsp;you&nbsp;need&nbsp;to&nbsp;open&nbsp;a<br>
+compressed&nbsp;file&nbsp;in&nbsp;text&nbsp;mode,&nbsp;use&nbsp;the&nbsp;gzip.<a href="#-open">open</a>()&nbsp;function.<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%"><dl><dt>Method resolution order:</dt>
+<dd><a href="gzip.html#GzipFile">GzipFile</a></dd>
+<dd><a href="_compression.html#BaseStream">_compression.BaseStream</a></dd>
+<dd><a href="io.html#BufferedIOBase">io.BufferedIOBase</a></dd>
+<dd><a href="io.html#_BufferedIOBase">_io._BufferedIOBase</a></dd>
+<dd><a href="io.html#IOBase">io.IOBase</a></dd>
+<dd><a href="io.html#_IOBase">_io._IOBase</a></dd>
+<dd><a href="builtins.html#object">builtins.object</a></dd>
+</dl>
+<hr>
+Methods defined here:<br>
+<dl><dt><a name="GzipFile-__init__"><strong>__init__</strong></a>(self, filename=None, mode=None, compresslevel=9, fileobj=None, mtime=None)</dt><dd><tt>Constructor&nbsp;for&nbsp;the&nbsp;<a href="#GzipFile">GzipFile</a>&nbsp;class.<br>
+&nbsp;<br>
+At&nbsp;least&nbsp;one&nbsp;of&nbsp;fileobj&nbsp;and&nbsp;filename&nbsp;must&nbsp;be&nbsp;given&nbsp;a<br>
+non-trivial&nbsp;value.<br>
+&nbsp;<br>
+The&nbsp;new&nbsp;class&nbsp;instance&nbsp;is&nbsp;based&nbsp;on&nbsp;fileobj,&nbsp;which&nbsp;can&nbsp;be&nbsp;a&nbsp;regular<br>
+file,&nbsp;an&nbsp;io.BytesIO&nbsp;object,&nbsp;or&nbsp;any&nbsp;other&nbsp;object&nbsp;which&nbsp;simulates&nbsp;a&nbsp;file.<br>
+It&nbsp;defaults&nbsp;to&nbsp;None,&nbsp;in&nbsp;which&nbsp;case&nbsp;filename&nbsp;is&nbsp;opened&nbsp;to&nbsp;provide<br>
+a&nbsp;file&nbsp;object.<br>
+&nbsp;<br>
+When&nbsp;fileobj&nbsp;is&nbsp;not&nbsp;None,&nbsp;the&nbsp;filename&nbsp;argument&nbsp;is&nbsp;only&nbsp;used&nbsp;to&nbsp;be<br>
+included&nbsp;in&nbsp;the&nbsp;gzip&nbsp;file&nbsp;header,&nbsp;which&nbsp;may&nbsp;include&nbsp;the&nbsp;original<br>
+filename&nbsp;of&nbsp;the&nbsp;uncompressed&nbsp;file.&nbsp;&nbsp;It&nbsp;defaults&nbsp;to&nbsp;the&nbsp;filename&nbsp;of<br>
+fileobj,&nbsp;if&nbsp;discernible;&nbsp;otherwise,&nbsp;it&nbsp;defaults&nbsp;to&nbsp;the&nbsp;empty&nbsp;string,<br>
+and&nbsp;in&nbsp;this&nbsp;case&nbsp;the&nbsp;original&nbsp;filename&nbsp;is&nbsp;not&nbsp;included&nbsp;in&nbsp;the&nbsp;header.<br>
+&nbsp;<br>
+The&nbsp;mode&nbsp;argument&nbsp;can&nbsp;be&nbsp;any&nbsp;of&nbsp;'r',&nbsp;'rb',&nbsp;'a',&nbsp;'ab',&nbsp;'w',&nbsp;'wb',&nbsp;'x',&nbsp;or<br>
+'xb'&nbsp;depending&nbsp;on&nbsp;whether&nbsp;the&nbsp;file&nbsp;will&nbsp;be&nbsp;read&nbsp;or&nbsp;written.&nbsp;&nbsp;The&nbsp;default<br>
+is&nbsp;the&nbsp;mode&nbsp;of&nbsp;fileobj&nbsp;if&nbsp;discernible;&nbsp;otherwise,&nbsp;the&nbsp;default&nbsp;is&nbsp;'rb'.<br>
+A&nbsp;mode&nbsp;of&nbsp;'r'&nbsp;is&nbsp;equivalent&nbsp;to&nbsp;one&nbsp;of&nbsp;'rb',&nbsp;and&nbsp;similarly&nbsp;for&nbsp;'w'&nbsp;and<br>
+'wb',&nbsp;'a'&nbsp;and&nbsp;'ab',&nbsp;and&nbsp;'x'&nbsp;and&nbsp;'xb'.<br>
+&nbsp;<br>
+The&nbsp;compresslevel&nbsp;argument&nbsp;is&nbsp;an&nbsp;integer&nbsp;from&nbsp;0&nbsp;to&nbsp;9&nbsp;controlling&nbsp;the<br>
+level&nbsp;of&nbsp;compression;&nbsp;1&nbsp;is&nbsp;fastest&nbsp;and&nbsp;produces&nbsp;the&nbsp;least&nbsp;compression,<br>
+and&nbsp;9&nbsp;is&nbsp;slowest&nbsp;and&nbsp;produces&nbsp;the&nbsp;most&nbsp;compression.&nbsp;0&nbsp;is&nbsp;no&nbsp;compression<br>
+at&nbsp;all.&nbsp;The&nbsp;default&nbsp;is&nbsp;9.<br>
+&nbsp;<br>
+The&nbsp;mtime&nbsp;argument&nbsp;is&nbsp;an&nbsp;optional&nbsp;numeric&nbsp;timestamp&nbsp;to&nbsp;be&nbsp;written<br>
+to&nbsp;the&nbsp;last&nbsp;modification&nbsp;time&nbsp;field&nbsp;in&nbsp;the&nbsp;stream&nbsp;when&nbsp;compressing.<br>
+If&nbsp;omitted&nbsp;or&nbsp;None,&nbsp;the&nbsp;current&nbsp;time&nbsp;is&nbsp;used.</tt></dd></dl>
+
+<dl><dt><a name="GzipFile-__repr__"><strong>__repr__</strong></a>(self)</dt><dd><tt>Return&nbsp;repr(self).</tt></dd></dl>
+
+<dl><dt><a name="GzipFile-close"><strong>close</strong></a>(self)</dt><dd><tt>Flush&nbsp;and&nbsp;close&nbsp;the&nbsp;IO&nbsp;object.<br>
+&nbsp;<br>
+This&nbsp;method&nbsp;has&nbsp;no&nbsp;effect&nbsp;if&nbsp;the&nbsp;file&nbsp;is&nbsp;already&nbsp;closed.</tt></dd></dl>
+
+<dl><dt><a name="GzipFile-fileno"><strong>fileno</strong></a>(self)</dt><dd><tt>Invoke&nbsp;the&nbsp;underlying&nbsp;file&nbsp;object's&nbsp;<a href="#GzipFile-fileno">fileno</a>()&nbsp;method.<br>
+&nbsp;<br>
+This&nbsp;will&nbsp;raise&nbsp;AttributeError&nbsp;if&nbsp;the&nbsp;underlying&nbsp;file&nbsp;object<br>
+doesn't&nbsp;support&nbsp;<a href="#GzipFile-fileno">fileno</a>().</tt></dd></dl>
+
+<dl><dt><a name="GzipFile-flush"><strong>flush</strong></a>(self, zlib_mode=2)</dt><dd><tt>Flush&nbsp;write&nbsp;buffers,&nbsp;if&nbsp;applicable.<br>
+&nbsp;<br>
+This&nbsp;is&nbsp;not&nbsp;implemented&nbsp;for&nbsp;read-only&nbsp;and&nbsp;non-blocking&nbsp;streams.</tt></dd></dl>
+
+<dl><dt><a name="GzipFile-peek"><strong>peek</strong></a>(self, n)</dt></dl>
+
+<dl><dt><a name="GzipFile-read"><strong>read</strong></a>(self, size=-1)</dt><dd><tt>Read&nbsp;and&nbsp;return&nbsp;up&nbsp;to&nbsp;n&nbsp;bytes.<br>
+&nbsp;<br>
+If&nbsp;the&nbsp;argument&nbsp;is&nbsp;omitted,&nbsp;None,&nbsp;or&nbsp;negative,&nbsp;reads&nbsp;and<br>
+returns&nbsp;all&nbsp;data&nbsp;until&nbsp;EOF.<br>
+&nbsp;<br>
+If&nbsp;the&nbsp;argument&nbsp;is&nbsp;positive,&nbsp;and&nbsp;the&nbsp;underlying&nbsp;raw&nbsp;stream&nbsp;is<br>
+not&nbsp;'interactive',&nbsp;multiple&nbsp;raw&nbsp;reads&nbsp;may&nbsp;be&nbsp;issued&nbsp;to&nbsp;satisfy<br>
+the&nbsp;byte&nbsp;count&nbsp;(unless&nbsp;EOF&nbsp;is&nbsp;reached&nbsp;first).&nbsp;&nbsp;But&nbsp;for<br>
+interactive&nbsp;raw&nbsp;streams&nbsp;(as&nbsp;well&nbsp;as&nbsp;sockets&nbsp;and&nbsp;pipes),&nbsp;at&nbsp;most<br>
+one&nbsp;raw&nbsp;read&nbsp;will&nbsp;be&nbsp;issued,&nbsp;and&nbsp;a&nbsp;short&nbsp;result&nbsp;does&nbsp;not&nbsp;imply<br>
+that&nbsp;EOF&nbsp;is&nbsp;imminent.<br>
+&nbsp;<br>
+Returns&nbsp;an&nbsp;empty&nbsp;bytes&nbsp;object&nbsp;on&nbsp;EOF.<br>
+&nbsp;<br>
+Returns&nbsp;None&nbsp;if&nbsp;the&nbsp;underlying&nbsp;raw&nbsp;stream&nbsp;was&nbsp;open&nbsp;in&nbsp;non-blocking<br>
+mode&nbsp;and&nbsp;no&nbsp;data&nbsp;is&nbsp;available&nbsp;at&nbsp;the&nbsp;moment.</tt></dd></dl>
+
+<dl><dt><a name="GzipFile-read1"><strong>read1</strong></a>(self, size=-1)</dt><dd><tt>Implements&nbsp;BufferedIOBase.<a href="#GzipFile-read1">read1</a>()<br>
+&nbsp;<br>
+Reads&nbsp;up&nbsp;to&nbsp;a&nbsp;buffer's&nbsp;worth&nbsp;of&nbsp;data&nbsp;if&nbsp;size&nbsp;is&nbsp;negative.</tt></dd></dl>
+
+<dl><dt><a name="GzipFile-readable"><strong>readable</strong></a>(self)</dt><dd><tt>Return&nbsp;whether&nbsp;object&nbsp;was&nbsp;opened&nbsp;for&nbsp;reading.<br>
+&nbsp;<br>
+If&nbsp;False,&nbsp;<a href="#GzipFile-read">read</a>()&nbsp;will&nbsp;raise&nbsp;<a href="builtins.html#OSError">OSError</a>.</tt></dd></dl>
+
+<dl><dt><a name="GzipFile-readline"><strong>readline</strong></a>(self, size=-1)</dt><dd><tt>Read&nbsp;and&nbsp;return&nbsp;a&nbsp;line&nbsp;from&nbsp;the&nbsp;stream.<br>
+&nbsp;<br>
+If&nbsp;size&nbsp;is&nbsp;specified,&nbsp;at&nbsp;most&nbsp;size&nbsp;bytes&nbsp;will&nbsp;be&nbsp;read.<br>
+&nbsp;<br>
+The&nbsp;line&nbsp;terminator&nbsp;is&nbsp;always&nbsp;b'\n'&nbsp;for&nbsp;binary&nbsp;files;&nbsp;for&nbsp;text<br>
+files,&nbsp;the&nbsp;newlines&nbsp;argument&nbsp;to&nbsp;open&nbsp;can&nbsp;be&nbsp;used&nbsp;to&nbsp;select&nbsp;the&nbsp;line<br>
+terminator(s)&nbsp;recognized.</tt></dd></dl>
+
+<dl><dt><a name="GzipFile-rewind"><strong>rewind</strong></a>(self)</dt><dd><tt>Return&nbsp;the&nbsp;uncompressed&nbsp;stream&nbsp;file&nbsp;position&nbsp;indicator&nbsp;to&nbsp;the<br>
+beginning&nbsp;of&nbsp;the&nbsp;file</tt></dd></dl>
+
+<dl><dt><a name="GzipFile-seek"><strong>seek</strong></a>(self, offset, whence=0)</dt><dd><tt>Change&nbsp;stream&nbsp;position.<br>
+&nbsp;<br>
+Change&nbsp;the&nbsp;stream&nbsp;position&nbsp;to&nbsp;the&nbsp;given&nbsp;byte&nbsp;offset.&nbsp;The&nbsp;offset&nbsp;is<br>
+interpreted&nbsp;relative&nbsp;to&nbsp;the&nbsp;position&nbsp;indicated&nbsp;by&nbsp;whence.&nbsp;&nbsp;Values<br>
+for&nbsp;whence&nbsp;are:<br>
+&nbsp;<br>
+*&nbsp;0&nbsp;--&nbsp;start&nbsp;of&nbsp;stream&nbsp;(the&nbsp;default);&nbsp;offset&nbsp;should&nbsp;be&nbsp;zero&nbsp;or&nbsp;positive<br>
+*&nbsp;1&nbsp;--&nbsp;current&nbsp;stream&nbsp;position;&nbsp;offset&nbsp;may&nbsp;be&nbsp;negative<br>
+*&nbsp;2&nbsp;--&nbsp;end&nbsp;of&nbsp;stream;&nbsp;offset&nbsp;is&nbsp;usually&nbsp;negative<br>
+&nbsp;<br>
+Return&nbsp;the&nbsp;new&nbsp;absolute&nbsp;position.</tt></dd></dl>
+
+<dl><dt><a name="GzipFile-seekable"><strong>seekable</strong></a>(self)</dt><dd><tt>Return&nbsp;whether&nbsp;object&nbsp;supports&nbsp;random&nbsp;access.<br>
+&nbsp;<br>
+If&nbsp;False,&nbsp;<a href="#GzipFile-seek">seek</a>(),&nbsp;<a href="#GzipFile-tell">tell</a>()&nbsp;and&nbsp;<a href="#GzipFile-truncate">truncate</a>()&nbsp;will&nbsp;raise&nbsp;<a href="builtins.html#OSError">OSError</a>.<br>
+This&nbsp;method&nbsp;may&nbsp;need&nbsp;to&nbsp;do&nbsp;a&nbsp;test&nbsp;<a href="#GzipFile-seek">seek</a>().</tt></dd></dl>
+
+<dl><dt><a name="GzipFile-writable"><strong>writable</strong></a>(self)</dt><dd><tt>Return&nbsp;whether&nbsp;object&nbsp;was&nbsp;opened&nbsp;for&nbsp;writing.<br>
+&nbsp;<br>
+If&nbsp;False,&nbsp;<a href="#GzipFile-write">write</a>()&nbsp;will&nbsp;raise&nbsp;<a href="builtins.html#OSError">OSError</a>.</tt></dd></dl>
+
+<dl><dt><a name="GzipFile-write"><strong>write</strong></a>(self, data)</dt><dd><tt>Write&nbsp;the&nbsp;given&nbsp;buffer&nbsp;to&nbsp;the&nbsp;IO&nbsp;stream.<br>
+&nbsp;<br>
+Returns&nbsp;the&nbsp;number&nbsp;of&nbsp;bytes&nbsp;written,&nbsp;which&nbsp;is&nbsp;always&nbsp;the&nbsp;length&nbsp;of&nbsp;b<br>
+in&nbsp;bytes.<br>
+&nbsp;<br>
+Raises&nbsp;BlockingIOError&nbsp;if&nbsp;the&nbsp;buffer&nbsp;is&nbsp;full&nbsp;and&nbsp;the<br>
+underlying&nbsp;raw&nbsp;stream&nbsp;cannot&nbsp;accept&nbsp;more&nbsp;data&nbsp;at&nbsp;the&nbsp;moment.</tt></dd></dl>
+
+<hr>
+Readonly properties defined here:<br>
+<dl><dt><strong>closed</strong></dt>
+</dl>
+<dl><dt><strong>filename</strong></dt>
+</dl>
+<dl><dt><strong>mtime</strong></dt>
+<dd><tt>Last&nbsp;modification&nbsp;time&nbsp;read&nbsp;from&nbsp;stream,&nbsp;or&nbsp;None</tt></dd>
+</dl>
+<hr>
+Data and other attributes defined here:<br>
+<dl><dt><strong>__abstractmethods__</strong> = frozenset()</dl>
+
+<dl><dt><strong>myfileobj</strong> = None</dl>
+
+<hr>
+Methods inherited from <a href="io.html#_BufferedIOBase">_io._BufferedIOBase</a>:<br>
+<dl><dt><a name="GzipFile-detach"><strong>detach</strong></a>(self, /)</dt><dd><tt>Disconnect&nbsp;this&nbsp;buffer&nbsp;from&nbsp;its&nbsp;underlying&nbsp;raw&nbsp;stream&nbsp;and&nbsp;return&nbsp;it.<br>
+&nbsp;<br>
+After&nbsp;the&nbsp;raw&nbsp;stream&nbsp;has&nbsp;been&nbsp;detached,&nbsp;the&nbsp;buffer&nbsp;is&nbsp;in&nbsp;an&nbsp;unusable<br>
+state.</tt></dd></dl>
+
+<dl><dt><a name="GzipFile-readinto"><strong>readinto</strong></a>(self, buffer, /)</dt></dl>
+
+<dl><dt><a name="GzipFile-readinto1"><strong>readinto1</strong></a>(self, buffer, /)</dt></dl>
+
+<hr>
+Methods inherited from <a href="io.html#_IOBase">_io._IOBase</a>:<br>
+<dl><dt><a name="GzipFile-__del__"><strong>__del__</strong></a>(...)</dt></dl>
+
+<dl><dt><a name="GzipFile-__enter__"><strong>__enter__</strong></a>(...)</dt></dl>
+
+<dl><dt><a name="GzipFile-__exit__"><strong>__exit__</strong></a>(...)</dt></dl>
+
+<dl><dt><a name="GzipFile-__iter__"><strong>__iter__</strong></a>(self, /)</dt><dd><tt>Implement&nbsp;iter(self).</tt></dd></dl>
+
+<dl><dt><a name="GzipFile-__next__"><strong>__next__</strong></a>(self, /)</dt><dd><tt>Implement&nbsp;next(self).</tt></dd></dl>
+
+<dl><dt><a name="GzipFile-isatty"><strong>isatty</strong></a>(self, /)</dt><dd><tt>Return&nbsp;whether&nbsp;this&nbsp;is&nbsp;an&nbsp;'interactive'&nbsp;stream.<br>
+&nbsp;<br>
+Return&nbsp;False&nbsp;if&nbsp;it&nbsp;can't&nbsp;be&nbsp;determined.</tt></dd></dl>
+
+<dl><dt><a name="GzipFile-readlines"><strong>readlines</strong></a>(self, hint=-1, /)</dt><dd><tt>Return&nbsp;a&nbsp;list&nbsp;of&nbsp;lines&nbsp;from&nbsp;the&nbsp;stream.<br>
+&nbsp;<br>
+hint&nbsp;can&nbsp;be&nbsp;specified&nbsp;to&nbsp;control&nbsp;the&nbsp;number&nbsp;of&nbsp;lines&nbsp;read:&nbsp;no&nbsp;more<br>
+lines&nbsp;will&nbsp;be&nbsp;read&nbsp;if&nbsp;the&nbsp;total&nbsp;size&nbsp;(in&nbsp;bytes/characters)&nbsp;of&nbsp;all<br>
+lines&nbsp;so&nbsp;far&nbsp;exceeds&nbsp;hint.</tt></dd></dl>
+
+<dl><dt><a name="GzipFile-tell"><strong>tell</strong></a>(self, /)</dt><dd><tt>Return&nbsp;current&nbsp;stream&nbsp;position.</tt></dd></dl>
+
+<dl><dt><a name="GzipFile-truncate"><strong>truncate</strong></a>(...)</dt><dd><tt>Truncate&nbsp;file&nbsp;to&nbsp;size&nbsp;bytes.<br>
+&nbsp;<br>
+File&nbsp;pointer&nbsp;is&nbsp;left&nbsp;unchanged.&nbsp;&nbsp;Size&nbsp;defaults&nbsp;to&nbsp;the&nbsp;current&nbsp;IO<br>
+position&nbsp;as&nbsp;reported&nbsp;by&nbsp;<a href="#GzipFile-tell">tell</a>().&nbsp;&nbsp;Returns&nbsp;the&nbsp;new&nbsp;size.</tt></dd></dl>
+
+<dl><dt><a name="GzipFile-writelines"><strong>writelines</strong></a>(self, lines, /)</dt><dd><tt>Write&nbsp;a&nbsp;list&nbsp;of&nbsp;lines&nbsp;to&nbsp;stream.<br>
+&nbsp;<br>
+Line&nbsp;separators&nbsp;are&nbsp;not&nbsp;added,&nbsp;so&nbsp;it&nbsp;is&nbsp;usual&nbsp;for&nbsp;each&nbsp;of&nbsp;the<br>
+lines&nbsp;provided&nbsp;to&nbsp;have&nbsp;a&nbsp;line&nbsp;separator&nbsp;at&nbsp;the&nbsp;end.</tt></dd></dl>
+
+<hr>
+Static methods inherited from <a href="io.html#_IOBase">_io._IOBase</a>:<br>
+<dl><dt><a name="GzipFile-__new__"><strong>__new__</strong></a>(*args, **kwargs)<font color="#909090"><font face="helvetica, arial"> from <a href="builtins.html#type">builtins.type</a></font></font></dt><dd><tt>Create&nbsp;and&nbsp;return&nbsp;a&nbsp;new&nbsp;object.&nbsp;&nbsp;See&nbsp;help(type)&nbsp;for&nbsp;accurate&nbsp;signature.</tt></dd></dl>
+
+<hr>
+Data descriptors inherited from <a href="io.html#_IOBase">_io._IOBase</a>:<br>
+<dl><dt><strong>__dict__</strong></dt>
+</dl>
+</td></tr></table></td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#eeaa77">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Functions</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#eeaa77"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl><dt><a name="-compress"><strong>compress</strong></a>(data, compresslevel=9, *, mtime=None)</dt><dd><tt>Compress&nbsp;data&nbsp;in&nbsp;one&nbsp;shot&nbsp;and&nbsp;return&nbsp;the&nbsp;compressed&nbsp;string.<br>
+Optional&nbsp;argument&nbsp;is&nbsp;the&nbsp;compression&nbsp;level,&nbsp;in&nbsp;range&nbsp;of&nbsp;0-9.</tt></dd></dl>
+ <dl><dt><a name="-decompress"><strong>decompress</strong></a>(data)</dt><dd><tt>Decompress&nbsp;a&nbsp;gzip&nbsp;compressed&nbsp;string&nbsp;in&nbsp;one&nbsp;shot.<br>
+Return&nbsp;the&nbsp;decompressed&nbsp;string.</tt></dd></dl>
+ <dl><dt><a name="-open"><strong>open</strong></a>(filename, mode='rb', compresslevel=9, encoding=None, errors=None, newline=None)</dt><dd><tt>Open&nbsp;a&nbsp;gzip-compressed&nbsp;file&nbsp;in&nbsp;binary&nbsp;or&nbsp;text&nbsp;mode.<br>
+&nbsp;<br>
+The&nbsp;filename&nbsp;argument&nbsp;can&nbsp;be&nbsp;an&nbsp;actual&nbsp;filename&nbsp;(a&nbsp;str&nbsp;or&nbsp;bytes&nbsp;object),&nbsp;or<br>
+an&nbsp;existing&nbsp;file&nbsp;object&nbsp;to&nbsp;read&nbsp;from&nbsp;or&nbsp;write&nbsp;to.<br>
+&nbsp;<br>
+The&nbsp;mode&nbsp;argument&nbsp;can&nbsp;be&nbsp;"r",&nbsp;"rb",&nbsp;"w",&nbsp;"wb",&nbsp;"x",&nbsp;"xb",&nbsp;"a"&nbsp;or&nbsp;"ab"&nbsp;for<br>
+binary&nbsp;mode,&nbsp;or&nbsp;"rt",&nbsp;"wt",&nbsp;"xt"&nbsp;or&nbsp;"at"&nbsp;for&nbsp;text&nbsp;mode.&nbsp;The&nbsp;default&nbsp;mode&nbsp;is<br>
+"rb",&nbsp;and&nbsp;the&nbsp;default&nbsp;compresslevel&nbsp;is&nbsp;9.<br>
+&nbsp;<br>
+For&nbsp;binary&nbsp;mode,&nbsp;this&nbsp;function&nbsp;is&nbsp;equivalent&nbsp;to&nbsp;the&nbsp;<a href="#GzipFile">GzipFile</a>&nbsp;constructor:<br>
+<a href="#GzipFile">GzipFile</a>(filename,&nbsp;mode,&nbsp;compresslevel).&nbsp;In&nbsp;this&nbsp;case,&nbsp;the&nbsp;encoding,&nbsp;errors<br>
+and&nbsp;newline&nbsp;arguments&nbsp;must&nbsp;not&nbsp;be&nbsp;provided.<br>
+&nbsp;<br>
+For&nbsp;text&nbsp;mode,&nbsp;a&nbsp;<a href="#GzipFile">GzipFile</a>&nbsp;object&nbsp;is&nbsp;created,&nbsp;and&nbsp;wrapped&nbsp;in&nbsp;an<br>
+io.TextIOWrapper&nbsp;instance&nbsp;with&nbsp;the&nbsp;specified&nbsp;encoding,&nbsp;error&nbsp;handling<br>
+behavior,&nbsp;and&nbsp;line&nbsp;ending(s).</tt></dd></dl>
+</td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#55aa55">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Data</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#55aa55"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><strong>__all__</strong> = ['BadGzipFile', 'GzipFile', 'open', 'compress', 'decompress']</td></tr></table>
+</body></html>

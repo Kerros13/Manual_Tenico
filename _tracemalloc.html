@@ -1,0 +1,40 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head><title>Python: built-in module _tracemalloc</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+</head><body bgcolor="#f0f0f8">
+
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="heading">
+<tr bgcolor="#7799ee">
+<td valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong>_tracemalloc</strong></big></big></font></td
+><td align=right valign=bottom
+><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br>(built-in)</font></td></tr></table>
+    <p><tt>Debug&nbsp;module&nbsp;to&nbsp;trace&nbsp;memory&nbsp;blocks&nbsp;allocated&nbsp;by&nbsp;Python.</tt></p>
+<p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#eeaa77">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Functions</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#eeaa77"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl><dt><a name="-clear_traces"><strong>clear_traces</strong></a>()</dt><dd><tt>Clear&nbsp;traces&nbsp;of&nbsp;memory&nbsp;blocks&nbsp;allocated&nbsp;by&nbsp;Python.</tt></dd></dl>
+ <dl><dt><a name="-get_traceback_limit"><strong>get_traceback_limit</strong></a>()</dt><dd><tt>Get&nbsp;the&nbsp;maximum&nbsp;number&nbsp;of&nbsp;frames&nbsp;stored&nbsp;in&nbsp;the&nbsp;traceback&nbsp;of&nbsp;a&nbsp;trace.<br>
+&nbsp;<br>
+By&nbsp;default,&nbsp;a&nbsp;trace&nbsp;of&nbsp;an&nbsp;allocated&nbsp;memory&nbsp;block&nbsp;only&nbsp;stores<br>
+the&nbsp;most&nbsp;recent&nbsp;frame:&nbsp;the&nbsp;limit&nbsp;is&nbsp;1.</tt></dd></dl>
+ <dl><dt><a name="-get_traced_memory"><strong>get_traced_memory</strong></a>()</dt><dd><tt>Get&nbsp;the&nbsp;current&nbsp;size&nbsp;and&nbsp;peak&nbsp;size&nbsp;of&nbsp;memory&nbsp;blocks&nbsp;traced&nbsp;by&nbsp;tracemalloc.<br>
+&nbsp;<br>
+Returns&nbsp;a&nbsp;tuple:&nbsp;(current:&nbsp;int,&nbsp;peak:&nbsp;int).</tt></dd></dl>
+ <dl><dt><a name="-get_tracemalloc_memory"><strong>get_tracemalloc_memory</strong></a>()</dt><dd><tt>Get&nbsp;the&nbsp;memory&nbsp;usage&nbsp;in&nbsp;bytes&nbsp;of&nbsp;the&nbsp;tracemalloc&nbsp;module.<br>
+&nbsp;<br>
+This&nbsp;memory&nbsp;is&nbsp;used&nbsp;internally&nbsp;to&nbsp;trace&nbsp;memory&nbsp;allocations.</tt></dd></dl>
+ <dl><dt><a name="-is_tracing"><strong>is_tracing</strong></a>()</dt><dd><tt>Return&nbsp;True&nbsp;if&nbsp;the&nbsp;tracemalloc&nbsp;module&nbsp;is&nbsp;tracing&nbsp;Python&nbsp;memory&nbsp;allocations.</tt></dd></dl>
+ <dl><dt><a name="-start"><strong>start</strong></a>(nframe=1, /)</dt><dd><tt>Start&nbsp;tracing&nbsp;Python&nbsp;memory&nbsp;allocations.<br>
+&nbsp;<br>
+Also&nbsp;set&nbsp;the&nbsp;maximum&nbsp;number&nbsp;of&nbsp;frames&nbsp;stored&nbsp;in&nbsp;the&nbsp;traceback&nbsp;of&nbsp;a<br>
+trace&nbsp;to&nbsp;nframe.</tt></dd></dl>
+ <dl><dt><a name="-stop"><strong>stop</strong></a>()</dt><dd><tt>Stop&nbsp;tracing&nbsp;Python&nbsp;memory&nbsp;allocations.<br>
+&nbsp;<br>
+Also&nbsp;clear&nbsp;traces&nbsp;of&nbsp;memory&nbsp;blocks&nbsp;allocated&nbsp;by&nbsp;Python.</tt></dd></dl>
+</td></tr></table>
+</body></html>

@@ -1,0 +1,257 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head><title>Python: module fractions</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+</head><body bgcolor="#f0f0f8">
+
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="heading">
+<tr bgcolor="#7799ee">
+<td valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong>fractions</strong></big></big></font></td
+><td align=right valign=bottom
+><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:c%3A%5Cpython38%5Clib%5Cfractions.py">c:\python38\lib\fractions.py</a><br><a href="https://docs.python.org/3.8/library/fractions">Module Reference</a></font></td></tr></table>
+    <p><tt><a href="#Fraction">Fraction</a>,&nbsp;infinite-precision,&nbsp;real&nbsp;numbers.</tt></p>
+<p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#aa55cc">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Modules</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#aa55cc"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><table width="100%" summary="list"><tr><td width="25%" valign=top><a href="math.html">math</a><br>
+<a href="numbers.html">numbers</a><br>
+</td><td width="25%" valign=top><a href="operator.html">operator</a><br>
+<a href="re.html">re</a><br>
+</td><td width="25%" valign=top><a href="sys.html">sys</a><br>
+</td><td width="25%" valign=top></td></tr></table></td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ee77aa">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Classes</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#ee77aa"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl>
+<dt><font face="helvetica, arial"><a href="numbers.html#Rational">numbers.Rational</a>(<a href="numbers.html#Real">numbers.Real</a>)
+</font></dt><dd>
+<dl>
+<dt><font face="helvetica, arial"><a href="fractions.html#Fraction">Fraction</a>
+</font></dt></dl>
+</dd>
+</dl>
+ <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="Fraction">class <strong>Fraction</strong></a>(<a href="numbers.html#Rational">numbers.Rational</a>)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt><a href="#Fraction">Fraction</a>(numerator=0,&nbsp;denominator=None,&nbsp;*,&nbsp;_normalize=True)<br>
+&nbsp;<br>
+This&nbsp;class&nbsp;implements&nbsp;rational&nbsp;numbers.<br>
+&nbsp;<br>
+In&nbsp;the&nbsp;two-argument&nbsp;form&nbsp;of&nbsp;the&nbsp;constructor,&nbsp;<a href="#Fraction">Fraction</a>(8,&nbsp;6)&nbsp;will<br>
+produce&nbsp;a&nbsp;rational&nbsp;number&nbsp;equivalent&nbsp;to&nbsp;4/3.&nbsp;Both&nbsp;arguments&nbsp;must<br>
+be&nbsp;<a href="numbers.html#Rational">Rational</a>.&nbsp;The&nbsp;numerator&nbsp;defaults&nbsp;to&nbsp;0&nbsp;and&nbsp;the&nbsp;denominator<br>
+defaults&nbsp;to&nbsp;1&nbsp;so&nbsp;that&nbsp;<a href="#Fraction">Fraction</a>(3)&nbsp;==&nbsp;3&nbsp;and&nbsp;<a href="#Fraction">Fraction</a>()&nbsp;==&nbsp;0.<br>
+&nbsp;<br>
+Fractions&nbsp;can&nbsp;also&nbsp;be&nbsp;constructed&nbsp;from:<br>
+&nbsp;<br>
+&nbsp;&nbsp;-&nbsp;numeric&nbsp;strings&nbsp;similar&nbsp;to&nbsp;those&nbsp;accepted&nbsp;by&nbsp;the<br>
+&nbsp;&nbsp;&nbsp;&nbsp;float&nbsp;constructor&nbsp;(for&nbsp;example,&nbsp;'-2.3'&nbsp;or&nbsp;'1e10')<br>
+&nbsp;<br>
+&nbsp;&nbsp;-&nbsp;strings&nbsp;of&nbsp;the&nbsp;form&nbsp;'123/456'<br>
+&nbsp;<br>
+&nbsp;&nbsp;-&nbsp;float&nbsp;and&nbsp;Decimal&nbsp;instances<br>
+&nbsp;<br>
+&nbsp;&nbsp;-&nbsp;other&nbsp;<a href="numbers.html#Rational">Rational</a>&nbsp;instances&nbsp;(including&nbsp;integers)<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%"><dl><dt>Method resolution order:</dt>
+<dd><a href="fractions.html#Fraction">Fraction</a></dd>
+<dd><a href="numbers.html#Rational">numbers.Rational</a></dd>
+<dd><a href="numbers.html#Real">numbers.Real</a></dd>
+<dd><a href="numbers.html#Complex">numbers.Complex</a></dd>
+<dd><a href="numbers.html#Number">numbers.Number</a></dd>
+<dd><a href="builtins.html#object">builtins.object</a></dd>
+</dl>
+<hr>
+Methods defined here:<br>
+<dl><dt><a name="Fraction-__abs__"><strong>__abs__</strong></a>(a)</dt><dd><tt>abs(a)</tt></dd></dl>
+
+<dl><dt><a name="Fraction-__add__"><strong>__add__</strong></a>(a, b)</dt><dd><tt>a&nbsp;+&nbsp;b</tt></dd></dl>
+
+<dl><dt><a name="Fraction-__bool__"><strong>__bool__</strong></a>(a)</dt><dd><tt>a&nbsp;!=&nbsp;0</tt></dd></dl>
+
+<dl><dt><a name="Fraction-__ceil__"><strong>__ceil__</strong></a>(a)</dt><dd><tt>math.ceil(a)</tt></dd></dl>
+
+<dl><dt><a name="Fraction-__copy__"><strong>__copy__</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="Fraction-__deepcopy__"><strong>__deepcopy__</strong></a>(self, memo)</dt></dl>
+
+<dl><dt><a name="Fraction-__divmod__"><strong>__divmod__</strong></a>(a, b)</dt><dd><tt>(a&nbsp;//&nbsp;b,&nbsp;a&nbsp;%&nbsp;b)</tt></dd></dl>
+
+<dl><dt><a name="Fraction-__eq__"><strong>__eq__</strong></a>(a, b)</dt><dd><tt>a&nbsp;==&nbsp;b</tt></dd></dl>
+
+<dl><dt><a name="Fraction-__floor__"><strong>__floor__</strong></a>(a)</dt><dd><tt>math.floor(a)</tt></dd></dl>
+
+<dl><dt><a name="Fraction-__floordiv__"><strong>__floordiv__</strong></a>(a, b)</dt><dd><tt>a&nbsp;//&nbsp;b</tt></dd></dl>
+
+<dl><dt><a name="Fraction-__ge__"><strong>__ge__</strong></a>(a, b)</dt><dd><tt>a&nbsp;&gt;=&nbsp;b</tt></dd></dl>
+
+<dl><dt><a name="Fraction-__gt__"><strong>__gt__</strong></a>(a, b)</dt><dd><tt>a&nbsp;&gt;&nbsp;b</tt></dd></dl>
+
+<dl><dt><a name="Fraction-__hash__"><strong>__hash__</strong></a>(self)</dt><dd><tt>hash(self)</tt></dd></dl>
+
+<dl><dt><a name="Fraction-__le__"><strong>__le__</strong></a>(a, b)</dt><dd><tt>a&nbsp;&lt;=&nbsp;b</tt></dd></dl>
+
+<dl><dt><a name="Fraction-__lt__"><strong>__lt__</strong></a>(a, b)</dt><dd><tt>a&nbsp;&lt;&nbsp;b</tt></dd></dl>
+
+<dl><dt><a name="Fraction-__mod__"><strong>__mod__</strong></a>(a, b)</dt><dd><tt>a&nbsp;%&nbsp;b</tt></dd></dl>
+
+<dl><dt><a name="Fraction-__mul__"><strong>__mul__</strong></a>(a, b)</dt><dd><tt>a&nbsp;*&nbsp;b</tt></dd></dl>
+
+<dl><dt><a name="Fraction-__neg__"><strong>__neg__</strong></a>(a)</dt><dd><tt>-a</tt></dd></dl>
+
+<dl><dt><a name="Fraction-__pos__"><strong>__pos__</strong></a>(a)</dt><dd><tt>+a:&nbsp;Coerces&nbsp;a&nbsp;subclass&nbsp;instance&nbsp;to&nbsp;<a href="#Fraction">Fraction</a></tt></dd></dl>
+
+<dl><dt><a name="Fraction-__pow__"><strong>__pow__</strong></a>(a, b)</dt><dd><tt>a&nbsp;**&nbsp;b<br>
+&nbsp;<br>
+If&nbsp;b&nbsp;is&nbsp;not&nbsp;an&nbsp;integer,&nbsp;the&nbsp;result&nbsp;will&nbsp;be&nbsp;a&nbsp;float&nbsp;or&nbsp;complex<br>
+since&nbsp;roots&nbsp;are&nbsp;generally&nbsp;irrational.&nbsp;If&nbsp;b&nbsp;is&nbsp;an&nbsp;integer,&nbsp;the<br>
+result&nbsp;will&nbsp;be&nbsp;rational.</tt></dd></dl>
+
+<dl><dt><a name="Fraction-__radd__"><strong>__radd__</strong></a>(b, a)</dt><dd><tt>a&nbsp;+&nbsp;b</tt></dd></dl>
+
+<dl><dt><a name="Fraction-__rdivmod__"><strong>__rdivmod__</strong></a>(b, a)</dt><dd><tt>(a&nbsp;//&nbsp;b,&nbsp;a&nbsp;%&nbsp;b)</tt></dd></dl>
+
+<dl><dt><a name="Fraction-__reduce__"><strong>__reduce__</strong></a>(self)</dt><dd><tt>Helper&nbsp;for&nbsp;pickle.</tt></dd></dl>
+
+<dl><dt><a name="Fraction-__repr__"><strong>__repr__</strong></a>(self)</dt><dd><tt>repr(self)</tt></dd></dl>
+
+<dl><dt><a name="Fraction-__rfloordiv__"><strong>__rfloordiv__</strong></a>(b, a)</dt><dd><tt>a&nbsp;//&nbsp;b</tt></dd></dl>
+
+<dl><dt><a name="Fraction-__rmod__"><strong>__rmod__</strong></a>(b, a)</dt><dd><tt>a&nbsp;%&nbsp;b</tt></dd></dl>
+
+<dl><dt><a name="Fraction-__rmul__"><strong>__rmul__</strong></a>(b, a)</dt><dd><tt>a&nbsp;*&nbsp;b</tt></dd></dl>
+
+<dl><dt><a name="Fraction-__round__"><strong>__round__</strong></a>(self, ndigits=None)</dt><dd><tt>round(self,&nbsp;ndigits)<br>
+&nbsp;<br>
+Rounds&nbsp;half&nbsp;toward&nbsp;even.</tt></dd></dl>
+
+<dl><dt><a name="Fraction-__rpow__"><strong>__rpow__</strong></a>(b, a)</dt><dd><tt>a&nbsp;**&nbsp;b</tt></dd></dl>
+
+<dl><dt><a name="Fraction-__rsub__"><strong>__rsub__</strong></a>(b, a)</dt><dd><tt>a&nbsp;-&nbsp;b</tt></dd></dl>
+
+<dl><dt><a name="Fraction-__rtruediv__"><strong>__rtruediv__</strong></a>(b, a)</dt><dd><tt>a&nbsp;/&nbsp;b</tt></dd></dl>
+
+<dl><dt><a name="Fraction-__str__"><strong>__str__</strong></a>(self)</dt><dd><tt>str(self)</tt></dd></dl>
+
+<dl><dt><a name="Fraction-__sub__"><strong>__sub__</strong></a>(a, b)</dt><dd><tt>a&nbsp;-&nbsp;b</tt></dd></dl>
+
+<dl><dt><a name="Fraction-__truediv__"><strong>__truediv__</strong></a>(a, b)</dt><dd><tt>a&nbsp;/&nbsp;b</tt></dd></dl>
+
+<dl><dt><a name="Fraction-__trunc__"><strong>__trunc__</strong></a>(a)</dt><dd><tt>trunc(a)</tt></dd></dl>
+
+<dl><dt><a name="Fraction-as_integer_ratio"><strong>as_integer_ratio</strong></a>(self)</dt><dd><tt>Return&nbsp;the&nbsp;integer&nbsp;ratio&nbsp;as&nbsp;a&nbsp;tuple.<br>
+&nbsp;<br>
+Return&nbsp;a&nbsp;tuple&nbsp;of&nbsp;two&nbsp;integers,&nbsp;whose&nbsp;ratio&nbsp;is&nbsp;equal&nbsp;to&nbsp;the<br>
+<a href="#Fraction">Fraction</a>&nbsp;and&nbsp;with&nbsp;a&nbsp;positive&nbsp;denominator.</tt></dd></dl>
+
+<dl><dt><a name="Fraction-limit_denominator"><strong>limit_denominator</strong></a>(self, max_denominator=1000000)</dt><dd><tt>Closest&nbsp;<a href="#Fraction">Fraction</a>&nbsp;to&nbsp;self&nbsp;with&nbsp;denominator&nbsp;at&nbsp;most&nbsp;max_denominator.<br>
+&nbsp;<br>
+&gt;&gt;&gt;&nbsp;<a href="#Fraction">Fraction</a>('3.141592653589793').<a href="#Fraction-limit_denominator">limit_denominator</a>(10)<br>
+<a href="#Fraction">Fraction</a>(22,&nbsp;7)<br>
+&gt;&gt;&gt;&nbsp;<a href="#Fraction">Fraction</a>('3.141592653589793').<a href="#Fraction-limit_denominator">limit_denominator</a>(100)<br>
+<a href="#Fraction">Fraction</a>(311,&nbsp;99)<br>
+&gt;&gt;&gt;&nbsp;<a href="#Fraction">Fraction</a>(4321,&nbsp;8765).<a href="#Fraction-limit_denominator">limit_denominator</a>(10000)<br>
+<a href="#Fraction">Fraction</a>(4321,&nbsp;8765)</tt></dd></dl>
+
+<hr>
+Class methods defined here:<br>
+<dl><dt><a name="Fraction-from_decimal"><strong>from_decimal</strong></a>(dec)<font color="#909090"><font face="helvetica, arial"> from <a href="abc.html#ABCMeta">abc.ABCMeta</a></font></font></dt><dd><tt>Converts&nbsp;a&nbsp;finite&nbsp;Decimal&nbsp;instance&nbsp;to&nbsp;a&nbsp;rational&nbsp;number,&nbsp;exactly.</tt></dd></dl>
+
+<dl><dt><a name="Fraction-from_float"><strong>from_float</strong></a>(f)<font color="#909090"><font face="helvetica, arial"> from <a href="abc.html#ABCMeta">abc.ABCMeta</a></font></font></dt><dd><tt>Converts&nbsp;a&nbsp;finite&nbsp;float&nbsp;to&nbsp;a&nbsp;rational&nbsp;number,&nbsp;exactly.<br>
+&nbsp;<br>
+Beware&nbsp;that&nbsp;<a href="#Fraction">Fraction</a>.<a href="#Fraction-from_float">from_float</a>(0.3)&nbsp;!=&nbsp;<a href="#Fraction">Fraction</a>(3,&nbsp;10).</tt></dd></dl>
+
+<hr>
+Static methods defined here:<br>
+<dl><dt><a name="Fraction-__new__"><strong>__new__</strong></a>(cls, numerator=0, denominator=None, *, _normalize=True)</dt><dd><tt>Constructs&nbsp;a&nbsp;<a href="numbers.html#Rational">Rational</a>.<br>
+&nbsp;<br>
+Takes&nbsp;a&nbsp;string&nbsp;like&nbsp;'3/2'&nbsp;or&nbsp;'1.5',&nbsp;another&nbsp;<a href="numbers.html#Rational">Rational</a>&nbsp;instance,&nbsp;a<br>
+numerator/denominator&nbsp;pair,&nbsp;or&nbsp;a&nbsp;float.<br>
+&nbsp;<br>
+Examples<br>
+--------<br>
+&nbsp;<br>
+&gt;&gt;&gt;&nbsp;<a href="#Fraction">Fraction</a>(10,&nbsp;-8)<br>
+<a href="#Fraction">Fraction</a>(-5,&nbsp;4)<br>
+&gt;&gt;&gt;&nbsp;<a href="#Fraction">Fraction</a>(<a href="#Fraction">Fraction</a>(1,&nbsp;7),&nbsp;5)<br>
+<a href="#Fraction">Fraction</a>(1,&nbsp;35)<br>
+&gt;&gt;&gt;&nbsp;<a href="#Fraction">Fraction</a>(<a href="#Fraction">Fraction</a>(1,&nbsp;7),&nbsp;<a href="#Fraction">Fraction</a>(2,&nbsp;3))<br>
+<a href="#Fraction">Fraction</a>(3,&nbsp;14)<br>
+&gt;&gt;&gt;&nbsp;<a href="#Fraction">Fraction</a>('314')<br>
+<a href="#Fraction">Fraction</a>(314,&nbsp;1)<br>
+&gt;&gt;&gt;&nbsp;<a href="#Fraction">Fraction</a>('-35/4')<br>
+<a href="#Fraction">Fraction</a>(-35,&nbsp;4)<br>
+&gt;&gt;&gt;&nbsp;<a href="#Fraction">Fraction</a>('3.1415')&nbsp;#&nbsp;conversion&nbsp;from&nbsp;numeric&nbsp;string<br>
+<a href="#Fraction">Fraction</a>(6283,&nbsp;2000)<br>
+&gt;&gt;&gt;&nbsp;<a href="#Fraction">Fraction</a>('-47e-2')&nbsp;#&nbsp;string&nbsp;may&nbsp;include&nbsp;a&nbsp;decimal&nbsp;exponent<br>
+<a href="#Fraction">Fraction</a>(-47,&nbsp;100)<br>
+&gt;&gt;&gt;&nbsp;<a href="#Fraction">Fraction</a>(1.47)&nbsp;&nbsp;#&nbsp;direct&nbsp;construction&nbsp;from&nbsp;float&nbsp;(exact&nbsp;conversion)<br>
+<a href="#Fraction">Fraction</a>(6620291452234629,&nbsp;4503599627370496)<br>
+&gt;&gt;&gt;&nbsp;<a href="#Fraction">Fraction</a>(2.25)<br>
+<a href="#Fraction">Fraction</a>(9,&nbsp;4)<br>
+&gt;&gt;&gt;&nbsp;<a href="#Fraction">Fraction</a>(Decimal('1.47'))<br>
+<a href="#Fraction">Fraction</a>(147,&nbsp;100)</tt></dd></dl>
+
+<hr>
+Readonly properties defined here:<br>
+<dl><dt><strong>denominator</strong></dt>
+</dl>
+<dl><dt><strong>numerator</strong></dt>
+</dl>
+<hr>
+Data and other attributes defined here:<br>
+<dl><dt><strong>__abstractmethods__</strong> = frozenset()</dl>
+
+<hr>
+Methods inherited from <a href="numbers.html#Rational">numbers.Rational</a>:<br>
+<dl><dt><a name="Fraction-__float__"><strong>__float__</strong></a>(self)</dt><dd><tt>float(self)&nbsp;=&nbsp;self.<strong>numerator</strong>&nbsp;/&nbsp;self.<strong>denominator</strong><br>
+&nbsp;<br>
+It's&nbsp;important&nbsp;that&nbsp;this&nbsp;conversion&nbsp;use&nbsp;the&nbsp;integer's&nbsp;"true"<br>
+division&nbsp;rather&nbsp;than&nbsp;casting&nbsp;one&nbsp;side&nbsp;to&nbsp;float&nbsp;before&nbsp;dividing<br>
+so&nbsp;that&nbsp;ratios&nbsp;of&nbsp;huge&nbsp;integers&nbsp;convert&nbsp;without&nbsp;overflowing.</tt></dd></dl>
+
+<hr>
+Methods inherited from <a href="numbers.html#Real">numbers.Real</a>:<br>
+<dl><dt><a name="Fraction-__complex__"><strong>__complex__</strong></a>(self)</dt><dd><tt>complex(self)&nbsp;==&nbsp;complex(float(self),&nbsp;0)</tt></dd></dl>
+
+<dl><dt><a name="Fraction-conjugate"><strong>conjugate</strong></a>(self)</dt><dd><tt>Conjugate&nbsp;is&nbsp;a&nbsp;no-op&nbsp;for&nbsp;Reals.</tt></dd></dl>
+
+<hr>
+Readonly properties inherited from <a href="numbers.html#Real">numbers.Real</a>:<br>
+<dl><dt><strong>imag</strong></dt>
+<dd><tt>Real&nbsp;numbers&nbsp;have&nbsp;no&nbsp;imaginary&nbsp;component.</tt></dd>
+</dl>
+<dl><dt><strong>real</strong></dt>
+<dd><tt>Real&nbsp;numbers&nbsp;are&nbsp;their&nbsp;real&nbsp;component.</tt></dd>
+</dl>
+</td></tr></table></td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#eeaa77">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Functions</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#eeaa77"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl><dt><a name="-gcd"><strong>gcd</strong></a>(a, b)</dt><dd><tt>Calculate&nbsp;the&nbsp;Greatest&nbsp;Common&nbsp;Divisor&nbsp;of&nbsp;a&nbsp;and&nbsp;b.<br>
+&nbsp;<br>
+Unless&nbsp;b==0,&nbsp;the&nbsp;result&nbsp;will&nbsp;have&nbsp;the&nbsp;same&nbsp;sign&nbsp;as&nbsp;b&nbsp;(so&nbsp;that&nbsp;when<br>
+b&nbsp;is&nbsp;divided&nbsp;by&nbsp;it,&nbsp;the&nbsp;result&nbsp;comes&nbsp;out&nbsp;positive).</tt></dd></dl>
+</td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#55aa55">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Data</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#55aa55"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><strong>__all__</strong> = ['Fraction', 'gcd']</td></tr></table>
+</body></html>

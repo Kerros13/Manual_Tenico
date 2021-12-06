@@ -1,0 +1,126 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head><title>Python: module rlcompleter</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+</head><body bgcolor="#f0f0f8">
+
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="heading">
+<tr bgcolor="#7799ee">
+<td valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong>rlcompleter</strong></big></big></font></td
+><td align=right valign=bottom
+><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:c%3A%5Cpython38%5Clib%5Crlcompleter.py">c:\python38\lib\rlcompleter.py</a><br><a href="https://docs.python.org/3.8/library/rlcompleter">Module Reference</a></font></td></tr></table>
+    <p><tt>Word&nbsp;completion&nbsp;for&nbsp;GNU&nbsp;readline.<br>
+&nbsp;<br>
+The&nbsp;completer&nbsp;completes&nbsp;keywords,&nbsp;built-ins&nbsp;and&nbsp;globals&nbsp;in&nbsp;a&nbsp;selectable<br>
+namespace&nbsp;(which&nbsp;defaults&nbsp;to&nbsp;__main__);&nbsp;when&nbsp;completing&nbsp;NAME.NAME...,&nbsp;it<br>
+evaluates&nbsp;(!)&nbsp;the&nbsp;expression&nbsp;up&nbsp;to&nbsp;the&nbsp;last&nbsp;dot&nbsp;and&nbsp;completes&nbsp;its&nbsp;attributes.<br>
+&nbsp;<br>
+It's&nbsp;very&nbsp;cool&nbsp;to&nbsp;do&nbsp;"import&nbsp;sys"&nbsp;type&nbsp;"sys.",&nbsp;hit&nbsp;the&nbsp;completion&nbsp;key&nbsp;(twice),<br>
+and&nbsp;see&nbsp;the&nbsp;list&nbsp;of&nbsp;names&nbsp;defined&nbsp;by&nbsp;the&nbsp;sys&nbsp;module!<br>
+&nbsp;<br>
+Tip:&nbsp;to&nbsp;use&nbsp;the&nbsp;tab&nbsp;key&nbsp;as&nbsp;the&nbsp;completion&nbsp;key,&nbsp;call<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;readline.parse_and_bind("tab:&nbsp;complete")<br>
+&nbsp;<br>
+Notes:<br>
+&nbsp;<br>
+-&nbsp;Exceptions&nbsp;raised&nbsp;by&nbsp;the&nbsp;completer&nbsp;function&nbsp;are&nbsp;*ignored*&nbsp;(and&nbsp;generally&nbsp;cause<br>
+&nbsp;&nbsp;the&nbsp;completion&nbsp;to&nbsp;fail).&nbsp;&nbsp;This&nbsp;is&nbsp;a&nbsp;feature&nbsp;--&nbsp;since&nbsp;readline&nbsp;sets&nbsp;the&nbsp;tty<br>
+&nbsp;&nbsp;device&nbsp;in&nbsp;raw&nbsp;(or&nbsp;cbreak)&nbsp;mode,&nbsp;printing&nbsp;a&nbsp;traceback&nbsp;wouldn't&nbsp;work&nbsp;well<br>
+&nbsp;&nbsp;without&nbsp;some&nbsp;complicated&nbsp;hoopla&nbsp;to&nbsp;save,&nbsp;reset&nbsp;and&nbsp;restore&nbsp;the&nbsp;tty&nbsp;state.<br>
+&nbsp;<br>
+-&nbsp;The&nbsp;evaluation&nbsp;of&nbsp;the&nbsp;NAME.NAME...&nbsp;form&nbsp;may&nbsp;cause&nbsp;arbitrary&nbsp;application<br>
+&nbsp;&nbsp;defined&nbsp;code&nbsp;to&nbsp;be&nbsp;executed&nbsp;if&nbsp;an&nbsp;<a href="builtins.html#object">object</a>&nbsp;with&nbsp;a&nbsp;__getattr__&nbsp;hook&nbsp;is&nbsp;found.<br>
+&nbsp;&nbsp;Since&nbsp;it&nbsp;is&nbsp;the&nbsp;responsibility&nbsp;of&nbsp;the&nbsp;application&nbsp;(or&nbsp;the&nbsp;user)&nbsp;to&nbsp;enable&nbsp;this<br>
+&nbsp;&nbsp;feature,&nbsp;I&nbsp;consider&nbsp;this&nbsp;an&nbsp;acceptable&nbsp;risk.&nbsp;&nbsp;More&nbsp;complicated&nbsp;expressions<br>
+&nbsp;&nbsp;(e.g.&nbsp;function&nbsp;calls&nbsp;or&nbsp;indexing&nbsp;operations)&nbsp;are&nbsp;*not*&nbsp;evaluated.<br>
+&nbsp;<br>
+-&nbsp;When&nbsp;the&nbsp;original&nbsp;stdin&nbsp;is&nbsp;not&nbsp;a&nbsp;tty&nbsp;device,&nbsp;GNU&nbsp;readline&nbsp;is&nbsp;never<br>
+&nbsp;&nbsp;used,&nbsp;and&nbsp;this&nbsp;module&nbsp;(and&nbsp;the&nbsp;readline&nbsp;module)&nbsp;are&nbsp;silently&nbsp;inactive.</tt></p>
+<p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#aa55cc">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Modules</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#aa55cc"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><table width="100%" summary="list"><tr><td width="25%" valign=top><a href="__main__.html">__main__</a><br>
+</td><td width="25%" valign=top><a href="atexit.html">atexit</a><br>
+</td><td width="25%" valign=top><a href="builtins.html">builtins</a><br>
+</td><td width="25%" valign=top></td></tr></table></td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ee77aa">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Classes</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#ee77aa"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl>
+<dt><font face="helvetica, arial"><a href="builtins.html#object">builtins.object</a>
+</font></dt><dd>
+<dl>
+<dt><font face="helvetica, arial"><a href="rlcompleter.html#Completer">Completer</a>
+</font></dt></dl>
+</dd>
+</dl>
+ <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="Completer">class <strong>Completer</strong></a>(<a href="builtins.html#object">builtins.object</a>)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt><a href="#Completer">Completer</a>(namespace=None)<br>
+&nbsp;<br>
+<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%">Methods defined here:<br>
+<dl><dt><a name="Completer-__init__"><strong>__init__</strong></a>(self, namespace=None)</dt><dd><tt>Create&nbsp;a&nbsp;new&nbsp;completer&nbsp;for&nbsp;the&nbsp;command&nbsp;line.<br>
+&nbsp;<br>
+<a href="#Completer">Completer</a>([namespace])&nbsp;-&gt;&nbsp;completer&nbsp;instance.<br>
+&nbsp;<br>
+If&nbsp;unspecified,&nbsp;the&nbsp;default&nbsp;namespace&nbsp;where&nbsp;completions&nbsp;are&nbsp;performed<br>
+is&nbsp;__main__&nbsp;(technically,&nbsp;__main__.__dict__).&nbsp;Namespaces&nbsp;should&nbsp;be<br>
+given&nbsp;as&nbsp;dictionaries.<br>
+&nbsp;<br>
+<a href="#Completer">Completer</a>&nbsp;instances&nbsp;should&nbsp;be&nbsp;used&nbsp;as&nbsp;the&nbsp;completion&nbsp;mechanism&nbsp;of<br>
+readline&nbsp;via&nbsp;the&nbsp;set_completer()&nbsp;call:<br>
+&nbsp;<br>
+readline.set_completer(<a href="#Completer">Completer</a>(my_namespace).complete)</tt></dd></dl>
+
+<dl><dt><a name="Completer-attr_matches"><strong>attr_matches</strong></a>(self, text)</dt><dd><tt>Compute&nbsp;matches&nbsp;when&nbsp;text&nbsp;contains&nbsp;a&nbsp;dot.<br>
+&nbsp;<br>
+Assuming&nbsp;the&nbsp;text&nbsp;is&nbsp;of&nbsp;the&nbsp;form&nbsp;NAME.NAME....[NAME],&nbsp;and&nbsp;is<br>
+evaluable&nbsp;in&nbsp;self.<strong>namespace</strong>,&nbsp;it&nbsp;will&nbsp;be&nbsp;evaluated&nbsp;and&nbsp;its&nbsp;attributes<br>
+(as&nbsp;revealed&nbsp;by&nbsp;dir())&nbsp;are&nbsp;used&nbsp;as&nbsp;possible&nbsp;completions.&nbsp;&nbsp;(For&nbsp;class<br>
+instances,&nbsp;class&nbsp;members&nbsp;are&nbsp;also&nbsp;considered.)<br>
+&nbsp;<br>
+WARNING:&nbsp;this&nbsp;can&nbsp;still&nbsp;invoke&nbsp;arbitrary&nbsp;C&nbsp;code,&nbsp;if&nbsp;an&nbsp;<a href="builtins.html#object">object</a><br>
+with&nbsp;a&nbsp;__getattr__&nbsp;hook&nbsp;is&nbsp;evaluated.</tt></dd></dl>
+
+<dl><dt><a name="Completer-complete"><strong>complete</strong></a>(self, text, state)</dt><dd><tt>Return&nbsp;the&nbsp;next&nbsp;possible&nbsp;completion&nbsp;for&nbsp;'text'.<br>
+&nbsp;<br>
+This&nbsp;is&nbsp;called&nbsp;successively&nbsp;with&nbsp;state&nbsp;==&nbsp;0,&nbsp;1,&nbsp;2,&nbsp;...&nbsp;until&nbsp;it<br>
+returns&nbsp;None.&nbsp;&nbsp;The&nbsp;completion&nbsp;should&nbsp;begin&nbsp;with&nbsp;'text'.</tt></dd></dl>
+
+<dl><dt><a name="Completer-global_matches"><strong>global_matches</strong></a>(self, text)</dt><dd><tt>Compute&nbsp;matches&nbsp;when&nbsp;text&nbsp;is&nbsp;a&nbsp;simple&nbsp;name.<br>
+&nbsp;<br>
+Return&nbsp;a&nbsp;list&nbsp;of&nbsp;all&nbsp;keywords,&nbsp;built-in&nbsp;functions&nbsp;and&nbsp;names&nbsp;currently<br>
+defined&nbsp;in&nbsp;self.<strong>namespace</strong>&nbsp;that&nbsp;match.</tt></dd></dl>
+
+<hr>
+Data descriptors defined here:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><tt>dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+</td></tr></table></td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#55aa55">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Data</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#55aa55"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><strong>__all__</strong> = ['Completer']</td></tr></table>
+</body></html>

@@ -1,0 +1,743 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head><title>Python: module calendar</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+</head><body bgcolor="#f0f0f8">
+
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="heading">
+<tr bgcolor="#7799ee">
+<td valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong>calendar</strong></big></big></font></td
+><td align=right valign=bottom
+><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:c%3A%5Cpython38%5Clib%5Ccalendar.py">c:\python38\lib\calendar.py</a><br><a href="https://docs.python.org/3.8/library/calendar">Module Reference</a></font></td></tr></table>
+    <p><tt><a href="#Calendar">Calendar</a>&nbsp;printing&nbsp;functions<br>
+&nbsp;<br>
+Note&nbsp;when&nbsp;comparing&nbsp;these&nbsp;calendars&nbsp;to&nbsp;the&nbsp;ones&nbsp;printed&nbsp;by&nbsp;cal(1):&nbsp;By<br>
+default,&nbsp;these&nbsp;calendars&nbsp;have&nbsp;Monday&nbsp;as&nbsp;the&nbsp;first&nbsp;day&nbsp;of&nbsp;the&nbsp;week,&nbsp;and<br>
+Sunday&nbsp;as&nbsp;the&nbsp;last&nbsp;(the&nbsp;European&nbsp;convention).&nbsp;Use&nbsp;<a href="#-setfirstweekday">setfirstweekday</a>()&nbsp;to<br>
+set&nbsp;the&nbsp;first&nbsp;day&nbsp;of&nbsp;the&nbsp;week&nbsp;(0=Monday,&nbsp;6=Sunday).</tt></p>
+<p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#aa55cc">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Modules</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#aa55cc"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><table width="100%" summary="list"><tr><td width="25%" valign=top><a href="locale.html">locale</a><br>
+</td><td width="25%" valign=top><a href="datetime.html">datetime</a><br>
+</td><td width="25%" valign=top><a href="sys.html">sys</a><br>
+</td><td width="25%" valign=top></td></tr></table></td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ee77aa">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Classes</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#ee77aa"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl>
+<dt><font face="helvetica, arial"><a href="builtins.html#ValueError">builtins.ValueError</a>(<a href="builtins.html#Exception">builtins.Exception</a>)
+</font></dt><dd>
+<dl>
+<dt><font face="helvetica, arial"><a href="calendar.html#IllegalMonthError">IllegalMonthError</a>
+</font></dt><dt><font face="helvetica, arial"><a href="calendar.html#IllegalWeekdayError">IllegalWeekdayError</a>
+</font></dt></dl>
+</dd>
+<dt><font face="helvetica, arial"><a href="builtins.html#object">builtins.object</a>
+</font></dt><dd>
+<dl>
+<dt><font face="helvetica, arial"><a href="calendar.html#Calendar">Calendar</a>
+</font></dt><dd>
+<dl>
+<dt><font face="helvetica, arial"><a href="calendar.html#HTMLCalendar">HTMLCalendar</a>
+</font></dt><dd>
+<dl>
+<dt><font face="helvetica, arial"><a href="calendar.html#LocaleHTMLCalendar">LocaleHTMLCalendar</a>
+</font></dt></dl>
+</dd>
+<dt><font face="helvetica, arial"><a href="calendar.html#TextCalendar">TextCalendar</a>
+</font></dt><dd>
+<dl>
+<dt><font face="helvetica, arial"><a href="calendar.html#LocaleTextCalendar">LocaleTextCalendar</a>
+</font></dt></dl>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd>
+</dl>
+ <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="Calendar">class <strong>Calendar</strong></a>(<a href="builtins.html#object">builtins.object</a>)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt><a href="#Calendar">Calendar</a>(firstweekday=0)<br>
+&nbsp;<br>
+Base&nbsp;calendar&nbsp;class.&nbsp;This&nbsp;class&nbsp;doesn't&nbsp;do&nbsp;any&nbsp;formatting.&nbsp;It&nbsp;simply<br>
+provides&nbsp;data&nbsp;to&nbsp;subclasses.<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%">Methods defined here:<br>
+<dl><dt><a name="Calendar-__init__"><strong>__init__</strong></a>(self, firstweekday=0)</dt><dd><tt>Initialize&nbsp;self.&nbsp;&nbsp;See&nbsp;help(type(self))&nbsp;for&nbsp;accurate&nbsp;signature.</tt></dd></dl>
+
+<dl><dt><a name="Calendar-getfirstweekday"><strong>getfirstweekday</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="Calendar-itermonthdates"><strong>itermonthdates</strong></a>(self, year, month)</dt><dd><tt>Return&nbsp;an&nbsp;iterator&nbsp;for&nbsp;one&nbsp;month.&nbsp;The&nbsp;iterator&nbsp;will&nbsp;yield&nbsp;datetime.date<br>
+values&nbsp;and&nbsp;will&nbsp;always&nbsp;iterate&nbsp;through&nbsp;complete&nbsp;weeks,&nbsp;so&nbsp;it&nbsp;will&nbsp;yield<br>
+dates&nbsp;outside&nbsp;the&nbsp;specified&nbsp;month.</tt></dd></dl>
+
+<dl><dt><a name="Calendar-itermonthdays"><strong>itermonthdays</strong></a>(self, year, month)</dt><dd><tt>Like&nbsp;<a href="#Calendar-itermonthdates">itermonthdates</a>(),&nbsp;but&nbsp;will&nbsp;yield&nbsp;day&nbsp;numbers.&nbsp;For&nbsp;days&nbsp;outside<br>
+the&nbsp;specified&nbsp;month&nbsp;the&nbsp;day&nbsp;number&nbsp;is&nbsp;0.</tt></dd></dl>
+
+<dl><dt><a name="Calendar-itermonthdays2"><strong>itermonthdays2</strong></a>(self, year, month)</dt><dd><tt>Like&nbsp;<a href="#Calendar-itermonthdates">itermonthdates</a>(),&nbsp;but&nbsp;will&nbsp;yield&nbsp;(day&nbsp;number,&nbsp;weekday&nbsp;number)<br>
+tuples.&nbsp;For&nbsp;days&nbsp;outside&nbsp;the&nbsp;specified&nbsp;month&nbsp;the&nbsp;day&nbsp;number&nbsp;is&nbsp;0.</tt></dd></dl>
+
+<dl><dt><a name="Calendar-itermonthdays3"><strong>itermonthdays3</strong></a>(self, year, month)</dt><dd><tt>Like&nbsp;<a href="#Calendar-itermonthdates">itermonthdates</a>(),&nbsp;but&nbsp;will&nbsp;yield&nbsp;(year,&nbsp;month,&nbsp;day)&nbsp;tuples.&nbsp;&nbsp;Can&nbsp;be<br>
+used&nbsp;for&nbsp;dates&nbsp;outside&nbsp;of&nbsp;datetime.date&nbsp;range.</tt></dd></dl>
+
+<dl><dt><a name="Calendar-itermonthdays4"><strong>itermonthdays4</strong></a>(self, year, month)</dt><dd><tt>Like&nbsp;<a href="#Calendar-itermonthdates">itermonthdates</a>(),&nbsp;but&nbsp;will&nbsp;yield&nbsp;(year,&nbsp;month,&nbsp;day,&nbsp;day_of_week)&nbsp;tuples.<br>
+Can&nbsp;be&nbsp;used&nbsp;for&nbsp;dates&nbsp;outside&nbsp;of&nbsp;datetime.date&nbsp;range.</tt></dd></dl>
+
+<dl><dt><a name="Calendar-iterweekdays"><strong>iterweekdays</strong></a>(self)</dt><dd><tt>Return&nbsp;an&nbsp;iterator&nbsp;for&nbsp;one&nbsp;week&nbsp;of&nbsp;weekday&nbsp;numbers&nbsp;starting&nbsp;with&nbsp;the<br>
+configured&nbsp;first&nbsp;one.</tt></dd></dl>
+
+<dl><dt><a name="Calendar-monthdatescalendar"><strong>monthdatescalendar</strong></a>(self, year, month)</dt><dd><tt>Return&nbsp;a&nbsp;matrix&nbsp;(list&nbsp;of&nbsp;lists)&nbsp;representing&nbsp;a&nbsp;month's&nbsp;calendar.<br>
+Each&nbsp;row&nbsp;represents&nbsp;a&nbsp;week;&nbsp;week&nbsp;entries&nbsp;are&nbsp;datetime.date&nbsp;values.</tt></dd></dl>
+
+<dl><dt><a name="Calendar-monthdays2calendar"><strong>monthdays2calendar</strong></a>(self, year, month)</dt><dd><tt>Return&nbsp;a&nbsp;matrix&nbsp;representing&nbsp;a&nbsp;month's&nbsp;calendar.<br>
+Each&nbsp;row&nbsp;represents&nbsp;a&nbsp;week;&nbsp;week&nbsp;entries&nbsp;are<br>
+(day&nbsp;number,&nbsp;weekday&nbsp;number)&nbsp;tuples.&nbsp;Day&nbsp;numbers&nbsp;outside&nbsp;this&nbsp;month<br>
+are&nbsp;zero.</tt></dd></dl>
+
+<dl><dt><a name="Calendar-monthdayscalendar"><strong>monthdayscalendar</strong></a>(self, year, month)</dt><dd><tt>Return&nbsp;a&nbsp;matrix&nbsp;representing&nbsp;a&nbsp;month's&nbsp;calendar.<br>
+Each&nbsp;row&nbsp;represents&nbsp;a&nbsp;week;&nbsp;days&nbsp;outside&nbsp;this&nbsp;month&nbsp;are&nbsp;zero.</tt></dd></dl>
+
+<dl><dt><a name="Calendar-setfirstweekday"><strong>setfirstweekday</strong></a>(self, firstweekday)</dt></dl>
+
+<dl><dt><a name="Calendar-yeardatescalendar"><strong>yeardatescalendar</strong></a>(self, year, width=3)</dt><dd><tt>Return&nbsp;the&nbsp;data&nbsp;for&nbsp;the&nbsp;specified&nbsp;year&nbsp;ready&nbsp;for&nbsp;formatting.&nbsp;The&nbsp;return<br>
+value&nbsp;is&nbsp;a&nbsp;list&nbsp;of&nbsp;month&nbsp;rows.&nbsp;Each&nbsp;month&nbsp;row&nbsp;contains&nbsp;up&nbsp;to&nbsp;width&nbsp;months.<br>
+Each&nbsp;month&nbsp;contains&nbsp;between&nbsp;4&nbsp;and&nbsp;6&nbsp;weeks&nbsp;and&nbsp;each&nbsp;week&nbsp;contains&nbsp;1-7<br>
+days.&nbsp;Days&nbsp;are&nbsp;datetime.date&nbsp;objects.</tt></dd></dl>
+
+<dl><dt><a name="Calendar-yeardays2calendar"><strong>yeardays2calendar</strong></a>(self, year, width=3)</dt><dd><tt>Return&nbsp;the&nbsp;data&nbsp;for&nbsp;the&nbsp;specified&nbsp;year&nbsp;ready&nbsp;for&nbsp;formatting&nbsp;(similar&nbsp;to<br>
+<a href="#Calendar-yeardatescalendar">yeardatescalendar</a>()).&nbsp;Entries&nbsp;in&nbsp;the&nbsp;week&nbsp;lists&nbsp;are<br>
+(day&nbsp;number,&nbsp;weekday&nbsp;number)&nbsp;tuples.&nbsp;Day&nbsp;numbers&nbsp;outside&nbsp;this&nbsp;month&nbsp;are<br>
+zero.</tt></dd></dl>
+
+<dl><dt><a name="Calendar-yeardayscalendar"><strong>yeardayscalendar</strong></a>(self, year, width=3)</dt><dd><tt>Return&nbsp;the&nbsp;data&nbsp;for&nbsp;the&nbsp;specified&nbsp;year&nbsp;ready&nbsp;for&nbsp;formatting&nbsp;(similar&nbsp;to<br>
+<a href="#Calendar-yeardatescalendar">yeardatescalendar</a>()).&nbsp;Entries&nbsp;in&nbsp;the&nbsp;week&nbsp;lists&nbsp;are&nbsp;day&nbsp;numbers.<br>
+Day&nbsp;numbers&nbsp;outside&nbsp;this&nbsp;month&nbsp;are&nbsp;zero.</tt></dd></dl>
+
+<hr>
+Data descriptors defined here:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><tt>dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<dl><dt><strong>firstweekday</strong></dt>
+</dl>
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="HTMLCalendar">class <strong>HTMLCalendar</strong></a>(<a href="calendar.html#Calendar">Calendar</a>)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt><a href="#HTMLCalendar">HTMLCalendar</a>(firstweekday=0)<br>
+&nbsp;<br>
+This&nbsp;calendar&nbsp;returns&nbsp;complete&nbsp;HTML&nbsp;pages.<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%"><dl><dt>Method resolution order:</dt>
+<dd><a href="calendar.html#HTMLCalendar">HTMLCalendar</a></dd>
+<dd><a href="calendar.html#Calendar">Calendar</a></dd>
+<dd><a href="builtins.html#object">builtins.object</a></dd>
+</dl>
+<hr>
+Methods defined here:<br>
+<dl><dt><a name="HTMLCalendar-formatday"><strong>formatday</strong></a>(self, day, weekday)</dt><dd><tt>Return&nbsp;a&nbsp;day&nbsp;as&nbsp;a&nbsp;table&nbsp;cell.</tt></dd></dl>
+
+<dl><dt><a name="HTMLCalendar-formatmonth"><strong>formatmonth</strong></a>(self, theyear, themonth, withyear=True)</dt><dd><tt>Return&nbsp;a&nbsp;formatted&nbsp;month&nbsp;as&nbsp;a&nbsp;table.</tt></dd></dl>
+
+<dl><dt><a name="HTMLCalendar-formatmonthname"><strong>formatmonthname</strong></a>(self, theyear, themonth, withyear=True)</dt><dd><tt>Return&nbsp;a&nbsp;month&nbsp;name&nbsp;as&nbsp;a&nbsp;table&nbsp;row.</tt></dd></dl>
+
+<dl><dt><a name="HTMLCalendar-formatweek"><strong>formatweek</strong></a>(self, theweek)</dt><dd><tt>Return&nbsp;a&nbsp;complete&nbsp;week&nbsp;as&nbsp;a&nbsp;table&nbsp;row.</tt></dd></dl>
+
+<dl><dt><a name="HTMLCalendar-formatweekday"><strong>formatweekday</strong></a>(self, day)</dt><dd><tt>Return&nbsp;a&nbsp;weekday&nbsp;name&nbsp;as&nbsp;a&nbsp;table&nbsp;header.</tt></dd></dl>
+
+<dl><dt><a name="HTMLCalendar-formatweekheader"><strong>formatweekheader</strong></a>(self)</dt><dd><tt>Return&nbsp;a&nbsp;header&nbsp;for&nbsp;a&nbsp;week&nbsp;as&nbsp;a&nbsp;table&nbsp;row.</tt></dd></dl>
+
+<dl><dt><a name="HTMLCalendar-formatyear"><strong>formatyear</strong></a>(self, theyear, width=3)</dt><dd><tt>Return&nbsp;a&nbsp;formatted&nbsp;year&nbsp;as&nbsp;a&nbsp;table&nbsp;of&nbsp;tables.</tt></dd></dl>
+
+<dl><dt><a name="HTMLCalendar-formatyearpage"><strong>formatyearpage</strong></a>(self, theyear, width=3, css='calendar.css', encoding=None)</dt><dd><tt>Return&nbsp;a&nbsp;formatted&nbsp;year&nbsp;as&nbsp;a&nbsp;complete&nbsp;HTML&nbsp;page.</tt></dd></dl>
+
+<hr>
+Data and other attributes defined here:<br>
+<dl><dt><strong>cssclass_month</strong> = 'month'</dl>
+
+<dl><dt><strong>cssclass_month_head</strong> = 'month'</dl>
+
+<dl><dt><strong>cssclass_noday</strong> = 'noday'</dl>
+
+<dl><dt><strong>cssclass_year</strong> = 'year'</dl>
+
+<dl><dt><strong>cssclass_year_head</strong> = 'year'</dl>
+
+<dl><dt><strong>cssclasses</strong> = ['mon', 'tue', 'wed', 'thu', 'fri', 'sat', 'sun']</dl>
+
+<dl><dt><strong>cssclasses_weekday_head</strong> = ['mon', 'tue', 'wed', 'thu', 'fri', 'sat', 'sun']</dl>
+
+<hr>
+Methods inherited from <a href="calendar.html#Calendar">Calendar</a>:<br>
+<dl><dt><a name="HTMLCalendar-__init__"><strong>__init__</strong></a>(self, firstweekday=0)</dt><dd><tt>Initialize&nbsp;self.&nbsp;&nbsp;See&nbsp;help(type(self))&nbsp;for&nbsp;accurate&nbsp;signature.</tt></dd></dl>
+
+<dl><dt><a name="HTMLCalendar-getfirstweekday"><strong>getfirstweekday</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="HTMLCalendar-itermonthdates"><strong>itermonthdates</strong></a>(self, year, month)</dt><dd><tt>Return&nbsp;an&nbsp;iterator&nbsp;for&nbsp;one&nbsp;month.&nbsp;The&nbsp;iterator&nbsp;will&nbsp;yield&nbsp;datetime.date<br>
+values&nbsp;and&nbsp;will&nbsp;always&nbsp;iterate&nbsp;through&nbsp;complete&nbsp;weeks,&nbsp;so&nbsp;it&nbsp;will&nbsp;yield<br>
+dates&nbsp;outside&nbsp;the&nbsp;specified&nbsp;month.</tt></dd></dl>
+
+<dl><dt><a name="HTMLCalendar-itermonthdays"><strong>itermonthdays</strong></a>(self, year, month)</dt><dd><tt>Like&nbsp;<a href="#HTMLCalendar-itermonthdates">itermonthdates</a>(),&nbsp;but&nbsp;will&nbsp;yield&nbsp;day&nbsp;numbers.&nbsp;For&nbsp;days&nbsp;outside<br>
+the&nbsp;specified&nbsp;month&nbsp;the&nbsp;day&nbsp;number&nbsp;is&nbsp;0.</tt></dd></dl>
+
+<dl><dt><a name="HTMLCalendar-itermonthdays2"><strong>itermonthdays2</strong></a>(self, year, month)</dt><dd><tt>Like&nbsp;<a href="#HTMLCalendar-itermonthdates">itermonthdates</a>(),&nbsp;but&nbsp;will&nbsp;yield&nbsp;(day&nbsp;number,&nbsp;weekday&nbsp;number)<br>
+tuples.&nbsp;For&nbsp;days&nbsp;outside&nbsp;the&nbsp;specified&nbsp;month&nbsp;the&nbsp;day&nbsp;number&nbsp;is&nbsp;0.</tt></dd></dl>
+
+<dl><dt><a name="HTMLCalendar-itermonthdays3"><strong>itermonthdays3</strong></a>(self, year, month)</dt><dd><tt>Like&nbsp;<a href="#HTMLCalendar-itermonthdates">itermonthdates</a>(),&nbsp;but&nbsp;will&nbsp;yield&nbsp;(year,&nbsp;month,&nbsp;day)&nbsp;tuples.&nbsp;&nbsp;Can&nbsp;be<br>
+used&nbsp;for&nbsp;dates&nbsp;outside&nbsp;of&nbsp;datetime.date&nbsp;range.</tt></dd></dl>
+
+<dl><dt><a name="HTMLCalendar-itermonthdays4"><strong>itermonthdays4</strong></a>(self, year, month)</dt><dd><tt>Like&nbsp;<a href="#HTMLCalendar-itermonthdates">itermonthdates</a>(),&nbsp;but&nbsp;will&nbsp;yield&nbsp;(year,&nbsp;month,&nbsp;day,&nbsp;day_of_week)&nbsp;tuples.<br>
+Can&nbsp;be&nbsp;used&nbsp;for&nbsp;dates&nbsp;outside&nbsp;of&nbsp;datetime.date&nbsp;range.</tt></dd></dl>
+
+<dl><dt><a name="HTMLCalendar-iterweekdays"><strong>iterweekdays</strong></a>(self)</dt><dd><tt>Return&nbsp;an&nbsp;iterator&nbsp;for&nbsp;one&nbsp;week&nbsp;of&nbsp;weekday&nbsp;numbers&nbsp;starting&nbsp;with&nbsp;the<br>
+configured&nbsp;first&nbsp;one.</tt></dd></dl>
+
+<dl><dt><a name="HTMLCalendar-monthdatescalendar"><strong>monthdatescalendar</strong></a>(self, year, month)</dt><dd><tt>Return&nbsp;a&nbsp;matrix&nbsp;(list&nbsp;of&nbsp;lists)&nbsp;representing&nbsp;a&nbsp;month's&nbsp;calendar.<br>
+Each&nbsp;row&nbsp;represents&nbsp;a&nbsp;week;&nbsp;week&nbsp;entries&nbsp;are&nbsp;datetime.date&nbsp;values.</tt></dd></dl>
+
+<dl><dt><a name="HTMLCalendar-monthdays2calendar"><strong>monthdays2calendar</strong></a>(self, year, month)</dt><dd><tt>Return&nbsp;a&nbsp;matrix&nbsp;representing&nbsp;a&nbsp;month's&nbsp;calendar.<br>
+Each&nbsp;row&nbsp;represents&nbsp;a&nbsp;week;&nbsp;week&nbsp;entries&nbsp;are<br>
+(day&nbsp;number,&nbsp;weekday&nbsp;number)&nbsp;tuples.&nbsp;Day&nbsp;numbers&nbsp;outside&nbsp;this&nbsp;month<br>
+are&nbsp;zero.</tt></dd></dl>
+
+<dl><dt><a name="HTMLCalendar-monthdayscalendar"><strong>monthdayscalendar</strong></a>(self, year, month)</dt><dd><tt>Return&nbsp;a&nbsp;matrix&nbsp;representing&nbsp;a&nbsp;month's&nbsp;calendar.<br>
+Each&nbsp;row&nbsp;represents&nbsp;a&nbsp;week;&nbsp;days&nbsp;outside&nbsp;this&nbsp;month&nbsp;are&nbsp;zero.</tt></dd></dl>
+
+<dl><dt><a name="HTMLCalendar-setfirstweekday"><strong>setfirstweekday</strong></a>(self, firstweekday)</dt></dl>
+
+<dl><dt><a name="HTMLCalendar-yeardatescalendar"><strong>yeardatescalendar</strong></a>(self, year, width=3)</dt><dd><tt>Return&nbsp;the&nbsp;data&nbsp;for&nbsp;the&nbsp;specified&nbsp;year&nbsp;ready&nbsp;for&nbsp;formatting.&nbsp;The&nbsp;return<br>
+value&nbsp;is&nbsp;a&nbsp;list&nbsp;of&nbsp;month&nbsp;rows.&nbsp;Each&nbsp;month&nbsp;row&nbsp;contains&nbsp;up&nbsp;to&nbsp;width&nbsp;months.<br>
+Each&nbsp;month&nbsp;contains&nbsp;between&nbsp;4&nbsp;and&nbsp;6&nbsp;weeks&nbsp;and&nbsp;each&nbsp;week&nbsp;contains&nbsp;1-7<br>
+days.&nbsp;Days&nbsp;are&nbsp;datetime.date&nbsp;objects.</tt></dd></dl>
+
+<dl><dt><a name="HTMLCalendar-yeardays2calendar"><strong>yeardays2calendar</strong></a>(self, year, width=3)</dt><dd><tt>Return&nbsp;the&nbsp;data&nbsp;for&nbsp;the&nbsp;specified&nbsp;year&nbsp;ready&nbsp;for&nbsp;formatting&nbsp;(similar&nbsp;to<br>
+<a href="#HTMLCalendar-yeardatescalendar">yeardatescalendar</a>()).&nbsp;Entries&nbsp;in&nbsp;the&nbsp;week&nbsp;lists&nbsp;are<br>
+(day&nbsp;number,&nbsp;weekday&nbsp;number)&nbsp;tuples.&nbsp;Day&nbsp;numbers&nbsp;outside&nbsp;this&nbsp;month&nbsp;are<br>
+zero.</tt></dd></dl>
+
+<dl><dt><a name="HTMLCalendar-yeardayscalendar"><strong>yeardayscalendar</strong></a>(self, year, width=3)</dt><dd><tt>Return&nbsp;the&nbsp;data&nbsp;for&nbsp;the&nbsp;specified&nbsp;year&nbsp;ready&nbsp;for&nbsp;formatting&nbsp;(similar&nbsp;to<br>
+<a href="#HTMLCalendar-yeardatescalendar">yeardatescalendar</a>()).&nbsp;Entries&nbsp;in&nbsp;the&nbsp;week&nbsp;lists&nbsp;are&nbsp;day&nbsp;numbers.<br>
+Day&nbsp;numbers&nbsp;outside&nbsp;this&nbsp;month&nbsp;are&nbsp;zero.</tt></dd></dl>
+
+<hr>
+Data descriptors inherited from <a href="calendar.html#Calendar">Calendar</a>:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><tt>dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<dl><dt><strong>firstweekday</strong></dt>
+</dl>
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="IllegalMonthError">class <strong>IllegalMonthError</strong></a>(<a href="builtins.html#ValueError">builtins.ValueError</a>)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt><a href="#IllegalMonthError">IllegalMonthError</a>(month)<br>
+&nbsp;<br>
+Inappropriate&nbsp;argument&nbsp;value&nbsp;(of&nbsp;correct&nbsp;type).<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%"><dl><dt>Method resolution order:</dt>
+<dd><a href="calendar.html#IllegalMonthError">IllegalMonthError</a></dd>
+<dd><a href="builtins.html#ValueError">builtins.ValueError</a></dd>
+<dd><a href="builtins.html#Exception">builtins.Exception</a></dd>
+<dd><a href="builtins.html#BaseException">builtins.BaseException</a></dd>
+<dd><a href="builtins.html#object">builtins.object</a></dd>
+</dl>
+<hr>
+Methods defined here:<br>
+<dl><dt><a name="IllegalMonthError-__init__"><strong>__init__</strong></a>(self, month)</dt><dd><tt>Initialize&nbsp;self.&nbsp;&nbsp;See&nbsp;help(type(self))&nbsp;for&nbsp;accurate&nbsp;signature.</tt></dd></dl>
+
+<dl><dt><a name="IllegalMonthError-__str__"><strong>__str__</strong></a>(self)</dt><dd><tt>Return&nbsp;str(self).</tt></dd></dl>
+
+<hr>
+Data descriptors defined here:<br>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<hr>
+Static methods inherited from <a href="builtins.html#ValueError">builtins.ValueError</a>:<br>
+<dl><dt><a name="IllegalMonthError-__new__"><strong>__new__</strong></a>(*args, **kwargs)<font color="#909090"><font face="helvetica, arial"> from <a href="builtins.html#type">builtins.type</a></font></font></dt><dd><tt>Create&nbsp;and&nbsp;return&nbsp;a&nbsp;new&nbsp;<a href="builtins.html#object">object</a>.&nbsp;&nbsp;See&nbsp;help(type)&nbsp;for&nbsp;accurate&nbsp;signature.</tt></dd></dl>
+
+<hr>
+Methods inherited from <a href="builtins.html#BaseException">builtins.BaseException</a>:<br>
+<dl><dt><a name="IllegalMonthError-__delattr__"><strong>__delattr__</strong></a>(self, name, /)</dt><dd><tt>Implement&nbsp;delattr(self,&nbsp;name).</tt></dd></dl>
+
+<dl><dt><a name="IllegalMonthError-__getattribute__"><strong>__getattribute__</strong></a>(self, name, /)</dt><dd><tt>Return&nbsp;getattr(self,&nbsp;name).</tt></dd></dl>
+
+<dl><dt><a name="IllegalMonthError-__reduce__"><strong>__reduce__</strong></a>(...)</dt><dd><tt>Helper&nbsp;for&nbsp;pickle.</tt></dd></dl>
+
+<dl><dt><a name="IllegalMonthError-__repr__"><strong>__repr__</strong></a>(self, /)</dt><dd><tt>Return&nbsp;repr(self).</tt></dd></dl>
+
+<dl><dt><a name="IllegalMonthError-__setattr__"><strong>__setattr__</strong></a>(self, name, value, /)</dt><dd><tt>Implement&nbsp;setattr(self,&nbsp;name,&nbsp;value).</tt></dd></dl>
+
+<dl><dt><a name="IllegalMonthError-__setstate__"><strong>__setstate__</strong></a>(...)</dt></dl>
+
+<dl><dt><a name="IllegalMonthError-with_traceback"><strong>with_traceback</strong></a>(...)</dt><dd><tt>Exception.<a href="#IllegalMonthError-with_traceback">with_traceback</a>(tb)&nbsp;--<br>
+set&nbsp;self.<strong>__traceback__</strong>&nbsp;to&nbsp;tb&nbsp;and&nbsp;return&nbsp;self.</tt></dd></dl>
+
+<hr>
+Data descriptors inherited from <a href="builtins.html#BaseException">builtins.BaseException</a>:<br>
+<dl><dt><strong>__cause__</strong></dt>
+<dd><tt>exception&nbsp;cause</tt></dd>
+</dl>
+<dl><dt><strong>__context__</strong></dt>
+<dd><tt>exception&nbsp;context</tt></dd>
+</dl>
+<dl><dt><strong>__dict__</strong></dt>
+</dl>
+<dl><dt><strong>__suppress_context__</strong></dt>
+</dl>
+<dl><dt><strong>__traceback__</strong></dt>
+</dl>
+<dl><dt><strong>args</strong></dt>
+</dl>
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="IllegalWeekdayError">class <strong>IllegalWeekdayError</strong></a>(<a href="builtins.html#ValueError">builtins.ValueError</a>)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt><a href="#IllegalWeekdayError">IllegalWeekdayError</a>(weekday)<br>
+&nbsp;<br>
+Inappropriate&nbsp;argument&nbsp;value&nbsp;(of&nbsp;correct&nbsp;type).<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%"><dl><dt>Method resolution order:</dt>
+<dd><a href="calendar.html#IllegalWeekdayError">IllegalWeekdayError</a></dd>
+<dd><a href="builtins.html#ValueError">builtins.ValueError</a></dd>
+<dd><a href="builtins.html#Exception">builtins.Exception</a></dd>
+<dd><a href="builtins.html#BaseException">builtins.BaseException</a></dd>
+<dd><a href="builtins.html#object">builtins.object</a></dd>
+</dl>
+<hr>
+Methods defined here:<br>
+<dl><dt><a name="IllegalWeekdayError-__init__"><strong>__init__</strong></a>(self, weekday)</dt><dd><tt>Initialize&nbsp;self.&nbsp;&nbsp;See&nbsp;help(type(self))&nbsp;for&nbsp;accurate&nbsp;signature.</tt></dd></dl>
+
+<dl><dt><a name="IllegalWeekdayError-__str__"><strong>__str__</strong></a>(self)</dt><dd><tt>Return&nbsp;str(self).</tt></dd></dl>
+
+<hr>
+Data descriptors defined here:<br>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<hr>
+Static methods inherited from <a href="builtins.html#ValueError">builtins.ValueError</a>:<br>
+<dl><dt><a name="IllegalWeekdayError-__new__"><strong>__new__</strong></a>(*args, **kwargs)<font color="#909090"><font face="helvetica, arial"> from <a href="builtins.html#type">builtins.type</a></font></font></dt><dd><tt>Create&nbsp;and&nbsp;return&nbsp;a&nbsp;new&nbsp;<a href="builtins.html#object">object</a>.&nbsp;&nbsp;See&nbsp;help(type)&nbsp;for&nbsp;accurate&nbsp;signature.</tt></dd></dl>
+
+<hr>
+Methods inherited from <a href="builtins.html#BaseException">builtins.BaseException</a>:<br>
+<dl><dt><a name="IllegalWeekdayError-__delattr__"><strong>__delattr__</strong></a>(self, name, /)</dt><dd><tt>Implement&nbsp;delattr(self,&nbsp;name).</tt></dd></dl>
+
+<dl><dt><a name="IllegalWeekdayError-__getattribute__"><strong>__getattribute__</strong></a>(self, name, /)</dt><dd><tt>Return&nbsp;getattr(self,&nbsp;name).</tt></dd></dl>
+
+<dl><dt><a name="IllegalWeekdayError-__reduce__"><strong>__reduce__</strong></a>(...)</dt><dd><tt>Helper&nbsp;for&nbsp;pickle.</tt></dd></dl>
+
+<dl><dt><a name="IllegalWeekdayError-__repr__"><strong>__repr__</strong></a>(self, /)</dt><dd><tt>Return&nbsp;repr(self).</tt></dd></dl>
+
+<dl><dt><a name="IllegalWeekdayError-__setattr__"><strong>__setattr__</strong></a>(self, name, value, /)</dt><dd><tt>Implement&nbsp;setattr(self,&nbsp;name,&nbsp;value).</tt></dd></dl>
+
+<dl><dt><a name="IllegalWeekdayError-__setstate__"><strong>__setstate__</strong></a>(...)</dt></dl>
+
+<dl><dt><a name="IllegalWeekdayError-with_traceback"><strong>with_traceback</strong></a>(...)</dt><dd><tt>Exception.<a href="#IllegalWeekdayError-with_traceback">with_traceback</a>(tb)&nbsp;--<br>
+set&nbsp;self.<strong>__traceback__</strong>&nbsp;to&nbsp;tb&nbsp;and&nbsp;return&nbsp;self.</tt></dd></dl>
+
+<hr>
+Data descriptors inherited from <a href="builtins.html#BaseException">builtins.BaseException</a>:<br>
+<dl><dt><strong>__cause__</strong></dt>
+<dd><tt>exception&nbsp;cause</tt></dd>
+</dl>
+<dl><dt><strong>__context__</strong></dt>
+<dd><tt>exception&nbsp;context</tt></dd>
+</dl>
+<dl><dt><strong>__dict__</strong></dt>
+</dl>
+<dl><dt><strong>__suppress_context__</strong></dt>
+</dl>
+<dl><dt><strong>__traceback__</strong></dt>
+</dl>
+<dl><dt><strong>args</strong></dt>
+</dl>
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="LocaleHTMLCalendar">class <strong>LocaleHTMLCalendar</strong></a>(<a href="calendar.html#HTMLCalendar">HTMLCalendar</a>)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt><a href="#LocaleHTMLCalendar">LocaleHTMLCalendar</a>(firstweekday=0,&nbsp;locale=None)<br>
+&nbsp;<br>
+This&nbsp;class&nbsp;can&nbsp;be&nbsp;passed&nbsp;a&nbsp;locale&nbsp;name&nbsp;in&nbsp;the&nbsp;constructor&nbsp;and&nbsp;will&nbsp;return<br>
+month&nbsp;and&nbsp;weekday&nbsp;names&nbsp;in&nbsp;the&nbsp;specified&nbsp;locale.&nbsp;If&nbsp;this&nbsp;locale&nbsp;includes<br>
+an&nbsp;encoding&nbsp;all&nbsp;strings&nbsp;containing&nbsp;month&nbsp;and&nbsp;weekday&nbsp;names&nbsp;will&nbsp;be&nbsp;returned<br>
+as&nbsp;unicode.<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%"><dl><dt>Method resolution order:</dt>
+<dd><a href="calendar.html#LocaleHTMLCalendar">LocaleHTMLCalendar</a></dd>
+<dd><a href="calendar.html#HTMLCalendar">HTMLCalendar</a></dd>
+<dd><a href="calendar.html#Calendar">Calendar</a></dd>
+<dd><a href="builtins.html#object">builtins.object</a></dd>
+</dl>
+<hr>
+Methods defined here:<br>
+<dl><dt><a name="LocaleHTMLCalendar-__init__"><strong>__init__</strong></a>(self, firstweekday=0, locale=None)</dt><dd><tt>Initialize&nbsp;self.&nbsp;&nbsp;See&nbsp;help(type(self))&nbsp;for&nbsp;accurate&nbsp;signature.</tt></dd></dl>
+
+<dl><dt><a name="LocaleHTMLCalendar-formatmonthname"><strong>formatmonthname</strong></a>(self, theyear, themonth, withyear=True)</dt><dd><tt>Return&nbsp;a&nbsp;month&nbsp;name&nbsp;as&nbsp;a&nbsp;table&nbsp;row.</tt></dd></dl>
+
+<dl><dt><a name="LocaleHTMLCalendar-formatweekday"><strong>formatweekday</strong></a>(self, day)</dt><dd><tt>Return&nbsp;a&nbsp;weekday&nbsp;name&nbsp;as&nbsp;a&nbsp;table&nbsp;header.</tt></dd></dl>
+
+<hr>
+Methods inherited from <a href="calendar.html#HTMLCalendar">HTMLCalendar</a>:<br>
+<dl><dt><a name="LocaleHTMLCalendar-formatday"><strong>formatday</strong></a>(self, day, weekday)</dt><dd><tt>Return&nbsp;a&nbsp;day&nbsp;as&nbsp;a&nbsp;table&nbsp;cell.</tt></dd></dl>
+
+<dl><dt><a name="LocaleHTMLCalendar-formatmonth"><strong>formatmonth</strong></a>(self, theyear, themonth, withyear=True)</dt><dd><tt>Return&nbsp;a&nbsp;formatted&nbsp;month&nbsp;as&nbsp;a&nbsp;table.</tt></dd></dl>
+
+<dl><dt><a name="LocaleHTMLCalendar-formatweek"><strong>formatweek</strong></a>(self, theweek)</dt><dd><tt>Return&nbsp;a&nbsp;complete&nbsp;week&nbsp;as&nbsp;a&nbsp;table&nbsp;row.</tt></dd></dl>
+
+<dl><dt><a name="LocaleHTMLCalendar-formatweekheader"><strong>formatweekheader</strong></a>(self)</dt><dd><tt>Return&nbsp;a&nbsp;header&nbsp;for&nbsp;a&nbsp;week&nbsp;as&nbsp;a&nbsp;table&nbsp;row.</tt></dd></dl>
+
+<dl><dt><a name="LocaleHTMLCalendar-formatyear"><strong>formatyear</strong></a>(self, theyear, width=3)</dt><dd><tt>Return&nbsp;a&nbsp;formatted&nbsp;year&nbsp;as&nbsp;a&nbsp;table&nbsp;of&nbsp;tables.</tt></dd></dl>
+
+<dl><dt><a name="LocaleHTMLCalendar-formatyearpage"><strong>formatyearpage</strong></a>(self, theyear, width=3, css='calendar.css', encoding=None)</dt><dd><tt>Return&nbsp;a&nbsp;formatted&nbsp;year&nbsp;as&nbsp;a&nbsp;complete&nbsp;HTML&nbsp;page.</tt></dd></dl>
+
+<hr>
+Data and other attributes inherited from <a href="calendar.html#HTMLCalendar">HTMLCalendar</a>:<br>
+<dl><dt><strong>cssclass_month</strong> = 'month'</dl>
+
+<dl><dt><strong>cssclass_month_head</strong> = 'month'</dl>
+
+<dl><dt><strong>cssclass_noday</strong> = 'noday'</dl>
+
+<dl><dt><strong>cssclass_year</strong> = 'year'</dl>
+
+<dl><dt><strong>cssclass_year_head</strong> = 'year'</dl>
+
+<dl><dt><strong>cssclasses</strong> = ['mon', 'tue', 'wed', 'thu', 'fri', 'sat', 'sun']</dl>
+
+<dl><dt><strong>cssclasses_weekday_head</strong> = ['mon', 'tue', 'wed', 'thu', 'fri', 'sat', 'sun']</dl>
+
+<hr>
+Methods inherited from <a href="calendar.html#Calendar">Calendar</a>:<br>
+<dl><dt><a name="LocaleHTMLCalendar-getfirstweekday"><strong>getfirstweekday</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="LocaleHTMLCalendar-itermonthdates"><strong>itermonthdates</strong></a>(self, year, month)</dt><dd><tt>Return&nbsp;an&nbsp;iterator&nbsp;for&nbsp;one&nbsp;month.&nbsp;The&nbsp;iterator&nbsp;will&nbsp;yield&nbsp;datetime.date<br>
+values&nbsp;and&nbsp;will&nbsp;always&nbsp;iterate&nbsp;through&nbsp;complete&nbsp;weeks,&nbsp;so&nbsp;it&nbsp;will&nbsp;yield<br>
+dates&nbsp;outside&nbsp;the&nbsp;specified&nbsp;month.</tt></dd></dl>
+
+<dl><dt><a name="LocaleHTMLCalendar-itermonthdays"><strong>itermonthdays</strong></a>(self, year, month)</dt><dd><tt>Like&nbsp;<a href="#LocaleHTMLCalendar-itermonthdates">itermonthdates</a>(),&nbsp;but&nbsp;will&nbsp;yield&nbsp;day&nbsp;numbers.&nbsp;For&nbsp;days&nbsp;outside<br>
+the&nbsp;specified&nbsp;month&nbsp;the&nbsp;day&nbsp;number&nbsp;is&nbsp;0.</tt></dd></dl>
+
+<dl><dt><a name="LocaleHTMLCalendar-itermonthdays2"><strong>itermonthdays2</strong></a>(self, year, month)</dt><dd><tt>Like&nbsp;<a href="#LocaleHTMLCalendar-itermonthdates">itermonthdates</a>(),&nbsp;but&nbsp;will&nbsp;yield&nbsp;(day&nbsp;number,&nbsp;weekday&nbsp;number)<br>
+tuples.&nbsp;For&nbsp;days&nbsp;outside&nbsp;the&nbsp;specified&nbsp;month&nbsp;the&nbsp;day&nbsp;number&nbsp;is&nbsp;0.</tt></dd></dl>
+
+<dl><dt><a name="LocaleHTMLCalendar-itermonthdays3"><strong>itermonthdays3</strong></a>(self, year, month)</dt><dd><tt>Like&nbsp;<a href="#LocaleHTMLCalendar-itermonthdates">itermonthdates</a>(),&nbsp;but&nbsp;will&nbsp;yield&nbsp;(year,&nbsp;month,&nbsp;day)&nbsp;tuples.&nbsp;&nbsp;Can&nbsp;be<br>
+used&nbsp;for&nbsp;dates&nbsp;outside&nbsp;of&nbsp;datetime.date&nbsp;range.</tt></dd></dl>
+
+<dl><dt><a name="LocaleHTMLCalendar-itermonthdays4"><strong>itermonthdays4</strong></a>(self, year, month)</dt><dd><tt>Like&nbsp;<a href="#LocaleHTMLCalendar-itermonthdates">itermonthdates</a>(),&nbsp;but&nbsp;will&nbsp;yield&nbsp;(year,&nbsp;month,&nbsp;day,&nbsp;day_of_week)&nbsp;tuples.<br>
+Can&nbsp;be&nbsp;used&nbsp;for&nbsp;dates&nbsp;outside&nbsp;of&nbsp;datetime.date&nbsp;range.</tt></dd></dl>
+
+<dl><dt><a name="LocaleHTMLCalendar-iterweekdays"><strong>iterweekdays</strong></a>(self)</dt><dd><tt>Return&nbsp;an&nbsp;iterator&nbsp;for&nbsp;one&nbsp;week&nbsp;of&nbsp;weekday&nbsp;numbers&nbsp;starting&nbsp;with&nbsp;the<br>
+configured&nbsp;first&nbsp;one.</tt></dd></dl>
+
+<dl><dt><a name="LocaleHTMLCalendar-monthdatescalendar"><strong>monthdatescalendar</strong></a>(self, year, month)</dt><dd><tt>Return&nbsp;a&nbsp;matrix&nbsp;(list&nbsp;of&nbsp;lists)&nbsp;representing&nbsp;a&nbsp;month's&nbsp;calendar.<br>
+Each&nbsp;row&nbsp;represents&nbsp;a&nbsp;week;&nbsp;week&nbsp;entries&nbsp;are&nbsp;datetime.date&nbsp;values.</tt></dd></dl>
+
+<dl><dt><a name="LocaleHTMLCalendar-monthdays2calendar"><strong>monthdays2calendar</strong></a>(self, year, month)</dt><dd><tt>Return&nbsp;a&nbsp;matrix&nbsp;representing&nbsp;a&nbsp;month's&nbsp;calendar.<br>
+Each&nbsp;row&nbsp;represents&nbsp;a&nbsp;week;&nbsp;week&nbsp;entries&nbsp;are<br>
+(day&nbsp;number,&nbsp;weekday&nbsp;number)&nbsp;tuples.&nbsp;Day&nbsp;numbers&nbsp;outside&nbsp;this&nbsp;month<br>
+are&nbsp;zero.</tt></dd></dl>
+
+<dl><dt><a name="LocaleHTMLCalendar-monthdayscalendar"><strong>monthdayscalendar</strong></a>(self, year, month)</dt><dd><tt>Return&nbsp;a&nbsp;matrix&nbsp;representing&nbsp;a&nbsp;month's&nbsp;calendar.<br>
+Each&nbsp;row&nbsp;represents&nbsp;a&nbsp;week;&nbsp;days&nbsp;outside&nbsp;this&nbsp;month&nbsp;are&nbsp;zero.</tt></dd></dl>
+
+<dl><dt><a name="LocaleHTMLCalendar-setfirstweekday"><strong>setfirstweekday</strong></a>(self, firstweekday)</dt></dl>
+
+<dl><dt><a name="LocaleHTMLCalendar-yeardatescalendar"><strong>yeardatescalendar</strong></a>(self, year, width=3)</dt><dd><tt>Return&nbsp;the&nbsp;data&nbsp;for&nbsp;the&nbsp;specified&nbsp;year&nbsp;ready&nbsp;for&nbsp;formatting.&nbsp;The&nbsp;return<br>
+value&nbsp;is&nbsp;a&nbsp;list&nbsp;of&nbsp;month&nbsp;rows.&nbsp;Each&nbsp;month&nbsp;row&nbsp;contains&nbsp;up&nbsp;to&nbsp;width&nbsp;months.<br>
+Each&nbsp;month&nbsp;contains&nbsp;between&nbsp;4&nbsp;and&nbsp;6&nbsp;weeks&nbsp;and&nbsp;each&nbsp;week&nbsp;contains&nbsp;1-7<br>
+days.&nbsp;Days&nbsp;are&nbsp;datetime.date&nbsp;objects.</tt></dd></dl>
+
+<dl><dt><a name="LocaleHTMLCalendar-yeardays2calendar"><strong>yeardays2calendar</strong></a>(self, year, width=3)</dt><dd><tt>Return&nbsp;the&nbsp;data&nbsp;for&nbsp;the&nbsp;specified&nbsp;year&nbsp;ready&nbsp;for&nbsp;formatting&nbsp;(similar&nbsp;to<br>
+<a href="#LocaleHTMLCalendar-yeardatescalendar">yeardatescalendar</a>()).&nbsp;Entries&nbsp;in&nbsp;the&nbsp;week&nbsp;lists&nbsp;are<br>
+(day&nbsp;number,&nbsp;weekday&nbsp;number)&nbsp;tuples.&nbsp;Day&nbsp;numbers&nbsp;outside&nbsp;this&nbsp;month&nbsp;are<br>
+zero.</tt></dd></dl>
+
+<dl><dt><a name="LocaleHTMLCalendar-yeardayscalendar"><strong>yeardayscalendar</strong></a>(self, year, width=3)</dt><dd><tt>Return&nbsp;the&nbsp;data&nbsp;for&nbsp;the&nbsp;specified&nbsp;year&nbsp;ready&nbsp;for&nbsp;formatting&nbsp;(similar&nbsp;to<br>
+<a href="#LocaleHTMLCalendar-yeardatescalendar">yeardatescalendar</a>()).&nbsp;Entries&nbsp;in&nbsp;the&nbsp;week&nbsp;lists&nbsp;are&nbsp;day&nbsp;numbers.<br>
+Day&nbsp;numbers&nbsp;outside&nbsp;this&nbsp;month&nbsp;are&nbsp;zero.</tt></dd></dl>
+
+<hr>
+Data descriptors inherited from <a href="calendar.html#Calendar">Calendar</a>:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><tt>dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<dl><dt><strong>firstweekday</strong></dt>
+</dl>
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="LocaleTextCalendar">class <strong>LocaleTextCalendar</strong></a>(<a href="calendar.html#TextCalendar">TextCalendar</a>)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt><a href="#LocaleTextCalendar">LocaleTextCalendar</a>(firstweekday=0,&nbsp;locale=None)<br>
+&nbsp;<br>
+This&nbsp;class&nbsp;can&nbsp;be&nbsp;passed&nbsp;a&nbsp;locale&nbsp;name&nbsp;in&nbsp;the&nbsp;constructor&nbsp;and&nbsp;will&nbsp;return<br>
+month&nbsp;and&nbsp;weekday&nbsp;names&nbsp;in&nbsp;the&nbsp;specified&nbsp;locale.&nbsp;If&nbsp;this&nbsp;locale&nbsp;includes<br>
+an&nbsp;encoding&nbsp;all&nbsp;strings&nbsp;containing&nbsp;month&nbsp;and&nbsp;weekday&nbsp;names&nbsp;will&nbsp;be&nbsp;returned<br>
+as&nbsp;unicode.<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%"><dl><dt>Method resolution order:</dt>
+<dd><a href="calendar.html#LocaleTextCalendar">LocaleTextCalendar</a></dd>
+<dd><a href="calendar.html#TextCalendar">TextCalendar</a></dd>
+<dd><a href="calendar.html#Calendar">Calendar</a></dd>
+<dd><a href="builtins.html#object">builtins.object</a></dd>
+</dl>
+<hr>
+Methods defined here:<br>
+<dl><dt><a name="LocaleTextCalendar-__init__"><strong>__init__</strong></a>(self, firstweekday=0, locale=None)</dt><dd><tt>Initialize&nbsp;self.&nbsp;&nbsp;See&nbsp;help(type(self))&nbsp;for&nbsp;accurate&nbsp;signature.</tt></dd></dl>
+
+<dl><dt><a name="LocaleTextCalendar-formatmonthname"><strong>formatmonthname</strong></a>(self, theyear, themonth, width, withyear=True)</dt><dd><tt>Return&nbsp;a&nbsp;formatted&nbsp;month&nbsp;name.</tt></dd></dl>
+
+<dl><dt><a name="LocaleTextCalendar-formatweekday"><strong>formatweekday</strong></a>(self, day, width)</dt><dd><tt>Returns&nbsp;a&nbsp;formatted&nbsp;week&nbsp;day&nbsp;name.</tt></dd></dl>
+
+<hr>
+Methods inherited from <a href="calendar.html#TextCalendar">TextCalendar</a>:<br>
+<dl><dt><a name="LocaleTextCalendar-formatday"><strong>formatday</strong></a>(self, day, weekday, width)</dt><dd><tt>Returns&nbsp;a&nbsp;formatted&nbsp;day.</tt></dd></dl>
+
+<dl><dt><a name="LocaleTextCalendar-formatmonth"><strong>formatmonth</strong></a>(self, theyear, themonth, w=0, l=0)</dt><dd><tt>Return&nbsp;a&nbsp;month's&nbsp;calendar&nbsp;string&nbsp;(multi-line).</tt></dd></dl>
+
+<dl><dt><a name="LocaleTextCalendar-formatweek"><strong>formatweek</strong></a>(self, theweek, width)</dt><dd><tt>Returns&nbsp;a&nbsp;single&nbsp;week&nbsp;in&nbsp;a&nbsp;string&nbsp;(no&nbsp;newline).</tt></dd></dl>
+
+<dl><dt><a name="LocaleTextCalendar-formatweekheader"><strong>formatweekheader</strong></a>(self, width)</dt><dd><tt>Return&nbsp;a&nbsp;header&nbsp;for&nbsp;a&nbsp;week.</tt></dd></dl>
+
+<dl><dt><a name="LocaleTextCalendar-formatyear"><strong>formatyear</strong></a>(self, theyear, w=2, l=1, c=6, m=3)</dt><dd><tt>Returns&nbsp;a&nbsp;year's&nbsp;calendar&nbsp;as&nbsp;a&nbsp;multi-line&nbsp;string.</tt></dd></dl>
+
+<dl><dt><a name="LocaleTextCalendar-prmonth"><strong>prmonth</strong></a>(self, theyear, themonth, w=0, l=0)</dt><dd><tt>Print&nbsp;a&nbsp;month's&nbsp;calendar.</tt></dd></dl>
+
+<dl><dt><a name="LocaleTextCalendar-prweek"><strong>prweek</strong></a>(self, theweek, width)</dt><dd><tt>Print&nbsp;a&nbsp;single&nbsp;week&nbsp;(no&nbsp;newline).</tt></dd></dl>
+
+<dl><dt><a name="LocaleTextCalendar-pryear"><strong>pryear</strong></a>(self, theyear, w=0, l=0, c=6, m=3)</dt><dd><tt>Print&nbsp;a&nbsp;year's&nbsp;calendar.</tt></dd></dl>
+
+<hr>
+Methods inherited from <a href="calendar.html#Calendar">Calendar</a>:<br>
+<dl><dt><a name="LocaleTextCalendar-getfirstweekday"><strong>getfirstweekday</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="LocaleTextCalendar-itermonthdates"><strong>itermonthdates</strong></a>(self, year, month)</dt><dd><tt>Return&nbsp;an&nbsp;iterator&nbsp;for&nbsp;one&nbsp;month.&nbsp;The&nbsp;iterator&nbsp;will&nbsp;yield&nbsp;datetime.date<br>
+values&nbsp;and&nbsp;will&nbsp;always&nbsp;iterate&nbsp;through&nbsp;complete&nbsp;weeks,&nbsp;so&nbsp;it&nbsp;will&nbsp;yield<br>
+dates&nbsp;outside&nbsp;the&nbsp;specified&nbsp;month.</tt></dd></dl>
+
+<dl><dt><a name="LocaleTextCalendar-itermonthdays"><strong>itermonthdays</strong></a>(self, year, month)</dt><dd><tt>Like&nbsp;<a href="#LocaleTextCalendar-itermonthdates">itermonthdates</a>(),&nbsp;but&nbsp;will&nbsp;yield&nbsp;day&nbsp;numbers.&nbsp;For&nbsp;days&nbsp;outside<br>
+the&nbsp;specified&nbsp;month&nbsp;the&nbsp;day&nbsp;number&nbsp;is&nbsp;0.</tt></dd></dl>
+
+<dl><dt><a name="LocaleTextCalendar-itermonthdays2"><strong>itermonthdays2</strong></a>(self, year, month)</dt><dd><tt>Like&nbsp;<a href="#LocaleTextCalendar-itermonthdates">itermonthdates</a>(),&nbsp;but&nbsp;will&nbsp;yield&nbsp;(day&nbsp;number,&nbsp;weekday&nbsp;number)<br>
+tuples.&nbsp;For&nbsp;days&nbsp;outside&nbsp;the&nbsp;specified&nbsp;month&nbsp;the&nbsp;day&nbsp;number&nbsp;is&nbsp;0.</tt></dd></dl>
+
+<dl><dt><a name="LocaleTextCalendar-itermonthdays3"><strong>itermonthdays3</strong></a>(self, year, month)</dt><dd><tt>Like&nbsp;<a href="#LocaleTextCalendar-itermonthdates">itermonthdates</a>(),&nbsp;but&nbsp;will&nbsp;yield&nbsp;(year,&nbsp;month,&nbsp;day)&nbsp;tuples.&nbsp;&nbsp;Can&nbsp;be<br>
+used&nbsp;for&nbsp;dates&nbsp;outside&nbsp;of&nbsp;datetime.date&nbsp;range.</tt></dd></dl>
+
+<dl><dt><a name="LocaleTextCalendar-itermonthdays4"><strong>itermonthdays4</strong></a>(self, year, month)</dt><dd><tt>Like&nbsp;<a href="#LocaleTextCalendar-itermonthdates">itermonthdates</a>(),&nbsp;but&nbsp;will&nbsp;yield&nbsp;(year,&nbsp;month,&nbsp;day,&nbsp;day_of_week)&nbsp;tuples.<br>
+Can&nbsp;be&nbsp;used&nbsp;for&nbsp;dates&nbsp;outside&nbsp;of&nbsp;datetime.date&nbsp;range.</tt></dd></dl>
+
+<dl><dt><a name="LocaleTextCalendar-iterweekdays"><strong>iterweekdays</strong></a>(self)</dt><dd><tt>Return&nbsp;an&nbsp;iterator&nbsp;for&nbsp;one&nbsp;week&nbsp;of&nbsp;weekday&nbsp;numbers&nbsp;starting&nbsp;with&nbsp;the<br>
+configured&nbsp;first&nbsp;one.</tt></dd></dl>
+
+<dl><dt><a name="LocaleTextCalendar-monthdatescalendar"><strong>monthdatescalendar</strong></a>(self, year, month)</dt><dd><tt>Return&nbsp;a&nbsp;matrix&nbsp;(list&nbsp;of&nbsp;lists)&nbsp;representing&nbsp;a&nbsp;month's&nbsp;calendar.<br>
+Each&nbsp;row&nbsp;represents&nbsp;a&nbsp;week;&nbsp;week&nbsp;entries&nbsp;are&nbsp;datetime.date&nbsp;values.</tt></dd></dl>
+
+<dl><dt><a name="LocaleTextCalendar-monthdays2calendar"><strong>monthdays2calendar</strong></a>(self, year, month)</dt><dd><tt>Return&nbsp;a&nbsp;matrix&nbsp;representing&nbsp;a&nbsp;month's&nbsp;calendar.<br>
+Each&nbsp;row&nbsp;represents&nbsp;a&nbsp;week;&nbsp;week&nbsp;entries&nbsp;are<br>
+(day&nbsp;number,&nbsp;weekday&nbsp;number)&nbsp;tuples.&nbsp;Day&nbsp;numbers&nbsp;outside&nbsp;this&nbsp;month<br>
+are&nbsp;zero.</tt></dd></dl>
+
+<dl><dt><a name="LocaleTextCalendar-monthdayscalendar"><strong>monthdayscalendar</strong></a>(self, year, month)</dt><dd><tt>Return&nbsp;a&nbsp;matrix&nbsp;representing&nbsp;a&nbsp;month's&nbsp;calendar.<br>
+Each&nbsp;row&nbsp;represents&nbsp;a&nbsp;week;&nbsp;days&nbsp;outside&nbsp;this&nbsp;month&nbsp;are&nbsp;zero.</tt></dd></dl>
+
+<dl><dt><a name="LocaleTextCalendar-setfirstweekday"><strong>setfirstweekday</strong></a>(self, firstweekday)</dt></dl>
+
+<dl><dt><a name="LocaleTextCalendar-yeardatescalendar"><strong>yeardatescalendar</strong></a>(self, year, width=3)</dt><dd><tt>Return&nbsp;the&nbsp;data&nbsp;for&nbsp;the&nbsp;specified&nbsp;year&nbsp;ready&nbsp;for&nbsp;formatting.&nbsp;The&nbsp;return<br>
+value&nbsp;is&nbsp;a&nbsp;list&nbsp;of&nbsp;month&nbsp;rows.&nbsp;Each&nbsp;month&nbsp;row&nbsp;contains&nbsp;up&nbsp;to&nbsp;width&nbsp;months.<br>
+Each&nbsp;month&nbsp;contains&nbsp;between&nbsp;4&nbsp;and&nbsp;6&nbsp;weeks&nbsp;and&nbsp;each&nbsp;week&nbsp;contains&nbsp;1-7<br>
+days.&nbsp;Days&nbsp;are&nbsp;datetime.date&nbsp;objects.</tt></dd></dl>
+
+<dl><dt><a name="LocaleTextCalendar-yeardays2calendar"><strong>yeardays2calendar</strong></a>(self, year, width=3)</dt><dd><tt>Return&nbsp;the&nbsp;data&nbsp;for&nbsp;the&nbsp;specified&nbsp;year&nbsp;ready&nbsp;for&nbsp;formatting&nbsp;(similar&nbsp;to<br>
+<a href="#LocaleTextCalendar-yeardatescalendar">yeardatescalendar</a>()).&nbsp;Entries&nbsp;in&nbsp;the&nbsp;week&nbsp;lists&nbsp;are<br>
+(day&nbsp;number,&nbsp;weekday&nbsp;number)&nbsp;tuples.&nbsp;Day&nbsp;numbers&nbsp;outside&nbsp;this&nbsp;month&nbsp;are<br>
+zero.</tt></dd></dl>
+
+<dl><dt><a name="LocaleTextCalendar-yeardayscalendar"><strong>yeardayscalendar</strong></a>(self, year, width=3)</dt><dd><tt>Return&nbsp;the&nbsp;data&nbsp;for&nbsp;the&nbsp;specified&nbsp;year&nbsp;ready&nbsp;for&nbsp;formatting&nbsp;(similar&nbsp;to<br>
+<a href="#LocaleTextCalendar-yeardatescalendar">yeardatescalendar</a>()).&nbsp;Entries&nbsp;in&nbsp;the&nbsp;week&nbsp;lists&nbsp;are&nbsp;day&nbsp;numbers.<br>
+Day&nbsp;numbers&nbsp;outside&nbsp;this&nbsp;month&nbsp;are&nbsp;zero.</tt></dd></dl>
+
+<hr>
+Data descriptors inherited from <a href="calendar.html#Calendar">Calendar</a>:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><tt>dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<dl><dt><strong>firstweekday</strong></dt>
+</dl>
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="TextCalendar">class <strong>TextCalendar</strong></a>(<a href="calendar.html#Calendar">Calendar</a>)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt><a href="#TextCalendar">TextCalendar</a>(firstweekday=0)<br>
+&nbsp;<br>
+Subclass&nbsp;of&nbsp;<a href="#Calendar">Calendar</a>&nbsp;that&nbsp;outputs&nbsp;a&nbsp;calendar&nbsp;as&nbsp;a&nbsp;simple&nbsp;plain&nbsp;text<br>
+similar&nbsp;to&nbsp;the&nbsp;UNIX&nbsp;program&nbsp;cal.<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%"><dl><dt>Method resolution order:</dt>
+<dd><a href="calendar.html#TextCalendar">TextCalendar</a></dd>
+<dd><a href="calendar.html#Calendar">Calendar</a></dd>
+<dd><a href="builtins.html#object">builtins.object</a></dd>
+</dl>
+<hr>
+Methods defined here:<br>
+<dl><dt><a name="TextCalendar-formatday"><strong>formatday</strong></a>(self, day, weekday, width)</dt><dd><tt>Returns&nbsp;a&nbsp;formatted&nbsp;day.</tt></dd></dl>
+
+<dl><dt><a name="TextCalendar-formatmonth"><strong>formatmonth</strong></a>(self, theyear, themonth, w=0, l=0)</dt><dd><tt>Return&nbsp;a&nbsp;month's&nbsp;calendar&nbsp;string&nbsp;(multi-line).</tt></dd></dl>
+
+<dl><dt><a name="TextCalendar-formatmonthname"><strong>formatmonthname</strong></a>(self, theyear, themonth, width, withyear=True)</dt><dd><tt>Return&nbsp;a&nbsp;formatted&nbsp;month&nbsp;name.</tt></dd></dl>
+
+<dl><dt><a name="TextCalendar-formatweek"><strong>formatweek</strong></a>(self, theweek, width)</dt><dd><tt>Returns&nbsp;a&nbsp;single&nbsp;week&nbsp;in&nbsp;a&nbsp;string&nbsp;(no&nbsp;newline).</tt></dd></dl>
+
+<dl><dt><a name="TextCalendar-formatweekday"><strong>formatweekday</strong></a>(self, day, width)</dt><dd><tt>Returns&nbsp;a&nbsp;formatted&nbsp;week&nbsp;day&nbsp;name.</tt></dd></dl>
+
+<dl><dt><a name="TextCalendar-formatweekheader"><strong>formatweekheader</strong></a>(self, width)</dt><dd><tt>Return&nbsp;a&nbsp;header&nbsp;for&nbsp;a&nbsp;week.</tt></dd></dl>
+
+<dl><dt><a name="TextCalendar-formatyear"><strong>formatyear</strong></a>(self, theyear, w=2, l=1, c=6, m=3)</dt><dd><tt>Returns&nbsp;a&nbsp;year's&nbsp;calendar&nbsp;as&nbsp;a&nbsp;multi-line&nbsp;string.</tt></dd></dl>
+
+<dl><dt><a name="TextCalendar-prmonth"><strong>prmonth</strong></a>(self, theyear, themonth, w=0, l=0)</dt><dd><tt>Print&nbsp;a&nbsp;month's&nbsp;calendar.</tt></dd></dl>
+
+<dl><dt><a name="TextCalendar-prweek"><strong>prweek</strong></a>(self, theweek, width)</dt><dd><tt>Print&nbsp;a&nbsp;single&nbsp;week&nbsp;(no&nbsp;newline).</tt></dd></dl>
+
+<dl><dt><a name="TextCalendar-pryear"><strong>pryear</strong></a>(self, theyear, w=0, l=0, c=6, m=3)</dt><dd><tt>Print&nbsp;a&nbsp;year's&nbsp;calendar.</tt></dd></dl>
+
+<hr>
+Methods inherited from <a href="calendar.html#Calendar">Calendar</a>:<br>
+<dl><dt><a name="TextCalendar-__init__"><strong>__init__</strong></a>(self, firstweekday=0)</dt><dd><tt>Initialize&nbsp;self.&nbsp;&nbsp;See&nbsp;help(type(self))&nbsp;for&nbsp;accurate&nbsp;signature.</tt></dd></dl>
+
+<dl><dt><a name="TextCalendar-getfirstweekday"><strong>getfirstweekday</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="TextCalendar-itermonthdates"><strong>itermonthdates</strong></a>(self, year, month)</dt><dd><tt>Return&nbsp;an&nbsp;iterator&nbsp;for&nbsp;one&nbsp;month.&nbsp;The&nbsp;iterator&nbsp;will&nbsp;yield&nbsp;datetime.date<br>
+values&nbsp;and&nbsp;will&nbsp;always&nbsp;iterate&nbsp;through&nbsp;complete&nbsp;weeks,&nbsp;so&nbsp;it&nbsp;will&nbsp;yield<br>
+dates&nbsp;outside&nbsp;the&nbsp;specified&nbsp;month.</tt></dd></dl>
+
+<dl><dt><a name="TextCalendar-itermonthdays"><strong>itermonthdays</strong></a>(self, year, month)</dt><dd><tt>Like&nbsp;<a href="#TextCalendar-itermonthdates">itermonthdates</a>(),&nbsp;but&nbsp;will&nbsp;yield&nbsp;day&nbsp;numbers.&nbsp;For&nbsp;days&nbsp;outside<br>
+the&nbsp;specified&nbsp;month&nbsp;the&nbsp;day&nbsp;number&nbsp;is&nbsp;0.</tt></dd></dl>
+
+<dl><dt><a name="TextCalendar-itermonthdays2"><strong>itermonthdays2</strong></a>(self, year, month)</dt><dd><tt>Like&nbsp;<a href="#TextCalendar-itermonthdates">itermonthdates</a>(),&nbsp;but&nbsp;will&nbsp;yield&nbsp;(day&nbsp;number,&nbsp;weekday&nbsp;number)<br>
+tuples.&nbsp;For&nbsp;days&nbsp;outside&nbsp;the&nbsp;specified&nbsp;month&nbsp;the&nbsp;day&nbsp;number&nbsp;is&nbsp;0.</tt></dd></dl>
+
+<dl><dt><a name="TextCalendar-itermonthdays3"><strong>itermonthdays3</strong></a>(self, year, month)</dt><dd><tt>Like&nbsp;<a href="#TextCalendar-itermonthdates">itermonthdates</a>(),&nbsp;but&nbsp;will&nbsp;yield&nbsp;(year,&nbsp;month,&nbsp;day)&nbsp;tuples.&nbsp;&nbsp;Can&nbsp;be<br>
+used&nbsp;for&nbsp;dates&nbsp;outside&nbsp;of&nbsp;datetime.date&nbsp;range.</tt></dd></dl>
+
+<dl><dt><a name="TextCalendar-itermonthdays4"><strong>itermonthdays4</strong></a>(self, year, month)</dt><dd><tt>Like&nbsp;<a href="#TextCalendar-itermonthdates">itermonthdates</a>(),&nbsp;but&nbsp;will&nbsp;yield&nbsp;(year,&nbsp;month,&nbsp;day,&nbsp;day_of_week)&nbsp;tuples.<br>
+Can&nbsp;be&nbsp;used&nbsp;for&nbsp;dates&nbsp;outside&nbsp;of&nbsp;datetime.date&nbsp;range.</tt></dd></dl>
+
+<dl><dt><a name="TextCalendar-iterweekdays"><strong>iterweekdays</strong></a>(self)</dt><dd><tt>Return&nbsp;an&nbsp;iterator&nbsp;for&nbsp;one&nbsp;week&nbsp;of&nbsp;weekday&nbsp;numbers&nbsp;starting&nbsp;with&nbsp;the<br>
+configured&nbsp;first&nbsp;one.</tt></dd></dl>
+
+<dl><dt><a name="TextCalendar-monthdatescalendar"><strong>monthdatescalendar</strong></a>(self, year, month)</dt><dd><tt>Return&nbsp;a&nbsp;matrix&nbsp;(list&nbsp;of&nbsp;lists)&nbsp;representing&nbsp;a&nbsp;month's&nbsp;calendar.<br>
+Each&nbsp;row&nbsp;represents&nbsp;a&nbsp;week;&nbsp;week&nbsp;entries&nbsp;are&nbsp;datetime.date&nbsp;values.</tt></dd></dl>
+
+<dl><dt><a name="TextCalendar-monthdays2calendar"><strong>monthdays2calendar</strong></a>(self, year, month)</dt><dd><tt>Return&nbsp;a&nbsp;matrix&nbsp;representing&nbsp;a&nbsp;month's&nbsp;calendar.<br>
+Each&nbsp;row&nbsp;represents&nbsp;a&nbsp;week;&nbsp;week&nbsp;entries&nbsp;are<br>
+(day&nbsp;number,&nbsp;weekday&nbsp;number)&nbsp;tuples.&nbsp;Day&nbsp;numbers&nbsp;outside&nbsp;this&nbsp;month<br>
+are&nbsp;zero.</tt></dd></dl>
+
+<dl><dt><a name="TextCalendar-monthdayscalendar"><strong>monthdayscalendar</strong></a>(self, year, month)</dt><dd><tt>Return&nbsp;a&nbsp;matrix&nbsp;representing&nbsp;a&nbsp;month's&nbsp;calendar.<br>
+Each&nbsp;row&nbsp;represents&nbsp;a&nbsp;week;&nbsp;days&nbsp;outside&nbsp;this&nbsp;month&nbsp;are&nbsp;zero.</tt></dd></dl>
+
+<dl><dt><a name="TextCalendar-setfirstweekday"><strong>setfirstweekday</strong></a>(self, firstweekday)</dt></dl>
+
+<dl><dt><a name="TextCalendar-yeardatescalendar"><strong>yeardatescalendar</strong></a>(self, year, width=3)</dt><dd><tt>Return&nbsp;the&nbsp;data&nbsp;for&nbsp;the&nbsp;specified&nbsp;year&nbsp;ready&nbsp;for&nbsp;formatting.&nbsp;The&nbsp;return<br>
+value&nbsp;is&nbsp;a&nbsp;list&nbsp;of&nbsp;month&nbsp;rows.&nbsp;Each&nbsp;month&nbsp;row&nbsp;contains&nbsp;up&nbsp;to&nbsp;width&nbsp;months.<br>
+Each&nbsp;month&nbsp;contains&nbsp;between&nbsp;4&nbsp;and&nbsp;6&nbsp;weeks&nbsp;and&nbsp;each&nbsp;week&nbsp;contains&nbsp;1-7<br>
+days.&nbsp;Days&nbsp;are&nbsp;datetime.date&nbsp;objects.</tt></dd></dl>
+
+<dl><dt><a name="TextCalendar-yeardays2calendar"><strong>yeardays2calendar</strong></a>(self, year, width=3)</dt><dd><tt>Return&nbsp;the&nbsp;data&nbsp;for&nbsp;the&nbsp;specified&nbsp;year&nbsp;ready&nbsp;for&nbsp;formatting&nbsp;(similar&nbsp;to<br>
+<a href="#TextCalendar-yeardatescalendar">yeardatescalendar</a>()).&nbsp;Entries&nbsp;in&nbsp;the&nbsp;week&nbsp;lists&nbsp;are<br>
+(day&nbsp;number,&nbsp;weekday&nbsp;number)&nbsp;tuples.&nbsp;Day&nbsp;numbers&nbsp;outside&nbsp;this&nbsp;month&nbsp;are<br>
+zero.</tt></dd></dl>
+
+<dl><dt><a name="TextCalendar-yeardayscalendar"><strong>yeardayscalendar</strong></a>(self, year, width=3)</dt><dd><tt>Return&nbsp;the&nbsp;data&nbsp;for&nbsp;the&nbsp;specified&nbsp;year&nbsp;ready&nbsp;for&nbsp;formatting&nbsp;(similar&nbsp;to<br>
+<a href="#TextCalendar-yeardatescalendar">yeardatescalendar</a>()).&nbsp;Entries&nbsp;in&nbsp;the&nbsp;week&nbsp;lists&nbsp;are&nbsp;day&nbsp;numbers.<br>
+Day&nbsp;numbers&nbsp;outside&nbsp;this&nbsp;month&nbsp;are&nbsp;zero.</tt></dd></dl>
+
+<hr>
+Data descriptors inherited from <a href="calendar.html#Calendar">Calendar</a>:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><tt>dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<dl><dt><strong>firstweekday</strong></dt>
+</dl>
+</td></tr></table></td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#eeaa77">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Functions</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#eeaa77"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl><dt><a name="-calendar"><strong>calendar</strong></a> = formatyear(theyear, w=2, l=1, c=6, m=3)<font color="#909090"><font face="helvetica, arial"> method of <a href="calendar.html#TextCalendar">TextCalendar</a> instance</font></font></dt><dd><tt>Returns&nbsp;a&nbsp;year's&nbsp;calendar&nbsp;as&nbsp;a&nbsp;multi-line&nbsp;string.</tt></dd></dl>
+ <dl><dt><a name="-firstweekday"><strong>firstweekday</strong></a> = getfirstweekday()<font color="#909090"><font face="helvetica, arial"> method of <a href="calendar.html#TextCalendar">TextCalendar</a> instance</font></font></dt></dl>
+ <dl><dt><a name="-isleap"><strong>isleap</strong></a>(year)</dt><dd><tt>Return&nbsp;True&nbsp;for&nbsp;leap&nbsp;years,&nbsp;False&nbsp;for&nbsp;non-leap&nbsp;years.</tt></dd></dl>
+ <dl><dt><a name="-leapdays"><strong>leapdays</strong></a>(y1, y2)</dt><dd><tt>Return&nbsp;number&nbsp;of&nbsp;leap&nbsp;years&nbsp;in&nbsp;range&nbsp;[y1,&nbsp;y2).<br>
+Assume&nbsp;y1&nbsp;&lt;=&nbsp;y2.</tt></dd></dl>
+ <dl><dt><a name="-month"><strong>month</strong></a> = formatmonth(theyear, themonth, w=0, l=0)<font color="#909090"><font face="helvetica, arial"> method of <a href="calendar.html#TextCalendar">TextCalendar</a> instance</font></font></dt><dd><tt>Return&nbsp;a&nbsp;month's&nbsp;calendar&nbsp;string&nbsp;(multi-line).</tt></dd></dl>
+ <dl><dt><a name="-monthcalendar"><strong>monthcalendar</strong></a> = monthdayscalendar(year, month)<font color="#909090"><font face="helvetica, arial"> method of <a href="calendar.html#TextCalendar">TextCalendar</a> instance</font></font></dt><dd><tt>Return&nbsp;a&nbsp;matrix&nbsp;representing&nbsp;a&nbsp;month's&nbsp;calendar.<br>
+Each&nbsp;row&nbsp;represents&nbsp;a&nbsp;week;&nbsp;days&nbsp;outside&nbsp;this&nbsp;month&nbsp;are&nbsp;zero.</tt></dd></dl>
+ <dl><dt><a name="-monthrange"><strong>monthrange</strong></a>(year, month)</dt><dd><tt>Return&nbsp;weekday&nbsp;(0-6&nbsp;~&nbsp;Mon-Sun)&nbsp;and&nbsp;number&nbsp;of&nbsp;days&nbsp;(28-31)&nbsp;for<br>
+year,&nbsp;month.</tt></dd></dl>
+ <dl><dt><a name="-prcal"><strong>prcal</strong></a> = pryear(theyear, w=0, l=0, c=6, m=3)<font color="#909090"><font face="helvetica, arial"> method of <a href="calendar.html#TextCalendar">TextCalendar</a> instance</font></font></dt><dd><tt>Print&nbsp;a&nbsp;year's&nbsp;calendar.</tt></dd></dl>
+ <dl><dt><a name="-prmonth"><strong>prmonth</strong></a>(theyear, themonth, w=0, l=0)<font color="#909090"><font face="helvetica, arial"> method of <a href="calendar.html#TextCalendar">TextCalendar</a> instance</font></font></dt><dd><tt>Print&nbsp;a&nbsp;month's&nbsp;calendar.</tt></dd></dl>
+ <dl><dt><a name="-setfirstweekday"><strong>setfirstweekday</strong></a>(firstweekday)</dt></dl>
+ <dl><dt><a name="-timegm"><strong>timegm</strong></a>(tuple)</dt><dd><tt>Unrelated&nbsp;but&nbsp;handy&nbsp;function&nbsp;to&nbsp;calculate&nbsp;Unix&nbsp;timestamp&nbsp;from&nbsp;GMT.</tt></dd></dl>
+ <dl><dt><a name="-weekday"><strong>weekday</strong></a>(year, month, day)</dt><dd><tt>Return&nbsp;weekday&nbsp;(0-6&nbsp;~&nbsp;Mon-Sun)&nbsp;for&nbsp;year,&nbsp;month&nbsp;(1-12),&nbsp;day&nbsp;(1-31).</tt></dd></dl>
+ <dl><dt><a name="-weekheader"><strong>weekheader</strong></a> = formatweekheader(width)<font color="#909090"><font face="helvetica, arial"> method of <a href="calendar.html#TextCalendar">TextCalendar</a> instance</font></font></dt><dd><tt>Return&nbsp;a&nbsp;header&nbsp;for&nbsp;a&nbsp;week.</tt></dd></dl>
+</td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#55aa55">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Data</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#55aa55"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><strong>__all__</strong> = ['IllegalMonthError', 'IllegalWeekdayError', 'setfirstweekday', 'firstweekday', 'isleap', 'leapdays', 'weekday', 'monthrange', 'monthcalendar', 'prmonth', 'month', 'prcal', 'calendar', 'timegm', 'month_name', 'month_abbr', 'day_name', 'day_abbr', 'Calendar', 'TextCalendar', ...]<br>
+<strong>day_abbr</strong> = &lt;calendar._localized_day object&gt;<br>
+<strong>day_name</strong> = &lt;calendar._localized_day object&gt;<br>
+<strong>month_abbr</strong> = &lt;calendar._localized_month object&gt;<br>
+<strong>month_name</strong> = &lt;calendar._localized_month object&gt;</td></tr></table>
+</body></html>

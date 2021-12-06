@@ -1,0 +1,175 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head><title>Python: module contextvars</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+</head><body bgcolor="#f0f0f8">
+
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="heading">
+<tr bgcolor="#7799ee">
+<td valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong>contextvars</strong></big></big></font></td
+><td align=right valign=bottom
+><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:c%3A%5Cpython38%5Clib%5Ccontextvars.py">c:\python38\lib\contextvars.py</a><br><a href="https://docs.python.org/3.8/library/contextvars">Module Reference</a></font></td></tr></table>
+    <p></p>
+<p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ee77aa">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Classes</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#ee77aa"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl>
+<dt><font face="helvetica, arial"><a href="builtins.html#object">builtins.object</a>
+</font></dt><dd>
+<dl>
+<dt><font face="helvetica, arial">builtins.Context
+</font></dt><dt><font face="helvetica, arial">builtins.ContextVar
+</font></dt><dt><font face="helvetica, arial">builtins.Token
+</font></dt></dl>
+</dd>
+</dl>
+ <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="Context">class <strong>Context</strong></a>(<a href="builtins.html#object">object</a>)</font></td></tr>
+    
+<tr><td bgcolor="#ffc8d8"><tt>&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%">Methods defined here:<br>
+<dl><dt><a name="Context-__contains__"><strong>__contains__</strong></a>(self, key, /)</dt><dd><tt>Return&nbsp;key&nbsp;in&nbsp;self.</tt></dd></dl>
+
+<dl><dt><a name="Context-__eq__"><strong>__eq__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;self==value.</tt></dd></dl>
+
+<dl><dt><a name="Context-__ge__"><strong>__ge__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;self&gt;=value.</tt></dd></dl>
+
+<dl><dt><a name="Context-__getattribute__"><strong>__getattribute__</strong></a>(self, name, /)</dt><dd><tt>Return&nbsp;getattr(self,&nbsp;name).</tt></dd></dl>
+
+<dl><dt><a name="Context-__getitem__"><strong>__getitem__</strong></a>(self, key, /)</dt><dd><tt>Return&nbsp;self[key].</tt></dd></dl>
+
+<dl><dt><a name="Context-__gt__"><strong>__gt__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;self&gt;value.</tt></dd></dl>
+
+<dl><dt><a name="Context-__iter__"><strong>__iter__</strong></a>(self, /)</dt><dd><tt>Implement&nbsp;iter(self).</tt></dd></dl>
+
+<dl><dt><a name="Context-__le__"><strong>__le__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;self&lt;=value.</tt></dd></dl>
+
+<dl><dt><a name="Context-__len__"><strong>__len__</strong></a>(self, /)</dt><dd><tt>Return&nbsp;len(self).</tt></dd></dl>
+
+<dl><dt><a name="Context-__lt__"><strong>__lt__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;self&lt;value.</tt></dd></dl>
+
+<dl><dt><a name="Context-__ne__"><strong>__ne__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;self!=value.</tt></dd></dl>
+
+<dl><dt><a name="Context-copy"><strong>copy</strong></a>(self, /)</dt><dd><tt>Return&nbsp;a&nbsp;shallow&nbsp;copy&nbsp;of&nbsp;the&nbsp;context&nbsp;<a href="builtins.html#object">object</a>.</tt></dd></dl>
+
+<dl><dt><a name="Context-get"><strong>get</strong></a>(self, key, default=None, /)</dt><dd><tt>Return&nbsp;the&nbsp;value&nbsp;for&nbsp;`key`&nbsp;if&nbsp;`key`&nbsp;has&nbsp;the&nbsp;value&nbsp;in&nbsp;the&nbsp;context&nbsp;<a href="builtins.html#object">object</a>.<br>
+&nbsp;<br>
+If&nbsp;`key`&nbsp;does&nbsp;not&nbsp;exist,&nbsp;return&nbsp;`default`.&nbsp;If&nbsp;`default`&nbsp;is&nbsp;not&nbsp;given,<br>
+return&nbsp;None.</tt></dd></dl>
+
+<dl><dt><a name="Context-items"><strong>items</strong></a>(self, /)</dt><dd><tt>Return&nbsp;all&nbsp;variables&nbsp;and&nbsp;their&nbsp;values&nbsp;in&nbsp;the&nbsp;context&nbsp;<a href="builtins.html#object">object</a>.<br>
+&nbsp;<br>
+The&nbsp;result&nbsp;is&nbsp;returned&nbsp;as&nbsp;a&nbsp;list&nbsp;of&nbsp;2-tuples&nbsp;(variable,&nbsp;value).</tt></dd></dl>
+
+<dl><dt><a name="Context-keys"><strong>keys</strong></a>(self, /)</dt><dd><tt>Return&nbsp;a&nbsp;list&nbsp;of&nbsp;all&nbsp;variables&nbsp;in&nbsp;the&nbsp;context&nbsp;<a href="builtins.html#object">object</a>.</tt></dd></dl>
+
+<dl><dt><a name="Context-run"><strong>run</strong></a>(...)</dt></dl>
+
+<dl><dt><a name="Context-values"><strong>values</strong></a>(self, /)</dt><dd><tt>Return&nbsp;a&nbsp;list&nbsp;of&nbsp;all&nbsp;variables'&nbsp;values&nbsp;in&nbsp;the&nbsp;context&nbsp;<a href="builtins.html#object">object</a>.</tt></dd></dl>
+
+<hr>
+Static methods defined here:<br>
+<dl><dt><a name="Context-__new__"><strong>__new__</strong></a>(*args, **kwargs)<font color="#909090"><font face="helvetica, arial"> from <a href="builtins.html#type">builtins.type</a></font></font></dt><dd><tt>Create&nbsp;and&nbsp;return&nbsp;a&nbsp;new&nbsp;<a href="builtins.html#object">object</a>.&nbsp;&nbsp;See&nbsp;help(type)&nbsp;for&nbsp;accurate&nbsp;signature.</tt></dd></dl>
+
+<hr>
+Data and other attributes defined here:<br>
+<dl><dt><strong>__hash__</strong> = None</dl>
+
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="ContextVar">class <strong>ContextVar</strong></a>(<a href="builtins.html#object">object</a>)</font></td></tr>
+    
+<tr><td bgcolor="#ffc8d8"><tt>&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%">Methods defined here:<br>
+<dl><dt><a name="ContextVar-__getattribute__"><strong>__getattribute__</strong></a>(self, name, /)</dt><dd><tt>Return&nbsp;getattr(self,&nbsp;name).</tt></dd></dl>
+
+<dl><dt><a name="ContextVar-__hash__"><strong>__hash__</strong></a>(self, /)</dt><dd><tt>Return&nbsp;hash(self).</tt></dd></dl>
+
+<dl><dt><a name="ContextVar-__repr__"><strong>__repr__</strong></a>(self, /)</dt><dd><tt>Return&nbsp;repr(self).</tt></dd></dl>
+
+<dl><dt><a name="ContextVar-get"><strong>get</strong></a>(...)</dt><dd><tt>Return&nbsp;a&nbsp;value&nbsp;for&nbsp;the&nbsp;context&nbsp;variable&nbsp;for&nbsp;the&nbsp;current&nbsp;context.<br>
+&nbsp;<br>
+If&nbsp;there&nbsp;is&nbsp;no&nbsp;value&nbsp;for&nbsp;the&nbsp;variable&nbsp;in&nbsp;the&nbsp;current&nbsp;context,&nbsp;the&nbsp;method&nbsp;will:<br>
+&nbsp;*&nbsp;return&nbsp;the&nbsp;value&nbsp;of&nbsp;the&nbsp;default&nbsp;argument&nbsp;of&nbsp;the&nbsp;method,&nbsp;if&nbsp;provided;&nbsp;or<br>
+&nbsp;*&nbsp;return&nbsp;the&nbsp;default&nbsp;value&nbsp;for&nbsp;the&nbsp;context&nbsp;variable,&nbsp;if&nbsp;it&nbsp;was&nbsp;created<br>
+&nbsp;&nbsp;&nbsp;with&nbsp;one;&nbsp;or<br>
+&nbsp;*&nbsp;raise&nbsp;a&nbsp;LookupError.</tt></dd></dl>
+
+<dl><dt><a name="ContextVar-reset"><strong>reset</strong></a>(self, token, /)</dt><dd><tt>Reset&nbsp;the&nbsp;context&nbsp;variable.<br>
+&nbsp;<br>
+The&nbsp;variable&nbsp;is&nbsp;reset&nbsp;to&nbsp;the&nbsp;value&nbsp;it&nbsp;had&nbsp;before&nbsp;the&nbsp;`<a href="#ContextVar">ContextVar</a>.<a href="#ContextVar-set">set</a>()`&nbsp;that<br>
+created&nbsp;the&nbsp;token&nbsp;was&nbsp;used.</tt></dd></dl>
+
+<dl><dt><a name="ContextVar-set"><strong>set</strong></a>(self, value, /)</dt><dd><tt>Call&nbsp;to&nbsp;set&nbsp;a&nbsp;new&nbsp;value&nbsp;for&nbsp;the&nbsp;context&nbsp;variable&nbsp;in&nbsp;the&nbsp;current&nbsp;context.<br>
+&nbsp;<br>
+The&nbsp;required&nbsp;value&nbsp;argument&nbsp;is&nbsp;the&nbsp;new&nbsp;value&nbsp;for&nbsp;the&nbsp;context&nbsp;variable.<br>
+&nbsp;<br>
+Returns&nbsp;a&nbsp;<a href="#Token">Token</a>&nbsp;<a href="builtins.html#object">object</a>&nbsp;that&nbsp;can&nbsp;be&nbsp;used&nbsp;to&nbsp;restore&nbsp;the&nbsp;variable&nbsp;to&nbsp;its&nbsp;previous<br>
+value&nbsp;via&nbsp;the&nbsp;`<a href="#ContextVar">ContextVar</a>.<a href="#ContextVar-reset">reset</a>()`&nbsp;method.</tt></dd></dl>
+
+<hr>
+Class methods defined here:<br>
+<dl><dt><a name="ContextVar-__class_getitem__"><strong>__class_getitem__</strong></a>(...)<font color="#909090"><font face="helvetica, arial"> from <a href="builtins.html#type">builtins.type</a></font></font></dt></dl>
+
+<hr>
+Static methods defined here:<br>
+<dl><dt><a name="ContextVar-__new__"><strong>__new__</strong></a>(*args, **kwargs)<font color="#909090"><font face="helvetica, arial"> from <a href="builtins.html#type">builtins.type</a></font></font></dt><dd><tt>Create&nbsp;and&nbsp;return&nbsp;a&nbsp;new&nbsp;<a href="builtins.html#object">object</a>.&nbsp;&nbsp;See&nbsp;help(type)&nbsp;for&nbsp;accurate&nbsp;signature.</tt></dd></dl>
+
+<hr>
+Data descriptors defined here:<br>
+<dl><dt><strong>name</strong></dt>
+</dl>
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="Token">class <strong>Token</strong></a>(<a href="builtins.html#object">object</a>)</font></td></tr>
+    
+<tr><td bgcolor="#ffc8d8"><tt>&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%">Methods defined here:<br>
+<dl><dt><a name="Token-__getattribute__"><strong>__getattribute__</strong></a>(self, name, /)</dt><dd><tt>Return&nbsp;getattr(self,&nbsp;name).</tt></dd></dl>
+
+<dl><dt><a name="Token-__repr__"><strong>__repr__</strong></a>(self, /)</dt><dd><tt>Return&nbsp;repr(self).</tt></dd></dl>
+
+<hr>
+Static methods defined here:<br>
+<dl><dt><a name="Token-__new__"><strong>__new__</strong></a>(*args, **kwargs)<font color="#909090"><font face="helvetica, arial"> from <a href="builtins.html#type">builtins.type</a></font></font></dt><dd><tt>Create&nbsp;and&nbsp;return&nbsp;a&nbsp;new&nbsp;<a href="builtins.html#object">object</a>.&nbsp;&nbsp;See&nbsp;help(type)&nbsp;for&nbsp;accurate&nbsp;signature.</tt></dd></dl>
+
+<hr>
+Data descriptors defined here:<br>
+<dl><dt><strong>old_value</strong></dt>
+</dl>
+<dl><dt><strong>var</strong></dt>
+</dl>
+<hr>
+Data and other attributes defined here:<br>
+<dl><dt><strong>MISSING</strong> = &lt;Token.MISSING&gt;</dl>
+
+<dl><dt><strong>__hash__</strong> = None</dl>
+
+</td></tr></table></td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#eeaa77">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Functions</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#eeaa77"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl><dt><a name="-copy_context"><strong>copy_context</strong></a>()</dt></dl>
+</td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#55aa55">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Data</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#55aa55"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><strong>__all__</strong> = ('Context', 'ContextVar', 'Token', 'copy_context')</td></tr></table>
+</body></html>

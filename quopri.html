@@ -1,0 +1,40 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head><title>Python: module quopri</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+</head><body bgcolor="#f0f0f8">
+
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="heading">
+<tr bgcolor="#7799ee">
+<td valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong>quopri</strong></big></big></font></td
+><td align=right valign=bottom
+><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:c%3A%5Cpython38%5Clib%5Cquopri.py">c:\python38\lib\quopri.py</a><br><a href="https://docs.python.org/3.8/library/quopri">Module Reference</a></font></td></tr></table>
+    <p><tt>Conversions&nbsp;to/from&nbsp;quoted-printable&nbsp;transport&nbsp;encoding&nbsp;as&nbsp;per&nbsp;<a href="http://www.rfc-editor.org/rfc/rfc1521.txt">RFC&nbsp;1521</a>.</tt></p>
+<p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#eeaa77">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Functions</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#eeaa77"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl><dt><a name="-decode"><strong>decode</strong></a>(input, output, header=False)</dt><dd><tt>Read&nbsp;'input',&nbsp;apply&nbsp;quoted-printable&nbsp;decoding,&nbsp;and&nbsp;write&nbsp;to&nbsp;'output'.<br>
+'input'&nbsp;and&nbsp;'output'&nbsp;are&nbsp;binary&nbsp;file&nbsp;objects.<br>
+If&nbsp;'header'&nbsp;is&nbsp;true,&nbsp;decode&nbsp;underscore&nbsp;as&nbsp;space&nbsp;(per&nbsp;<a href="http://www.rfc-editor.org/rfc/rfc1522.txt">RFC&nbsp;1522</a>).</tt></dd></dl>
+ <dl><dt><a name="-decodestring"><strong>decodestring</strong></a>(s, header=False)</dt></dl>
+ <dl><dt><a name="-encode"><strong>encode</strong></a>(input, output, quotetabs, header=False)</dt><dd><tt>Read&nbsp;'input',&nbsp;apply&nbsp;quoted-printable&nbsp;encoding,&nbsp;and&nbsp;write&nbsp;to&nbsp;'output'.<br>
+&nbsp;<br>
+'input'&nbsp;and&nbsp;'output'&nbsp;are&nbsp;binary&nbsp;file&nbsp;objects.&nbsp;The&nbsp;'quotetabs'&nbsp;flag<br>
+indicates&nbsp;whether&nbsp;embedded&nbsp;tabs&nbsp;and&nbsp;spaces&nbsp;should&nbsp;be&nbsp;quoted.&nbsp;Note&nbsp;that<br>
+line-ending&nbsp;tabs&nbsp;and&nbsp;spaces&nbsp;are&nbsp;always&nbsp;encoded,&nbsp;as&nbsp;per&nbsp;<a href="http://www.rfc-editor.org/rfc/rfc1521.txt">RFC&nbsp;1521</a>.<br>
+The&nbsp;'header'&nbsp;flag&nbsp;indicates&nbsp;whether&nbsp;we&nbsp;are&nbsp;encoding&nbsp;spaces&nbsp;as&nbsp;_&nbsp;as&nbsp;per&nbsp;RFC<br>
+1522.</tt></dd></dl>
+ <dl><dt><a name="-encodestring"><strong>encodestring</strong></a>(s, quotetabs=False, header=False)</dt></dl>
+</td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#55aa55">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Data</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#55aa55"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><strong>__all__</strong> = ['encode', 'decode', 'encodestring', 'decodestring']</td></tr></table>
+</body></html>

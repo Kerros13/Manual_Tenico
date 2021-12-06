@@ -1,0 +1,514 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head><title>Python: module ast</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+</head><body bgcolor="#f0f0f8">
+
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="heading">
+<tr bgcolor="#7799ee">
+<td valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong>ast</strong></big></big></font></td
+><td align=right valign=bottom
+><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:c%3A%5Cpython38%5Clib%5Cast.py">c:\python38\lib\ast.py</a><br><a href="https://docs.python.org/3.8/library/ast">Module Reference</a></font></td></tr></table>
+    <p><tt>ast<br>
+~~~<br>
+&nbsp;<br>
+The&nbsp;`ast`&nbsp;module&nbsp;helps&nbsp;Python&nbsp;applications&nbsp;to&nbsp;process&nbsp;trees&nbsp;of&nbsp;the&nbsp;Python<br>
+abstract&nbsp;syntax&nbsp;grammar.&nbsp;&nbsp;The&nbsp;abstract&nbsp;syntax&nbsp;itself&nbsp;might&nbsp;change&nbsp;with<br>
+each&nbsp;Python&nbsp;release;&nbsp;this&nbsp;module&nbsp;helps&nbsp;to&nbsp;find&nbsp;out&nbsp;programmatically&nbsp;what<br>
+the&nbsp;current&nbsp;grammar&nbsp;looks&nbsp;like&nbsp;and&nbsp;allows&nbsp;modifications&nbsp;of&nbsp;it.<br>
+&nbsp;<br>
+An&nbsp;abstract&nbsp;syntax&nbsp;tree&nbsp;can&nbsp;be&nbsp;generated&nbsp;by&nbsp;passing&nbsp;`ast.PyCF_ONLY_AST`&nbsp;as<br>
+a&nbsp;flag&nbsp;to&nbsp;the&nbsp;`compile()`&nbsp;builtin&nbsp;function&nbsp;or&nbsp;by&nbsp;using&nbsp;the&nbsp;`<a href="#-parse">parse</a>()`<br>
+function&nbsp;from&nbsp;this&nbsp;module.&nbsp;&nbsp;The&nbsp;result&nbsp;will&nbsp;be&nbsp;a&nbsp;tree&nbsp;of&nbsp;objects&nbsp;whose<br>
+classes&nbsp;all&nbsp;inherit&nbsp;from&nbsp;`ast.AST`.<br>
+&nbsp;<br>
+A&nbsp;modified&nbsp;abstract&nbsp;syntax&nbsp;tree&nbsp;can&nbsp;be&nbsp;compiled&nbsp;into&nbsp;a&nbsp;Python&nbsp;code&nbsp;<a href="builtins.html#object">object</a><br>
+using&nbsp;the&nbsp;built-in&nbsp;`compile()`&nbsp;function.<br>
+&nbsp;<br>
+Additionally&nbsp;various&nbsp;helper&nbsp;functions&nbsp;are&nbsp;provided&nbsp;that&nbsp;make&nbsp;working&nbsp;with<br>
+the&nbsp;trees&nbsp;simpler.&nbsp;&nbsp;The&nbsp;main&nbsp;intention&nbsp;of&nbsp;the&nbsp;helper&nbsp;functions&nbsp;and&nbsp;this<br>
+module&nbsp;in&nbsp;general&nbsp;is&nbsp;to&nbsp;provide&nbsp;an&nbsp;easy&nbsp;to&nbsp;use&nbsp;interface&nbsp;for&nbsp;libraries<br>
+that&nbsp;work&nbsp;tightly&nbsp;with&nbsp;the&nbsp;python&nbsp;syntax&nbsp;(template&nbsp;engines&nbsp;for&nbsp;example).<br>
+&nbsp;<br>
+&nbsp;<br>
+:copyright:&nbsp;Copyright&nbsp;2008&nbsp;by&nbsp;Armin&nbsp;Ronacher.<br>
+:license:&nbsp;Python&nbsp;License.</tt></p>
+<p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ee77aa">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Classes</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#ee77aa"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl>
+<dt><font face="helvetica, arial"><a href="_ast.html#Constant">_ast.Constant</a>(<a href="_ast.html#expr">_ast.expr</a>)
+</font></dt><dd>
+<dl>
+<dt><font face="helvetica, arial"><a href="ast.html#Bytes">Bytes</a>
+</font></dt><dt><font face="helvetica, arial"><a href="ast.html#Ellipsis">Ellipsis</a>
+</font></dt><dt><font face="helvetica, arial"><a href="ast.html#NameConstant">NameConstant</a>
+</font></dt><dt><font face="helvetica, arial"><a href="ast.html#Num">Num</a>
+</font></dt><dt><font face="helvetica, arial"><a href="ast.html#Str">Str</a>
+</font></dt></dl>
+</dd>
+<dt><font face="helvetica, arial"><a href="builtins.html#object">builtins.object</a>
+</font></dt><dd>
+<dl>
+<dt><font face="helvetica, arial"><a href="ast.html#NodeVisitor">NodeVisitor</a>
+</font></dt><dd>
+<dl>
+<dt><font face="helvetica, arial"><a href="ast.html#NodeTransformer">NodeTransformer</a>
+</font></dt></dl>
+</dd>
+</dl>
+</dd>
+</dl>
+ <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="Bytes">class <strong>Bytes</strong></a>(<a href="_ast.html#Constant">_ast.Constant</a>)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt><a href="#Bytes">Bytes</a>(*args,&nbsp;**kwargs)<br>
+&nbsp;<br>
+<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%"><dl><dt>Method resolution order:</dt>
+<dd><a href="ast.html#Bytes">Bytes</a></dd>
+<dd><a href="_ast.html#Constant">_ast.Constant</a></dd>
+<dd><a href="_ast.html#expr">_ast.expr</a></dd>
+<dd><a href="_ast.html#AST">_ast.AST</a></dd>
+<dd><a href="builtins.html#object">builtins.object</a></dd>
+</dl>
+<hr>
+Static methods defined here:<br>
+<dl><dt><a name="Bytes-__new__"><strong>__new__</strong></a> = _new(cls, *args, **kwargs)</dt></dl>
+
+<hr>
+Data and other attributes defined here:<br>
+<dl><dt><strong>_fields</strong> = ('s',)</dl>
+
+<hr>
+Data descriptors inherited from <a href="_ast.html#Constant">_ast.Constant</a>:<br>
+<dl><dt><strong>s</strong></dt>
+</dl>
+<dl><dt><strong>n</strong></dt>
+</dl>
+<hr>
+Data descriptors inherited from <a href="_ast.html#expr">_ast.expr</a>:<br>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<hr>
+Data and other attributes inherited from <a href="_ast.html#expr">_ast.expr</a>:<br>
+<dl><dt><strong>_attributes</strong> = ('lineno', 'col_offset', 'end_lineno', 'end_col_offset')</dl>
+
+<hr>
+Methods inherited from <a href="_ast.html#AST">_ast.AST</a>:<br>
+<dl><dt><a name="Bytes-__delattr__"><strong>__delattr__</strong></a>(self, name, /)</dt><dd><tt>Implement&nbsp;delattr(self,&nbsp;name).</tt></dd></dl>
+
+<dl><dt><a name="Bytes-__getattribute__"><strong>__getattribute__</strong></a>(self, name, /)</dt><dd><tt>Return&nbsp;getattr(self,&nbsp;name).</tt></dd></dl>
+
+<dl><dt><a name="Bytes-__init__"><strong>__init__</strong></a>(self, /, *args, **kwargs)</dt><dd><tt>Initialize&nbsp;self.&nbsp;&nbsp;See&nbsp;help(type(self))&nbsp;for&nbsp;accurate&nbsp;signature.</tt></dd></dl>
+
+<dl><dt><a name="Bytes-__reduce__"><strong>__reduce__</strong></a>(...)</dt><dd><tt>Helper&nbsp;for&nbsp;pickle.</tt></dd></dl>
+
+<dl><dt><a name="Bytes-__setattr__"><strong>__setattr__</strong></a>(self, name, value, /)</dt><dd><tt>Implement&nbsp;setattr(self,&nbsp;name,&nbsp;value).</tt></dd></dl>
+
+<hr>
+Data descriptors inherited from <a href="_ast.html#AST">_ast.AST</a>:<br>
+<dl><dt><strong>__dict__</strong></dt>
+</dl>
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="Ellipsis">class <strong>Ellipsis</strong></a>(<a href="_ast.html#Constant">_ast.Constant</a>)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt><a href="#Ellipsis">Ellipsis</a>(*args,&nbsp;**kwargs)<br>
+&nbsp;<br>
+<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%"><dl><dt>Method resolution order:</dt>
+<dd><a href="ast.html#Ellipsis">Ellipsis</a></dd>
+<dd><a href="_ast.html#Constant">_ast.Constant</a></dd>
+<dd><a href="_ast.html#expr">_ast.expr</a></dd>
+<dd><a href="_ast.html#AST">_ast.AST</a></dd>
+<dd><a href="builtins.html#object">builtins.object</a></dd>
+</dl>
+<hr>
+Static methods defined here:<br>
+<dl><dt><a name="Ellipsis-__new__"><strong>__new__</strong></a>(cls, *args, **kwargs)</dt><dd><tt>Create&nbsp;and&nbsp;return&nbsp;a&nbsp;new&nbsp;<a href="builtins.html#object">object</a>.&nbsp;&nbsp;See&nbsp;help(type)&nbsp;for&nbsp;accurate&nbsp;signature.</tt></dd></dl>
+
+<hr>
+Data and other attributes defined here:<br>
+<dl><dt><strong>_fields</strong> = ()</dl>
+
+<hr>
+Data descriptors inherited from <a href="_ast.html#Constant">_ast.Constant</a>:<br>
+<dl><dt><strong>n</strong></dt>
+</dl>
+<dl><dt><strong>s</strong></dt>
+</dl>
+<hr>
+Data descriptors inherited from <a href="_ast.html#expr">_ast.expr</a>:<br>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<hr>
+Data and other attributes inherited from <a href="_ast.html#expr">_ast.expr</a>:<br>
+<dl><dt><strong>_attributes</strong> = ('lineno', 'col_offset', 'end_lineno', 'end_col_offset')</dl>
+
+<hr>
+Methods inherited from <a href="_ast.html#AST">_ast.AST</a>:<br>
+<dl><dt><a name="Ellipsis-__delattr__"><strong>__delattr__</strong></a>(self, name, /)</dt><dd><tt>Implement&nbsp;delattr(self,&nbsp;name).</tt></dd></dl>
+
+<dl><dt><a name="Ellipsis-__getattribute__"><strong>__getattribute__</strong></a>(self, name, /)</dt><dd><tt>Return&nbsp;getattr(self,&nbsp;name).</tt></dd></dl>
+
+<dl><dt><a name="Ellipsis-__init__"><strong>__init__</strong></a>(self, /, *args, **kwargs)</dt><dd><tt>Initialize&nbsp;self.&nbsp;&nbsp;See&nbsp;help(type(self))&nbsp;for&nbsp;accurate&nbsp;signature.</tt></dd></dl>
+
+<dl><dt><a name="Ellipsis-__reduce__"><strong>__reduce__</strong></a>(...)</dt><dd><tt>Helper&nbsp;for&nbsp;pickle.</tt></dd></dl>
+
+<dl><dt><a name="Ellipsis-__setattr__"><strong>__setattr__</strong></a>(self, name, value, /)</dt><dd><tt>Implement&nbsp;setattr(self,&nbsp;name,&nbsp;value).</tt></dd></dl>
+
+<hr>
+Data descriptors inherited from <a href="_ast.html#AST">_ast.AST</a>:<br>
+<dl><dt><strong>__dict__</strong></dt>
+</dl>
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="NameConstant">class <strong>NameConstant</strong></a>(<a href="_ast.html#Constant">_ast.Constant</a>)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt><a href="#NameConstant">NameConstant</a>(*args,&nbsp;**kwargs)<br>
+&nbsp;<br>
+<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%"><dl><dt>Method resolution order:</dt>
+<dd><a href="ast.html#NameConstant">NameConstant</a></dd>
+<dd><a href="_ast.html#Constant">_ast.Constant</a></dd>
+<dd><a href="_ast.html#expr">_ast.expr</a></dd>
+<dd><a href="_ast.html#AST">_ast.AST</a></dd>
+<dd><a href="builtins.html#object">builtins.object</a></dd>
+</dl>
+<hr>
+Static methods defined here:<br>
+<dl><dt><a name="NameConstant-__new__"><strong>__new__</strong></a> = _new(cls, *args, **kwargs)</dt></dl>
+
+<hr>
+Data descriptors inherited from <a href="_ast.html#Constant">_ast.Constant</a>:<br>
+<dl><dt><strong>n</strong></dt>
+</dl>
+<dl><dt><strong>s</strong></dt>
+</dl>
+<hr>
+Data and other attributes inherited from <a href="_ast.html#Constant">_ast.Constant</a>:<br>
+<dl><dt><strong>_fields</strong> = ('value', 'kind')</dl>
+
+<hr>
+Data descriptors inherited from <a href="_ast.html#expr">_ast.expr</a>:<br>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<hr>
+Data and other attributes inherited from <a href="_ast.html#expr">_ast.expr</a>:<br>
+<dl><dt><strong>_attributes</strong> = ('lineno', 'col_offset', 'end_lineno', 'end_col_offset')</dl>
+
+<hr>
+Methods inherited from <a href="_ast.html#AST">_ast.AST</a>:<br>
+<dl><dt><a name="NameConstant-__delattr__"><strong>__delattr__</strong></a>(self, name, /)</dt><dd><tt>Implement&nbsp;delattr(self,&nbsp;name).</tt></dd></dl>
+
+<dl><dt><a name="NameConstant-__getattribute__"><strong>__getattribute__</strong></a>(self, name, /)</dt><dd><tt>Return&nbsp;getattr(self,&nbsp;name).</tt></dd></dl>
+
+<dl><dt><a name="NameConstant-__init__"><strong>__init__</strong></a>(self, /, *args, **kwargs)</dt><dd><tt>Initialize&nbsp;self.&nbsp;&nbsp;See&nbsp;help(type(self))&nbsp;for&nbsp;accurate&nbsp;signature.</tt></dd></dl>
+
+<dl><dt><a name="NameConstant-__reduce__"><strong>__reduce__</strong></a>(...)</dt><dd><tt>Helper&nbsp;for&nbsp;pickle.</tt></dd></dl>
+
+<dl><dt><a name="NameConstant-__setattr__"><strong>__setattr__</strong></a>(self, name, value, /)</dt><dd><tt>Implement&nbsp;setattr(self,&nbsp;name,&nbsp;value).</tt></dd></dl>
+
+<hr>
+Data descriptors inherited from <a href="_ast.html#AST">_ast.AST</a>:<br>
+<dl><dt><strong>__dict__</strong></dt>
+</dl>
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="NodeTransformer">class <strong>NodeTransformer</strong></a>(<a href="ast.html#NodeVisitor">NodeVisitor</a>)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt>A&nbsp;:class:`<a href="#NodeVisitor">NodeVisitor</a>`&nbsp;subclass&nbsp;that&nbsp;walks&nbsp;the&nbsp;abstract&nbsp;syntax&nbsp;tree&nbsp;and<br>
+allows&nbsp;modification&nbsp;of&nbsp;nodes.<br>
+&nbsp;<br>
+The&nbsp;`<a href="#NodeTransformer">NodeTransformer</a>`&nbsp;will&nbsp;walk&nbsp;the&nbsp;AST&nbsp;and&nbsp;use&nbsp;the&nbsp;return&nbsp;value&nbsp;of&nbsp;the<br>
+visitor&nbsp;methods&nbsp;to&nbsp;replace&nbsp;or&nbsp;remove&nbsp;the&nbsp;old&nbsp;node.&nbsp;&nbsp;If&nbsp;the&nbsp;return&nbsp;value&nbsp;of<br>
+the&nbsp;visitor&nbsp;method&nbsp;is&nbsp;``None``,&nbsp;the&nbsp;node&nbsp;will&nbsp;be&nbsp;removed&nbsp;from&nbsp;its&nbsp;location,<br>
+otherwise&nbsp;it&nbsp;is&nbsp;replaced&nbsp;with&nbsp;the&nbsp;return&nbsp;value.&nbsp;&nbsp;The&nbsp;return&nbsp;value&nbsp;may&nbsp;be&nbsp;the<br>
+original&nbsp;node&nbsp;in&nbsp;which&nbsp;case&nbsp;no&nbsp;replacement&nbsp;takes&nbsp;place.<br>
+&nbsp;<br>
+Here&nbsp;is&nbsp;an&nbsp;example&nbsp;transformer&nbsp;that&nbsp;rewrites&nbsp;all&nbsp;occurrences&nbsp;of&nbsp;name&nbsp;lookups<br>
+(``foo``)&nbsp;to&nbsp;``data['foo']``::<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;class&nbsp;RewriteName(<a href="#NodeTransformer">NodeTransformer</a>):<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;def&nbsp;visit_Name(self,&nbsp;node):<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;Subscript(<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;value=Name(id='data',&nbsp;ctx=Load()),<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;slice=Index(value=<a href="#Str">Str</a>(s=node.id)),<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ctx=node.ctx<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;)<br>
+&nbsp;<br>
+Keep&nbsp;in&nbsp;mind&nbsp;that&nbsp;if&nbsp;the&nbsp;node&nbsp;you're&nbsp;operating&nbsp;on&nbsp;has&nbsp;child&nbsp;nodes&nbsp;you&nbsp;must<br>
+either&nbsp;transform&nbsp;the&nbsp;child&nbsp;nodes&nbsp;yourself&nbsp;or&nbsp;call&nbsp;the&nbsp;:meth:`generic_visit`<br>
+method&nbsp;for&nbsp;the&nbsp;node&nbsp;first.<br>
+&nbsp;<br>
+For&nbsp;nodes&nbsp;that&nbsp;were&nbsp;part&nbsp;of&nbsp;a&nbsp;collection&nbsp;of&nbsp;statements&nbsp;(that&nbsp;applies&nbsp;to&nbsp;all<br>
+statement&nbsp;nodes),&nbsp;the&nbsp;visitor&nbsp;may&nbsp;also&nbsp;return&nbsp;a&nbsp;list&nbsp;of&nbsp;nodes&nbsp;rather&nbsp;than<br>
+just&nbsp;a&nbsp;single&nbsp;node.<br>
+&nbsp;<br>
+Usually&nbsp;you&nbsp;use&nbsp;the&nbsp;transformer&nbsp;like&nbsp;this::<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;node&nbsp;=&nbsp;YourTransformer().<a href="#NodeTransformer-visit">visit</a>(node)<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%"><dl><dt>Method resolution order:</dt>
+<dd><a href="ast.html#NodeTransformer">NodeTransformer</a></dd>
+<dd><a href="ast.html#NodeVisitor">NodeVisitor</a></dd>
+<dd><a href="builtins.html#object">builtins.object</a></dd>
+</dl>
+<hr>
+Methods defined here:<br>
+<dl><dt><a name="NodeTransformer-generic_visit"><strong>generic_visit</strong></a>(self, node)</dt><dd><tt>Called&nbsp;if&nbsp;no&nbsp;explicit&nbsp;visitor&nbsp;function&nbsp;exists&nbsp;for&nbsp;a&nbsp;node.</tt></dd></dl>
+
+<hr>
+Methods inherited from <a href="ast.html#NodeVisitor">NodeVisitor</a>:<br>
+<dl><dt><a name="NodeTransformer-visit"><strong>visit</strong></a>(self, node)</dt><dd><tt>Visit&nbsp;a&nbsp;node.</tt></dd></dl>
+
+<dl><dt><a name="NodeTransformer-visit_Constant"><strong>visit_Constant</strong></a>(self, node)</dt></dl>
+
+<hr>
+Data descriptors inherited from <a href="ast.html#NodeVisitor">NodeVisitor</a>:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><tt>dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="NodeVisitor">class <strong>NodeVisitor</strong></a>(<a href="builtins.html#object">builtins.object</a>)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt>A&nbsp;node&nbsp;visitor&nbsp;base&nbsp;class&nbsp;that&nbsp;walks&nbsp;the&nbsp;abstract&nbsp;syntax&nbsp;tree&nbsp;and&nbsp;calls&nbsp;a<br>
+visitor&nbsp;function&nbsp;for&nbsp;every&nbsp;node&nbsp;found.&nbsp;&nbsp;This&nbsp;function&nbsp;may&nbsp;return&nbsp;a&nbsp;value<br>
+which&nbsp;is&nbsp;forwarded&nbsp;by&nbsp;the&nbsp;`visit`&nbsp;method.<br>
+&nbsp;<br>
+This&nbsp;class&nbsp;is&nbsp;meant&nbsp;to&nbsp;be&nbsp;subclassed,&nbsp;with&nbsp;the&nbsp;subclass&nbsp;adding&nbsp;visitor<br>
+methods.<br>
+&nbsp;<br>
+Per&nbsp;default&nbsp;the&nbsp;visitor&nbsp;functions&nbsp;for&nbsp;the&nbsp;nodes&nbsp;are&nbsp;``'visit_'``&nbsp;+<br>
+class&nbsp;name&nbsp;of&nbsp;the&nbsp;node.&nbsp;&nbsp;So&nbsp;a&nbsp;`TryFinally`&nbsp;node&nbsp;visit&nbsp;function&nbsp;would<br>
+be&nbsp;`visit_TryFinally`.&nbsp;&nbsp;This&nbsp;behavior&nbsp;can&nbsp;be&nbsp;changed&nbsp;by&nbsp;overriding<br>
+the&nbsp;`visit`&nbsp;method.&nbsp;&nbsp;If&nbsp;no&nbsp;visitor&nbsp;function&nbsp;exists&nbsp;for&nbsp;a&nbsp;node<br>
+(return&nbsp;value&nbsp;`None`)&nbsp;the&nbsp;`generic_visit`&nbsp;visitor&nbsp;is&nbsp;used&nbsp;instead.<br>
+&nbsp;<br>
+Don't&nbsp;use&nbsp;the&nbsp;`<a href="#NodeVisitor">NodeVisitor</a>`&nbsp;if&nbsp;you&nbsp;want&nbsp;to&nbsp;apply&nbsp;changes&nbsp;to&nbsp;nodes&nbsp;during<br>
+traversing.&nbsp;&nbsp;For&nbsp;this&nbsp;a&nbsp;special&nbsp;visitor&nbsp;exists&nbsp;(`<a href="#NodeTransformer">NodeTransformer</a>`)&nbsp;that<br>
+allows&nbsp;modifications.<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%">Methods defined here:<br>
+<dl><dt><a name="NodeVisitor-generic_visit"><strong>generic_visit</strong></a>(self, node)</dt><dd><tt>Called&nbsp;if&nbsp;no&nbsp;explicit&nbsp;visitor&nbsp;function&nbsp;exists&nbsp;for&nbsp;a&nbsp;node.</tt></dd></dl>
+
+<dl><dt><a name="NodeVisitor-visit"><strong>visit</strong></a>(self, node)</dt><dd><tt>Visit&nbsp;a&nbsp;node.</tt></dd></dl>
+
+<dl><dt><a name="NodeVisitor-visit_Constant"><strong>visit_Constant</strong></a>(self, node)</dt></dl>
+
+<hr>
+Data descriptors defined here:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><tt>dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="Num">class <strong>Num</strong></a>(<a href="_ast.html#Constant">_ast.Constant</a>)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt><a href="#Num">Num</a>(*args,&nbsp;**kwargs)<br>
+&nbsp;<br>
+<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%"><dl><dt>Method resolution order:</dt>
+<dd><a href="ast.html#Num">Num</a></dd>
+<dd><a href="_ast.html#Constant">_ast.Constant</a></dd>
+<dd><a href="_ast.html#expr">_ast.expr</a></dd>
+<dd><a href="_ast.html#AST">_ast.AST</a></dd>
+<dd><a href="builtins.html#object">builtins.object</a></dd>
+</dl>
+<hr>
+Static methods defined here:<br>
+<dl><dt><a name="Num-__new__"><strong>__new__</strong></a> = _new(cls, *args, **kwargs)</dt></dl>
+
+<hr>
+Data and other attributes defined here:<br>
+<dl><dt><strong>_fields</strong> = ('n',)</dl>
+
+<hr>
+Data descriptors inherited from <a href="_ast.html#Constant">_ast.Constant</a>:<br>
+<dl><dt><strong>n</strong></dt>
+</dl>
+<dl><dt><strong>s</strong></dt>
+</dl>
+<hr>
+Data descriptors inherited from <a href="_ast.html#expr">_ast.expr</a>:<br>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<hr>
+Data and other attributes inherited from <a href="_ast.html#expr">_ast.expr</a>:<br>
+<dl><dt><strong>_attributes</strong> = ('lineno', 'col_offset', 'end_lineno', 'end_col_offset')</dl>
+
+<hr>
+Methods inherited from <a href="_ast.html#AST">_ast.AST</a>:<br>
+<dl><dt><a name="Num-__delattr__"><strong>__delattr__</strong></a>(self, name, /)</dt><dd><tt>Implement&nbsp;delattr(self,&nbsp;name).</tt></dd></dl>
+
+<dl><dt><a name="Num-__getattribute__"><strong>__getattribute__</strong></a>(self, name, /)</dt><dd><tt>Return&nbsp;getattr(self,&nbsp;name).</tt></dd></dl>
+
+<dl><dt><a name="Num-__init__"><strong>__init__</strong></a>(self, /, *args, **kwargs)</dt><dd><tt>Initialize&nbsp;self.&nbsp;&nbsp;See&nbsp;help(type(self))&nbsp;for&nbsp;accurate&nbsp;signature.</tt></dd></dl>
+
+<dl><dt><a name="Num-__reduce__"><strong>__reduce__</strong></a>(...)</dt><dd><tt>Helper&nbsp;for&nbsp;pickle.</tt></dd></dl>
+
+<dl><dt><a name="Num-__setattr__"><strong>__setattr__</strong></a>(self, name, value, /)</dt><dd><tt>Implement&nbsp;setattr(self,&nbsp;name,&nbsp;value).</tt></dd></dl>
+
+<hr>
+Data descriptors inherited from <a href="_ast.html#AST">_ast.AST</a>:<br>
+<dl><dt><strong>__dict__</strong></dt>
+</dl>
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="Str">class <strong>Str</strong></a>(<a href="_ast.html#Constant">_ast.Constant</a>)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt><a href="#Str">Str</a>(*args,&nbsp;**kwargs)<br>
+&nbsp;<br>
+<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%"><dl><dt>Method resolution order:</dt>
+<dd><a href="ast.html#Str">Str</a></dd>
+<dd><a href="_ast.html#Constant">_ast.Constant</a></dd>
+<dd><a href="_ast.html#expr">_ast.expr</a></dd>
+<dd><a href="_ast.html#AST">_ast.AST</a></dd>
+<dd><a href="builtins.html#object">builtins.object</a></dd>
+</dl>
+<hr>
+Static methods defined here:<br>
+<dl><dt><a name="Str-__new__"><strong>__new__</strong></a> = _new(cls, *args, **kwargs)</dt></dl>
+
+<hr>
+Data and other attributes defined here:<br>
+<dl><dt><strong>_fields</strong> = ('s',)</dl>
+
+<hr>
+Data descriptors inherited from <a href="_ast.html#Constant">_ast.Constant</a>:<br>
+<dl><dt><strong>s</strong></dt>
+</dl>
+<dl><dt><strong>n</strong></dt>
+</dl>
+<hr>
+Data descriptors inherited from <a href="_ast.html#expr">_ast.expr</a>:<br>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<hr>
+Data and other attributes inherited from <a href="_ast.html#expr">_ast.expr</a>:<br>
+<dl><dt><strong>_attributes</strong> = ('lineno', 'col_offset', 'end_lineno', 'end_col_offset')</dl>
+
+<hr>
+Methods inherited from <a href="_ast.html#AST">_ast.AST</a>:<br>
+<dl><dt><a name="Str-__delattr__"><strong>__delattr__</strong></a>(self, name, /)</dt><dd><tt>Implement&nbsp;delattr(self,&nbsp;name).</tt></dd></dl>
+
+<dl><dt><a name="Str-__getattribute__"><strong>__getattribute__</strong></a>(self, name, /)</dt><dd><tt>Return&nbsp;getattr(self,&nbsp;name).</tt></dd></dl>
+
+<dl><dt><a name="Str-__init__"><strong>__init__</strong></a>(self, /, *args, **kwargs)</dt><dd><tt>Initialize&nbsp;self.&nbsp;&nbsp;See&nbsp;help(type(self))&nbsp;for&nbsp;accurate&nbsp;signature.</tt></dd></dl>
+
+<dl><dt><a name="Str-__reduce__"><strong>__reduce__</strong></a>(...)</dt><dd><tt>Helper&nbsp;for&nbsp;pickle.</tt></dd></dl>
+
+<dl><dt><a name="Str-__setattr__"><strong>__setattr__</strong></a>(self, name, value, /)</dt><dd><tt>Implement&nbsp;setattr(self,&nbsp;name,&nbsp;value).</tt></dd></dl>
+
+<hr>
+Data descriptors inherited from <a href="_ast.html#AST">_ast.AST</a>:<br>
+<dl><dt><strong>__dict__</strong></dt>
+</dl>
+</td></tr></table></td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#eeaa77">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Functions</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#eeaa77"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl><dt><a name="-copy_location"><strong>copy_location</strong></a>(new_node, old_node)</dt><dd><tt>Copy&nbsp;source&nbsp;location&nbsp;(`lineno`,&nbsp;`col_offset`,&nbsp;`end_lineno`,&nbsp;and&nbsp;`end_col_offset`<br>
+attributes)&nbsp;from&nbsp;*old_node*&nbsp;to&nbsp;*new_node*&nbsp;if&nbsp;possible,&nbsp;and&nbsp;return&nbsp;*new_node*.</tt></dd></dl>
+ <dl><dt><a name="-dump"><strong>dump</strong></a>(node, annotate_fields=True, include_attributes=False)</dt><dd><tt>Return&nbsp;a&nbsp;formatted&nbsp;dump&nbsp;of&nbsp;the&nbsp;tree&nbsp;in&nbsp;node.&nbsp;&nbsp;This&nbsp;is&nbsp;mainly&nbsp;useful&nbsp;for<br>
+debugging&nbsp;purposes.&nbsp;&nbsp;If&nbsp;annotate_fields&nbsp;is&nbsp;true&nbsp;(by&nbsp;default),<br>
+the&nbsp;returned&nbsp;string&nbsp;will&nbsp;show&nbsp;the&nbsp;names&nbsp;and&nbsp;the&nbsp;values&nbsp;for&nbsp;fields.<br>
+If&nbsp;annotate_fields&nbsp;is&nbsp;false,&nbsp;the&nbsp;result&nbsp;string&nbsp;will&nbsp;be&nbsp;more&nbsp;compact&nbsp;by<br>
+omitting&nbsp;unambiguous&nbsp;field&nbsp;names.&nbsp;&nbsp;Attributes&nbsp;such&nbsp;as&nbsp;line<br>
+numbers&nbsp;and&nbsp;column&nbsp;offsets&nbsp;are&nbsp;not&nbsp;dumped&nbsp;by&nbsp;default.&nbsp;&nbsp;If&nbsp;this&nbsp;is&nbsp;wanted,<br>
+include_attributes&nbsp;can&nbsp;be&nbsp;set&nbsp;to&nbsp;true.</tt></dd></dl>
+ <dl><dt><a name="-fix_missing_locations"><strong>fix_missing_locations</strong></a>(node)</dt><dd><tt>When&nbsp;you&nbsp;compile&nbsp;a&nbsp;node&nbsp;tree&nbsp;with&nbsp;compile(),&nbsp;the&nbsp;compiler&nbsp;expects&nbsp;lineno&nbsp;and<br>
+col_offset&nbsp;attributes&nbsp;for&nbsp;every&nbsp;node&nbsp;that&nbsp;supports&nbsp;them.&nbsp;&nbsp;This&nbsp;is&nbsp;rather<br>
+tedious&nbsp;to&nbsp;fill&nbsp;in&nbsp;for&nbsp;generated&nbsp;nodes,&nbsp;so&nbsp;this&nbsp;helper&nbsp;adds&nbsp;these&nbsp;attributes<br>
+recursively&nbsp;where&nbsp;not&nbsp;already&nbsp;set,&nbsp;by&nbsp;setting&nbsp;them&nbsp;to&nbsp;the&nbsp;values&nbsp;of&nbsp;the<br>
+parent&nbsp;node.&nbsp;&nbsp;It&nbsp;works&nbsp;recursively&nbsp;starting&nbsp;at&nbsp;*node*.</tt></dd></dl>
+ <dl><dt><a name="-get_docstring"><strong>get_docstring</strong></a>(node, clean=True)</dt><dd><tt>Return&nbsp;the&nbsp;docstring&nbsp;for&nbsp;the&nbsp;given&nbsp;node&nbsp;or&nbsp;None&nbsp;if&nbsp;no&nbsp;docstring&nbsp;can<br>
+be&nbsp;found.&nbsp;&nbsp;If&nbsp;the&nbsp;node&nbsp;provided&nbsp;does&nbsp;not&nbsp;have&nbsp;docstrings&nbsp;a&nbsp;TypeError<br>
+will&nbsp;be&nbsp;raised.<br>
+&nbsp;<br>
+If&nbsp;*clean*&nbsp;is&nbsp;`True`,&nbsp;all&nbsp;tabs&nbsp;are&nbsp;expanded&nbsp;to&nbsp;spaces&nbsp;and&nbsp;any&nbsp;whitespace<br>
+that&nbsp;can&nbsp;be&nbsp;uniformly&nbsp;removed&nbsp;from&nbsp;the&nbsp;second&nbsp;line&nbsp;onwards&nbsp;is&nbsp;removed.</tt></dd></dl>
+ <dl><dt><a name="-get_source_segment"><strong>get_source_segment</strong></a>(source, node, *, padded=False)</dt><dd><tt>Get&nbsp;source&nbsp;code&nbsp;segment&nbsp;of&nbsp;the&nbsp;*source*&nbsp;that&nbsp;generated&nbsp;*node*.<br>
+&nbsp;<br>
+If&nbsp;some&nbsp;location&nbsp;information&nbsp;(`lineno`,&nbsp;`end_lineno`,&nbsp;`col_offset`,<br>
+or&nbsp;`end_col_offset`)&nbsp;is&nbsp;missing,&nbsp;return&nbsp;None.<br>
+&nbsp;<br>
+If&nbsp;*padded*&nbsp;is&nbsp;`True`,&nbsp;the&nbsp;first&nbsp;line&nbsp;of&nbsp;a&nbsp;multi-line&nbsp;statement&nbsp;will<br>
+be&nbsp;padded&nbsp;with&nbsp;spaces&nbsp;to&nbsp;match&nbsp;its&nbsp;original&nbsp;position.</tt></dd></dl>
+ <dl><dt><a name="-increment_lineno"><strong>increment_lineno</strong></a>(node, n=1)</dt><dd><tt>Increment&nbsp;the&nbsp;line&nbsp;number&nbsp;and&nbsp;end&nbsp;line&nbsp;number&nbsp;of&nbsp;each&nbsp;node&nbsp;in&nbsp;the&nbsp;tree<br>
+starting&nbsp;at&nbsp;*node*&nbsp;by&nbsp;*n*.&nbsp;This&nbsp;is&nbsp;useful&nbsp;to&nbsp;"move&nbsp;code"&nbsp;to&nbsp;a&nbsp;different<br>
+location&nbsp;in&nbsp;a&nbsp;file.</tt></dd></dl>
+ <dl><dt><a name="-iter_child_nodes"><strong>iter_child_nodes</strong></a>(node)</dt><dd><tt>Yield&nbsp;all&nbsp;direct&nbsp;child&nbsp;nodes&nbsp;of&nbsp;*node*,&nbsp;that&nbsp;is,&nbsp;all&nbsp;fields&nbsp;that&nbsp;are&nbsp;nodes<br>
+and&nbsp;all&nbsp;items&nbsp;of&nbsp;fields&nbsp;that&nbsp;are&nbsp;lists&nbsp;of&nbsp;nodes.</tt></dd></dl>
+ <dl><dt><a name="-iter_fields"><strong>iter_fields</strong></a>(node)</dt><dd><tt>Yield&nbsp;a&nbsp;tuple&nbsp;of&nbsp;``(fieldname,&nbsp;value)``&nbsp;for&nbsp;each&nbsp;field&nbsp;in&nbsp;``node._fields``<br>
+that&nbsp;is&nbsp;present&nbsp;on&nbsp;*node*.</tt></dd></dl>
+ <dl><dt><a name="-literal_eval"><strong>literal_eval</strong></a>(node_or_string)</dt><dd><tt>Safely&nbsp;evaluate&nbsp;an&nbsp;expression&nbsp;node&nbsp;or&nbsp;a&nbsp;string&nbsp;containing&nbsp;a&nbsp;Python<br>
+expression.&nbsp;&nbsp;The&nbsp;string&nbsp;or&nbsp;node&nbsp;provided&nbsp;may&nbsp;only&nbsp;consist&nbsp;of&nbsp;the&nbsp;following<br>
+Python&nbsp;literal&nbsp;structures:&nbsp;strings,&nbsp;bytes,&nbsp;numbers,&nbsp;tuples,&nbsp;lists,&nbsp;dicts,<br>
+sets,&nbsp;booleans,&nbsp;and&nbsp;None.</tt></dd></dl>
+ <dl><dt><a name="-parse"><strong>parse</strong></a>(source, filename='&lt;unknown&gt;', mode='exec', *, type_comments=False, feature_version=None)</dt><dd><tt>Parse&nbsp;the&nbsp;source&nbsp;into&nbsp;an&nbsp;AST&nbsp;node.<br>
+Equivalent&nbsp;to&nbsp;compile(source,&nbsp;filename,&nbsp;mode,&nbsp;PyCF_ONLY_AST).<br>
+Pass&nbsp;type_comments=True&nbsp;to&nbsp;get&nbsp;back&nbsp;type&nbsp;comments&nbsp;where&nbsp;the&nbsp;syntax&nbsp;allows.</tt></dd></dl>
+ <dl><dt><a name="-walk"><strong>walk</strong></a>(node)</dt><dd><tt>Recursively&nbsp;yield&nbsp;all&nbsp;descendant&nbsp;nodes&nbsp;in&nbsp;the&nbsp;tree&nbsp;starting&nbsp;at&nbsp;*node*<br>
+(including&nbsp;*node*&nbsp;itself),&nbsp;in&nbsp;no&nbsp;specified&nbsp;order.&nbsp;&nbsp;This&nbsp;is&nbsp;useful&nbsp;if&nbsp;you<br>
+only&nbsp;want&nbsp;to&nbsp;modify&nbsp;nodes&nbsp;in&nbsp;place&nbsp;and&nbsp;don't&nbsp;care&nbsp;about&nbsp;the&nbsp;context.</tt></dd></dl>
+</td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#55aa55">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Data</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#55aa55"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><strong>PyCF_ALLOW_TOP_LEVEL_AWAIT</strong> = 8192<br>
+<strong>PyCF_ONLY_AST</strong> = 1024<br>
+<strong>PyCF_TYPE_COMMENTS</strong> = 4096</td></tr></table>
+</body></html>

@@ -1,0 +1,90 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head><title>Python: built-in module marshal</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+</head><body bgcolor="#f0f0f8">
+
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="heading">
+<tr bgcolor="#7799ee">
+<td valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong>marshal</strong></big></big></font></td
+><td align=right valign=bottom
+><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br>(built-in)<br><a href="https://docs.python.org/3.8/library/marshal">Module Reference</a></font></td></tr></table>
+    <p><tt>This&nbsp;module&nbsp;contains&nbsp;functions&nbsp;that&nbsp;can&nbsp;read&nbsp;and&nbsp;write&nbsp;Python&nbsp;values&nbsp;in<br>
+a&nbsp;binary&nbsp;format.&nbsp;The&nbsp;format&nbsp;is&nbsp;specific&nbsp;to&nbsp;Python,&nbsp;but&nbsp;independent&nbsp;of<br>
+machine&nbsp;architecture&nbsp;issues.<br>
+&nbsp;<br>
+Not&nbsp;all&nbsp;Python&nbsp;object&nbsp;types&nbsp;are&nbsp;supported;&nbsp;in&nbsp;general,&nbsp;only&nbsp;objects<br>
+whose&nbsp;value&nbsp;is&nbsp;independent&nbsp;from&nbsp;a&nbsp;particular&nbsp;invocation&nbsp;of&nbsp;Python&nbsp;can&nbsp;be<br>
+written&nbsp;and&nbsp;read&nbsp;by&nbsp;this&nbsp;module.&nbsp;The&nbsp;following&nbsp;types&nbsp;are&nbsp;supported:<br>
+None,&nbsp;integers,&nbsp;floating&nbsp;point&nbsp;numbers,&nbsp;strings,&nbsp;bytes,&nbsp;bytearrays,<br>
+tuples,&nbsp;lists,&nbsp;sets,&nbsp;dictionaries,&nbsp;and&nbsp;code&nbsp;objects,&nbsp;where&nbsp;it<br>
+should&nbsp;be&nbsp;understood&nbsp;that&nbsp;tuples,&nbsp;lists&nbsp;and&nbsp;dictionaries&nbsp;are&nbsp;only<br>
+supported&nbsp;as&nbsp;long&nbsp;as&nbsp;the&nbsp;values&nbsp;contained&nbsp;therein&nbsp;are&nbsp;themselves<br>
+supported;&nbsp;and&nbsp;recursive&nbsp;lists&nbsp;and&nbsp;dictionaries&nbsp;should&nbsp;not&nbsp;be&nbsp;written<br>
+(they&nbsp;will&nbsp;cause&nbsp;infinite&nbsp;loops).<br>
+&nbsp;<br>
+Variables:<br>
+&nbsp;<br>
+version&nbsp;--&nbsp;indicates&nbsp;the&nbsp;format&nbsp;that&nbsp;the&nbsp;module&nbsp;uses.&nbsp;Version&nbsp;0&nbsp;is&nbsp;the<br>
+&nbsp;&nbsp;&nbsp;&nbsp;historical&nbsp;format,&nbsp;version&nbsp;1&nbsp;shares&nbsp;interned&nbsp;strings&nbsp;and&nbsp;version&nbsp;2<br>
+&nbsp;&nbsp;&nbsp;&nbsp;uses&nbsp;a&nbsp;binary&nbsp;format&nbsp;for&nbsp;floating&nbsp;point&nbsp;numbers.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Version&nbsp;3&nbsp;shares&nbsp;common&nbsp;object&nbsp;references&nbsp;(New&nbsp;in&nbsp;version&nbsp;3.4).<br>
+&nbsp;<br>
+Functions:<br>
+&nbsp;<br>
+<a href="#-dump">dump</a>()&nbsp;--&nbsp;write&nbsp;value&nbsp;to&nbsp;a&nbsp;file<br>
+<a href="#-load">load</a>()&nbsp;--&nbsp;read&nbsp;value&nbsp;from&nbsp;a&nbsp;file<br>
+<a href="#-dumps">dumps</a>()&nbsp;--&nbsp;marshal&nbsp;value&nbsp;as&nbsp;a&nbsp;bytes&nbsp;object<br>
+<a href="#-loads">loads</a>()&nbsp;--&nbsp;read&nbsp;value&nbsp;from&nbsp;a&nbsp;bytes-like&nbsp;object</tt></p>
+<p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#eeaa77">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Functions</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#eeaa77"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl><dt><a name="-dump"><strong>dump</strong></a>(value, file, version=4, /)</dt><dd><tt>Write&nbsp;the&nbsp;value&nbsp;on&nbsp;the&nbsp;open&nbsp;file.<br>
+&nbsp;<br>
+&nbsp;&nbsp;value<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Must&nbsp;be&nbsp;a&nbsp;supported&nbsp;type.<br>
+&nbsp;&nbsp;file<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Must&nbsp;be&nbsp;a&nbsp;writeable&nbsp;binary&nbsp;file.<br>
+&nbsp;&nbsp;version<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Indicates&nbsp;the&nbsp;data&nbsp;format&nbsp;that&nbsp;dump&nbsp;should&nbsp;use.<br>
+&nbsp;<br>
+If&nbsp;the&nbsp;value&nbsp;has&nbsp;(or&nbsp;contains&nbsp;an&nbsp;object&nbsp;that&nbsp;has)&nbsp;an&nbsp;unsupported&nbsp;type,&nbsp;a<br>
+ValueError&nbsp;exception&nbsp;is&nbsp;raised&nbsp;-&nbsp;but&nbsp;garbage&nbsp;data&nbsp;will&nbsp;also&nbsp;be&nbsp;written<br>
+to&nbsp;the&nbsp;file.&nbsp;The&nbsp;object&nbsp;will&nbsp;not&nbsp;be&nbsp;properly&nbsp;read&nbsp;back&nbsp;by&nbsp;<a href="#-load">load</a>().</tt></dd></dl>
+ <dl><dt><a name="-dumps"><strong>dumps</strong></a>(value, version=4, /)</dt><dd><tt>Return&nbsp;the&nbsp;bytes&nbsp;object&nbsp;that&nbsp;would&nbsp;be&nbsp;written&nbsp;to&nbsp;a&nbsp;file&nbsp;by&nbsp;<a href="#-dump">dump</a>(value,&nbsp;file).<br>
+&nbsp;<br>
+&nbsp;&nbsp;value<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Must&nbsp;be&nbsp;a&nbsp;supported&nbsp;type.<br>
+&nbsp;&nbsp;version<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Indicates&nbsp;the&nbsp;data&nbsp;format&nbsp;that&nbsp;dumps&nbsp;should&nbsp;use.<br>
+&nbsp;<br>
+Raise&nbsp;a&nbsp;ValueError&nbsp;exception&nbsp;if&nbsp;value&nbsp;has&nbsp;(or&nbsp;contains&nbsp;an&nbsp;object&nbsp;that&nbsp;has)&nbsp;an<br>
+unsupported&nbsp;type.</tt></dd></dl>
+ <dl><dt><a name="-load"><strong>load</strong></a>(file, /)</dt><dd><tt>Read&nbsp;one&nbsp;value&nbsp;from&nbsp;the&nbsp;open&nbsp;file&nbsp;and&nbsp;return&nbsp;it.<br>
+&nbsp;<br>
+&nbsp;&nbsp;file<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Must&nbsp;be&nbsp;readable&nbsp;binary&nbsp;file.<br>
+&nbsp;<br>
+If&nbsp;no&nbsp;valid&nbsp;value&nbsp;is&nbsp;read&nbsp;(e.g.&nbsp;because&nbsp;the&nbsp;data&nbsp;has&nbsp;a&nbsp;different&nbsp;Python<br>
+version's&nbsp;incompatible&nbsp;marshal&nbsp;format),&nbsp;raise&nbsp;EOFError,&nbsp;ValueError&nbsp;or<br>
+TypeError.<br>
+&nbsp;<br>
+Note:&nbsp;If&nbsp;an&nbsp;object&nbsp;containing&nbsp;an&nbsp;unsupported&nbsp;type&nbsp;was&nbsp;marshalled&nbsp;with<br>
+<a href="#-dump">dump</a>(),&nbsp;<a href="#-load">load</a>()&nbsp;will&nbsp;substitute&nbsp;None&nbsp;for&nbsp;the&nbsp;unmarshallable&nbsp;type.</tt></dd></dl>
+ <dl><dt><a name="-loads"><strong>loads</strong></a>(bytes, /)</dt><dd><tt>Convert&nbsp;the&nbsp;bytes-like&nbsp;object&nbsp;to&nbsp;a&nbsp;value.<br>
+&nbsp;<br>
+If&nbsp;no&nbsp;valid&nbsp;value&nbsp;is&nbsp;found,&nbsp;raise&nbsp;EOFError,&nbsp;ValueError&nbsp;or&nbsp;TypeError.&nbsp;&nbsp;Extra<br>
+bytes&nbsp;in&nbsp;the&nbsp;input&nbsp;are&nbsp;ignored.</tt></dd></dl>
+</td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#55aa55">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Data</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#55aa55"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><strong>version</strong> = 4</td></tr></table>
+</body></html>

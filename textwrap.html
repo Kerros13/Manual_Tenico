@@ -1,0 +1,187 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head><title>Python: module textwrap</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+</head><body bgcolor="#f0f0f8">
+
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="heading">
+<tr bgcolor="#7799ee">
+<td valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong>textwrap</strong></big></big></font></td
+><td align=right valign=bottom
+><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:c%3A%5Cpython38%5Clib%5Ctextwrap.py">c:\python38\lib\textwrap.py</a><br><a href="https://docs.python.org/3.8/library/textwrap">Module Reference</a></font></td></tr></table>
+    <p><tt>Text&nbsp;wrapping&nbsp;and&nbsp;filling.</tt></p>
+<p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#aa55cc">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Modules</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#aa55cc"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><table width="100%" summary="list"><tr><td width="25%" valign=top><a href="re.html">re</a><br>
+</td><td width="25%" valign=top></td><td width="25%" valign=top></td><td width="25%" valign=top></td></tr></table></td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ee77aa">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Classes</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#ee77aa"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl>
+<dt><font face="helvetica, arial"><a href="builtins.html#object">builtins.object</a>
+</font></dt><dd>
+<dl>
+<dt><font face="helvetica, arial"><a href="textwrap.html#TextWrapper">TextWrapper</a>
+</font></dt></dl>
+</dd>
+</dl>
+ <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="TextWrapper">class <strong>TextWrapper</strong></a>(<a href="builtins.html#object">builtins.object</a>)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt><a href="#TextWrapper">TextWrapper</a>(width=70,&nbsp;initial_indent='',&nbsp;subsequent_indent='',&nbsp;expand_tabs=True,&nbsp;replace_whitespace=True,&nbsp;fix_sentence_endings=False,&nbsp;break_long_words=True,&nbsp;drop_whitespace=True,&nbsp;break_on_hyphens=True,&nbsp;tabsize=8,&nbsp;*,&nbsp;max_lines=None,&nbsp;placeholder='&nbsp;[...]')<br>
+&nbsp;<br>
+Object&nbsp;for&nbsp;wrapping/filling&nbsp;text.&nbsp;&nbsp;The&nbsp;public&nbsp;interface&nbsp;consists&nbsp;of<br>
+the&nbsp;<a href="#TextWrapper-wrap">wrap</a>()&nbsp;and&nbsp;<a href="#TextWrapper-fill">fill</a>()&nbsp;methods;&nbsp;the&nbsp;other&nbsp;methods&nbsp;are&nbsp;just&nbsp;there&nbsp;for<br>
+subclasses&nbsp;to&nbsp;override&nbsp;in&nbsp;order&nbsp;to&nbsp;tweak&nbsp;the&nbsp;default&nbsp;behaviour.<br>
+If&nbsp;you&nbsp;want&nbsp;to&nbsp;completely&nbsp;replace&nbsp;the&nbsp;main&nbsp;wrapping&nbsp;algorithm,<br>
+you'll&nbsp;probably&nbsp;have&nbsp;to&nbsp;override&nbsp;_wrap_chunks().<br>
+&nbsp;<br>
+Several&nbsp;instance&nbsp;attributes&nbsp;control&nbsp;various&nbsp;aspects&nbsp;of&nbsp;wrapping:<br>
+&nbsp;&nbsp;width&nbsp;(default:&nbsp;70)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;the&nbsp;maximum&nbsp;width&nbsp;of&nbsp;wrapped&nbsp;lines&nbsp;(unless&nbsp;break_long_words<br>
+&nbsp;&nbsp;&nbsp;&nbsp;is&nbsp;false)<br>
+&nbsp;&nbsp;initial_indent&nbsp;(default:&nbsp;"")<br>
+&nbsp;&nbsp;&nbsp;&nbsp;string&nbsp;that&nbsp;will&nbsp;be&nbsp;prepended&nbsp;to&nbsp;the&nbsp;first&nbsp;line&nbsp;of&nbsp;wrapped<br>
+&nbsp;&nbsp;&nbsp;&nbsp;output.&nbsp;&nbsp;Counts&nbsp;towards&nbsp;the&nbsp;line's&nbsp;width.<br>
+&nbsp;&nbsp;subsequent_indent&nbsp;(default:&nbsp;"")<br>
+&nbsp;&nbsp;&nbsp;&nbsp;string&nbsp;that&nbsp;will&nbsp;be&nbsp;prepended&nbsp;to&nbsp;all&nbsp;lines&nbsp;save&nbsp;the&nbsp;first<br>
+&nbsp;&nbsp;&nbsp;&nbsp;of&nbsp;wrapped&nbsp;output;&nbsp;also&nbsp;counts&nbsp;towards&nbsp;each&nbsp;line's&nbsp;width.<br>
+&nbsp;&nbsp;expand_tabs&nbsp;(default:&nbsp;true)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Expand&nbsp;tabs&nbsp;in&nbsp;input&nbsp;text&nbsp;to&nbsp;spaces&nbsp;before&nbsp;further&nbsp;processing.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Each&nbsp;tab&nbsp;will&nbsp;become&nbsp;0&nbsp;..&nbsp;'tabsize'&nbsp;spaces,&nbsp;depending&nbsp;on&nbsp;its&nbsp;position<br>
+&nbsp;&nbsp;&nbsp;&nbsp;in&nbsp;its&nbsp;line.&nbsp;&nbsp;If&nbsp;false,&nbsp;each&nbsp;tab&nbsp;is&nbsp;treated&nbsp;as&nbsp;a&nbsp;single&nbsp;character.<br>
+&nbsp;&nbsp;tabsize&nbsp;(default:&nbsp;8)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Expand&nbsp;tabs&nbsp;in&nbsp;input&nbsp;text&nbsp;to&nbsp;0&nbsp;..&nbsp;'tabsize'&nbsp;spaces,&nbsp;unless<br>
+&nbsp;&nbsp;&nbsp;&nbsp;'expand_tabs'&nbsp;is&nbsp;false.<br>
+&nbsp;&nbsp;replace_whitespace&nbsp;(default:&nbsp;true)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Replace&nbsp;all&nbsp;whitespace&nbsp;characters&nbsp;in&nbsp;the&nbsp;input&nbsp;text&nbsp;by&nbsp;spaces<br>
+&nbsp;&nbsp;&nbsp;&nbsp;after&nbsp;tab&nbsp;expansion.&nbsp;&nbsp;Note&nbsp;that&nbsp;if&nbsp;expand_tabs&nbsp;is&nbsp;false&nbsp;and<br>
+&nbsp;&nbsp;&nbsp;&nbsp;replace_whitespace&nbsp;is&nbsp;true,&nbsp;every&nbsp;tab&nbsp;will&nbsp;be&nbsp;converted&nbsp;to&nbsp;a<br>
+&nbsp;&nbsp;&nbsp;&nbsp;single&nbsp;space!<br>
+&nbsp;&nbsp;fix_sentence_endings&nbsp;(default:&nbsp;false)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Ensure&nbsp;that&nbsp;sentence-ending&nbsp;punctuation&nbsp;is&nbsp;always&nbsp;followed<br>
+&nbsp;&nbsp;&nbsp;&nbsp;by&nbsp;two&nbsp;spaces.&nbsp;&nbsp;Off&nbsp;by&nbsp;default&nbsp;because&nbsp;the&nbsp;algorithm&nbsp;is<br>
+&nbsp;&nbsp;&nbsp;&nbsp;(unavoidably)&nbsp;imperfect.<br>
+&nbsp;&nbsp;break_long_words&nbsp;(default:&nbsp;true)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Break&nbsp;words&nbsp;longer&nbsp;than&nbsp;'width'.&nbsp;&nbsp;If&nbsp;false,&nbsp;those&nbsp;words&nbsp;will&nbsp;not<br>
+&nbsp;&nbsp;&nbsp;&nbsp;be&nbsp;broken,&nbsp;and&nbsp;some&nbsp;lines&nbsp;might&nbsp;be&nbsp;longer&nbsp;than&nbsp;'width'.<br>
+&nbsp;&nbsp;break_on_hyphens&nbsp;(default:&nbsp;true)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Allow&nbsp;breaking&nbsp;hyphenated&nbsp;words.&nbsp;If&nbsp;true,&nbsp;wrapping&nbsp;will&nbsp;occur<br>
+&nbsp;&nbsp;&nbsp;&nbsp;preferably&nbsp;on&nbsp;whitespaces&nbsp;and&nbsp;right&nbsp;after&nbsp;hyphens&nbsp;part&nbsp;of<br>
+&nbsp;&nbsp;&nbsp;&nbsp;compound&nbsp;words.<br>
+&nbsp;&nbsp;drop_whitespace&nbsp;(default:&nbsp;true)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Drop&nbsp;leading&nbsp;and&nbsp;trailing&nbsp;whitespace&nbsp;from&nbsp;lines.<br>
+&nbsp;&nbsp;max_lines&nbsp;(default:&nbsp;None)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Truncate&nbsp;wrapped&nbsp;lines.<br>
+&nbsp;&nbsp;placeholder&nbsp;(default:&nbsp;'&nbsp;[...]')<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Append&nbsp;to&nbsp;the&nbsp;last&nbsp;line&nbsp;of&nbsp;truncated&nbsp;text.<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%">Methods defined here:<br>
+<dl><dt><a name="TextWrapper-__init__"><strong>__init__</strong></a>(self, width=70, initial_indent='', subsequent_indent='', expand_tabs=True, replace_whitespace=True, fix_sentence_endings=False, break_long_words=True, drop_whitespace=True, break_on_hyphens=True, tabsize=8, *, max_lines=None, placeholder=' [...]')</dt><dd><tt>Initialize&nbsp;self.&nbsp;&nbsp;See&nbsp;help(type(self))&nbsp;for&nbsp;accurate&nbsp;signature.</tt></dd></dl>
+
+<dl><dt><a name="TextWrapper-fill"><strong>fill</strong></a>(self, text)</dt><dd><tt><a href="#TextWrapper-fill">fill</a>(text&nbsp;:&nbsp;string)&nbsp;-&gt;&nbsp;string<br>
+&nbsp;<br>
+Reformat&nbsp;the&nbsp;single&nbsp;paragraph&nbsp;in&nbsp;'text'&nbsp;to&nbsp;fit&nbsp;in&nbsp;lines&nbsp;of&nbsp;no<br>
+more&nbsp;than&nbsp;'self.<strong>width</strong>'&nbsp;columns,&nbsp;and&nbsp;return&nbsp;a&nbsp;new&nbsp;string<br>
+containing&nbsp;the&nbsp;entire&nbsp;wrapped&nbsp;paragraph.</tt></dd></dl>
+
+<dl><dt><a name="TextWrapper-wrap"><strong>wrap</strong></a>(self, text)</dt><dd><tt><a href="#TextWrapper-wrap">wrap</a>(text&nbsp;:&nbsp;string)&nbsp;-&gt;&nbsp;[string]<br>
+&nbsp;<br>
+Reformat&nbsp;the&nbsp;single&nbsp;paragraph&nbsp;in&nbsp;'text'&nbsp;so&nbsp;it&nbsp;fits&nbsp;in&nbsp;lines&nbsp;of<br>
+no&nbsp;more&nbsp;than&nbsp;'self.<strong>width</strong>'&nbsp;columns,&nbsp;and&nbsp;return&nbsp;a&nbsp;list&nbsp;of&nbsp;wrapped<br>
+lines.&nbsp;&nbsp;Tabs&nbsp;in&nbsp;'text'&nbsp;are&nbsp;expanded&nbsp;with&nbsp;string.expandtabs(),<br>
+and&nbsp;all&nbsp;other&nbsp;whitespace&nbsp;characters&nbsp;(including&nbsp;newline)&nbsp;are<br>
+converted&nbsp;to&nbsp;space.</tt></dd></dl>
+
+<hr>
+Data descriptors defined here:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><tt>dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<hr>
+Data and other attributes defined here:<br>
+<dl><dt><strong>sentence_end_re</strong> = re.compile('[a-z][\\.\\!\\?][\\"\\\']?\\Z')</dl>
+
+<dl><dt><strong>unicode_whitespace_trans</strong> = {9: 32, 10: 32, 11: 32, 12: 32, 13: 32, 32: 32}</dl>
+
+<dl><dt><strong>uspace</strong> = 32</dl>
+
+<dl><dt><strong>wordsep_re</strong> = re.compile('\n        ( # any whitespace\n      ...# word, possibly hyphenated\n       , re.VERBOSE)</dl>
+
+<dl><dt><strong>wordsep_simple_re</strong> = re.compile('([\\\t\\\n\\\x0b\\\x0c\\\r\\ ]+)')</dl>
+
+<dl><dt><strong>x</strong> = ' '</dl>
+
+</td></tr></table></td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#eeaa77">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Functions</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#eeaa77"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl><dt><a name="-dedent"><strong>dedent</strong></a>(text)</dt><dd><tt>Remove&nbsp;any&nbsp;common&nbsp;leading&nbsp;whitespace&nbsp;from&nbsp;every&nbsp;line&nbsp;in&nbsp;`text`.<br>
+&nbsp;<br>
+This&nbsp;can&nbsp;be&nbsp;used&nbsp;to&nbsp;make&nbsp;triple-quoted&nbsp;strings&nbsp;line&nbsp;up&nbsp;with&nbsp;the&nbsp;left<br>
+edge&nbsp;of&nbsp;the&nbsp;display,&nbsp;while&nbsp;still&nbsp;presenting&nbsp;them&nbsp;in&nbsp;the&nbsp;source&nbsp;code<br>
+in&nbsp;indented&nbsp;form.<br>
+&nbsp;<br>
+Note&nbsp;that&nbsp;tabs&nbsp;and&nbsp;spaces&nbsp;are&nbsp;both&nbsp;treated&nbsp;as&nbsp;whitespace,&nbsp;but&nbsp;they<br>
+are&nbsp;not&nbsp;equal:&nbsp;the&nbsp;lines&nbsp;"&nbsp;&nbsp;hello"&nbsp;and&nbsp;"\thello"&nbsp;are<br>
+considered&nbsp;to&nbsp;have&nbsp;no&nbsp;common&nbsp;leading&nbsp;whitespace.<br>
+&nbsp;<br>
+Entirely&nbsp;blank&nbsp;lines&nbsp;are&nbsp;normalized&nbsp;to&nbsp;a&nbsp;newline&nbsp;character.</tt></dd></dl>
+ <dl><dt><a name="-fill"><strong>fill</strong></a>(text, width=70, **kwargs)</dt><dd><tt>Fill&nbsp;a&nbsp;single&nbsp;paragraph&nbsp;of&nbsp;text,&nbsp;returning&nbsp;a&nbsp;new&nbsp;string.<br>
+&nbsp;<br>
+Reformat&nbsp;the&nbsp;single&nbsp;paragraph&nbsp;in&nbsp;'text'&nbsp;to&nbsp;fit&nbsp;in&nbsp;lines&nbsp;of&nbsp;no&nbsp;more<br>
+than&nbsp;'width'&nbsp;columns,&nbsp;and&nbsp;return&nbsp;a&nbsp;new&nbsp;string&nbsp;containing&nbsp;the&nbsp;entire<br>
+wrapped&nbsp;paragraph.&nbsp;&nbsp;As&nbsp;with&nbsp;<a href="#-wrap">wrap</a>(),&nbsp;tabs&nbsp;are&nbsp;expanded&nbsp;and&nbsp;other<br>
+whitespace&nbsp;characters&nbsp;converted&nbsp;to&nbsp;space.&nbsp;&nbsp;See&nbsp;<a href="#TextWrapper">TextWrapper</a>&nbsp;class&nbsp;for<br>
+available&nbsp;keyword&nbsp;args&nbsp;to&nbsp;customize&nbsp;wrapping&nbsp;behaviour.</tt></dd></dl>
+ <dl><dt><a name="-indent"><strong>indent</strong></a>(text, prefix, predicate=None)</dt><dd><tt>Adds&nbsp;'prefix'&nbsp;to&nbsp;the&nbsp;beginning&nbsp;of&nbsp;selected&nbsp;lines&nbsp;in&nbsp;'text'.<br>
+&nbsp;<br>
+If&nbsp;'predicate'&nbsp;is&nbsp;provided,&nbsp;'prefix'&nbsp;will&nbsp;only&nbsp;be&nbsp;added&nbsp;to&nbsp;the&nbsp;lines<br>
+where&nbsp;'predicate(line)'&nbsp;is&nbsp;True.&nbsp;If&nbsp;'predicate'&nbsp;is&nbsp;not&nbsp;provided,<br>
+it&nbsp;will&nbsp;default&nbsp;to&nbsp;adding&nbsp;'prefix'&nbsp;to&nbsp;all&nbsp;non-empty&nbsp;lines&nbsp;that&nbsp;do&nbsp;not<br>
+consist&nbsp;solely&nbsp;of&nbsp;whitespace&nbsp;characters.</tt></dd></dl>
+ <dl><dt><a name="-shorten"><strong>shorten</strong></a>(text, width, **kwargs)</dt><dd><tt>Collapse&nbsp;and&nbsp;truncate&nbsp;the&nbsp;given&nbsp;text&nbsp;to&nbsp;fit&nbsp;in&nbsp;the&nbsp;given&nbsp;width.<br>
+&nbsp;<br>
+The&nbsp;text&nbsp;first&nbsp;has&nbsp;its&nbsp;whitespace&nbsp;collapsed.&nbsp;&nbsp;If&nbsp;it&nbsp;then&nbsp;fits&nbsp;in<br>
+the&nbsp;*width*,&nbsp;it&nbsp;is&nbsp;returned&nbsp;as&nbsp;is.&nbsp;&nbsp;Otherwise,&nbsp;as&nbsp;many&nbsp;words<br>
+as&nbsp;possible&nbsp;are&nbsp;joined&nbsp;and&nbsp;then&nbsp;the&nbsp;placeholder&nbsp;is&nbsp;appended::<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&gt;&gt;&gt;&nbsp;textwrap.<a href="#-shorten">shorten</a>("Hello&nbsp;&nbsp;world!",&nbsp;width=12)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;'Hello&nbsp;world!'<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&gt;&gt;&gt;&nbsp;textwrap.<a href="#-shorten">shorten</a>("Hello&nbsp;&nbsp;world!",&nbsp;width=11)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;'Hello&nbsp;[...]'</tt></dd></dl>
+ <dl><dt><a name="-wrap"><strong>wrap</strong></a>(text, width=70, **kwargs)</dt><dd><tt>Wrap&nbsp;a&nbsp;single&nbsp;paragraph&nbsp;of&nbsp;text,&nbsp;returning&nbsp;a&nbsp;list&nbsp;of&nbsp;wrapped&nbsp;lines.<br>
+&nbsp;<br>
+Reformat&nbsp;the&nbsp;single&nbsp;paragraph&nbsp;in&nbsp;'text'&nbsp;so&nbsp;it&nbsp;fits&nbsp;in&nbsp;lines&nbsp;of&nbsp;no<br>
+more&nbsp;than&nbsp;'width'&nbsp;columns,&nbsp;and&nbsp;return&nbsp;a&nbsp;list&nbsp;of&nbsp;wrapped&nbsp;lines.&nbsp;&nbsp;By<br>
+default,&nbsp;tabs&nbsp;in&nbsp;'text'&nbsp;are&nbsp;expanded&nbsp;with&nbsp;string.expandtabs(),&nbsp;and<br>
+all&nbsp;other&nbsp;whitespace&nbsp;characters&nbsp;(including&nbsp;newline)&nbsp;are&nbsp;converted&nbsp;to<br>
+space.&nbsp;&nbsp;See&nbsp;<a href="#TextWrapper">TextWrapper</a>&nbsp;class&nbsp;for&nbsp;available&nbsp;keyword&nbsp;args&nbsp;to&nbsp;customize<br>
+wrapping&nbsp;behaviour.</tt></dd></dl>
+</td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#55aa55">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Data</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#55aa55"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><strong>__all__</strong> = ['TextWrapper', 'wrap', 'fill', 'dedent', 'indent', 'shorten']</td></tr></table>
+</body></html>

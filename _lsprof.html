@@ -1,0 +1,291 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head><title>Python: built-in module _lsprof</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+</head><body bgcolor="#f0f0f8">
+
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="heading">
+<tr bgcolor="#7799ee">
+<td valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong>_lsprof</strong></big></big></font></td
+><td align=right valign=bottom
+><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br>(built-in)</font></td></tr></table>
+    <p><tt>Fast&nbsp;profiler</tt></p>
+<p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ee77aa">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Classes</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#ee77aa"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl>
+<dt><font face="helvetica, arial"><a href="builtins.html#object">builtins.object</a>
+</font></dt><dd>
+<dl>
+<dt><font face="helvetica, arial"><a href="_lsprof.html#Profiler">Profiler</a>
+</font></dt></dl>
+</dd>
+<dt><font face="helvetica, arial"><a href="builtins.html#tuple">builtins.tuple</a>(<a href="builtins.html#object">builtins.object</a>)
+</font></dt><dd>
+<dl>
+<dt><font face="helvetica, arial"><a href="_lsprof.html#profiler_entry">profiler_entry</a>
+</font></dt><dt><font face="helvetica, arial"><a href="_lsprof.html#profiler_subentry">profiler_subentry</a>
+</font></dt></dl>
+</dd>
+</dl>
+ <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="Profiler">class <strong>Profiler</strong></a>(<a href="builtins.html#object">builtins.object</a>)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt><a href="#Profiler">Profiler</a>(timer=None,&nbsp;timeunit=None,&nbsp;subcalls=True,&nbsp;builtins=True)<br>
+&nbsp;<br>
+Builds&nbsp;a&nbsp;profiler&nbsp;<a href="builtins.html#object">object</a>&nbsp;using&nbsp;the&nbsp;specified&nbsp;timer&nbsp;function.<br>
+The&nbsp;default&nbsp;timer&nbsp;is&nbsp;a&nbsp;fast&nbsp;built-in&nbsp;one&nbsp;based&nbsp;on&nbsp;real&nbsp;time.<br>
+For&nbsp;custom&nbsp;timer&nbsp;functions&nbsp;returning&nbsp;integers,&nbsp;timeunit&nbsp;can<br>
+be&nbsp;a&nbsp;float&nbsp;specifying&nbsp;a&nbsp;scale&nbsp;(i.e.&nbsp;how&nbsp;long&nbsp;each&nbsp;integer&nbsp;unit<br>
+is,&nbsp;in&nbsp;seconds).<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%">Methods defined here:<br>
+<dl><dt><a name="Profiler-__init__"><strong>__init__</strong></a>(self, /, *args, **kwargs)</dt><dd><tt>Initialize&nbsp;self.&nbsp;&nbsp;See&nbsp;help(type(self))&nbsp;for&nbsp;accurate&nbsp;signature.</tt></dd></dl>
+
+<dl><dt><a name="Profiler-clear"><strong>clear</strong></a>(...)</dt><dd><tt><a href="#Profiler-clear">clear</a>()<br>
+&nbsp;<br>
+Clear&nbsp;all&nbsp;profiling&nbsp;information&nbsp;collected&nbsp;so&nbsp;far.</tt></dd></dl>
+
+<dl><dt><a name="Profiler-disable"><strong>disable</strong></a>(...)</dt><dd><tt><a href="#Profiler-disable">disable</a>()<br>
+&nbsp;<br>
+Stop&nbsp;collecting&nbsp;profiling&nbsp;information.</tt></dd></dl>
+
+<dl><dt><a name="Profiler-enable"><strong>enable</strong></a>(...)</dt><dd><tt><a href="#Profiler-enable">enable</a>(subcalls=True,&nbsp;builtins=True)<br>
+&nbsp;<br>
+Start&nbsp;collecting&nbsp;profiling&nbsp;information.<br>
+If&nbsp;'subcalls'&nbsp;is&nbsp;True,&nbsp;also&nbsp;records&nbsp;for&nbsp;each&nbsp;function<br>
+statistics&nbsp;separated&nbsp;according&nbsp;to&nbsp;its&nbsp;current&nbsp;caller.<br>
+If&nbsp;'builtins'&nbsp;is&nbsp;True,&nbsp;records&nbsp;the&nbsp;time&nbsp;spent&nbsp;in<br>
+built-in&nbsp;functions&nbsp;separately&nbsp;from&nbsp;their&nbsp;caller.</tt></dd></dl>
+
+<dl><dt><a name="Profiler-getstats"><strong>getstats</strong></a>(...)</dt><dd><tt><a href="#Profiler-getstats">getstats</a>()&nbsp;-&gt;&nbsp;list&nbsp;of&nbsp;<a href="#profiler_entry">profiler_entry</a>&nbsp;objects<br>
+&nbsp;<br>
+Return&nbsp;all&nbsp;information&nbsp;collected&nbsp;by&nbsp;the&nbsp;profiler.<br>
+Each&nbsp;<a href="#profiler_entry">profiler_entry</a>&nbsp;is&nbsp;a&nbsp;<a href="builtins.html#tuple">tuple</a>-like&nbsp;<a href="builtins.html#object">object</a>&nbsp;with&nbsp;the<br>
+following&nbsp;attributes:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;code&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;code&nbsp;<a href="builtins.html#object">object</a><br>
+&nbsp;&nbsp;&nbsp;&nbsp;callcount&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;how&nbsp;many&nbsp;times&nbsp;this&nbsp;was&nbsp;called<br>
+&nbsp;&nbsp;&nbsp;&nbsp;reccallcount&nbsp;&nbsp;how&nbsp;many&nbsp;times&nbsp;called&nbsp;recursively<br>
+&nbsp;&nbsp;&nbsp;&nbsp;totaltime&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;total&nbsp;time&nbsp;in&nbsp;this&nbsp;entry<br>
+&nbsp;&nbsp;&nbsp;&nbsp;inlinetime&nbsp;&nbsp;&nbsp;&nbsp;inline&nbsp;time&nbsp;in&nbsp;this&nbsp;entry&nbsp;(not&nbsp;in&nbsp;subcalls)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;calls&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;details&nbsp;of&nbsp;the&nbsp;calls<br>
+&nbsp;<br>
+The&nbsp;calls&nbsp;attribute&nbsp;is&nbsp;either&nbsp;None&nbsp;or&nbsp;a&nbsp;list&nbsp;of<br>
+<a href="#profiler_subentry">profiler_subentry</a>&nbsp;objects:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;code&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;called&nbsp;code&nbsp;<a href="builtins.html#object">object</a><br>
+&nbsp;&nbsp;&nbsp;&nbsp;callcount&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;how&nbsp;many&nbsp;times&nbsp;this&nbsp;is&nbsp;called<br>
+&nbsp;&nbsp;&nbsp;&nbsp;reccallcount&nbsp;&nbsp;how&nbsp;many&nbsp;times&nbsp;this&nbsp;is&nbsp;called&nbsp;recursively<br>
+&nbsp;&nbsp;&nbsp;&nbsp;totaltime&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;total&nbsp;time&nbsp;spent&nbsp;in&nbsp;this&nbsp;call<br>
+&nbsp;&nbsp;&nbsp;&nbsp;inlinetime&nbsp;&nbsp;&nbsp;&nbsp;inline&nbsp;time&nbsp;(not&nbsp;in&nbsp;further&nbsp;subcalls)</tt></dd></dl>
+
+<hr>
+Static methods defined here:<br>
+<dl><dt><a name="Profiler-__new__"><strong>__new__</strong></a>(*args, **kwargs)<font color="#909090"><font face="helvetica, arial"> from <a href="builtins.html#type">builtins.type</a></font></font></dt><dd><tt>Create&nbsp;and&nbsp;return&nbsp;a&nbsp;new&nbsp;<a href="builtins.html#object">object</a>.&nbsp;&nbsp;See&nbsp;help(type)&nbsp;for&nbsp;accurate&nbsp;signature.</tt></dd></dl>
+
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="profiler_entry">class <strong>profiler_entry</strong></a>(<a href="builtins.html#tuple">builtins.tuple</a>)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt><a href="#profiler_entry">profiler_entry</a>(iterable=(),&nbsp;/)<br>
+&nbsp;<br>
+Built-in&nbsp;immutable&nbsp;sequence.<br>
+&nbsp;<br>
+If&nbsp;no&nbsp;argument&nbsp;is&nbsp;given,&nbsp;the&nbsp;constructor&nbsp;returns&nbsp;an&nbsp;empty&nbsp;<a href="builtins.html#tuple">tuple</a>.<br>
+If&nbsp;iterable&nbsp;is&nbsp;specified&nbsp;the&nbsp;<a href="builtins.html#tuple">tuple</a>&nbsp;is&nbsp;initialized&nbsp;from&nbsp;iterable's&nbsp;items.<br>
+&nbsp;<br>
+If&nbsp;the&nbsp;argument&nbsp;is&nbsp;a&nbsp;<a href="builtins.html#tuple">tuple</a>,&nbsp;the&nbsp;return&nbsp;value&nbsp;is&nbsp;the&nbsp;same&nbsp;<a href="builtins.html#object">object</a>.<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%"><dl><dt>Method resolution order:</dt>
+<dd><a href="_lsprof.html#profiler_entry">profiler_entry</a></dd>
+<dd><a href="builtins.html#tuple">builtins.tuple</a></dd>
+<dd><a href="builtins.html#object">builtins.object</a></dd>
+</dl>
+<hr>
+Methods defined here:<br>
+<dl><dt><a name="profiler_entry-__reduce__"><strong>__reduce__</strong></a>(...)</dt><dd><tt>Helper&nbsp;for&nbsp;pickle.</tt></dd></dl>
+
+<dl><dt><a name="profiler_entry-__repr__"><strong>__repr__</strong></a>(self, /)</dt><dd><tt>Return&nbsp;repr(self).</tt></dd></dl>
+
+<hr>
+Static methods defined here:<br>
+<dl><dt><a name="profiler_entry-__new__"><strong>__new__</strong></a>(*args, **kwargs)<font color="#909090"><font face="helvetica, arial"> from <a href="builtins.html#type">builtins.type</a></font></font></dt><dd><tt>Create&nbsp;and&nbsp;return&nbsp;a&nbsp;new&nbsp;<a href="builtins.html#object">object</a>.&nbsp;&nbsp;See&nbsp;help(type)&nbsp;for&nbsp;accurate&nbsp;signature.</tt></dd></dl>
+
+<hr>
+Data descriptors defined here:<br>
+<dl><dt><strong>callcount</strong></dt>
+<dd><tt>how&nbsp;many&nbsp;times&nbsp;this&nbsp;was&nbsp;called</tt></dd>
+</dl>
+<dl><dt><strong>calls</strong></dt>
+<dd><tt>details&nbsp;of&nbsp;the&nbsp;calls</tt></dd>
+</dl>
+<dl><dt><strong>code</strong></dt>
+<dd><tt>code&nbsp;object&nbsp;or&nbsp;built-in&nbsp;function&nbsp;name</tt></dd>
+</dl>
+<dl><dt><strong>inlinetime</strong></dt>
+<dd><tt>inline&nbsp;time&nbsp;in&nbsp;this&nbsp;entry&nbsp;(not&nbsp;in&nbsp;subcalls)</tt></dd>
+</dl>
+<dl><dt><strong>reccallcount</strong></dt>
+<dd><tt>how&nbsp;many&nbsp;times&nbsp;called&nbsp;recursively</tt></dd>
+</dl>
+<dl><dt><strong>totaltime</strong></dt>
+<dd><tt>total&nbsp;time&nbsp;in&nbsp;this&nbsp;entry</tt></dd>
+</dl>
+<hr>
+Data and other attributes defined here:<br>
+<dl><dt><strong>n_fields</strong> = 6</dl>
+
+<dl><dt><strong>n_sequence_fields</strong> = 6</dl>
+
+<dl><dt><strong>n_unnamed_fields</strong> = 0</dl>
+
+<hr>
+Methods inherited from <a href="builtins.html#tuple">builtins.tuple</a>:<br>
+<dl><dt><a name="profiler_entry-__add__"><strong>__add__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;self+value.</tt></dd></dl>
+
+<dl><dt><a name="profiler_entry-__contains__"><strong>__contains__</strong></a>(self, key, /)</dt><dd><tt>Return&nbsp;key&nbsp;in&nbsp;self.</tt></dd></dl>
+
+<dl><dt><a name="profiler_entry-__eq__"><strong>__eq__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;self==value.</tt></dd></dl>
+
+<dl><dt><a name="profiler_entry-__ge__"><strong>__ge__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;self&gt;=value.</tt></dd></dl>
+
+<dl><dt><a name="profiler_entry-__getattribute__"><strong>__getattribute__</strong></a>(self, name, /)</dt><dd><tt>Return&nbsp;getattr(self,&nbsp;name).</tt></dd></dl>
+
+<dl><dt><a name="profiler_entry-__getitem__"><strong>__getitem__</strong></a>(self, key, /)</dt><dd><tt>Return&nbsp;self[key].</tt></dd></dl>
+
+<dl><dt><a name="profiler_entry-__getnewargs__"><strong>__getnewargs__</strong></a>(self, /)</dt></dl>
+
+<dl><dt><a name="profiler_entry-__gt__"><strong>__gt__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;self&gt;value.</tt></dd></dl>
+
+<dl><dt><a name="profiler_entry-__hash__"><strong>__hash__</strong></a>(self, /)</dt><dd><tt>Return&nbsp;hash(self).</tt></dd></dl>
+
+<dl><dt><a name="profiler_entry-__iter__"><strong>__iter__</strong></a>(self, /)</dt><dd><tt>Implement&nbsp;iter(self).</tt></dd></dl>
+
+<dl><dt><a name="profiler_entry-__le__"><strong>__le__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;self&lt;=value.</tt></dd></dl>
+
+<dl><dt><a name="profiler_entry-__len__"><strong>__len__</strong></a>(self, /)</dt><dd><tt>Return&nbsp;len(self).</tt></dd></dl>
+
+<dl><dt><a name="profiler_entry-__lt__"><strong>__lt__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;self&lt;value.</tt></dd></dl>
+
+<dl><dt><a name="profiler_entry-__mul__"><strong>__mul__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;self*value.</tt></dd></dl>
+
+<dl><dt><a name="profiler_entry-__ne__"><strong>__ne__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;self!=value.</tt></dd></dl>
+
+<dl><dt><a name="profiler_entry-__rmul__"><strong>__rmul__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;value*self.</tt></dd></dl>
+
+<dl><dt><a name="profiler_entry-count"><strong>count</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;number&nbsp;of&nbsp;occurrences&nbsp;of&nbsp;value.</tt></dd></dl>
+
+<dl><dt><a name="profiler_entry-index"><strong>index</strong></a>(self, value, start=0, stop=9223372036854775807, /)</dt><dd><tt>Return&nbsp;first&nbsp;index&nbsp;of&nbsp;value.<br>
+&nbsp;<br>
+Raises&nbsp;ValueError&nbsp;if&nbsp;the&nbsp;value&nbsp;is&nbsp;not&nbsp;present.</tt></dd></dl>
+
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="profiler_subentry">class <strong>profiler_subentry</strong></a>(<a href="builtins.html#tuple">builtins.tuple</a>)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt><a href="#profiler_subentry">profiler_subentry</a>(iterable=(),&nbsp;/)<br>
+&nbsp;<br>
+Built-in&nbsp;immutable&nbsp;sequence.<br>
+&nbsp;<br>
+If&nbsp;no&nbsp;argument&nbsp;is&nbsp;given,&nbsp;the&nbsp;constructor&nbsp;returns&nbsp;an&nbsp;empty&nbsp;<a href="builtins.html#tuple">tuple</a>.<br>
+If&nbsp;iterable&nbsp;is&nbsp;specified&nbsp;the&nbsp;<a href="builtins.html#tuple">tuple</a>&nbsp;is&nbsp;initialized&nbsp;from&nbsp;iterable's&nbsp;items.<br>
+&nbsp;<br>
+If&nbsp;the&nbsp;argument&nbsp;is&nbsp;a&nbsp;<a href="builtins.html#tuple">tuple</a>,&nbsp;the&nbsp;return&nbsp;value&nbsp;is&nbsp;the&nbsp;same&nbsp;<a href="builtins.html#object">object</a>.<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%"><dl><dt>Method resolution order:</dt>
+<dd><a href="_lsprof.html#profiler_subentry">profiler_subentry</a></dd>
+<dd><a href="builtins.html#tuple">builtins.tuple</a></dd>
+<dd><a href="builtins.html#object">builtins.object</a></dd>
+</dl>
+<hr>
+Methods defined here:<br>
+<dl><dt><a name="profiler_subentry-__reduce__"><strong>__reduce__</strong></a>(...)</dt><dd><tt>Helper&nbsp;for&nbsp;pickle.</tt></dd></dl>
+
+<dl><dt><a name="profiler_subentry-__repr__"><strong>__repr__</strong></a>(self, /)</dt><dd><tt>Return&nbsp;repr(self).</tt></dd></dl>
+
+<hr>
+Static methods defined here:<br>
+<dl><dt><a name="profiler_subentry-__new__"><strong>__new__</strong></a>(*args, **kwargs)<font color="#909090"><font face="helvetica, arial"> from <a href="builtins.html#type">builtins.type</a></font></font></dt><dd><tt>Create&nbsp;and&nbsp;return&nbsp;a&nbsp;new&nbsp;<a href="builtins.html#object">object</a>.&nbsp;&nbsp;See&nbsp;help(type)&nbsp;for&nbsp;accurate&nbsp;signature.</tt></dd></dl>
+
+<hr>
+Data descriptors defined here:<br>
+<dl><dt><strong>callcount</strong></dt>
+<dd><tt>how&nbsp;many&nbsp;times&nbsp;this&nbsp;is&nbsp;called</tt></dd>
+</dl>
+<dl><dt><strong>code</strong></dt>
+<dd><tt>called&nbsp;code&nbsp;object&nbsp;or&nbsp;built-in&nbsp;function&nbsp;name</tt></dd>
+</dl>
+<dl><dt><strong>inlinetime</strong></dt>
+<dd><tt>inline&nbsp;time&nbsp;(not&nbsp;in&nbsp;further&nbsp;subcalls)</tt></dd>
+</dl>
+<dl><dt><strong>reccallcount</strong></dt>
+<dd><tt>how&nbsp;many&nbsp;times&nbsp;this&nbsp;is&nbsp;called&nbsp;recursively</tt></dd>
+</dl>
+<dl><dt><strong>totaltime</strong></dt>
+<dd><tt>total&nbsp;time&nbsp;spent&nbsp;in&nbsp;this&nbsp;call</tt></dd>
+</dl>
+<hr>
+Data and other attributes defined here:<br>
+<dl><dt><strong>n_fields</strong> = 5</dl>
+
+<dl><dt><strong>n_sequence_fields</strong> = 5</dl>
+
+<dl><dt><strong>n_unnamed_fields</strong> = 0</dl>
+
+<hr>
+Methods inherited from <a href="builtins.html#tuple">builtins.tuple</a>:<br>
+<dl><dt><a name="profiler_subentry-__add__"><strong>__add__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;self+value.</tt></dd></dl>
+
+<dl><dt><a name="profiler_subentry-__contains__"><strong>__contains__</strong></a>(self, key, /)</dt><dd><tt>Return&nbsp;key&nbsp;in&nbsp;self.</tt></dd></dl>
+
+<dl><dt><a name="profiler_subentry-__eq__"><strong>__eq__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;self==value.</tt></dd></dl>
+
+<dl><dt><a name="profiler_subentry-__ge__"><strong>__ge__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;self&gt;=value.</tt></dd></dl>
+
+<dl><dt><a name="profiler_subentry-__getattribute__"><strong>__getattribute__</strong></a>(self, name, /)</dt><dd><tt>Return&nbsp;getattr(self,&nbsp;name).</tt></dd></dl>
+
+<dl><dt><a name="profiler_subentry-__getitem__"><strong>__getitem__</strong></a>(self, key, /)</dt><dd><tt>Return&nbsp;self[key].</tt></dd></dl>
+
+<dl><dt><a name="profiler_subentry-__getnewargs__"><strong>__getnewargs__</strong></a>(self, /)</dt></dl>
+
+<dl><dt><a name="profiler_subentry-__gt__"><strong>__gt__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;self&gt;value.</tt></dd></dl>
+
+<dl><dt><a name="profiler_subentry-__hash__"><strong>__hash__</strong></a>(self, /)</dt><dd><tt>Return&nbsp;hash(self).</tt></dd></dl>
+
+<dl><dt><a name="profiler_subentry-__iter__"><strong>__iter__</strong></a>(self, /)</dt><dd><tt>Implement&nbsp;iter(self).</tt></dd></dl>
+
+<dl><dt><a name="profiler_subentry-__le__"><strong>__le__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;self&lt;=value.</tt></dd></dl>
+
+<dl><dt><a name="profiler_subentry-__len__"><strong>__len__</strong></a>(self, /)</dt><dd><tt>Return&nbsp;len(self).</tt></dd></dl>
+
+<dl><dt><a name="profiler_subentry-__lt__"><strong>__lt__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;self&lt;value.</tt></dd></dl>
+
+<dl><dt><a name="profiler_subentry-__mul__"><strong>__mul__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;self*value.</tt></dd></dl>
+
+<dl><dt><a name="profiler_subentry-__ne__"><strong>__ne__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;self!=value.</tt></dd></dl>
+
+<dl><dt><a name="profiler_subentry-__rmul__"><strong>__rmul__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;value*self.</tt></dd></dl>
+
+<dl><dt><a name="profiler_subentry-count"><strong>count</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;number&nbsp;of&nbsp;occurrences&nbsp;of&nbsp;value.</tt></dd></dl>
+
+<dl><dt><a name="profiler_subentry-index"><strong>index</strong></a>(self, value, start=0, stop=9223372036854775807, /)</dt><dd><tt>Return&nbsp;first&nbsp;index&nbsp;of&nbsp;value.<br>
+&nbsp;<br>
+Raises&nbsp;ValueError&nbsp;if&nbsp;the&nbsp;value&nbsp;is&nbsp;not&nbsp;present.</tt></dd></dl>
+
+</td></tr></table></td></tr></table>
+</body></html>

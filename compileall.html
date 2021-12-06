@@ -1,0 +1,89 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head><title>Python: module compileall</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+</head><body bgcolor="#f0f0f8">
+
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="heading">
+<tr bgcolor="#7799ee">
+<td valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong>compileall</strong></big></big></font></td
+><td align=right valign=bottom
+><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:c%3A%5Cpython38%5Clib%5Ccompileall.py">c:\python38\lib\compileall.py</a><br><a href="https://docs.python.org/3.8/library/compileall">Module Reference</a></font></td></tr></table>
+    <p><tt>Module/script&nbsp;to&nbsp;byte-compile&nbsp;all&nbsp;.py&nbsp;files&nbsp;to&nbsp;.pyc&nbsp;files.<br>
+&nbsp;<br>
+When&nbsp;called&nbsp;as&nbsp;a&nbsp;script&nbsp;with&nbsp;arguments,&nbsp;this&nbsp;compiles&nbsp;the&nbsp;directories<br>
+given&nbsp;as&nbsp;arguments&nbsp;recursively;&nbsp;the&nbsp;-l&nbsp;option&nbsp;prevents&nbsp;it&nbsp;from<br>
+recursing&nbsp;into&nbsp;directories.<br>
+&nbsp;<br>
+Without&nbsp;arguments,&nbsp;if&nbsp;compiles&nbsp;all&nbsp;modules&nbsp;on&nbsp;sys.path,&nbsp;without<br>
+recursing&nbsp;into&nbsp;subdirectories.&nbsp;&nbsp;(Even&nbsp;though&nbsp;it&nbsp;should&nbsp;do&nbsp;so&nbsp;for<br>
+packages&nbsp;--&nbsp;for&nbsp;now,&nbsp;you'll&nbsp;have&nbsp;to&nbsp;deal&nbsp;with&nbsp;packages&nbsp;separately.)<br>
+&nbsp;<br>
+See&nbsp;module&nbsp;py_compile&nbsp;for&nbsp;details&nbsp;of&nbsp;the&nbsp;actual&nbsp;byte-compilation.</tt></p>
+<p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#aa55cc">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Modules</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#aa55cc"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><table width="100%" summary="list"><tr><td width="25%" valign=top><a href="importlib.html">importlib</a><br>
+<a href="os.html">os</a><br>
+</td><td width="25%" valign=top><a href="py_compile.html">py_compile</a><br>
+<a href="struct.html">struct</a><br>
+</td><td width="25%" valign=top><a href="sys.html">sys</a><br>
+</td><td width="25%" valign=top></td></tr></table></td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#eeaa77">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Functions</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#eeaa77"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl><dt><a name="-compile_dir"><strong>compile_dir</strong></a>(dir, maxlevels=10, ddir=None, force=False, rx=None, quiet=0, legacy=False, optimize=-1, workers=1, invalidation_mode=None)</dt><dd><tt>Byte-compile&nbsp;all&nbsp;modules&nbsp;in&nbsp;the&nbsp;given&nbsp;directory&nbsp;tree.<br>
+&nbsp;<br>
+Arguments&nbsp;(only&nbsp;dir&nbsp;is&nbsp;required):<br>
+&nbsp;<br>
+dir:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;the&nbsp;directory&nbsp;to&nbsp;byte-compile<br>
+maxlevels:&nbsp;maximum&nbsp;recursion&nbsp;level&nbsp;(default&nbsp;10)<br>
+ddir:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;the&nbsp;directory&nbsp;that&nbsp;will&nbsp;be&nbsp;prepended&nbsp;to&nbsp;the&nbsp;path&nbsp;to&nbsp;the<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;file&nbsp;as&nbsp;it&nbsp;is&nbsp;compiled&nbsp;into&nbsp;each&nbsp;byte-code&nbsp;file.<br>
+force:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;True,&nbsp;force&nbsp;compilation,&nbsp;even&nbsp;if&nbsp;timestamps&nbsp;are&nbsp;up-to-date<br>
+quiet:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;full&nbsp;output&nbsp;with&nbsp;False&nbsp;or&nbsp;0,&nbsp;errors&nbsp;only&nbsp;with&nbsp;1,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;no&nbsp;output&nbsp;with&nbsp;2<br>
+legacy:&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;True,&nbsp;produce&nbsp;legacy&nbsp;pyc&nbsp;paths&nbsp;instead&nbsp;of&nbsp;<a href="http://www.python.org/dev/peps/pep-3147/">PEP&nbsp;3147</a>&nbsp;paths<br>
+optimize:&nbsp;&nbsp;optimization&nbsp;level&nbsp;or&nbsp;-1&nbsp;for&nbsp;level&nbsp;of&nbsp;the&nbsp;interpreter<br>
+workers:&nbsp;&nbsp;&nbsp;maximum&nbsp;number&nbsp;of&nbsp;parallel&nbsp;workers<br>
+invalidation_mode:&nbsp;how&nbsp;the&nbsp;up-to-dateness&nbsp;of&nbsp;the&nbsp;pyc&nbsp;will&nbsp;be&nbsp;checked</tt></dd></dl>
+ <dl><dt><a name="-compile_file"><strong>compile_file</strong></a>(fullname, ddir=None, force=False, rx=None, quiet=0, legacy=False, optimize=-1, invalidation_mode=None)</dt><dd><tt>Byte-compile&nbsp;one&nbsp;file.<br>
+&nbsp;<br>
+Arguments&nbsp;(only&nbsp;fullname&nbsp;is&nbsp;required):<br>
+&nbsp;<br>
+fullname:&nbsp;&nbsp;the&nbsp;file&nbsp;to&nbsp;byte-compile<br>
+ddir:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;given,&nbsp;the&nbsp;directory&nbsp;name&nbsp;compiled&nbsp;in&nbsp;to&nbsp;the<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;byte-code&nbsp;file.<br>
+force:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;True,&nbsp;force&nbsp;compilation,&nbsp;even&nbsp;if&nbsp;timestamps&nbsp;are&nbsp;up-to-date<br>
+quiet:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;full&nbsp;output&nbsp;with&nbsp;False&nbsp;or&nbsp;0,&nbsp;errors&nbsp;only&nbsp;with&nbsp;1,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;no&nbsp;output&nbsp;with&nbsp;2<br>
+legacy:&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;True,&nbsp;produce&nbsp;legacy&nbsp;pyc&nbsp;paths&nbsp;instead&nbsp;of&nbsp;<a href="http://www.python.org/dev/peps/pep-3147/">PEP&nbsp;3147</a>&nbsp;paths<br>
+optimize:&nbsp;&nbsp;optimization&nbsp;level&nbsp;or&nbsp;-1&nbsp;for&nbsp;level&nbsp;of&nbsp;the&nbsp;interpreter<br>
+invalidation_mode:&nbsp;how&nbsp;the&nbsp;up-to-dateness&nbsp;of&nbsp;the&nbsp;pyc&nbsp;will&nbsp;be&nbsp;checked</tt></dd></dl>
+ <dl><dt><a name="-compile_path"><strong>compile_path</strong></a>(skip_curdir=1, maxlevels=0, force=False, quiet=0, legacy=False, optimize=-1, invalidation_mode=None)</dt><dd><tt>Byte-compile&nbsp;all&nbsp;module&nbsp;on&nbsp;sys.path.<br>
+&nbsp;<br>
+Arguments&nbsp;(all&nbsp;optional):<br>
+&nbsp;<br>
+skip_curdir:&nbsp;if&nbsp;true,&nbsp;skip&nbsp;current&nbsp;directory&nbsp;(default&nbsp;True)<br>
+maxlevels:&nbsp;&nbsp;&nbsp;max&nbsp;recursion&nbsp;level&nbsp;(default&nbsp;0)<br>
+force:&nbsp;as&nbsp;for&nbsp;<a href="#-compile_dir">compile_dir</a>()&nbsp;(default&nbsp;False)<br>
+quiet:&nbsp;as&nbsp;for&nbsp;<a href="#-compile_dir">compile_dir</a>()&nbsp;(default&nbsp;0)<br>
+legacy:&nbsp;as&nbsp;for&nbsp;<a href="#-compile_dir">compile_dir</a>()&nbsp;(default&nbsp;False)<br>
+optimize:&nbsp;as&nbsp;for&nbsp;<a href="#-compile_dir">compile_dir</a>()&nbsp;(default&nbsp;-1)<br>
+invalidation_mode:&nbsp;as&nbsp;for&nbsp;compiler_dir()</tt></dd></dl>
+</td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#55aa55">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Data</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#55aa55"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><strong>__all__</strong> = ['compile_dir', 'compile_file', 'compile_path']</td></tr></table>
+</body></html>

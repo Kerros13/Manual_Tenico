@@ -1,0 +1,267 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head><title>Python: built-in module _thread</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+</head><body bgcolor="#f0f0f8">
+
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="heading">
+<tr bgcolor="#7799ee">
+<td valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong>_thread</strong></big></big></font></td
+><td align=right valign=bottom
+><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br>(built-in)<br><a href="https://docs.python.org/3.8/library/_thread">Module Reference</a></font></td></tr></table>
+    <p><tt>This&nbsp;module&nbsp;provides&nbsp;primitive&nbsp;operations&nbsp;to&nbsp;write&nbsp;multi-threaded&nbsp;programs.<br>
+The&nbsp;'threading'&nbsp;module&nbsp;provides&nbsp;a&nbsp;more&nbsp;convenient&nbsp;interface.</tt></p>
+<p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ee77aa">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Classes</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#ee77aa"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl>
+<dt><font face="helvetica, arial"><a href="builtins.html#object">builtins.object</a>
+</font></dt><dd>
+<dl>
+<dt><font face="helvetica, arial"><a href="_thread.html#RLock">RLock</a>
+</font></dt><dt><font face="helvetica, arial">lock
+</font></dt></dl>
+</dd>
+</dl>
+ <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><strong>LockType</strong> = <a name="LockType">class lock</a>(<a href="builtins.html#object">builtins.object</a>)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt>A&nbsp;lock&nbsp;<a href="builtins.html#object">object</a>&nbsp;is&nbsp;a&nbsp;synchronization&nbsp;primitive.&nbsp;&nbsp;To&nbsp;create&nbsp;a&nbsp;lock,<br>
+call&nbsp;threading.Lock().&nbsp;&nbsp;Methods&nbsp;are:<br>
+&nbsp;<br>
+<a href="#LockType-acquire">acquire</a>()&nbsp;--&nbsp;lock&nbsp;the&nbsp;lock,&nbsp;possibly&nbsp;blocking&nbsp;until&nbsp;it&nbsp;can&nbsp;be&nbsp;obtained<br>
+<a href="#LockType-release">release</a>()&nbsp;--&nbsp;unlock&nbsp;of&nbsp;the&nbsp;lock<br>
+<a href="#LockType-locked">locked</a>()&nbsp;--&nbsp;test&nbsp;whether&nbsp;the&nbsp;lock&nbsp;is&nbsp;currently&nbsp;locked<br>
+&nbsp;<br>
+A&nbsp;lock&nbsp;is&nbsp;not&nbsp;owned&nbsp;by&nbsp;the&nbsp;thread&nbsp;that&nbsp;locked&nbsp;it;&nbsp;another&nbsp;thread&nbsp;may<br>
+unlock&nbsp;it.&nbsp;&nbsp;A&nbsp;thread&nbsp;attempting&nbsp;to&nbsp;lock&nbsp;a&nbsp;lock&nbsp;that&nbsp;it&nbsp;has&nbsp;already&nbsp;locked<br>
+will&nbsp;block&nbsp;until&nbsp;another&nbsp;thread&nbsp;unlocks&nbsp;it.&nbsp;&nbsp;Deadlocks&nbsp;may&nbsp;ensue.<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%">Methods defined here:<br>
+<dl><dt><a name="lock-__enter__"><strong>__enter__</strong></a>(...)</dt><dd><tt><a href="#LockType-acquire">acquire</a>(blocking=True,&nbsp;timeout=-1)&nbsp;-&gt;&nbsp;bool<br>
+(<a href="#LockType-acquire_lock">acquire_lock</a>()&nbsp;is&nbsp;an&nbsp;obsolete&nbsp;synonym)<br>
+&nbsp;<br>
+Lock&nbsp;the&nbsp;lock.&nbsp;&nbsp;Without&nbsp;argument,&nbsp;this&nbsp;blocks&nbsp;if&nbsp;the&nbsp;lock&nbsp;is&nbsp;already<br>
+locked&nbsp;(even&nbsp;by&nbsp;the&nbsp;same&nbsp;thread),&nbsp;waiting&nbsp;for&nbsp;another&nbsp;thread&nbsp;to&nbsp;release<br>
+the&nbsp;lock,&nbsp;and&nbsp;return&nbsp;True&nbsp;once&nbsp;the&nbsp;lock&nbsp;is&nbsp;acquired.<br>
+With&nbsp;an&nbsp;argument,&nbsp;this&nbsp;will&nbsp;only&nbsp;block&nbsp;if&nbsp;the&nbsp;argument&nbsp;is&nbsp;true,<br>
+and&nbsp;the&nbsp;return&nbsp;value&nbsp;reflects&nbsp;whether&nbsp;the&nbsp;lock&nbsp;is&nbsp;acquired.<br>
+The&nbsp;blocking&nbsp;operation&nbsp;is&nbsp;interruptible.</tt></dd></dl>
+
+<dl><dt><a name="lock-__exit__"><strong>__exit__</strong></a>(...)</dt><dd><tt><a href="#LockType-release">release</a>()<br>
+(<a href="#LockType-release_lock">release_lock</a>()&nbsp;is&nbsp;an&nbsp;obsolete&nbsp;synonym)<br>
+&nbsp;<br>
+Release&nbsp;the&nbsp;lock,&nbsp;allowing&nbsp;another&nbsp;thread&nbsp;that&nbsp;is&nbsp;blocked&nbsp;waiting&nbsp;for<br>
+the&nbsp;lock&nbsp;to&nbsp;acquire&nbsp;the&nbsp;lock.&nbsp;&nbsp;The&nbsp;lock&nbsp;must&nbsp;be&nbsp;in&nbsp;the&nbsp;locked&nbsp;state,<br>
+but&nbsp;it&nbsp;needn't&nbsp;be&nbsp;locked&nbsp;by&nbsp;the&nbsp;same&nbsp;thread&nbsp;that&nbsp;unlocks&nbsp;it.</tt></dd></dl>
+
+<dl><dt><a name="lock-__repr__"><strong>__repr__</strong></a>(self, /)</dt><dd><tt>Return&nbsp;repr(self).</tt></dd></dl>
+
+<dl><dt><a name="lock-acquire"><strong>acquire</strong></a>(...)</dt><dd><tt><a href="#LockType-acquire">acquire</a>(blocking=True,&nbsp;timeout=-1)&nbsp;-&gt;&nbsp;bool<br>
+(<a href="#LockType-acquire_lock">acquire_lock</a>()&nbsp;is&nbsp;an&nbsp;obsolete&nbsp;synonym)<br>
+&nbsp;<br>
+Lock&nbsp;the&nbsp;lock.&nbsp;&nbsp;Without&nbsp;argument,&nbsp;this&nbsp;blocks&nbsp;if&nbsp;the&nbsp;lock&nbsp;is&nbsp;already<br>
+locked&nbsp;(even&nbsp;by&nbsp;the&nbsp;same&nbsp;thread),&nbsp;waiting&nbsp;for&nbsp;another&nbsp;thread&nbsp;to&nbsp;release<br>
+the&nbsp;lock,&nbsp;and&nbsp;return&nbsp;True&nbsp;once&nbsp;the&nbsp;lock&nbsp;is&nbsp;acquired.<br>
+With&nbsp;an&nbsp;argument,&nbsp;this&nbsp;will&nbsp;only&nbsp;block&nbsp;if&nbsp;the&nbsp;argument&nbsp;is&nbsp;true,<br>
+and&nbsp;the&nbsp;return&nbsp;value&nbsp;reflects&nbsp;whether&nbsp;the&nbsp;lock&nbsp;is&nbsp;acquired.<br>
+The&nbsp;blocking&nbsp;operation&nbsp;is&nbsp;interruptible.</tt></dd></dl>
+
+<dl><dt><a name="lock-acquire_lock"><strong>acquire_lock</strong></a>(...)</dt><dd><tt><a href="#LockType-acquire">acquire</a>(blocking=True,&nbsp;timeout=-1)&nbsp;-&gt;&nbsp;bool<br>
+(<a href="#LockType-acquire_lock">acquire_lock</a>()&nbsp;is&nbsp;an&nbsp;obsolete&nbsp;synonym)<br>
+&nbsp;<br>
+Lock&nbsp;the&nbsp;lock.&nbsp;&nbsp;Without&nbsp;argument,&nbsp;this&nbsp;blocks&nbsp;if&nbsp;the&nbsp;lock&nbsp;is&nbsp;already<br>
+locked&nbsp;(even&nbsp;by&nbsp;the&nbsp;same&nbsp;thread),&nbsp;waiting&nbsp;for&nbsp;another&nbsp;thread&nbsp;to&nbsp;release<br>
+the&nbsp;lock,&nbsp;and&nbsp;return&nbsp;True&nbsp;once&nbsp;the&nbsp;lock&nbsp;is&nbsp;acquired.<br>
+With&nbsp;an&nbsp;argument,&nbsp;this&nbsp;will&nbsp;only&nbsp;block&nbsp;if&nbsp;the&nbsp;argument&nbsp;is&nbsp;true,<br>
+and&nbsp;the&nbsp;return&nbsp;value&nbsp;reflects&nbsp;whether&nbsp;the&nbsp;lock&nbsp;is&nbsp;acquired.<br>
+The&nbsp;blocking&nbsp;operation&nbsp;is&nbsp;interruptible.</tt></dd></dl>
+
+<dl><dt><a name="lock-locked"><strong>locked</strong></a>(...)</dt><dd><tt><a href="#LockType-locked">locked</a>()&nbsp;-&gt;&nbsp;bool<br>
+(<a href="#LockType-locked_lock">locked_lock</a>()&nbsp;is&nbsp;an&nbsp;obsolete&nbsp;synonym)<br>
+&nbsp;<br>
+Return&nbsp;whether&nbsp;the&nbsp;lock&nbsp;is&nbsp;in&nbsp;the&nbsp;locked&nbsp;state.</tt></dd></dl>
+
+<dl><dt><a name="lock-locked_lock"><strong>locked_lock</strong></a>(...)</dt><dd><tt><a href="#LockType-locked">locked</a>()&nbsp;-&gt;&nbsp;bool<br>
+(<a href="#LockType-locked_lock">locked_lock</a>()&nbsp;is&nbsp;an&nbsp;obsolete&nbsp;synonym)<br>
+&nbsp;<br>
+Return&nbsp;whether&nbsp;the&nbsp;lock&nbsp;is&nbsp;in&nbsp;the&nbsp;locked&nbsp;state.</tt></dd></dl>
+
+<dl><dt><a name="lock-release"><strong>release</strong></a>(...)</dt><dd><tt><a href="#LockType-release">release</a>()<br>
+(<a href="#LockType-release_lock">release_lock</a>()&nbsp;is&nbsp;an&nbsp;obsolete&nbsp;synonym)<br>
+&nbsp;<br>
+Release&nbsp;the&nbsp;lock,&nbsp;allowing&nbsp;another&nbsp;thread&nbsp;that&nbsp;is&nbsp;blocked&nbsp;waiting&nbsp;for<br>
+the&nbsp;lock&nbsp;to&nbsp;acquire&nbsp;the&nbsp;lock.&nbsp;&nbsp;The&nbsp;lock&nbsp;must&nbsp;be&nbsp;in&nbsp;the&nbsp;locked&nbsp;state,<br>
+but&nbsp;it&nbsp;needn't&nbsp;be&nbsp;locked&nbsp;by&nbsp;the&nbsp;same&nbsp;thread&nbsp;that&nbsp;unlocks&nbsp;it.</tt></dd></dl>
+
+<dl><dt><a name="lock-release_lock"><strong>release_lock</strong></a>(...)</dt><dd><tt><a href="#LockType-release">release</a>()<br>
+(<a href="#LockType-release_lock">release_lock</a>()&nbsp;is&nbsp;an&nbsp;obsolete&nbsp;synonym)<br>
+&nbsp;<br>
+Release&nbsp;the&nbsp;lock,&nbsp;allowing&nbsp;another&nbsp;thread&nbsp;that&nbsp;is&nbsp;blocked&nbsp;waiting&nbsp;for<br>
+the&nbsp;lock&nbsp;to&nbsp;acquire&nbsp;the&nbsp;lock.&nbsp;&nbsp;The&nbsp;lock&nbsp;must&nbsp;be&nbsp;in&nbsp;the&nbsp;locked&nbsp;state,<br>
+but&nbsp;it&nbsp;needn't&nbsp;be&nbsp;locked&nbsp;by&nbsp;the&nbsp;same&nbsp;thread&nbsp;that&nbsp;unlocks&nbsp;it.</tt></dd></dl>
+
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="RLock">class <strong>RLock</strong></a>(<a href="builtins.html#object">builtins.object</a>)</font></td></tr>
+    
+<tr><td bgcolor="#ffc8d8"><tt>&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%">Methods defined here:<br>
+<dl><dt><a name="RLock-__enter__"><strong>__enter__</strong></a>(...)</dt><dd><tt><a href="#RLock-acquire">acquire</a>(blocking=True)&nbsp;-&gt;&nbsp;bool<br>
+&nbsp;<br>
+Lock&nbsp;the&nbsp;lock.&nbsp;&nbsp;`blocking`&nbsp;indicates&nbsp;whether&nbsp;we&nbsp;should&nbsp;wait<br>
+for&nbsp;the&nbsp;lock&nbsp;to&nbsp;be&nbsp;available&nbsp;or&nbsp;not.&nbsp;&nbsp;If&nbsp;`blocking`&nbsp;is&nbsp;False<br>
+and&nbsp;another&nbsp;thread&nbsp;holds&nbsp;the&nbsp;lock,&nbsp;the&nbsp;method&nbsp;will&nbsp;return&nbsp;False<br>
+immediately.&nbsp;&nbsp;If&nbsp;`blocking`&nbsp;is&nbsp;True&nbsp;and&nbsp;another&nbsp;thread&nbsp;holds<br>
+the&nbsp;lock,&nbsp;the&nbsp;method&nbsp;will&nbsp;wait&nbsp;for&nbsp;the&nbsp;lock&nbsp;to&nbsp;be&nbsp;released,<br>
+take&nbsp;it&nbsp;and&nbsp;then&nbsp;return&nbsp;True.<br>
+(note:&nbsp;the&nbsp;blocking&nbsp;operation&nbsp;is&nbsp;interruptible.)<br>
+&nbsp;<br>
+In&nbsp;all&nbsp;other&nbsp;cases,&nbsp;the&nbsp;method&nbsp;will&nbsp;return&nbsp;True&nbsp;immediately.<br>
+Precisely,&nbsp;if&nbsp;the&nbsp;current&nbsp;thread&nbsp;already&nbsp;holds&nbsp;the&nbsp;lock,&nbsp;its<br>
+internal&nbsp;counter&nbsp;is&nbsp;simply&nbsp;incremented.&nbsp;If&nbsp;nobody&nbsp;holds&nbsp;the&nbsp;lock,<br>
+the&nbsp;lock&nbsp;is&nbsp;taken&nbsp;and&nbsp;its&nbsp;internal&nbsp;counter&nbsp;initialized&nbsp;to&nbsp;1.</tt></dd></dl>
+
+<dl><dt><a name="RLock-__exit__"><strong>__exit__</strong></a>(...)</dt><dd><tt><a href="#RLock-release">release</a>()<br>
+&nbsp;<br>
+Release&nbsp;the&nbsp;lock,&nbsp;allowing&nbsp;another&nbsp;thread&nbsp;that&nbsp;is&nbsp;blocked&nbsp;waiting&nbsp;for<br>
+the&nbsp;lock&nbsp;to&nbsp;acquire&nbsp;the&nbsp;lock.&nbsp;&nbsp;The&nbsp;lock&nbsp;must&nbsp;be&nbsp;in&nbsp;the&nbsp;locked&nbsp;state,<br>
+and&nbsp;must&nbsp;be&nbsp;locked&nbsp;by&nbsp;the&nbsp;same&nbsp;thread&nbsp;that&nbsp;unlocks&nbsp;it;&nbsp;otherwise&nbsp;a<br>
+`RuntimeError`&nbsp;is&nbsp;raised.<br>
+&nbsp;<br>
+Do&nbsp;note&nbsp;that&nbsp;if&nbsp;the&nbsp;lock&nbsp;was&nbsp;<a href="#RLock-acquire">acquire</a>()d&nbsp;several&nbsp;times&nbsp;in&nbsp;a&nbsp;row&nbsp;by&nbsp;the<br>
+current&nbsp;thread,&nbsp;<a href="#RLock-release">release</a>()&nbsp;needs&nbsp;to&nbsp;be&nbsp;called&nbsp;as&nbsp;many&nbsp;times&nbsp;for&nbsp;the&nbsp;lock<br>
+to&nbsp;be&nbsp;available&nbsp;for&nbsp;other&nbsp;threads.</tt></dd></dl>
+
+<dl><dt><a name="RLock-__repr__"><strong>__repr__</strong></a>(self, /)</dt><dd><tt>Return&nbsp;repr(self).</tt></dd></dl>
+
+<dl><dt><a name="RLock-acquire"><strong>acquire</strong></a>(...)</dt><dd><tt><a href="#RLock-acquire">acquire</a>(blocking=True)&nbsp;-&gt;&nbsp;bool<br>
+&nbsp;<br>
+Lock&nbsp;the&nbsp;lock.&nbsp;&nbsp;`blocking`&nbsp;indicates&nbsp;whether&nbsp;we&nbsp;should&nbsp;wait<br>
+for&nbsp;the&nbsp;lock&nbsp;to&nbsp;be&nbsp;available&nbsp;or&nbsp;not.&nbsp;&nbsp;If&nbsp;`blocking`&nbsp;is&nbsp;False<br>
+and&nbsp;another&nbsp;thread&nbsp;holds&nbsp;the&nbsp;lock,&nbsp;the&nbsp;method&nbsp;will&nbsp;return&nbsp;False<br>
+immediately.&nbsp;&nbsp;If&nbsp;`blocking`&nbsp;is&nbsp;True&nbsp;and&nbsp;another&nbsp;thread&nbsp;holds<br>
+the&nbsp;lock,&nbsp;the&nbsp;method&nbsp;will&nbsp;wait&nbsp;for&nbsp;the&nbsp;lock&nbsp;to&nbsp;be&nbsp;released,<br>
+take&nbsp;it&nbsp;and&nbsp;then&nbsp;return&nbsp;True.<br>
+(note:&nbsp;the&nbsp;blocking&nbsp;operation&nbsp;is&nbsp;interruptible.)<br>
+&nbsp;<br>
+In&nbsp;all&nbsp;other&nbsp;cases,&nbsp;the&nbsp;method&nbsp;will&nbsp;return&nbsp;True&nbsp;immediately.<br>
+Precisely,&nbsp;if&nbsp;the&nbsp;current&nbsp;thread&nbsp;already&nbsp;holds&nbsp;the&nbsp;lock,&nbsp;its<br>
+internal&nbsp;counter&nbsp;is&nbsp;simply&nbsp;incremented.&nbsp;If&nbsp;nobody&nbsp;holds&nbsp;the&nbsp;lock,<br>
+the&nbsp;lock&nbsp;is&nbsp;taken&nbsp;and&nbsp;its&nbsp;internal&nbsp;counter&nbsp;initialized&nbsp;to&nbsp;1.</tt></dd></dl>
+
+<dl><dt><a name="RLock-release"><strong>release</strong></a>(...)</dt><dd><tt><a href="#RLock-release">release</a>()<br>
+&nbsp;<br>
+Release&nbsp;the&nbsp;lock,&nbsp;allowing&nbsp;another&nbsp;thread&nbsp;that&nbsp;is&nbsp;blocked&nbsp;waiting&nbsp;for<br>
+the&nbsp;lock&nbsp;to&nbsp;acquire&nbsp;the&nbsp;lock.&nbsp;&nbsp;The&nbsp;lock&nbsp;must&nbsp;be&nbsp;in&nbsp;the&nbsp;locked&nbsp;state,<br>
+and&nbsp;must&nbsp;be&nbsp;locked&nbsp;by&nbsp;the&nbsp;same&nbsp;thread&nbsp;that&nbsp;unlocks&nbsp;it;&nbsp;otherwise&nbsp;a<br>
+`RuntimeError`&nbsp;is&nbsp;raised.<br>
+&nbsp;<br>
+Do&nbsp;note&nbsp;that&nbsp;if&nbsp;the&nbsp;lock&nbsp;was&nbsp;<a href="#RLock-acquire">acquire</a>()d&nbsp;several&nbsp;times&nbsp;in&nbsp;a&nbsp;row&nbsp;by&nbsp;the<br>
+current&nbsp;thread,&nbsp;<a href="#RLock-release">release</a>()&nbsp;needs&nbsp;to&nbsp;be&nbsp;called&nbsp;as&nbsp;many&nbsp;times&nbsp;for&nbsp;the&nbsp;lock<br>
+to&nbsp;be&nbsp;available&nbsp;for&nbsp;other&nbsp;threads.</tt></dd></dl>
+
+<hr>
+Static methods defined here:<br>
+<dl><dt><a name="RLock-__new__"><strong>__new__</strong></a>(*args, **kwargs)<font color="#909090"><font face="helvetica, arial"> from <a href="builtins.html#type">builtins.type</a></font></font></dt><dd><tt>Create&nbsp;and&nbsp;return&nbsp;a&nbsp;new&nbsp;<a href="builtins.html#object">object</a>.&nbsp;&nbsp;See&nbsp;help(type)&nbsp;for&nbsp;accurate&nbsp;signature.</tt></dd></dl>
+
+</td></tr></table></td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#eeaa77">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Functions</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#eeaa77"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl><dt><a name="-allocate"><strong>allocate</strong></a>(...)</dt><dd><tt><a href="#-allocate_lock">allocate_lock</a>()&nbsp;-&gt;&nbsp;lock&nbsp;<a href="builtins.html#object">object</a><br>
+(<a href="#-allocate">allocate</a>()&nbsp;is&nbsp;an&nbsp;obsolete&nbsp;synonym)<br>
+&nbsp;<br>
+Create&nbsp;a&nbsp;new&nbsp;lock&nbsp;<a href="builtins.html#object">object</a>.&nbsp;See&nbsp;help(type(threading.Lock()))&nbsp;for<br>
+information&nbsp;about&nbsp;locks.</tt></dd></dl>
+ <dl><dt><a name="-allocate_lock"><strong>allocate_lock</strong></a>(...)</dt><dd><tt><a href="#-allocate_lock">allocate_lock</a>()&nbsp;-&gt;&nbsp;lock&nbsp;<a href="builtins.html#object">object</a><br>
+(<a href="#-allocate">allocate</a>()&nbsp;is&nbsp;an&nbsp;obsolete&nbsp;synonym)<br>
+&nbsp;<br>
+Create&nbsp;a&nbsp;new&nbsp;lock&nbsp;<a href="builtins.html#object">object</a>.&nbsp;See&nbsp;help(type(threading.Lock()))&nbsp;for<br>
+information&nbsp;about&nbsp;locks.</tt></dd></dl>
+ <dl><dt><a name="-exit"><strong>exit</strong></a>(...)</dt><dd><tt><a href="#-exit">exit</a>()<br>
+(<a href="#-exit_thread">exit_thread</a>()&nbsp;is&nbsp;an&nbsp;obsolete&nbsp;synonym)<br>
+&nbsp;<br>
+This&nbsp;is&nbsp;synonymous&nbsp;to&nbsp;``raise&nbsp;SystemExit''.&nbsp;&nbsp;It&nbsp;will&nbsp;cause&nbsp;the&nbsp;current<br>
+thread&nbsp;to&nbsp;exit&nbsp;silently&nbsp;unless&nbsp;the&nbsp;exception&nbsp;is&nbsp;caught.</tt></dd></dl>
+ <dl><dt><a name="-exit_thread"><strong>exit_thread</strong></a>(...)</dt><dd><tt><a href="#-exit">exit</a>()<br>
+(<a href="#-exit_thread">exit_thread</a>()&nbsp;is&nbsp;an&nbsp;obsolete&nbsp;synonym)<br>
+&nbsp;<br>
+This&nbsp;is&nbsp;synonymous&nbsp;to&nbsp;``raise&nbsp;SystemExit''.&nbsp;&nbsp;It&nbsp;will&nbsp;cause&nbsp;the&nbsp;current<br>
+thread&nbsp;to&nbsp;exit&nbsp;silently&nbsp;unless&nbsp;the&nbsp;exception&nbsp;is&nbsp;caught.</tt></dd></dl>
+ <dl><dt><a name="-get_ident"><strong>get_ident</strong></a>(...)</dt><dd><tt><a href="#-get_ident">get_ident</a>()&nbsp;-&gt;&nbsp;integer<br>
+&nbsp;<br>
+Return&nbsp;a&nbsp;non-zero&nbsp;integer&nbsp;that&nbsp;uniquely&nbsp;identifies&nbsp;the&nbsp;current&nbsp;thread<br>
+amongst&nbsp;other&nbsp;threads&nbsp;that&nbsp;exist&nbsp;simultaneously.<br>
+This&nbsp;may&nbsp;be&nbsp;used&nbsp;to&nbsp;identify&nbsp;per-thread&nbsp;resources.<br>
+Even&nbsp;though&nbsp;on&nbsp;some&nbsp;platforms&nbsp;threads&nbsp;identities&nbsp;may&nbsp;appear&nbsp;to&nbsp;be<br>
+allocated&nbsp;consecutive&nbsp;numbers&nbsp;starting&nbsp;at&nbsp;1,&nbsp;this&nbsp;behavior&nbsp;should&nbsp;not<br>
+be&nbsp;relied&nbsp;upon,&nbsp;and&nbsp;the&nbsp;number&nbsp;should&nbsp;be&nbsp;seen&nbsp;purely&nbsp;as&nbsp;a&nbsp;magic&nbsp;cookie.<br>
+A&nbsp;thread's&nbsp;identity&nbsp;may&nbsp;be&nbsp;reused&nbsp;for&nbsp;another&nbsp;thread&nbsp;after&nbsp;it&nbsp;exits.</tt></dd></dl>
+ <dl><dt><a name="-get_native_id"><strong>get_native_id</strong></a>(...)</dt><dd><tt><a href="#-get_native_id">get_native_id</a>()&nbsp;-&gt;&nbsp;integer<br>
+&nbsp;<br>
+Return&nbsp;a&nbsp;non-negative&nbsp;integer&nbsp;identifying&nbsp;the&nbsp;thread&nbsp;as&nbsp;reported<br>
+by&nbsp;the&nbsp;OS&nbsp;(kernel).&nbsp;This&nbsp;may&nbsp;be&nbsp;used&nbsp;to&nbsp;uniquely&nbsp;identify&nbsp;a<br>
+particular&nbsp;thread&nbsp;within&nbsp;a&nbsp;system.</tt></dd></dl>
+ <dl><dt><a name="-interrupt_main"><strong>interrupt_main</strong></a>(...)</dt><dd><tt><a href="#-interrupt_main">interrupt_main</a>()<br>
+&nbsp;<br>
+Raise&nbsp;a&nbsp;KeyboardInterrupt&nbsp;in&nbsp;the&nbsp;main&nbsp;thread.<br>
+A&nbsp;subthread&nbsp;can&nbsp;use&nbsp;this&nbsp;function&nbsp;to&nbsp;interrupt&nbsp;the&nbsp;main&nbsp;thread.</tt></dd></dl>
+ <dl><dt><a name="-stack_size"><strong>stack_size</strong></a>(...)</dt><dd><tt><a href="#-stack_size">stack_size</a>([size])&nbsp;-&gt;&nbsp;size<br>
+&nbsp;<br>
+Return&nbsp;the&nbsp;thread&nbsp;stack&nbsp;size&nbsp;used&nbsp;when&nbsp;creating&nbsp;new&nbsp;threads.&nbsp;&nbsp;The<br>
+optional&nbsp;size&nbsp;argument&nbsp;specifies&nbsp;the&nbsp;stack&nbsp;size&nbsp;(in&nbsp;bytes)&nbsp;to&nbsp;be&nbsp;used<br>
+for&nbsp;subsequently&nbsp;created&nbsp;threads,&nbsp;and&nbsp;must&nbsp;be&nbsp;0&nbsp;(use&nbsp;platform&nbsp;or<br>
+configured&nbsp;default)&nbsp;or&nbsp;a&nbsp;positive&nbsp;integer&nbsp;value&nbsp;of&nbsp;at&nbsp;least&nbsp;32,768&nbsp;(32k).<br>
+If&nbsp;changing&nbsp;the&nbsp;thread&nbsp;stack&nbsp;size&nbsp;is&nbsp;unsupported,&nbsp;a&nbsp;ThreadError<br>
+exception&nbsp;is&nbsp;raised.&nbsp;&nbsp;If&nbsp;the&nbsp;specified&nbsp;size&nbsp;is&nbsp;invalid,&nbsp;a&nbsp;ValueError<br>
+exception&nbsp;is&nbsp;raised,&nbsp;and&nbsp;the&nbsp;stack&nbsp;size&nbsp;is&nbsp;unmodified.&nbsp;&nbsp;32k&nbsp;bytes<br>
+&nbsp;currently&nbsp;the&nbsp;minimum&nbsp;supported&nbsp;stack&nbsp;size&nbsp;value&nbsp;to&nbsp;guarantee<br>
+sufficient&nbsp;stack&nbsp;space&nbsp;for&nbsp;the&nbsp;interpreter&nbsp;itself.<br>
+&nbsp;<br>
+Note&nbsp;that&nbsp;some&nbsp;platforms&nbsp;may&nbsp;have&nbsp;particular&nbsp;restrictions&nbsp;on&nbsp;values&nbsp;for<br>
+the&nbsp;stack&nbsp;size,&nbsp;such&nbsp;as&nbsp;requiring&nbsp;a&nbsp;minimum&nbsp;stack&nbsp;size&nbsp;larger&nbsp;than&nbsp;32&nbsp;KiB&nbsp;or<br>
+requiring&nbsp;allocation&nbsp;in&nbsp;multiples&nbsp;of&nbsp;the&nbsp;system&nbsp;memory&nbsp;page&nbsp;size<br>
+-&nbsp;platform&nbsp;documentation&nbsp;should&nbsp;be&nbsp;referred&nbsp;to&nbsp;for&nbsp;more&nbsp;information<br>
+(4&nbsp;KiB&nbsp;pages&nbsp;are&nbsp;common;&nbsp;using&nbsp;multiples&nbsp;of&nbsp;4096&nbsp;for&nbsp;the&nbsp;stack&nbsp;size&nbsp;is<br>
+the&nbsp;suggested&nbsp;approach&nbsp;in&nbsp;the&nbsp;absence&nbsp;of&nbsp;more&nbsp;specific&nbsp;information).</tt></dd></dl>
+ <dl><dt><a name="-start_new"><strong>start_new</strong></a>(...)</dt><dd><tt><a href="#-start_new_thread">start_new_thread</a>(function,&nbsp;args[,&nbsp;kwargs])<br>
+(<a href="#-start_new">start_new</a>()&nbsp;is&nbsp;an&nbsp;obsolete&nbsp;synonym)<br>
+&nbsp;<br>
+Start&nbsp;a&nbsp;new&nbsp;thread&nbsp;and&nbsp;return&nbsp;its&nbsp;identifier.&nbsp;&nbsp;The&nbsp;thread&nbsp;will&nbsp;call&nbsp;the<br>
+function&nbsp;with&nbsp;positional&nbsp;arguments&nbsp;from&nbsp;the&nbsp;tuple&nbsp;args&nbsp;and&nbsp;keyword&nbsp;arguments<br>
+taken&nbsp;from&nbsp;the&nbsp;optional&nbsp;dictionary&nbsp;kwargs.&nbsp;&nbsp;The&nbsp;thread&nbsp;exits&nbsp;when&nbsp;the<br>
+function&nbsp;returns;&nbsp;the&nbsp;return&nbsp;value&nbsp;is&nbsp;ignored.&nbsp;&nbsp;The&nbsp;thread&nbsp;will&nbsp;also&nbsp;exit<br>
+when&nbsp;the&nbsp;function&nbsp;raises&nbsp;an&nbsp;unhandled&nbsp;exception;&nbsp;a&nbsp;stack&nbsp;trace&nbsp;will&nbsp;be<br>
+printed&nbsp;unless&nbsp;the&nbsp;exception&nbsp;is&nbsp;SystemExit.</tt></dd></dl>
+ <dl><dt><a name="-start_new_thread"><strong>start_new_thread</strong></a>(...)</dt><dd><tt><a href="#-start_new_thread">start_new_thread</a>(function,&nbsp;args[,&nbsp;kwargs])<br>
+(<a href="#-start_new">start_new</a>()&nbsp;is&nbsp;an&nbsp;obsolete&nbsp;synonym)<br>
+&nbsp;<br>
+Start&nbsp;a&nbsp;new&nbsp;thread&nbsp;and&nbsp;return&nbsp;its&nbsp;identifier.&nbsp;&nbsp;The&nbsp;thread&nbsp;will&nbsp;call&nbsp;the<br>
+function&nbsp;with&nbsp;positional&nbsp;arguments&nbsp;from&nbsp;the&nbsp;tuple&nbsp;args&nbsp;and&nbsp;keyword&nbsp;arguments<br>
+taken&nbsp;from&nbsp;the&nbsp;optional&nbsp;dictionary&nbsp;kwargs.&nbsp;&nbsp;The&nbsp;thread&nbsp;exits&nbsp;when&nbsp;the<br>
+function&nbsp;returns;&nbsp;the&nbsp;return&nbsp;value&nbsp;is&nbsp;ignored.&nbsp;&nbsp;The&nbsp;thread&nbsp;will&nbsp;also&nbsp;exit<br>
+when&nbsp;the&nbsp;function&nbsp;raises&nbsp;an&nbsp;unhandled&nbsp;exception;&nbsp;a&nbsp;stack&nbsp;trace&nbsp;will&nbsp;be<br>
+printed&nbsp;unless&nbsp;the&nbsp;exception&nbsp;is&nbsp;SystemExit.</tt></dd></dl>
+</td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#55aa55">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Data</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#55aa55"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><strong>TIMEOUT_MAX</strong> = 4294967.0</td></tr></table>
+</body></html>

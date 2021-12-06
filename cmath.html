@@ -1,0 +1,77 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head><title>Python: built-in module cmath</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+</head><body bgcolor="#f0f0f8">
+
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="heading">
+<tr bgcolor="#7799ee">
+<td valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong>cmath</strong></big></big></font></td
+><td align=right valign=bottom
+><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br>(built-in)</font></td></tr></table>
+    <p><tt>This&nbsp;module&nbsp;provides&nbsp;access&nbsp;to&nbsp;mathematical&nbsp;functions&nbsp;for&nbsp;complex<br>
+numbers.</tt></p>
+<p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#eeaa77">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Functions</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#eeaa77"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl><dt><a name="-acos"><strong>acos</strong></a>(z, /)</dt><dd><tt>Return&nbsp;the&nbsp;arc&nbsp;cosine&nbsp;of&nbsp;z.</tt></dd></dl>
+ <dl><dt><a name="-acosh"><strong>acosh</strong></a>(z, /)</dt><dd><tt>Return&nbsp;the&nbsp;inverse&nbsp;hyperbolic&nbsp;cosine&nbsp;of&nbsp;z.</tt></dd></dl>
+ <dl><dt><a name="-asin"><strong>asin</strong></a>(z, /)</dt><dd><tt>Return&nbsp;the&nbsp;arc&nbsp;sine&nbsp;of&nbsp;z.</tt></dd></dl>
+ <dl><dt><a name="-asinh"><strong>asinh</strong></a>(z, /)</dt><dd><tt>Return&nbsp;the&nbsp;inverse&nbsp;hyperbolic&nbsp;sine&nbsp;of&nbsp;z.</tt></dd></dl>
+ <dl><dt><a name="-atan"><strong>atan</strong></a>(z, /)</dt><dd><tt>Return&nbsp;the&nbsp;arc&nbsp;tangent&nbsp;of&nbsp;z.</tt></dd></dl>
+ <dl><dt><a name="-atanh"><strong>atanh</strong></a>(z, /)</dt><dd><tt>Return&nbsp;the&nbsp;inverse&nbsp;hyperbolic&nbsp;tangent&nbsp;of&nbsp;z.</tt></dd></dl>
+ <dl><dt><a name="-cos"><strong>cos</strong></a>(z, /)</dt><dd><tt>Return&nbsp;the&nbsp;cosine&nbsp;of&nbsp;z.</tt></dd></dl>
+ <dl><dt><a name="-cosh"><strong>cosh</strong></a>(z, /)</dt><dd><tt>Return&nbsp;the&nbsp;hyperbolic&nbsp;cosine&nbsp;of&nbsp;z.</tt></dd></dl>
+ <dl><dt><a name="-exp"><strong>exp</strong></a>(z, /)</dt><dd><tt>Return&nbsp;the&nbsp;exponential&nbsp;value&nbsp;e**z.</tt></dd></dl>
+ <dl><dt><a name="-isclose"><strong>isclose</strong></a>(a, b, *, rel_tol=1e-09, abs_tol=0.0)</dt><dd><tt>Determine&nbsp;whether&nbsp;two&nbsp;complex&nbsp;numbers&nbsp;are&nbsp;close&nbsp;in&nbsp;value.<br>
+&nbsp;<br>
+&nbsp;&nbsp;rel_tol<br>
+&nbsp;&nbsp;&nbsp;&nbsp;maximum&nbsp;difference&nbsp;for&nbsp;being&nbsp;considered&nbsp;"close",&nbsp;relative&nbsp;to&nbsp;the<br>
+&nbsp;&nbsp;&nbsp;&nbsp;magnitude&nbsp;of&nbsp;the&nbsp;input&nbsp;values<br>
+&nbsp;&nbsp;abs_tol<br>
+&nbsp;&nbsp;&nbsp;&nbsp;maximum&nbsp;difference&nbsp;for&nbsp;being&nbsp;considered&nbsp;"close",&nbsp;regardless&nbsp;of&nbsp;the<br>
+&nbsp;&nbsp;&nbsp;&nbsp;magnitude&nbsp;of&nbsp;the&nbsp;input&nbsp;values<br>
+&nbsp;<br>
+Return&nbsp;True&nbsp;if&nbsp;a&nbsp;is&nbsp;close&nbsp;in&nbsp;value&nbsp;to&nbsp;b,&nbsp;and&nbsp;False&nbsp;otherwise.<br>
+&nbsp;<br>
+For&nbsp;the&nbsp;values&nbsp;to&nbsp;be&nbsp;considered&nbsp;close,&nbsp;the&nbsp;difference&nbsp;between&nbsp;them&nbsp;must&nbsp;be<br>
+smaller&nbsp;than&nbsp;at&nbsp;least&nbsp;one&nbsp;of&nbsp;the&nbsp;tolerances.<br>
+&nbsp;<br>
+-inf,&nbsp;inf&nbsp;and&nbsp;NaN&nbsp;behave&nbsp;similarly&nbsp;to&nbsp;the&nbsp;IEEE&nbsp;754&nbsp;Standard.&nbsp;That&nbsp;is,&nbsp;NaN&nbsp;is<br>
+not&nbsp;close&nbsp;to&nbsp;anything,&nbsp;even&nbsp;itself.&nbsp;inf&nbsp;and&nbsp;-inf&nbsp;are&nbsp;only&nbsp;close&nbsp;to&nbsp;themselves.</tt></dd></dl>
+ <dl><dt><a name="-isfinite"><strong>isfinite</strong></a>(z, /)</dt><dd><tt>Return&nbsp;True&nbsp;if&nbsp;both&nbsp;the&nbsp;real&nbsp;and&nbsp;imaginary&nbsp;parts&nbsp;of&nbsp;z&nbsp;are&nbsp;finite,&nbsp;else&nbsp;False.</tt></dd></dl>
+ <dl><dt><a name="-isinf"><strong>isinf</strong></a>(z, /)</dt><dd><tt>Checks&nbsp;if&nbsp;the&nbsp;real&nbsp;or&nbsp;imaginary&nbsp;part&nbsp;of&nbsp;z&nbsp;is&nbsp;infinite.</tt></dd></dl>
+ <dl><dt><a name="-isnan"><strong>isnan</strong></a>(z, /)</dt><dd><tt>Checks&nbsp;if&nbsp;the&nbsp;real&nbsp;or&nbsp;imaginary&nbsp;part&nbsp;of&nbsp;z&nbsp;not&nbsp;a&nbsp;number&nbsp;(NaN).</tt></dd></dl>
+ <dl><dt><a name="-log"><strong>log</strong></a>(...)</dt><dd><tt><a href="#-log">log</a>(z[,&nbsp;base])&nbsp;-&gt;&nbsp;the&nbsp;logarithm&nbsp;of&nbsp;z&nbsp;to&nbsp;the&nbsp;given&nbsp;base.<br>
+&nbsp;<br>
+If&nbsp;the&nbsp;base&nbsp;not&nbsp;specified,&nbsp;returns&nbsp;the&nbsp;natural&nbsp;logarithm&nbsp;(base&nbsp;e)&nbsp;of&nbsp;z.</tt></dd></dl>
+ <dl><dt><a name="-log10"><strong>log10</strong></a>(z, /)</dt><dd><tt>Return&nbsp;the&nbsp;base-10&nbsp;logarithm&nbsp;of&nbsp;z.</tt></dd></dl>
+ <dl><dt><a name="-phase"><strong>phase</strong></a>(z, /)</dt><dd><tt>Return&nbsp;argument,&nbsp;also&nbsp;known&nbsp;as&nbsp;the&nbsp;phase&nbsp;angle,&nbsp;of&nbsp;a&nbsp;complex.</tt></dd></dl>
+ <dl><dt><a name="-polar"><strong>polar</strong></a>(z, /)</dt><dd><tt>Convert&nbsp;a&nbsp;complex&nbsp;from&nbsp;rectangular&nbsp;coordinates&nbsp;to&nbsp;polar&nbsp;coordinates.<br>
+&nbsp;<br>
+r&nbsp;is&nbsp;the&nbsp;distance&nbsp;from&nbsp;0&nbsp;and&nbsp;phi&nbsp;the&nbsp;phase&nbsp;angle.</tt></dd></dl>
+ <dl><dt><a name="-rect"><strong>rect</strong></a>(r, phi, /)</dt><dd><tt>Convert&nbsp;from&nbsp;polar&nbsp;coordinates&nbsp;to&nbsp;rectangular&nbsp;coordinates.</tt></dd></dl>
+ <dl><dt><a name="-sin"><strong>sin</strong></a>(z, /)</dt><dd><tt>Return&nbsp;the&nbsp;sine&nbsp;of&nbsp;z.</tt></dd></dl>
+ <dl><dt><a name="-sinh"><strong>sinh</strong></a>(z, /)</dt><dd><tt>Return&nbsp;the&nbsp;hyperbolic&nbsp;sine&nbsp;of&nbsp;z.</tt></dd></dl>
+ <dl><dt><a name="-sqrt"><strong>sqrt</strong></a>(z, /)</dt><dd><tt>Return&nbsp;the&nbsp;square&nbsp;root&nbsp;of&nbsp;z.</tt></dd></dl>
+ <dl><dt><a name="-tan"><strong>tan</strong></a>(z, /)</dt><dd><tt>Return&nbsp;the&nbsp;tangent&nbsp;of&nbsp;z.</tt></dd></dl>
+ <dl><dt><a name="-tanh"><strong>tanh</strong></a>(z, /)</dt><dd><tt>Return&nbsp;the&nbsp;hyperbolic&nbsp;tangent&nbsp;of&nbsp;z.</tt></dd></dl>
+</td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#55aa55">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Data</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#55aa55"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><strong>e</strong> = 2.718281828459045<br>
+<strong>inf</strong> = inf<br>
+<strong>infj</strong> = infj<br>
+<strong>nan</strong> = nan<br>
+<strong>nanj</strong> = nanj<br>
+<strong>pi</strong> = 3.141592653589793<br>
+<strong>tau</strong> = 6.283185307179586</td></tr></table>
+</body></html>

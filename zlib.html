@@ -1,0 +1,195 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head><title>Python: built-in module zlib</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+</head><body bgcolor="#f0f0f8">
+
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="heading">
+<tr bgcolor="#7799ee">
+<td valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong>zlib</strong></big></big> (version 1.0)</font></td
+><td align=right valign=bottom
+><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br>(built-in)</font></td></tr></table>
+    <p><tt>The&nbsp;functions&nbsp;in&nbsp;this&nbsp;module&nbsp;allow&nbsp;compression&nbsp;and&nbsp;decompression&nbsp;using&nbsp;the<br>
+zlib&nbsp;library,&nbsp;which&nbsp;is&nbsp;based&nbsp;on&nbsp;GNU&nbsp;zip.<br>
+&nbsp;<br>
+<a href="#-adler32">adler32</a>(string[,&nbsp;start])&nbsp;--&nbsp;Compute&nbsp;an&nbsp;Adler-32&nbsp;checksum.<br>
+<a href="#-compress">compress</a>(data[,&nbsp;level])&nbsp;--&nbsp;Compress&nbsp;data,&nbsp;with&nbsp;compression&nbsp;level&nbsp;0-9&nbsp;or&nbsp;-1.<br>
+<a href="#-compressobj">compressobj</a>([level[,&nbsp;...]])&nbsp;--&nbsp;Return&nbsp;a&nbsp;compressor&nbsp;object.<br>
+<a href="#-crc32">crc32</a>(string[,&nbsp;start])&nbsp;--&nbsp;Compute&nbsp;a&nbsp;CRC-32&nbsp;checksum.<br>
+<a href="#-decompress">decompress</a>(string,[wbits],[bufsize])&nbsp;--&nbsp;Decompresses&nbsp;a&nbsp;compressed&nbsp;string.<br>
+<a href="#-decompressobj">decompressobj</a>([wbits[,&nbsp;zdict]]])&nbsp;--&nbsp;Return&nbsp;a&nbsp;decompressor&nbsp;object.<br>
+&nbsp;<br>
+'wbits'&nbsp;is&nbsp;window&nbsp;buffer&nbsp;size&nbsp;and&nbsp;container&nbsp;format.<br>
+Compressor&nbsp;objects&nbsp;support&nbsp;<a href="#-compress">compress</a>()&nbsp;and&nbsp;flush()&nbsp;methods;&nbsp;decompressor<br>
+objects&nbsp;support&nbsp;<a href="#-decompress">decompress</a>()&nbsp;and&nbsp;flush().</tt></p>
+<p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ee77aa">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Classes</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#ee77aa"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl>
+<dt><font face="helvetica, arial"><a href="builtins.html#Exception">builtins.Exception</a>(<a href="builtins.html#BaseException">builtins.BaseException</a>)
+</font></dt><dd>
+<dl>
+<dt><font face="helvetica, arial"><a href="zlib.html#error">error</a>
+</font></dt></dl>
+</dd>
+</dl>
+ <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="error">class <strong>error</strong></a>(<a href="builtins.html#Exception">builtins.Exception</a>)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt>Common&nbsp;base&nbsp;class&nbsp;for&nbsp;all&nbsp;non-exit&nbsp;exceptions.<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%"><dl><dt>Method resolution order:</dt>
+<dd><a href="zlib.html#error">error</a></dd>
+<dd><a href="builtins.html#Exception">builtins.Exception</a></dd>
+<dd><a href="builtins.html#BaseException">builtins.BaseException</a></dd>
+<dd><a href="builtins.html#object">builtins.object</a></dd>
+</dl>
+<hr>
+Data descriptors defined here:<br>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<hr>
+Methods inherited from <a href="builtins.html#Exception">builtins.Exception</a>:<br>
+<dl><dt><a name="error-__init__"><strong>__init__</strong></a>(self, /, *args, **kwargs)</dt><dd><tt>Initialize&nbsp;self.&nbsp;&nbsp;See&nbsp;help(type(self))&nbsp;for&nbsp;accurate&nbsp;signature.</tt></dd></dl>
+
+<hr>
+Static methods inherited from <a href="builtins.html#Exception">builtins.Exception</a>:<br>
+<dl><dt><a name="error-__new__"><strong>__new__</strong></a>(*args, **kwargs)<font color="#909090"><font face="helvetica, arial"> from <a href="builtins.html#type">builtins.type</a></font></font></dt><dd><tt>Create&nbsp;and&nbsp;return&nbsp;a&nbsp;new&nbsp;object.&nbsp;&nbsp;See&nbsp;help(type)&nbsp;for&nbsp;accurate&nbsp;signature.</tt></dd></dl>
+
+<hr>
+Methods inherited from <a href="builtins.html#BaseException">builtins.BaseException</a>:<br>
+<dl><dt><a name="error-__delattr__"><strong>__delattr__</strong></a>(self, name, /)</dt><dd><tt>Implement&nbsp;delattr(self,&nbsp;name).</tt></dd></dl>
+
+<dl><dt><a name="error-__getattribute__"><strong>__getattribute__</strong></a>(self, name, /)</dt><dd><tt>Return&nbsp;getattr(self,&nbsp;name).</tt></dd></dl>
+
+<dl><dt><a name="error-__reduce__"><strong>__reduce__</strong></a>(...)</dt><dd><tt>Helper&nbsp;for&nbsp;pickle.</tt></dd></dl>
+
+<dl><dt><a name="error-__repr__"><strong>__repr__</strong></a>(self, /)</dt><dd><tt>Return&nbsp;repr(self).</tt></dd></dl>
+
+<dl><dt><a name="error-__setattr__"><strong>__setattr__</strong></a>(self, name, value, /)</dt><dd><tt>Implement&nbsp;setattr(self,&nbsp;name,&nbsp;value).</tt></dd></dl>
+
+<dl><dt><a name="error-__setstate__"><strong>__setstate__</strong></a>(...)</dt></dl>
+
+<dl><dt><a name="error-__str__"><strong>__str__</strong></a>(self, /)</dt><dd><tt>Return&nbsp;str(self).</tt></dd></dl>
+
+<dl><dt><a name="error-with_traceback"><strong>with_traceback</strong></a>(...)</dt><dd><tt><a href="builtins.html#Exception">Exception</a>.<a href="#error-with_traceback">with_traceback</a>(tb)&nbsp;--<br>
+set&nbsp;self.<strong>__traceback__</strong>&nbsp;to&nbsp;tb&nbsp;and&nbsp;return&nbsp;self.</tt></dd></dl>
+
+<hr>
+Data descriptors inherited from <a href="builtins.html#BaseException">builtins.BaseException</a>:<br>
+<dl><dt><strong>__cause__</strong></dt>
+<dd><tt>exception&nbsp;cause</tt></dd>
+</dl>
+<dl><dt><strong>__context__</strong></dt>
+<dd><tt>exception&nbsp;context</tt></dd>
+</dl>
+<dl><dt><strong>__dict__</strong></dt>
+</dl>
+<dl><dt><strong>__suppress_context__</strong></dt>
+</dl>
+<dl><dt><strong>__traceback__</strong></dt>
+</dl>
+<dl><dt><strong>args</strong></dt>
+</dl>
+</td></tr></table></td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#eeaa77">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Functions</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#eeaa77"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl><dt><a name="-adler32"><strong>adler32</strong></a>(data, value=1, /)</dt><dd><tt>Compute&nbsp;an&nbsp;Adler-32&nbsp;checksum&nbsp;of&nbsp;data.<br>
+&nbsp;<br>
+&nbsp;&nbsp;value<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Starting&nbsp;value&nbsp;of&nbsp;the&nbsp;checksum.<br>
+&nbsp;<br>
+The&nbsp;returned&nbsp;checksum&nbsp;is&nbsp;an&nbsp;integer.</tt></dd></dl>
+ <dl><dt><a name="-compress"><strong>compress</strong></a>(data, /, level=-1)</dt><dd><tt>Returns&nbsp;a&nbsp;bytes&nbsp;object&nbsp;containing&nbsp;compressed&nbsp;data.<br>
+&nbsp;<br>
+data<br>
+&nbsp;&nbsp;Binary&nbsp;data&nbsp;to&nbsp;be&nbsp;compressed.<br>
+level<br>
+&nbsp;&nbsp;Compression&nbsp;level,&nbsp;in&nbsp;0-9&nbsp;or&nbsp;-1.</tt></dd></dl>
+ <dl><dt><a name="-compressobj"><strong>compressobj</strong></a>(level=-1, method=8, wbits=15, memLevel=8, strategy=0, zdict=None)</dt><dd><tt>Return&nbsp;a&nbsp;compressor&nbsp;object.<br>
+&nbsp;<br>
+level<br>
+&nbsp;&nbsp;The&nbsp;compression&nbsp;level&nbsp;(an&nbsp;integer&nbsp;in&nbsp;the&nbsp;range&nbsp;0-9&nbsp;or&nbsp;-1;&nbsp;default&nbsp;is<br>
+&nbsp;&nbsp;currently&nbsp;equivalent&nbsp;to&nbsp;6).&nbsp;&nbsp;Higher&nbsp;compression&nbsp;levels&nbsp;are&nbsp;slower,<br>
+&nbsp;&nbsp;but&nbsp;produce&nbsp;smaller&nbsp;results.<br>
+method<br>
+&nbsp;&nbsp;The&nbsp;compression&nbsp;algorithm.&nbsp;&nbsp;If&nbsp;given,&nbsp;this&nbsp;must&nbsp;be&nbsp;DEFLATED.<br>
+wbits<br>
+&nbsp;&nbsp;+9&nbsp;to&nbsp;+15:&nbsp;The&nbsp;base-two&nbsp;logarithm&nbsp;of&nbsp;the&nbsp;window&nbsp;size.&nbsp;&nbsp;Include&nbsp;a&nbsp;zlib<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;container.<br>
+&nbsp;&nbsp;-9&nbsp;to&nbsp;-15:&nbsp;Generate&nbsp;a&nbsp;raw&nbsp;stream.<br>
+&nbsp;&nbsp;+25&nbsp;to&nbsp;+31:&nbsp;Include&nbsp;a&nbsp;gzip&nbsp;container.<br>
+memLevel<br>
+&nbsp;&nbsp;Controls&nbsp;the&nbsp;amount&nbsp;of&nbsp;memory&nbsp;used&nbsp;for&nbsp;internal&nbsp;compression&nbsp;state.<br>
+&nbsp;&nbsp;Valid&nbsp;values&nbsp;range&nbsp;from&nbsp;1&nbsp;to&nbsp;9.&nbsp;&nbsp;Higher&nbsp;values&nbsp;result&nbsp;in&nbsp;higher&nbsp;memory<br>
+&nbsp;&nbsp;usage,&nbsp;faster&nbsp;compression,&nbsp;and&nbsp;smaller&nbsp;output.<br>
+strategy<br>
+&nbsp;&nbsp;Used&nbsp;to&nbsp;tune&nbsp;the&nbsp;compression&nbsp;algorithm.&nbsp;&nbsp;Possible&nbsp;values&nbsp;are<br>
+&nbsp;&nbsp;Z_DEFAULT_STRATEGY,&nbsp;Z_FILTERED,&nbsp;and&nbsp;Z_HUFFMAN_ONLY.<br>
+zdict<br>
+&nbsp;&nbsp;The&nbsp;predefined&nbsp;compression&nbsp;dictionary&nbsp;-&nbsp;a&nbsp;sequence&nbsp;of&nbsp;bytes<br>
+&nbsp;&nbsp;containing&nbsp;subsequences&nbsp;that&nbsp;are&nbsp;likely&nbsp;to&nbsp;occur&nbsp;in&nbsp;the&nbsp;input&nbsp;data.</tt></dd></dl>
+ <dl><dt><a name="-crc32"><strong>crc32</strong></a>(data, value=0, /)</dt><dd><tt>Compute&nbsp;a&nbsp;CRC-32&nbsp;checksum&nbsp;of&nbsp;data.<br>
+&nbsp;<br>
+&nbsp;&nbsp;value<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Starting&nbsp;value&nbsp;of&nbsp;the&nbsp;checksum.<br>
+&nbsp;<br>
+The&nbsp;returned&nbsp;checksum&nbsp;is&nbsp;an&nbsp;integer.</tt></dd></dl>
+ <dl><dt><a name="-decompress"><strong>decompress</strong></a>(data, /, wbits=15, bufsize=16384)</dt><dd><tt>Returns&nbsp;a&nbsp;bytes&nbsp;object&nbsp;containing&nbsp;the&nbsp;uncompressed&nbsp;data.<br>
+&nbsp;<br>
+data<br>
+&nbsp;&nbsp;Compressed&nbsp;data.<br>
+wbits<br>
+&nbsp;&nbsp;The&nbsp;window&nbsp;buffer&nbsp;size&nbsp;and&nbsp;container&nbsp;format.<br>
+bufsize<br>
+&nbsp;&nbsp;The&nbsp;initial&nbsp;output&nbsp;buffer&nbsp;size.</tt></dd></dl>
+ <dl><dt><a name="-decompressobj"><strong>decompressobj</strong></a>(wbits=15, zdict=b'')</dt><dd><tt>Return&nbsp;a&nbsp;decompressor&nbsp;object.<br>
+&nbsp;<br>
+wbits<br>
+&nbsp;&nbsp;The&nbsp;window&nbsp;buffer&nbsp;size&nbsp;and&nbsp;container&nbsp;format.<br>
+zdict<br>
+&nbsp;&nbsp;The&nbsp;predefined&nbsp;compression&nbsp;dictionary.&nbsp;&nbsp;This&nbsp;must&nbsp;be&nbsp;the&nbsp;same<br>
+&nbsp;&nbsp;dictionary&nbsp;as&nbsp;used&nbsp;by&nbsp;the&nbsp;compressor&nbsp;that&nbsp;produced&nbsp;the&nbsp;input&nbsp;data.</tt></dd></dl>
+</td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#55aa55">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Data</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#55aa55"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><strong>DEFLATED</strong> = 8<br>
+<strong>DEF_BUF_SIZE</strong> = 16384<br>
+<strong>DEF_MEM_LEVEL</strong> = 8<br>
+<strong>MAX_WBITS</strong> = 15<br>
+<strong>ZLIB_RUNTIME_VERSION</strong> = '1.2.11'<br>
+<strong>ZLIB_VERSION</strong> = '1.2.11'<br>
+<strong>Z_BEST_COMPRESSION</strong> = 9<br>
+<strong>Z_BEST_SPEED</strong> = 1<br>
+<strong>Z_BLOCK</strong> = 5<br>
+<strong>Z_DEFAULT_COMPRESSION</strong> = -1<br>
+<strong>Z_DEFAULT_STRATEGY</strong> = 0<br>
+<strong>Z_FILTERED</strong> = 1<br>
+<strong>Z_FINISH</strong> = 4<br>
+<strong>Z_FIXED</strong> = 4<br>
+<strong>Z_FULL_FLUSH</strong> = 3<br>
+<strong>Z_HUFFMAN_ONLY</strong> = 2<br>
+<strong>Z_NO_COMPRESSION</strong> = 0<br>
+<strong>Z_NO_FLUSH</strong> = 0<br>
+<strong>Z_PARTIAL_FLUSH</strong> = 1<br>
+<strong>Z_RLE</strong> = 3<br>
+<strong>Z_SYNC_FLUSH</strong> = 2<br>
+<strong>Z_TREES</strong> = 6</td></tr></table>
+</body></html>

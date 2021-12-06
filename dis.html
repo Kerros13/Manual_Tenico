@@ -1,0 +1,272 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head><title>Python: module dis</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+</head><body bgcolor="#f0f0f8">
+
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="heading">
+<tr bgcolor="#7799ee">
+<td valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong>dis</strong></big></big></font></td
+><td align=right valign=bottom
+><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:c%3A%5Cpython38%5Clib%5Cdis.py">c:\python38\lib\dis.py</a><br><a href="https://docs.python.org/3.8/library/dis">Module Reference</a></font></td></tr></table>
+    <p><tt>Disassembler&nbsp;of&nbsp;Python&nbsp;byte&nbsp;code&nbsp;into&nbsp;mnemonics.</tt></p>
+<p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#aa55cc">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Modules</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#aa55cc"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><table width="100%" summary="list"><tr><td width="25%" valign=top><a href="collections.html">collections</a><br>
+</td><td width="25%" valign=top><a href="io.html">io</a><br>
+</td><td width="25%" valign=top><a href="sys.html">sys</a><br>
+</td><td width="25%" valign=top><a href="types.html">types</a><br>
+</td></tr></table></td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ee77aa">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Classes</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#ee77aa"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl>
+<dt><font face="helvetica, arial"><a href="builtins.html#object">builtins.object</a>
+</font></dt><dd>
+<dl>
+<dt><font face="helvetica, arial"><a href="dis.html#Bytecode">Bytecode</a>
+</font></dt></dl>
+</dd>
+<dt><font face="helvetica, arial"><a href="dis.html#_Instruction">_Instruction</a>(<a href="builtins.html#tuple">builtins.tuple</a>)
+</font></dt><dd>
+<dl>
+<dt><font face="helvetica, arial"><a href="dis.html#Instruction">Instruction</a>
+</font></dt></dl>
+</dd>
+</dl>
+ <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="Bytecode">class <strong>Bytecode</strong></a>(<a href="builtins.html#object">builtins.object</a>)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt><a href="#Bytecode">Bytecode</a>(x,&nbsp;*,&nbsp;first_line=None,&nbsp;current_offset=None)<br>
+&nbsp;<br>
+The&nbsp;bytecode&nbsp;operations&nbsp;of&nbsp;a&nbsp;piece&nbsp;of&nbsp;code<br>
+&nbsp;<br>
+Instantiate&nbsp;this&nbsp;with&nbsp;a&nbsp;function,&nbsp;method,&nbsp;other&nbsp;compiled&nbsp;<a href="builtins.html#object">object</a>,&nbsp;string&nbsp;of<br>
+code,&nbsp;or&nbsp;a&nbsp;code&nbsp;<a href="builtins.html#object">object</a>&nbsp;(as&nbsp;returned&nbsp;by&nbsp;compile()).<br>
+&nbsp;<br>
+Iterating&nbsp;over&nbsp;this&nbsp;yields&nbsp;the&nbsp;bytecode&nbsp;operations&nbsp;as&nbsp;<a href="#Instruction">Instruction</a>&nbsp;instances.<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%">Methods defined here:<br>
+<dl><dt><a name="Bytecode-__init__"><strong>__init__</strong></a>(self, x, *, first_line=None, current_offset=None)</dt><dd><tt>Initialize&nbsp;self.&nbsp;&nbsp;See&nbsp;help(type(self))&nbsp;for&nbsp;accurate&nbsp;signature.</tt></dd></dl>
+
+<dl><dt><a name="Bytecode-__iter__"><strong>__iter__</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="Bytecode-__repr__"><strong>__repr__</strong></a>(self)</dt><dd><tt>Return&nbsp;repr(self).</tt></dd></dl>
+
+<dl><dt><a name="Bytecode-dis"><strong>dis</strong></a>(self)</dt><dd><tt>Return&nbsp;a&nbsp;formatted&nbsp;view&nbsp;of&nbsp;the&nbsp;bytecode&nbsp;operations.</tt></dd></dl>
+
+<dl><dt><a name="Bytecode-info"><strong>info</strong></a>(self)</dt><dd><tt>Return&nbsp;formatted&nbsp;information&nbsp;about&nbsp;the&nbsp;code&nbsp;<a href="builtins.html#object">object</a>.</tt></dd></dl>
+
+<hr>
+Class methods defined here:<br>
+<dl><dt><a name="Bytecode-from_traceback"><strong>from_traceback</strong></a>(tb)<font color="#909090"><font face="helvetica, arial"> from <a href="builtins.html#type">builtins.type</a></font></font></dt><dd><tt>Construct&nbsp;a&nbsp;<a href="#Bytecode">Bytecode</a>&nbsp;from&nbsp;the&nbsp;given&nbsp;traceback</tt></dd></dl>
+
+<hr>
+Data descriptors defined here:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><tt>dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="Instruction">class <strong>Instruction</strong></a>(<a href="dis.html#_Instruction">_Instruction</a>)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt><a href="#Instruction">Instruction</a>(opname,&nbsp;opcode,&nbsp;arg,&nbsp;argval,&nbsp;argrepr,&nbsp;offset,&nbsp;starts_line,&nbsp;is_jump_target)<br>
+&nbsp;<br>
+Details&nbsp;for&nbsp;a&nbsp;bytecode&nbsp;operation<br>
+&nbsp;<br>
+Defined&nbsp;fields:<br>
+&nbsp;&nbsp;opname&nbsp;-&nbsp;human&nbsp;readable&nbsp;name&nbsp;for&nbsp;operation<br>
+&nbsp;&nbsp;opcode&nbsp;-&nbsp;numeric&nbsp;code&nbsp;for&nbsp;operation<br>
+&nbsp;&nbsp;arg&nbsp;-&nbsp;numeric&nbsp;argument&nbsp;to&nbsp;operation&nbsp;(if&nbsp;any),&nbsp;otherwise&nbsp;None<br>
+&nbsp;&nbsp;argval&nbsp;-&nbsp;resolved&nbsp;arg&nbsp;value&nbsp;(if&nbsp;known),&nbsp;otherwise&nbsp;same&nbsp;as&nbsp;arg<br>
+&nbsp;&nbsp;argrepr&nbsp;-&nbsp;human&nbsp;readable&nbsp;description&nbsp;of&nbsp;operation&nbsp;argument<br>
+&nbsp;&nbsp;offset&nbsp;-&nbsp;start&nbsp;index&nbsp;of&nbsp;operation&nbsp;within&nbsp;bytecode&nbsp;sequence<br>
+&nbsp;&nbsp;starts_line&nbsp;-&nbsp;line&nbsp;started&nbsp;by&nbsp;this&nbsp;opcode&nbsp;(if&nbsp;any),&nbsp;otherwise&nbsp;None<br>
+&nbsp;&nbsp;is_jump_target&nbsp;-&nbsp;True&nbsp;if&nbsp;other&nbsp;code&nbsp;jumps&nbsp;to&nbsp;here,&nbsp;otherwise&nbsp;False<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%"><dl><dt>Method resolution order:</dt>
+<dd><a href="dis.html#Instruction">Instruction</a></dd>
+<dd><a href="dis.html#_Instruction">_Instruction</a></dd>
+<dd><a href="builtins.html#tuple">builtins.tuple</a></dd>
+<dd><a href="builtins.html#object">builtins.object</a></dd>
+</dl>
+<hr>
+Methods defined here:<br>
+<dl><dt><a name="Instruction-_disassemble"><strong>_disassemble</strong></a>(self, lineno_width=3, mark_as_current=False, offset_width=4)</dt><dd><tt>Format&nbsp;instruction&nbsp;details&nbsp;for&nbsp;inclusion&nbsp;in&nbsp;disassembly&nbsp;output<br>
+&nbsp;<br>
+*lineno_width*&nbsp;sets&nbsp;the&nbsp;width&nbsp;of&nbsp;the&nbsp;line&nbsp;number&nbsp;field&nbsp;(0&nbsp;omits&nbsp;it)<br>
+*mark_as_current*&nbsp;inserts&nbsp;a&nbsp;'--&gt;'&nbsp;marker&nbsp;arrow&nbsp;as&nbsp;part&nbsp;of&nbsp;the&nbsp;line<br>
+*offset_width*&nbsp;sets&nbsp;the&nbsp;width&nbsp;of&nbsp;the&nbsp;instruction&nbsp;offset&nbsp;field</tt></dd></dl>
+
+<hr>
+Data descriptors defined here:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><tt>dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<hr>
+Methods inherited from <a href="dis.html#_Instruction">_Instruction</a>:<br>
+<dl><dt><a name="Instruction-__getnewargs__"><strong>__getnewargs__</strong></a>(self)</dt><dd><tt>Return&nbsp;self&nbsp;as&nbsp;a&nbsp;plain&nbsp;tuple.&nbsp;&nbsp;Used&nbsp;by&nbsp;copy&nbsp;and&nbsp;pickle.</tt></dd></dl>
+
+<dl><dt><a name="Instruction-__repr__"><strong>__repr__</strong></a>(self)</dt><dd><tt>Return&nbsp;a&nbsp;nicely&nbsp;formatted&nbsp;representation&nbsp;string</tt></dd></dl>
+
+<dl><dt><a name="Instruction-_asdict"><strong>_asdict</strong></a>(self)</dt><dd><tt>Return&nbsp;a&nbsp;new&nbsp;dict&nbsp;which&nbsp;maps&nbsp;field&nbsp;names&nbsp;to&nbsp;their&nbsp;values.</tt></dd></dl>
+
+<dl><dt><a name="Instruction-_replace"><strong>_replace</strong></a>(self, /, **kwds)</dt><dd><tt>Return&nbsp;a&nbsp;new&nbsp;_Instruction&nbsp;<a href="builtins.html#object">object</a>&nbsp;replacing&nbsp;specified&nbsp;fields&nbsp;with&nbsp;new&nbsp;values</tt></dd></dl>
+
+<hr>
+Class methods inherited from <a href="dis.html#_Instruction">_Instruction</a>:<br>
+<dl><dt><a name="Instruction-_make"><strong>_make</strong></a>(iterable)<font color="#909090"><font face="helvetica, arial"> from <a href="builtins.html#type">builtins.type</a></font></font></dt><dd><tt>Make&nbsp;a&nbsp;new&nbsp;_Instruction&nbsp;<a href="builtins.html#object">object</a>&nbsp;from&nbsp;a&nbsp;sequence&nbsp;or&nbsp;iterable</tt></dd></dl>
+
+<hr>
+Static methods inherited from <a href="dis.html#_Instruction">_Instruction</a>:<br>
+<dl><dt><a name="Instruction-__new__"><strong>__new__</strong></a>(_cls, opname, opcode, arg, argval, argrepr, offset, starts_line, is_jump_target)</dt><dd><tt>Create&nbsp;new&nbsp;instance&nbsp;of&nbsp;_Instruction(opname,&nbsp;opcode,&nbsp;arg,&nbsp;argval,&nbsp;argrepr,&nbsp;offset,&nbsp;starts_line,&nbsp;is_jump_target)</tt></dd></dl>
+
+<hr>
+Data descriptors inherited from <a href="dis.html#_Instruction">_Instruction</a>:<br>
+<dl><dt><strong>opname</strong></dt>
+<dd><tt>Human&nbsp;readable&nbsp;name&nbsp;for&nbsp;operation</tt></dd>
+</dl>
+<dl><dt><strong>opcode</strong></dt>
+<dd><tt>Numeric&nbsp;code&nbsp;for&nbsp;operation</tt></dd>
+</dl>
+<dl><dt><strong>arg</strong></dt>
+<dd><tt>Numeric&nbsp;argument&nbsp;to&nbsp;operation&nbsp;(if&nbsp;any),&nbsp;otherwise&nbsp;None</tt></dd>
+</dl>
+<dl><dt><strong>argval</strong></dt>
+<dd><tt>Resolved&nbsp;arg&nbsp;value&nbsp;(if&nbsp;known),&nbsp;otherwise&nbsp;same&nbsp;as&nbsp;arg</tt></dd>
+</dl>
+<dl><dt><strong>argrepr</strong></dt>
+<dd><tt>Human&nbsp;readable&nbsp;description&nbsp;of&nbsp;operation&nbsp;argument</tt></dd>
+</dl>
+<dl><dt><strong>offset</strong></dt>
+<dd><tt>Start&nbsp;index&nbsp;of&nbsp;operation&nbsp;within&nbsp;bytecode&nbsp;sequence</tt></dd>
+</dl>
+<dl><dt><strong>starts_line</strong></dt>
+<dd><tt>Line&nbsp;started&nbsp;by&nbsp;this&nbsp;opcode&nbsp;(if&nbsp;any),&nbsp;otherwise&nbsp;None</tt></dd>
+</dl>
+<dl><dt><strong>is_jump_target</strong></dt>
+<dd><tt>True&nbsp;if&nbsp;other&nbsp;code&nbsp;jumps&nbsp;to&nbsp;here,&nbsp;otherwise&nbsp;False</tt></dd>
+</dl>
+<hr>
+Data and other attributes inherited from <a href="dis.html#_Instruction">_Instruction</a>:<br>
+<dl><dt><strong>_field_defaults</strong> = {}</dl>
+
+<dl><dt><strong>_fields</strong> = ('opname', 'opcode', 'arg', 'argval', 'argrepr', 'offset', 'starts_line', 'is_jump_target')</dl>
+
+<dl><dt><strong>_fields_defaults</strong> = {}</dl>
+
+<hr>
+Methods inherited from <a href="builtins.html#tuple">builtins.tuple</a>:<br>
+<dl><dt><a name="Instruction-__add__"><strong>__add__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;self+value.</tt></dd></dl>
+
+<dl><dt><a name="Instruction-__contains__"><strong>__contains__</strong></a>(self, key, /)</dt><dd><tt>Return&nbsp;key&nbsp;in&nbsp;self.</tt></dd></dl>
+
+<dl><dt><a name="Instruction-__eq__"><strong>__eq__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;self==value.</tt></dd></dl>
+
+<dl><dt><a name="Instruction-__ge__"><strong>__ge__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;self&gt;=value.</tt></dd></dl>
+
+<dl><dt><a name="Instruction-__getattribute__"><strong>__getattribute__</strong></a>(self, name, /)</dt><dd><tt>Return&nbsp;getattr(self,&nbsp;name).</tt></dd></dl>
+
+<dl><dt><a name="Instruction-__getitem__"><strong>__getitem__</strong></a>(self, key, /)</dt><dd><tt>Return&nbsp;self[key].</tt></dd></dl>
+
+<dl><dt><a name="Instruction-__gt__"><strong>__gt__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;self&gt;value.</tt></dd></dl>
+
+<dl><dt><a name="Instruction-__hash__"><strong>__hash__</strong></a>(self, /)</dt><dd><tt>Return&nbsp;hash(self).</tt></dd></dl>
+
+<dl><dt><a name="Instruction-__iter__"><strong>__iter__</strong></a>(self, /)</dt><dd><tt>Implement&nbsp;iter(self).</tt></dd></dl>
+
+<dl><dt><a name="Instruction-__le__"><strong>__le__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;self&lt;=value.</tt></dd></dl>
+
+<dl><dt><a name="Instruction-__len__"><strong>__len__</strong></a>(self, /)</dt><dd><tt>Return&nbsp;len(self).</tt></dd></dl>
+
+<dl><dt><a name="Instruction-__lt__"><strong>__lt__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;self&lt;value.</tt></dd></dl>
+
+<dl><dt><a name="Instruction-__mul__"><strong>__mul__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;self*value.</tt></dd></dl>
+
+<dl><dt><a name="Instruction-__ne__"><strong>__ne__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;self!=value.</tt></dd></dl>
+
+<dl><dt><a name="Instruction-__rmul__"><strong>__rmul__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;value*self.</tt></dd></dl>
+
+<dl><dt><a name="Instruction-count"><strong>count</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;number&nbsp;of&nbsp;occurrences&nbsp;of&nbsp;value.</tt></dd></dl>
+
+<dl><dt><a name="Instruction-index"><strong>index</strong></a>(self, value, start=0, stop=9223372036854775807, /)</dt><dd><tt>Return&nbsp;first&nbsp;index&nbsp;of&nbsp;value.<br>
+&nbsp;<br>
+Raises&nbsp;ValueError&nbsp;if&nbsp;the&nbsp;value&nbsp;is&nbsp;not&nbsp;present.</tt></dd></dl>
+
+</td></tr></table></td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#eeaa77">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Functions</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#eeaa77"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl><dt><a name="-code_info"><strong>code_info</strong></a>(x)</dt><dd><tt>Formatted&nbsp;details&nbsp;of&nbsp;methods,&nbsp;functions,&nbsp;or&nbsp;code.</tt></dd></dl>
+ <dl><dt><a name="-dis"><strong>dis</strong></a>(x=None, *, file=None, depth=None)</dt><dd><tt>Disassemble&nbsp;classes,&nbsp;methods,&nbsp;functions,&nbsp;and&nbsp;other&nbsp;compiled&nbsp;objects.<br>
+&nbsp;<br>
+With&nbsp;no&nbsp;argument,&nbsp;disassemble&nbsp;the&nbsp;last&nbsp;traceback.<br>
+&nbsp;<br>
+Compiled&nbsp;objects&nbsp;currently&nbsp;include&nbsp;generator&nbsp;objects,&nbsp;async&nbsp;generator<br>
+objects,&nbsp;and&nbsp;coroutine&nbsp;objects,&nbsp;all&nbsp;of&nbsp;which&nbsp;store&nbsp;their&nbsp;code&nbsp;<a href="builtins.html#object">object</a><br>
+in&nbsp;a&nbsp;special&nbsp;attribute.</tt></dd></dl>
+ <dl><dt><a name="-disassemble"><strong>disassemble</strong></a>(co, lasti=-1, *, file=None)</dt><dd><tt>Disassemble&nbsp;a&nbsp;code&nbsp;<a href="builtins.html#object">object</a>.</tt></dd></dl>
+ <dl><dt><a name="-disco"><strong>disco</strong></a> = disassemble(co, lasti=-1, *, file=None)</dt><dd><tt>Disassemble&nbsp;a&nbsp;code&nbsp;<a href="builtins.html#object">object</a>.</tt></dd></dl>
+ <dl><dt><a name="-distb"><strong>distb</strong></a>(tb=None, *, file=None)</dt><dd><tt>Disassemble&nbsp;a&nbsp;traceback&nbsp;(default:&nbsp;last&nbsp;traceback).</tt></dd></dl>
+ <dl><dt><a name="-findlabels"><strong>findlabels</strong></a>(code)</dt><dd><tt>Detect&nbsp;all&nbsp;offsets&nbsp;in&nbsp;a&nbsp;byte&nbsp;code&nbsp;which&nbsp;are&nbsp;jump&nbsp;targets.<br>
+&nbsp;<br>
+Return&nbsp;the&nbsp;list&nbsp;of&nbsp;offsets.</tt></dd></dl>
+ <dl><dt><a name="-findlinestarts"><strong>findlinestarts</strong></a>(code)</dt><dd><tt>Find&nbsp;the&nbsp;offsets&nbsp;in&nbsp;a&nbsp;byte&nbsp;code&nbsp;which&nbsp;are&nbsp;start&nbsp;of&nbsp;lines&nbsp;in&nbsp;the&nbsp;source.<br>
+&nbsp;<br>
+Generate&nbsp;pairs&nbsp;(offset,&nbsp;lineno)&nbsp;as&nbsp;described&nbsp;in&nbsp;Python/compile.c.</tt></dd></dl>
+ <dl><dt><a name="-get_instructions"><strong>get_instructions</strong></a>(x, *, first_line=None)</dt><dd><tt>Iterator&nbsp;for&nbsp;the&nbsp;opcodes&nbsp;in&nbsp;methods,&nbsp;functions&nbsp;or&nbsp;code<br>
+&nbsp;<br>
+Generates&nbsp;a&nbsp;series&nbsp;of&nbsp;<a href="#Instruction">Instruction</a>&nbsp;named&nbsp;tuples&nbsp;giving&nbsp;the&nbsp;details&nbsp;of<br>
+each&nbsp;operations&nbsp;in&nbsp;the&nbsp;supplied&nbsp;code.<br>
+&nbsp;<br>
+If&nbsp;*first_line*&nbsp;is&nbsp;not&nbsp;None,&nbsp;it&nbsp;indicates&nbsp;the&nbsp;line&nbsp;number&nbsp;that&nbsp;should<br>
+be&nbsp;reported&nbsp;for&nbsp;the&nbsp;first&nbsp;source&nbsp;line&nbsp;in&nbsp;the&nbsp;disassembled&nbsp;code.<br>
+Otherwise,&nbsp;the&nbsp;source&nbsp;line&nbsp;information&nbsp;(if&nbsp;any)&nbsp;is&nbsp;taken&nbsp;directly&nbsp;from<br>
+the&nbsp;disassembled&nbsp;code&nbsp;<a href="builtins.html#object">object</a>.</tt></dd></dl>
+ <dl><dt><a name="-show_code"><strong>show_code</strong></a>(co, *, file=None)</dt><dd><tt>Print&nbsp;details&nbsp;of&nbsp;methods,&nbsp;functions,&nbsp;or&nbsp;code&nbsp;to&nbsp;*file*.<br>
+&nbsp;<br>
+If&nbsp;*file*&nbsp;is&nbsp;not&nbsp;provided,&nbsp;the&nbsp;output&nbsp;is&nbsp;printed&nbsp;on&nbsp;stdout.</tt></dd></dl>
+ <dl><dt><a name="-stack_effect"><strong>stack_effect</strong></a>(opcode, oparg=None, /, *, jump=None)</dt><dd><tt>Compute&nbsp;the&nbsp;stack&nbsp;effect&nbsp;of&nbsp;the&nbsp;opcode.</tt></dd></dl>
+</td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#55aa55">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Data</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#55aa55"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><strong>EXTENDED_ARG</strong> = 144<br>
+<strong>HAVE_ARGUMENT</strong> = 90<br>
+<strong>__all__</strong> = ['code_info', 'dis', 'disassemble', 'distb', 'disco', 'findlinestarts', 'findlabels', 'show_code', 'get_instructions', 'Instruction', 'Bytecode', 'cmp_op', 'hasconst', 'hasname', 'hasjrel', 'hasjabs', 'haslocal', 'hascompare', 'hasfree', 'opname', ...]<br>
+<strong>cmp_op</strong> = ('&lt;', '&lt;=', '==', '!=', '&gt;', '&gt;=', 'in', 'not in', 'is', 'is not', 'exception match', 'BAD')<br>
+<strong>hascompare</strong> = [107]<br>
+<strong>hasconst</strong> = [100]<br>
+<strong>hasfree</strong> = [135, 136, 137, 138, 148]<br>
+<strong>hasjabs</strong> = [111, 112, 113, 114, 115]<br>
+<strong>hasjrel</strong> = [93, 110, 122, 143, 154, 162]<br>
+<strong>haslocal</strong> = [124, 125, 126]<br>
+<strong>hasname</strong> = [90, 91, 95, 96, 97, 98, 101, 106, 108, 109, 116, 160]<br>
+<strong>hasnargs</strong> = []<br>
+<strong>opmap</strong> = {'BEFORE_ASYNC_WITH': 52, 'BEGIN_FINALLY': 53, 'BINARY_ADD': 23, 'BINARY_AND': 64, 'BINARY_FLOOR_DIVIDE': 26, 'BINARY_LSHIFT': 62, 'BINARY_MATRIX_MULTIPLY': 16, 'BINARY_MODULO': 22, 'BINARY_MULTIPLY': 20, 'BINARY_OR': 66, ...}<br>
+<strong>opname</strong> = ['&lt;0&gt;', 'POP_TOP', 'ROT_TWO', 'ROT_THREE', 'DUP_TOP', 'DUP_TOP_TWO', 'ROT_FOUR', '&lt;7&gt;', '&lt;8&gt;', 'NOP', 'UNARY_POSITIVE', 'UNARY_NEGATIVE', 'UNARY_NOT', '&lt;13&gt;', '&lt;14&gt;', 'UNARY_INVERT', 'BINARY_MATRIX_MULTIPLY', 'INPLACE_MATRIX_MULTIPLY', '&lt;18&gt;', 'BINARY_POWER', ...]</td></tr></table>
+</body></html>

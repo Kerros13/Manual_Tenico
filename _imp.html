@@ -1,0 +1,49 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head><title>Python: built-in module _imp</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+</head><body bgcolor="#f0f0f8">
+
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="heading">
+<tr bgcolor="#7799ee">
+<td valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong>_imp</strong></big></big></font></td
+><td align=right valign=bottom
+><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br>(built-in)</font></td></tr></table>
+    <p><tt>(Extremely)&nbsp;low-level&nbsp;import&nbsp;machinery&nbsp;bits&nbsp;as&nbsp;used&nbsp;by&nbsp;importlib&nbsp;and&nbsp;imp.</tt></p>
+<p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#eeaa77">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Functions</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#eeaa77"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl><dt><a name="-acquire_lock"><strong>acquire_lock</strong></a>()</dt><dd><tt>Acquires&nbsp;the&nbsp;interpreter's&nbsp;import&nbsp;lock&nbsp;for&nbsp;the&nbsp;current&nbsp;thread.<br>
+&nbsp;<br>
+This&nbsp;lock&nbsp;should&nbsp;be&nbsp;used&nbsp;by&nbsp;import&nbsp;hooks&nbsp;to&nbsp;ensure&nbsp;thread-safety&nbsp;when&nbsp;importing<br>
+modules.&nbsp;On&nbsp;platforms&nbsp;without&nbsp;threads,&nbsp;this&nbsp;function&nbsp;does&nbsp;nothing.</tt></dd></dl>
+ <dl><dt><a name="-create_builtin"><strong>create_builtin</strong></a>(spec, /)</dt><dd><tt>Create&nbsp;an&nbsp;extension&nbsp;module.</tt></dd></dl>
+ <dl><dt><a name="-create_dynamic"><strong>create_dynamic</strong></a>(...)</dt><dd><tt>Create&nbsp;an&nbsp;extension&nbsp;module.</tt></dd></dl>
+ <dl><dt><a name="-exec_builtin"><strong>exec_builtin</strong></a>(mod, /)</dt><dd><tt>Initialize&nbsp;a&nbsp;built-in&nbsp;module.</tt></dd></dl>
+ <dl><dt><a name="-exec_dynamic"><strong>exec_dynamic</strong></a>(mod, /)</dt><dd><tt>Initialize&nbsp;an&nbsp;extension&nbsp;module.</tt></dd></dl>
+ <dl><dt><a name="-extension_suffixes"><strong>extension_suffixes</strong></a>()</dt><dd><tt>Returns&nbsp;the&nbsp;list&nbsp;of&nbsp;file&nbsp;suffixes&nbsp;used&nbsp;to&nbsp;identify&nbsp;extension&nbsp;modules.</tt></dd></dl>
+ <dl><dt><a name="-get_frozen_object"><strong>get_frozen_object</strong></a>(name, /)</dt><dd><tt>Create&nbsp;a&nbsp;code&nbsp;object&nbsp;for&nbsp;a&nbsp;frozen&nbsp;module.</tt></dd></dl>
+ <dl><dt><a name="-init_frozen"><strong>init_frozen</strong></a>(name, /)</dt><dd><tt>Initializes&nbsp;a&nbsp;frozen&nbsp;module.</tt></dd></dl>
+ <dl><dt><a name="-is_builtin"><strong>is_builtin</strong></a>(name, /)</dt><dd><tt>Returns&nbsp;True&nbsp;if&nbsp;the&nbsp;module&nbsp;name&nbsp;corresponds&nbsp;to&nbsp;a&nbsp;built-in&nbsp;module.</tt></dd></dl>
+ <dl><dt><a name="-is_frozen"><strong>is_frozen</strong></a>(name, /)</dt><dd><tt>Returns&nbsp;True&nbsp;if&nbsp;the&nbsp;module&nbsp;name&nbsp;corresponds&nbsp;to&nbsp;a&nbsp;frozen&nbsp;module.</tt></dd></dl>
+ <dl><dt><a name="-is_frozen_package"><strong>is_frozen_package</strong></a>(name, /)</dt><dd><tt>Returns&nbsp;True&nbsp;if&nbsp;the&nbsp;module&nbsp;name&nbsp;is&nbsp;of&nbsp;a&nbsp;frozen&nbsp;package.</tt></dd></dl>
+ <dl><dt><a name="-lock_held"><strong>lock_held</strong></a>()</dt><dd><tt>Return&nbsp;True&nbsp;if&nbsp;the&nbsp;import&nbsp;lock&nbsp;is&nbsp;currently&nbsp;held,&nbsp;else&nbsp;False.<br>
+&nbsp;<br>
+On&nbsp;platforms&nbsp;without&nbsp;threads,&nbsp;return&nbsp;False.</tt></dd></dl>
+ <dl><dt><a name="-release_lock"><strong>release_lock</strong></a>()</dt><dd><tt>Release&nbsp;the&nbsp;interpreter's&nbsp;import&nbsp;lock.<br>
+&nbsp;<br>
+On&nbsp;platforms&nbsp;without&nbsp;threads,&nbsp;this&nbsp;function&nbsp;does&nbsp;nothing.</tt></dd></dl>
+ <dl><dt><a name="-source_hash"><strong>source_hash</strong></a>(key, source)</dt></dl>
+</td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#55aa55">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Data</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#55aa55"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><strong>check_hash_based_pycs</strong> = 'default'</td></tr></table>
+</body></html>

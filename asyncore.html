@@ -1,0 +1,372 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head><title>Python: module asyncore</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+</head><body bgcolor="#f0f0f8">
+
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="heading">
+<tr bgcolor="#7799ee">
+<td valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong>asyncore</strong></big></big></font></td
+><td align=right valign=bottom
+><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:c%3A%5Cpython38%5Clib%5Casyncore.py">c:\python38\lib\asyncore.py</a><br><a href="https://docs.python.org/3.8/library/asyncore">Module Reference</a></font></td></tr></table>
+    <p><tt>Basic&nbsp;infrastructure&nbsp;for&nbsp;asynchronous&nbsp;socket&nbsp;service&nbsp;clients&nbsp;and&nbsp;servers.<br>
+&nbsp;<br>
+There&nbsp;are&nbsp;only&nbsp;two&nbsp;ways&nbsp;to&nbsp;have&nbsp;a&nbsp;program&nbsp;on&nbsp;a&nbsp;single&nbsp;processor&nbsp;do&nbsp;"more<br>
+than&nbsp;one&nbsp;thing&nbsp;at&nbsp;a&nbsp;time".&nbsp;&nbsp;Multi-threaded&nbsp;programming&nbsp;is&nbsp;the&nbsp;simplest&nbsp;and<br>
+most&nbsp;popular&nbsp;way&nbsp;to&nbsp;do&nbsp;it,&nbsp;but&nbsp;there&nbsp;is&nbsp;another&nbsp;very&nbsp;different&nbsp;technique,<br>
+that&nbsp;lets&nbsp;you&nbsp;have&nbsp;nearly&nbsp;all&nbsp;the&nbsp;advantages&nbsp;of&nbsp;multi-threading,&nbsp;without<br>
+actually&nbsp;using&nbsp;multiple&nbsp;threads.&nbsp;it's&nbsp;really&nbsp;only&nbsp;practical&nbsp;if&nbsp;your&nbsp;program<br>
+is&nbsp;largely&nbsp;I/O&nbsp;bound.&nbsp;If&nbsp;your&nbsp;program&nbsp;is&nbsp;CPU&nbsp;bound,&nbsp;then&nbsp;pre-emptive<br>
+scheduled&nbsp;threads&nbsp;are&nbsp;probably&nbsp;what&nbsp;you&nbsp;really&nbsp;need.&nbsp;Network&nbsp;servers&nbsp;are<br>
+rarely&nbsp;CPU-bound,&nbsp;however.<br>
+&nbsp;<br>
+If&nbsp;your&nbsp;operating&nbsp;system&nbsp;supports&nbsp;the&nbsp;select()&nbsp;system&nbsp;call&nbsp;in&nbsp;its&nbsp;I/O<br>
+library&nbsp;(and&nbsp;nearly&nbsp;all&nbsp;do),&nbsp;then&nbsp;you&nbsp;can&nbsp;use&nbsp;it&nbsp;to&nbsp;juggle&nbsp;multiple<br>
+communication&nbsp;channels&nbsp;at&nbsp;once;&nbsp;doing&nbsp;other&nbsp;work&nbsp;while&nbsp;your&nbsp;I/O&nbsp;is&nbsp;taking<br>
+place&nbsp;in&nbsp;the&nbsp;"background."&nbsp;&nbsp;Although&nbsp;this&nbsp;strategy&nbsp;can&nbsp;seem&nbsp;strange&nbsp;and<br>
+complex,&nbsp;especially&nbsp;at&nbsp;first,&nbsp;it&nbsp;is&nbsp;in&nbsp;many&nbsp;ways&nbsp;easier&nbsp;to&nbsp;understand&nbsp;and<br>
+control&nbsp;than&nbsp;multi-threaded&nbsp;programming.&nbsp;The&nbsp;module&nbsp;documented&nbsp;here&nbsp;solves<br>
+many&nbsp;of&nbsp;the&nbsp;difficult&nbsp;problems&nbsp;for&nbsp;you,&nbsp;making&nbsp;the&nbsp;task&nbsp;of&nbsp;building<br>
+sophisticated&nbsp;high-performance&nbsp;network&nbsp;servers&nbsp;and&nbsp;clients&nbsp;a&nbsp;snap.</tt></p>
+<p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#aa55cc">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Modules</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#aa55cc"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><table width="100%" summary="list"><tr><td width="25%" valign=top><a href="os.html">os</a><br>
+<a href="select.html">select</a><br>
+</td><td width="25%" valign=top><a href="socket.html">socket</a><br>
+<a href="sys.html">sys</a><br>
+</td><td width="25%" valign=top><a href="time.html">time</a><br>
+<a href="warnings.html">warnings</a><br>
+</td><td width="25%" valign=top></td></tr></table></td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ee77aa">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Classes</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#ee77aa"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl>
+<dt><font face="helvetica, arial"><a href="builtins.html#Exception">builtins.Exception</a>(<a href="builtins.html#BaseException">builtins.BaseException</a>)
+</font></dt><dd>
+<dl>
+<dt><font face="helvetica, arial"><a href="asyncore.html#ExitNow">ExitNow</a>
+</font></dt></dl>
+</dd>
+<dt><font face="helvetica, arial"><a href="builtins.html#object">builtins.object</a>
+</font></dt><dd>
+<dl>
+<dt><font face="helvetica, arial"><a href="asyncore.html#dispatcher">dispatcher</a>
+</font></dt><dd>
+<dl>
+<dt><font face="helvetica, arial"><a href="asyncore.html#dispatcher_with_send">dispatcher_with_send</a>
+</font></dt></dl>
+</dd>
+</dl>
+</dd>
+</dl>
+ <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="ExitNow">class <strong>ExitNow</strong></a>(<a href="builtins.html#Exception">builtins.Exception</a>)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt>Common&nbsp;base&nbsp;class&nbsp;for&nbsp;all&nbsp;non-exit&nbsp;exceptions.<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%"><dl><dt>Method resolution order:</dt>
+<dd><a href="asyncore.html#ExitNow">ExitNow</a></dd>
+<dd><a href="builtins.html#Exception">builtins.Exception</a></dd>
+<dd><a href="builtins.html#BaseException">builtins.BaseException</a></dd>
+<dd><a href="builtins.html#object">builtins.object</a></dd>
+</dl>
+<hr>
+Data descriptors defined here:<br>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<hr>
+Methods inherited from <a href="builtins.html#Exception">builtins.Exception</a>:<br>
+<dl><dt><a name="ExitNow-__init__"><strong>__init__</strong></a>(self, /, *args, **kwargs)</dt><dd><tt>Initialize&nbsp;self.&nbsp;&nbsp;See&nbsp;help(type(self))&nbsp;for&nbsp;accurate&nbsp;signature.</tt></dd></dl>
+
+<hr>
+Static methods inherited from <a href="builtins.html#Exception">builtins.Exception</a>:<br>
+<dl><dt><a name="ExitNow-__new__"><strong>__new__</strong></a>(*args, **kwargs)<font color="#909090"><font face="helvetica, arial"> from <a href="builtins.html#type">builtins.type</a></font></font></dt><dd><tt>Create&nbsp;and&nbsp;return&nbsp;a&nbsp;new&nbsp;<a href="builtins.html#object">object</a>.&nbsp;&nbsp;See&nbsp;help(type)&nbsp;for&nbsp;accurate&nbsp;signature.</tt></dd></dl>
+
+<hr>
+Methods inherited from <a href="builtins.html#BaseException">builtins.BaseException</a>:<br>
+<dl><dt><a name="ExitNow-__delattr__"><strong>__delattr__</strong></a>(self, name, /)</dt><dd><tt>Implement&nbsp;delattr(self,&nbsp;name).</tt></dd></dl>
+
+<dl><dt><a name="ExitNow-__getattribute__"><strong>__getattribute__</strong></a>(self, name, /)</dt><dd><tt>Return&nbsp;getattr(self,&nbsp;name).</tt></dd></dl>
+
+<dl><dt><a name="ExitNow-__reduce__"><strong>__reduce__</strong></a>(...)</dt><dd><tt>Helper&nbsp;for&nbsp;pickle.</tt></dd></dl>
+
+<dl><dt><a name="ExitNow-__repr__"><strong>__repr__</strong></a>(self, /)</dt><dd><tt>Return&nbsp;repr(self).</tt></dd></dl>
+
+<dl><dt><a name="ExitNow-__setattr__"><strong>__setattr__</strong></a>(self, name, value, /)</dt><dd><tt>Implement&nbsp;setattr(self,&nbsp;name,&nbsp;value).</tt></dd></dl>
+
+<dl><dt><a name="ExitNow-__setstate__"><strong>__setstate__</strong></a>(...)</dt></dl>
+
+<dl><dt><a name="ExitNow-__str__"><strong>__str__</strong></a>(self, /)</dt><dd><tt>Return&nbsp;str(self).</tt></dd></dl>
+
+<dl><dt><a name="ExitNow-with_traceback"><strong>with_traceback</strong></a>(...)</dt><dd><tt><a href="builtins.html#Exception">Exception</a>.<a href="#ExitNow-with_traceback">with_traceback</a>(tb)&nbsp;--<br>
+set&nbsp;self.<strong>__traceback__</strong>&nbsp;to&nbsp;tb&nbsp;and&nbsp;return&nbsp;self.</tt></dd></dl>
+
+<hr>
+Data descriptors inherited from <a href="builtins.html#BaseException">builtins.BaseException</a>:<br>
+<dl><dt><strong>__cause__</strong></dt>
+<dd><tt>exception&nbsp;cause</tt></dd>
+</dl>
+<dl><dt><strong>__context__</strong></dt>
+<dd><tt>exception&nbsp;context</tt></dd>
+</dl>
+<dl><dt><strong>__dict__</strong></dt>
+</dl>
+<dl><dt><strong>__suppress_context__</strong></dt>
+</dl>
+<dl><dt><strong>__traceback__</strong></dt>
+</dl>
+<dl><dt><strong>args</strong></dt>
+</dl>
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="dispatcher">class <strong>dispatcher</strong></a>(<a href="builtins.html#object">builtins.object</a>)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt><a href="#dispatcher">dispatcher</a>(sock=None,&nbsp;map=None)<br>
+&nbsp;<br>
+<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%">Methods defined here:<br>
+<dl><dt><a name="dispatcher-__init__"><strong>__init__</strong></a>(self, sock=None, map=None)</dt><dd><tt>Initialize&nbsp;self.&nbsp;&nbsp;See&nbsp;help(type(self))&nbsp;for&nbsp;accurate&nbsp;signature.</tt></dd></dl>
+
+<dl><dt><a name="dispatcher-__repr__"><strong>__repr__</strong></a>(self)</dt><dd><tt>Return&nbsp;repr(self).</tt></dd></dl>
+
+<dl><dt><a name="dispatcher-accept"><strong>accept</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="dispatcher-add_channel"><strong>add_channel</strong></a>(self, map=None)</dt></dl>
+
+<dl><dt><a name="dispatcher-bind"><strong>bind</strong></a>(self, addr)</dt></dl>
+
+<dl><dt><a name="dispatcher-close"><strong>close</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="dispatcher-connect"><strong>connect</strong></a>(self, address)</dt></dl>
+
+<dl><dt><a name="dispatcher-create_socket"><strong>create_socket</strong></a>(self, family=&lt;AddressFamily.AF_INET: 2&gt;, type=&lt;SocketKind.SOCK_STREAM: 1&gt;)</dt></dl>
+
+<dl><dt><a name="dispatcher-del_channel"><strong>del_channel</strong></a>(self, map=None)</dt></dl>
+
+<dl><dt><a name="dispatcher-handle_accept"><strong>handle_accept</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="dispatcher-handle_accepted"><strong>handle_accepted</strong></a>(self, sock, addr)</dt></dl>
+
+<dl><dt><a name="dispatcher-handle_close"><strong>handle_close</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="dispatcher-handle_connect"><strong>handle_connect</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="dispatcher-handle_connect_event"><strong>handle_connect_event</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="dispatcher-handle_error"><strong>handle_error</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="dispatcher-handle_expt"><strong>handle_expt</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="dispatcher-handle_expt_event"><strong>handle_expt_event</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="dispatcher-handle_read"><strong>handle_read</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="dispatcher-handle_read_event"><strong>handle_read_event</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="dispatcher-handle_write"><strong>handle_write</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="dispatcher-handle_write_event"><strong>handle_write_event</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="dispatcher-listen"><strong>listen</strong></a>(self, num)</dt></dl>
+
+<dl><dt><a name="dispatcher-log"><strong>log</strong></a>(self, message)</dt></dl>
+
+<dl><dt><a name="dispatcher-log_info"><strong>log_info</strong></a>(self, message, type='info')</dt></dl>
+
+<dl><dt><a name="dispatcher-readable"><strong>readable</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="dispatcher-recv"><strong>recv</strong></a>(self, buffer_size)</dt></dl>
+
+<dl><dt><a name="dispatcher-send"><strong>send</strong></a>(self, data)</dt></dl>
+
+<dl><dt><a name="dispatcher-set_reuse_addr"><strong>set_reuse_addr</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="dispatcher-set_socket"><strong>set_socket</strong></a>(self, sock, map=None)</dt></dl>
+
+<dl><dt><a name="dispatcher-writable"><strong>writable</strong></a>(self)</dt></dl>
+
+<hr>
+Data descriptors defined here:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><tt>dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<hr>
+Data and other attributes defined here:<br>
+<dl><dt><strong>accepting</strong> = False</dl>
+
+<dl><dt><strong>addr</strong> = None</dl>
+
+<dl><dt><strong>closing</strong> = False</dl>
+
+<dl><dt><strong>connected</strong> = False</dl>
+
+<dl><dt><strong>connecting</strong> = False</dl>
+
+<dl><dt><strong>debug</strong> = False</dl>
+
+<dl><dt><strong>ignore_log_types</strong> = frozenset({'warning'})</dl>
+
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="dispatcher_with_send">class <strong>dispatcher_with_send</strong></a>(<a href="asyncore.html#dispatcher">dispatcher</a>)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt><a href="#dispatcher_with_send">dispatcher_with_send</a>(sock=None,&nbsp;map=None)<br>
+&nbsp;<br>
+<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%"><dl><dt>Method resolution order:</dt>
+<dd><a href="asyncore.html#dispatcher_with_send">dispatcher_with_send</a></dd>
+<dd><a href="asyncore.html#dispatcher">dispatcher</a></dd>
+<dd><a href="builtins.html#object">builtins.object</a></dd>
+</dl>
+<hr>
+Methods defined here:<br>
+<dl><dt><a name="dispatcher_with_send-__init__"><strong>__init__</strong></a>(self, sock=None, map=None)</dt><dd><tt>Initialize&nbsp;self.&nbsp;&nbsp;See&nbsp;help(type(self))&nbsp;for&nbsp;accurate&nbsp;signature.</tt></dd></dl>
+
+<dl><dt><a name="dispatcher_with_send-handle_write"><strong>handle_write</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="dispatcher_with_send-initiate_send"><strong>initiate_send</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="dispatcher_with_send-send"><strong>send</strong></a>(self, data)</dt></dl>
+
+<dl><dt><a name="dispatcher_with_send-writable"><strong>writable</strong></a>(self)</dt></dl>
+
+<hr>
+Methods inherited from <a href="asyncore.html#dispatcher">dispatcher</a>:<br>
+<dl><dt><a name="dispatcher_with_send-__repr__"><strong>__repr__</strong></a>(self)</dt><dd><tt>Return&nbsp;repr(self).</tt></dd></dl>
+
+<dl><dt><a name="dispatcher_with_send-accept"><strong>accept</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="dispatcher_with_send-add_channel"><strong>add_channel</strong></a>(self, map=None)</dt></dl>
+
+<dl><dt><a name="dispatcher_with_send-bind"><strong>bind</strong></a>(self, addr)</dt></dl>
+
+<dl><dt><a name="dispatcher_with_send-close"><strong>close</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="dispatcher_with_send-connect"><strong>connect</strong></a>(self, address)</dt></dl>
+
+<dl><dt><a name="dispatcher_with_send-create_socket"><strong>create_socket</strong></a>(self, family=&lt;AddressFamily.AF_INET: 2&gt;, type=&lt;SocketKind.SOCK_STREAM: 1&gt;)</dt></dl>
+
+<dl><dt><a name="dispatcher_with_send-del_channel"><strong>del_channel</strong></a>(self, map=None)</dt></dl>
+
+<dl><dt><a name="dispatcher_with_send-handle_accept"><strong>handle_accept</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="dispatcher_with_send-handle_accepted"><strong>handle_accepted</strong></a>(self, sock, addr)</dt></dl>
+
+<dl><dt><a name="dispatcher_with_send-handle_close"><strong>handle_close</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="dispatcher_with_send-handle_connect"><strong>handle_connect</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="dispatcher_with_send-handle_connect_event"><strong>handle_connect_event</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="dispatcher_with_send-handle_error"><strong>handle_error</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="dispatcher_with_send-handle_expt"><strong>handle_expt</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="dispatcher_with_send-handle_expt_event"><strong>handle_expt_event</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="dispatcher_with_send-handle_read"><strong>handle_read</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="dispatcher_with_send-handle_read_event"><strong>handle_read_event</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="dispatcher_with_send-handle_write_event"><strong>handle_write_event</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="dispatcher_with_send-listen"><strong>listen</strong></a>(self, num)</dt></dl>
+
+<dl><dt><a name="dispatcher_with_send-log"><strong>log</strong></a>(self, message)</dt></dl>
+
+<dl><dt><a name="dispatcher_with_send-log_info"><strong>log_info</strong></a>(self, message, type='info')</dt></dl>
+
+<dl><dt><a name="dispatcher_with_send-readable"><strong>readable</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="dispatcher_with_send-recv"><strong>recv</strong></a>(self, buffer_size)</dt></dl>
+
+<dl><dt><a name="dispatcher_with_send-set_reuse_addr"><strong>set_reuse_addr</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="dispatcher_with_send-set_socket"><strong>set_socket</strong></a>(self, sock, map=None)</dt></dl>
+
+<hr>
+Data descriptors inherited from <a href="asyncore.html#dispatcher">dispatcher</a>:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><tt>dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<hr>
+Data and other attributes inherited from <a href="asyncore.html#dispatcher">dispatcher</a>:<br>
+<dl><dt><strong>accepting</strong> = False</dl>
+
+<dl><dt><strong>addr</strong> = None</dl>
+
+<dl><dt><strong>closing</strong> = False</dl>
+
+<dl><dt><strong>connected</strong> = False</dl>
+
+<dl><dt><strong>connecting</strong> = False</dl>
+
+<dl><dt><strong>debug</strong> = False</dl>
+
+<dl><dt><strong>ignore_log_types</strong> = frozenset({'warning'})</dl>
+
+</td></tr></table></td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#eeaa77">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Functions</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#eeaa77"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl><dt><a name="-close_all"><strong>close_all</strong></a>(map=None, ignore_all=False)</dt></dl>
+ <dl><dt><a name="-compact_traceback"><strong>compact_traceback</strong></a>()</dt></dl>
+ <dl><dt><a name="-loop"><strong>loop</strong></a>(timeout=30.0, use_poll=False, map=None, count=None)</dt></dl>
+ <dl><dt><a name="-poll"><strong>poll</strong></a>(timeout=0.0, map=None)</dt></dl>
+ <dl><dt><a name="-poll2"><strong>poll2</strong></a>(timeout=0.0, map=None)</dt></dl>
+ <dl><dt><a name="-poll3"><strong>poll3</strong></a> = poll2(timeout=0.0, map=None)</dt></dl>
+ <dl><dt><a name="-read"><strong>read</strong></a>(obj)</dt></dl>
+ <dl><dt><a name="-readwrite"><strong>readwrite</strong></a>(obj, flags)</dt></dl>
+ <dl><dt><a name="-write"><strong>write</strong></a>(obj)</dt></dl>
+</td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#55aa55">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Data</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#55aa55"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><strong>EAGAIN</strong> = 11<br>
+<strong>EALREADY</strong> = 10037<br>
+<strong>EBADF</strong> = 9<br>
+<strong>ECONNABORTED</strong> = 10053<br>
+<strong>ECONNRESET</strong> = 10054<br>
+<strong>EINPROGRESS</strong> = 10036<br>
+<strong>EINVAL</strong> = 22<br>
+<strong>EISCONN</strong> = 10056<br>
+<strong>ENOTCONN</strong> = 10057<br>
+<strong>EPIPE</strong> = 32<br>
+<strong>ESHUTDOWN</strong> = 10058<br>
+<strong>EWOULDBLOCK</strong> = 10035<br>
+<strong>errorcode</strong> = {1: 'EPERM', 2: 'ENOENT', 3: 'ESRCH', 4: 'EINTR', 5: 'EIO', 6: 'ENXIO', 7: 'E2BIG', 8: 'ENOEXEC', 9: 'EBADF', 10: 'ECHILD', ...}<br>
+<strong>socket_map</strong> = {}</td></tr></table>
+</body></html>

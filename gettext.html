@@ -1,0 +1,196 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head><title>Python: module gettext</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+</head><body bgcolor="#f0f0f8">
+
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="heading">
+<tr bgcolor="#7799ee">
+<td valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong>gettext</strong></big></big></font></td
+><td align=right valign=bottom
+><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:c%3A%5Cpython38%5Clib%5Cgettext.py">c:\python38\lib\gettext.py</a><br><a href="https://docs.python.org/3.8/library/gettext">Module Reference</a></font></td></tr></table>
+    <p><tt>Internationalization&nbsp;and&nbsp;localization&nbsp;support.<br>
+&nbsp;<br>
+This&nbsp;module&nbsp;provides&nbsp;internationalization&nbsp;(I18N)&nbsp;and&nbsp;localization&nbsp;(L10N)<br>
+support&nbsp;for&nbsp;your&nbsp;Python&nbsp;programs&nbsp;by&nbsp;providing&nbsp;an&nbsp;interface&nbsp;to&nbsp;the&nbsp;GNU&nbsp;gettext<br>
+message&nbsp;catalog&nbsp;library.<br>
+&nbsp;<br>
+I18N&nbsp;refers&nbsp;to&nbsp;the&nbsp;operation&nbsp;by&nbsp;which&nbsp;a&nbsp;program&nbsp;is&nbsp;made&nbsp;aware&nbsp;of&nbsp;multiple<br>
+languages.&nbsp;&nbsp;L10N&nbsp;refers&nbsp;to&nbsp;the&nbsp;adaptation&nbsp;of&nbsp;your&nbsp;program,&nbsp;once<br>
+internationalized,&nbsp;to&nbsp;the&nbsp;local&nbsp;language&nbsp;and&nbsp;cultural&nbsp;habits.</tt></p>
+<p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#aa55cc">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Modules</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#aa55cc"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><table width="100%" summary="list"><tr><td width="25%" valign=top><a href="locale.html">locale</a><br>
+</td><td width="25%" valign=top><a href="os.html">os</a><br>
+</td><td width="25%" valign=top><a href="re.html">re</a><br>
+</td><td width="25%" valign=top><a href="sys.html">sys</a><br>
+</td></tr></table></td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ee77aa">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Classes</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#ee77aa"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl>
+<dt><font face="helvetica, arial"><a href="builtins.html#object">builtins.object</a>
+</font></dt><dd>
+<dl>
+<dt><font face="helvetica, arial"><a href="gettext.html#NullTranslations">NullTranslations</a>
+</font></dt><dd>
+<dl>
+<dt><font face="helvetica, arial"><a href="gettext.html#GNUTranslations">GNUTranslations</a>
+</font></dt></dl>
+</dd>
+</dl>
+</dd>
+</dl>
+ <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="GNUTranslations">class <strong>GNUTranslations</strong></a>(<a href="gettext.html#NullTranslations">NullTranslations</a>)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt><a href="#GNUTranslations">GNUTranslations</a>(fp=None)<br>
+&nbsp;<br>
+<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%"><dl><dt>Method resolution order:</dt>
+<dd><a href="gettext.html#GNUTranslations">GNUTranslations</a></dd>
+<dd><a href="gettext.html#NullTranslations">NullTranslations</a></dd>
+<dd><a href="builtins.html#object">builtins.object</a></dd>
+</dl>
+<hr>
+Methods defined here:<br>
+<dl><dt><a name="GNUTranslations-gettext"><strong>gettext</strong></a>(self, message)</dt></dl>
+
+<dl><dt><a name="GNUTranslations-lgettext"><strong>lgettext</strong></a>(self, message)</dt></dl>
+
+<dl><dt><a name="GNUTranslations-lngettext"><strong>lngettext</strong></a>(self, msgid1, msgid2, n)</dt></dl>
+
+<dl><dt><a name="GNUTranslations-ngettext"><strong>ngettext</strong></a>(self, msgid1, msgid2, n)</dt></dl>
+
+<dl><dt><a name="GNUTranslations-npgettext"><strong>npgettext</strong></a>(self, context, msgid1, msgid2, n)</dt></dl>
+
+<dl><dt><a name="GNUTranslations-pgettext"><strong>pgettext</strong></a>(self, context, message)</dt></dl>
+
+<hr>
+Data and other attributes defined here:<br>
+<dl><dt><strong>BE_MAGIC</strong> = 3725722773</dl>
+
+<dl><dt><strong>CONTEXT</strong> = '%s<font color="#c040c0">\x04</font>%s'</dl>
+
+<dl><dt><strong>LE_MAGIC</strong> = 2500072158</dl>
+
+<dl><dt><strong>VERSIONS</strong> = (0, 1)</dl>
+
+<hr>
+Methods inherited from <a href="gettext.html#NullTranslations">NullTranslations</a>:<br>
+<dl><dt><a name="GNUTranslations-__init__"><strong>__init__</strong></a>(self, fp=None)</dt><dd><tt>Initialize&nbsp;self.&nbsp;&nbsp;See&nbsp;help(type(self))&nbsp;for&nbsp;accurate&nbsp;signature.</tt></dd></dl>
+
+<dl><dt><a name="GNUTranslations-add_fallback"><strong>add_fallback</strong></a>(self, fallback)</dt></dl>
+
+<dl><dt><a name="GNUTranslations-charset"><strong>charset</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="GNUTranslations-info"><strong>info</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="GNUTranslations-install"><strong>install</strong></a>(self, names=None)</dt></dl>
+
+<dl><dt><a name="GNUTranslations-output_charset"><strong>output_charset</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="GNUTranslations-set_output_charset"><strong>set_output_charset</strong></a>(self, charset)</dt></dl>
+
+<hr>
+Data descriptors inherited from <a href="gettext.html#NullTranslations">NullTranslations</a>:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><tt>dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="NullTranslations">class <strong>NullTranslations</strong></a>(<a href="builtins.html#object">builtins.object</a>)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt><a href="#NullTranslations">NullTranslations</a>(fp=None)<br>
+&nbsp;<br>
+<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%">Methods defined here:<br>
+<dl><dt><a name="NullTranslations-__init__"><strong>__init__</strong></a>(self, fp=None)</dt><dd><tt>Initialize&nbsp;self.&nbsp;&nbsp;See&nbsp;help(type(self))&nbsp;for&nbsp;accurate&nbsp;signature.</tt></dd></dl>
+
+<dl><dt><a name="NullTranslations-add_fallback"><strong>add_fallback</strong></a>(self, fallback)</dt></dl>
+
+<dl><dt><a name="NullTranslations-charset"><strong>charset</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="NullTranslations-gettext"><strong>gettext</strong></a>(self, message)</dt></dl>
+
+<dl><dt><a name="NullTranslations-info"><strong>info</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="NullTranslations-install"><strong>install</strong></a>(self, names=None)</dt></dl>
+
+<dl><dt><a name="NullTranslations-lgettext"><strong>lgettext</strong></a>(self, message)</dt></dl>
+
+<dl><dt><a name="NullTranslations-lngettext"><strong>lngettext</strong></a>(self, msgid1, msgid2, n)</dt></dl>
+
+<dl><dt><a name="NullTranslations-ngettext"><strong>ngettext</strong></a>(self, msgid1, msgid2, n)</dt></dl>
+
+<dl><dt><a name="NullTranslations-npgettext"><strong>npgettext</strong></a>(self, context, msgid1, msgid2, n)</dt></dl>
+
+<dl><dt><a name="NullTranslations-output_charset"><strong>output_charset</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="NullTranslations-pgettext"><strong>pgettext</strong></a>(self, context, message)</dt></dl>
+
+<dl><dt><a name="NullTranslations-set_output_charset"><strong>set_output_charset</strong></a>(self, charset)</dt></dl>
+
+<hr>
+Data descriptors defined here:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><tt>dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+</td></tr></table></td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#eeaa77">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Functions</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#eeaa77"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl><dt><a name="-Catalog"><strong>Catalog</strong></a> = translation(domain, localedir=None, languages=None, class_=None, fallback=False, codeset=['unspecified'])</dt></dl>
+ <dl><dt><a name="-bind_textdomain_codeset"><strong>bind_textdomain_codeset</strong></a>(domain, codeset=None)</dt></dl>
+ <dl><dt><a name="-bindtextdomain"><strong>bindtextdomain</strong></a>(domain, localedir=None)</dt></dl>
+ <dl><dt><a name="-dgettext"><strong>dgettext</strong></a>(domain, message)</dt></dl>
+ <dl><dt><a name="-dngettext"><strong>dngettext</strong></a>(domain, msgid1, msgid2, n)</dt></dl>
+ <dl><dt><a name="-dnpgettext"><strong>dnpgettext</strong></a>(domain, context, msgid1, msgid2, n)</dt></dl>
+ <dl><dt><a name="-dpgettext"><strong>dpgettext</strong></a>(domain, context, message)</dt></dl>
+ <dl><dt><a name="-find"><strong>find</strong></a>(domain, localedir=None, languages=None, all=False)</dt><dd><tt>#&nbsp;Locate&nbsp;a&nbsp;.mo&nbsp;file&nbsp;using&nbsp;the&nbsp;gettext&nbsp;strategy</tt></dd></dl>
+ <dl><dt><a name="-gettext"><strong>gettext</strong></a>(message)</dt></dl>
+ <dl><dt><a name="-install"><strong>install</strong></a>(domain, localedir=None, codeset=['unspecified'], names=None)</dt></dl>
+ <dl><dt><a name="-ldgettext"><strong>ldgettext</strong></a>(domain, message)</dt></dl>
+ <dl><dt><a name="-ldngettext"><strong>ldngettext</strong></a>(domain, msgid1, msgid2, n)</dt></dl>
+ <dl><dt><a name="-lgettext"><strong>lgettext</strong></a>(message)</dt></dl>
+ <dl><dt><a name="-lngettext"><strong>lngettext</strong></a>(msgid1, msgid2, n)</dt></dl>
+ <dl><dt><a name="-ngettext"><strong>ngettext</strong></a>(msgid1, msgid2, n)</dt></dl>
+ <dl><dt><a name="-npgettext"><strong>npgettext</strong></a>(context, msgid1, msgid2, n)</dt></dl>
+ <dl><dt><a name="-pgettext"><strong>pgettext</strong></a>(context, message)</dt></dl>
+ <dl><dt><a name="-textdomain"><strong>textdomain</strong></a>(domain=None)</dt></dl>
+ <dl><dt><a name="-translation"><strong>translation</strong></a>(domain, localedir=None, languages=None, class_=None, fallback=False, codeset=['unspecified'])</dt></dl>
+</td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#55aa55">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Data</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#55aa55"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><strong>__all__</strong> = ['NullTranslations', 'GNUTranslations', 'Catalog', 'find', 'translation', 'install', 'textdomain', 'bindtextdomain', 'bind_textdomain_codeset', 'dgettext', 'dngettext', 'gettext', 'lgettext', 'ldgettext', 'ldngettext', 'lngettext', 'ngettext', 'pgettext', 'dpgettext', 'npgettext', ...]</td></tr></table>
+</body></html>

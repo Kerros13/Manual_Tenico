@@ -1,0 +1,108 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head><title>Python: built-in module _signal</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+</head><body bgcolor="#f0f0f8">
+
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="heading">
+<tr bgcolor="#7799ee">
+<td valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong>_signal</strong></big></big></font></td
+><td align=right valign=bottom
+><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br>(built-in)</font></td></tr></table>
+    <p><tt>This&nbsp;module&nbsp;provides&nbsp;mechanisms&nbsp;to&nbsp;use&nbsp;signal&nbsp;handlers&nbsp;in&nbsp;Python.<br>
+&nbsp;<br>
+Functions:<br>
+&nbsp;<br>
+alarm()&nbsp;--&nbsp;cause&nbsp;SIGALRM&nbsp;after&nbsp;a&nbsp;specified&nbsp;time&nbsp;[Unix&nbsp;only]<br>
+setitimer()&nbsp;--&nbsp;cause&nbsp;a&nbsp;signal&nbsp;(described&nbsp;below)&nbsp;after&nbsp;a&nbsp;specified<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;float&nbsp;time&nbsp;and&nbsp;the&nbsp;timer&nbsp;may&nbsp;restart&nbsp;then&nbsp;[Unix&nbsp;only]<br>
+getitimer()&nbsp;--&nbsp;get&nbsp;current&nbsp;value&nbsp;of&nbsp;timer&nbsp;[Unix&nbsp;only]<br>
+<a href="#-signal">signal</a>()&nbsp;--&nbsp;set&nbsp;the&nbsp;action&nbsp;for&nbsp;a&nbsp;given&nbsp;signal<br>
+<a href="#-getsignal">getsignal</a>()&nbsp;--&nbsp;get&nbsp;the&nbsp;signal&nbsp;action&nbsp;for&nbsp;a&nbsp;given&nbsp;signal<br>
+pause()&nbsp;--&nbsp;wait&nbsp;until&nbsp;a&nbsp;signal&nbsp;arrives&nbsp;[Unix&nbsp;only]<br>
+<a href="#-default_int_handler">default_int_handler</a>()&nbsp;--&nbsp;default&nbsp;SIGINT&nbsp;handler<br>
+&nbsp;<br>
+signal&nbsp;constants:<br>
+SIG_DFL&nbsp;--&nbsp;used&nbsp;to&nbsp;refer&nbsp;to&nbsp;the&nbsp;system&nbsp;default&nbsp;handler<br>
+SIG_IGN&nbsp;--&nbsp;used&nbsp;to&nbsp;ignore&nbsp;the&nbsp;signal<br>
+NSIG&nbsp;--&nbsp;number&nbsp;of&nbsp;defined&nbsp;signals<br>
+SIGINT,&nbsp;SIGTERM,&nbsp;etc.&nbsp;--&nbsp;signal&nbsp;numbers<br>
+&nbsp;<br>
+itimer&nbsp;constants:<br>
+ITIMER_REAL&nbsp;--&nbsp;decrements&nbsp;in&nbsp;real&nbsp;time,&nbsp;and&nbsp;delivers&nbsp;SIGALRM&nbsp;upon<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;expiration<br>
+ITIMER_VIRTUAL&nbsp;--&nbsp;decrements&nbsp;only&nbsp;when&nbsp;the&nbsp;process&nbsp;is&nbsp;executing,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;and&nbsp;delivers&nbsp;SIGVTALRM&nbsp;upon&nbsp;expiration<br>
+ITIMER_PROF&nbsp;--&nbsp;decrements&nbsp;both&nbsp;when&nbsp;the&nbsp;process&nbsp;is&nbsp;executing&nbsp;and<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;when&nbsp;the&nbsp;system&nbsp;is&nbsp;executing&nbsp;on&nbsp;behalf&nbsp;of&nbsp;the&nbsp;process.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Coupled&nbsp;with&nbsp;ITIMER_VIRTUAL,&nbsp;this&nbsp;timer&nbsp;is&nbsp;usually<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;used&nbsp;to&nbsp;profile&nbsp;the&nbsp;time&nbsp;spent&nbsp;by&nbsp;the&nbsp;application<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;in&nbsp;user&nbsp;and&nbsp;kernel&nbsp;space.&nbsp;SIGPROF&nbsp;is&nbsp;delivered&nbsp;upon<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;expiration.<br>
+&nbsp;<br>
+&nbsp;<br>
+***&nbsp;IMPORTANT&nbsp;NOTICE&nbsp;***<br>
+A&nbsp;signal&nbsp;handler&nbsp;function&nbsp;is&nbsp;called&nbsp;with&nbsp;two&nbsp;arguments:<br>
+the&nbsp;first&nbsp;is&nbsp;the&nbsp;signal&nbsp;number,&nbsp;the&nbsp;second&nbsp;is&nbsp;the&nbsp;interrupted&nbsp;stack&nbsp;frame.</tt></p>
+<p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#eeaa77">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Functions</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#eeaa77"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl><dt><a name="-default_int_handler"><strong>default_int_handler</strong></a>(...)</dt><dd><tt><a href="#-default_int_handler">default_int_handler</a>(...)<br>
+&nbsp;<br>
+The&nbsp;default&nbsp;handler&nbsp;for&nbsp;SIGINT&nbsp;installed&nbsp;by&nbsp;Python.<br>
+It&nbsp;raises&nbsp;KeyboardInterrupt.</tt></dd></dl>
+ <dl><dt><a name="-getsignal"><strong>getsignal</strong></a>(signalnum, /)</dt><dd><tt>Return&nbsp;the&nbsp;current&nbsp;action&nbsp;for&nbsp;the&nbsp;given&nbsp;signal.<br>
+&nbsp;<br>
+The&nbsp;return&nbsp;value&nbsp;can&nbsp;be:<br>
+&nbsp;&nbsp;SIG_IGN&nbsp;--&nbsp;if&nbsp;the&nbsp;signal&nbsp;is&nbsp;being&nbsp;ignored<br>
+&nbsp;&nbsp;SIG_DFL&nbsp;--&nbsp;if&nbsp;the&nbsp;default&nbsp;action&nbsp;for&nbsp;the&nbsp;signal&nbsp;is&nbsp;in&nbsp;effect<br>
+&nbsp;&nbsp;None&nbsp;&nbsp;&nbsp;&nbsp;--&nbsp;if&nbsp;an&nbsp;unknown&nbsp;handler&nbsp;is&nbsp;in&nbsp;effect<br>
+&nbsp;&nbsp;anything&nbsp;else&nbsp;--&nbsp;the&nbsp;callable&nbsp;Python&nbsp;object&nbsp;used&nbsp;as&nbsp;a&nbsp;handler</tt></dd></dl>
+ <dl><dt><a name="-raise_signal"><strong>raise_signal</strong></a>(signalnum, /)</dt><dd><tt>Send&nbsp;a&nbsp;signal&nbsp;to&nbsp;the&nbsp;executing&nbsp;process.</tt></dd></dl>
+ <dl><dt><a name="-set_wakeup_fd"><strong>set_wakeup_fd</strong></a>(...)</dt><dd><tt><a href="#-set_wakeup_fd">set_wakeup_fd</a>(fd,&nbsp;*,&nbsp;warn_on_full_buffer=True)&nbsp;-&gt;&nbsp;fd<br>
+&nbsp;<br>
+Sets&nbsp;the&nbsp;fd&nbsp;to&nbsp;be&nbsp;written&nbsp;to&nbsp;(with&nbsp;the&nbsp;signal&nbsp;number)&nbsp;when&nbsp;a&nbsp;signal<br>
+comes&nbsp;in.&nbsp;&nbsp;A&nbsp;library&nbsp;can&nbsp;use&nbsp;this&nbsp;to&nbsp;wakeup&nbsp;select&nbsp;or&nbsp;poll.<br>
+The&nbsp;previous&nbsp;fd&nbsp;or&nbsp;-1&nbsp;is&nbsp;returned.<br>
+&nbsp;<br>
+The&nbsp;fd&nbsp;must&nbsp;be&nbsp;non-blocking.</tt></dd></dl>
+ <dl><dt><a name="-signal"><strong>signal</strong></a>(signalnum, handler, /)</dt><dd><tt>Set&nbsp;the&nbsp;action&nbsp;for&nbsp;the&nbsp;given&nbsp;signal.<br>
+&nbsp;<br>
+The&nbsp;action&nbsp;can&nbsp;be&nbsp;SIG_DFL,&nbsp;SIG_IGN,&nbsp;or&nbsp;a&nbsp;callable&nbsp;Python&nbsp;object.<br>
+The&nbsp;previous&nbsp;action&nbsp;is&nbsp;returned.&nbsp;&nbsp;See&nbsp;<a href="#-getsignal">getsignal</a>()&nbsp;for&nbsp;possible&nbsp;return&nbsp;values.<br>
+&nbsp;<br>
+***&nbsp;IMPORTANT&nbsp;NOTICE&nbsp;***<br>
+A&nbsp;signal&nbsp;handler&nbsp;function&nbsp;is&nbsp;called&nbsp;with&nbsp;two&nbsp;arguments:<br>
+the&nbsp;first&nbsp;is&nbsp;the&nbsp;signal&nbsp;number,&nbsp;the&nbsp;second&nbsp;is&nbsp;the&nbsp;interrupted&nbsp;stack&nbsp;frame.</tt></dd></dl>
+ <dl><dt><a name="-strsignal"><strong>strsignal</strong></a>(signalnum, /)</dt><dd><tt>Return&nbsp;the&nbsp;system&nbsp;description&nbsp;of&nbsp;the&nbsp;given&nbsp;signal.<br>
+&nbsp;<br>
+The&nbsp;return&nbsp;values&nbsp;can&nbsp;be&nbsp;such&nbsp;as&nbsp;"Interrupt",&nbsp;"Segmentation&nbsp;fault",&nbsp;etc.<br>
+Returns&nbsp;None&nbsp;if&nbsp;the&nbsp;signal&nbsp;is&nbsp;not&nbsp;recognized.</tt></dd></dl>
+ <dl><dt><a name="-valid_signals"><strong>valid_signals</strong></a>()</dt><dd><tt>Return&nbsp;a&nbsp;set&nbsp;of&nbsp;valid&nbsp;signal&nbsp;numbers&nbsp;on&nbsp;this&nbsp;platform.<br>
+&nbsp;<br>
+The&nbsp;signal&nbsp;numbers&nbsp;returned&nbsp;by&nbsp;this&nbsp;function&nbsp;can&nbsp;be&nbsp;safely&nbsp;passed&nbsp;to<br>
+functions&nbsp;like&nbsp;`pthread_sigmask`.</tt></dd></dl>
+</td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#55aa55">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Data</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#55aa55"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><strong>CTRL_BREAK_EVENT</strong> = 1<br>
+<strong>CTRL_C_EVENT</strong> = 0<br>
+<strong>NSIG</strong> = 23<br>
+<strong>SIGABRT</strong> = 22<br>
+<strong>SIGBREAK</strong> = 21<br>
+<strong>SIGFPE</strong> = 8<br>
+<strong>SIGILL</strong> = 4<br>
+<strong>SIGINT</strong> = 2<br>
+<strong>SIGSEGV</strong> = 11<br>
+<strong>SIGTERM</strong> = 15<br>
+<strong>SIG_DFL</strong> = 0<br>
+<strong>SIG_IGN</strong> = 1</td></tr></table>
+</body></html>

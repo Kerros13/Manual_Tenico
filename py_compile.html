@@ -1,0 +1,241 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head><title>Python: module py_compile</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+</head><body bgcolor="#f0f0f8">
+
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="heading">
+<tr bgcolor="#7799ee">
+<td valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong>py_compile</strong></big></big></font></td
+><td align=right valign=bottom
+><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:c%3A%5Cpython38%5Clib%5Cpy_compile.py">c:\python38\lib\py_compile.py</a><br><a href="https://docs.python.org/3.8/library/py_compile">Module Reference</a></font></td></tr></table>
+    <p><tt>Routine&nbsp;to&nbsp;"compile"&nbsp;a&nbsp;.py&nbsp;file&nbsp;to&nbsp;a&nbsp;.pyc&nbsp;file.<br>
+&nbsp;<br>
+This&nbsp;module&nbsp;has&nbsp;intimate&nbsp;knowledge&nbsp;of&nbsp;the&nbsp;format&nbsp;of&nbsp;.pyc&nbsp;files.</tt></p>
+<p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#aa55cc">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Modules</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#aa55cc"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><table width="100%" summary="list"><tr><td width="25%" valign=top><a href="enum.html">enum</a><br>
+<a href="importlib.html">importlib</a><br>
+</td><td width="25%" valign=top><a href="os.html">os</a><br>
+<a href="sys.html">sys</a><br>
+</td><td width="25%" valign=top><a href="traceback.html">traceback</a><br>
+</td><td width="25%" valign=top></td></tr></table></td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ee77aa">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Classes</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#ee77aa"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl>
+<dt><font face="helvetica, arial"><a href="builtins.html#Exception">builtins.Exception</a>(<a href="builtins.html#BaseException">builtins.BaseException</a>)
+</font></dt><dd>
+<dl>
+<dt><font face="helvetica, arial"><a href="py_compile.html#PyCompileError">PyCompileError</a>
+</font></dt></dl>
+</dd>
+<dt><font face="helvetica, arial"><a href="enum.html#Enum">enum.Enum</a>(<a href="builtins.html#object">builtins.object</a>)
+</font></dt><dd>
+<dl>
+<dt><font face="helvetica, arial"><a href="py_compile.html#PycInvalidationMode">PycInvalidationMode</a>
+</font></dt></dl>
+</dd>
+</dl>
+ <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="PyCompileError">class <strong>PyCompileError</strong></a>(<a href="builtins.html#Exception">builtins.Exception</a>)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt><a href="#PyCompileError">PyCompileError</a>(exc_type,&nbsp;exc_value,&nbsp;file,&nbsp;msg='')<br>
+&nbsp;<br>
+<a href="builtins.html#Exception">Exception</a>&nbsp;raised&nbsp;when&nbsp;an&nbsp;error&nbsp;occurs&nbsp;while&nbsp;attempting&nbsp;to<br>
+compile&nbsp;the&nbsp;file.<br>
+&nbsp;<br>
+To&nbsp;raise&nbsp;this&nbsp;exception,&nbsp;use<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;raise&nbsp;<a href="#PyCompileError">PyCompileError</a>(exc_type,exc_value,file[,msg])<br>
+&nbsp;<br>
+where<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;exc_type:&nbsp;&nbsp;&nbsp;exception&nbsp;type&nbsp;to&nbsp;be&nbsp;used&nbsp;in&nbsp;error&nbsp;message<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;type&nbsp;name&nbsp;can&nbsp;be&nbsp;accesses&nbsp;as&nbsp;class&nbsp;variable<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'exc_type_name'<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;exc_value:&nbsp;&nbsp;exception&nbsp;value&nbsp;to&nbsp;be&nbsp;used&nbsp;in&nbsp;error&nbsp;message<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;can&nbsp;be&nbsp;accesses&nbsp;as&nbsp;class&nbsp;variable&nbsp;'exc_value'<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;file:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;name&nbsp;of&nbsp;file&nbsp;being&nbsp;compiled&nbsp;to&nbsp;be&nbsp;used&nbsp;in&nbsp;error&nbsp;message<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;can&nbsp;be&nbsp;accesses&nbsp;as&nbsp;class&nbsp;variable&nbsp;'file'<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;msg:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;string&nbsp;message&nbsp;to&nbsp;be&nbsp;written&nbsp;as&nbsp;error&nbsp;message<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;If&nbsp;no&nbsp;value&nbsp;is&nbsp;given,&nbsp;a&nbsp;default&nbsp;exception&nbsp;message&nbsp;will&nbsp;be<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;given,&nbsp;consistent&nbsp;with&nbsp;'standard'&nbsp;py_compile&nbsp;output.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;message&nbsp;(or&nbsp;default)&nbsp;can&nbsp;be&nbsp;accesses&nbsp;as&nbsp;class&nbsp;variable<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'msg'<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%"><dl><dt>Method resolution order:</dt>
+<dd><a href="py_compile.html#PyCompileError">PyCompileError</a></dd>
+<dd><a href="builtins.html#Exception">builtins.Exception</a></dd>
+<dd><a href="builtins.html#BaseException">builtins.BaseException</a></dd>
+<dd><a href="builtins.html#object">builtins.object</a></dd>
+</dl>
+<hr>
+Methods defined here:<br>
+<dl><dt><a name="PyCompileError-__init__"><strong>__init__</strong></a>(self, exc_type, exc_value, file, msg='')</dt><dd><tt>Initialize&nbsp;self.&nbsp;&nbsp;See&nbsp;help(type(self))&nbsp;for&nbsp;accurate&nbsp;signature.</tt></dd></dl>
+
+<dl><dt><a name="PyCompileError-__str__"><strong>__str__</strong></a>(self)</dt><dd><tt>Return&nbsp;str(self).</tt></dd></dl>
+
+<hr>
+Data descriptors defined here:<br>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<hr>
+Static methods inherited from <a href="builtins.html#Exception">builtins.Exception</a>:<br>
+<dl><dt><a name="PyCompileError-__new__"><strong>__new__</strong></a>(*args, **kwargs)<font color="#909090"><font face="helvetica, arial"> from <a href="builtins.html#type">builtins.type</a></font></font></dt><dd><tt>Create&nbsp;and&nbsp;return&nbsp;a&nbsp;new&nbsp;object.&nbsp;&nbsp;See&nbsp;help(type)&nbsp;for&nbsp;accurate&nbsp;signature.</tt></dd></dl>
+
+<hr>
+Methods inherited from <a href="builtins.html#BaseException">builtins.BaseException</a>:<br>
+<dl><dt><a name="PyCompileError-__delattr__"><strong>__delattr__</strong></a>(self, name, /)</dt><dd><tt>Implement&nbsp;delattr(self,&nbsp;name).</tt></dd></dl>
+
+<dl><dt><a name="PyCompileError-__getattribute__"><strong>__getattribute__</strong></a>(self, name, /)</dt><dd><tt>Return&nbsp;getattr(self,&nbsp;name).</tt></dd></dl>
+
+<dl><dt><a name="PyCompileError-__reduce__"><strong>__reduce__</strong></a>(...)</dt><dd><tt>Helper&nbsp;for&nbsp;pickle.</tt></dd></dl>
+
+<dl><dt><a name="PyCompileError-__repr__"><strong>__repr__</strong></a>(self, /)</dt><dd><tt>Return&nbsp;repr(self).</tt></dd></dl>
+
+<dl><dt><a name="PyCompileError-__setattr__"><strong>__setattr__</strong></a>(self, name, value, /)</dt><dd><tt>Implement&nbsp;setattr(self,&nbsp;name,&nbsp;value).</tt></dd></dl>
+
+<dl><dt><a name="PyCompileError-__setstate__"><strong>__setstate__</strong></a>(...)</dt></dl>
+
+<dl><dt><a name="PyCompileError-with_traceback"><strong>with_traceback</strong></a>(...)</dt><dd><tt><a href="builtins.html#Exception">Exception</a>.<a href="#PyCompileError-with_traceback">with_traceback</a>(tb)&nbsp;--<br>
+set&nbsp;self.<strong>__traceback__</strong>&nbsp;to&nbsp;tb&nbsp;and&nbsp;return&nbsp;self.</tt></dd></dl>
+
+<hr>
+Data descriptors inherited from <a href="builtins.html#BaseException">builtins.BaseException</a>:<br>
+<dl><dt><strong>__cause__</strong></dt>
+<dd><tt>exception&nbsp;cause</tt></dd>
+</dl>
+<dl><dt><strong>__context__</strong></dt>
+<dd><tt>exception&nbsp;context</tt></dd>
+</dl>
+<dl><dt><strong>__dict__</strong></dt>
+</dl>
+<dl><dt><strong>__suppress_context__</strong></dt>
+</dl>
+<dl><dt><strong>__traceback__</strong></dt>
+</dl>
+<dl><dt><strong>args</strong></dt>
+</dl>
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="PycInvalidationMode">class <strong>PycInvalidationMode</strong></a>(<a href="enum.html#Enum">enum.Enum</a>)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt><a href="#PycInvalidationMode">PycInvalidationMode</a>(value,&nbsp;names=None,&nbsp;*,&nbsp;module=None,&nbsp;qualname=None,&nbsp;type=None,&nbsp;start=1)<br>
+&nbsp;<br>
+An&nbsp;enumeration.<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%"><dl><dt>Method resolution order:</dt>
+<dd><a href="py_compile.html#PycInvalidationMode">PycInvalidationMode</a></dd>
+<dd><a href="enum.html#Enum">enum.Enum</a></dd>
+<dd><a href="builtins.html#object">builtins.object</a></dd>
+</dl>
+<hr>
+Data and other attributes defined here:<br>
+<dl><dt><strong>CHECKED_HASH</strong> = &lt;PycInvalidationMode.CHECKED_HASH: 2&gt;</dl>
+
+<dl><dt><strong>TIMESTAMP</strong> = &lt;PycInvalidationMode.TIMESTAMP: 1&gt;</dl>
+
+<dl><dt><strong>UNCHECKED_HASH</strong> = &lt;PycInvalidationMode.UNCHECKED_HASH: 3&gt;</dl>
+
+<hr>
+Data descriptors inherited from <a href="enum.html#Enum">enum.Enum</a>:<br>
+<dl><dt><strong>name</strong></dt>
+<dd><tt>The&nbsp;name&nbsp;of&nbsp;the&nbsp;Enum&nbsp;member.</tt></dd>
+</dl>
+<dl><dt><strong>value</strong></dt>
+<dd><tt>The&nbsp;value&nbsp;of&nbsp;the&nbsp;Enum&nbsp;member.</tt></dd>
+</dl>
+<hr>
+Readonly properties inherited from <a href="enum.html#EnumMeta">enum.EnumMeta</a>:<br>
+<dl><dt><strong>__members__</strong></dt>
+<dd><tt>Returns&nbsp;a&nbsp;mapping&nbsp;of&nbsp;member&nbsp;name-&gt;value.<br>
+&nbsp;<br>
+This&nbsp;mapping&nbsp;lists&nbsp;all&nbsp;enum&nbsp;members,&nbsp;including&nbsp;aliases.&nbsp;Note&nbsp;that&nbsp;this<br>
+is&nbsp;a&nbsp;read-only&nbsp;view&nbsp;of&nbsp;the&nbsp;internal&nbsp;mapping.</tt></dd>
+</dl>
+</td></tr></table></td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#eeaa77">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Functions</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#eeaa77"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl><dt><a name="-compile"><strong>compile</strong></a>(file, cfile=None, dfile=None, doraise=False, optimize=-1, invalidation_mode=None, quiet=0)</dt><dd><tt>Byte-compile&nbsp;one&nbsp;Python&nbsp;source&nbsp;file&nbsp;to&nbsp;Python&nbsp;bytecode.<br>
+&nbsp;<br>
+:param&nbsp;file:&nbsp;The&nbsp;source&nbsp;file&nbsp;name.<br>
+:param&nbsp;cfile:&nbsp;The&nbsp;target&nbsp;byte&nbsp;compiled&nbsp;file&nbsp;name.&nbsp;&nbsp;When&nbsp;not&nbsp;given,&nbsp;this<br>
+&nbsp;&nbsp;&nbsp;&nbsp;defaults&nbsp;to&nbsp;the&nbsp;<a href="http://www.python.org/dev/peps/pep-3147/">PEP&nbsp;3147</a>/<a href="http://www.python.org/dev/peps/pep-0488/">PEP&nbsp;488</a>&nbsp;location.<br>
+:param&nbsp;dfile:&nbsp;Purported&nbsp;file&nbsp;name,&nbsp;i.e.&nbsp;the&nbsp;file&nbsp;name&nbsp;that&nbsp;shows&nbsp;up&nbsp;in<br>
+&nbsp;&nbsp;&nbsp;&nbsp;error&nbsp;messages.&nbsp;&nbsp;Defaults&nbsp;to&nbsp;the&nbsp;source&nbsp;file&nbsp;name.<br>
+:param&nbsp;doraise:&nbsp;Flag&nbsp;indicating&nbsp;whether&nbsp;or&nbsp;not&nbsp;an&nbsp;exception&nbsp;should&nbsp;be<br>
+&nbsp;&nbsp;&nbsp;&nbsp;raised&nbsp;when&nbsp;a&nbsp;compile&nbsp;error&nbsp;is&nbsp;found.&nbsp;&nbsp;If&nbsp;an&nbsp;exception&nbsp;occurs&nbsp;and&nbsp;this<br>
+&nbsp;&nbsp;&nbsp;&nbsp;flag&nbsp;is&nbsp;set&nbsp;to&nbsp;False,&nbsp;a&nbsp;string&nbsp;indicating&nbsp;the&nbsp;nature&nbsp;of&nbsp;the&nbsp;exception<br>
+&nbsp;&nbsp;&nbsp;&nbsp;will&nbsp;be&nbsp;printed,&nbsp;and&nbsp;the&nbsp;function&nbsp;will&nbsp;return&nbsp;to&nbsp;the&nbsp;caller.&nbsp;If&nbsp;an<br>
+&nbsp;&nbsp;&nbsp;&nbsp;exception&nbsp;occurs&nbsp;and&nbsp;this&nbsp;flag&nbsp;is&nbsp;set&nbsp;to&nbsp;True,&nbsp;a&nbsp;<a href="#PyCompileError">PyCompileError</a><br>
+&nbsp;&nbsp;&nbsp;&nbsp;exception&nbsp;will&nbsp;be&nbsp;raised.<br>
+:param&nbsp;optimize:&nbsp;The&nbsp;optimization&nbsp;level&nbsp;for&nbsp;the&nbsp;compiler.&nbsp;&nbsp;Valid&nbsp;values<br>
+&nbsp;&nbsp;&nbsp;&nbsp;are&nbsp;-1,&nbsp;0,&nbsp;1&nbsp;and&nbsp;2.&nbsp;&nbsp;A&nbsp;value&nbsp;of&nbsp;-1&nbsp;means&nbsp;to&nbsp;use&nbsp;the&nbsp;optimization<br>
+&nbsp;&nbsp;&nbsp;&nbsp;level&nbsp;of&nbsp;the&nbsp;current&nbsp;interpreter,&nbsp;as&nbsp;given&nbsp;by&nbsp;-O&nbsp;command&nbsp;line&nbsp;options.<br>
+:param&nbsp;invalidation_mode:<br>
+:param&nbsp;quiet:&nbsp;Return&nbsp;full&nbsp;output&nbsp;with&nbsp;False&nbsp;or&nbsp;0,&nbsp;errors&nbsp;only&nbsp;with&nbsp;1,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;and&nbsp;no&nbsp;output&nbsp;with&nbsp;2.<br>
+&nbsp;<br>
+:return:&nbsp;Path&nbsp;to&nbsp;the&nbsp;resulting&nbsp;byte&nbsp;compiled&nbsp;file.<br>
+&nbsp;<br>
+Note&nbsp;that&nbsp;it&nbsp;isn't&nbsp;necessary&nbsp;to&nbsp;byte-compile&nbsp;Python&nbsp;modules&nbsp;for<br>
+execution&nbsp;efficiency&nbsp;--&nbsp;Python&nbsp;itself&nbsp;byte-compiles&nbsp;a&nbsp;module&nbsp;when<br>
+it&nbsp;is&nbsp;loaded,&nbsp;and&nbsp;if&nbsp;it&nbsp;can,&nbsp;writes&nbsp;out&nbsp;the&nbsp;bytecode&nbsp;to&nbsp;the<br>
+corresponding&nbsp;.pyc&nbsp;file.<br>
+&nbsp;<br>
+However,&nbsp;if&nbsp;a&nbsp;Python&nbsp;installation&nbsp;is&nbsp;shared&nbsp;between&nbsp;users,&nbsp;it&nbsp;is&nbsp;a<br>
+good&nbsp;idea&nbsp;to&nbsp;byte-compile&nbsp;all&nbsp;modules&nbsp;upon&nbsp;installation,&nbsp;since<br>
+other&nbsp;users&nbsp;may&nbsp;not&nbsp;be&nbsp;able&nbsp;to&nbsp;write&nbsp;in&nbsp;the&nbsp;source&nbsp;directories,<br>
+and&nbsp;thus&nbsp;they&nbsp;won't&nbsp;be&nbsp;able&nbsp;to&nbsp;write&nbsp;the&nbsp;.pyc&nbsp;file,&nbsp;and&nbsp;then<br>
+they&nbsp;would&nbsp;be&nbsp;byte-compiling&nbsp;every&nbsp;module&nbsp;each&nbsp;time&nbsp;it&nbsp;is&nbsp;loaded.<br>
+This&nbsp;can&nbsp;slow&nbsp;down&nbsp;program&nbsp;start-up&nbsp;considerably.<br>
+&nbsp;<br>
+See&nbsp;compileall.py&nbsp;for&nbsp;a&nbsp;script/module&nbsp;that&nbsp;uses&nbsp;this&nbsp;module&nbsp;to<br>
+byte-compile&nbsp;all&nbsp;installed&nbsp;files&nbsp;(or&nbsp;all&nbsp;files&nbsp;in&nbsp;selected<br>
+directories).<br>
+&nbsp;<br>
+Do&nbsp;note&nbsp;that&nbsp;FileExistsError&nbsp;is&nbsp;raised&nbsp;if&nbsp;cfile&nbsp;ends&nbsp;up&nbsp;pointing&nbsp;at&nbsp;a<br>
+non-regular&nbsp;file&nbsp;or&nbsp;symlink.&nbsp;Because&nbsp;the&nbsp;compilation&nbsp;uses&nbsp;a&nbsp;file&nbsp;renaming,<br>
+the&nbsp;resulting&nbsp;file&nbsp;would&nbsp;be&nbsp;regular&nbsp;and&nbsp;thus&nbsp;not&nbsp;the&nbsp;same&nbsp;type&nbsp;of&nbsp;file&nbsp;as<br>
+it&nbsp;was&nbsp;previously.</tt></dd></dl>
+ <dl><dt><a name="-main"><strong>main</strong></a>(args=None)</dt><dd><tt>Compile&nbsp;several&nbsp;source&nbsp;files.<br>
+&nbsp;<br>
+The&nbsp;files&nbsp;named&nbsp;in&nbsp;'args'&nbsp;(or&nbsp;on&nbsp;the&nbsp;command&nbsp;line,&nbsp;if&nbsp;'args'&nbsp;is<br>
+not&nbsp;specified)&nbsp;are&nbsp;compiled&nbsp;and&nbsp;the&nbsp;resulting&nbsp;bytecode&nbsp;is&nbsp;cached<br>
+in&nbsp;the&nbsp;normal&nbsp;manner.&nbsp;&nbsp;This&nbsp;function&nbsp;does&nbsp;not&nbsp;search&nbsp;a&nbsp;directory<br>
+structure&nbsp;to&nbsp;locate&nbsp;source&nbsp;files;&nbsp;it&nbsp;only&nbsp;compiles&nbsp;files&nbsp;named<br>
+explicitly.&nbsp;&nbsp;If&nbsp;'-'&nbsp;is&nbsp;the&nbsp;only&nbsp;parameter&nbsp;in&nbsp;args,&nbsp;the&nbsp;list&nbsp;of<br>
+files&nbsp;is&nbsp;taken&nbsp;from&nbsp;standard&nbsp;input.</tt></dd></dl>
+</td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#55aa55">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Data</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#55aa55"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><strong>__all__</strong> = ['compile', 'main', 'PyCompileError', 'PycInvalidationMode']</td></tr></table>
+</body></html>

@@ -1,0 +1,299 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head><title>Python: module dataclasses</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+</head><body bgcolor="#f0f0f8">
+
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="heading">
+<tr bgcolor="#7799ee">
+<td valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong>dataclasses</strong></big></big></font></td
+><td align=right valign=bottom
+><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:c%3A%5Cpython38%5Clib%5Cdataclasses.py">c:\python38\lib\dataclasses.py</a><br><a href="https://docs.python.org/3.8/library/dataclasses">Module Reference</a></font></td></tr></table>
+    <p></p>
+<p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#aa55cc">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Modules</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#aa55cc"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><table width="100%" summary="list"><tr><td width="25%" valign=top><a href="_thread.html">_thread</a><br>
+<a href="builtins.html">builtins</a><br>
+<a href="copy.html">copy</a><br>
+</td><td width="25%" valign=top><a href="functools.html">functools</a><br>
+<a href="inspect.html">inspect</a><br>
+<a href="keyword.html">keyword</a><br>
+</td><td width="25%" valign=top><a href="re.html">re</a><br>
+<a href="sys.html">sys</a><br>
+<a href="types.html">types</a><br>
+</td><td width="25%" valign=top></td></tr></table></td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ee77aa">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Classes</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#ee77aa"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl>
+<dt><font face="helvetica, arial"><a href="builtins.html#AttributeError">builtins.AttributeError</a>(<a href="builtins.html#Exception">builtins.Exception</a>)
+</font></dt><dd>
+<dl>
+<dt><font face="helvetica, arial"><a href="dataclasses.html#FrozenInstanceError">FrozenInstanceError</a>
+</font></dt></dl>
+</dd>
+<dt><font face="helvetica, arial"><a href="builtins.html#object">builtins.object</a>
+</font></dt><dd>
+<dl>
+<dt><font face="helvetica, arial"><a href="dataclasses.html#Field">Field</a>
+</font></dt><dt><font face="helvetica, arial"><a href="dataclasses.html#InitVar">InitVar</a>
+</font></dt></dl>
+</dd>
+</dl>
+ <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="Field">class <strong>Field</strong></a>(<a href="builtins.html#object">builtins.object</a>)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt><a href="#Field">Field</a>(default,&nbsp;default_factory,&nbsp;init,&nbsp;repr,&nbsp;hash,&nbsp;compare,&nbsp;metadata)<br>
+&nbsp;<br>
+#&nbsp;Instances&nbsp;of&nbsp;<a href="#Field">Field</a>&nbsp;are&nbsp;only&nbsp;ever&nbsp;created&nbsp;from&nbsp;within&nbsp;this&nbsp;module,<br>
+#&nbsp;and&nbsp;only&nbsp;from&nbsp;the&nbsp;<a href="#-field">field</a>()&nbsp;function,&nbsp;although&nbsp;<a href="#Field">Field</a>&nbsp;instances&nbsp;are<br>
+#&nbsp;exposed&nbsp;externally&nbsp;as&nbsp;(conceptually)&nbsp;read-only&nbsp;objects.<br>
+#<br>
+#&nbsp;name&nbsp;and&nbsp;type&nbsp;are&nbsp;filled&nbsp;in&nbsp;after&nbsp;the&nbsp;fact,&nbsp;not&nbsp;in&nbsp;__init__.<br>
+#&nbsp;They're&nbsp;not&nbsp;known&nbsp;at&nbsp;the&nbsp;time&nbsp;this&nbsp;class&nbsp;is&nbsp;instantiated,&nbsp;but&nbsp;it's<br>
+#&nbsp;convenient&nbsp;if&nbsp;they're&nbsp;available&nbsp;later.<br>
+#<br>
+#&nbsp;When&nbsp;cls._FIELDS&nbsp;is&nbsp;filled&nbsp;in&nbsp;with&nbsp;a&nbsp;list&nbsp;of&nbsp;<a href="#Field">Field</a>&nbsp;objects,&nbsp;the&nbsp;name<br>
+#&nbsp;and&nbsp;type&nbsp;fields&nbsp;will&nbsp;have&nbsp;been&nbsp;populated.<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%">Methods defined here:<br>
+<dl><dt><a name="Field-__init__"><strong>__init__</strong></a>(self, default, default_factory, init, repr, hash, compare, metadata)</dt><dd><tt>Initialize&nbsp;self.&nbsp;&nbsp;See&nbsp;help(<a href="#Field-type">type</a>(self))&nbsp;for&nbsp;accurate&nbsp;signature.</tt></dd></dl>
+
+<dl><dt><a name="Field-__repr__"><strong>__repr__</strong></a>(self)</dt><dd><tt>Return&nbsp;<a href="#Field-repr">repr</a>(self).</tt></dd></dl>
+
+<dl><dt><a name="Field-__set_name__"><strong>__set_name__</strong></a>(self, owner, name)</dt><dd><tt>#&nbsp;This&nbsp;is&nbsp;used&nbsp;to&nbsp;support&nbsp;the&nbsp;<a href="http://www.python.org/dev/peps/pep-0487/">PEP&nbsp;487</a>&nbsp;__set_name__&nbsp;protocol&nbsp;in&nbsp;the<br>
+#&nbsp;case&nbsp;where&nbsp;we're&nbsp;using&nbsp;a&nbsp;field&nbsp;that&nbsp;contains&nbsp;a&nbsp;descriptor&nbsp;as&nbsp;a<br>
+#&nbsp;default&nbsp;value.&nbsp;&nbsp;For&nbsp;details&nbsp;on&nbsp;__set_name__,&nbsp;see<br>
+#&nbsp;https://www.python.org/dev/peps/pep-0487/#implementation-details.<br>
+#<br>
+#&nbsp;Note&nbsp;that&nbsp;in&nbsp;_process_class,&nbsp;this&nbsp;<a href="#Field">Field</a>&nbsp;<a href="builtins.html#object">object</a>&nbsp;is&nbsp;overwritten<br>
+#&nbsp;with&nbsp;the&nbsp;default&nbsp;value,&nbsp;so&nbsp;the&nbsp;end&nbsp;result&nbsp;is&nbsp;a&nbsp;descriptor&nbsp;that<br>
+#&nbsp;had&nbsp;__set_name__&nbsp;called&nbsp;on&nbsp;it&nbsp;at&nbsp;the&nbsp;right&nbsp;time.</tt></dd></dl>
+
+<hr>
+Data descriptors defined here:<br>
+<dl><dt><strong>compare</strong></dt>
+</dl>
+<dl><dt><strong>default</strong></dt>
+</dl>
+<dl><dt><strong>default_factory</strong></dt>
+</dl>
+<dl><dt><strong>hash</strong></dt>
+</dl>
+<dl><dt><strong>init</strong></dt>
+</dl>
+<dl><dt><strong>metadata</strong></dt>
+</dl>
+<dl><dt><strong>name</strong></dt>
+</dl>
+<dl><dt><strong>repr</strong></dt>
+</dl>
+<dl><dt><strong>type</strong></dt>
+</dl>
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="FrozenInstanceError">class <strong>FrozenInstanceError</strong></a>(<a href="builtins.html#AttributeError">builtins.AttributeError</a>)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt>Attribute&nbsp;not&nbsp;found.<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%"><dl><dt>Method resolution order:</dt>
+<dd><a href="dataclasses.html#FrozenInstanceError">FrozenInstanceError</a></dd>
+<dd><a href="builtins.html#AttributeError">builtins.AttributeError</a></dd>
+<dd><a href="builtins.html#Exception">builtins.Exception</a></dd>
+<dd><a href="builtins.html#BaseException">builtins.BaseException</a></dd>
+<dd><a href="builtins.html#object">builtins.object</a></dd>
+</dl>
+<hr>
+Data descriptors defined here:<br>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<hr>
+Methods inherited from <a href="builtins.html#AttributeError">builtins.AttributeError</a>:<br>
+<dl><dt><a name="FrozenInstanceError-__init__"><strong>__init__</strong></a>(self, /, *args, **kwargs)</dt><dd><tt>Initialize&nbsp;self.&nbsp;&nbsp;See&nbsp;help(type(self))&nbsp;for&nbsp;accurate&nbsp;signature.</tt></dd></dl>
+
+<hr>
+Static methods inherited from <a href="builtins.html#AttributeError">builtins.AttributeError</a>:<br>
+<dl><dt><a name="FrozenInstanceError-__new__"><strong>__new__</strong></a>(*args, **kwargs)<font color="#909090"><font face="helvetica, arial"> from <a href="builtins.html#type">builtins.type</a></font></font></dt><dd><tt>Create&nbsp;and&nbsp;return&nbsp;a&nbsp;new&nbsp;<a href="builtins.html#object">object</a>.&nbsp;&nbsp;See&nbsp;help(type)&nbsp;for&nbsp;accurate&nbsp;signature.</tt></dd></dl>
+
+<hr>
+Methods inherited from <a href="builtins.html#BaseException">builtins.BaseException</a>:<br>
+<dl><dt><a name="FrozenInstanceError-__delattr__"><strong>__delattr__</strong></a>(self, name, /)</dt><dd><tt>Implement&nbsp;delattr(self,&nbsp;name).</tt></dd></dl>
+
+<dl><dt><a name="FrozenInstanceError-__getattribute__"><strong>__getattribute__</strong></a>(self, name, /)</dt><dd><tt>Return&nbsp;getattr(self,&nbsp;name).</tt></dd></dl>
+
+<dl><dt><a name="FrozenInstanceError-__reduce__"><strong>__reduce__</strong></a>(...)</dt><dd><tt>Helper&nbsp;for&nbsp;pickle.</tt></dd></dl>
+
+<dl><dt><a name="FrozenInstanceError-__repr__"><strong>__repr__</strong></a>(self, /)</dt><dd><tt>Return&nbsp;repr(self).</tt></dd></dl>
+
+<dl><dt><a name="FrozenInstanceError-__setattr__"><strong>__setattr__</strong></a>(self, name, value, /)</dt><dd><tt>Implement&nbsp;setattr(self,&nbsp;name,&nbsp;value).</tt></dd></dl>
+
+<dl><dt><a name="FrozenInstanceError-__setstate__"><strong>__setstate__</strong></a>(...)</dt></dl>
+
+<dl><dt><a name="FrozenInstanceError-__str__"><strong>__str__</strong></a>(self, /)</dt><dd><tt>Return&nbsp;str(self).</tt></dd></dl>
+
+<dl><dt><a name="FrozenInstanceError-with_traceback"><strong>with_traceback</strong></a>(...)</dt><dd><tt>Exception.<a href="#FrozenInstanceError-with_traceback">with_traceback</a>(tb)&nbsp;--<br>
+set&nbsp;self.<strong>__traceback__</strong>&nbsp;to&nbsp;tb&nbsp;and&nbsp;return&nbsp;self.</tt></dd></dl>
+
+<hr>
+Data descriptors inherited from <a href="builtins.html#BaseException">builtins.BaseException</a>:<br>
+<dl><dt><strong>__cause__</strong></dt>
+<dd><tt>exception&nbsp;cause</tt></dd>
+</dl>
+<dl><dt><strong>__context__</strong></dt>
+<dd><tt>exception&nbsp;context</tt></dd>
+</dl>
+<dl><dt><strong>__dict__</strong></dt>
+</dl>
+<dl><dt><strong>__suppress_context__</strong></dt>
+</dl>
+<dl><dt><strong>__traceback__</strong></dt>
+</dl>
+<dl><dt><strong>args</strong></dt>
+</dl>
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="InitVar">class <strong>InitVar</strong></a>(<a href="builtins.html#object">builtins.object</a>)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt><a href="#InitVar">InitVar</a>(type)<br>
+&nbsp;<br>
+<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%">Methods defined here:<br>
+<dl><dt><a name="InitVar-__init__"><strong>__init__</strong></a>(self, type)</dt><dd><tt>Initialize&nbsp;self.&nbsp;&nbsp;See&nbsp;help(<a href="#InitVar-type">type</a>(self))&nbsp;for&nbsp;accurate&nbsp;signature.</tt></dd></dl>
+
+<dl><dt><a name="InitVar-__repr__"><strong>__repr__</strong></a>(self)</dt><dd><tt>Return&nbsp;repr(self).</tt></dd></dl>
+
+<hr>
+Data descriptors defined here:<br>
+<dl><dt><strong>type</strong></dt>
+</dl>
+</td></tr></table></td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#eeaa77">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Functions</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#eeaa77"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl><dt><a name="-asdict"><strong>asdict</strong></a>(obj, *, dict_factory=&lt;class 'dict'&gt;)</dt><dd><tt>Return&nbsp;the&nbsp;fields&nbsp;of&nbsp;a&nbsp;dataclass&nbsp;instance&nbsp;as&nbsp;a&nbsp;new&nbsp;dictionary&nbsp;mapping<br>
+field&nbsp;names&nbsp;to&nbsp;field&nbsp;values.<br>
+&nbsp;<br>
+Example&nbsp;usage:<br>
+&nbsp;<br>
+&nbsp;&nbsp;@dataclass<br>
+&nbsp;&nbsp;class&nbsp;C:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;x:&nbsp;int<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;y:&nbsp;int<br>
+&nbsp;<br>
+&nbsp;&nbsp;c&nbsp;=&nbsp;C(1,&nbsp;2)<br>
+&nbsp;&nbsp;assert&nbsp;<a href="#-asdict">asdict</a>(c)&nbsp;==&nbsp;{'x':&nbsp;1,&nbsp;'y':&nbsp;2}<br>
+&nbsp;<br>
+If&nbsp;given,&nbsp;'dict_factory'&nbsp;will&nbsp;be&nbsp;used&nbsp;instead&nbsp;of&nbsp;built-in&nbsp;dict.<br>
+The&nbsp;function&nbsp;applies&nbsp;recursively&nbsp;to&nbsp;field&nbsp;values&nbsp;that&nbsp;are<br>
+dataclass&nbsp;instances.&nbsp;This&nbsp;will&nbsp;also&nbsp;look&nbsp;into&nbsp;built-in&nbsp;containers:<br>
+tuples,&nbsp;lists,&nbsp;and&nbsp;dicts.</tt></dd></dl>
+ <dl><dt><a name="-astuple"><strong>astuple</strong></a>(obj, *, tuple_factory=&lt;class 'tuple'&gt;)</dt><dd><tt>Return&nbsp;the&nbsp;fields&nbsp;of&nbsp;a&nbsp;dataclass&nbsp;instance&nbsp;as&nbsp;a&nbsp;new&nbsp;tuple&nbsp;of&nbsp;field&nbsp;values.<br>
+&nbsp;<br>
+Example&nbsp;usage::<br>
+&nbsp;<br>
+&nbsp;&nbsp;@dataclass<br>
+&nbsp;&nbsp;class&nbsp;C:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;x:&nbsp;int<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;y:&nbsp;int<br>
+&nbsp;<br>
+c&nbsp;=&nbsp;C(1,&nbsp;2)<br>
+assert&nbsp;<a href="#-astuple">astuple</a>(c)&nbsp;==&nbsp;(1,&nbsp;2)<br>
+&nbsp;<br>
+If&nbsp;given,&nbsp;'tuple_factory'&nbsp;will&nbsp;be&nbsp;used&nbsp;instead&nbsp;of&nbsp;built-in&nbsp;tuple.<br>
+The&nbsp;function&nbsp;applies&nbsp;recursively&nbsp;to&nbsp;field&nbsp;values&nbsp;that&nbsp;are<br>
+dataclass&nbsp;instances.&nbsp;This&nbsp;will&nbsp;also&nbsp;look&nbsp;into&nbsp;built-in&nbsp;containers:<br>
+tuples,&nbsp;lists,&nbsp;and&nbsp;dicts.</tt></dd></dl>
+ <dl><dt><a name="-dataclass"><strong>dataclass</strong></a>(cls=None, /, *, init=True, repr=True, eq=True, order=False, unsafe_hash=False, frozen=False)</dt><dd><tt>Returns&nbsp;the&nbsp;same&nbsp;class&nbsp;as&nbsp;was&nbsp;passed&nbsp;in,&nbsp;with&nbsp;dunder&nbsp;methods<br>
+added&nbsp;based&nbsp;on&nbsp;the&nbsp;fields&nbsp;defined&nbsp;in&nbsp;the&nbsp;class.<br>
+&nbsp;<br>
+Examines&nbsp;<a href="http://www.python.org/dev/peps/pep-0526/">PEP&nbsp;526</a>&nbsp;__annotations__&nbsp;to&nbsp;determine&nbsp;fields.<br>
+&nbsp;<br>
+If&nbsp;init&nbsp;is&nbsp;true,&nbsp;an&nbsp;__init__()&nbsp;method&nbsp;is&nbsp;added&nbsp;to&nbsp;the&nbsp;class.&nbsp;If<br>
+repr&nbsp;is&nbsp;true,&nbsp;a&nbsp;__repr__()&nbsp;method&nbsp;is&nbsp;added.&nbsp;If&nbsp;order&nbsp;is&nbsp;true,&nbsp;rich<br>
+comparison&nbsp;dunder&nbsp;methods&nbsp;are&nbsp;added.&nbsp;If&nbsp;unsafe_hash&nbsp;is&nbsp;true,&nbsp;a<br>
+__hash__()&nbsp;method&nbsp;function&nbsp;is&nbsp;added.&nbsp;If&nbsp;frozen&nbsp;is&nbsp;true,&nbsp;fields&nbsp;may<br>
+not&nbsp;be&nbsp;assigned&nbsp;to&nbsp;after&nbsp;instance&nbsp;creation.</tt></dd></dl>
+ <dl><dt><a name="-field"><strong>field</strong></a>(*, default=&lt;dataclasses._MISSING_TYPE object at 0x00000216A20877F0&gt;, default_factory=&lt;dataclasses._MISSING_TYPE object at 0x00000216A20877F0&gt;, init=True, repr=True, hash=None, compare=True, metadata=None)</dt><dd><tt>Return&nbsp;an&nbsp;<a href="builtins.html#object">object</a>&nbsp;to&nbsp;identify&nbsp;dataclass&nbsp;fields.<br>
+&nbsp;<br>
+default&nbsp;is&nbsp;the&nbsp;default&nbsp;value&nbsp;of&nbsp;the&nbsp;field.&nbsp;&nbsp;default_factory&nbsp;is&nbsp;a<br>
+0-argument&nbsp;function&nbsp;called&nbsp;to&nbsp;initialize&nbsp;a&nbsp;field's&nbsp;value.&nbsp;&nbsp;If&nbsp;init<br>
+is&nbsp;True,&nbsp;the&nbsp;field&nbsp;will&nbsp;be&nbsp;a&nbsp;parameter&nbsp;to&nbsp;the&nbsp;class's&nbsp;__init__()<br>
+function.&nbsp;&nbsp;If&nbsp;repr&nbsp;is&nbsp;True,&nbsp;the&nbsp;field&nbsp;will&nbsp;be&nbsp;included&nbsp;in&nbsp;the<br>
+<a href="builtins.html#object">object</a>'s&nbsp;repr().&nbsp;&nbsp;If&nbsp;hash&nbsp;is&nbsp;True,&nbsp;the&nbsp;field&nbsp;will&nbsp;be&nbsp;included&nbsp;in<br>
+the&nbsp;<a href="builtins.html#object">object</a>'s&nbsp;hash().&nbsp;&nbsp;If&nbsp;compare&nbsp;is&nbsp;True,&nbsp;the&nbsp;field&nbsp;will&nbsp;be&nbsp;used<br>
+in&nbsp;comparison&nbsp;functions.&nbsp;&nbsp;metadata,&nbsp;if&nbsp;specified,&nbsp;must&nbsp;be&nbsp;a<br>
+mapping&nbsp;which&nbsp;is&nbsp;stored&nbsp;but&nbsp;not&nbsp;otherwise&nbsp;examined&nbsp;by&nbsp;dataclass.<br>
+&nbsp;<br>
+It&nbsp;is&nbsp;an&nbsp;error&nbsp;to&nbsp;specify&nbsp;both&nbsp;default&nbsp;and&nbsp;default_factory.</tt></dd></dl>
+ <dl><dt><a name="-fields"><strong>fields</strong></a>(class_or_instance)</dt><dd><tt>Return&nbsp;a&nbsp;tuple&nbsp;describing&nbsp;the&nbsp;fields&nbsp;of&nbsp;this&nbsp;dataclass.<br>
+&nbsp;<br>
+Accepts&nbsp;a&nbsp;dataclass&nbsp;or&nbsp;an&nbsp;instance&nbsp;of&nbsp;one.&nbsp;Tuple&nbsp;elements&nbsp;are&nbsp;of<br>
+type&nbsp;<a href="#Field">Field</a>.</tt></dd></dl>
+ <dl><dt><a name="-is_dataclass"><strong>is_dataclass</strong></a>(obj)</dt><dd><tt>Returns&nbsp;True&nbsp;if&nbsp;obj&nbsp;is&nbsp;a&nbsp;dataclass&nbsp;or&nbsp;an&nbsp;instance&nbsp;of&nbsp;a<br>
+dataclass.</tt></dd></dl>
+ <dl><dt><a name="-make_dataclass"><strong>make_dataclass</strong></a>(cls_name, fields, *, bases=(), namespace=None, init=True, repr=True, eq=True, order=False, unsafe_hash=False, frozen=False)</dt><dd><tt>Return&nbsp;a&nbsp;new&nbsp;dynamically&nbsp;created&nbsp;dataclass.<br>
+&nbsp;<br>
+The&nbsp;dataclass&nbsp;name&nbsp;will&nbsp;be&nbsp;'cls_name'.&nbsp;&nbsp;'fields'&nbsp;is&nbsp;an&nbsp;iterable<br>
+of&nbsp;either&nbsp;(name),&nbsp;(name,&nbsp;type)&nbsp;or&nbsp;(name,&nbsp;type,&nbsp;<a href="#Field">Field</a>)&nbsp;objects.&nbsp;If&nbsp;type&nbsp;is<br>
+omitted,&nbsp;use&nbsp;the&nbsp;string&nbsp;'typing.Any'.&nbsp;&nbsp;<a href="#Field">Field</a>&nbsp;objects&nbsp;are&nbsp;created&nbsp;by<br>
+the&nbsp;equivalent&nbsp;of&nbsp;calling&nbsp;'<a href="#-field">field</a>(name,&nbsp;type&nbsp;[,&nbsp;<a href="#Field">Field</a>-info])'.<br>
+&nbsp;<br>
+&nbsp;&nbsp;C&nbsp;=&nbsp;<a href="#-make_dataclass">make_dataclass</a>('C',&nbsp;['x',&nbsp;('y',&nbsp;int),&nbsp;('z',&nbsp;int,&nbsp;<a href="#-field">field</a>(init=False))],&nbsp;bases=(Base,))<br>
+&nbsp;<br>
+is&nbsp;equivalent&nbsp;to:<br>
+&nbsp;<br>
+&nbsp;&nbsp;@dataclass<br>
+&nbsp;&nbsp;class&nbsp;C(Base):<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;x:&nbsp;'typing.Any'<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;y:&nbsp;int<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;z:&nbsp;int&nbsp;=&nbsp;<a href="#-field">field</a>(init=False)<br>
+&nbsp;<br>
+For&nbsp;the&nbsp;bases&nbsp;and&nbsp;namespace&nbsp;parameters,&nbsp;see&nbsp;the&nbsp;builtin&nbsp;type()&nbsp;function.<br>
+&nbsp;<br>
+The&nbsp;parameters&nbsp;init,&nbsp;repr,&nbsp;eq,&nbsp;order,&nbsp;unsafe_hash,&nbsp;and&nbsp;frozen&nbsp;are&nbsp;passed&nbsp;to<br>
+<a href="#-dataclass">dataclass</a>().</tt></dd></dl>
+ <dl><dt><a name="-replace"><strong>replace</strong></a>(obj, /, **kwargs)</dt><dd><tt>Return&nbsp;a&nbsp;new&nbsp;<a href="builtins.html#object">object</a>&nbsp;replacing&nbsp;specified&nbsp;fields&nbsp;with&nbsp;new&nbsp;values.<br>
+&nbsp;<br>
+This&nbsp;is&nbsp;especially&nbsp;useful&nbsp;for&nbsp;frozen&nbsp;classes.&nbsp;&nbsp;Example&nbsp;usage:<br>
+&nbsp;<br>
+&nbsp;&nbsp;@<a href="#-dataclass">dataclass</a>(frozen=True)<br>
+&nbsp;&nbsp;class&nbsp;C:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;x:&nbsp;int<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;y:&nbsp;int<br>
+&nbsp;<br>
+&nbsp;&nbsp;c&nbsp;=&nbsp;C(1,&nbsp;2)<br>
+&nbsp;&nbsp;c1&nbsp;=&nbsp;<a href="#-replace">replace</a>(c,&nbsp;x=3)<br>
+&nbsp;&nbsp;assert&nbsp;c1.x&nbsp;==&nbsp;3&nbsp;and&nbsp;c1.y&nbsp;==&nbsp;2</tt></dd></dl>
+</td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#55aa55">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Data</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#55aa55"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><strong>MISSING</strong> = &lt;dataclasses._MISSING_TYPE object&gt;<br>
+<strong>__all__</strong> = ['dataclass', 'field', 'Field', 'FrozenInstanceError', 'InitVar', 'MISSING', 'fields', 'asdict', 'astuple', 'make_dataclass', 'replace', 'is_dataclass']</td></tr></table>
+</body></html>

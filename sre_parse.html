@@ -1,0 +1,338 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head><title>Python: module sre_parse</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+</head><body bgcolor="#f0f0f8">
+
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="heading">
+<tr bgcolor="#7799ee">
+<td valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong>sre_parse</strong></big></big></font></td
+><td align=right valign=bottom
+><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:c%3A%5Cpython38%5Clib%5Csre_parse.py">c:\python38\lib\sre_parse.py</a><br><a href="https://docs.python.org/3.8/library/sre_parse">Module Reference</a></font></td></tr></table>
+    <p><tt>Internal&nbsp;support&nbsp;module&nbsp;for&nbsp;sre</tt></p>
+<p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ee77aa">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Classes</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#ee77aa"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl>
+<dt><font face="helvetica, arial"><a href="builtins.html#Exception">builtins.Exception</a>(<a href="builtins.html#BaseException">builtins.BaseException</a>)
+</font></dt><dd>
+<dl>
+<dt><font face="helvetica, arial"><a href="sre_parse.html#Verbose">Verbose</a>
+</font></dt></dl>
+</dd>
+<dt><font face="helvetica, arial"><a href="builtins.html#object">builtins.object</a>
+</font></dt><dd>
+<dl>
+<dt><font face="helvetica, arial"><a href="sre_parse.html#State">State</a>
+</font></dt><dt><font face="helvetica, arial"><a href="sre_parse.html#SubPattern">SubPattern</a>
+</font></dt><dt><font face="helvetica, arial"><a href="sre_parse.html#Tokenizer">Tokenizer</a>
+</font></dt></dl>
+</dd>
+</dl>
+ <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="State">class <strong>State</strong></a>(<a href="builtins.html#object">builtins.object</a>)</font></td></tr>
+    
+<tr><td bgcolor="#ffc8d8"><tt>&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%">Methods defined here:<br>
+<dl><dt><a name="State-__init__"><strong>__init__</strong></a>(self)</dt><dd><tt>Initialize&nbsp;self.&nbsp;&nbsp;See&nbsp;help(type(self))&nbsp;for&nbsp;accurate&nbsp;signature.</tt></dd></dl>
+
+<dl><dt><a name="State-checkgroup"><strong>checkgroup</strong></a>(self, gid)</dt></dl>
+
+<dl><dt><a name="State-checklookbehindgroup"><strong>checklookbehindgroup</strong></a>(self, gid, source)</dt></dl>
+
+<dl><dt><a name="State-closegroup"><strong>closegroup</strong></a>(self, gid, p)</dt></dl>
+
+<dl><dt><a name="State-opengroup"><strong>opengroup</strong></a>(self, name=None)</dt></dl>
+
+<hr>
+Readonly properties defined here:<br>
+<dl><dt><strong>groups</strong></dt>
+</dl>
+<hr>
+Data descriptors defined here:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><tt>dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="SubPattern">class <strong>SubPattern</strong></a>(<a href="builtins.html#object">builtins.object</a>)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt><a href="#SubPattern">SubPattern</a>(state,&nbsp;data=None)<br>
+&nbsp;<br>
+<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%">Methods defined here:<br>
+<dl><dt><a name="SubPattern-__delitem__"><strong>__delitem__</strong></a>(self, index)</dt></dl>
+
+<dl><dt><a name="SubPattern-__getitem__"><strong>__getitem__</strong></a>(self, index)</dt></dl>
+
+<dl><dt><a name="SubPattern-__init__"><strong>__init__</strong></a>(self, state, data=None)</dt><dd><tt>Initialize&nbsp;self.&nbsp;&nbsp;See&nbsp;help(type(self))&nbsp;for&nbsp;accurate&nbsp;signature.</tt></dd></dl>
+
+<dl><dt><a name="SubPattern-__len__"><strong>__len__</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="SubPattern-__repr__"><strong>__repr__</strong></a>(self)</dt><dd><tt>Return&nbsp;repr(self).</tt></dd></dl>
+
+<dl><dt><a name="SubPattern-__setitem__"><strong>__setitem__</strong></a>(self, index, code)</dt></dl>
+
+<dl><dt><a name="SubPattern-append"><strong>append</strong></a>(self, code)</dt></dl>
+
+<dl><dt><a name="SubPattern-dump"><strong>dump</strong></a>(self, level=0)</dt></dl>
+
+<dl><dt><a name="SubPattern-getwidth"><strong>getwidth</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="SubPattern-insert"><strong>insert</strong></a>(self, index, code)</dt></dl>
+
+<hr>
+Data descriptors defined here:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><tt>dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="Tokenizer">class <strong>Tokenizer</strong></a>(<a href="builtins.html#object">builtins.object</a>)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt><a href="#Tokenizer">Tokenizer</a>(string)<br>
+&nbsp;<br>
+<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%">Methods defined here:<br>
+<dl><dt><a name="Tokenizer-__init__"><strong>__init__</strong></a>(self, string)</dt><dd><tt>Initialize&nbsp;self.&nbsp;&nbsp;See&nbsp;help(type(self))&nbsp;for&nbsp;accurate&nbsp;signature.</tt></dd></dl>
+
+<dl><dt><a name="Tokenizer-error"><strong>error</strong></a>(self, msg, offset=0)</dt></dl>
+
+<dl><dt><a name="Tokenizer-get"><strong>get</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="Tokenizer-getuntil"><strong>getuntil</strong></a>(self, terminator, name)</dt></dl>
+
+<dl><dt><a name="Tokenizer-getwhile"><strong>getwhile</strong></a>(self, n, charset)</dt></dl>
+
+<dl><dt><a name="Tokenizer-match"><strong>match</strong></a>(self, char)</dt></dl>
+
+<dl><dt><a name="Tokenizer-seek"><strong>seek</strong></a>(self, index)</dt></dl>
+
+<dl><dt><a name="Tokenizer-tell"><strong>tell</strong></a>(self)</dt></dl>
+
+<hr>
+Readonly properties defined here:<br>
+<dl><dt><strong>pos</strong></dt>
+</dl>
+<hr>
+Data descriptors defined here:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><tt>dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="Verbose">class <strong>Verbose</strong></a>(<a href="builtins.html#Exception">builtins.Exception</a>)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt>Common&nbsp;base&nbsp;class&nbsp;for&nbsp;all&nbsp;non-exit&nbsp;exceptions.<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%"><dl><dt>Method resolution order:</dt>
+<dd><a href="sre_parse.html#Verbose">Verbose</a></dd>
+<dd><a href="builtins.html#Exception">builtins.Exception</a></dd>
+<dd><a href="builtins.html#BaseException">builtins.BaseException</a></dd>
+<dd><a href="builtins.html#object">builtins.object</a></dd>
+</dl>
+<hr>
+Data descriptors defined here:<br>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<hr>
+Methods inherited from <a href="builtins.html#Exception">builtins.Exception</a>:<br>
+<dl><dt><a name="Verbose-__init__"><strong>__init__</strong></a>(self, /, *args, **kwargs)</dt><dd><tt>Initialize&nbsp;self.&nbsp;&nbsp;See&nbsp;help(type(self))&nbsp;for&nbsp;accurate&nbsp;signature.</tt></dd></dl>
+
+<hr>
+Static methods inherited from <a href="builtins.html#Exception">builtins.Exception</a>:<br>
+<dl><dt><a name="Verbose-__new__"><strong>__new__</strong></a>(*args, **kwargs)<font color="#909090"><font face="helvetica, arial"> from <a href="builtins.html#type">builtins.type</a></font></font></dt><dd><tt>Create&nbsp;and&nbsp;return&nbsp;a&nbsp;new&nbsp;<a href="builtins.html#object">object</a>.&nbsp;&nbsp;See&nbsp;help(type)&nbsp;for&nbsp;accurate&nbsp;signature.</tt></dd></dl>
+
+<hr>
+Methods inherited from <a href="builtins.html#BaseException">builtins.BaseException</a>:<br>
+<dl><dt><a name="Verbose-__delattr__"><strong>__delattr__</strong></a>(self, name, /)</dt><dd><tt>Implement&nbsp;delattr(self,&nbsp;name).</tt></dd></dl>
+
+<dl><dt><a name="Verbose-__getattribute__"><strong>__getattribute__</strong></a>(self, name, /)</dt><dd><tt>Return&nbsp;getattr(self,&nbsp;name).</tt></dd></dl>
+
+<dl><dt><a name="Verbose-__reduce__"><strong>__reduce__</strong></a>(...)</dt><dd><tt>Helper&nbsp;for&nbsp;pickle.</tt></dd></dl>
+
+<dl><dt><a name="Verbose-__repr__"><strong>__repr__</strong></a>(self, /)</dt><dd><tt>Return&nbsp;repr(self).</tt></dd></dl>
+
+<dl><dt><a name="Verbose-__setattr__"><strong>__setattr__</strong></a>(self, name, value, /)</dt><dd><tt>Implement&nbsp;setattr(self,&nbsp;name,&nbsp;value).</tt></dd></dl>
+
+<dl><dt><a name="Verbose-__setstate__"><strong>__setstate__</strong></a>(...)</dt></dl>
+
+<dl><dt><a name="Verbose-__str__"><strong>__str__</strong></a>(self, /)</dt><dd><tt>Return&nbsp;str(self).</tt></dd></dl>
+
+<dl><dt><a name="Verbose-with_traceback"><strong>with_traceback</strong></a>(...)</dt><dd><tt><a href="builtins.html#Exception">Exception</a>.<a href="#Verbose-with_traceback">with_traceback</a>(tb)&nbsp;--<br>
+set&nbsp;self.<strong>__traceback__</strong>&nbsp;to&nbsp;tb&nbsp;and&nbsp;return&nbsp;self.</tt></dd></dl>
+
+<hr>
+Data descriptors inherited from <a href="builtins.html#BaseException">builtins.BaseException</a>:<br>
+<dl><dt><strong>__cause__</strong></dt>
+<dd><tt>exception&nbsp;cause</tt></dd>
+</dl>
+<dl><dt><strong>__context__</strong></dt>
+<dd><tt>exception&nbsp;context</tt></dd>
+</dl>
+<dl><dt><strong>__dict__</strong></dt>
+</dl>
+<dl><dt><strong>__suppress_context__</strong></dt>
+</dl>
+<dl><dt><strong>__traceback__</strong></dt>
+</dl>
+<dl><dt><strong>args</strong></dt>
+</dl>
+</td></tr></table></td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#eeaa77">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Functions</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#eeaa77"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl><dt><a name="-expand_template"><strong>expand_template</strong></a>(template, match)</dt></dl>
+ <dl><dt><a name="-fix_flags"><strong>fix_flags</strong></a>(src, flags)</dt></dl>
+ <dl><dt><a name="-parse"><strong>parse</strong></a>(str, flags=0, state=None)</dt></dl>
+ <dl><dt><a name="-parse_template"><strong>parse_template</strong></a>(source, state)</dt></dl>
+</td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#55aa55">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Data</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#55aa55"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><strong>ANY</strong> = ANY<br>
+<strong>ANY_ALL</strong> = ANY_ALL<br>
+<strong>ASCIILETTERS</strong> = frozenset({'A', 'B', 'C', 'D', 'E', 'F', ...})<br>
+<strong>ASSERT</strong> = ASSERT<br>
+<strong>ASSERT_NOT</strong> = ASSERT_NOT<br>
+<strong>AT</strong> = AT<br>
+<strong>ATCODES</strong> = [AT_BEGINNING, AT_BEGINNING_LINE, AT_BEGINNING_STRING, AT_BOUNDARY, AT_NON_BOUNDARY, AT_END, AT_END_LINE, AT_END_STRING, AT_LOC_BOUNDARY, AT_LOC_NON_BOUNDARY, AT_UNI_BOUNDARY, AT_UNI_NON_BOUNDARY]<br>
+<strong>AT_BEGINNING</strong> = AT_BEGINNING<br>
+<strong>AT_BEGINNING_LINE</strong> = AT_BEGINNING_LINE<br>
+<strong>AT_BEGINNING_STRING</strong> = AT_BEGINNING_STRING<br>
+<strong>AT_BOUNDARY</strong> = AT_BOUNDARY<br>
+<strong>AT_END</strong> = AT_END<br>
+<strong>AT_END_LINE</strong> = AT_END_LINE<br>
+<strong>AT_END_STRING</strong> = AT_END_STRING<br>
+<strong>AT_LOCALE</strong> = {AT_BOUNDARY: AT_LOC_BOUNDARY, AT_NON_BOUNDARY: AT_LOC_NON_BOUNDARY}<br>
+<strong>AT_LOC_BOUNDARY</strong> = AT_LOC_BOUNDARY<br>
+<strong>AT_LOC_NON_BOUNDARY</strong> = AT_LOC_NON_BOUNDARY<br>
+<strong>AT_MULTILINE</strong> = {AT_BEGINNING: AT_BEGINNING_LINE, AT_END: AT_END_LINE}<br>
+<strong>AT_NON_BOUNDARY</strong> = AT_NON_BOUNDARY<br>
+<strong>AT_UNICODE</strong> = {AT_BOUNDARY: AT_UNI_BOUNDARY, AT_NON_BOUNDARY: AT_UNI_NON_BOUNDARY}<br>
+<strong>AT_UNI_BOUNDARY</strong> = AT_UNI_BOUNDARY<br>
+<strong>AT_UNI_NON_BOUNDARY</strong> = AT_UNI_NON_BOUNDARY<br>
+<strong>BIGCHARSET</strong> = BIGCHARSET<br>
+<strong>BRANCH</strong> = BRANCH<br>
+<strong>CALL</strong> = CALL<br>
+<strong>CATEGORIES</strong> = {r'\A': (AT, AT_BEGINNING_STRING), r'\B': (AT, AT_NON_BOUNDARY), r'\D': (IN, [(CATEGORY, CATEGORY_NOT_DIGIT)]), r'\S': (IN, [(CATEGORY, CATEGORY_NOT_SPACE)]), r'\W': (IN, [(CATEGORY, CATEGORY_NOT_WORD)]), r'\Z': (AT, AT_END_STRING), r'\b': (AT, AT_BOUNDARY), r'\d': (IN, [(CATEGORY, CATEGORY_DIGIT)]), r'\s': (IN, [(CATEGORY, CATEGORY_SPACE)]), r'\w': (IN, [(CATEGORY, CATEGORY_WORD)])}<br>
+<strong>CATEGORY</strong> = CATEGORY<br>
+<strong>CATEGORY_DIGIT</strong> = CATEGORY_DIGIT<br>
+<strong>CATEGORY_LINEBREAK</strong> = CATEGORY_LINEBREAK<br>
+<strong>CATEGORY_LOC_NOT_WORD</strong> = CATEGORY_LOC_NOT_WORD<br>
+<strong>CATEGORY_LOC_WORD</strong> = CATEGORY_LOC_WORD<br>
+<strong>CATEGORY_NOT_DIGIT</strong> = CATEGORY_NOT_DIGIT<br>
+<strong>CATEGORY_NOT_LINEBREAK</strong> = CATEGORY_NOT_LINEBREAK<br>
+<strong>CATEGORY_NOT_SPACE</strong> = CATEGORY_NOT_SPACE<br>
+<strong>CATEGORY_NOT_WORD</strong> = CATEGORY_NOT_WORD<br>
+<strong>CATEGORY_SPACE</strong> = CATEGORY_SPACE<br>
+<strong>CATEGORY_UNI_DIGIT</strong> = CATEGORY_UNI_DIGIT<br>
+<strong>CATEGORY_UNI_LINEBREAK</strong> = CATEGORY_UNI_LINEBREAK<br>
+<strong>CATEGORY_UNI_NOT_DIGIT</strong> = CATEGORY_UNI_NOT_DIGIT<br>
+<strong>CATEGORY_UNI_NOT_LINEBREAK</strong> = CATEGORY_UNI_NOT_LINEBREAK<br>
+<strong>CATEGORY_UNI_NOT_SPACE</strong> = CATEGORY_UNI_NOT_SPACE<br>
+<strong>CATEGORY_UNI_NOT_WORD</strong> = CATEGORY_UNI_NOT_WORD<br>
+<strong>CATEGORY_UNI_SPACE</strong> = CATEGORY_UNI_SPACE<br>
+<strong>CATEGORY_UNI_WORD</strong> = CATEGORY_UNI_WORD<br>
+<strong>CATEGORY_WORD</strong> = CATEGORY_WORD<br>
+<strong>CHARSET</strong> = CHARSET<br>
+<strong>CHCODES</strong> = [CATEGORY_DIGIT, CATEGORY_NOT_DIGIT, CATEGORY_SPACE, CATEGORY_NOT_SPACE, CATEGORY_WORD, CATEGORY_NOT_WORD, CATEGORY_LINEBREAK, CATEGORY_NOT_LINEBREAK, CATEGORY_LOC_WORD, CATEGORY_LOC_NOT_WORD, CATEGORY_UNI_DIGIT, CATEGORY_UNI_NOT_DIGIT, CATEGORY_UNI_SPACE, CATEGORY_UNI_NOT_SPACE, CATEGORY_UNI_WORD, CATEGORY_UNI_NOT_WORD, CATEGORY_UNI_LINEBREAK, CATEGORY_UNI_NOT_LINEBREAK]<br>
+<strong>CH_LOCALE</strong> = {CATEGORY_DIGIT: CATEGORY_DIGIT, CATEGORY_NOT_DIGIT: CATEGORY_NOT_DIGIT, CATEGORY_SPACE: CATEGORY_SPACE, CATEGORY_NOT_SPACE: CATEGORY_NOT_SPACE, CATEGORY_WORD: CATEGORY_LOC_WORD, CATEGORY_NOT_WORD: CATEGORY_LOC_NOT_WORD, CATEGORY_LINEBREAK: CATEGORY_LINEBREAK, CATEGORY_NOT_LINEBREAK: CATEGORY_NOT_LINEBREAK}<br>
+<strong>CH_UNICODE</strong> = {CATEGORY_DIGIT: CATEGORY_UNI_DIGIT, CATEGORY_NOT_DIGIT: CATEGORY_UNI_NOT_DIGIT, CATEGORY_SPACE: CATEGORY_UNI_SPACE, CATEGORY_NOT_SPACE: CATEGORY_UNI_NOT_SPACE, CATEGORY_WORD: CATEGORY_UNI_WORD, CATEGORY_NOT_WORD: CATEGORY_UNI_NOT_WORD, CATEGORY_LINEBREAK: CATEGORY_UNI_LINEBREAK, CATEGORY_NOT_LINEBREAK: CATEGORY_UNI_NOT_LINEBREAK}<br>
+<strong>DIGITS</strong> = frozenset({'0', '1', '2', '3', '4', '5', ...})<br>
+<strong>ESCAPES</strong> = {r'\\': (LITERAL, 92), r'\a': (LITERAL, 7), r'\b': (LITERAL, 8), r'\f': (LITERAL, 12), r'\n': (LITERAL, 10), r'\r': (LITERAL, 13), r'\t': (LITERAL, 9), r'\v': (LITERAL, 11)}<br>
+<strong>FAILURE</strong> = FAILURE<br>
+<strong>FLAGS</strong> = {'L': 4, 'a': 256, 'i': 2, 'm': 8, 's': 16, 't': 1, 'u': 32, 'x': 64}<br>
+<strong>GLOBAL_FLAGS</strong> = 129<br>
+<strong>GROUPREF</strong> = GROUPREF<br>
+<strong>GROUPREF_EXISTS</strong> = GROUPREF_EXISTS<br>
+<strong>GROUPREF_IGNORE</strong> = GROUPREF_IGNORE<br>
+<strong>GROUPREF_LOC_IGNORE</strong> = GROUPREF_LOC_IGNORE<br>
+<strong>GROUPREF_UNI_IGNORE</strong> = GROUPREF_UNI_IGNORE<br>
+<strong>HEXDIGITS</strong> = frozenset({'0', '1', '2', '3', '4', '5', ...})<br>
+<strong>IN</strong> = IN<br>
+<strong>INFO</strong> = INFO<br>
+<strong>IN_IGNORE</strong> = IN_IGNORE<br>
+<strong>IN_LOC_IGNORE</strong> = IN_LOC_IGNORE<br>
+<strong>IN_UNI_IGNORE</strong> = IN_UNI_IGNORE<br>
+<strong>JUMP</strong> = JUMP<br>
+<strong>LITERAL</strong> = LITERAL<br>
+<strong>LITERAL_IGNORE</strong> = LITERAL_IGNORE<br>
+<strong>LITERAL_LOC_IGNORE</strong> = LITERAL_LOC_IGNORE<br>
+<strong>LITERAL_UNI_IGNORE</strong> = LITERAL_UNI_IGNORE<br>
+<strong>MAGIC</strong> = 20171005<br>
+<strong>MARK</strong> = MARK<br>
+<strong>MAXGROUPS</strong> = 2147483647<br>
+<strong>MAXREPEAT</strong> = MAXREPEAT<br>
+<strong>MAX_REPEAT</strong> = MAX_REPEAT<br>
+<strong>MAX_UNTIL</strong> = MAX_UNTIL<br>
+<strong>MIN_REPEAT</strong> = MIN_REPEAT<br>
+<strong>MIN_REPEAT_ONE</strong> = MIN_REPEAT_ONE<br>
+<strong>MIN_UNTIL</strong> = MIN_UNTIL<br>
+<strong>NEGATE</strong> = NEGATE<br>
+<strong>NOT_LITERAL</strong> = NOT_LITERAL<br>
+<strong>NOT_LITERAL_IGNORE</strong> = NOT_LITERAL_IGNORE<br>
+<strong>NOT_LITERAL_LOC_IGNORE</strong> = NOT_LITERAL_LOC_IGNORE<br>
+<strong>NOT_LITERAL_UNI_IGNORE</strong> = NOT_LITERAL_UNI_IGNORE<br>
+<strong>OCTDIGITS</strong> = frozenset({'0', '1', '2', '3', '4', '5', ...})<br>
+<strong>OPCODES</strong> = [FAILURE, SUCCESS, ANY, ANY_ALL, ASSERT, ASSERT_NOT, AT, BRANCH, CALL, CATEGORY, CHARSET, BIGCHARSET, GROUPREF, GROUPREF_EXISTS, IN, INFO, JUMP, LITERAL, MARK, MAX_UNTIL, ...]<br>
+<strong>OP_IGNORE</strong> = {LITERAL: LITERAL_IGNORE, NOT_LITERAL: NOT_LITERAL_IGNORE}<br>
+<strong>OP_LOCALE_IGNORE</strong> = {LITERAL: LITERAL_LOC_IGNORE, NOT_LITERAL: NOT_LITERAL_LOC_IGNORE}<br>
+<strong>OP_UNICODE_IGNORE</strong> = {LITERAL: LITERAL_UNI_IGNORE, NOT_LITERAL: NOT_LITERAL_UNI_IGNORE}<br>
+<strong>RANGE</strong> = RANGE<br>
+<strong>RANGE_UNI_IGNORE</strong> = RANGE_UNI_IGNORE<br>
+<strong>REPEAT</strong> = REPEAT<br>
+<strong>REPEAT_CHARS</strong> = '*+?{'<br>
+<strong>REPEAT_ONE</strong> = REPEAT_ONE<br>
+<strong>SPECIAL_CHARS</strong> = r'.\[{()*+?^$|'<br>
+<strong>SRE_FLAG_ASCII</strong> = 256<br>
+<strong>SRE_FLAG_DEBUG</strong> = 128<br>
+<strong>SRE_FLAG_DOTALL</strong> = 16<br>
+<strong>SRE_FLAG_IGNORECASE</strong> = 2<br>
+<strong>SRE_FLAG_LOCALE</strong> = 4<br>
+<strong>SRE_FLAG_MULTILINE</strong> = 8<br>
+<strong>SRE_FLAG_TEMPLATE</strong> = 1<br>
+<strong>SRE_FLAG_UNICODE</strong> = 32<br>
+<strong>SRE_FLAG_VERBOSE</strong> = 64<br>
+<strong>SRE_INFO_CHARSET</strong> = 4<br>
+<strong>SRE_INFO_LITERAL</strong> = 2<br>
+<strong>SRE_INFO_PREFIX</strong> = 1<br>
+<strong>SUBPATTERN</strong> = SUBPATTERN<br>
+<strong>SUCCESS</strong> = SUCCESS<br>
+<strong>TYPE_FLAGS</strong> = 292<br>
+<strong>WHITESPACE</strong> = frozenset({'<font color="#c040c0">\t</font>', '<font color="#c040c0">\n</font>', '<font color="#c040c0">\x0b</font>', '<font color="#c040c0">\x0c</font>', '<font color="#c040c0">\r</font>', ' '})</td></tr></table>
+</body></html>

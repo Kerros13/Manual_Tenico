@@ -1,0 +1,542 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head><title>Python: module statistics</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+</head><body bgcolor="#f0f0f8">
+
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="heading">
+<tr bgcolor="#7799ee">
+<td valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong>statistics</strong></big></big></font></td
+><td align=right valign=bottom
+><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:c%3A%5Cpython38%5Clib%5Cstatistics.py">c:\python38\lib\statistics.py</a><br><a href="https://docs.python.org/3.8/library/statistics">Module Reference</a></font></td></tr></table>
+    <p><tt>Basic&nbsp;statistics&nbsp;module.<br>
+&nbsp;<br>
+This&nbsp;module&nbsp;provides&nbsp;functions&nbsp;for&nbsp;calculating&nbsp;statistics&nbsp;of&nbsp;data,&nbsp;including<br>
+averages,&nbsp;variance,&nbsp;and&nbsp;standard&nbsp;deviation.<br>
+&nbsp;<br>
+Calculating&nbsp;averages<br>
+--------------------<br>
+&nbsp;<br>
+==================&nbsp;&nbsp;==================================================<br>
+Function&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Description<br>
+==================&nbsp;&nbsp;==================================================<br>
+mean&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Arithmetic&nbsp;mean&nbsp;(average)&nbsp;of&nbsp;data.<br>
+fmean&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Fast,&nbsp;floating&nbsp;point&nbsp;arithmetic&nbsp;mean.<br>
+geometric_mean&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Geometric&nbsp;mean&nbsp;of&nbsp;data.<br>
+harmonic_mean&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Harmonic&nbsp;mean&nbsp;of&nbsp;data.<br>
+median&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Median&nbsp;(middle&nbsp;value)&nbsp;of&nbsp;data.<br>
+median_low&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Low&nbsp;median&nbsp;of&nbsp;data.<br>
+median_high&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;High&nbsp;median&nbsp;of&nbsp;data.<br>
+median_grouped&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Median,&nbsp;or&nbsp;50th&nbsp;percentile,&nbsp;of&nbsp;grouped&nbsp;data.<br>
+mode&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Mode&nbsp;(most&nbsp;common&nbsp;value)&nbsp;of&nbsp;data.<br>
+multimode&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;List&nbsp;of&nbsp;modes&nbsp;(most&nbsp;common&nbsp;values&nbsp;of&nbsp;data).<br>
+quantiles&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Divide&nbsp;data&nbsp;into&nbsp;intervals&nbsp;with&nbsp;equal&nbsp;probability.<br>
+==================&nbsp;&nbsp;==================================================<br>
+&nbsp;<br>
+Calculate&nbsp;the&nbsp;arithmetic&nbsp;mean&nbsp;("the&nbsp;average")&nbsp;of&nbsp;data:<br>
+&nbsp;<br>
+&gt;&gt;&gt;&nbsp;<a href="#-mean">mean</a>([-1.0,&nbsp;2.5,&nbsp;3.25,&nbsp;5.75])<br>
+2.625<br>
+&nbsp;<br>
+&nbsp;<br>
+Calculate&nbsp;the&nbsp;standard&nbsp;median&nbsp;of&nbsp;discrete&nbsp;data:<br>
+&nbsp;<br>
+&gt;&gt;&gt;&nbsp;<a href="#-median">median</a>([2,&nbsp;3,&nbsp;4,&nbsp;5])<br>
+3.5<br>
+&nbsp;<br>
+&nbsp;<br>
+Calculate&nbsp;the&nbsp;median,&nbsp;or&nbsp;50th&nbsp;percentile,&nbsp;of&nbsp;data&nbsp;grouped&nbsp;into&nbsp;class&nbsp;intervals<br>
+centred&nbsp;on&nbsp;the&nbsp;data&nbsp;values&nbsp;provided.&nbsp;E.g.&nbsp;if&nbsp;your&nbsp;data&nbsp;points&nbsp;are&nbsp;rounded&nbsp;to<br>
+the&nbsp;nearest&nbsp;whole&nbsp;number:<br>
+&nbsp;<br>
+&gt;&gt;&gt;&nbsp;<a href="#-median_grouped">median_grouped</a>([2,&nbsp;2,&nbsp;3,&nbsp;3,&nbsp;3,&nbsp;4])&nbsp;&nbsp;#doctest:&nbsp;+ELLIPSIS<br>
+2.8333333333...<br>
+&nbsp;<br>
+This&nbsp;should&nbsp;be&nbsp;interpreted&nbsp;in&nbsp;this&nbsp;way:&nbsp;you&nbsp;have&nbsp;two&nbsp;data&nbsp;points&nbsp;in&nbsp;the&nbsp;class<br>
+interval&nbsp;1.5-2.5,&nbsp;three&nbsp;data&nbsp;points&nbsp;in&nbsp;the&nbsp;class&nbsp;interval&nbsp;2.5-3.5,&nbsp;and&nbsp;one&nbsp;in<br>
+the&nbsp;class&nbsp;interval&nbsp;3.5-4.5.&nbsp;The&nbsp;median&nbsp;of&nbsp;these&nbsp;data&nbsp;points&nbsp;is&nbsp;2.8333...<br>
+&nbsp;<br>
+&nbsp;<br>
+Calculating&nbsp;variability&nbsp;or&nbsp;spread<br>
+---------------------------------<br>
+&nbsp;<br>
+==================&nbsp;&nbsp;=============================================<br>
+Function&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Description<br>
+==================&nbsp;&nbsp;=============================================<br>
+pvariance&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Population&nbsp;variance&nbsp;of&nbsp;data.<br>
+variance&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Sample&nbsp;variance&nbsp;of&nbsp;data.<br>
+pstdev&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Population&nbsp;standard&nbsp;deviation&nbsp;of&nbsp;data.<br>
+stdev&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Sample&nbsp;standard&nbsp;deviation&nbsp;of&nbsp;data.<br>
+==================&nbsp;&nbsp;=============================================<br>
+&nbsp;<br>
+Calculate&nbsp;the&nbsp;standard&nbsp;deviation&nbsp;of&nbsp;sample&nbsp;data:<br>
+&nbsp;<br>
+&gt;&gt;&gt;&nbsp;<a href="#-stdev">stdev</a>([2.5,&nbsp;3.25,&nbsp;5.5,&nbsp;11.25,&nbsp;11.75])&nbsp;&nbsp;#doctest:&nbsp;+ELLIPSIS<br>
+4.38961843444...<br>
+&nbsp;<br>
+If&nbsp;you&nbsp;have&nbsp;previously&nbsp;calculated&nbsp;the&nbsp;mean,&nbsp;you&nbsp;can&nbsp;pass&nbsp;it&nbsp;as&nbsp;the&nbsp;optional<br>
+second&nbsp;argument&nbsp;to&nbsp;the&nbsp;four&nbsp;"spread"&nbsp;functions&nbsp;to&nbsp;avoid&nbsp;recalculating&nbsp;it:<br>
+&nbsp;<br>
+&gt;&gt;&gt;&nbsp;data&nbsp;=&nbsp;[1,&nbsp;2,&nbsp;2,&nbsp;4,&nbsp;4,&nbsp;4,&nbsp;5,&nbsp;6]<br>
+&gt;&gt;&gt;&nbsp;mu&nbsp;=&nbsp;<a href="#-mean">mean</a>(data)<br>
+&gt;&gt;&gt;&nbsp;<a href="#-pvariance">pvariance</a>(data,&nbsp;mu)<br>
+2.5<br>
+&nbsp;<br>
+&nbsp;<br>
+Exceptions<br>
+----------<br>
+&nbsp;<br>
+A&nbsp;single&nbsp;exception&nbsp;is&nbsp;defined:&nbsp;<a href="#StatisticsError">StatisticsError</a>&nbsp;is&nbsp;a&nbsp;subclass&nbsp;of&nbsp;<a href="builtins.html#ValueError">ValueError</a>.</tt></p>
+<p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#aa55cc">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Modules</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#aa55cc"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><table width="100%" summary="list"><tr><td width="25%" valign=top><a href="math.html">math</a><br>
+</td><td width="25%" valign=top><a href="numbers.html">numbers</a><br>
+</td><td width="25%" valign=top><a href="random.html">random</a><br>
+</td><td width="25%" valign=top></td></tr></table></td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ee77aa">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Classes</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#ee77aa"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl>
+<dt><font face="helvetica, arial"><a href="builtins.html#ValueError">builtins.ValueError</a>(<a href="builtins.html#Exception">builtins.Exception</a>)
+</font></dt><dd>
+<dl>
+<dt><font face="helvetica, arial"><a href="statistics.html#StatisticsError">StatisticsError</a>
+</font></dt></dl>
+</dd>
+<dt><font face="helvetica, arial"><a href="builtins.html#object">builtins.object</a>
+</font></dt><dd>
+<dl>
+<dt><font face="helvetica, arial"><a href="statistics.html#NormalDist">NormalDist</a>
+</font></dt></dl>
+</dd>
+</dl>
+ <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="NormalDist">class <strong>NormalDist</strong></a>(<a href="builtins.html#object">builtins.object</a>)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt><a href="#NormalDist">NormalDist</a>(mu=0.0,&nbsp;sigma=1.0)<br>
+&nbsp;<br>
+Normal&nbsp;distribution&nbsp;of&nbsp;a&nbsp;random&nbsp;variable<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%">Methods defined here:<br>
+<dl><dt><a name="NormalDist-__add__"><strong>__add__</strong></a>(x1, x2)</dt><dd><tt>Add&nbsp;a&nbsp;constant&nbsp;or&nbsp;another&nbsp;<a href="#NormalDist">NormalDist</a>&nbsp;instance.<br>
+&nbsp;<br>
+If&nbsp;*other*&nbsp;is&nbsp;a&nbsp;constant,&nbsp;translate&nbsp;mu&nbsp;by&nbsp;the&nbsp;constant,<br>
+leaving&nbsp;sigma&nbsp;unchanged.<br>
+&nbsp;<br>
+If&nbsp;*other*&nbsp;is&nbsp;a&nbsp;<a href="#NormalDist">NormalDist</a>,&nbsp;add&nbsp;both&nbsp;the&nbsp;means&nbsp;and&nbsp;the&nbsp;variances.<br>
+Mathematically,&nbsp;this&nbsp;works&nbsp;only&nbsp;if&nbsp;the&nbsp;two&nbsp;distributions&nbsp;are<br>
+independent&nbsp;or&nbsp;if&nbsp;they&nbsp;are&nbsp;jointly&nbsp;normally&nbsp;distributed.</tt></dd></dl>
+
+<dl><dt><a name="NormalDist-__eq__"><strong>__eq__</strong></a>(x1, x2)</dt><dd><tt>Two&nbsp;<a href="#NormalDist">NormalDist</a>&nbsp;objects&nbsp;are&nbsp;equal&nbsp;if&nbsp;their&nbsp;mu&nbsp;and&nbsp;sigma&nbsp;are&nbsp;both&nbsp;equal.</tt></dd></dl>
+
+<dl><dt><a name="NormalDist-__hash__"><strong>__hash__</strong></a>(self)</dt><dd><tt><a href="#NormalDist">NormalDist</a>&nbsp;objects&nbsp;hash&nbsp;equal&nbsp;if&nbsp;their&nbsp;mu&nbsp;and&nbsp;sigma&nbsp;are&nbsp;both&nbsp;equal.</tt></dd></dl>
+
+<dl><dt><a name="NormalDist-__init__"><strong>__init__</strong></a>(self, mu=0.0, sigma=1.0)</dt><dd><tt><a href="#NormalDist">NormalDist</a>&nbsp;where&nbsp;mu&nbsp;is&nbsp;the&nbsp;mean&nbsp;and&nbsp;sigma&nbsp;is&nbsp;the&nbsp;standard&nbsp;deviation.</tt></dd></dl>
+
+<dl><dt><a name="NormalDist-__mul__"><strong>__mul__</strong></a>(x1, x2)</dt><dd><tt>Multiply&nbsp;both&nbsp;mu&nbsp;and&nbsp;sigma&nbsp;by&nbsp;a&nbsp;constant.<br>
+&nbsp;<br>
+Used&nbsp;for&nbsp;rescaling,&nbsp;perhaps&nbsp;to&nbsp;change&nbsp;measurement&nbsp;units.<br>
+Sigma&nbsp;is&nbsp;scaled&nbsp;with&nbsp;the&nbsp;absolute&nbsp;value&nbsp;of&nbsp;the&nbsp;constant.</tt></dd></dl>
+
+<dl><dt><a name="NormalDist-__neg__"><strong>__neg__</strong></a>(x1)</dt><dd><tt>Negates&nbsp;mu&nbsp;while&nbsp;keeping&nbsp;sigma&nbsp;the&nbsp;same.</tt></dd></dl>
+
+<dl><dt><a name="NormalDist-__pos__"><strong>__pos__</strong></a>(x1)</dt><dd><tt>Return&nbsp;a&nbsp;copy&nbsp;of&nbsp;the&nbsp;instance.</tt></dd></dl>
+
+<dl><dt><a name="NormalDist-__radd__"><strong>__radd__</strong></a> = <a href="#NormalDist-__add__">__add__</a>(x1, x2)</dt></dl>
+
+<dl><dt><a name="NormalDist-__repr__"><strong>__repr__</strong></a>(self)</dt><dd><tt>Return&nbsp;repr(self).</tt></dd></dl>
+
+<dl><dt><a name="NormalDist-__rmul__"><strong>__rmul__</strong></a> = <a href="#NormalDist-__mul__">__mul__</a>(x1, x2)</dt></dl>
+
+<dl><dt><a name="NormalDist-__rsub__"><strong>__rsub__</strong></a>(x1, x2)</dt><dd><tt>Subtract&nbsp;a&nbsp;<a href="#NormalDist">NormalDist</a>&nbsp;from&nbsp;a&nbsp;constant&nbsp;or&nbsp;another&nbsp;<a href="#NormalDist">NormalDist</a>.</tt></dd></dl>
+
+<dl><dt><a name="NormalDist-__sub__"><strong>__sub__</strong></a>(x1, x2)</dt><dd><tt>Subtract&nbsp;a&nbsp;constant&nbsp;or&nbsp;another&nbsp;<a href="#NormalDist">NormalDist</a>&nbsp;instance.<br>
+&nbsp;<br>
+If&nbsp;*other*&nbsp;is&nbsp;a&nbsp;constant,&nbsp;translate&nbsp;by&nbsp;the&nbsp;constant&nbsp;mu,<br>
+leaving&nbsp;sigma&nbsp;unchanged.<br>
+&nbsp;<br>
+If&nbsp;*other*&nbsp;is&nbsp;a&nbsp;<a href="#NormalDist">NormalDist</a>,&nbsp;subtract&nbsp;the&nbsp;means&nbsp;and&nbsp;add&nbsp;the&nbsp;variances.<br>
+Mathematically,&nbsp;this&nbsp;works&nbsp;only&nbsp;if&nbsp;the&nbsp;two&nbsp;distributions&nbsp;are<br>
+independent&nbsp;or&nbsp;if&nbsp;they&nbsp;are&nbsp;jointly&nbsp;normally&nbsp;distributed.</tt></dd></dl>
+
+<dl><dt><a name="NormalDist-__truediv__"><strong>__truediv__</strong></a>(x1, x2)</dt><dd><tt>Divide&nbsp;both&nbsp;mu&nbsp;and&nbsp;sigma&nbsp;by&nbsp;a&nbsp;constant.<br>
+&nbsp;<br>
+Used&nbsp;for&nbsp;rescaling,&nbsp;perhaps&nbsp;to&nbsp;change&nbsp;measurement&nbsp;units.<br>
+Sigma&nbsp;is&nbsp;scaled&nbsp;with&nbsp;the&nbsp;absolute&nbsp;value&nbsp;of&nbsp;the&nbsp;constant.</tt></dd></dl>
+
+<dl><dt><a name="NormalDist-cdf"><strong>cdf</strong></a>(self, x)</dt><dd><tt>Cumulative&nbsp;distribution&nbsp;function.&nbsp;&nbsp;P(X&nbsp;&lt;=&nbsp;x)</tt></dd></dl>
+
+<dl><dt><a name="NormalDist-inv_cdf"><strong>inv_cdf</strong></a>(self, p)</dt><dd><tt>Inverse&nbsp;cumulative&nbsp;distribution&nbsp;function.&nbsp;&nbsp;x&nbsp;:&nbsp;P(X&nbsp;&lt;=&nbsp;x)&nbsp;=&nbsp;p<br>
+&nbsp;<br>
+Finds&nbsp;the&nbsp;value&nbsp;of&nbsp;the&nbsp;random&nbsp;variable&nbsp;such&nbsp;that&nbsp;the&nbsp;probability&nbsp;of<br>
+the&nbsp;variable&nbsp;being&nbsp;less&nbsp;than&nbsp;or&nbsp;equal&nbsp;to&nbsp;that&nbsp;value&nbsp;equals&nbsp;the&nbsp;given<br>
+probability.<br>
+&nbsp;<br>
+This&nbsp;function&nbsp;is&nbsp;also&nbsp;called&nbsp;the&nbsp;percent&nbsp;point&nbsp;function&nbsp;or&nbsp;quantile<br>
+function.</tt></dd></dl>
+
+<dl><dt><a name="NormalDist-overlap"><strong>overlap</strong></a>(self, other)</dt><dd><tt>Compute&nbsp;the&nbsp;overlapping&nbsp;coefficient&nbsp;(OVL)&nbsp;between&nbsp;two&nbsp;normal&nbsp;distributions.<br>
+&nbsp;<br>
+Measures&nbsp;the&nbsp;agreement&nbsp;between&nbsp;two&nbsp;normal&nbsp;probability&nbsp;distributions.<br>
+Returns&nbsp;a&nbsp;value&nbsp;between&nbsp;0.0&nbsp;and&nbsp;1.0&nbsp;giving&nbsp;the&nbsp;overlapping&nbsp;area&nbsp;in<br>
+the&nbsp;two&nbsp;underlying&nbsp;probability&nbsp;density&nbsp;functions.<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&gt;&gt;&gt;&nbsp;N1&nbsp;=&nbsp;<a href="#NormalDist">NormalDist</a>(2.4,&nbsp;1.6)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&gt;&gt;&gt;&nbsp;N2&nbsp;=&nbsp;<a href="#NormalDist">NormalDist</a>(3.2,&nbsp;2.0)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&gt;&gt;&gt;&nbsp;N1.<a href="#NormalDist-overlap">overlap</a>(N2)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;0.8035050657330205</tt></dd></dl>
+
+<dl><dt><a name="NormalDist-pdf"><strong>pdf</strong></a>(self, x)</dt><dd><tt>Probability&nbsp;density&nbsp;function.&nbsp;&nbsp;P(x&nbsp;&lt;=&nbsp;X&nbsp;&lt;&nbsp;x+dx)&nbsp;/&nbsp;dx</tt></dd></dl>
+
+<dl><dt><a name="NormalDist-quantiles"><strong>quantiles</strong></a>(self, n=4)</dt><dd><tt>Divide&nbsp;into&nbsp;*n*&nbsp;continuous&nbsp;intervals&nbsp;with&nbsp;equal&nbsp;probability.<br>
+&nbsp;<br>
+Returns&nbsp;a&nbsp;list&nbsp;of&nbsp;(n&nbsp;-&nbsp;1)&nbsp;cut&nbsp;points&nbsp;separating&nbsp;the&nbsp;intervals.<br>
+&nbsp;<br>
+Set&nbsp;*n*&nbsp;to&nbsp;4&nbsp;for&nbsp;quartiles&nbsp;(the&nbsp;default).&nbsp;&nbsp;Set&nbsp;*n*&nbsp;to&nbsp;10&nbsp;for&nbsp;deciles.<br>
+Set&nbsp;*n*&nbsp;to&nbsp;100&nbsp;for&nbsp;percentiles&nbsp;which&nbsp;gives&nbsp;the&nbsp;99&nbsp;cuts&nbsp;points&nbsp;that<br>
+separate&nbsp;the&nbsp;normal&nbsp;distribution&nbsp;in&nbsp;to&nbsp;100&nbsp;equal&nbsp;sized&nbsp;groups.</tt></dd></dl>
+
+<dl><dt><a name="NormalDist-samples"><strong>samples</strong></a>(self, n, *, seed=None)</dt><dd><tt>Generate&nbsp;*n*&nbsp;samples&nbsp;for&nbsp;a&nbsp;given&nbsp;mean&nbsp;and&nbsp;standard&nbsp;deviation.</tt></dd></dl>
+
+<hr>
+Class methods defined here:<br>
+<dl><dt><a name="NormalDist-from_samples"><strong>from_samples</strong></a>(data)<font color="#909090"><font face="helvetica, arial"> from <a href="builtins.html#type">builtins.type</a></font></font></dt><dd><tt>Make&nbsp;a&nbsp;normal&nbsp;distribution&nbsp;instance&nbsp;from&nbsp;sample&nbsp;data.</tt></dd></dl>
+
+<hr>
+Readonly properties defined here:<br>
+<dl><dt><strong>mean</strong></dt>
+<dd><tt>Arithmetic&nbsp;mean&nbsp;of&nbsp;the&nbsp;normal&nbsp;distribution.</tt></dd>
+</dl>
+<dl><dt><strong>median</strong></dt>
+<dd><tt>Return&nbsp;the&nbsp;median&nbsp;of&nbsp;the&nbsp;normal&nbsp;distribution</tt></dd>
+</dl>
+<dl><dt><strong>mode</strong></dt>
+<dd><tt>Return&nbsp;the&nbsp;mode&nbsp;of&nbsp;the&nbsp;normal&nbsp;distribution<br>
+&nbsp;<br>
+The&nbsp;mode&nbsp;is&nbsp;the&nbsp;value&nbsp;x&nbsp;where&nbsp;which&nbsp;the&nbsp;probability&nbsp;density<br>
+function&nbsp;(pdf)&nbsp;takes&nbsp;its&nbsp;maximum&nbsp;value.</tt></dd>
+</dl>
+<dl><dt><strong>stdev</strong></dt>
+<dd><tt>Standard&nbsp;deviation&nbsp;of&nbsp;the&nbsp;normal&nbsp;distribution.</tt></dd>
+</dl>
+<dl><dt><strong>variance</strong></dt>
+<dd><tt>Square&nbsp;of&nbsp;the&nbsp;standard&nbsp;deviation.</tt></dd>
+</dl>
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="StatisticsError">class <strong>StatisticsError</strong></a>(<a href="builtins.html#ValueError">builtins.ValueError</a>)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt>Inappropriate&nbsp;argument&nbsp;value&nbsp;(of&nbsp;correct&nbsp;type).<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%"><dl><dt>Method resolution order:</dt>
+<dd><a href="statistics.html#StatisticsError">StatisticsError</a></dd>
+<dd><a href="builtins.html#ValueError">builtins.ValueError</a></dd>
+<dd><a href="builtins.html#Exception">builtins.Exception</a></dd>
+<dd><a href="builtins.html#BaseException">builtins.BaseException</a></dd>
+<dd><a href="builtins.html#object">builtins.object</a></dd>
+</dl>
+<hr>
+Data descriptors defined here:<br>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<hr>
+Methods inherited from <a href="builtins.html#ValueError">builtins.ValueError</a>:<br>
+<dl><dt><a name="StatisticsError-__init__"><strong>__init__</strong></a>(self, /, *args, **kwargs)</dt><dd><tt>Initialize&nbsp;self.&nbsp;&nbsp;See&nbsp;help(type(self))&nbsp;for&nbsp;accurate&nbsp;signature.</tt></dd></dl>
+
+<hr>
+Static methods inherited from <a href="builtins.html#ValueError">builtins.ValueError</a>:<br>
+<dl><dt><a name="StatisticsError-__new__"><strong>__new__</strong></a>(*args, **kwargs)<font color="#909090"><font face="helvetica, arial"> from <a href="builtins.html#type">builtins.type</a></font></font></dt><dd><tt>Create&nbsp;and&nbsp;return&nbsp;a&nbsp;new&nbsp;<a href="builtins.html#object">object</a>.&nbsp;&nbsp;See&nbsp;help(type)&nbsp;for&nbsp;accurate&nbsp;signature.</tt></dd></dl>
+
+<hr>
+Methods inherited from <a href="builtins.html#BaseException">builtins.BaseException</a>:<br>
+<dl><dt><a name="StatisticsError-__delattr__"><strong>__delattr__</strong></a>(self, name, /)</dt><dd><tt>Implement&nbsp;delattr(self,&nbsp;name).</tt></dd></dl>
+
+<dl><dt><a name="StatisticsError-__getattribute__"><strong>__getattribute__</strong></a>(self, name, /)</dt><dd><tt>Return&nbsp;getattr(self,&nbsp;name).</tt></dd></dl>
+
+<dl><dt><a name="StatisticsError-__reduce__"><strong>__reduce__</strong></a>(...)</dt><dd><tt>Helper&nbsp;for&nbsp;pickle.</tt></dd></dl>
+
+<dl><dt><a name="StatisticsError-__repr__"><strong>__repr__</strong></a>(self, /)</dt><dd><tt>Return&nbsp;repr(self).</tt></dd></dl>
+
+<dl><dt><a name="StatisticsError-__setattr__"><strong>__setattr__</strong></a>(self, name, value, /)</dt><dd><tt>Implement&nbsp;setattr(self,&nbsp;name,&nbsp;value).</tt></dd></dl>
+
+<dl><dt><a name="StatisticsError-__setstate__"><strong>__setstate__</strong></a>(...)</dt></dl>
+
+<dl><dt><a name="StatisticsError-__str__"><strong>__str__</strong></a>(self, /)</dt><dd><tt>Return&nbsp;str(self).</tt></dd></dl>
+
+<dl><dt><a name="StatisticsError-with_traceback"><strong>with_traceback</strong></a>(...)</dt><dd><tt>Exception.<a href="#StatisticsError-with_traceback">with_traceback</a>(tb)&nbsp;--<br>
+set&nbsp;self.<strong>__traceback__</strong>&nbsp;to&nbsp;tb&nbsp;and&nbsp;return&nbsp;self.</tt></dd></dl>
+
+<hr>
+Data descriptors inherited from <a href="builtins.html#BaseException">builtins.BaseException</a>:<br>
+<dl><dt><strong>__cause__</strong></dt>
+<dd><tt>exception&nbsp;cause</tt></dd>
+</dl>
+<dl><dt><strong>__context__</strong></dt>
+<dd><tt>exception&nbsp;context</tt></dd>
+</dl>
+<dl><dt><strong>__dict__</strong></dt>
+</dl>
+<dl><dt><strong>__suppress_context__</strong></dt>
+</dl>
+<dl><dt><strong>__traceback__</strong></dt>
+</dl>
+<dl><dt><strong>args</strong></dt>
+</dl>
+</td></tr></table></td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#eeaa77">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Functions</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#eeaa77"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl><dt><a name="-fmean"><strong>fmean</strong></a>(data)</dt><dd><tt>Convert&nbsp;data&nbsp;to&nbsp;floats&nbsp;and&nbsp;compute&nbsp;the&nbsp;arithmetic&nbsp;mean.<br>
+&nbsp;<br>
+This&nbsp;runs&nbsp;faster&nbsp;than&nbsp;the&nbsp;<a href="#-mean">mean</a>()&nbsp;function&nbsp;and&nbsp;it&nbsp;always&nbsp;returns&nbsp;a&nbsp;float.<br>
+If&nbsp;the&nbsp;input&nbsp;dataset&nbsp;is&nbsp;empty,&nbsp;it&nbsp;raises&nbsp;a&nbsp;<a href="#StatisticsError">StatisticsError</a>.<br>
+&nbsp;<br>
+&gt;&gt;&gt;&nbsp;<a href="#-fmean">fmean</a>([3.5,&nbsp;4.0,&nbsp;5.25])<br>
+4.25</tt></dd></dl>
+ <dl><dt><a name="-geometric_mean"><strong>geometric_mean</strong></a>(data)</dt><dd><tt>Convert&nbsp;data&nbsp;to&nbsp;floats&nbsp;and&nbsp;compute&nbsp;the&nbsp;geometric&nbsp;mean.<br>
+&nbsp;<br>
+Raises&nbsp;a&nbsp;<a href="#StatisticsError">StatisticsError</a>&nbsp;if&nbsp;the&nbsp;input&nbsp;dataset&nbsp;is&nbsp;empty,<br>
+if&nbsp;it&nbsp;contains&nbsp;a&nbsp;zero,&nbsp;or&nbsp;if&nbsp;it&nbsp;contains&nbsp;a&nbsp;negative&nbsp;value.<br>
+&nbsp;<br>
+No&nbsp;special&nbsp;efforts&nbsp;are&nbsp;made&nbsp;to&nbsp;achieve&nbsp;exact&nbsp;results.<br>
+(However,&nbsp;this&nbsp;may&nbsp;change&nbsp;in&nbsp;the&nbsp;future.)<br>
+&nbsp;<br>
+&gt;&gt;&gt;&nbsp;round(<a href="#-geometric_mean">geometric_mean</a>([54,&nbsp;24,&nbsp;36]),&nbsp;9)<br>
+36.0</tt></dd></dl>
+ <dl><dt><a name="-harmonic_mean"><strong>harmonic_mean</strong></a>(data)</dt><dd><tt>Return&nbsp;the&nbsp;harmonic&nbsp;mean&nbsp;of&nbsp;data.<br>
+&nbsp;<br>
+The&nbsp;harmonic&nbsp;mean,&nbsp;sometimes&nbsp;called&nbsp;the&nbsp;subcontrary&nbsp;mean,&nbsp;is&nbsp;the<br>
+reciprocal&nbsp;of&nbsp;the&nbsp;arithmetic&nbsp;mean&nbsp;of&nbsp;the&nbsp;reciprocals&nbsp;of&nbsp;the&nbsp;data,<br>
+and&nbsp;is&nbsp;often&nbsp;appropriate&nbsp;when&nbsp;averaging&nbsp;quantities&nbsp;which&nbsp;are&nbsp;rates<br>
+or&nbsp;ratios,&nbsp;for&nbsp;example&nbsp;speeds.&nbsp;Example:<br>
+&nbsp;<br>
+Suppose&nbsp;an&nbsp;investor&nbsp;purchases&nbsp;an&nbsp;equal&nbsp;value&nbsp;of&nbsp;shares&nbsp;in&nbsp;each&nbsp;of<br>
+three&nbsp;companies,&nbsp;with&nbsp;P/E&nbsp;(price/earning)&nbsp;ratios&nbsp;of&nbsp;2.5,&nbsp;3&nbsp;and&nbsp;10.<br>
+What&nbsp;is&nbsp;the&nbsp;average&nbsp;P/E&nbsp;ratio&nbsp;for&nbsp;the&nbsp;investor's&nbsp;portfolio?<br>
+&nbsp;<br>
+&gt;&gt;&gt;&nbsp;<a href="#-harmonic_mean">harmonic_mean</a>([2.5,&nbsp;3,&nbsp;10])&nbsp;&nbsp;#&nbsp;For&nbsp;an&nbsp;equal&nbsp;investment&nbsp;portfolio.<br>
+3.6<br>
+&nbsp;<br>
+Using&nbsp;the&nbsp;arithmetic&nbsp;mean&nbsp;would&nbsp;give&nbsp;an&nbsp;average&nbsp;of&nbsp;about&nbsp;5.167,&nbsp;which<br>
+is&nbsp;too&nbsp;high.<br>
+&nbsp;<br>
+If&nbsp;``data``&nbsp;is&nbsp;empty,&nbsp;or&nbsp;any&nbsp;element&nbsp;is&nbsp;less&nbsp;than&nbsp;zero,<br>
+``harmonic_mean``&nbsp;will&nbsp;raise&nbsp;``<a href="#StatisticsError">StatisticsError</a>``.</tt></dd></dl>
+ <dl><dt><a name="-mean"><strong>mean</strong></a>(data)</dt><dd><tt>Return&nbsp;the&nbsp;sample&nbsp;arithmetic&nbsp;mean&nbsp;of&nbsp;data.<br>
+&nbsp;<br>
+&gt;&gt;&gt;&nbsp;<a href="#-mean">mean</a>([1,&nbsp;2,&nbsp;3,&nbsp;4,&nbsp;4])<br>
+2.8<br>
+&nbsp;<br>
+&gt;&gt;&gt;&nbsp;from&nbsp;fractions&nbsp;import&nbsp;Fraction&nbsp;as&nbsp;F<br>
+&gt;&gt;&gt;&nbsp;<a href="#-mean">mean</a>([F(3,&nbsp;7),&nbsp;F(1,&nbsp;21),&nbsp;F(5,&nbsp;3),&nbsp;F(1,&nbsp;3)])<br>
+Fraction(13,&nbsp;21)<br>
+&nbsp;<br>
+&gt;&gt;&gt;&nbsp;from&nbsp;decimal&nbsp;import&nbsp;Decimal&nbsp;as&nbsp;D<br>
+&gt;&gt;&gt;&nbsp;<a href="#-mean">mean</a>([D("0.5"),&nbsp;D("0.75"),&nbsp;D("0.625"),&nbsp;D("0.375")])<br>
+Decimal('0.5625')<br>
+&nbsp;<br>
+If&nbsp;``data``&nbsp;is&nbsp;empty,&nbsp;<a href="#StatisticsError">StatisticsError</a>&nbsp;will&nbsp;be&nbsp;raised.</tt></dd></dl>
+ <dl><dt><a name="-median"><strong>median</strong></a>(data)</dt><dd><tt>Return&nbsp;the&nbsp;median&nbsp;(middle&nbsp;value)&nbsp;of&nbsp;numeric&nbsp;data.<br>
+&nbsp;<br>
+When&nbsp;the&nbsp;number&nbsp;of&nbsp;data&nbsp;points&nbsp;is&nbsp;odd,&nbsp;return&nbsp;the&nbsp;middle&nbsp;data&nbsp;point.<br>
+When&nbsp;the&nbsp;number&nbsp;of&nbsp;data&nbsp;points&nbsp;is&nbsp;even,&nbsp;the&nbsp;median&nbsp;is&nbsp;interpolated&nbsp;by<br>
+taking&nbsp;the&nbsp;average&nbsp;of&nbsp;the&nbsp;two&nbsp;middle&nbsp;values:<br>
+&nbsp;<br>
+&gt;&gt;&gt;&nbsp;<a href="#-median">median</a>([1,&nbsp;3,&nbsp;5])<br>
+3<br>
+&gt;&gt;&gt;&nbsp;<a href="#-median">median</a>([1,&nbsp;3,&nbsp;5,&nbsp;7])<br>
+4.0</tt></dd></dl>
+ <dl><dt><a name="-median_grouped"><strong>median_grouped</strong></a>(data, interval=1)</dt><dd><tt>Return&nbsp;the&nbsp;50th&nbsp;percentile&nbsp;(median)&nbsp;of&nbsp;grouped&nbsp;continuous&nbsp;data.<br>
+&nbsp;<br>
+&gt;&gt;&gt;&nbsp;<a href="#-median_grouped">median_grouped</a>([1,&nbsp;2,&nbsp;2,&nbsp;3,&nbsp;4,&nbsp;4,&nbsp;4,&nbsp;4,&nbsp;4,&nbsp;5])<br>
+3.7<br>
+&gt;&gt;&gt;&nbsp;<a href="#-median_grouped">median_grouped</a>([52,&nbsp;52,&nbsp;53,&nbsp;54])<br>
+52.5<br>
+&nbsp;<br>
+This&nbsp;calculates&nbsp;the&nbsp;median&nbsp;as&nbsp;the&nbsp;50th&nbsp;percentile,&nbsp;and&nbsp;should&nbsp;be<br>
+used&nbsp;when&nbsp;your&nbsp;data&nbsp;is&nbsp;continuous&nbsp;and&nbsp;grouped.&nbsp;In&nbsp;the&nbsp;above&nbsp;example,<br>
+the&nbsp;values&nbsp;1,&nbsp;2,&nbsp;3,&nbsp;etc.&nbsp;actually&nbsp;represent&nbsp;the&nbsp;midpoint&nbsp;of&nbsp;classes<br>
+0.5-1.5,&nbsp;1.5-2.5,&nbsp;2.5-3.5,&nbsp;etc.&nbsp;The&nbsp;middle&nbsp;value&nbsp;falls&nbsp;somewhere&nbsp;in<br>
+class&nbsp;3.5-4.5,&nbsp;and&nbsp;interpolation&nbsp;is&nbsp;used&nbsp;to&nbsp;estimate&nbsp;it.<br>
+&nbsp;<br>
+Optional&nbsp;argument&nbsp;``interval``&nbsp;represents&nbsp;the&nbsp;class&nbsp;interval,&nbsp;and<br>
+defaults&nbsp;to&nbsp;1.&nbsp;Changing&nbsp;the&nbsp;class&nbsp;interval&nbsp;naturally&nbsp;will&nbsp;change&nbsp;the<br>
+interpolated&nbsp;50th&nbsp;percentile&nbsp;value:<br>
+&nbsp;<br>
+&gt;&gt;&gt;&nbsp;<a href="#-median_grouped">median_grouped</a>([1,&nbsp;3,&nbsp;3,&nbsp;5,&nbsp;7],&nbsp;interval=1)<br>
+3.25<br>
+&gt;&gt;&gt;&nbsp;<a href="#-median_grouped">median_grouped</a>([1,&nbsp;3,&nbsp;3,&nbsp;5,&nbsp;7],&nbsp;interval=2)<br>
+3.5<br>
+&nbsp;<br>
+This&nbsp;function&nbsp;does&nbsp;not&nbsp;check&nbsp;whether&nbsp;the&nbsp;data&nbsp;points&nbsp;are&nbsp;at&nbsp;least<br>
+``interval``&nbsp;apart.</tt></dd></dl>
+ <dl><dt><a name="-median_high"><strong>median_high</strong></a>(data)</dt><dd><tt>Return&nbsp;the&nbsp;high&nbsp;median&nbsp;of&nbsp;data.<br>
+&nbsp;<br>
+When&nbsp;the&nbsp;number&nbsp;of&nbsp;data&nbsp;points&nbsp;is&nbsp;odd,&nbsp;the&nbsp;middle&nbsp;value&nbsp;is&nbsp;returned.<br>
+When&nbsp;it&nbsp;is&nbsp;even,&nbsp;the&nbsp;larger&nbsp;of&nbsp;the&nbsp;two&nbsp;middle&nbsp;values&nbsp;is&nbsp;returned.<br>
+&nbsp;<br>
+&gt;&gt;&gt;&nbsp;<a href="#-median_high">median_high</a>([1,&nbsp;3,&nbsp;5])<br>
+3<br>
+&gt;&gt;&gt;&nbsp;<a href="#-median_high">median_high</a>([1,&nbsp;3,&nbsp;5,&nbsp;7])<br>
+5</tt></dd></dl>
+ <dl><dt><a name="-median_low"><strong>median_low</strong></a>(data)</dt><dd><tt>Return&nbsp;the&nbsp;low&nbsp;median&nbsp;of&nbsp;numeric&nbsp;data.<br>
+&nbsp;<br>
+When&nbsp;the&nbsp;number&nbsp;of&nbsp;data&nbsp;points&nbsp;is&nbsp;odd,&nbsp;the&nbsp;middle&nbsp;value&nbsp;is&nbsp;returned.<br>
+When&nbsp;it&nbsp;is&nbsp;even,&nbsp;the&nbsp;smaller&nbsp;of&nbsp;the&nbsp;two&nbsp;middle&nbsp;values&nbsp;is&nbsp;returned.<br>
+&nbsp;<br>
+&gt;&gt;&gt;&nbsp;<a href="#-median_low">median_low</a>([1,&nbsp;3,&nbsp;5])<br>
+3<br>
+&gt;&gt;&gt;&nbsp;<a href="#-median_low">median_low</a>([1,&nbsp;3,&nbsp;5,&nbsp;7])<br>
+3</tt></dd></dl>
+ <dl><dt><a name="-mode"><strong>mode</strong></a>(data)</dt><dd><tt>Return&nbsp;the&nbsp;most&nbsp;common&nbsp;data&nbsp;point&nbsp;from&nbsp;discrete&nbsp;or&nbsp;nominal&nbsp;data.<br>
+&nbsp;<br>
+``mode``&nbsp;assumes&nbsp;discrete&nbsp;data,&nbsp;and&nbsp;returns&nbsp;a&nbsp;single&nbsp;value.&nbsp;This&nbsp;is&nbsp;the<br>
+standard&nbsp;treatment&nbsp;of&nbsp;the&nbsp;mode&nbsp;as&nbsp;commonly&nbsp;taught&nbsp;in&nbsp;schools:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&gt;&gt;&gt;&nbsp;<a href="#-mode">mode</a>([1,&nbsp;1,&nbsp;2,&nbsp;3,&nbsp;3,&nbsp;3,&nbsp;3,&nbsp;4])<br>
+&nbsp;&nbsp;&nbsp;&nbsp;3<br>
+&nbsp;<br>
+This&nbsp;also&nbsp;works&nbsp;with&nbsp;nominal&nbsp;(non-numeric)&nbsp;data:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&gt;&gt;&gt;&nbsp;<a href="#-mode">mode</a>(["red",&nbsp;"blue",&nbsp;"blue",&nbsp;"red",&nbsp;"green",&nbsp;"red",&nbsp;"red"])<br>
+&nbsp;&nbsp;&nbsp;&nbsp;'red'<br>
+&nbsp;<br>
+If&nbsp;there&nbsp;are&nbsp;multiple&nbsp;modes&nbsp;with&nbsp;same&nbsp;frequency,&nbsp;return&nbsp;the&nbsp;first&nbsp;one<br>
+encountered:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&gt;&gt;&gt;&nbsp;<a href="#-mode">mode</a>(['red',&nbsp;'red',&nbsp;'green',&nbsp;'blue',&nbsp;'blue'])<br>
+&nbsp;&nbsp;&nbsp;&nbsp;'red'<br>
+&nbsp;<br>
+If&nbsp;*data*&nbsp;is&nbsp;empty,&nbsp;``mode``,&nbsp;raises&nbsp;<a href="#StatisticsError">StatisticsError</a>.</tt></dd></dl>
+ <dl><dt><a name="-multimode"><strong>multimode</strong></a>(data)</dt><dd><tt>Return&nbsp;a&nbsp;list&nbsp;of&nbsp;the&nbsp;most&nbsp;frequently&nbsp;occurring&nbsp;values.<br>
+&nbsp;<br>
+Will&nbsp;return&nbsp;more&nbsp;than&nbsp;one&nbsp;result&nbsp;if&nbsp;there&nbsp;are&nbsp;multiple&nbsp;modes<br>
+or&nbsp;an&nbsp;empty&nbsp;list&nbsp;if&nbsp;*data*&nbsp;is&nbsp;empty.<br>
+&nbsp;<br>
+&gt;&gt;&gt;&nbsp;<a href="#-multimode">multimode</a>('aabbbbbbbbcc')<br>
+['b']<br>
+&gt;&gt;&gt;&nbsp;<a href="#-multimode">multimode</a>('aabbbbccddddeeffffgg')<br>
+['b',&nbsp;'d',&nbsp;'f']<br>
+&gt;&gt;&gt;&nbsp;<a href="#-multimode">multimode</a>('')<br>
+[]</tt></dd></dl>
+ <dl><dt><a name="-pstdev"><strong>pstdev</strong></a>(data, mu=None)</dt><dd><tt>Return&nbsp;the&nbsp;square&nbsp;root&nbsp;of&nbsp;the&nbsp;population&nbsp;variance.<br>
+&nbsp;<br>
+See&nbsp;``pvariance``&nbsp;for&nbsp;arguments&nbsp;and&nbsp;other&nbsp;details.<br>
+&nbsp;<br>
+&gt;&gt;&gt;&nbsp;<a href="#-pstdev">pstdev</a>([1.5,&nbsp;2.5,&nbsp;2.5,&nbsp;2.75,&nbsp;3.25,&nbsp;4.75])<br>
+0.986893273527251</tt></dd></dl>
+ <dl><dt><a name="-pvariance"><strong>pvariance</strong></a>(data, mu=None)</dt><dd><tt>Return&nbsp;the&nbsp;population&nbsp;variance&nbsp;of&nbsp;``data``.<br>
+&nbsp;<br>
+data&nbsp;should&nbsp;be&nbsp;a&nbsp;sequence&nbsp;or&nbsp;iterable&nbsp;of&nbsp;Real-valued&nbsp;numbers,&nbsp;with&nbsp;at&nbsp;least&nbsp;one<br>
+value.&nbsp;The&nbsp;optional&nbsp;argument&nbsp;mu,&nbsp;if&nbsp;given,&nbsp;should&nbsp;be&nbsp;the&nbsp;mean&nbsp;of<br>
+the&nbsp;data.&nbsp;If&nbsp;it&nbsp;is&nbsp;missing&nbsp;or&nbsp;None,&nbsp;the&nbsp;mean&nbsp;is&nbsp;automatically&nbsp;calculated.<br>
+&nbsp;<br>
+Use&nbsp;this&nbsp;function&nbsp;to&nbsp;calculate&nbsp;the&nbsp;variance&nbsp;from&nbsp;the&nbsp;entire&nbsp;population.<br>
+To&nbsp;estimate&nbsp;the&nbsp;variance&nbsp;from&nbsp;a&nbsp;sample,&nbsp;the&nbsp;``variance``&nbsp;function&nbsp;is<br>
+usually&nbsp;a&nbsp;better&nbsp;choice.<br>
+&nbsp;<br>
+Examples:<br>
+&nbsp;<br>
+&gt;&gt;&gt;&nbsp;data&nbsp;=&nbsp;[0.0,&nbsp;0.25,&nbsp;0.25,&nbsp;1.25,&nbsp;1.5,&nbsp;1.75,&nbsp;2.75,&nbsp;3.25]<br>
+&gt;&gt;&gt;&nbsp;<a href="#-pvariance">pvariance</a>(data)<br>
+1.25<br>
+&nbsp;<br>
+If&nbsp;you&nbsp;have&nbsp;already&nbsp;calculated&nbsp;the&nbsp;mean&nbsp;of&nbsp;the&nbsp;data,&nbsp;you&nbsp;can&nbsp;pass&nbsp;it&nbsp;as<br>
+the&nbsp;optional&nbsp;second&nbsp;argument&nbsp;to&nbsp;avoid&nbsp;recalculating&nbsp;it:<br>
+&nbsp;<br>
+&gt;&gt;&gt;&nbsp;mu&nbsp;=&nbsp;<a href="#-mean">mean</a>(data)<br>
+&gt;&gt;&gt;&nbsp;<a href="#-pvariance">pvariance</a>(data,&nbsp;mu)<br>
+1.25<br>
+&nbsp;<br>
+Decimals&nbsp;and&nbsp;Fractions&nbsp;are&nbsp;supported:<br>
+&nbsp;<br>
+&gt;&gt;&gt;&nbsp;from&nbsp;decimal&nbsp;import&nbsp;Decimal&nbsp;as&nbsp;D<br>
+&gt;&gt;&gt;&nbsp;<a href="#-pvariance">pvariance</a>([D("27.5"),&nbsp;D("30.25"),&nbsp;D("30.25"),&nbsp;D("34.5"),&nbsp;D("41.75")])<br>
+Decimal('24.815')<br>
+&nbsp;<br>
+&gt;&gt;&gt;&nbsp;from&nbsp;fractions&nbsp;import&nbsp;Fraction&nbsp;as&nbsp;F<br>
+&gt;&gt;&gt;&nbsp;<a href="#-pvariance">pvariance</a>([F(1,&nbsp;4),&nbsp;F(5,&nbsp;4),&nbsp;F(1,&nbsp;2)])<br>
+Fraction(13,&nbsp;72)</tt></dd></dl>
+ <dl><dt><a name="-quantiles"><strong>quantiles</strong></a>(data, *, n=4, method='exclusive')</dt><dd><tt>Divide&nbsp;*data*&nbsp;into&nbsp;*n*&nbsp;continuous&nbsp;intervals&nbsp;with&nbsp;equal&nbsp;probability.<br>
+&nbsp;<br>
+Returns&nbsp;a&nbsp;list&nbsp;of&nbsp;(n&nbsp;-&nbsp;1)&nbsp;cut&nbsp;points&nbsp;separating&nbsp;the&nbsp;intervals.<br>
+&nbsp;<br>
+Set&nbsp;*n*&nbsp;to&nbsp;4&nbsp;for&nbsp;quartiles&nbsp;(the&nbsp;default).&nbsp;&nbsp;Set&nbsp;*n*&nbsp;to&nbsp;10&nbsp;for&nbsp;deciles.<br>
+Set&nbsp;*n*&nbsp;to&nbsp;100&nbsp;for&nbsp;percentiles&nbsp;which&nbsp;gives&nbsp;the&nbsp;99&nbsp;cuts&nbsp;points&nbsp;that<br>
+separate&nbsp;*data*&nbsp;in&nbsp;to&nbsp;100&nbsp;equal&nbsp;sized&nbsp;groups.<br>
+&nbsp;<br>
+The&nbsp;*data*&nbsp;can&nbsp;be&nbsp;any&nbsp;iterable&nbsp;containing&nbsp;sample.<br>
+The&nbsp;cut&nbsp;points&nbsp;are&nbsp;linearly&nbsp;interpolated&nbsp;between&nbsp;data&nbsp;points.<br>
+&nbsp;<br>
+If&nbsp;*method*&nbsp;is&nbsp;set&nbsp;to&nbsp;*inclusive*,&nbsp;*data*&nbsp;is&nbsp;treated&nbsp;as&nbsp;population<br>
+data.&nbsp;&nbsp;The&nbsp;minimum&nbsp;value&nbsp;is&nbsp;treated&nbsp;as&nbsp;the&nbsp;0th&nbsp;percentile&nbsp;and&nbsp;the<br>
+maximum&nbsp;value&nbsp;is&nbsp;treated&nbsp;as&nbsp;the&nbsp;100th&nbsp;percentile.</tt></dd></dl>
+ <dl><dt><a name="-stdev"><strong>stdev</strong></a>(data, xbar=None)</dt><dd><tt>Return&nbsp;the&nbsp;square&nbsp;root&nbsp;of&nbsp;the&nbsp;sample&nbsp;variance.<br>
+&nbsp;<br>
+See&nbsp;``variance``&nbsp;for&nbsp;arguments&nbsp;and&nbsp;other&nbsp;details.<br>
+&nbsp;<br>
+&gt;&gt;&gt;&nbsp;<a href="#-stdev">stdev</a>([1.5,&nbsp;2.5,&nbsp;2.5,&nbsp;2.75,&nbsp;3.25,&nbsp;4.75])<br>
+1.0810874155219827</tt></dd></dl>
+ <dl><dt><a name="-variance"><strong>variance</strong></a>(data, xbar=None)</dt><dd><tt>Return&nbsp;the&nbsp;sample&nbsp;variance&nbsp;of&nbsp;data.<br>
+&nbsp;<br>
+data&nbsp;should&nbsp;be&nbsp;an&nbsp;iterable&nbsp;of&nbsp;Real-valued&nbsp;numbers,&nbsp;with&nbsp;at&nbsp;least&nbsp;two<br>
+values.&nbsp;The&nbsp;optional&nbsp;argument&nbsp;xbar,&nbsp;if&nbsp;given,&nbsp;should&nbsp;be&nbsp;the&nbsp;mean&nbsp;of<br>
+the&nbsp;data.&nbsp;If&nbsp;it&nbsp;is&nbsp;missing&nbsp;or&nbsp;None,&nbsp;the&nbsp;mean&nbsp;is&nbsp;automatically&nbsp;calculated.<br>
+&nbsp;<br>
+Use&nbsp;this&nbsp;function&nbsp;when&nbsp;your&nbsp;data&nbsp;is&nbsp;a&nbsp;sample&nbsp;from&nbsp;a&nbsp;population.&nbsp;To<br>
+calculate&nbsp;the&nbsp;variance&nbsp;from&nbsp;the&nbsp;entire&nbsp;population,&nbsp;see&nbsp;``pvariance``.<br>
+&nbsp;<br>
+Examples:<br>
+&nbsp;<br>
+&gt;&gt;&gt;&nbsp;data&nbsp;=&nbsp;[2.75,&nbsp;1.75,&nbsp;1.25,&nbsp;0.25,&nbsp;0.5,&nbsp;1.25,&nbsp;3.5]<br>
+&gt;&gt;&gt;&nbsp;<a href="#-variance">variance</a>(data)<br>
+1.3720238095238095<br>
+&nbsp;<br>
+If&nbsp;you&nbsp;have&nbsp;already&nbsp;calculated&nbsp;the&nbsp;mean&nbsp;of&nbsp;your&nbsp;data,&nbsp;you&nbsp;can&nbsp;pass&nbsp;it&nbsp;as<br>
+the&nbsp;optional&nbsp;second&nbsp;argument&nbsp;``xbar``&nbsp;to&nbsp;avoid&nbsp;recalculating&nbsp;it:<br>
+&nbsp;<br>
+&gt;&gt;&gt;&nbsp;m&nbsp;=&nbsp;<a href="#-mean">mean</a>(data)<br>
+&gt;&gt;&gt;&nbsp;<a href="#-variance">variance</a>(data,&nbsp;m)<br>
+1.3720238095238095<br>
+&nbsp;<br>
+This&nbsp;function&nbsp;does&nbsp;not&nbsp;check&nbsp;that&nbsp;``xbar``&nbsp;is&nbsp;actually&nbsp;the&nbsp;mean&nbsp;of<br>
+``data``.&nbsp;Giving&nbsp;arbitrary&nbsp;values&nbsp;for&nbsp;``xbar``&nbsp;may&nbsp;lead&nbsp;to&nbsp;invalid&nbsp;or<br>
+impossible&nbsp;results.<br>
+&nbsp;<br>
+Decimals&nbsp;and&nbsp;Fractions&nbsp;are&nbsp;supported:<br>
+&nbsp;<br>
+&gt;&gt;&gt;&nbsp;from&nbsp;decimal&nbsp;import&nbsp;Decimal&nbsp;as&nbsp;D<br>
+&gt;&gt;&gt;&nbsp;<a href="#-variance">variance</a>([D("27.5"),&nbsp;D("30.25"),&nbsp;D("30.25"),&nbsp;D("34.5"),&nbsp;D("41.75")])<br>
+Decimal('31.01875')<br>
+&nbsp;<br>
+&gt;&gt;&gt;&nbsp;from&nbsp;fractions&nbsp;import&nbsp;Fraction&nbsp;as&nbsp;F<br>
+&gt;&gt;&gt;&nbsp;<a href="#-variance">variance</a>([F(1,&nbsp;6),&nbsp;F(1,&nbsp;2),&nbsp;F(5,&nbsp;3)])<br>
+Fraction(67,&nbsp;108)</tt></dd></dl>
+</td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#55aa55">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Data</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#55aa55"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><strong>__all__</strong> = ['NormalDist', 'StatisticsError', 'fmean', 'geometric_mean', 'harmonic_mean', 'mean', 'median', 'median_grouped', 'median_high', 'median_low', 'mode', 'multimode', 'pstdev', 'pvariance', 'quantiles', 'stdev', 'variance']</td></tr></table>
+</body></html>

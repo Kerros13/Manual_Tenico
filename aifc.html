@@ -1,0 +1,251 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head><title>Python: module aifc</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+</head><body bgcolor="#f0f0f8">
+
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="heading">
+<tr bgcolor="#7799ee">
+<td valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong>aifc</strong></big></big></font></td
+><td align=right valign=bottom
+><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:c%3A%5Cpython38%5Clib%5Caifc.py">c:\python38\lib\aifc.py</a><br><a href="https://docs.python.org/3.8/library/aifc">Module Reference</a></font></td></tr></table>
+    <p><tt>Stuff&nbsp;to&nbsp;parse&nbsp;AIFF-C&nbsp;and&nbsp;AIFF&nbsp;files.<br>
+&nbsp;<br>
+Unless&nbsp;explicitly&nbsp;stated&nbsp;otherwise,&nbsp;the&nbsp;description&nbsp;below&nbsp;is&nbsp;true<br>
+both&nbsp;for&nbsp;AIFF-C&nbsp;files&nbsp;and&nbsp;AIFF&nbsp;files.<br>
+&nbsp;<br>
+An&nbsp;AIFF-C&nbsp;file&nbsp;has&nbsp;the&nbsp;following&nbsp;structure.<br>
+&nbsp;<br>
+&nbsp;&nbsp;+-----------------+<br>
+&nbsp;&nbsp;|&nbsp;FORM&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|<br>
+&nbsp;&nbsp;+-----------------+<br>
+&nbsp;&nbsp;|&nbsp;&lt;size&gt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|<br>
+&nbsp;&nbsp;+----+------------+<br>
+&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;AIFC&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|<br>
+&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;+------------+<br>
+&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&lt;chunks&gt;&nbsp;&nbsp;&nbsp;|<br>
+&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|<br>
+&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|<br>
+&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|<br>
+&nbsp;&nbsp;+----+------------+<br>
+&nbsp;<br>
+An&nbsp;AIFF&nbsp;file&nbsp;has&nbsp;the&nbsp;string&nbsp;"AIFF"&nbsp;instead&nbsp;of&nbsp;"AIFC".<br>
+&nbsp;<br>
+A&nbsp;chunk&nbsp;consists&nbsp;of&nbsp;an&nbsp;identifier&nbsp;(4&nbsp;bytes)&nbsp;followed&nbsp;by&nbsp;a&nbsp;size&nbsp;(4&nbsp;bytes,<br>
+big&nbsp;endian&nbsp;order),&nbsp;followed&nbsp;by&nbsp;the&nbsp;data.&nbsp;&nbsp;The&nbsp;size&nbsp;field&nbsp;does&nbsp;not&nbsp;include<br>
+the&nbsp;size&nbsp;of&nbsp;the&nbsp;8&nbsp;byte&nbsp;header.<br>
+&nbsp;<br>
+The&nbsp;following&nbsp;chunk&nbsp;types&nbsp;are&nbsp;recognized.<br>
+&nbsp;<br>
+&nbsp;&nbsp;FVER<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;version&nbsp;number&nbsp;of&nbsp;AIFF-C&nbsp;defining&nbsp;document&gt;&nbsp;(AIFF-C&nbsp;only).<br>
+&nbsp;&nbsp;MARK<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;#&nbsp;of&nbsp;markers&gt;&nbsp;(2&nbsp;bytes)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;list&nbsp;of&nbsp;markers:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;marker&nbsp;ID&gt;&nbsp;(2&nbsp;bytes,&nbsp;must&nbsp;be&nbsp;&gt;&nbsp;0)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;position&gt;&nbsp;(4&nbsp;bytes)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;marker&nbsp;name&gt;&nbsp;("pstring")<br>
+&nbsp;&nbsp;COMM<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;#&nbsp;of&nbsp;channels&gt;&nbsp;(2&nbsp;bytes)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;#&nbsp;of&nbsp;sound&nbsp;frames&gt;&nbsp;(4&nbsp;bytes)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;size&nbsp;of&nbsp;the&nbsp;samples&gt;&nbsp;(2&nbsp;bytes)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;sampling&nbsp;frequency&gt;&nbsp;(10&nbsp;bytes,&nbsp;IEEE&nbsp;80-bit&nbsp;extended<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;floating&nbsp;point)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;in&nbsp;AIFF-C&nbsp;files&nbsp;only:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;compression&nbsp;type&gt;&nbsp;(4&nbsp;bytes)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;human-readable&nbsp;version&nbsp;of&nbsp;compression&nbsp;type&gt;&nbsp;("pstring")<br>
+&nbsp;&nbsp;SSND<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;offset&gt;&nbsp;(4&nbsp;bytes,&nbsp;not&nbsp;used&nbsp;by&nbsp;this&nbsp;program)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;blocksize&gt;&nbsp;(4&nbsp;bytes,&nbsp;not&nbsp;used&nbsp;by&nbsp;this&nbsp;program)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;sound&nbsp;data&gt;<br>
+&nbsp;<br>
+A&nbsp;pstring&nbsp;consists&nbsp;of&nbsp;1&nbsp;byte&nbsp;length,&nbsp;a&nbsp;string&nbsp;of&nbsp;characters,&nbsp;and&nbsp;0&nbsp;or&nbsp;1<br>
+byte&nbsp;pad&nbsp;to&nbsp;make&nbsp;the&nbsp;total&nbsp;length&nbsp;even.<br>
+&nbsp;<br>
+Usage.<br>
+&nbsp;<br>
+Reading&nbsp;AIFF&nbsp;files:<br>
+&nbsp;&nbsp;f&nbsp;=&nbsp;aifc.<a href="#-open">open</a>(file,&nbsp;'r')<br>
+where&nbsp;file&nbsp;is&nbsp;either&nbsp;the&nbsp;name&nbsp;of&nbsp;a&nbsp;file&nbsp;or&nbsp;an&nbsp;open&nbsp;file&nbsp;pointer.<br>
+The&nbsp;open&nbsp;file&nbsp;pointer&nbsp;must&nbsp;have&nbsp;methods&nbsp;read(),&nbsp;seek(),&nbsp;and&nbsp;close().<br>
+In&nbsp;some&nbsp;types&nbsp;of&nbsp;audio&nbsp;files,&nbsp;if&nbsp;the&nbsp;setpos()&nbsp;method&nbsp;is&nbsp;not&nbsp;used,<br>
+the&nbsp;seek()&nbsp;method&nbsp;is&nbsp;not&nbsp;necessary.<br>
+&nbsp;<br>
+This&nbsp;returns&nbsp;an&nbsp;instance&nbsp;of&nbsp;a&nbsp;class&nbsp;with&nbsp;the&nbsp;following&nbsp;public&nbsp;methods:<br>
+&nbsp;&nbsp;getnchannels()&nbsp;&nbsp;--&nbsp;returns&nbsp;number&nbsp;of&nbsp;audio&nbsp;channels&nbsp;(1&nbsp;for<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;mono,&nbsp;2&nbsp;for&nbsp;stereo)<br>
+&nbsp;&nbsp;getsampwidth()&nbsp;&nbsp;--&nbsp;returns&nbsp;sample&nbsp;width&nbsp;in&nbsp;bytes<br>
+&nbsp;&nbsp;getframerate()&nbsp;&nbsp;--&nbsp;returns&nbsp;sampling&nbsp;frequency<br>
+&nbsp;&nbsp;getnframes()&nbsp;&nbsp;&nbsp;&nbsp;--&nbsp;returns&nbsp;number&nbsp;of&nbsp;audio&nbsp;frames<br>
+&nbsp;&nbsp;getcomptype()&nbsp;&nbsp;&nbsp;--&nbsp;returns&nbsp;compression&nbsp;type&nbsp;('NONE'&nbsp;for&nbsp;AIFF&nbsp;files)<br>
+&nbsp;&nbsp;getcompname()&nbsp;&nbsp;&nbsp;--&nbsp;returns&nbsp;human-readable&nbsp;version&nbsp;of<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;compression&nbsp;type&nbsp;('not&nbsp;compressed'&nbsp;for&nbsp;AIFF&nbsp;files)<br>
+&nbsp;&nbsp;getparams()&nbsp;--&nbsp;returns&nbsp;a&nbsp;namedtuple&nbsp;consisting&nbsp;of&nbsp;all&nbsp;of&nbsp;the<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;above&nbsp;in&nbsp;the&nbsp;above&nbsp;order<br>
+&nbsp;&nbsp;getmarkers()&nbsp;&nbsp;&nbsp;&nbsp;--&nbsp;get&nbsp;the&nbsp;list&nbsp;of&nbsp;marks&nbsp;in&nbsp;the&nbsp;audio&nbsp;file&nbsp;or&nbsp;None<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;there&nbsp;are&nbsp;no&nbsp;marks<br>
+&nbsp;&nbsp;getmark(id)&nbsp;--&nbsp;get&nbsp;mark&nbsp;with&nbsp;the&nbsp;specified&nbsp;id&nbsp;(raises&nbsp;an&nbsp;error<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;the&nbsp;mark&nbsp;does&nbsp;not&nbsp;exist)<br>
+&nbsp;&nbsp;readframes(n)&nbsp;&nbsp;&nbsp;--&nbsp;returns&nbsp;at&nbsp;most&nbsp;n&nbsp;frames&nbsp;of&nbsp;audio<br>
+&nbsp;&nbsp;rewind()&nbsp;&nbsp;&nbsp;&nbsp;--&nbsp;rewind&nbsp;to&nbsp;the&nbsp;beginning&nbsp;of&nbsp;the&nbsp;audio&nbsp;stream<br>
+&nbsp;&nbsp;setpos(pos)&nbsp;--&nbsp;seek&nbsp;to&nbsp;the&nbsp;specified&nbsp;position<br>
+&nbsp;&nbsp;tell()&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;--&nbsp;return&nbsp;the&nbsp;current&nbsp;position<br>
+&nbsp;&nbsp;close()&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;--&nbsp;close&nbsp;the&nbsp;instance&nbsp;(make&nbsp;it&nbsp;unusable)<br>
+The&nbsp;position&nbsp;returned&nbsp;by&nbsp;tell(),&nbsp;the&nbsp;position&nbsp;given&nbsp;to&nbsp;setpos()&nbsp;and<br>
+the&nbsp;position&nbsp;of&nbsp;marks&nbsp;are&nbsp;all&nbsp;compatible&nbsp;and&nbsp;have&nbsp;nothing&nbsp;to&nbsp;do&nbsp;with<br>
+the&nbsp;actual&nbsp;position&nbsp;in&nbsp;the&nbsp;file.<br>
+The&nbsp;close()&nbsp;method&nbsp;is&nbsp;called&nbsp;automatically&nbsp;when&nbsp;the&nbsp;class&nbsp;instance<br>
+is&nbsp;destroyed.<br>
+&nbsp;<br>
+Writing&nbsp;AIFF&nbsp;files:<br>
+&nbsp;&nbsp;f&nbsp;=&nbsp;aifc.<a href="#-open">open</a>(file,&nbsp;'w')<br>
+where&nbsp;file&nbsp;is&nbsp;either&nbsp;the&nbsp;name&nbsp;of&nbsp;a&nbsp;file&nbsp;or&nbsp;an&nbsp;open&nbsp;file&nbsp;pointer.<br>
+The&nbsp;open&nbsp;file&nbsp;pointer&nbsp;must&nbsp;have&nbsp;methods&nbsp;write(),&nbsp;tell(),&nbsp;seek(),&nbsp;and<br>
+close().<br>
+&nbsp;<br>
+This&nbsp;returns&nbsp;an&nbsp;instance&nbsp;of&nbsp;a&nbsp;class&nbsp;with&nbsp;the&nbsp;following&nbsp;public&nbsp;methods:<br>
+&nbsp;&nbsp;aiff()&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;--&nbsp;create&nbsp;an&nbsp;AIFF&nbsp;file&nbsp;(AIFF-C&nbsp;default)<br>
+&nbsp;&nbsp;aifc()&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;--&nbsp;create&nbsp;an&nbsp;AIFF-C&nbsp;file<br>
+&nbsp;&nbsp;setnchannels(n)&nbsp;--&nbsp;set&nbsp;the&nbsp;number&nbsp;of&nbsp;channels<br>
+&nbsp;&nbsp;setsampwidth(n)&nbsp;--&nbsp;set&nbsp;the&nbsp;sample&nbsp;width<br>
+&nbsp;&nbsp;setframerate(n)&nbsp;--&nbsp;set&nbsp;the&nbsp;frame&nbsp;rate<br>
+&nbsp;&nbsp;setnframes(n)&nbsp;&nbsp;&nbsp;--&nbsp;set&nbsp;the&nbsp;number&nbsp;of&nbsp;frames<br>
+&nbsp;&nbsp;setcomptype(type,&nbsp;name)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;--&nbsp;set&nbsp;the&nbsp;compression&nbsp;type&nbsp;and&nbsp;the<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;human-readable&nbsp;compression&nbsp;type<br>
+&nbsp;&nbsp;setparams(tuple)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;--&nbsp;set&nbsp;all&nbsp;parameters&nbsp;at&nbsp;once<br>
+&nbsp;&nbsp;setmark(id,&nbsp;pos,&nbsp;name)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;--&nbsp;add&nbsp;specified&nbsp;mark&nbsp;to&nbsp;the&nbsp;list&nbsp;of&nbsp;marks<br>
+&nbsp;&nbsp;tell()&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;--&nbsp;return&nbsp;current&nbsp;position&nbsp;in&nbsp;output&nbsp;file&nbsp;(useful<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;in&nbsp;combination&nbsp;with&nbsp;setmark())<br>
+&nbsp;&nbsp;writeframesraw(data)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;--&nbsp;write&nbsp;audio&nbsp;frames&nbsp;without&nbsp;pathing&nbsp;up&nbsp;the<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;file&nbsp;header<br>
+&nbsp;&nbsp;writeframes(data)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;--&nbsp;write&nbsp;audio&nbsp;frames&nbsp;and&nbsp;patch&nbsp;up&nbsp;the&nbsp;file&nbsp;header<br>
+&nbsp;&nbsp;close()&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;--&nbsp;patch&nbsp;up&nbsp;the&nbsp;file&nbsp;header&nbsp;and&nbsp;close&nbsp;the<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;output&nbsp;file<br>
+You&nbsp;should&nbsp;set&nbsp;the&nbsp;parameters&nbsp;before&nbsp;the&nbsp;first&nbsp;writeframesraw&nbsp;or<br>
+writeframes.&nbsp;&nbsp;The&nbsp;total&nbsp;number&nbsp;of&nbsp;frames&nbsp;does&nbsp;not&nbsp;need&nbsp;to&nbsp;be&nbsp;set,<br>
+but&nbsp;when&nbsp;it&nbsp;is&nbsp;set&nbsp;to&nbsp;the&nbsp;correct&nbsp;value,&nbsp;the&nbsp;header&nbsp;does&nbsp;not&nbsp;have&nbsp;to<br>
+be&nbsp;patched&nbsp;up.<br>
+It&nbsp;is&nbsp;best&nbsp;to&nbsp;first&nbsp;set&nbsp;all&nbsp;parameters,&nbsp;perhaps&nbsp;possibly&nbsp;the<br>
+compression&nbsp;type,&nbsp;and&nbsp;then&nbsp;write&nbsp;audio&nbsp;frames&nbsp;using&nbsp;writeframesraw.<br>
+When&nbsp;all&nbsp;frames&nbsp;have&nbsp;been&nbsp;written,&nbsp;either&nbsp;call&nbsp;writeframes(b'')&nbsp;or<br>
+close()&nbsp;to&nbsp;patch&nbsp;up&nbsp;the&nbsp;sizes&nbsp;in&nbsp;the&nbsp;header.<br>
+Marks&nbsp;can&nbsp;be&nbsp;added&nbsp;anytime.&nbsp;&nbsp;If&nbsp;there&nbsp;are&nbsp;any&nbsp;marks,&nbsp;you&nbsp;must&nbsp;call<br>
+close()&nbsp;after&nbsp;all&nbsp;frames&nbsp;have&nbsp;been&nbsp;written.<br>
+The&nbsp;close()&nbsp;method&nbsp;is&nbsp;called&nbsp;automatically&nbsp;when&nbsp;the&nbsp;class&nbsp;instance<br>
+is&nbsp;destroyed.<br>
+&nbsp;<br>
+When&nbsp;a&nbsp;file&nbsp;is&nbsp;opened&nbsp;with&nbsp;the&nbsp;extension&nbsp;'.aiff',&nbsp;an&nbsp;AIFF&nbsp;file&nbsp;is<br>
+written,&nbsp;otherwise&nbsp;an&nbsp;AIFF-C&nbsp;file&nbsp;is&nbsp;written.&nbsp;&nbsp;This&nbsp;default&nbsp;can&nbsp;be<br>
+changed&nbsp;by&nbsp;calling&nbsp;aiff()&nbsp;or&nbsp;aifc()&nbsp;before&nbsp;the&nbsp;first&nbsp;writeframes&nbsp;or<br>
+writeframesraw.</tt></p>
+<p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#aa55cc">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Modules</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#aa55cc"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><table width="100%" summary="list"><tr><td width="25%" valign=top><a href="builtins.html">builtins</a><br>
+</td><td width="25%" valign=top><a href="struct.html">struct</a><br>
+</td><td width="25%" valign=top><a href="warnings.html">warnings</a><br>
+</td><td width="25%" valign=top></td></tr></table></td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ee77aa">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Classes</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#ee77aa"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl>
+<dt><font face="helvetica, arial"><a href="builtins.html#Exception">builtins.Exception</a>(<a href="builtins.html#BaseException">builtins.BaseException</a>)
+</font></dt><dd>
+<dl>
+<dt><font face="helvetica, arial"><a href="aifc.html#Error">Error</a>
+</font></dt></dl>
+</dd>
+</dl>
+ <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="Error">class <strong>Error</strong></a>(<a href="builtins.html#Exception">builtins.Exception</a>)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt>Common&nbsp;base&nbsp;class&nbsp;for&nbsp;all&nbsp;non-exit&nbsp;exceptions.<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%"><dl><dt>Method resolution order:</dt>
+<dd><a href="aifc.html#Error">Error</a></dd>
+<dd><a href="builtins.html#Exception">builtins.Exception</a></dd>
+<dd><a href="builtins.html#BaseException">builtins.BaseException</a></dd>
+<dd><a href="builtins.html#object">builtins.object</a></dd>
+</dl>
+<hr>
+Data descriptors defined here:<br>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<hr>
+Methods inherited from <a href="builtins.html#Exception">builtins.Exception</a>:<br>
+<dl><dt><a name="Error-__init__"><strong>__init__</strong></a>(self, /, *args, **kwargs)</dt><dd><tt>Initialize&nbsp;self.&nbsp;&nbsp;See&nbsp;help(type(self))&nbsp;for&nbsp;accurate&nbsp;signature.</tt></dd></dl>
+
+<hr>
+Static methods inherited from <a href="builtins.html#Exception">builtins.Exception</a>:<br>
+<dl><dt><a name="Error-__new__"><strong>__new__</strong></a>(*args, **kwargs)<font color="#909090"><font face="helvetica, arial"> from <a href="builtins.html#type">builtins.type</a></font></font></dt><dd><tt>Create&nbsp;and&nbsp;return&nbsp;a&nbsp;new&nbsp;object.&nbsp;&nbsp;See&nbsp;help(type)&nbsp;for&nbsp;accurate&nbsp;signature.</tt></dd></dl>
+
+<hr>
+Methods inherited from <a href="builtins.html#BaseException">builtins.BaseException</a>:<br>
+<dl><dt><a name="Error-__delattr__"><strong>__delattr__</strong></a>(self, name, /)</dt><dd><tt>Implement&nbsp;delattr(self,&nbsp;name).</tt></dd></dl>
+
+<dl><dt><a name="Error-__getattribute__"><strong>__getattribute__</strong></a>(self, name, /)</dt><dd><tt>Return&nbsp;getattr(self,&nbsp;name).</tt></dd></dl>
+
+<dl><dt><a name="Error-__reduce__"><strong>__reduce__</strong></a>(...)</dt><dd><tt>Helper&nbsp;for&nbsp;pickle.</tt></dd></dl>
+
+<dl><dt><a name="Error-__repr__"><strong>__repr__</strong></a>(self, /)</dt><dd><tt>Return&nbsp;repr(self).</tt></dd></dl>
+
+<dl><dt><a name="Error-__setattr__"><strong>__setattr__</strong></a>(self, name, value, /)</dt><dd><tt>Implement&nbsp;setattr(self,&nbsp;name,&nbsp;value).</tt></dd></dl>
+
+<dl><dt><a name="Error-__setstate__"><strong>__setstate__</strong></a>(...)</dt></dl>
+
+<dl><dt><a name="Error-__str__"><strong>__str__</strong></a>(self, /)</dt><dd><tt>Return&nbsp;str(self).</tt></dd></dl>
+
+<dl><dt><a name="Error-with_traceback"><strong>with_traceback</strong></a>(...)</dt><dd><tt><a href="builtins.html#Exception">Exception</a>.<a href="#Error-with_traceback">with_traceback</a>(tb)&nbsp;--<br>
+set&nbsp;self.<strong>__traceback__</strong>&nbsp;to&nbsp;tb&nbsp;and&nbsp;return&nbsp;self.</tt></dd></dl>
+
+<hr>
+Data descriptors inherited from <a href="builtins.html#BaseException">builtins.BaseException</a>:<br>
+<dl><dt><strong>__cause__</strong></dt>
+<dd><tt>exception&nbsp;cause</tt></dd>
+</dl>
+<dl><dt><strong>__context__</strong></dt>
+<dd><tt>exception&nbsp;context</tt></dd>
+</dl>
+<dl><dt><strong>__dict__</strong></dt>
+</dl>
+<dl><dt><strong>__suppress_context__</strong></dt>
+</dl>
+<dl><dt><strong>__traceback__</strong></dt>
+</dl>
+<dl><dt><strong>args</strong></dt>
+</dl>
+</td></tr></table></td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#eeaa77">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Functions</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#eeaa77"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl><dt><a name="-open"><strong>open</strong></a>(f, mode=None)</dt></dl>
+ <dl><dt><a name="-openfp"><strong>openfp</strong></a>(f, mode=None)</dt></dl>
+</td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#55aa55">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Data</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#55aa55"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><strong>__all__</strong> = ['Error', 'open', 'openfp']</td></tr></table>
+</body></html>

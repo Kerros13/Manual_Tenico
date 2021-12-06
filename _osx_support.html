@@ -1,0 +1,72 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head><title>Python: module _osx_support</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+</head><body bgcolor="#f0f0f8">
+
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="heading">
+<tr bgcolor="#7799ee">
+<td valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong>_osx_support</strong></big></big></font></td
+><td align=right valign=bottom
+><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:c%3A%5Cpython38%5Clib%5C_osx_support.py">c:\python38\lib\_osx_support.py</a><br><a href="https://docs.python.org/3.8/library/_osx_support">Module Reference</a></font></td></tr></table>
+    <p><tt>Shared&nbsp;OS&nbsp;X&nbsp;support&nbsp;functions.</tt></p>
+<p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#aa55cc">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Modules</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#aa55cc"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><table width="100%" summary="list"><tr><td width="25%" valign=top><a href="os.html">os</a><br>
+</td><td width="25%" valign=top><a href="re.html">re</a><br>
+</td><td width="25%" valign=top><a href="sys.html">sys</a><br>
+</td><td width="25%" valign=top></td></tr></table></td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#eeaa77">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Functions</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#eeaa77"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl><dt><a name="-compiler_fixup"><strong>compiler_fixup</strong></a>(compiler_so, cc_args)</dt><dd><tt>This&nbsp;function&nbsp;will&nbsp;strip&nbsp;'-isysroot&nbsp;PATH'&nbsp;and&nbsp;'-arch&nbsp;ARCH'&nbsp;from&nbsp;the<br>
+compile&nbsp;flags&nbsp;if&nbsp;the&nbsp;user&nbsp;has&nbsp;specified&nbsp;one&nbsp;them&nbsp;in&nbsp;extra_compile_flags.<br>
+&nbsp;<br>
+This&nbsp;is&nbsp;needed&nbsp;because&nbsp;'-arch&nbsp;ARCH'&nbsp;adds&nbsp;another&nbsp;architecture&nbsp;to&nbsp;the<br>
+build,&nbsp;without&nbsp;a&nbsp;way&nbsp;to&nbsp;remove&nbsp;an&nbsp;architecture.&nbsp;Furthermore&nbsp;GCC&nbsp;will<br>
+barf&nbsp;if&nbsp;multiple&nbsp;'-isysroot'&nbsp;arguments&nbsp;are&nbsp;present.</tt></dd></dl>
+ <dl><dt><a name="-customize_compiler"><strong>customize_compiler</strong></a>(_config_vars)</dt><dd><tt>Customize&nbsp;compiler&nbsp;path&nbsp;and&nbsp;configuration&nbsp;variables.<br>
+&nbsp;<br>
+This&nbsp;customization&nbsp;is&nbsp;performed&nbsp;when&nbsp;the&nbsp;first<br>
+extension&nbsp;module&nbsp;build&nbsp;is&nbsp;requested<br>
+in&nbsp;distutils.sysconfig.customize_compiler).</tt></dd></dl>
+ <dl><dt><a name="-customize_config_vars"><strong>customize_config_vars</strong></a>(_config_vars)</dt><dd><tt>Customize&nbsp;Python&nbsp;build&nbsp;configuration&nbsp;variables.<br>
+&nbsp;<br>
+Called&nbsp;internally&nbsp;from&nbsp;sysconfig&nbsp;with&nbsp;a&nbsp;mutable&nbsp;mapping<br>
+containing&nbsp;name/value&nbsp;pairs&nbsp;parsed&nbsp;from&nbsp;the&nbsp;configured<br>
+makefile&nbsp;used&nbsp;to&nbsp;build&nbsp;this&nbsp;interpreter.&nbsp;&nbsp;Returns<br>
+the&nbsp;mapping&nbsp;updated&nbsp;as&nbsp;needed&nbsp;to&nbsp;reflect&nbsp;the&nbsp;environment<br>
+in&nbsp;which&nbsp;the&nbsp;interpreter&nbsp;is&nbsp;running;&nbsp;in&nbsp;the&nbsp;case&nbsp;of<br>
+a&nbsp;Python&nbsp;from&nbsp;a&nbsp;binary&nbsp;installer,&nbsp;the&nbsp;installed<br>
+environment&nbsp;may&nbsp;be&nbsp;very&nbsp;different&nbsp;from&nbsp;the&nbsp;build<br>
+environment,&nbsp;i.e.&nbsp;different&nbsp;OS&nbsp;levels,&nbsp;different<br>
+built&nbsp;tools,&nbsp;different&nbsp;available&nbsp;CPU&nbsp;architectures.<br>
+&nbsp;<br>
+This&nbsp;customization&nbsp;is&nbsp;performed&nbsp;whenever<br>
+distutils.sysconfig.get_config_vars()&nbsp;is&nbsp;first<br>
+called.&nbsp;&nbsp;It&nbsp;may&nbsp;be&nbsp;used&nbsp;in&nbsp;environments&nbsp;where&nbsp;no<br>
+compilers&nbsp;are&nbsp;present,&nbsp;i.e.&nbsp;when&nbsp;installing&nbsp;pure<br>
+Python&nbsp;dists.&nbsp;&nbsp;Customization&nbsp;of&nbsp;compiler&nbsp;paths<br>
+and&nbsp;detection&nbsp;of&nbsp;unavailable&nbsp;archs&nbsp;is&nbsp;deferred<br>
+until&nbsp;the&nbsp;first&nbsp;extension&nbsp;module&nbsp;build&nbsp;is<br>
+requested&nbsp;(in&nbsp;distutils.sysconfig.customize_compiler).<br>
+&nbsp;<br>
+Currently&nbsp;called&nbsp;from&nbsp;distutils.sysconfig</tt></dd></dl>
+ <dl><dt><a name="-get_platform_osx"><strong>get_platform_osx</strong></a>(_config_vars, osname, release, machine)</dt><dd><tt>Filter&nbsp;values&nbsp;for&nbsp;get_platform()</tt></dd></dl>
+</td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#55aa55">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Data</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#55aa55"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><strong>__all__</strong> = ['compiler_fixup', 'customize_config_vars', 'customize_compiler', 'get_platform_osx']</td></tr></table>
+</body></html>

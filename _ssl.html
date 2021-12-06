@@ -1,0 +1,249 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head><title>Python: module _ssl</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+</head><body bgcolor="#f0f0f8">
+
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="heading">
+<tr bgcolor="#7799ee">
+<td valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong>_ssl</strong></big></big></font></td
+><td align=right valign=bottom
+><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:c%3A%5Cpython38%5Cdlls%5C_ssl.pyd">c:\python38\dlls\_ssl.pyd</a></font></td></tr></table>
+    <p><tt>Implementation&nbsp;module&nbsp;for&nbsp;SSL&nbsp;socket&nbsp;operations.&nbsp;&nbsp;See&nbsp;the&nbsp;socket&nbsp;module<br>
+for&nbsp;documentation.</tt></p>
+<p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ee77aa">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Classes</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#ee77aa"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl>
+<dt><font face="helvetica, arial"><a href="builtins.html#object">builtins.object</a>
+</font></dt><dd>
+<dl>
+<dt><font face="helvetica, arial"><a href="_ssl.html#MemoryBIO">MemoryBIO</a>
+</font></dt><dt><font face="helvetica, arial">Session
+</font></dt></dl>
+</dd>
+</dl>
+ <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="MemoryBIO">class <strong>MemoryBIO</strong></a>(<a href="builtins.html#object">builtins.object</a>)</font></td></tr>
+    
+<tr><td bgcolor="#ffc8d8"><tt>&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%">Methods defined here:<br>
+<dl><dt><a name="MemoryBIO-read"><strong>read</strong></a>(self, size=-1, /)</dt><dd><tt>Read&nbsp;up&nbsp;to&nbsp;size&nbsp;bytes&nbsp;from&nbsp;the&nbsp;memory&nbsp;BIO.<br>
+&nbsp;<br>
+If&nbsp;size&nbsp;is&nbsp;not&nbsp;specified,&nbsp;read&nbsp;the&nbsp;entire&nbsp;buffer.<br>
+If&nbsp;the&nbsp;return&nbsp;value&nbsp;is&nbsp;an&nbsp;empty&nbsp;bytes&nbsp;instance,&nbsp;this&nbsp;means&nbsp;either<br>
+EOF&nbsp;or&nbsp;that&nbsp;no&nbsp;data&nbsp;is&nbsp;available.&nbsp;Use&nbsp;the&nbsp;"eof"&nbsp;property&nbsp;to<br>
+distinguish&nbsp;between&nbsp;the&nbsp;two.</tt></dd></dl>
+
+<dl><dt><a name="MemoryBIO-write"><strong>write</strong></a>(self, b, /)</dt><dd><tt>Writes&nbsp;the&nbsp;bytes&nbsp;b&nbsp;into&nbsp;the&nbsp;memory&nbsp;BIO.<br>
+&nbsp;<br>
+Returns&nbsp;the&nbsp;number&nbsp;of&nbsp;bytes&nbsp;written.</tt></dd></dl>
+
+<dl><dt><a name="MemoryBIO-write_eof"><strong>write_eof</strong></a>(self, /)</dt><dd><tt>Write&nbsp;an&nbsp;EOF&nbsp;marker&nbsp;to&nbsp;the&nbsp;memory&nbsp;BIO.<br>
+&nbsp;<br>
+When&nbsp;all&nbsp;data&nbsp;has&nbsp;been&nbsp;read,&nbsp;the&nbsp;"eof"&nbsp;property&nbsp;will&nbsp;be&nbsp;True.</tt></dd></dl>
+
+<hr>
+Static methods defined here:<br>
+<dl><dt><a name="MemoryBIO-__new__"><strong>__new__</strong></a>(*args, **kwargs)<font color="#909090"><font face="helvetica, arial"> from <a href="builtins.html#type">builtins.type</a></font></font></dt><dd><tt>Create&nbsp;and&nbsp;return&nbsp;a&nbsp;new&nbsp;<a href="builtins.html#object">object</a>.&nbsp;&nbsp;See&nbsp;help(type)&nbsp;for&nbsp;accurate&nbsp;signature.</tt></dd></dl>
+
+<hr>
+Data descriptors defined here:<br>
+<dl><dt><strong>eof</strong></dt>
+<dd><tt>Whether&nbsp;the&nbsp;memory&nbsp;BIO&nbsp;is&nbsp;at&nbsp;EOF.</tt></dd>
+</dl>
+<dl><dt><strong>pending</strong></dt>
+<dd><tt>The&nbsp;number&nbsp;of&nbsp;bytes&nbsp;pending&nbsp;in&nbsp;the&nbsp;memory&nbsp;BIO.</tt></dd>
+</dl>
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><strong>SSLSession</strong> = <a name="SSLSession">class Session</a>(<a href="builtins.html#object">builtins.object</a>)</font></td></tr>
+    
+<tr><td bgcolor="#ffc8d8"><tt>&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%">Methods defined here:<br>
+<dl><dt><a name="Session-__eq__"><strong>__eq__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;self==value.</tt></dd></dl>
+
+<dl><dt><a name="Session-__ge__"><strong>__ge__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;self&gt;=value.</tt></dd></dl>
+
+<dl><dt><a name="Session-__gt__"><strong>__gt__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;self&gt;value.</tt></dd></dl>
+
+<dl><dt><a name="Session-__le__"><strong>__le__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;self&lt;=value.</tt></dd></dl>
+
+<dl><dt><a name="Session-__lt__"><strong>__lt__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;self&lt;value.</tt></dd></dl>
+
+<dl><dt><a name="Session-__ne__"><strong>__ne__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;self!=value.</tt></dd></dl>
+
+<hr>
+Data descriptors defined here:<br>
+<dl><dt><strong>has_ticket</strong></dt>
+<dd><tt>Does&nbsp;the&nbsp;session&nbsp;contain&nbsp;a&nbsp;ticket?</tt></dd>
+</dl>
+<dl><dt><strong>id</strong></dt>
+<dd><tt>Session&nbsp;id</tt></dd>
+</dl>
+<dl><dt><strong>ticket_lifetime_hint</strong></dt>
+<dd><tt>Ticket&nbsp;life&nbsp;time&nbsp;hint.</tt></dd>
+</dl>
+<dl><dt><strong>time</strong></dt>
+<dd><tt>Session&nbsp;creation&nbsp;time&nbsp;(seconds&nbsp;since&nbsp;epoch).</tt></dd>
+</dl>
+<dl><dt><strong>timeout</strong></dt>
+<dd><tt>Session&nbsp;timeout&nbsp;(delta&nbsp;in&nbsp;seconds).</tt></dd>
+</dl>
+<hr>
+Data and other attributes defined here:<br>
+<dl><dt><strong>__hash__</strong> = None</dl>
+
+</td></tr></table></td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#eeaa77">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Functions</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#eeaa77"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl><dt><a name="-RAND_add"><strong>RAND_add</strong></a>(string, entropy, /)</dt><dd><tt>Mix&nbsp;string&nbsp;into&nbsp;the&nbsp;OpenSSL&nbsp;PRNG&nbsp;state.<br>
+&nbsp;<br>
+entropy&nbsp;(a&nbsp;float)&nbsp;is&nbsp;a&nbsp;lower&nbsp;bound&nbsp;on&nbsp;the&nbsp;entropy&nbsp;contained&nbsp;in<br>
+string.&nbsp;&nbsp;See&nbsp;<a href="http://www.rfc-editor.org/rfc/rfc4086.txt">RFC&nbsp;4086</a>.</tt></dd></dl>
+ <dl><dt><a name="-RAND_bytes"><strong>RAND_bytes</strong></a>(n, /)</dt><dd><tt>Generate&nbsp;n&nbsp;cryptographically&nbsp;strong&nbsp;pseudo-random&nbsp;bytes.</tt></dd></dl>
+ <dl><dt><a name="-RAND_pseudo_bytes"><strong>RAND_pseudo_bytes</strong></a>(n, /)</dt><dd><tt>Generate&nbsp;n&nbsp;pseudo-random&nbsp;bytes.<br>
+&nbsp;<br>
+Return&nbsp;a&nbsp;pair&nbsp;(bytes,&nbsp;is_cryptographic).&nbsp;&nbsp;is_cryptographic&nbsp;is&nbsp;True<br>
+if&nbsp;the&nbsp;bytes&nbsp;generated&nbsp;are&nbsp;cryptographically&nbsp;strong.</tt></dd></dl>
+ <dl><dt><a name="-RAND_status"><strong>RAND_status</strong></a>()</dt><dd><tt>Returns&nbsp;1&nbsp;if&nbsp;the&nbsp;OpenSSL&nbsp;PRNG&nbsp;has&nbsp;been&nbsp;seeded&nbsp;with&nbsp;enough&nbsp;data&nbsp;and&nbsp;0&nbsp;if&nbsp;not.<br>
+&nbsp;<br>
+It&nbsp;is&nbsp;necessary&nbsp;to&nbsp;seed&nbsp;the&nbsp;PRNG&nbsp;with&nbsp;<a href="#-RAND_add">RAND_add</a>()&nbsp;on&nbsp;some&nbsp;platforms&nbsp;before<br>
+using&nbsp;the&nbsp;ssl()&nbsp;function.</tt></dd></dl>
+ <dl><dt><a name="-enum_certificates"><strong>enum_certificates</strong></a>(store_name)</dt><dd><tt>Retrieve&nbsp;certificates&nbsp;from&nbsp;Windows'&nbsp;cert&nbsp;store.<br>
+&nbsp;<br>
+store_name&nbsp;may&nbsp;be&nbsp;one&nbsp;of&nbsp;'CA',&nbsp;'ROOT'&nbsp;or&nbsp;'MY'.&nbsp;&nbsp;The&nbsp;system&nbsp;may&nbsp;provide<br>
+more&nbsp;cert&nbsp;storages,&nbsp;too.&nbsp;&nbsp;The&nbsp;function&nbsp;returns&nbsp;a&nbsp;list&nbsp;of&nbsp;(bytes,<br>
+encoding_type,&nbsp;trust)&nbsp;tuples.&nbsp;&nbsp;The&nbsp;encoding_type&nbsp;flag&nbsp;can&nbsp;be&nbsp;interpreted<br>
+with&nbsp;X509_ASN_ENCODING&nbsp;or&nbsp;PKCS_7_ASN_ENCODING.&nbsp;The&nbsp;trust&nbsp;setting&nbsp;is&nbsp;either<br>
+a&nbsp;set&nbsp;of&nbsp;OIDs&nbsp;or&nbsp;the&nbsp;boolean&nbsp;True.</tt></dd></dl>
+ <dl><dt><a name="-enum_crls"><strong>enum_crls</strong></a>(store_name)</dt><dd><tt>Retrieve&nbsp;CRLs&nbsp;from&nbsp;Windows'&nbsp;cert&nbsp;store.<br>
+&nbsp;<br>
+store_name&nbsp;may&nbsp;be&nbsp;one&nbsp;of&nbsp;'CA',&nbsp;'ROOT'&nbsp;or&nbsp;'MY'.&nbsp;&nbsp;The&nbsp;system&nbsp;may&nbsp;provide<br>
+more&nbsp;cert&nbsp;storages,&nbsp;too.&nbsp;&nbsp;The&nbsp;function&nbsp;returns&nbsp;a&nbsp;list&nbsp;of&nbsp;(bytes,<br>
+encoding_type)&nbsp;tuples.&nbsp;&nbsp;The&nbsp;encoding_type&nbsp;flag&nbsp;can&nbsp;be&nbsp;interpreted&nbsp;with<br>
+X509_ASN_ENCODING&nbsp;or&nbsp;PKCS_7_ASN_ENCODING.</tt></dd></dl>
+ <dl><dt><a name="-get_default_verify_paths"><strong>get_default_verify_paths</strong></a>()</dt><dd><tt>Return&nbsp;search&nbsp;paths&nbsp;and&nbsp;environment&nbsp;vars&nbsp;that&nbsp;are&nbsp;used&nbsp;by&nbsp;SSLContext's&nbsp;set_default_verify_paths()&nbsp;to&nbsp;load&nbsp;default&nbsp;CAs.<br>
+&nbsp;<br>
+The&nbsp;values&nbsp;are&nbsp;'cert_file_env',&nbsp;'cert_file',&nbsp;'cert_dir_env',&nbsp;'cert_dir'.</tt></dd></dl>
+ <dl><dt><a name="-nid2obj"><strong>nid2obj</strong></a>(nid, /)</dt><dd><tt>Lookup&nbsp;NID,&nbsp;short&nbsp;name,&nbsp;long&nbsp;name&nbsp;and&nbsp;OID&nbsp;of&nbsp;an&nbsp;ASN1_OBJECT&nbsp;by&nbsp;NID.</tt></dd></dl>
+ <dl><dt><a name="-txt2obj"><strong>txt2obj</strong></a>(txt, name=False)</dt><dd><tt>Lookup&nbsp;NID,&nbsp;short&nbsp;name,&nbsp;long&nbsp;name&nbsp;and&nbsp;OID&nbsp;of&nbsp;an&nbsp;ASN1_OBJECT.<br>
+&nbsp;<br>
+By&nbsp;default&nbsp;objects&nbsp;are&nbsp;looked&nbsp;up&nbsp;by&nbsp;OID.&nbsp;With&nbsp;name=True&nbsp;short&nbsp;and<br>
+long&nbsp;name&nbsp;are&nbsp;also&nbsp;matched.</tt></dd></dl>
+</td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#55aa55">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Data</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#55aa55"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><strong>ALERT_DESCRIPTION_ACCESS_DENIED</strong> = 49<br>
+<strong>ALERT_DESCRIPTION_BAD_CERTIFICATE</strong> = 42<br>
+<strong>ALERT_DESCRIPTION_BAD_CERTIFICATE_HASH_VALUE</strong> = 114<br>
+<strong>ALERT_DESCRIPTION_BAD_CERTIFICATE_STATUS_RESPONSE</strong> = 113<br>
+<strong>ALERT_DESCRIPTION_BAD_RECORD_MAC</strong> = 20<br>
+<strong>ALERT_DESCRIPTION_CERTIFICATE_EXPIRED</strong> = 45<br>
+<strong>ALERT_DESCRIPTION_CERTIFICATE_REVOKED</strong> = 44<br>
+<strong>ALERT_DESCRIPTION_CERTIFICATE_UNKNOWN</strong> = 46<br>
+<strong>ALERT_DESCRIPTION_CERTIFICATE_UNOBTAINABLE</strong> = 111<br>
+<strong>ALERT_DESCRIPTION_CLOSE_NOTIFY</strong> = 0<br>
+<strong>ALERT_DESCRIPTION_DECODE_ERROR</strong> = 50<br>
+<strong>ALERT_DESCRIPTION_DECOMPRESSION_FAILURE</strong> = 30<br>
+<strong>ALERT_DESCRIPTION_DECRYPT_ERROR</strong> = 51<br>
+<strong>ALERT_DESCRIPTION_HANDSHAKE_FAILURE</strong> = 40<br>
+<strong>ALERT_DESCRIPTION_ILLEGAL_PARAMETER</strong> = 47<br>
+<strong>ALERT_DESCRIPTION_INSUFFICIENT_SECURITY</strong> = 71<br>
+<strong>ALERT_DESCRIPTION_INTERNAL_ERROR</strong> = 80<br>
+<strong>ALERT_DESCRIPTION_NO_RENEGOTIATION</strong> = 100<br>
+<strong>ALERT_DESCRIPTION_PROTOCOL_VERSION</strong> = 70<br>
+<strong>ALERT_DESCRIPTION_RECORD_OVERFLOW</strong> = 22<br>
+<strong>ALERT_DESCRIPTION_UNEXPECTED_MESSAGE</strong> = 10<br>
+<strong>ALERT_DESCRIPTION_UNKNOWN_CA</strong> = 48<br>
+<strong>ALERT_DESCRIPTION_UNKNOWN_PSK_IDENTITY</strong> = 115<br>
+<strong>ALERT_DESCRIPTION_UNRECOGNIZED_NAME</strong> = 112<br>
+<strong>ALERT_DESCRIPTION_UNSUPPORTED_CERTIFICATE</strong> = 43<br>
+<strong>ALERT_DESCRIPTION_UNSUPPORTED_EXTENSION</strong> = 110<br>
+<strong>ALERT_DESCRIPTION_USER_CANCELLED</strong> = 90<br>
+<strong>CERT_NONE</strong> = 0<br>
+<strong>CERT_OPTIONAL</strong> = 1<br>
+<strong>CERT_REQUIRED</strong> = 2<br>
+<strong>HAS_ALPN</strong> = True<br>
+<strong>HAS_ECDH</strong> = True<br>
+<strong>HAS_NPN</strong> = False<br>
+<strong>HAS_SNI</strong> = True<br>
+<strong>HAS_SSLv2</strong> = False<br>
+<strong>HAS_SSLv3</strong> = False<br>
+<strong>HAS_TLS_UNIQUE</strong> = True<br>
+<strong>HAS_TLSv1</strong> = True<br>
+<strong>HAS_TLSv1_1</strong> = True<br>
+<strong>HAS_TLSv1_2</strong> = True<br>
+<strong>HAS_TLSv1_3</strong> = True<br>
+<strong>HOSTFLAG_ALWAYS_CHECK_SUBJECT</strong> = 1<br>
+<strong>HOSTFLAG_MULTI_LABEL_WILDCARDS</strong> = 8<br>
+<strong>HOSTFLAG_NEVER_CHECK_SUBJECT</strong> = 32<br>
+<strong>HOSTFLAG_NO_PARTIAL_WILDCARDS</strong> = 4<br>
+<strong>HOSTFLAG_NO_WILDCARDS</strong> = 2<br>
+<strong>HOSTFLAG_SINGLE_LABEL_SUBDOMAINS</strong> = 16<br>
+<strong>OPENSSL_VERSION</strong> = 'OpenSSL 1.1.1g  21 Apr 2020'<br>
+<strong>OPENSSL_VERSION_INFO</strong> = (1, 1, 1, 7, 15)<br>
+<strong>OPENSSL_VERSION_NUMBER</strong> = 269488255<br>
+<strong>OP_ALL</strong> = -2147483564<br>
+<strong>OP_CIPHER_SERVER_PREFERENCE</strong> = 4194304<br>
+<strong>OP_ENABLE_MIDDLEBOX_COMPAT</strong> = 1048576<br>
+<strong>OP_NO_COMPRESSION</strong> = 131072<br>
+<strong>OP_NO_RENEGOTIATION</strong> = 1073741824<br>
+<strong>OP_NO_SSLv2</strong> = 0<br>
+<strong>OP_NO_SSLv3</strong> = 33554432<br>
+<strong>OP_NO_TICKET</strong> = 16384<br>
+<strong>OP_NO_TLSv1</strong> = 67108864<br>
+<strong>OP_NO_TLSv1_1</strong> = 268435456<br>
+<strong>OP_NO_TLSv1_2</strong> = 134217728<br>
+<strong>OP_NO_TLSv1_3</strong> = 536870912<br>
+<strong>OP_SINGLE_DH_USE</strong> = 0<br>
+<strong>OP_SINGLE_ECDH_USE</strong> = 0<br>
+<strong>PROTOCOL_SSLv23</strong> = 2<br>
+<strong>PROTOCOL_TLS</strong> = 2<br>
+<strong>PROTOCOL_TLS_CLIENT</strong> = 16<br>
+<strong>PROTOCOL_TLS_SERVER</strong> = 17<br>
+<strong>PROTOCOL_TLSv1</strong> = 3<br>
+<strong>PROTOCOL_TLSv1_1</strong> = 4<br>
+<strong>PROTOCOL_TLSv1_2</strong> = 5<br>
+<strong>PROTO_MAXIMUM_SUPPORTED</strong> = -1<br>
+<strong>PROTO_MINIMUM_SUPPORTED</strong> = -2<br>
+<strong>PROTO_SSLv3</strong> = 768<br>
+<strong>PROTO_TLSv1</strong> = 769<br>
+<strong>PROTO_TLSv1_1</strong> = 770<br>
+<strong>PROTO_TLSv1_2</strong> = 771<br>
+<strong>PROTO_TLSv1_3</strong> = 772<br>
+<strong>SSL_ERROR_EOF</strong> = 8<br>
+<strong>SSL_ERROR_INVALID_ERROR_CODE</strong> = 10<br>
+<strong>SSL_ERROR_SSL</strong> = 1<br>
+<strong>SSL_ERROR_SYSCALL</strong> = 5<br>
+<strong>SSL_ERROR_WANT_CONNECT</strong> = 7<br>
+<strong>SSL_ERROR_WANT_READ</strong> = 2<br>
+<strong>SSL_ERROR_WANT_WRITE</strong> = 3<br>
+<strong>SSL_ERROR_WANT_X509_LOOKUP</strong> = 4<br>
+<strong>SSL_ERROR_ZERO_RETURN</strong> = 6<br>
+<strong>VERIFY_CRL_CHECK_CHAIN</strong> = 12<br>
+<strong>VERIFY_CRL_CHECK_LEAF</strong> = 4<br>
+<strong>VERIFY_DEFAULT</strong> = 0<br>
+<strong>VERIFY_X509_STRICT</strong> = 32<br>
+<strong>VERIFY_X509_TRUSTED_FIRST</strong> = 32768<br>
+<strong>err_codes_to_names</strong> = {(3, 100): 'ARG2_LT_ARG3', (3, 101): 'BAD_RECIPROCAL', (3, 102): 'CALLED_WITH_EVEN_MODULUS', (3, 103): 'DIV_BY_ZERO', (3, 104): 'ENCODING_ERROR', (3, 105): 'EXPAND_ON_STATIC_BIGNUM_DATA', (3, 106): 'INVALID_LENGTH', (3, 107): 'NOT_INITIALIZED', (3, 108): 'NO_INVERSE', (3, 109): 'TOO_MANY_TEMPORARY_VARIABLES', ...}<br>
+<strong>err_names_to_codes</strong> = {'ACCEPT_ERROR': (32, 100), 'ADDING_OBJECT': (13, 171), 'ADDITIONAL_INPUT_TOO_LONG': (36, 102), 'ADDRINFO_ADDR_IS_NOT_AF_INET': (32, 141), 'ADD_SIGNER_ERROR': (46, 99), 'AES_KEY_SETUP_FAILED': (6, 143), 'AKID_MISMATCH': (11, 110), 'ALGORITHM_MISMATCH': (4, 100), 'ALREADY_INSTANTIATED': (36, 103), 'ALREADY_LOADED': (38, 100), ...}<br>
+<strong>lib_codes_to_names</strong> = {3: 'BN', 4: 'RSA', 5: 'DH', 6: 'EVP', 9: 'PEM', 10: 'DSA', 11: 'X509', 13: 'ASN1', 14: 'CONF', 15: 'CRYPTO', ...}</td></tr></table>
+</body></html>

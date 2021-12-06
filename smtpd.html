@@ -1,0 +1,843 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head><title>Python: module smtpd</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+</head><body bgcolor="#f0f0f8">
+
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="heading">
+<tr bgcolor="#7799ee">
+<td valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong>smtpd</strong></big></big> (version Python SMTP proxy version 0.3)</font></td
+><td align=right valign=bottom
+><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:c%3A%5Cpython38%5Clib%5Csmtpd.py">c:\python38\lib\smtpd.py</a><br><a href="https://docs.python.org/3.8/library/smtpd">Module Reference</a></font></td></tr></table>
+    <p><tt>An&nbsp;<a href="http://www.rfc-editor.org/rfc/rfc5321.txt">RFC&nbsp;5321</a>&nbsp;smtp&nbsp;proxy&nbsp;with&nbsp;optional&nbsp;<a href="http://www.rfc-editor.org/rfc/rfc1870.txt">RFC&nbsp;1870</a>&nbsp;and&nbsp;<a href="http://www.rfc-editor.org/rfc/rfc6531.txt">RFC&nbsp;6531</a>&nbsp;extensions.<br>
+&nbsp;<br>
+Usage:&nbsp;%(program)s&nbsp;[options]&nbsp;[localhost:localport&nbsp;[remotehost:remoteport]]<br>
+&nbsp;<br>
+Options:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;--nosetuid<br>
+&nbsp;&nbsp;&nbsp;&nbsp;-n<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;This&nbsp;program&nbsp;generally&nbsp;tries&nbsp;to&nbsp;setuid&nbsp;`nobody',&nbsp;unless&nbsp;this&nbsp;flag&nbsp;is<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;set.&nbsp;&nbsp;The&nbsp;setuid&nbsp;call&nbsp;will&nbsp;fail&nbsp;if&nbsp;this&nbsp;program&nbsp;is&nbsp;not&nbsp;run&nbsp;as&nbsp;root&nbsp;(in<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;which&nbsp;case,&nbsp;use&nbsp;this&nbsp;flag).<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;--version<br>
+&nbsp;&nbsp;&nbsp;&nbsp;-V<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Print&nbsp;the&nbsp;version&nbsp;number&nbsp;and&nbsp;exit.<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;--class&nbsp;classname<br>
+&nbsp;&nbsp;&nbsp;&nbsp;-c&nbsp;classname<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Use&nbsp;`classname'&nbsp;as&nbsp;the&nbsp;concrete&nbsp;SMTP&nbsp;proxy&nbsp;class.&nbsp;&nbsp;Uses&nbsp;`<a href="#PureProxy">PureProxy</a>'&nbsp;by<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;default.<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;--size&nbsp;limit<br>
+&nbsp;&nbsp;&nbsp;&nbsp;-s&nbsp;limit<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Restrict&nbsp;the&nbsp;total&nbsp;size&nbsp;of&nbsp;the&nbsp;incoming&nbsp;message&nbsp;to&nbsp;"limit"&nbsp;number&nbsp;of<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;bytes&nbsp;via&nbsp;the&nbsp;<a href="http://www.rfc-editor.org/rfc/rfc1870.txt">RFC&nbsp;1870</a>&nbsp;SIZE&nbsp;extension.&nbsp;&nbsp;Defaults&nbsp;to&nbsp;33554432&nbsp;bytes.<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;--smtputf8<br>
+&nbsp;&nbsp;&nbsp;&nbsp;-u<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Enable&nbsp;the&nbsp;SMTPUTF8&nbsp;extension&nbsp;and&nbsp;behave&nbsp;as&nbsp;an&nbsp;<a href="http://www.rfc-editor.org/rfc/rfc6531.txt">RFC&nbsp;6531</a>&nbsp;smtp&nbsp;proxy.<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;--debug<br>
+&nbsp;&nbsp;&nbsp;&nbsp;-d<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Turn&nbsp;on&nbsp;debugging&nbsp;prints.<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;--help<br>
+&nbsp;&nbsp;&nbsp;&nbsp;-h<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Print&nbsp;this&nbsp;message&nbsp;and&nbsp;exit.<br>
+&nbsp;<br>
+Version:&nbsp;%(__version__)s<br>
+&nbsp;<br>
+If&nbsp;localhost&nbsp;is&nbsp;not&nbsp;given&nbsp;then&nbsp;`localhost'&nbsp;is&nbsp;used,&nbsp;and&nbsp;if&nbsp;localport&nbsp;is&nbsp;not<br>
+given&nbsp;then&nbsp;8025&nbsp;is&nbsp;used.&nbsp;&nbsp;If&nbsp;remotehost&nbsp;is&nbsp;not&nbsp;given&nbsp;then&nbsp;`localhost'&nbsp;is&nbsp;used,<br>
+and&nbsp;if&nbsp;remoteport&nbsp;is&nbsp;not&nbsp;given,&nbsp;then&nbsp;25&nbsp;is&nbsp;used.</tt></p>
+<p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#aa55cc">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Modules</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#aa55cc"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><table width="100%" summary="list"><tr><td width="25%" valign=top><a href="asynchat.html">asynchat</a><br>
+<a href="asyncore.html">asyncore</a><br>
+<a href="collections.html">collections</a><br>
+</td><td width="25%" valign=top><a href="errno.html">errno</a><br>
+<a href="getopt.html">getopt</a><br>
+<a href="os.html">os</a><br>
+</td><td width="25%" valign=top><a href="socket.html">socket</a><br>
+<a href="sys.html">sys</a><br>
+<a href="time.html">time</a><br>
+</td><td width="25%" valign=top></td></tr></table></td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ee77aa">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Classes</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#ee77aa"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl>
+<dt><font face="helvetica, arial"><a href="asynchat.html#async_chat">asynchat.async_chat</a>(<a href="asyncore.html#dispatcher">asyncore.dispatcher</a>)
+</font></dt><dd>
+<dl>
+<dt><font face="helvetica, arial"><a href="smtpd.html#SMTPChannel">SMTPChannel</a>
+</font></dt></dl>
+</dd>
+<dt><font face="helvetica, arial"><a href="asyncore.html#dispatcher">asyncore.dispatcher</a>(<a href="builtins.html#object">builtins.object</a>)
+</font></dt><dd>
+<dl>
+<dt><font face="helvetica, arial"><a href="smtpd.html#SMTPServer">SMTPServer</a>
+</font></dt><dd>
+<dl>
+<dt><font face="helvetica, arial"><a href="smtpd.html#DebuggingServer">DebuggingServer</a>
+</font></dt><dt><font face="helvetica, arial"><a href="smtpd.html#PureProxy">PureProxy</a>
+</font></dt><dd>
+<dl>
+<dt><font face="helvetica, arial"><a href="smtpd.html#MailmanProxy">MailmanProxy</a>
+</font></dt></dl>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd>
+</dl>
+ <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="DebuggingServer">class <strong>DebuggingServer</strong></a>(<a href="smtpd.html#SMTPServer">SMTPServer</a>)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt><a href="#DebuggingServer">DebuggingServer</a>(localaddr,&nbsp;remoteaddr,&nbsp;data_size_limit=33554432,&nbsp;map=None,&nbsp;enable_SMTPUTF8=False,&nbsp;decode_data=False)<br>
+&nbsp;<br>
+<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%"><dl><dt>Method resolution order:</dt>
+<dd><a href="smtpd.html#DebuggingServer">DebuggingServer</a></dd>
+<dd><a href="smtpd.html#SMTPServer">SMTPServer</a></dd>
+<dd><a href="asyncore.html#dispatcher">asyncore.dispatcher</a></dd>
+<dd><a href="builtins.html#object">builtins.object</a></dd>
+</dl>
+<hr>
+Methods defined here:<br>
+<dl><dt><a name="DebuggingServer-process_message"><strong>process_message</strong></a>(self, peer, mailfrom, rcpttos, data, **kwargs)</dt><dd><tt>Override&nbsp;this&nbsp;abstract&nbsp;method&nbsp;to&nbsp;handle&nbsp;messages&nbsp;from&nbsp;the&nbsp;client.<br>
+&nbsp;<br>
+peer&nbsp;is&nbsp;a&nbsp;tuple&nbsp;containing&nbsp;(ipaddr,&nbsp;port)&nbsp;of&nbsp;the&nbsp;client&nbsp;that&nbsp;made&nbsp;the<br>
+socket&nbsp;connection&nbsp;to&nbsp;our&nbsp;smtp&nbsp;port.<br>
+&nbsp;<br>
+mailfrom&nbsp;is&nbsp;the&nbsp;raw&nbsp;address&nbsp;the&nbsp;client&nbsp;claims&nbsp;the&nbsp;message&nbsp;is&nbsp;coming<br>
+from.<br>
+&nbsp;<br>
+rcpttos&nbsp;is&nbsp;a&nbsp;list&nbsp;of&nbsp;raw&nbsp;addresses&nbsp;the&nbsp;client&nbsp;wishes&nbsp;to&nbsp;deliver&nbsp;the<br>
+message&nbsp;to.<br>
+&nbsp;<br>
+data&nbsp;is&nbsp;a&nbsp;string&nbsp;containing&nbsp;the&nbsp;entire&nbsp;full&nbsp;text&nbsp;of&nbsp;the&nbsp;message,<br>
+headers&nbsp;(if&nbsp;supplied)&nbsp;and&nbsp;all.&nbsp;&nbsp;It&nbsp;has&nbsp;been&nbsp;`de-transparencied'<br>
+according&nbsp;to&nbsp;<a href="http://www.rfc-editor.org/rfc/rfc821.txt">RFC&nbsp;821</a>,&nbsp;Section&nbsp;4.5.2.&nbsp;&nbsp;In&nbsp;other&nbsp;words,&nbsp;a&nbsp;line<br>
+containing&nbsp;a&nbsp;`.'&nbsp;followed&nbsp;by&nbsp;other&nbsp;text&nbsp;has&nbsp;had&nbsp;the&nbsp;leading&nbsp;dot<br>
+removed.<br>
+&nbsp;<br>
+kwargs&nbsp;is&nbsp;a&nbsp;dictionary&nbsp;containing&nbsp;additional&nbsp;information.&nbsp;&nbsp;It&nbsp;is<br>
+empty&nbsp;if&nbsp;decode_data=True&nbsp;was&nbsp;given&nbsp;as&nbsp;init&nbsp;parameter,&nbsp;otherwise<br>
+it&nbsp;will&nbsp;contain&nbsp;the&nbsp;following&nbsp;keys:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;'mail_options':&nbsp;list&nbsp;of&nbsp;parameters&nbsp;to&nbsp;the&nbsp;mail&nbsp;command.&nbsp;&nbsp;All<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;elements&nbsp;are&nbsp;uppercase&nbsp;strings.&nbsp;&nbsp;Example:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;['BODY=8BITMIME',&nbsp;'SMTPUTF8'].<br>
+&nbsp;&nbsp;&nbsp;&nbsp;'rcpt_options':&nbsp;same,&nbsp;for&nbsp;the&nbsp;rcpt&nbsp;command.<br>
+&nbsp;<br>
+This&nbsp;function&nbsp;should&nbsp;return&nbsp;None&nbsp;for&nbsp;a&nbsp;normal&nbsp;`250&nbsp;Ok'&nbsp;response;<br>
+otherwise,&nbsp;it&nbsp;should&nbsp;return&nbsp;the&nbsp;desired&nbsp;response&nbsp;string&nbsp;in&nbsp;<a href="http://www.rfc-editor.org/rfc/rfc821.txt">RFC&nbsp;821</a><br>
+format.</tt></dd></dl>
+
+<hr>
+Methods inherited from <a href="smtpd.html#SMTPServer">SMTPServer</a>:<br>
+<dl><dt><a name="DebuggingServer-__init__"><strong>__init__</strong></a>(self, localaddr, remoteaddr, data_size_limit=33554432, map=None, enable_SMTPUTF8=False, decode_data=False)</dt><dd><tt>Initialize&nbsp;self.&nbsp;&nbsp;See&nbsp;help(type(self))&nbsp;for&nbsp;accurate&nbsp;signature.</tt></dd></dl>
+
+<dl><dt><a name="DebuggingServer-handle_accepted"><strong>handle_accepted</strong></a>(self, conn, addr)</dt></dl>
+
+<hr>
+Data and other attributes inherited from <a href="smtpd.html#SMTPServer">SMTPServer</a>:<br>
+<dl><dt><strong>channel_class</strong> = &lt;class 'smtpd.SMTPChannel'&gt;</dl>
+
+<hr>
+Methods inherited from <a href="asyncore.html#dispatcher">asyncore.dispatcher</a>:<br>
+<dl><dt><a name="DebuggingServer-__repr__"><strong>__repr__</strong></a>(self)</dt><dd><tt>Return&nbsp;repr(self).</tt></dd></dl>
+
+<dl><dt><a name="DebuggingServer-accept"><strong>accept</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="DebuggingServer-add_channel"><strong>add_channel</strong></a>(self, map=None)</dt></dl>
+
+<dl><dt><a name="DebuggingServer-bind"><strong>bind</strong></a>(self, addr)</dt></dl>
+
+<dl><dt><a name="DebuggingServer-close"><strong>close</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="DebuggingServer-connect"><strong>connect</strong></a>(self, address)</dt></dl>
+
+<dl><dt><a name="DebuggingServer-create_socket"><strong>create_socket</strong></a>(self, family=&lt;AddressFamily.AF_INET: 2&gt;, type=&lt;SocketKind.SOCK_STREAM: 1&gt;)</dt></dl>
+
+<dl><dt><a name="DebuggingServer-del_channel"><strong>del_channel</strong></a>(self, map=None)</dt></dl>
+
+<dl><dt><a name="DebuggingServer-handle_accept"><strong>handle_accept</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="DebuggingServer-handle_close"><strong>handle_close</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="DebuggingServer-handle_connect"><strong>handle_connect</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="DebuggingServer-handle_connect_event"><strong>handle_connect_event</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="DebuggingServer-handle_error"><strong>handle_error</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="DebuggingServer-handle_expt"><strong>handle_expt</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="DebuggingServer-handle_expt_event"><strong>handle_expt_event</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="DebuggingServer-handle_read"><strong>handle_read</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="DebuggingServer-handle_read_event"><strong>handle_read_event</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="DebuggingServer-handle_write"><strong>handle_write</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="DebuggingServer-handle_write_event"><strong>handle_write_event</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="DebuggingServer-listen"><strong>listen</strong></a>(self, num)</dt></dl>
+
+<dl><dt><a name="DebuggingServer-log"><strong>log</strong></a>(self, message)</dt></dl>
+
+<dl><dt><a name="DebuggingServer-log_info"><strong>log_info</strong></a>(self, message, type='info')</dt></dl>
+
+<dl><dt><a name="DebuggingServer-readable"><strong>readable</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="DebuggingServer-recv"><strong>recv</strong></a>(self, buffer_size)</dt></dl>
+
+<dl><dt><a name="DebuggingServer-send"><strong>send</strong></a>(self, data)</dt></dl>
+
+<dl><dt><a name="DebuggingServer-set_reuse_addr"><strong>set_reuse_addr</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="DebuggingServer-set_socket"><strong>set_socket</strong></a>(self, sock, map=None)</dt></dl>
+
+<dl><dt><a name="DebuggingServer-writable"><strong>writable</strong></a>(self)</dt></dl>
+
+<hr>
+Data descriptors inherited from <a href="asyncore.html#dispatcher">asyncore.dispatcher</a>:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><tt>dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<hr>
+Data and other attributes inherited from <a href="asyncore.html#dispatcher">asyncore.dispatcher</a>:<br>
+<dl><dt><strong>accepting</strong> = False</dl>
+
+<dl><dt><strong>addr</strong> = None</dl>
+
+<dl><dt><strong>closing</strong> = False</dl>
+
+<dl><dt><strong>connected</strong> = False</dl>
+
+<dl><dt><strong>connecting</strong> = False</dl>
+
+<dl><dt><strong>debug</strong> = False</dl>
+
+<dl><dt><strong>ignore_log_types</strong> = frozenset({'warning'})</dl>
+
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="MailmanProxy">class <strong>MailmanProxy</strong></a>(<a href="smtpd.html#PureProxy">PureProxy</a>)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt><a href="#MailmanProxy">MailmanProxy</a>(*args,&nbsp;**kwargs)<br>
+&nbsp;<br>
+<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%"><dl><dt>Method resolution order:</dt>
+<dd><a href="smtpd.html#MailmanProxy">MailmanProxy</a></dd>
+<dd><a href="smtpd.html#PureProxy">PureProxy</a></dd>
+<dd><a href="smtpd.html#SMTPServer">SMTPServer</a></dd>
+<dd><a href="asyncore.html#dispatcher">asyncore.dispatcher</a></dd>
+<dd><a href="builtins.html#object">builtins.object</a></dd>
+</dl>
+<hr>
+Methods defined here:<br>
+<dl><dt><a name="MailmanProxy-__init__"><strong>__init__</strong></a>(self, *args, **kwargs)</dt><dd><tt>Initialize&nbsp;self.&nbsp;&nbsp;See&nbsp;help(type(self))&nbsp;for&nbsp;accurate&nbsp;signature.</tt></dd></dl>
+
+<dl><dt><a name="MailmanProxy-process_message"><strong>process_message</strong></a>(self, peer, mailfrom, rcpttos, data)</dt><dd><tt>Override&nbsp;this&nbsp;abstract&nbsp;method&nbsp;to&nbsp;handle&nbsp;messages&nbsp;from&nbsp;the&nbsp;client.<br>
+&nbsp;<br>
+peer&nbsp;is&nbsp;a&nbsp;tuple&nbsp;containing&nbsp;(ipaddr,&nbsp;port)&nbsp;of&nbsp;the&nbsp;client&nbsp;that&nbsp;made&nbsp;the<br>
+socket&nbsp;connection&nbsp;to&nbsp;our&nbsp;smtp&nbsp;port.<br>
+&nbsp;<br>
+mailfrom&nbsp;is&nbsp;the&nbsp;raw&nbsp;address&nbsp;the&nbsp;client&nbsp;claims&nbsp;the&nbsp;message&nbsp;is&nbsp;coming<br>
+from.<br>
+&nbsp;<br>
+rcpttos&nbsp;is&nbsp;a&nbsp;list&nbsp;of&nbsp;raw&nbsp;addresses&nbsp;the&nbsp;client&nbsp;wishes&nbsp;to&nbsp;deliver&nbsp;the<br>
+message&nbsp;to.<br>
+&nbsp;<br>
+data&nbsp;is&nbsp;a&nbsp;string&nbsp;containing&nbsp;the&nbsp;entire&nbsp;full&nbsp;text&nbsp;of&nbsp;the&nbsp;message,<br>
+headers&nbsp;(if&nbsp;supplied)&nbsp;and&nbsp;all.&nbsp;&nbsp;It&nbsp;has&nbsp;been&nbsp;`de-transparencied'<br>
+according&nbsp;to&nbsp;<a href="http://www.rfc-editor.org/rfc/rfc821.txt">RFC&nbsp;821</a>,&nbsp;Section&nbsp;4.5.2.&nbsp;&nbsp;In&nbsp;other&nbsp;words,&nbsp;a&nbsp;line<br>
+containing&nbsp;a&nbsp;`.'&nbsp;followed&nbsp;by&nbsp;other&nbsp;text&nbsp;has&nbsp;had&nbsp;the&nbsp;leading&nbsp;dot<br>
+removed.<br>
+&nbsp;<br>
+kwargs&nbsp;is&nbsp;a&nbsp;dictionary&nbsp;containing&nbsp;additional&nbsp;information.&nbsp;&nbsp;It&nbsp;is<br>
+empty&nbsp;if&nbsp;decode_data=True&nbsp;was&nbsp;given&nbsp;as&nbsp;init&nbsp;parameter,&nbsp;otherwise<br>
+it&nbsp;will&nbsp;contain&nbsp;the&nbsp;following&nbsp;keys:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;'mail_options':&nbsp;list&nbsp;of&nbsp;parameters&nbsp;to&nbsp;the&nbsp;mail&nbsp;command.&nbsp;&nbsp;All<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;elements&nbsp;are&nbsp;uppercase&nbsp;strings.&nbsp;&nbsp;Example:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;['BODY=8BITMIME',&nbsp;'SMTPUTF8'].<br>
+&nbsp;&nbsp;&nbsp;&nbsp;'rcpt_options':&nbsp;same,&nbsp;for&nbsp;the&nbsp;rcpt&nbsp;command.<br>
+&nbsp;<br>
+This&nbsp;function&nbsp;should&nbsp;return&nbsp;None&nbsp;for&nbsp;a&nbsp;normal&nbsp;`250&nbsp;Ok'&nbsp;response;<br>
+otherwise,&nbsp;it&nbsp;should&nbsp;return&nbsp;the&nbsp;desired&nbsp;response&nbsp;string&nbsp;in&nbsp;<a href="http://www.rfc-editor.org/rfc/rfc821.txt">RFC&nbsp;821</a><br>
+format.</tt></dd></dl>
+
+<hr>
+Methods inherited from <a href="smtpd.html#SMTPServer">SMTPServer</a>:<br>
+<dl><dt><a name="MailmanProxy-handle_accepted"><strong>handle_accepted</strong></a>(self, conn, addr)</dt></dl>
+
+<hr>
+Data and other attributes inherited from <a href="smtpd.html#SMTPServer">SMTPServer</a>:<br>
+<dl><dt><strong>channel_class</strong> = &lt;class 'smtpd.SMTPChannel'&gt;</dl>
+
+<hr>
+Methods inherited from <a href="asyncore.html#dispatcher">asyncore.dispatcher</a>:<br>
+<dl><dt><a name="MailmanProxy-__repr__"><strong>__repr__</strong></a>(self)</dt><dd><tt>Return&nbsp;repr(self).</tt></dd></dl>
+
+<dl><dt><a name="MailmanProxy-accept"><strong>accept</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="MailmanProxy-add_channel"><strong>add_channel</strong></a>(self, map=None)</dt></dl>
+
+<dl><dt><a name="MailmanProxy-bind"><strong>bind</strong></a>(self, addr)</dt></dl>
+
+<dl><dt><a name="MailmanProxy-close"><strong>close</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="MailmanProxy-connect"><strong>connect</strong></a>(self, address)</dt></dl>
+
+<dl><dt><a name="MailmanProxy-create_socket"><strong>create_socket</strong></a>(self, family=&lt;AddressFamily.AF_INET: 2&gt;, type=&lt;SocketKind.SOCK_STREAM: 1&gt;)</dt></dl>
+
+<dl><dt><a name="MailmanProxy-del_channel"><strong>del_channel</strong></a>(self, map=None)</dt></dl>
+
+<dl><dt><a name="MailmanProxy-handle_accept"><strong>handle_accept</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="MailmanProxy-handle_close"><strong>handle_close</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="MailmanProxy-handle_connect"><strong>handle_connect</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="MailmanProxy-handle_connect_event"><strong>handle_connect_event</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="MailmanProxy-handle_error"><strong>handle_error</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="MailmanProxy-handle_expt"><strong>handle_expt</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="MailmanProxy-handle_expt_event"><strong>handle_expt_event</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="MailmanProxy-handle_read"><strong>handle_read</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="MailmanProxy-handle_read_event"><strong>handle_read_event</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="MailmanProxy-handle_write"><strong>handle_write</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="MailmanProxy-handle_write_event"><strong>handle_write_event</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="MailmanProxy-listen"><strong>listen</strong></a>(self, num)</dt></dl>
+
+<dl><dt><a name="MailmanProxy-log"><strong>log</strong></a>(self, message)</dt></dl>
+
+<dl><dt><a name="MailmanProxy-log_info"><strong>log_info</strong></a>(self, message, type='info')</dt></dl>
+
+<dl><dt><a name="MailmanProxy-readable"><strong>readable</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="MailmanProxy-recv"><strong>recv</strong></a>(self, buffer_size)</dt></dl>
+
+<dl><dt><a name="MailmanProxy-send"><strong>send</strong></a>(self, data)</dt></dl>
+
+<dl><dt><a name="MailmanProxy-set_reuse_addr"><strong>set_reuse_addr</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="MailmanProxy-set_socket"><strong>set_socket</strong></a>(self, sock, map=None)</dt></dl>
+
+<dl><dt><a name="MailmanProxy-writable"><strong>writable</strong></a>(self)</dt></dl>
+
+<hr>
+Data descriptors inherited from <a href="asyncore.html#dispatcher">asyncore.dispatcher</a>:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><tt>dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<hr>
+Data and other attributes inherited from <a href="asyncore.html#dispatcher">asyncore.dispatcher</a>:<br>
+<dl><dt><strong>accepting</strong> = False</dl>
+
+<dl><dt><strong>addr</strong> = None</dl>
+
+<dl><dt><strong>closing</strong> = False</dl>
+
+<dl><dt><strong>connected</strong> = False</dl>
+
+<dl><dt><strong>connecting</strong> = False</dl>
+
+<dl><dt><strong>debug</strong> = False</dl>
+
+<dl><dt><strong>ignore_log_types</strong> = frozenset({'warning'})</dl>
+
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="PureProxy">class <strong>PureProxy</strong></a>(<a href="smtpd.html#SMTPServer">SMTPServer</a>)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt><a href="#PureProxy">PureProxy</a>(*args,&nbsp;**kwargs)<br>
+&nbsp;<br>
+<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%"><dl><dt>Method resolution order:</dt>
+<dd><a href="smtpd.html#PureProxy">PureProxy</a></dd>
+<dd><a href="smtpd.html#SMTPServer">SMTPServer</a></dd>
+<dd><a href="asyncore.html#dispatcher">asyncore.dispatcher</a></dd>
+<dd><a href="builtins.html#object">builtins.object</a></dd>
+</dl>
+<hr>
+Methods defined here:<br>
+<dl><dt><a name="PureProxy-__init__"><strong>__init__</strong></a>(self, *args, **kwargs)</dt><dd><tt>Initialize&nbsp;self.&nbsp;&nbsp;See&nbsp;help(type(self))&nbsp;for&nbsp;accurate&nbsp;signature.</tt></dd></dl>
+
+<dl><dt><a name="PureProxy-process_message"><strong>process_message</strong></a>(self, peer, mailfrom, rcpttos, data)</dt><dd><tt>Override&nbsp;this&nbsp;abstract&nbsp;method&nbsp;to&nbsp;handle&nbsp;messages&nbsp;from&nbsp;the&nbsp;client.<br>
+&nbsp;<br>
+peer&nbsp;is&nbsp;a&nbsp;tuple&nbsp;containing&nbsp;(ipaddr,&nbsp;port)&nbsp;of&nbsp;the&nbsp;client&nbsp;that&nbsp;made&nbsp;the<br>
+socket&nbsp;connection&nbsp;to&nbsp;our&nbsp;smtp&nbsp;port.<br>
+&nbsp;<br>
+mailfrom&nbsp;is&nbsp;the&nbsp;raw&nbsp;address&nbsp;the&nbsp;client&nbsp;claims&nbsp;the&nbsp;message&nbsp;is&nbsp;coming<br>
+from.<br>
+&nbsp;<br>
+rcpttos&nbsp;is&nbsp;a&nbsp;list&nbsp;of&nbsp;raw&nbsp;addresses&nbsp;the&nbsp;client&nbsp;wishes&nbsp;to&nbsp;deliver&nbsp;the<br>
+message&nbsp;to.<br>
+&nbsp;<br>
+data&nbsp;is&nbsp;a&nbsp;string&nbsp;containing&nbsp;the&nbsp;entire&nbsp;full&nbsp;text&nbsp;of&nbsp;the&nbsp;message,<br>
+headers&nbsp;(if&nbsp;supplied)&nbsp;and&nbsp;all.&nbsp;&nbsp;It&nbsp;has&nbsp;been&nbsp;`de-transparencied'<br>
+according&nbsp;to&nbsp;<a href="http://www.rfc-editor.org/rfc/rfc821.txt">RFC&nbsp;821</a>,&nbsp;Section&nbsp;4.5.2.&nbsp;&nbsp;In&nbsp;other&nbsp;words,&nbsp;a&nbsp;line<br>
+containing&nbsp;a&nbsp;`.'&nbsp;followed&nbsp;by&nbsp;other&nbsp;text&nbsp;has&nbsp;had&nbsp;the&nbsp;leading&nbsp;dot<br>
+removed.<br>
+&nbsp;<br>
+kwargs&nbsp;is&nbsp;a&nbsp;dictionary&nbsp;containing&nbsp;additional&nbsp;information.&nbsp;&nbsp;It&nbsp;is<br>
+empty&nbsp;if&nbsp;decode_data=True&nbsp;was&nbsp;given&nbsp;as&nbsp;init&nbsp;parameter,&nbsp;otherwise<br>
+it&nbsp;will&nbsp;contain&nbsp;the&nbsp;following&nbsp;keys:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;'mail_options':&nbsp;list&nbsp;of&nbsp;parameters&nbsp;to&nbsp;the&nbsp;mail&nbsp;command.&nbsp;&nbsp;All<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;elements&nbsp;are&nbsp;uppercase&nbsp;strings.&nbsp;&nbsp;Example:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;['BODY=8BITMIME',&nbsp;'SMTPUTF8'].<br>
+&nbsp;&nbsp;&nbsp;&nbsp;'rcpt_options':&nbsp;same,&nbsp;for&nbsp;the&nbsp;rcpt&nbsp;command.<br>
+&nbsp;<br>
+This&nbsp;function&nbsp;should&nbsp;return&nbsp;None&nbsp;for&nbsp;a&nbsp;normal&nbsp;`250&nbsp;Ok'&nbsp;response;<br>
+otherwise,&nbsp;it&nbsp;should&nbsp;return&nbsp;the&nbsp;desired&nbsp;response&nbsp;string&nbsp;in&nbsp;<a href="http://www.rfc-editor.org/rfc/rfc821.txt">RFC&nbsp;821</a><br>
+format.</tt></dd></dl>
+
+<hr>
+Methods inherited from <a href="smtpd.html#SMTPServer">SMTPServer</a>:<br>
+<dl><dt><a name="PureProxy-handle_accepted"><strong>handle_accepted</strong></a>(self, conn, addr)</dt></dl>
+
+<hr>
+Data and other attributes inherited from <a href="smtpd.html#SMTPServer">SMTPServer</a>:<br>
+<dl><dt><strong>channel_class</strong> = &lt;class 'smtpd.SMTPChannel'&gt;</dl>
+
+<hr>
+Methods inherited from <a href="asyncore.html#dispatcher">asyncore.dispatcher</a>:<br>
+<dl><dt><a name="PureProxy-__repr__"><strong>__repr__</strong></a>(self)</dt><dd><tt>Return&nbsp;repr(self).</tt></dd></dl>
+
+<dl><dt><a name="PureProxy-accept"><strong>accept</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="PureProxy-add_channel"><strong>add_channel</strong></a>(self, map=None)</dt></dl>
+
+<dl><dt><a name="PureProxy-bind"><strong>bind</strong></a>(self, addr)</dt></dl>
+
+<dl><dt><a name="PureProxy-close"><strong>close</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="PureProxy-connect"><strong>connect</strong></a>(self, address)</dt></dl>
+
+<dl><dt><a name="PureProxy-create_socket"><strong>create_socket</strong></a>(self, family=&lt;AddressFamily.AF_INET: 2&gt;, type=&lt;SocketKind.SOCK_STREAM: 1&gt;)</dt></dl>
+
+<dl><dt><a name="PureProxy-del_channel"><strong>del_channel</strong></a>(self, map=None)</dt></dl>
+
+<dl><dt><a name="PureProxy-handle_accept"><strong>handle_accept</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="PureProxy-handle_close"><strong>handle_close</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="PureProxy-handle_connect"><strong>handle_connect</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="PureProxy-handle_connect_event"><strong>handle_connect_event</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="PureProxy-handle_error"><strong>handle_error</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="PureProxy-handle_expt"><strong>handle_expt</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="PureProxy-handle_expt_event"><strong>handle_expt_event</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="PureProxy-handle_read"><strong>handle_read</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="PureProxy-handle_read_event"><strong>handle_read_event</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="PureProxy-handle_write"><strong>handle_write</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="PureProxy-handle_write_event"><strong>handle_write_event</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="PureProxy-listen"><strong>listen</strong></a>(self, num)</dt></dl>
+
+<dl><dt><a name="PureProxy-log"><strong>log</strong></a>(self, message)</dt></dl>
+
+<dl><dt><a name="PureProxy-log_info"><strong>log_info</strong></a>(self, message, type='info')</dt></dl>
+
+<dl><dt><a name="PureProxy-readable"><strong>readable</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="PureProxy-recv"><strong>recv</strong></a>(self, buffer_size)</dt></dl>
+
+<dl><dt><a name="PureProxy-send"><strong>send</strong></a>(self, data)</dt></dl>
+
+<dl><dt><a name="PureProxy-set_reuse_addr"><strong>set_reuse_addr</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="PureProxy-set_socket"><strong>set_socket</strong></a>(self, sock, map=None)</dt></dl>
+
+<dl><dt><a name="PureProxy-writable"><strong>writable</strong></a>(self)</dt></dl>
+
+<hr>
+Data descriptors inherited from <a href="asyncore.html#dispatcher">asyncore.dispatcher</a>:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><tt>dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<hr>
+Data and other attributes inherited from <a href="asyncore.html#dispatcher">asyncore.dispatcher</a>:<br>
+<dl><dt><strong>accepting</strong> = False</dl>
+
+<dl><dt><strong>addr</strong> = None</dl>
+
+<dl><dt><strong>closing</strong> = False</dl>
+
+<dl><dt><strong>connected</strong> = False</dl>
+
+<dl><dt><strong>connecting</strong> = False</dl>
+
+<dl><dt><strong>debug</strong> = False</dl>
+
+<dl><dt><strong>ignore_log_types</strong> = frozenset({'warning'})</dl>
+
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="SMTPChannel">class <strong>SMTPChannel</strong></a>(<a href="asynchat.html#async_chat">asynchat.async_chat</a>)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt><a href="#SMTPChannel">SMTPChannel</a>(server,&nbsp;conn,&nbsp;addr,&nbsp;data_size_limit=33554432,&nbsp;map=None,&nbsp;enable_SMTPUTF8=False,&nbsp;decode_data=False)<br>
+&nbsp;<br>
+This&nbsp;is&nbsp;an&nbsp;abstract&nbsp;class.&nbsp;&nbsp;You&nbsp;must&nbsp;derive&nbsp;from&nbsp;this&nbsp;class,&nbsp;and&nbsp;add<br>
+the&nbsp;two&nbsp;methods&nbsp;<a href="#SMTPChannel-collect_incoming_data">collect_incoming_data</a>()&nbsp;and&nbsp;<a href="#SMTPChannel-found_terminator">found_terminator</a>()<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%"><dl><dt>Method resolution order:</dt>
+<dd><a href="smtpd.html#SMTPChannel">SMTPChannel</a></dd>
+<dd><a href="asynchat.html#async_chat">asynchat.async_chat</a></dd>
+<dd><a href="asyncore.html#dispatcher">asyncore.dispatcher</a></dd>
+<dd><a href="builtins.html#object">builtins.object</a></dd>
+</dl>
+<hr>
+Methods defined here:<br>
+<dl><dt><a name="SMTPChannel-__init__"><strong>__init__</strong></a>(self, server, conn, addr, data_size_limit=33554432, map=None, enable_SMTPUTF8=False, decode_data=False)</dt><dd><tt>Initialize&nbsp;self.&nbsp;&nbsp;See&nbsp;help(type(self))&nbsp;for&nbsp;accurate&nbsp;signature.</tt></dd></dl>
+
+<dl><dt><a name="SMTPChannel-collect_incoming_data"><strong>collect_incoming_data</strong></a>(self, data)</dt><dd><tt>#&nbsp;Implementation&nbsp;of&nbsp;base&nbsp;class&nbsp;abstract&nbsp;method</tt></dd></dl>
+
+<dl><dt><a name="SMTPChannel-found_terminator"><strong>found_terminator</strong></a>(self)</dt><dd><tt>#&nbsp;Implementation&nbsp;of&nbsp;base&nbsp;class&nbsp;abstract&nbsp;method</tt></dd></dl>
+
+<dl><dt><a name="SMTPChannel-push"><strong>push</strong></a>(self, msg)</dt><dd><tt>#&nbsp;Overrides&nbsp;base&nbsp;class&nbsp;for&nbsp;convenience.</tt></dd></dl>
+
+<dl><dt><a name="SMTPChannel-smtp_DATA"><strong>smtp_DATA</strong></a>(self, arg)</dt></dl>
+
+<dl><dt><a name="SMTPChannel-smtp_EHLO"><strong>smtp_EHLO</strong></a>(self, arg)</dt></dl>
+
+<dl><dt><a name="SMTPChannel-smtp_EXPN"><strong>smtp_EXPN</strong></a>(self, arg)</dt><dd><tt>#&nbsp;Commands&nbsp;that&nbsp;have&nbsp;not&nbsp;been&nbsp;implemented</tt></dd></dl>
+
+<dl><dt><a name="SMTPChannel-smtp_HELO"><strong>smtp_HELO</strong></a>(self, arg)</dt><dd><tt>#&nbsp;SMTP&nbsp;and&nbsp;ESMTP&nbsp;commands</tt></dd></dl>
+
+<dl><dt><a name="SMTPChannel-smtp_HELP"><strong>smtp_HELP</strong></a>(self, arg)</dt></dl>
+
+<dl><dt><a name="SMTPChannel-smtp_MAIL"><strong>smtp_MAIL</strong></a>(self, arg)</dt></dl>
+
+<dl><dt><a name="SMTPChannel-smtp_NOOP"><strong>smtp_NOOP</strong></a>(self, arg)</dt></dl>
+
+<dl><dt><a name="SMTPChannel-smtp_QUIT"><strong>smtp_QUIT</strong></a>(self, arg)</dt></dl>
+
+<dl><dt><a name="SMTPChannel-smtp_RCPT"><strong>smtp_RCPT</strong></a>(self, arg)</dt></dl>
+
+<dl><dt><a name="SMTPChannel-smtp_RSET"><strong>smtp_RSET</strong></a>(self, arg)</dt></dl>
+
+<dl><dt><a name="SMTPChannel-smtp_VRFY"><strong>smtp_VRFY</strong></a>(self, arg)</dt></dl>
+
+<hr>
+Readonly properties defined here:<br>
+<dl><dt><strong>max_command_size_limit</strong></dt>
+</dl>
+<hr>
+Data and other attributes defined here:<br>
+<dl><dt><strong>COMMAND</strong> = 0</dl>
+
+<dl><dt><strong>DATA</strong> = 1</dl>
+
+<dl><dt><strong>command_size_limit</strong> = 512</dl>
+
+<dl><dt><strong>command_size_limits</strong> = defaultdict(&lt;function SMTPChannel.&lt;lambda&gt; at 0x000001F499D4E670&gt;, {})</dl>
+
+<hr>
+Methods inherited from <a href="asynchat.html#async_chat">asynchat.async_chat</a>:<br>
+<dl><dt><a name="SMTPChannel-close_when_done"><strong>close_when_done</strong></a>(self)</dt><dd><tt>automatically&nbsp;close&nbsp;this&nbsp;channel&nbsp;once&nbsp;the&nbsp;outgoing&nbsp;queue&nbsp;is&nbsp;empty</tt></dd></dl>
+
+<dl><dt><a name="SMTPChannel-discard_buffers"><strong>discard_buffers</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="SMTPChannel-get_terminator"><strong>get_terminator</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="SMTPChannel-handle_close"><strong>handle_close</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="SMTPChannel-handle_read"><strong>handle_read</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="SMTPChannel-handle_write"><strong>handle_write</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="SMTPChannel-initiate_send"><strong>initiate_send</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="SMTPChannel-push_with_producer"><strong>push_with_producer</strong></a>(self, producer)</dt></dl>
+
+<dl><dt><a name="SMTPChannel-readable"><strong>readable</strong></a>(self)</dt><dd><tt>predicate&nbsp;for&nbsp;inclusion&nbsp;in&nbsp;the&nbsp;readable&nbsp;for&nbsp;select()</tt></dd></dl>
+
+<dl><dt><a name="SMTPChannel-set_terminator"><strong>set_terminator</strong></a>(self, term)</dt><dd><tt>Set&nbsp;the&nbsp;input&nbsp;delimiter.<br>
+&nbsp;<br>
+Can&nbsp;be&nbsp;a&nbsp;fixed&nbsp;string&nbsp;of&nbsp;any&nbsp;length,&nbsp;an&nbsp;integer,&nbsp;or&nbsp;None.</tt></dd></dl>
+
+<dl><dt><a name="SMTPChannel-writable"><strong>writable</strong></a>(self)</dt><dd><tt>predicate&nbsp;for&nbsp;inclusion&nbsp;in&nbsp;the&nbsp;writable&nbsp;for&nbsp;select()</tt></dd></dl>
+
+<hr>
+Data and other attributes inherited from <a href="asynchat.html#async_chat">asynchat.async_chat</a>:<br>
+<dl><dt><strong>ac_in_buffer_size</strong> = 65536</dl>
+
+<dl><dt><strong>ac_out_buffer_size</strong> = 65536</dl>
+
+<dl><dt><strong>encoding</strong> = 'latin-1'</dl>
+
+<dl><dt><strong>use_encoding</strong> = 0</dl>
+
+<hr>
+Methods inherited from <a href="asyncore.html#dispatcher">asyncore.dispatcher</a>:<br>
+<dl><dt><a name="SMTPChannel-__repr__"><strong>__repr__</strong></a>(self)</dt><dd><tt>Return&nbsp;repr(self).</tt></dd></dl>
+
+<dl><dt><a name="SMTPChannel-accept"><strong>accept</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="SMTPChannel-add_channel"><strong>add_channel</strong></a>(self, map=None)</dt></dl>
+
+<dl><dt><a name="SMTPChannel-bind"><strong>bind</strong></a>(self, addr)</dt></dl>
+
+<dl><dt><a name="SMTPChannel-close"><strong>close</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="SMTPChannel-connect"><strong>connect</strong></a>(self, address)</dt></dl>
+
+<dl><dt><a name="SMTPChannel-create_socket"><strong>create_socket</strong></a>(self, family=&lt;AddressFamily.AF_INET: 2&gt;, type=&lt;SocketKind.SOCK_STREAM: 1&gt;)</dt></dl>
+
+<dl><dt><a name="SMTPChannel-del_channel"><strong>del_channel</strong></a>(self, map=None)</dt></dl>
+
+<dl><dt><a name="SMTPChannel-handle_accept"><strong>handle_accept</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="SMTPChannel-handle_accepted"><strong>handle_accepted</strong></a>(self, sock, addr)</dt></dl>
+
+<dl><dt><a name="SMTPChannel-handle_connect"><strong>handle_connect</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="SMTPChannel-handle_connect_event"><strong>handle_connect_event</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="SMTPChannel-handle_error"><strong>handle_error</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="SMTPChannel-handle_expt"><strong>handle_expt</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="SMTPChannel-handle_expt_event"><strong>handle_expt_event</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="SMTPChannel-handle_read_event"><strong>handle_read_event</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="SMTPChannel-handle_write_event"><strong>handle_write_event</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="SMTPChannel-listen"><strong>listen</strong></a>(self, num)</dt></dl>
+
+<dl><dt><a name="SMTPChannel-log"><strong>log</strong></a>(self, message)</dt></dl>
+
+<dl><dt><a name="SMTPChannel-log_info"><strong>log_info</strong></a>(self, message, type='info')</dt></dl>
+
+<dl><dt><a name="SMTPChannel-recv"><strong>recv</strong></a>(self, buffer_size)</dt></dl>
+
+<dl><dt><a name="SMTPChannel-send"><strong>send</strong></a>(self, data)</dt></dl>
+
+<dl><dt><a name="SMTPChannel-set_reuse_addr"><strong>set_reuse_addr</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="SMTPChannel-set_socket"><strong>set_socket</strong></a>(self, sock, map=None)</dt></dl>
+
+<hr>
+Data descriptors inherited from <a href="asyncore.html#dispatcher">asyncore.dispatcher</a>:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><tt>dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<hr>
+Data and other attributes inherited from <a href="asyncore.html#dispatcher">asyncore.dispatcher</a>:<br>
+<dl><dt><strong>accepting</strong> = False</dl>
+
+<dl><dt><strong>addr</strong> = None</dl>
+
+<dl><dt><strong>closing</strong> = False</dl>
+
+<dl><dt><strong>connected</strong> = False</dl>
+
+<dl><dt><strong>connecting</strong> = False</dl>
+
+<dl><dt><strong>debug</strong> = False</dl>
+
+<dl><dt><strong>ignore_log_types</strong> = frozenset({'warning'})</dl>
+
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="SMTPServer">class <strong>SMTPServer</strong></a>(<a href="asyncore.html#dispatcher">asyncore.dispatcher</a>)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt><a href="#SMTPServer">SMTPServer</a>(localaddr,&nbsp;remoteaddr,&nbsp;data_size_limit=33554432,&nbsp;map=None,&nbsp;enable_SMTPUTF8=False,&nbsp;decode_data=False)<br>
+&nbsp;<br>
+<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%"><dl><dt>Method resolution order:</dt>
+<dd><a href="smtpd.html#SMTPServer">SMTPServer</a></dd>
+<dd><a href="asyncore.html#dispatcher">asyncore.dispatcher</a></dd>
+<dd><a href="builtins.html#object">builtins.object</a></dd>
+</dl>
+<hr>
+Methods defined here:<br>
+<dl><dt><a name="SMTPServer-__init__"><strong>__init__</strong></a>(self, localaddr, remoteaddr, data_size_limit=33554432, map=None, enable_SMTPUTF8=False, decode_data=False)</dt><dd><tt>Initialize&nbsp;self.&nbsp;&nbsp;See&nbsp;help(type(self))&nbsp;for&nbsp;accurate&nbsp;signature.</tt></dd></dl>
+
+<dl><dt><a name="SMTPServer-handle_accepted"><strong>handle_accepted</strong></a>(self, conn, addr)</dt></dl>
+
+<dl><dt><a name="SMTPServer-process_message"><strong>process_message</strong></a>(self, peer, mailfrom, rcpttos, data, **kwargs)</dt><dd><tt>Override&nbsp;this&nbsp;abstract&nbsp;method&nbsp;to&nbsp;handle&nbsp;messages&nbsp;from&nbsp;the&nbsp;client.<br>
+&nbsp;<br>
+peer&nbsp;is&nbsp;a&nbsp;tuple&nbsp;containing&nbsp;(ipaddr,&nbsp;port)&nbsp;of&nbsp;the&nbsp;client&nbsp;that&nbsp;made&nbsp;the<br>
+socket&nbsp;connection&nbsp;to&nbsp;our&nbsp;smtp&nbsp;port.<br>
+&nbsp;<br>
+mailfrom&nbsp;is&nbsp;the&nbsp;raw&nbsp;address&nbsp;the&nbsp;client&nbsp;claims&nbsp;the&nbsp;message&nbsp;is&nbsp;coming<br>
+from.<br>
+&nbsp;<br>
+rcpttos&nbsp;is&nbsp;a&nbsp;list&nbsp;of&nbsp;raw&nbsp;addresses&nbsp;the&nbsp;client&nbsp;wishes&nbsp;to&nbsp;deliver&nbsp;the<br>
+message&nbsp;to.<br>
+&nbsp;<br>
+data&nbsp;is&nbsp;a&nbsp;string&nbsp;containing&nbsp;the&nbsp;entire&nbsp;full&nbsp;text&nbsp;of&nbsp;the&nbsp;message,<br>
+headers&nbsp;(if&nbsp;supplied)&nbsp;and&nbsp;all.&nbsp;&nbsp;It&nbsp;has&nbsp;been&nbsp;`de-transparencied'<br>
+according&nbsp;to&nbsp;<a href="http://www.rfc-editor.org/rfc/rfc821.txt">RFC&nbsp;821</a>,&nbsp;Section&nbsp;4.5.2.&nbsp;&nbsp;In&nbsp;other&nbsp;words,&nbsp;a&nbsp;line<br>
+containing&nbsp;a&nbsp;`.'&nbsp;followed&nbsp;by&nbsp;other&nbsp;text&nbsp;has&nbsp;had&nbsp;the&nbsp;leading&nbsp;dot<br>
+removed.<br>
+&nbsp;<br>
+kwargs&nbsp;is&nbsp;a&nbsp;dictionary&nbsp;containing&nbsp;additional&nbsp;information.&nbsp;&nbsp;It&nbsp;is<br>
+empty&nbsp;if&nbsp;decode_data=True&nbsp;was&nbsp;given&nbsp;as&nbsp;init&nbsp;parameter,&nbsp;otherwise<br>
+it&nbsp;will&nbsp;contain&nbsp;the&nbsp;following&nbsp;keys:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;'mail_options':&nbsp;list&nbsp;of&nbsp;parameters&nbsp;to&nbsp;the&nbsp;mail&nbsp;command.&nbsp;&nbsp;All<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;elements&nbsp;are&nbsp;uppercase&nbsp;strings.&nbsp;&nbsp;Example:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;['BODY=8BITMIME',&nbsp;'SMTPUTF8'].<br>
+&nbsp;&nbsp;&nbsp;&nbsp;'rcpt_options':&nbsp;same,&nbsp;for&nbsp;the&nbsp;rcpt&nbsp;command.<br>
+&nbsp;<br>
+This&nbsp;function&nbsp;should&nbsp;return&nbsp;None&nbsp;for&nbsp;a&nbsp;normal&nbsp;`250&nbsp;Ok'&nbsp;response;<br>
+otherwise,&nbsp;it&nbsp;should&nbsp;return&nbsp;the&nbsp;desired&nbsp;response&nbsp;string&nbsp;in&nbsp;<a href="http://www.rfc-editor.org/rfc/rfc821.txt">RFC&nbsp;821</a><br>
+format.</tt></dd></dl>
+
+<hr>
+Data and other attributes defined here:<br>
+<dl><dt><strong>channel_class</strong> = &lt;class 'smtpd.SMTPChannel'&gt;</dl>
+
+<hr>
+Methods inherited from <a href="asyncore.html#dispatcher">asyncore.dispatcher</a>:<br>
+<dl><dt><a name="SMTPServer-__repr__"><strong>__repr__</strong></a>(self)</dt><dd><tt>Return&nbsp;repr(self).</tt></dd></dl>
+
+<dl><dt><a name="SMTPServer-accept"><strong>accept</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="SMTPServer-add_channel"><strong>add_channel</strong></a>(self, map=None)</dt></dl>
+
+<dl><dt><a name="SMTPServer-bind"><strong>bind</strong></a>(self, addr)</dt></dl>
+
+<dl><dt><a name="SMTPServer-close"><strong>close</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="SMTPServer-connect"><strong>connect</strong></a>(self, address)</dt></dl>
+
+<dl><dt><a name="SMTPServer-create_socket"><strong>create_socket</strong></a>(self, family=&lt;AddressFamily.AF_INET: 2&gt;, type=&lt;SocketKind.SOCK_STREAM: 1&gt;)</dt></dl>
+
+<dl><dt><a name="SMTPServer-del_channel"><strong>del_channel</strong></a>(self, map=None)</dt></dl>
+
+<dl><dt><a name="SMTPServer-handle_accept"><strong>handle_accept</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="SMTPServer-handle_close"><strong>handle_close</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="SMTPServer-handle_connect"><strong>handle_connect</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="SMTPServer-handle_connect_event"><strong>handle_connect_event</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="SMTPServer-handle_error"><strong>handle_error</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="SMTPServer-handle_expt"><strong>handle_expt</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="SMTPServer-handle_expt_event"><strong>handle_expt_event</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="SMTPServer-handle_read"><strong>handle_read</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="SMTPServer-handle_read_event"><strong>handle_read_event</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="SMTPServer-handle_write"><strong>handle_write</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="SMTPServer-handle_write_event"><strong>handle_write_event</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="SMTPServer-listen"><strong>listen</strong></a>(self, num)</dt></dl>
+
+<dl><dt><a name="SMTPServer-log"><strong>log</strong></a>(self, message)</dt></dl>
+
+<dl><dt><a name="SMTPServer-log_info"><strong>log_info</strong></a>(self, message, type='info')</dt></dl>
+
+<dl><dt><a name="SMTPServer-readable"><strong>readable</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="SMTPServer-recv"><strong>recv</strong></a>(self, buffer_size)</dt></dl>
+
+<dl><dt><a name="SMTPServer-send"><strong>send</strong></a>(self, data)</dt></dl>
+
+<dl><dt><a name="SMTPServer-set_reuse_addr"><strong>set_reuse_addr</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="SMTPServer-set_socket"><strong>set_socket</strong></a>(self, sock, map=None)</dt></dl>
+
+<dl><dt><a name="SMTPServer-writable"><strong>writable</strong></a>(self)</dt></dl>
+
+<hr>
+Data descriptors inherited from <a href="asyncore.html#dispatcher">asyncore.dispatcher</a>:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><tt>dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<hr>
+Data and other attributes inherited from <a href="asyncore.html#dispatcher">asyncore.dispatcher</a>:<br>
+<dl><dt><strong>accepting</strong> = False</dl>
+
+<dl><dt><strong>addr</strong> = None</dl>
+
+<dl><dt><strong>closing</strong> = False</dl>
+
+<dl><dt><strong>connected</strong> = False</dl>
+
+<dl><dt><strong>connecting</strong> = False</dl>
+
+<dl><dt><strong>debug</strong> = False</dl>
+
+<dl><dt><strong>ignore_log_types</strong> = frozenset({'warning'})</dl>
+
+</td></tr></table></td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#55aa55">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Data</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#55aa55"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><strong>__all__</strong> = ['SMTPChannel', 'SMTPServer', 'DebuggingServer', 'PureProxy', 'MailmanProxy']</td></tr></table>
+</body></html>

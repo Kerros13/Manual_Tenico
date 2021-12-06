@@ -1,0 +1,142 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head><title>Python: module tabnanny</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+</head><body bgcolor="#f0f0f8">
+
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="heading">
+<tr bgcolor="#7799ee">
+<td valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong>tabnanny</strong></big></big> (version 6)</font></td
+><td align=right valign=bottom
+><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:c%3A%5Cpython38%5Clib%5Ctabnanny.py">c:\python38\lib\tabnanny.py</a><br><a href="https://docs.python.org/3.8/library/tabnanny">Module Reference</a></font></td></tr></table>
+    <p><tt>The&nbsp;Tab&nbsp;Nanny&nbsp;despises&nbsp;ambiguous&nbsp;indentation.&nbsp;&nbsp;She&nbsp;knows&nbsp;no&nbsp;mercy.<br>
+&nbsp;<br>
+tabnanny&nbsp;--&nbsp;Detection&nbsp;of&nbsp;ambiguous&nbsp;indentation<br>
+&nbsp;<br>
+For&nbsp;the&nbsp;time&nbsp;being&nbsp;this&nbsp;module&nbsp;is&nbsp;intended&nbsp;to&nbsp;be&nbsp;called&nbsp;as&nbsp;a&nbsp;script.<br>
+However&nbsp;it&nbsp;is&nbsp;possible&nbsp;to&nbsp;import&nbsp;it&nbsp;into&nbsp;an&nbsp;IDE&nbsp;and&nbsp;use&nbsp;the&nbsp;function<br>
+<a href="#-check">check</a>()&nbsp;described&nbsp;below.<br>
+&nbsp;<br>
+Warning:&nbsp;The&nbsp;API&nbsp;provided&nbsp;by&nbsp;this&nbsp;module&nbsp;is&nbsp;likely&nbsp;to&nbsp;change&nbsp;in&nbsp;future<br>
+releases;&nbsp;such&nbsp;changes&nbsp;may&nbsp;not&nbsp;be&nbsp;backward&nbsp;compatible.</tt></p>
+<p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#aa55cc">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Modules</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#aa55cc"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><table width="100%" summary="list"><tr><td width="25%" valign=top><a href="os.html">os</a><br>
+</td><td width="25%" valign=top><a href="sys.html">sys</a><br>
+</td><td width="25%" valign=top><a href="tokenize.html">tokenize</a><br>
+</td><td width="25%" valign=top></td></tr></table></td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ee77aa">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Classes</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#ee77aa"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl>
+<dt><font face="helvetica, arial"><a href="builtins.html#Exception">builtins.Exception</a>(<a href="builtins.html#BaseException">builtins.BaseException</a>)
+</font></dt><dd>
+<dl>
+<dt><font face="helvetica, arial"><a href="tabnanny.html#NannyNag">NannyNag</a>
+</font></dt></dl>
+</dd>
+</dl>
+ <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="NannyNag">class <strong>NannyNag</strong></a>(<a href="builtins.html#Exception">builtins.Exception</a>)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt><a href="#NannyNag">NannyNag</a>(lineno,&nbsp;msg,&nbsp;line)<br>
+&nbsp;<br>
+Raised&nbsp;by&nbsp;<a href="#-process_tokens">process_tokens</a>()&nbsp;if&nbsp;detecting&nbsp;an&nbsp;ambiguous&nbsp;indent.<br>
+Captured&nbsp;and&nbsp;handled&nbsp;in&nbsp;<a href="#-check">check</a>().<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%"><dl><dt>Method resolution order:</dt>
+<dd><a href="tabnanny.html#NannyNag">NannyNag</a></dd>
+<dd><a href="builtins.html#Exception">builtins.Exception</a></dd>
+<dd><a href="builtins.html#BaseException">builtins.BaseException</a></dd>
+<dd><a href="builtins.html#object">builtins.object</a></dd>
+</dl>
+<hr>
+Methods defined here:<br>
+<dl><dt><a name="NannyNag-__init__"><strong>__init__</strong></a>(self, lineno, msg, line)</dt><dd><tt>Initialize&nbsp;self.&nbsp;&nbsp;See&nbsp;help(type(self))&nbsp;for&nbsp;accurate&nbsp;signature.</tt></dd></dl>
+
+<dl><dt><a name="NannyNag-get_line"><strong>get_line</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="NannyNag-get_lineno"><strong>get_lineno</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="NannyNag-get_msg"><strong>get_msg</strong></a>(self)</dt></dl>
+
+<hr>
+Data descriptors defined here:<br>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<hr>
+Static methods inherited from <a href="builtins.html#Exception">builtins.Exception</a>:<br>
+<dl><dt><a name="NannyNag-__new__"><strong>__new__</strong></a>(*args, **kwargs)<font color="#909090"><font face="helvetica, arial"> from <a href="builtins.html#type">builtins.type</a></font></font></dt><dd><tt>Create&nbsp;and&nbsp;return&nbsp;a&nbsp;new&nbsp;object.&nbsp;&nbsp;See&nbsp;help(type)&nbsp;for&nbsp;accurate&nbsp;signature.</tt></dd></dl>
+
+<hr>
+Methods inherited from <a href="builtins.html#BaseException">builtins.BaseException</a>:<br>
+<dl><dt><a name="NannyNag-__delattr__"><strong>__delattr__</strong></a>(self, name, /)</dt><dd><tt>Implement&nbsp;delattr(self,&nbsp;name).</tt></dd></dl>
+
+<dl><dt><a name="NannyNag-__getattribute__"><strong>__getattribute__</strong></a>(self, name, /)</dt><dd><tt>Return&nbsp;getattr(self,&nbsp;name).</tt></dd></dl>
+
+<dl><dt><a name="NannyNag-__reduce__"><strong>__reduce__</strong></a>(...)</dt><dd><tt>Helper&nbsp;for&nbsp;pickle.</tt></dd></dl>
+
+<dl><dt><a name="NannyNag-__repr__"><strong>__repr__</strong></a>(self, /)</dt><dd><tt>Return&nbsp;repr(self).</tt></dd></dl>
+
+<dl><dt><a name="NannyNag-__setattr__"><strong>__setattr__</strong></a>(self, name, value, /)</dt><dd><tt>Implement&nbsp;setattr(self,&nbsp;name,&nbsp;value).</tt></dd></dl>
+
+<dl><dt><a name="NannyNag-__setstate__"><strong>__setstate__</strong></a>(...)</dt></dl>
+
+<dl><dt><a name="NannyNag-__str__"><strong>__str__</strong></a>(self, /)</dt><dd><tt>Return&nbsp;str(self).</tt></dd></dl>
+
+<dl><dt><a name="NannyNag-with_traceback"><strong>with_traceback</strong></a>(...)</dt><dd><tt><a href="builtins.html#Exception">Exception</a>.<a href="#NannyNag-with_traceback">with_traceback</a>(tb)&nbsp;--<br>
+set&nbsp;self.<strong>__traceback__</strong>&nbsp;to&nbsp;tb&nbsp;and&nbsp;return&nbsp;self.</tt></dd></dl>
+
+<hr>
+Data descriptors inherited from <a href="builtins.html#BaseException">builtins.BaseException</a>:<br>
+<dl><dt><strong>__cause__</strong></dt>
+<dd><tt>exception&nbsp;cause</tt></dd>
+</dl>
+<dl><dt><strong>__context__</strong></dt>
+<dd><tt>exception&nbsp;context</tt></dd>
+</dl>
+<dl><dt><strong>__dict__</strong></dt>
+</dl>
+<dl><dt><strong>__suppress_context__</strong></dt>
+</dl>
+<dl><dt><strong>__traceback__</strong></dt>
+</dl>
+<dl><dt><strong>args</strong></dt>
+</dl>
+</td></tr></table></td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#eeaa77">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Functions</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#eeaa77"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl><dt><a name="-check"><strong>check</strong></a>(file)</dt><dd><tt><a href="#-check">check</a>(file_or_dir)<br>
+&nbsp;<br>
+If&nbsp;file_or_dir&nbsp;is&nbsp;a&nbsp;directory&nbsp;and&nbsp;not&nbsp;a&nbsp;symbolic&nbsp;link,&nbsp;then&nbsp;recursively<br>
+descend&nbsp;the&nbsp;directory&nbsp;tree&nbsp;named&nbsp;by&nbsp;file_or_dir,&nbsp;checking&nbsp;all&nbsp;.py&nbsp;files<br>
+along&nbsp;the&nbsp;way.&nbsp;If&nbsp;file_or_dir&nbsp;is&nbsp;an&nbsp;ordinary&nbsp;Python&nbsp;source&nbsp;file,&nbsp;it&nbsp;is<br>
+checked&nbsp;for&nbsp;whitespace&nbsp;related&nbsp;problems.&nbsp;The&nbsp;diagnostic&nbsp;messages&nbsp;are<br>
+written&nbsp;to&nbsp;standard&nbsp;output&nbsp;using&nbsp;the&nbsp;print&nbsp;statement.</tt></dd></dl>
+ <dl><dt><a name="-process_tokens"><strong>process_tokens</strong></a>(tokens)</dt></dl>
+</td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#55aa55">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Data</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#55aa55"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><strong>__all__</strong> = ['check', 'NannyNag', 'process_tokens']</td></tr></table>
+</body></html>

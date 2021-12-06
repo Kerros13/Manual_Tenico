@@ -1,0 +1,376 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head><title>Python: module wave</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+</head><body bgcolor="#f0f0f8">
+
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="heading">
+<tr bgcolor="#7799ee">
+<td valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong>wave</strong></big></big></font></td
+><td align=right valign=bottom
+><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:c%3A%5Cpython38%5Clib%5Cwave.py">c:\python38\lib\wave.py</a><br><a href="https://docs.python.org/3.8/library/wave">Module Reference</a></font></td></tr></table>
+    <p><tt>Stuff&nbsp;to&nbsp;parse&nbsp;WAVE&nbsp;files.<br>
+&nbsp;<br>
+Usage.<br>
+&nbsp;<br>
+Reading&nbsp;WAVE&nbsp;files:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;f&nbsp;=&nbsp;wave.<a href="#-open">open</a>(file,&nbsp;'r')<br>
+where&nbsp;file&nbsp;is&nbsp;either&nbsp;the&nbsp;name&nbsp;of&nbsp;a&nbsp;file&nbsp;or&nbsp;an&nbsp;open&nbsp;file&nbsp;pointer.<br>
+The&nbsp;open&nbsp;file&nbsp;pointer&nbsp;must&nbsp;have&nbsp;methods&nbsp;read(),&nbsp;seek(),&nbsp;and&nbsp;close().<br>
+When&nbsp;the&nbsp;setpos()&nbsp;and&nbsp;rewind()&nbsp;methods&nbsp;are&nbsp;not&nbsp;used,&nbsp;the&nbsp;seek()<br>
+method&nbsp;is&nbsp;not&nbsp;&nbsp;necessary.<br>
+&nbsp;<br>
+This&nbsp;returns&nbsp;an&nbsp;instance&nbsp;of&nbsp;a&nbsp;class&nbsp;with&nbsp;the&nbsp;following&nbsp;public&nbsp;methods:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;getnchannels()&nbsp;&nbsp;--&nbsp;returns&nbsp;number&nbsp;of&nbsp;audio&nbsp;channels&nbsp;(1&nbsp;for<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;mono,&nbsp;2&nbsp;for&nbsp;stereo)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;getsampwidth()&nbsp;&nbsp;--&nbsp;returns&nbsp;sample&nbsp;width&nbsp;in&nbsp;bytes<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;getframerate()&nbsp;&nbsp;--&nbsp;returns&nbsp;sampling&nbsp;frequency<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;getnframes()&nbsp;&nbsp;&nbsp;&nbsp;--&nbsp;returns&nbsp;number&nbsp;of&nbsp;audio&nbsp;frames<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;getcomptype()&nbsp;&nbsp;&nbsp;--&nbsp;returns&nbsp;compression&nbsp;type&nbsp;('NONE'&nbsp;for&nbsp;linear&nbsp;samples)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;getcompname()&nbsp;&nbsp;&nbsp;--&nbsp;returns&nbsp;human-readable&nbsp;version&nbsp;of<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;compression&nbsp;type&nbsp;('not&nbsp;compressed'&nbsp;linear&nbsp;samples)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;getparams()&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;--&nbsp;returns&nbsp;a&nbsp;namedtuple&nbsp;consisting&nbsp;of&nbsp;all&nbsp;of&nbsp;the<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;above&nbsp;in&nbsp;the&nbsp;above&nbsp;order<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;getmarkers()&nbsp;&nbsp;&nbsp;&nbsp;--&nbsp;returns&nbsp;None&nbsp;(for&nbsp;compatibility&nbsp;with&nbsp;the<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;aifc&nbsp;module)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;getmark(id)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;--&nbsp;raises&nbsp;an&nbsp;error&nbsp;since&nbsp;the&nbsp;mark&nbsp;does&nbsp;not<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;exist&nbsp;(for&nbsp;compatibility&nbsp;with&nbsp;the&nbsp;aifc&nbsp;module)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;readframes(n)&nbsp;&nbsp;&nbsp;--&nbsp;returns&nbsp;at&nbsp;most&nbsp;n&nbsp;frames&nbsp;of&nbsp;audio<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;rewind()&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;--&nbsp;rewind&nbsp;to&nbsp;the&nbsp;beginning&nbsp;of&nbsp;the&nbsp;audio&nbsp;stream<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;setpos(pos)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;--&nbsp;seek&nbsp;to&nbsp;the&nbsp;specified&nbsp;position<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;tell()&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;--&nbsp;return&nbsp;the&nbsp;current&nbsp;position<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;close()&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;--&nbsp;close&nbsp;the&nbsp;instance&nbsp;(make&nbsp;it&nbsp;unusable)<br>
+The&nbsp;position&nbsp;returned&nbsp;by&nbsp;tell()&nbsp;and&nbsp;the&nbsp;position&nbsp;given&nbsp;to&nbsp;setpos()<br>
+are&nbsp;compatible&nbsp;and&nbsp;have&nbsp;nothing&nbsp;to&nbsp;do&nbsp;with&nbsp;the&nbsp;actual&nbsp;position&nbsp;in&nbsp;the<br>
+file.<br>
+The&nbsp;close()&nbsp;method&nbsp;is&nbsp;called&nbsp;automatically&nbsp;when&nbsp;the&nbsp;class&nbsp;instance<br>
+is&nbsp;destroyed.<br>
+&nbsp;<br>
+Writing&nbsp;WAVE&nbsp;files:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;f&nbsp;=&nbsp;wave.<a href="#-open">open</a>(file,&nbsp;'w')<br>
+where&nbsp;file&nbsp;is&nbsp;either&nbsp;the&nbsp;name&nbsp;of&nbsp;a&nbsp;file&nbsp;or&nbsp;an&nbsp;open&nbsp;file&nbsp;pointer.<br>
+The&nbsp;open&nbsp;file&nbsp;pointer&nbsp;must&nbsp;have&nbsp;methods&nbsp;write(),&nbsp;tell(),&nbsp;seek(),&nbsp;and<br>
+close().<br>
+&nbsp;<br>
+This&nbsp;returns&nbsp;an&nbsp;instance&nbsp;of&nbsp;a&nbsp;class&nbsp;with&nbsp;the&nbsp;following&nbsp;public&nbsp;methods:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;setnchannels(n)&nbsp;--&nbsp;set&nbsp;the&nbsp;number&nbsp;of&nbsp;channels<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;setsampwidth(n)&nbsp;--&nbsp;set&nbsp;the&nbsp;sample&nbsp;width<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;setframerate(n)&nbsp;--&nbsp;set&nbsp;the&nbsp;frame&nbsp;rate<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;setnframes(n)&nbsp;&nbsp;&nbsp;--&nbsp;set&nbsp;the&nbsp;number&nbsp;of&nbsp;frames<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;setcomptype(type,&nbsp;name)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;--&nbsp;set&nbsp;the&nbsp;compression&nbsp;type&nbsp;and&nbsp;the<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;human-readable&nbsp;compression&nbsp;type<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;setparams(tuple)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;--&nbsp;set&nbsp;all&nbsp;parameters&nbsp;at&nbsp;once<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;tell()&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;--&nbsp;return&nbsp;current&nbsp;position&nbsp;in&nbsp;output&nbsp;file<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;writeframesraw(data)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;--&nbsp;write&nbsp;audio&nbsp;frames&nbsp;without&nbsp;patching&nbsp;up&nbsp;the<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;file&nbsp;header<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;writeframes(data)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;--&nbsp;write&nbsp;audio&nbsp;frames&nbsp;and&nbsp;patch&nbsp;up&nbsp;the&nbsp;file&nbsp;header<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;close()&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;--&nbsp;patch&nbsp;up&nbsp;the&nbsp;file&nbsp;header&nbsp;and&nbsp;close&nbsp;the<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;output&nbsp;file<br>
+You&nbsp;should&nbsp;set&nbsp;the&nbsp;parameters&nbsp;before&nbsp;the&nbsp;first&nbsp;writeframesraw&nbsp;or<br>
+writeframes.&nbsp;&nbsp;The&nbsp;total&nbsp;number&nbsp;of&nbsp;frames&nbsp;does&nbsp;not&nbsp;need&nbsp;to&nbsp;be&nbsp;set,<br>
+but&nbsp;when&nbsp;it&nbsp;is&nbsp;set&nbsp;to&nbsp;the&nbsp;correct&nbsp;value,&nbsp;the&nbsp;header&nbsp;does&nbsp;not&nbsp;have&nbsp;to<br>
+be&nbsp;patched&nbsp;up.<br>
+It&nbsp;is&nbsp;best&nbsp;to&nbsp;first&nbsp;set&nbsp;all&nbsp;parameters,&nbsp;perhaps&nbsp;possibly&nbsp;the<br>
+compression&nbsp;type,&nbsp;and&nbsp;then&nbsp;write&nbsp;audio&nbsp;frames&nbsp;using&nbsp;writeframesraw.<br>
+When&nbsp;all&nbsp;frames&nbsp;have&nbsp;been&nbsp;written,&nbsp;either&nbsp;call&nbsp;writeframes(b'')&nbsp;or<br>
+close()&nbsp;to&nbsp;patch&nbsp;up&nbsp;the&nbsp;sizes&nbsp;in&nbsp;the&nbsp;header.<br>
+The&nbsp;close()&nbsp;method&nbsp;is&nbsp;called&nbsp;automatically&nbsp;when&nbsp;the&nbsp;class&nbsp;instance<br>
+is&nbsp;destroyed.</tt></p>
+<p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#aa55cc">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Modules</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#aa55cc"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><table width="100%" summary="list"><tr><td width="25%" valign=top><a href="audioop.html">audioop</a><br>
+<a href="builtins.html">builtins</a><br>
+</td><td width="25%" valign=top><a href="struct.html">struct</a><br>
+<a href="sys.html">sys</a><br>
+</td><td width="25%" valign=top><a href="warnings.html">warnings</a><br>
+</td><td width="25%" valign=top></td></tr></table></td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ee77aa">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Classes</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#ee77aa"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl>
+<dt><font face="helvetica, arial"><a href="builtins.html#Exception">builtins.Exception</a>(<a href="builtins.html#BaseException">builtins.BaseException</a>)
+</font></dt><dd>
+<dl>
+<dt><font face="helvetica, arial"><a href="wave.html#Error">Error</a>
+</font></dt></dl>
+</dd>
+<dt><font face="helvetica, arial"><a href="builtins.html#object">builtins.object</a>
+</font></dt><dd>
+<dl>
+<dt><font face="helvetica, arial"><a href="wave.html#Wave_read">Wave_read</a>
+</font></dt><dt><font face="helvetica, arial"><a href="wave.html#Wave_write">Wave_write</a>
+</font></dt></dl>
+</dd>
+</dl>
+ <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="Error">class <strong>Error</strong></a>(<a href="builtins.html#Exception">builtins.Exception</a>)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt>Common&nbsp;base&nbsp;class&nbsp;for&nbsp;all&nbsp;non-exit&nbsp;exceptions.<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%"><dl><dt>Method resolution order:</dt>
+<dd><a href="wave.html#Error">Error</a></dd>
+<dd><a href="builtins.html#Exception">builtins.Exception</a></dd>
+<dd><a href="builtins.html#BaseException">builtins.BaseException</a></dd>
+<dd><a href="builtins.html#object">builtins.object</a></dd>
+</dl>
+<hr>
+Data descriptors defined here:<br>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<hr>
+Methods inherited from <a href="builtins.html#Exception">builtins.Exception</a>:<br>
+<dl><dt><a name="Error-__init__"><strong>__init__</strong></a>(self, /, *args, **kwargs)</dt><dd><tt>Initialize&nbsp;self.&nbsp;&nbsp;See&nbsp;help(type(self))&nbsp;for&nbsp;accurate&nbsp;signature.</tt></dd></dl>
+
+<hr>
+Static methods inherited from <a href="builtins.html#Exception">builtins.Exception</a>:<br>
+<dl><dt><a name="Error-__new__"><strong>__new__</strong></a>(*args, **kwargs)<font color="#909090"><font face="helvetica, arial"> from <a href="builtins.html#type">builtins.type</a></font></font></dt><dd><tt>Create&nbsp;and&nbsp;return&nbsp;a&nbsp;new&nbsp;<a href="builtins.html#object">object</a>.&nbsp;&nbsp;See&nbsp;help(type)&nbsp;for&nbsp;accurate&nbsp;signature.</tt></dd></dl>
+
+<hr>
+Methods inherited from <a href="builtins.html#BaseException">builtins.BaseException</a>:<br>
+<dl><dt><a name="Error-__delattr__"><strong>__delattr__</strong></a>(self, name, /)</dt><dd><tt>Implement&nbsp;delattr(self,&nbsp;name).</tt></dd></dl>
+
+<dl><dt><a name="Error-__getattribute__"><strong>__getattribute__</strong></a>(self, name, /)</dt><dd><tt>Return&nbsp;getattr(self,&nbsp;name).</tt></dd></dl>
+
+<dl><dt><a name="Error-__reduce__"><strong>__reduce__</strong></a>(...)</dt><dd><tt>Helper&nbsp;for&nbsp;pickle.</tt></dd></dl>
+
+<dl><dt><a name="Error-__repr__"><strong>__repr__</strong></a>(self, /)</dt><dd><tt>Return&nbsp;repr(self).</tt></dd></dl>
+
+<dl><dt><a name="Error-__setattr__"><strong>__setattr__</strong></a>(self, name, value, /)</dt><dd><tt>Implement&nbsp;setattr(self,&nbsp;name,&nbsp;value).</tt></dd></dl>
+
+<dl><dt><a name="Error-__setstate__"><strong>__setstate__</strong></a>(...)</dt></dl>
+
+<dl><dt><a name="Error-__str__"><strong>__str__</strong></a>(self, /)</dt><dd><tt>Return&nbsp;str(self).</tt></dd></dl>
+
+<dl><dt><a name="Error-with_traceback"><strong>with_traceback</strong></a>(...)</dt><dd><tt><a href="builtins.html#Exception">Exception</a>.<a href="#Error-with_traceback">with_traceback</a>(tb)&nbsp;--<br>
+set&nbsp;self.<strong>__traceback__</strong>&nbsp;to&nbsp;tb&nbsp;and&nbsp;return&nbsp;self.</tt></dd></dl>
+
+<hr>
+Data descriptors inherited from <a href="builtins.html#BaseException">builtins.BaseException</a>:<br>
+<dl><dt><strong>__cause__</strong></dt>
+<dd><tt>exception&nbsp;cause</tt></dd>
+</dl>
+<dl><dt><strong>__context__</strong></dt>
+<dd><tt>exception&nbsp;context</tt></dd>
+</dl>
+<dl><dt><strong>__dict__</strong></dt>
+</dl>
+<dl><dt><strong>__suppress_context__</strong></dt>
+</dl>
+<dl><dt><strong>__traceback__</strong></dt>
+</dl>
+<dl><dt><strong>args</strong></dt>
+</dl>
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="Wave_read">class <strong>Wave_read</strong></a>(<a href="builtins.html#object">builtins.object</a>)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt><a href="#Wave_read">Wave_read</a>(f)<br>
+&nbsp;<br>
+Variables&nbsp;used&nbsp;in&nbsp;this&nbsp;class:<br>
+&nbsp;<br>
+These&nbsp;variables&nbsp;are&nbsp;available&nbsp;to&nbsp;the&nbsp;user&nbsp;though&nbsp;appropriate<br>
+methods&nbsp;of&nbsp;this&nbsp;class:<br>
+_file&nbsp;--&nbsp;the&nbsp;open&nbsp;file&nbsp;with&nbsp;methods&nbsp;read(),&nbsp;<a href="#Wave_read-close">close</a>(),&nbsp;and&nbsp;seek()<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;set&nbsp;through&nbsp;the&nbsp;<a href="#Wave_read-__init__">__init__</a>()&nbsp;method<br>
+_nchannels&nbsp;--&nbsp;the&nbsp;number&nbsp;of&nbsp;audio&nbsp;channels<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;available&nbsp;through&nbsp;the&nbsp;<a href="#Wave_read-getnchannels">getnchannels</a>()&nbsp;method<br>
+_nframes&nbsp;--&nbsp;the&nbsp;number&nbsp;of&nbsp;audio&nbsp;frames<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;available&nbsp;through&nbsp;the&nbsp;<a href="#Wave_read-getnframes">getnframes</a>()&nbsp;method<br>
+_sampwidth&nbsp;--&nbsp;the&nbsp;number&nbsp;of&nbsp;bytes&nbsp;per&nbsp;audio&nbsp;sample<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;available&nbsp;through&nbsp;the&nbsp;<a href="#Wave_read-getsampwidth">getsampwidth</a>()&nbsp;method<br>
+_framerate&nbsp;--&nbsp;the&nbsp;sampling&nbsp;frequency<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;available&nbsp;through&nbsp;the&nbsp;<a href="#Wave_read-getframerate">getframerate</a>()&nbsp;method<br>
+_comptype&nbsp;--&nbsp;the&nbsp;AIFF-C&nbsp;compression&nbsp;type&nbsp;('NONE'&nbsp;if&nbsp;AIFF)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;available&nbsp;through&nbsp;the&nbsp;<a href="#Wave_read-getcomptype">getcomptype</a>()&nbsp;method<br>
+_compname&nbsp;--&nbsp;the&nbsp;human-readable&nbsp;AIFF-C&nbsp;compression&nbsp;type<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;available&nbsp;through&nbsp;the&nbsp;<a href="#Wave_read-getcomptype">getcomptype</a>()&nbsp;method<br>
+_soundpos&nbsp;--&nbsp;the&nbsp;position&nbsp;in&nbsp;the&nbsp;audio&nbsp;stream<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;available&nbsp;through&nbsp;the&nbsp;<a href="#Wave_read-tell">tell</a>()&nbsp;method,&nbsp;set&nbsp;through&nbsp;the<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#Wave_read-setpos">setpos</a>()&nbsp;method<br>
+&nbsp;<br>
+These&nbsp;variables&nbsp;are&nbsp;used&nbsp;internally&nbsp;only:<br>
+_fmt_chunk_read&nbsp;--&nbsp;1&nbsp;iff&nbsp;the&nbsp;FMT&nbsp;chunk&nbsp;has&nbsp;been&nbsp;read<br>
+_data_seek_needed&nbsp;--&nbsp;1&nbsp;iff&nbsp;positioned&nbsp;correctly&nbsp;in&nbsp;audio<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;file&nbsp;for&nbsp;<a href="#Wave_read-readframes">readframes</a>()<br>
+_data_chunk&nbsp;--&nbsp;instantiation&nbsp;of&nbsp;a&nbsp;chunk&nbsp;class&nbsp;for&nbsp;the&nbsp;DATA&nbsp;chunk<br>
+_framesize&nbsp;--&nbsp;size&nbsp;of&nbsp;one&nbsp;frame&nbsp;in&nbsp;the&nbsp;file<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%">Methods defined here:<br>
+<dl><dt><a name="Wave_read-__del__"><strong>__del__</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="Wave_read-__enter__"><strong>__enter__</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="Wave_read-__exit__"><strong>__exit__</strong></a>(self, *args)</dt></dl>
+
+<dl><dt><a name="Wave_read-__init__"><strong>__init__</strong></a>(self, f)</dt><dd><tt>Initialize&nbsp;self.&nbsp;&nbsp;See&nbsp;help(type(self))&nbsp;for&nbsp;accurate&nbsp;signature.</tt></dd></dl>
+
+<dl><dt><a name="Wave_read-close"><strong>close</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="Wave_read-getcompname"><strong>getcompname</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="Wave_read-getcomptype"><strong>getcomptype</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="Wave_read-getfp"><strong>getfp</strong></a>(self)</dt><dd><tt>#&nbsp;User&nbsp;visible&nbsp;methods.</tt></dd></dl>
+
+<dl><dt><a name="Wave_read-getframerate"><strong>getframerate</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="Wave_read-getmark"><strong>getmark</strong></a>(self, id)</dt></dl>
+
+<dl><dt><a name="Wave_read-getmarkers"><strong>getmarkers</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="Wave_read-getnchannels"><strong>getnchannels</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="Wave_read-getnframes"><strong>getnframes</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="Wave_read-getparams"><strong>getparams</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="Wave_read-getsampwidth"><strong>getsampwidth</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="Wave_read-initfp"><strong>initfp</strong></a>(self, file)</dt></dl>
+
+<dl><dt><a name="Wave_read-readframes"><strong>readframes</strong></a>(self, nframes)</dt></dl>
+
+<dl><dt><a name="Wave_read-rewind"><strong>rewind</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="Wave_read-setpos"><strong>setpos</strong></a>(self, pos)</dt></dl>
+
+<dl><dt><a name="Wave_read-tell"><strong>tell</strong></a>(self)</dt></dl>
+
+<hr>
+Data descriptors defined here:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><tt>dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="Wave_write">class <strong>Wave_write</strong></a>(<a href="builtins.html#object">builtins.object</a>)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt><a href="#Wave_write">Wave_write</a>(f)<br>
+&nbsp;<br>
+Variables&nbsp;used&nbsp;in&nbsp;this&nbsp;class:<br>
+&nbsp;<br>
+These&nbsp;variables&nbsp;are&nbsp;user&nbsp;settable&nbsp;through&nbsp;appropriate&nbsp;methods<br>
+of&nbsp;this&nbsp;class:<br>
+_file&nbsp;--&nbsp;the&nbsp;open&nbsp;file&nbsp;with&nbsp;methods&nbsp;write(),&nbsp;<a href="#Wave_write-close">close</a>(),&nbsp;<a href="#Wave_write-tell">tell</a>(),&nbsp;seek()<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;set&nbsp;through&nbsp;the&nbsp;<a href="#Wave_write-__init__">__init__</a>()&nbsp;method<br>
+_comptype&nbsp;--&nbsp;the&nbsp;AIFF-C&nbsp;compression&nbsp;type&nbsp;('NONE'&nbsp;in&nbsp;AIFF)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;set&nbsp;through&nbsp;the&nbsp;<a href="#Wave_write-setcomptype">setcomptype</a>()&nbsp;or&nbsp;<a href="#Wave_write-setparams">setparams</a>()&nbsp;method<br>
+_compname&nbsp;--&nbsp;the&nbsp;human-readable&nbsp;AIFF-C&nbsp;compression&nbsp;type<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;set&nbsp;through&nbsp;the&nbsp;<a href="#Wave_write-setcomptype">setcomptype</a>()&nbsp;or&nbsp;<a href="#Wave_write-setparams">setparams</a>()&nbsp;method<br>
+_nchannels&nbsp;--&nbsp;the&nbsp;number&nbsp;of&nbsp;audio&nbsp;channels<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;set&nbsp;through&nbsp;the&nbsp;<a href="#Wave_write-setnchannels">setnchannels</a>()&nbsp;or&nbsp;<a href="#Wave_write-setparams">setparams</a>()&nbsp;method<br>
+_sampwidth&nbsp;--&nbsp;the&nbsp;number&nbsp;of&nbsp;bytes&nbsp;per&nbsp;audio&nbsp;sample<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;set&nbsp;through&nbsp;the&nbsp;<a href="#Wave_write-setsampwidth">setsampwidth</a>()&nbsp;or&nbsp;<a href="#Wave_write-setparams">setparams</a>()&nbsp;method<br>
+_framerate&nbsp;--&nbsp;the&nbsp;sampling&nbsp;frequency<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;set&nbsp;through&nbsp;the&nbsp;<a href="#Wave_write-setframerate">setframerate</a>()&nbsp;or&nbsp;<a href="#Wave_write-setparams">setparams</a>()&nbsp;method<br>
+_nframes&nbsp;--&nbsp;the&nbsp;number&nbsp;of&nbsp;audio&nbsp;frames&nbsp;written&nbsp;to&nbsp;the&nbsp;header<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;set&nbsp;through&nbsp;the&nbsp;<a href="#Wave_write-setnframes">setnframes</a>()&nbsp;or&nbsp;<a href="#Wave_write-setparams">setparams</a>()&nbsp;method<br>
+&nbsp;<br>
+These&nbsp;variables&nbsp;are&nbsp;used&nbsp;internally&nbsp;only:<br>
+_datalength&nbsp;--&nbsp;the&nbsp;size&nbsp;of&nbsp;the&nbsp;audio&nbsp;samples&nbsp;written&nbsp;to&nbsp;the&nbsp;header<br>
+_nframeswritten&nbsp;--&nbsp;the&nbsp;number&nbsp;of&nbsp;frames&nbsp;actually&nbsp;written<br>
+_datawritten&nbsp;--&nbsp;the&nbsp;size&nbsp;of&nbsp;the&nbsp;audio&nbsp;samples&nbsp;actually&nbsp;written<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%">Methods defined here:<br>
+<dl><dt><a name="Wave_write-__del__"><strong>__del__</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="Wave_write-__enter__"><strong>__enter__</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="Wave_write-__exit__"><strong>__exit__</strong></a>(self, *args)</dt></dl>
+
+<dl><dt><a name="Wave_write-__init__"><strong>__init__</strong></a>(self, f)</dt><dd><tt>Initialize&nbsp;self.&nbsp;&nbsp;See&nbsp;help(type(self))&nbsp;for&nbsp;accurate&nbsp;signature.</tt></dd></dl>
+
+<dl><dt><a name="Wave_write-close"><strong>close</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="Wave_write-getcompname"><strong>getcompname</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="Wave_write-getcomptype"><strong>getcomptype</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="Wave_write-getframerate"><strong>getframerate</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="Wave_write-getmark"><strong>getmark</strong></a>(self, id)</dt></dl>
+
+<dl><dt><a name="Wave_write-getmarkers"><strong>getmarkers</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="Wave_write-getnchannels"><strong>getnchannels</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="Wave_write-getnframes"><strong>getnframes</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="Wave_write-getparams"><strong>getparams</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="Wave_write-getsampwidth"><strong>getsampwidth</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="Wave_write-initfp"><strong>initfp</strong></a>(self, file)</dt></dl>
+
+<dl><dt><a name="Wave_write-setcomptype"><strong>setcomptype</strong></a>(self, comptype, compname)</dt></dl>
+
+<dl><dt><a name="Wave_write-setframerate"><strong>setframerate</strong></a>(self, framerate)</dt></dl>
+
+<dl><dt><a name="Wave_write-setmark"><strong>setmark</strong></a>(self, id, pos, name)</dt></dl>
+
+<dl><dt><a name="Wave_write-setnchannels"><strong>setnchannels</strong></a>(self, nchannels)</dt><dd><tt>#&nbsp;User&nbsp;visible&nbsp;methods.</tt></dd></dl>
+
+<dl><dt><a name="Wave_write-setnframes"><strong>setnframes</strong></a>(self, nframes)</dt></dl>
+
+<dl><dt><a name="Wave_write-setparams"><strong>setparams</strong></a>(self, params)</dt></dl>
+
+<dl><dt><a name="Wave_write-setsampwidth"><strong>setsampwidth</strong></a>(self, sampwidth)</dt></dl>
+
+<dl><dt><a name="Wave_write-tell"><strong>tell</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="Wave_write-writeframes"><strong>writeframes</strong></a>(self, data)</dt></dl>
+
+<dl><dt><a name="Wave_write-writeframesraw"><strong>writeframesraw</strong></a>(self, data)</dt></dl>
+
+<hr>
+Data descriptors defined here:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><tt>dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+</td></tr></table></td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#eeaa77">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Functions</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#eeaa77"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl><dt><a name="-open"><strong>open</strong></a>(f, mode=None)</dt></dl>
+ <dl><dt><a name="-openfp"><strong>openfp</strong></a>(f, mode=None)</dt></dl>
+</td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#55aa55">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Data</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#55aa55"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><strong>__all__</strong> = ['open', 'openfp', 'Error', 'Wave_read', 'Wave_write']</td></tr></table>
+</body></html>

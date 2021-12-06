@@ -1,0 +1,156 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head><title>Python: module pyclbr</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+</head><body bgcolor="#f0f0f8">
+
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="heading">
+<tr bgcolor="#7799ee">
+<td valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong>pyclbr</strong></big></big></font></td
+><td align=right valign=bottom
+><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:c%3A%5Cpython38%5Clib%5Cpyclbr.py">c:\python38\lib\pyclbr.py</a><br><a href="https://docs.python.org/3.8/library/pyclbr">Module Reference</a></font></td></tr></table>
+    <p><tt>Parse&nbsp;a&nbsp;Python&nbsp;module&nbsp;and&nbsp;describe&nbsp;its&nbsp;classes&nbsp;and&nbsp;functions.<br>
+&nbsp;<br>
+Parse&nbsp;enough&nbsp;of&nbsp;a&nbsp;Python&nbsp;file&nbsp;to&nbsp;recognize&nbsp;imports&nbsp;and&nbsp;class&nbsp;and<br>
+function&nbsp;definitions,&nbsp;and&nbsp;to&nbsp;find&nbsp;out&nbsp;the&nbsp;superclasses&nbsp;of&nbsp;a&nbsp;class.<br>
+&nbsp;<br>
+The&nbsp;interface&nbsp;consists&nbsp;of&nbsp;a&nbsp;single&nbsp;function:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<a href="#-readmodule_ex">readmodule_ex</a>(module,&nbsp;path=None)<br>
+where&nbsp;module&nbsp;is&nbsp;the&nbsp;name&nbsp;of&nbsp;a&nbsp;Python&nbsp;module,&nbsp;and&nbsp;path&nbsp;is&nbsp;an&nbsp;optional<br>
+list&nbsp;of&nbsp;directories&nbsp;where&nbsp;the&nbsp;module&nbsp;is&nbsp;to&nbsp;be&nbsp;searched.&nbsp;&nbsp;If&nbsp;present,<br>
+path&nbsp;is&nbsp;prepended&nbsp;to&nbsp;the&nbsp;system&nbsp;search&nbsp;path&nbsp;sys.path.&nbsp;&nbsp;The&nbsp;return&nbsp;value<br>
+is&nbsp;a&nbsp;dictionary.&nbsp;&nbsp;The&nbsp;keys&nbsp;of&nbsp;the&nbsp;dictionary&nbsp;are&nbsp;the&nbsp;names&nbsp;of&nbsp;the<br>
+classes&nbsp;and&nbsp;functions&nbsp;defined&nbsp;in&nbsp;the&nbsp;module&nbsp;(including&nbsp;classes&nbsp;that&nbsp;are<br>
+defined&nbsp;via&nbsp;the&nbsp;from&nbsp;XXX&nbsp;import&nbsp;YYY&nbsp;construct).&nbsp;&nbsp;The&nbsp;values&nbsp;are<br>
+instances&nbsp;of&nbsp;classes&nbsp;<a href="#Class">Class</a>&nbsp;and&nbsp;<a href="#Function">Function</a>.&nbsp;&nbsp;One&nbsp;special&nbsp;key/value&nbsp;pair&nbsp;is<br>
+present&nbsp;for&nbsp;packages:&nbsp;the&nbsp;key&nbsp;'__path__'&nbsp;has&nbsp;a&nbsp;list&nbsp;as&nbsp;its&nbsp;value&nbsp;which<br>
+contains&nbsp;the&nbsp;package&nbsp;search&nbsp;path.<br>
+&nbsp;<br>
+Classes&nbsp;and&nbsp;Functions&nbsp;have&nbsp;a&nbsp;common&nbsp;superclass:&nbsp;_Object.&nbsp;&nbsp;Every&nbsp;instance<br>
+has&nbsp;the&nbsp;following&nbsp;attributes:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;module&nbsp;&nbsp;--&nbsp;name&nbsp;of&nbsp;the&nbsp;module;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;name&nbsp;&nbsp;&nbsp;&nbsp;--&nbsp;name&nbsp;of&nbsp;the&nbsp;object;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;file&nbsp;&nbsp;&nbsp;&nbsp;--&nbsp;file&nbsp;in&nbsp;which&nbsp;the&nbsp;object&nbsp;is&nbsp;defined;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;lineno&nbsp;&nbsp;--&nbsp;line&nbsp;in&nbsp;the&nbsp;file&nbsp;where&nbsp;the&nbsp;object's&nbsp;definition&nbsp;starts;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;parent&nbsp;&nbsp;--&nbsp;parent&nbsp;of&nbsp;this&nbsp;object,&nbsp;if&nbsp;any;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;children&nbsp;--&nbsp;nested&nbsp;objects&nbsp;contained&nbsp;in&nbsp;this&nbsp;object.<br>
+The&nbsp;'children'&nbsp;attribute&nbsp;is&nbsp;a&nbsp;dictionary&nbsp;mapping&nbsp;names&nbsp;to&nbsp;objects.<br>
+&nbsp;<br>
+Instances&nbsp;of&nbsp;<a href="#Function">Function</a>&nbsp;describe&nbsp;functions&nbsp;with&nbsp;the&nbsp;attributes&nbsp;from&nbsp;_Object.<br>
+&nbsp;<br>
+Instances&nbsp;of&nbsp;<a href="#Class">Class</a>&nbsp;describe&nbsp;classes&nbsp;with&nbsp;the&nbsp;attributes&nbsp;from&nbsp;_Object,<br>
+plus&nbsp;the&nbsp;following:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;super&nbsp;&nbsp;&nbsp;--&nbsp;list&nbsp;of&nbsp;super&nbsp;classes&nbsp;(<a href="#Class">Class</a>&nbsp;instances&nbsp;if&nbsp;possible);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;methods&nbsp;--&nbsp;mapping&nbsp;of&nbsp;method&nbsp;names&nbsp;to&nbsp;beginning&nbsp;line&nbsp;numbers.<br>
+If&nbsp;the&nbsp;name&nbsp;of&nbsp;a&nbsp;super&nbsp;class&nbsp;is&nbsp;not&nbsp;recognized,&nbsp;the&nbsp;corresponding<br>
+entry&nbsp;in&nbsp;the&nbsp;list&nbsp;of&nbsp;super&nbsp;classes&nbsp;is&nbsp;not&nbsp;a&nbsp;class&nbsp;instance&nbsp;but&nbsp;a<br>
+string&nbsp;giving&nbsp;the&nbsp;name&nbsp;of&nbsp;the&nbsp;super&nbsp;class.&nbsp;&nbsp;Since&nbsp;import&nbsp;statements<br>
+are&nbsp;recognized&nbsp;and&nbsp;imported&nbsp;modules&nbsp;are&nbsp;scanned&nbsp;as&nbsp;well,&nbsp;this<br>
+shouldn't&nbsp;happen&nbsp;often.</tt></p>
+<p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#aa55cc">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Modules</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#aa55cc"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><table width="100%" summary="list"><tr><td width="25%" valign=top><a href="importlib.html">importlib</a><br>
+</td><td width="25%" valign=top><a href="io.html">io</a><br>
+</td><td width="25%" valign=top><a href="sys.html">sys</a><br>
+</td><td width="25%" valign=top><a href="tokenize.html">tokenize</a><br>
+</td></tr></table></td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ee77aa">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Classes</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#ee77aa"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl>
+<dt><font face="helvetica, arial"><a href="pyclbr.html#_Object">_Object</a>(<a href="builtins.html#object">builtins.object</a>)
+</font></dt><dd>
+<dl>
+<dt><font face="helvetica, arial"><a href="pyclbr.html#Class">Class</a>
+</font></dt><dt><font face="helvetica, arial"><a href="pyclbr.html#Function">Function</a>
+</font></dt></dl>
+</dd>
+</dl>
+ <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="Class">class <strong>Class</strong></a>(<a href="pyclbr.html#_Object">_Object</a>)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt><a href="#Class">Class</a>(module,&nbsp;name,&nbsp;super,&nbsp;file,&nbsp;lineno,&nbsp;parent=None)<br>
+&nbsp;<br>
+Information&nbsp;about&nbsp;a&nbsp;Python&nbsp;class.<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%"><dl><dt>Method resolution order:</dt>
+<dd><a href="pyclbr.html#Class">Class</a></dd>
+<dd><a href="pyclbr.html#_Object">_Object</a></dd>
+<dd><a href="builtins.html#object">builtins.object</a></dd>
+</dl>
+<hr>
+Methods defined here:<br>
+<dl><dt><a name="Class-__init__"><strong>__init__</strong></a>(self, module, name, super, file, lineno, parent=None)</dt><dd><tt>Initialize&nbsp;self.&nbsp;&nbsp;See&nbsp;help(type(self))&nbsp;for&nbsp;accurate&nbsp;signature.</tt></dd></dl>
+
+<hr>
+Data descriptors inherited from <a href="pyclbr.html#_Object">_Object</a>:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><tt>dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="Function">class <strong>Function</strong></a>(<a href="pyclbr.html#_Object">_Object</a>)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt><a href="#Function">Function</a>(module,&nbsp;name,&nbsp;file,&nbsp;lineno,&nbsp;parent=None)<br>
+&nbsp;<br>
+Information&nbsp;about&nbsp;a&nbsp;Python&nbsp;function,&nbsp;including&nbsp;methods.<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%"><dl><dt>Method resolution order:</dt>
+<dd><a href="pyclbr.html#Function">Function</a></dd>
+<dd><a href="pyclbr.html#_Object">_Object</a></dd>
+<dd><a href="builtins.html#object">builtins.object</a></dd>
+</dl>
+<hr>
+Methods defined here:<br>
+<dl><dt><a name="Function-__init__"><strong>__init__</strong></a>(self, module, name, file, lineno, parent=None)</dt><dd><tt>Initialize&nbsp;self.&nbsp;&nbsp;See&nbsp;help(type(self))&nbsp;for&nbsp;accurate&nbsp;signature.</tt></dd></dl>
+
+<hr>
+Data descriptors inherited from <a href="pyclbr.html#_Object">_Object</a>:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><tt>dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+</td></tr></table></td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#eeaa77">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Functions</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#eeaa77"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl><dt><a name="-readmodule"><strong>readmodule</strong></a>(module, path=None)</dt><dd><tt>Return&nbsp;<a href="#Class">Class</a>&nbsp;objects&nbsp;for&nbsp;the&nbsp;top-level&nbsp;classes&nbsp;in&nbsp;module.<br>
+&nbsp;<br>
+This&nbsp;is&nbsp;the&nbsp;original&nbsp;interface,&nbsp;before&nbsp;Functions&nbsp;were&nbsp;added.</tt></dd></dl>
+ <dl><dt><a name="-readmodule_ex"><strong>readmodule_ex</strong></a>(module, path=None)</dt><dd><tt>Return&nbsp;a&nbsp;dictionary&nbsp;with&nbsp;all&nbsp;functions&nbsp;and&nbsp;classes&nbsp;in&nbsp;module.<br>
+&nbsp;<br>
+Search&nbsp;for&nbsp;module&nbsp;in&nbsp;PATH&nbsp;+&nbsp;sys.path.<br>
+If&nbsp;possible,&nbsp;include&nbsp;imported&nbsp;superclasses.<br>
+Do&nbsp;this&nbsp;by&nbsp;reading&nbsp;source,&nbsp;without&nbsp;importing&nbsp;(and&nbsp;executing)&nbsp;it.</tt></dd></dl>
+</td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#55aa55">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Data</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#55aa55"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><strong>__all__</strong> = ['readmodule', 'readmodule_ex', 'Class', 'Function']</td></tr></table>
+</body></html>

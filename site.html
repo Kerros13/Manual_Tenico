@@ -1,0 +1,167 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head><title>Python: module site</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+</head><body bgcolor="#f0f0f8">
+
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="heading">
+<tr bgcolor="#7799ee">
+<td valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong>site</strong></big></big></font></td
+><td align=right valign=bottom
+><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:c%3A%5Cpython38%5Clib%5Csite.py">c:\python38\lib\site.py</a><br><a href="https://docs.python.org/3.8/library/site">Module Reference</a></font></td></tr></table>
+    <p><tt>Append&nbsp;module&nbsp;search&nbsp;paths&nbsp;for&nbsp;third-party&nbsp;packages&nbsp;to&nbsp;sys.path.<br>
+&nbsp;<br>
+****************************************************************<br>
+*&nbsp;This&nbsp;module&nbsp;is&nbsp;automatically&nbsp;imported&nbsp;during&nbsp;initialization.&nbsp;*<br>
+****************************************************************<br>
+&nbsp;<br>
+This&nbsp;will&nbsp;append&nbsp;site-specific&nbsp;paths&nbsp;to&nbsp;the&nbsp;module&nbsp;search&nbsp;path.&nbsp;&nbsp;On<br>
+Unix&nbsp;(including&nbsp;Mac&nbsp;OSX),&nbsp;it&nbsp;starts&nbsp;with&nbsp;sys.prefix&nbsp;and<br>
+sys.exec_prefix&nbsp;(if&nbsp;different)&nbsp;and&nbsp;appends<br>
+lib/python&lt;version&gt;/site-packages.<br>
+On&nbsp;other&nbsp;platforms&nbsp;(such&nbsp;as&nbsp;Windows),&nbsp;it&nbsp;tries&nbsp;each&nbsp;of&nbsp;the<br>
+prefixes&nbsp;directly,&nbsp;as&nbsp;well&nbsp;as&nbsp;with&nbsp;lib/site-packages&nbsp;appended.&nbsp;&nbsp;The<br>
+resulting&nbsp;directories,&nbsp;if&nbsp;they&nbsp;exist,&nbsp;are&nbsp;appended&nbsp;to&nbsp;sys.path,&nbsp;and<br>
+also&nbsp;inspected&nbsp;for&nbsp;path&nbsp;configuration&nbsp;files.<br>
+&nbsp;<br>
+If&nbsp;a&nbsp;file&nbsp;named&nbsp;"pyvenv.cfg"&nbsp;exists&nbsp;one&nbsp;directory&nbsp;above&nbsp;sys.executable,<br>
+sys.prefix&nbsp;and&nbsp;sys.exec_prefix&nbsp;are&nbsp;set&nbsp;to&nbsp;that&nbsp;directory&nbsp;and<br>
+it&nbsp;is&nbsp;also&nbsp;checked&nbsp;for&nbsp;site-packages&nbsp;(sys.base_prefix&nbsp;and<br>
+sys.base_exec_prefix&nbsp;will&nbsp;always&nbsp;be&nbsp;the&nbsp;"real"&nbsp;prefixes&nbsp;of&nbsp;the&nbsp;Python<br>
+installation).&nbsp;If&nbsp;"pyvenv.cfg"&nbsp;(a&nbsp;bootstrap&nbsp;configuration&nbsp;file)&nbsp;contains<br>
+the&nbsp;key&nbsp;"include-system-site-packages"&nbsp;set&nbsp;to&nbsp;anything&nbsp;other&nbsp;than&nbsp;"false"<br>
+(case-insensitive),&nbsp;the&nbsp;system-level&nbsp;prefixes&nbsp;will&nbsp;still&nbsp;also&nbsp;be<br>
+searched&nbsp;for&nbsp;site-packages;&nbsp;otherwise&nbsp;they&nbsp;won't.<br>
+&nbsp;<br>
+All&nbsp;of&nbsp;the&nbsp;resulting&nbsp;site-specific&nbsp;directories,&nbsp;if&nbsp;they&nbsp;exist,&nbsp;are<br>
+appended&nbsp;to&nbsp;sys.path,&nbsp;and&nbsp;also&nbsp;inspected&nbsp;for&nbsp;path&nbsp;configuration<br>
+files.<br>
+&nbsp;<br>
+A&nbsp;path&nbsp;configuration&nbsp;file&nbsp;is&nbsp;a&nbsp;file&nbsp;whose&nbsp;name&nbsp;has&nbsp;the&nbsp;form<br>
+&lt;package&gt;.pth;&nbsp;its&nbsp;contents&nbsp;are&nbsp;additional&nbsp;directories&nbsp;(one&nbsp;per&nbsp;line)<br>
+to&nbsp;be&nbsp;added&nbsp;to&nbsp;sys.path.&nbsp;&nbsp;Non-existing&nbsp;directories&nbsp;(or<br>
+non-directories)&nbsp;are&nbsp;never&nbsp;added&nbsp;to&nbsp;sys.path;&nbsp;no&nbsp;directory&nbsp;is&nbsp;added&nbsp;to<br>
+sys.path&nbsp;more&nbsp;than&nbsp;once.&nbsp;&nbsp;Blank&nbsp;lines&nbsp;and&nbsp;lines&nbsp;beginning&nbsp;with<br>
+'#'&nbsp;are&nbsp;skipped.&nbsp;Lines&nbsp;starting&nbsp;with&nbsp;'import'&nbsp;are&nbsp;executed.<br>
+&nbsp;<br>
+For&nbsp;example,&nbsp;suppose&nbsp;sys.prefix&nbsp;and&nbsp;sys.exec_prefix&nbsp;are&nbsp;set&nbsp;to<br>
+/usr/local&nbsp;and&nbsp;there&nbsp;is&nbsp;a&nbsp;directory&nbsp;/usr/local/lib/python2.5/site-packages<br>
+with&nbsp;three&nbsp;subdirectories,&nbsp;foo,&nbsp;bar&nbsp;and&nbsp;spam,&nbsp;and&nbsp;two&nbsp;path<br>
+configuration&nbsp;files,&nbsp;foo.pth&nbsp;and&nbsp;bar.pth.&nbsp;&nbsp;Assume&nbsp;foo.pth&nbsp;contains&nbsp;the<br>
+following:<br>
+&nbsp;<br>
+&nbsp;&nbsp;#&nbsp;foo&nbsp;package&nbsp;configuration<br>
+&nbsp;&nbsp;foo<br>
+&nbsp;&nbsp;bar<br>
+&nbsp;&nbsp;bletch<br>
+&nbsp;<br>
+and&nbsp;bar.pth&nbsp;contains:<br>
+&nbsp;<br>
+&nbsp;&nbsp;#&nbsp;bar&nbsp;package&nbsp;configuration<br>
+&nbsp;&nbsp;bar<br>
+&nbsp;<br>
+Then&nbsp;the&nbsp;following&nbsp;directories&nbsp;are&nbsp;added&nbsp;to&nbsp;sys.path,&nbsp;in&nbsp;this&nbsp;order:<br>
+&nbsp;<br>
+&nbsp;&nbsp;/usr/local/lib/python2.5/site-packages/bar<br>
+&nbsp;&nbsp;/usr/local/lib/python2.5/site-packages/foo<br>
+&nbsp;<br>
+Note&nbsp;that&nbsp;bletch&nbsp;is&nbsp;omitted&nbsp;because&nbsp;it&nbsp;doesn't&nbsp;exist;&nbsp;bar&nbsp;precedes&nbsp;foo<br>
+because&nbsp;bar.pth&nbsp;comes&nbsp;alphabetically&nbsp;before&nbsp;foo.pth;&nbsp;and&nbsp;spam&nbsp;is<br>
+omitted&nbsp;because&nbsp;it&nbsp;is&nbsp;not&nbsp;mentioned&nbsp;in&nbsp;either&nbsp;path&nbsp;configuration&nbsp;file.<br>
+&nbsp;<br>
+The&nbsp;readline&nbsp;module&nbsp;is&nbsp;also&nbsp;automatically&nbsp;configured&nbsp;to&nbsp;enable<br>
+completion&nbsp;for&nbsp;systems&nbsp;that&nbsp;support&nbsp;it.&nbsp;&nbsp;This&nbsp;can&nbsp;be&nbsp;overridden&nbsp;in<br>
+sitecustomize,&nbsp;usercustomize&nbsp;or&nbsp;PYTHONSTARTUP.&nbsp;&nbsp;Starting&nbsp;Python&nbsp;in<br>
+isolated&nbsp;mode&nbsp;(-I)&nbsp;disables&nbsp;automatic&nbsp;readline&nbsp;configuration.<br>
+&nbsp;<br>
+After&nbsp;these&nbsp;operations,&nbsp;an&nbsp;attempt&nbsp;is&nbsp;made&nbsp;to&nbsp;import&nbsp;a&nbsp;module<br>
+named&nbsp;sitecustomize,&nbsp;which&nbsp;can&nbsp;perform&nbsp;arbitrary&nbsp;additional<br>
+site-specific&nbsp;customizations.&nbsp;&nbsp;If&nbsp;this&nbsp;import&nbsp;fails&nbsp;with&nbsp;an<br>
+ImportError&nbsp;exception,&nbsp;it&nbsp;is&nbsp;silently&nbsp;ignored.</tt></p>
+<p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#aa55cc">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Modules</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#aa55cc"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><table width="100%" summary="list"><tr><td width="25%" valign=top><a href="_sitebuiltins.html">_sitebuiltins</a><br>
+<a href="builtins.html">builtins</a><br>
+</td><td width="25%" valign=top><a href="io.html">io</a><br>
+<a href="os.html">os</a><br>
+</td><td width="25%" valign=top><a href="sys.html">sys</a><br>
+</td><td width="25%" valign=top></td></tr></table></td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#eeaa77">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Functions</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#eeaa77"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl><dt><a name="-abs_paths"><strong>abs_paths</strong></a>()</dt><dd><tt>Set&nbsp;all&nbsp;module&nbsp;__file__&nbsp;and&nbsp;__cached__&nbsp;attributes&nbsp;to&nbsp;an&nbsp;absolute&nbsp;path</tt></dd></dl>
+ <dl><dt><a name="-addpackage"><strong>addpackage</strong></a>(sitedir, name, known_paths)</dt><dd><tt>Process&nbsp;a&nbsp;.pth&nbsp;file&nbsp;within&nbsp;the&nbsp;site-packages&nbsp;directory:<br>
+For&nbsp;each&nbsp;line&nbsp;in&nbsp;the&nbsp;file,&nbsp;either&nbsp;combine&nbsp;it&nbsp;with&nbsp;sitedir&nbsp;to&nbsp;a&nbsp;path<br>
+and&nbsp;add&nbsp;that&nbsp;to&nbsp;known_paths,&nbsp;or&nbsp;execute&nbsp;it&nbsp;if&nbsp;it&nbsp;starts&nbsp;with&nbsp;'import&nbsp;'.</tt></dd></dl>
+ <dl><dt><a name="-addsitedir"><strong>addsitedir</strong></a>(sitedir, known_paths=None)</dt><dd><tt>Add&nbsp;'sitedir'&nbsp;argument&nbsp;to&nbsp;sys.path&nbsp;if&nbsp;missing&nbsp;and&nbsp;handle&nbsp;.pth&nbsp;files&nbsp;in<br>
+'sitedir'</tt></dd></dl>
+ <dl><dt><a name="-addsitepackages"><strong>addsitepackages</strong></a>(known_paths, prefixes=None)</dt><dd><tt>Add&nbsp;site-packages&nbsp;to&nbsp;sys.path</tt></dd></dl>
+ <dl><dt><a name="-addusersitepackages"><strong>addusersitepackages</strong></a>(known_paths)</dt><dd><tt>Add&nbsp;a&nbsp;per&nbsp;user&nbsp;site-package&nbsp;to&nbsp;sys.path<br>
+&nbsp;<br>
+Each&nbsp;user&nbsp;has&nbsp;its&nbsp;own&nbsp;python&nbsp;directory&nbsp;with&nbsp;site-packages&nbsp;in&nbsp;the<br>
+home&nbsp;directory.</tt></dd></dl>
+ <dl><dt><a name="-check_enableusersite"><strong>check_enableusersite</strong></a>()</dt><dd><tt>Check&nbsp;if&nbsp;user&nbsp;site&nbsp;directory&nbsp;is&nbsp;safe&nbsp;for&nbsp;inclusion<br>
+&nbsp;<br>
+The&nbsp;function&nbsp;tests&nbsp;for&nbsp;the&nbsp;command&nbsp;line&nbsp;flag&nbsp;(including&nbsp;environment&nbsp;var),<br>
+process&nbsp;uid/gid&nbsp;equal&nbsp;to&nbsp;effective&nbsp;uid/gid.<br>
+&nbsp;<br>
+None:&nbsp;Disabled&nbsp;for&nbsp;security&nbsp;reasons<br>
+False:&nbsp;Disabled&nbsp;by&nbsp;user&nbsp;(command&nbsp;line&nbsp;option)<br>
+True:&nbsp;Safe&nbsp;and&nbsp;enabled</tt></dd></dl>
+ <dl><dt><a name="-enablerlcompleter"><strong>enablerlcompleter</strong></a>()</dt><dd><tt>Enable&nbsp;default&nbsp;readline&nbsp;configuration&nbsp;on&nbsp;interactive&nbsp;prompts,&nbsp;by<br>
+registering&nbsp;a&nbsp;sys.__interactivehook__.<br>
+&nbsp;<br>
+If&nbsp;the&nbsp;readline&nbsp;module&nbsp;can&nbsp;be&nbsp;imported,&nbsp;the&nbsp;hook&nbsp;will&nbsp;set&nbsp;the&nbsp;Tab&nbsp;key<br>
+as&nbsp;completion&nbsp;key&nbsp;and&nbsp;register&nbsp;~/.python_history&nbsp;as&nbsp;history&nbsp;file.<br>
+This&nbsp;can&nbsp;be&nbsp;overridden&nbsp;in&nbsp;the&nbsp;sitecustomize&nbsp;or&nbsp;usercustomize&nbsp;module,<br>
+or&nbsp;in&nbsp;a&nbsp;PYTHONSTARTUP&nbsp;file.</tt></dd></dl>
+ <dl><dt><a name="-execsitecustomize"><strong>execsitecustomize</strong></a>()</dt><dd><tt>Run&nbsp;custom&nbsp;site&nbsp;specific&nbsp;code,&nbsp;if&nbsp;available.</tt></dd></dl>
+ <dl><dt><a name="-execusercustomize"><strong>execusercustomize</strong></a>()</dt><dd><tt>Run&nbsp;custom&nbsp;user&nbsp;specific&nbsp;code,&nbsp;if&nbsp;available.</tt></dd></dl>
+ <dl><dt><a name="-getsitepackages"><strong>getsitepackages</strong></a>(prefixes=None)</dt><dd><tt>Returns&nbsp;a&nbsp;list&nbsp;containing&nbsp;all&nbsp;global&nbsp;site-packages&nbsp;directories.<br>
+&nbsp;<br>
+For&nbsp;each&nbsp;directory&nbsp;present&nbsp;in&nbsp;``prefixes``&nbsp;(or&nbsp;the&nbsp;global&nbsp;``PREFIXES``),<br>
+this&nbsp;function&nbsp;will&nbsp;find&nbsp;its&nbsp;`site-packages`&nbsp;subdirectory&nbsp;depending&nbsp;on&nbsp;the<br>
+system&nbsp;environment,&nbsp;and&nbsp;will&nbsp;return&nbsp;a&nbsp;list&nbsp;of&nbsp;full&nbsp;paths.</tt></dd></dl>
+ <dl><dt><a name="-getuserbase"><strong>getuserbase</strong></a>()</dt><dd><tt>Returns&nbsp;the&nbsp;`user&nbsp;base`&nbsp;directory&nbsp;path.<br>
+&nbsp;<br>
+The&nbsp;`user&nbsp;base`&nbsp;directory&nbsp;can&nbsp;be&nbsp;used&nbsp;to&nbsp;store&nbsp;data.&nbsp;If&nbsp;the&nbsp;global<br>
+variable&nbsp;``USER_BASE``&nbsp;is&nbsp;not&nbsp;initialized&nbsp;yet,&nbsp;this&nbsp;function&nbsp;will&nbsp;also&nbsp;set<br>
+it.</tt></dd></dl>
+ <dl><dt><a name="-getusersitepackages"><strong>getusersitepackages</strong></a>()</dt><dd><tt>Returns&nbsp;the&nbsp;user-specific&nbsp;site-packages&nbsp;directory&nbsp;path.<br>
+&nbsp;<br>
+If&nbsp;the&nbsp;global&nbsp;variable&nbsp;``USER_SITE``&nbsp;is&nbsp;not&nbsp;initialized&nbsp;yet,&nbsp;this<br>
+function&nbsp;will&nbsp;also&nbsp;set&nbsp;it.</tt></dd></dl>
+ <dl><dt><a name="-main"><strong>main</strong></a>()</dt><dd><tt>Add&nbsp;standard&nbsp;site-specific&nbsp;directories&nbsp;to&nbsp;the&nbsp;module&nbsp;search&nbsp;path.<br>
+&nbsp;<br>
+This&nbsp;function&nbsp;is&nbsp;called&nbsp;automatically&nbsp;when&nbsp;this&nbsp;module&nbsp;is&nbsp;imported,<br>
+unless&nbsp;the&nbsp;python&nbsp;interpreter&nbsp;was&nbsp;started&nbsp;with&nbsp;the&nbsp;-S&nbsp;flag.</tt></dd></dl>
+ <dl><dt><a name="-makepath"><strong>makepath</strong></a>(*paths)</dt></dl>
+ <dl><dt><a name="-removeduppaths"><strong>removeduppaths</strong></a>()</dt><dd><tt>Remove&nbsp;duplicate&nbsp;entries&nbsp;from&nbsp;sys.path&nbsp;along&nbsp;with&nbsp;making&nbsp;them<br>
+absolute</tt></dd></dl>
+ <dl><dt><a name="-setcopyright"><strong>setcopyright</strong></a>()</dt><dd><tt>Set&nbsp;'copyright'&nbsp;and&nbsp;'credits'&nbsp;in&nbsp;builtins</tt></dd></dl>
+ <dl><dt><a name="-sethelper"><strong>sethelper</strong></a>()</dt></dl>
+ <dl><dt><a name="-setquit"><strong>setquit</strong></a>()</dt><dd><tt>Define&nbsp;new&nbsp;builtins&nbsp;'quit'&nbsp;and&nbsp;'exit'.<br>
+&nbsp;<br>
+These&nbsp;are&nbsp;objects&nbsp;which&nbsp;make&nbsp;the&nbsp;interpreter&nbsp;exit&nbsp;when&nbsp;called.<br>
+The&nbsp;repr&nbsp;of&nbsp;each&nbsp;object&nbsp;contains&nbsp;a&nbsp;hint&nbsp;at&nbsp;how&nbsp;it&nbsp;works.</tt></dd></dl>
+ <dl><dt><a name="-venv"><strong>venv</strong></a>(known_paths)</dt></dl>
+</td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#55aa55">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Data</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#55aa55"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><strong>ENABLE_USER_SITE</strong> = False<br>
+<strong>PREFIXES</strong> = [r'Cooperativa\venv']<br>
+<strong>USER_BASE</strong> = r'C:\Users\kevin\AppData\Roaming\Python'<br>
+<strong>USER_SITE</strong> = r'C:\Users\kevin\AppData\Roaming\Python\Python38\site-packages'</td></tr></table>
+</body></html>

@@ -1,0 +1,203 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head><title>Python: module locale</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+</head><body bgcolor="#f0f0f8">
+
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="heading">
+<tr bgcolor="#7799ee">
+<td valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong>locale</strong></big></big></font></td
+><td align=right valign=bottom
+><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:c%3A%5Cpython38%5Clib%5Clocale.py">c:\python38\lib\locale.py</a><br><a href="https://docs.python.org/3.8/library/locale">Module Reference</a></font></td></tr></table>
+    <p><tt>Locale&nbsp;support&nbsp;module.<br>
+&nbsp;<br>
+The&nbsp;module&nbsp;provides&nbsp;low-level&nbsp;access&nbsp;to&nbsp;the&nbsp;C&nbsp;lib's&nbsp;locale&nbsp;APIs&nbsp;and&nbsp;adds&nbsp;high<br>
+level&nbsp;number&nbsp;formatting&nbsp;APIs&nbsp;as&nbsp;well&nbsp;as&nbsp;a&nbsp;locale&nbsp;aliasing&nbsp;engine&nbsp;to&nbsp;complement<br>
+these.<br>
+&nbsp;<br>
+The&nbsp;aliasing&nbsp;engine&nbsp;includes&nbsp;support&nbsp;for&nbsp;many&nbsp;commonly&nbsp;used&nbsp;locale&nbsp;names&nbsp;and<br>
+maps&nbsp;them&nbsp;to&nbsp;values&nbsp;suitable&nbsp;for&nbsp;passing&nbsp;to&nbsp;the&nbsp;C&nbsp;lib's&nbsp;<a href="#-setlocale">setlocale</a>()&nbsp;function.&nbsp;It<br>
+also&nbsp;includes&nbsp;default&nbsp;encodings&nbsp;for&nbsp;all&nbsp;supported&nbsp;locale&nbsp;names.</tt></p>
+<p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#aa55cc">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Modules</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#aa55cc"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><table width="100%" summary="list"><tr><td width="25%" valign=top><a href="collections.abc.html">collections.abc</a><br>
+<a href="encodings.html">encodings</a><br>
+</td><td width="25%" valign=top><a href="functools.html">functools</a><br>
+<a href="re.html">re</a><br>
+</td><td width="25%" valign=top><a href="sys.html">sys</a><br>
+</td><td width="25%" valign=top></td></tr></table></td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ee77aa">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Classes</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#ee77aa"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl>
+<dt><font face="helvetica, arial"><a href="builtins.html#Exception">builtins.Exception</a>(<a href="builtins.html#BaseException">builtins.BaseException</a>)
+</font></dt><dd>
+<dl>
+<dt><font face="helvetica, arial"><a href="locale.html#Error">Error</a>
+</font></dt></dl>
+</dd>
+</dl>
+ <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="Error">class <strong>Error</strong></a>(<a href="builtins.html#Exception">builtins.Exception</a>)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt>Common&nbsp;base&nbsp;class&nbsp;for&nbsp;all&nbsp;non-exit&nbsp;exceptions.<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%"><dl><dt>Method resolution order:</dt>
+<dd><a href="locale.html#Error">Error</a></dd>
+<dd><a href="builtins.html#Exception">builtins.Exception</a></dd>
+<dd><a href="builtins.html#BaseException">builtins.BaseException</a></dd>
+<dd><a href="builtins.html#object">builtins.object</a></dd>
+</dl>
+<hr>
+Data descriptors defined here:<br>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<hr>
+Methods inherited from <a href="builtins.html#Exception">builtins.Exception</a>:<br>
+<dl><dt><a name="Error-__init__"><strong>__init__</strong></a>(self, /, *args, **kwargs)</dt><dd><tt>Initialize&nbsp;self.&nbsp;&nbsp;See&nbsp;help(type(self))&nbsp;for&nbsp;accurate&nbsp;signature.</tt></dd></dl>
+
+<hr>
+Static methods inherited from <a href="builtins.html#Exception">builtins.Exception</a>:<br>
+<dl><dt><a name="Error-__new__"><strong>__new__</strong></a>(*args, **kwargs)<font color="#909090"><font face="helvetica, arial"> from <a href="builtins.html#type">builtins.type</a></font></font></dt><dd><tt>Create&nbsp;and&nbsp;return&nbsp;a&nbsp;new&nbsp;object.&nbsp;&nbsp;See&nbsp;help(type)&nbsp;for&nbsp;accurate&nbsp;signature.</tt></dd></dl>
+
+<hr>
+Methods inherited from <a href="builtins.html#BaseException">builtins.BaseException</a>:<br>
+<dl><dt><a name="Error-__delattr__"><strong>__delattr__</strong></a>(self, name, /)</dt><dd><tt>Implement&nbsp;delattr(self,&nbsp;name).</tt></dd></dl>
+
+<dl><dt><a name="Error-__getattribute__"><strong>__getattribute__</strong></a>(self, name, /)</dt><dd><tt>Return&nbsp;getattr(self,&nbsp;name).</tt></dd></dl>
+
+<dl><dt><a name="Error-__reduce__"><strong>__reduce__</strong></a>(...)</dt><dd><tt>Helper&nbsp;for&nbsp;pickle.</tt></dd></dl>
+
+<dl><dt><a name="Error-__repr__"><strong>__repr__</strong></a>(self, /)</dt><dd><tt>Return&nbsp;repr(self).</tt></dd></dl>
+
+<dl><dt><a name="Error-__setattr__"><strong>__setattr__</strong></a>(self, name, value, /)</dt><dd><tt>Implement&nbsp;setattr(self,&nbsp;name,&nbsp;value).</tt></dd></dl>
+
+<dl><dt><a name="Error-__setstate__"><strong>__setstate__</strong></a>(...)</dt></dl>
+
+<dl><dt><a name="Error-__str__"><strong>__str__</strong></a>(self, /)</dt><dd><tt>Return&nbsp;<a href="#-str">str</a>(self).</tt></dd></dl>
+
+<dl><dt><a name="Error-with_traceback"><strong>with_traceback</strong></a>(...)</dt><dd><tt><a href="builtins.html#Exception">Exception</a>.<a href="#Error-with_traceback">with_traceback</a>(tb)&nbsp;--<br>
+set&nbsp;self.<strong>__traceback__</strong>&nbsp;to&nbsp;tb&nbsp;and&nbsp;return&nbsp;self.</tt></dd></dl>
+
+<hr>
+Data descriptors inherited from <a href="builtins.html#BaseException">builtins.BaseException</a>:<br>
+<dl><dt><strong>__cause__</strong></dt>
+<dd><tt>exception&nbsp;cause</tt></dd>
+</dl>
+<dl><dt><strong>__context__</strong></dt>
+<dd><tt>exception&nbsp;context</tt></dd>
+</dl>
+<dl><dt><strong>__dict__</strong></dt>
+</dl>
+<dl><dt><strong>__suppress_context__</strong></dt>
+</dl>
+<dl><dt><strong>__traceback__</strong></dt>
+</dl>
+<dl><dt><strong>args</strong></dt>
+</dl>
+</td></tr></table></td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#eeaa77">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Functions</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#eeaa77"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl><dt><a name="-atof"><strong>atof</strong></a>(string, func=&lt;class 'float'&gt;)</dt><dd><tt>Parses&nbsp;a&nbsp;string&nbsp;as&nbsp;a&nbsp;float&nbsp;according&nbsp;to&nbsp;the&nbsp;locale&nbsp;settings.</tt></dd></dl>
+ <dl><dt><a name="-atoi"><strong>atoi</strong></a>(string)</dt><dd><tt>Converts&nbsp;a&nbsp;string&nbsp;to&nbsp;an&nbsp;integer&nbsp;according&nbsp;to&nbsp;the&nbsp;locale&nbsp;settings.</tt></dd></dl>
+ <dl><dt><a name="-currency"><strong>currency</strong></a>(val, symbol=True, grouping=False, international=False)</dt><dd><tt>Formats&nbsp;val&nbsp;according&nbsp;to&nbsp;the&nbsp;currency&nbsp;settings<br>
+in&nbsp;the&nbsp;current&nbsp;locale.</tt></dd></dl>
+ <dl><dt><a name="-format"><strong>format</strong></a>(percent, value, grouping=False, monetary=False, *additional)</dt><dd><tt>Deprecated,&nbsp;use&nbsp;format_string&nbsp;instead.</tt></dd></dl>
+ <dl><dt><a name="-format_string"><strong>format_string</strong></a>(f, val, grouping=False, monetary=False)</dt><dd><tt>Formats&nbsp;a&nbsp;string&nbsp;in&nbsp;the&nbsp;same&nbsp;way&nbsp;that&nbsp;the&nbsp;%&nbsp;formatting&nbsp;would&nbsp;use,<br>
+but&nbsp;takes&nbsp;the&nbsp;current&nbsp;locale&nbsp;into&nbsp;account.<br>
+&nbsp;<br>
+Grouping&nbsp;is&nbsp;applied&nbsp;if&nbsp;the&nbsp;third&nbsp;parameter&nbsp;is&nbsp;true.<br>
+Conversion&nbsp;uses&nbsp;monetary&nbsp;thousands&nbsp;separator&nbsp;and&nbsp;grouping&nbsp;strings&nbsp;if<br>
+forth&nbsp;parameter&nbsp;monetary&nbsp;is&nbsp;true.</tt></dd></dl>
+ <dl><dt><a name="-getdefaultlocale"><strong>getdefaultlocale</strong></a>(envvars=('LC_ALL', 'LC_CTYPE', 'LANG', 'LANGUAGE'))</dt><dd><tt>Tries&nbsp;to&nbsp;determine&nbsp;the&nbsp;default&nbsp;locale&nbsp;settings&nbsp;and&nbsp;returns<br>
+them&nbsp;as&nbsp;tuple&nbsp;(language&nbsp;code,&nbsp;encoding).<br>
+&nbsp;<br>
+According&nbsp;to&nbsp;POSIX,&nbsp;a&nbsp;program&nbsp;which&nbsp;has&nbsp;not&nbsp;called<br>
+<a href="#-setlocale">setlocale</a>(LC_ALL,&nbsp;"")&nbsp;runs&nbsp;using&nbsp;the&nbsp;portable&nbsp;'C'&nbsp;locale.<br>
+Calling&nbsp;<a href="#-setlocale">setlocale</a>(LC_ALL,&nbsp;"")&nbsp;lets&nbsp;it&nbsp;use&nbsp;the&nbsp;default&nbsp;locale&nbsp;as<br>
+defined&nbsp;by&nbsp;the&nbsp;LANG&nbsp;variable.&nbsp;Since&nbsp;we&nbsp;don't&nbsp;want&nbsp;to&nbsp;interfere<br>
+with&nbsp;the&nbsp;current&nbsp;locale&nbsp;setting&nbsp;we&nbsp;thus&nbsp;emulate&nbsp;the&nbsp;behavior<br>
+in&nbsp;the&nbsp;way&nbsp;described&nbsp;above.<br>
+&nbsp;<br>
+To&nbsp;maintain&nbsp;compatibility&nbsp;with&nbsp;other&nbsp;platforms,&nbsp;not&nbsp;only&nbsp;the<br>
+LANG&nbsp;variable&nbsp;is&nbsp;tested,&nbsp;but&nbsp;a&nbsp;list&nbsp;of&nbsp;variables&nbsp;given&nbsp;as<br>
+envvars&nbsp;parameter.&nbsp;The&nbsp;first&nbsp;found&nbsp;to&nbsp;be&nbsp;defined&nbsp;will&nbsp;be<br>
+used.&nbsp;envvars&nbsp;defaults&nbsp;to&nbsp;the&nbsp;search&nbsp;path&nbsp;used&nbsp;in&nbsp;GNU&nbsp;gettext;<br>
+it&nbsp;must&nbsp;always&nbsp;contain&nbsp;the&nbsp;variable&nbsp;name&nbsp;'LANG'.<br>
+&nbsp;<br>
+Except&nbsp;for&nbsp;the&nbsp;code&nbsp;'C',&nbsp;the&nbsp;language&nbsp;code&nbsp;corresponds&nbsp;to&nbsp;RFC<br>
+1766.&nbsp;&nbsp;code&nbsp;and&nbsp;encoding&nbsp;can&nbsp;be&nbsp;None&nbsp;in&nbsp;case&nbsp;the&nbsp;values&nbsp;cannot<br>
+be&nbsp;determined.</tt></dd></dl>
+ <dl><dt><a name="-getlocale"><strong>getlocale</strong></a>(category=2)</dt><dd><tt>Returns&nbsp;the&nbsp;current&nbsp;setting&nbsp;for&nbsp;the&nbsp;given&nbsp;locale&nbsp;category&nbsp;as<br>
+tuple&nbsp;(language&nbsp;code,&nbsp;encoding).<br>
+&nbsp;<br>
+category&nbsp;may&nbsp;be&nbsp;one&nbsp;of&nbsp;the&nbsp;LC_*&nbsp;value&nbsp;except&nbsp;LC_ALL.&nbsp;It<br>
+defaults&nbsp;to&nbsp;LC_CTYPE.<br>
+&nbsp;<br>
+Except&nbsp;for&nbsp;the&nbsp;code&nbsp;'C',&nbsp;the&nbsp;language&nbsp;code&nbsp;corresponds&nbsp;to&nbsp;RFC<br>
+1766.&nbsp;&nbsp;code&nbsp;and&nbsp;encoding&nbsp;can&nbsp;be&nbsp;None&nbsp;in&nbsp;case&nbsp;the&nbsp;values&nbsp;cannot<br>
+be&nbsp;determined.</tt></dd></dl>
+ <dl><dt><a name="-getpreferredencoding"><strong>getpreferredencoding</strong></a>(do_setlocale=True)</dt><dd><tt>Return&nbsp;the&nbsp;charset&nbsp;that&nbsp;the&nbsp;user&nbsp;is&nbsp;likely&nbsp;using.</tt></dd></dl>
+ <dl><dt><a name="-localeconv"><strong>localeconv</strong></a>(...)</dt><dd><tt>()&nbsp;-&gt;&nbsp;dict.&nbsp;Returns&nbsp;numeric&nbsp;and&nbsp;monetary&nbsp;locale-specific&nbsp;parameters.</tt></dd></dl>
+ <dl><dt><a name="-normalize"><strong>normalize</strong></a>(localename)</dt><dd><tt>Returns&nbsp;a&nbsp;normalized&nbsp;locale&nbsp;code&nbsp;for&nbsp;the&nbsp;given&nbsp;locale<br>
+name.<br>
+&nbsp;<br>
+The&nbsp;returned&nbsp;locale&nbsp;code&nbsp;is&nbsp;formatted&nbsp;for&nbsp;use&nbsp;with<br>
+<a href="#-setlocale">setlocale</a>().<br>
+&nbsp;<br>
+If&nbsp;normalization&nbsp;fails,&nbsp;the&nbsp;original&nbsp;name&nbsp;is&nbsp;returned<br>
+unchanged.<br>
+&nbsp;<br>
+If&nbsp;the&nbsp;given&nbsp;encoding&nbsp;is&nbsp;not&nbsp;known,&nbsp;the&nbsp;function&nbsp;defaults&nbsp;to<br>
+the&nbsp;default&nbsp;encoding&nbsp;for&nbsp;the&nbsp;locale&nbsp;code&nbsp;just&nbsp;like&nbsp;<a href="#-setlocale">setlocale</a>()<br>
+does.</tt></dd></dl>
+ <dl><dt><a name="-resetlocale"><strong>resetlocale</strong></a>(category=0)</dt><dd><tt>Sets&nbsp;the&nbsp;locale&nbsp;for&nbsp;category&nbsp;to&nbsp;the&nbsp;default&nbsp;setting.<br>
+&nbsp;<br>
+The&nbsp;default&nbsp;setting&nbsp;is&nbsp;determined&nbsp;by&nbsp;calling<br>
+<a href="#-getdefaultlocale">getdefaultlocale</a>().&nbsp;category&nbsp;defaults&nbsp;to&nbsp;LC_ALL.</tt></dd></dl>
+ <dl><dt><a name="-setlocale"><strong>setlocale</strong></a>(category, locale=None)</dt><dd><tt>Set&nbsp;the&nbsp;locale&nbsp;for&nbsp;the&nbsp;given&nbsp;category.&nbsp;&nbsp;The&nbsp;locale&nbsp;can&nbsp;be<br>
+a&nbsp;string,&nbsp;an&nbsp;iterable&nbsp;of&nbsp;two&nbsp;strings&nbsp;(language&nbsp;code&nbsp;and&nbsp;encoding),<br>
+or&nbsp;None.<br>
+&nbsp;<br>
+Iterables&nbsp;are&nbsp;converted&nbsp;to&nbsp;strings&nbsp;using&nbsp;the&nbsp;locale&nbsp;aliasing<br>
+engine.&nbsp;&nbsp;Locale&nbsp;strings&nbsp;are&nbsp;passed&nbsp;directly&nbsp;to&nbsp;the&nbsp;C&nbsp;lib.<br>
+&nbsp;<br>
+category&nbsp;may&nbsp;be&nbsp;given&nbsp;as&nbsp;one&nbsp;of&nbsp;the&nbsp;LC_*&nbsp;values.</tt></dd></dl>
+ <dl><dt><a name="-str"><strong>str</strong></a>(val)</dt><dd><tt>Convert&nbsp;float&nbsp;to&nbsp;string,&nbsp;taking&nbsp;the&nbsp;locale&nbsp;into&nbsp;account.</tt></dd></dl>
+ <dl><dt><a name="-strcoll"><strong>strcoll</strong></a>(...)</dt><dd><tt>string,string&nbsp;-&gt;&nbsp;int.&nbsp;Compares&nbsp;two&nbsp;strings&nbsp;according&nbsp;to&nbsp;the&nbsp;locale.</tt></dd></dl>
+ <dl><dt><a name="-strxfrm"><strong>strxfrm</strong></a>(...)</dt><dd><tt><a href="#-strxfrm">strxfrm</a>(string)&nbsp;-&gt;&nbsp;string.<br>
+&nbsp;<br>
+Return&nbsp;a&nbsp;string&nbsp;that&nbsp;can&nbsp;be&nbsp;used&nbsp;as&nbsp;a&nbsp;key&nbsp;for&nbsp;locale-aware&nbsp;comparisons.</tt></dd></dl>
+</td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#55aa55">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Data</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#55aa55"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><strong>CHAR_MAX</strong> = 127<br>
+<strong>LC_ALL</strong> = 0<br>
+<strong>LC_COLLATE</strong> = 1<br>
+<strong>LC_CTYPE</strong> = 2<br>
+<strong>LC_MONETARY</strong> = 3<br>
+<strong>LC_NUMERIC</strong> = 4<br>
+<strong>LC_TIME</strong> = 5<br>
+<strong>__all__</strong> = ['getlocale', 'getdefaultlocale', 'getpreferredencoding', 'Error', 'setlocale', 'resetlocale', 'localeconv', 'strcoll', 'strxfrm', 'str', 'atof', 'atoi', 'format', 'format_string', 'currency', 'normalize', 'LC_CTYPE', 'LC_COLLATE', 'LC_TIME', 'LC_MONETARY', ...]</td></tr></table>
+</body></html>
